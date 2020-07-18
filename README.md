@@ -1,6 +1,6 @@
 # Pokedex
 
-## => [DEMO](https://fsancheztemprano.github.io/pokedex) <=
+## => [DEMO](https://fsancheztemprano.github.io/pokedex-ng) <=
 
 _Pokedex base with module routing, nav-bar and header (shared module) and dependencies: Bootstrap, MD Bootstrap, Fontawesome_
 
