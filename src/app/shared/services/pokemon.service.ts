@@ -14,7 +14,7 @@ export class PokemonService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getPokemonList(limit: number = 20, offset: number = 0): Observable<PokeApiResponse<Pokemon>> {
+  getPokemonList(offset: number = 0, limit: number = 48): Observable<PokeApiResponse<Pokemon>> {
     const pageParams: HttpParams = new HttpParams()
     .append('limit', String(limit))
     .append('offset', String(offset));

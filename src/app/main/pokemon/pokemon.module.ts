@@ -1,13 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+
 import {PokemonRoutingModule} from './pokemon-routing.module';
 import {PokemonHomeComponent} from './pokemon-home/pokemon-home.component';
 import {PokemonDetailComponent} from './pokemon-detail/pokemon-detail.component';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {PokemonGridComponent} from './pokemon-home/pokemon-grid/pokemon-grid.component';
 import {PokemonTableComponent} from './pokemon-home/pokemon-table/pokemon-table.component';
 import {SharedModule} from '../../shared/shared.module';
+import {SplitIdPipe} from '../../shared/pipes/split-id.pipe';
 
 
 @NgModule({
@@ -21,7 +24,11 @@ import {SharedModule} from '../../shared/shared.module';
     CommonModule,
     PokemonRoutingModule,
     MDBBootstrapModule.forRoot(),
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
+  ],
+  providers: [
+    SplitIdPipe
   ]
 })
 export class PokemonModule {

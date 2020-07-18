@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Pokemon} from '../../../shared/domain/pokemon';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {map} from 'rxjs/operators';
+import {SplitIdPipe} from '../../../shared/pipes/split-id.pipe';
 
 @Component({
   selector: 'app-pokemon-home',
@@ -11,18 +12,30 @@ import {map} from 'rxjs/operators';
 export class PokemonHomeComponent implements OnInit {
 
 
-  public pokemonList: Pokemon[];
+  public pokemonList: Pokemon[] = [];
 
   public gridMode = false;
 
-  constructor(private pokemonService: PokemonService) {
+  offset = 0;
+
+  constructor(private pokemonService: PokemonService,
+              private splitIdPipe: SplitIdPipe) {
   }
 
   ngOnInit(): void {
-    this.pokemonService.getPokemonList().pipe(
-      map(response => response.results)
-    ).subscribe(list => this.pokemonList = list);
+    this.fetchPokemonList();
   }
 
 
+  private fetchPokemonList(): void {
+    this.pokemonService.getPokemonList(this.offset).pipe(
+      map(response => response.results)
+    ).subscribe(list => this.pokemonList.push(...list));
+    this.pokemonList.sort((a, b) => this.splitIdPipe.transform(a.url) > this.splitIdPipe.transform(b.url) ? 1 : -1);
+  }
+
+  fetchMore(): void {
+    this.offset += 48;
+    this.fetchPokemonList();
+  }
 }
