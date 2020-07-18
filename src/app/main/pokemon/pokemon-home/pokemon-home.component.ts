@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Pokemon} from '../../../shared/domain/pokemon';
+import {PokemonService} from '../../../shared/services/pokemon.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-home',
@@ -7,10 +10,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PokemonHomeComponent implements OnInit {
 
-  constructor() {
+
+  public pokemonList: Pokemon[];
+
+  public gridMode = false;
+
+  constructor(private pokemonService: PokemonService) {
   }
 
   ngOnInit(): void {
+    this.pokemonService.getPokemonList().pipe(
+      map(response => response.results)
+    ).subscribe(list => this.pokemonList = list);
   }
+
 
 }

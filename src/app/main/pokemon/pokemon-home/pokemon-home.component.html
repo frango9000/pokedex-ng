@@ -1,1 +1,4 @@
-<p>pokemon-home works!</p>
+<app-pokemon-grid *ngIf="gridMode; else tableMode" [pokemonList]="pokemonList"></app-pokemon-grid>
+<ng-template #tableMode>
+  <app-pokemon-table [pokemonList]="pokemonList"></app-pokemon-table>
+</ng-template>

@@ -1,0 +1,21 @@
+<table mdbTable>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Gen</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr mdbTableCol *ngFor="let pokemon of pokemonList" class="">
+    <th scope="row">{{pokemon.url | splitId}}</th>
+    <td><img class="" height="40px"
+             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url | splitId}}.png">
+    </td>
+    <td>{{pokemon.name | titlecase}}</td>
+    <td>{{pokemon.url | splitId | pokeGeneration}}</td>
+
+  </tr>
+  </tbody>
+</table>
