@@ -1,14 +1,14 @@
 {
-  "name": "angular-template",
+  "name": "pokedex",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --host=localhost --port=4200",
     "build": "ng build",
     "prod": "ng build --prod",
-    "start-prod": "angular-http-server -o -p 8080 --path dist --baseHref angular-template",
-    "deploy": "ng deploy --base-href=/angular-template/",
-    "quick-deploy": "ng deploy --base-href=/angular-template/ --no-build",
+    "start-prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex",
+    "deploy": "ng deploy --base-href=/pokedex/",
+    "quick-deploy": "ng deploy --base-href=/pokedex/ --no-build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

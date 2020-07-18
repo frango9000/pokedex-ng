@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PhotosModule} from './photos/photos.module';
 import {MainComponent} from './main.component';
+import {PokemonModule} from './pokemon/pokemon.module';
 
-export const loadPhotosModule = () => PhotosModule;
+export const loadPokemonModule = () => PokemonModule;
 
 const routes: Routes = [
   {
@@ -12,12 +12,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'photos',
+        redirectTo: 'pokemon',
         pathMatch: 'full'
       },
       {
-        path: 'photos',
-        loadChildren: loadPhotosModule
+        path: 'pokemon',
+        loadChildren: loadPokemonModule
       }
     ]
   }

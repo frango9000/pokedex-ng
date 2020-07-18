@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-template": {
+    "pokedex": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -64,7 +64,7 @@
               "buildOptimizer": true,
               "aot": true,
               "deleteOutputPath": true,
-              "baseHref": "/angular-template/",
+              "baseHref": "/pokedex/",
               "budgets": [
                 {
                   "type": "initial",
@@ -83,18 +83,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-template:build"
+            "browserTarget": "pokedex:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-template:build:production"
+              "browserTarget": "pokedex:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-template:build"
+            "browserTarget": "pokedex:build"
           }
         },
         "test": {
@@ -131,11 +131,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-template:serve"
+            "devServerTarget": "pokedex:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-template:serve:production"
+              "devServerTarget": "pokedex:serve:production"
             }
           }
         },
@@ -146,5 +146,5 @@
       }
     }
   },
-  "defaultProject": "angular-template"
+  "defaultProject": "pokedex"
 }
