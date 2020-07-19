@@ -14,7 +14,7 @@ export class PokemonHomeComponent implements OnInit {
 
   public pokemonList: Pokemon[] = [];
 
-  public gridMode = false;
+  public gridMode = true;
 
   offset = 0;
 

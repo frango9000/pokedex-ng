@@ -5,15 +5,17 @@ import {FooterComponent} from './footer/footer.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {SplitIdPipe} from './pipes/split-id.pipe';
 import {PokeGenerationPipe} from './pipes/poke-generation.pipe';
+import {PositionPipe} from './pipes/position.pipe';
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, SplitIdPipe, PokeGenerationPipe],
+  declarations: [NavbarComponent, FooterComponent, SplitIdPipe, PokeGenerationPipe, PositionPipe],
   exports: [
     NavbarComponent,
     FooterComponent,
     SplitIdPipe,
-    PokeGenerationPipe
+    PokeGenerationPipe,
+    PositionPipe
   ],
   imports: [
     CommonModule,

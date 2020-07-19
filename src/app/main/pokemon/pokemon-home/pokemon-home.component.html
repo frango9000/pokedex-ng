@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="row mb-1">
+    <button class="btn btn-primary" (click)="gridMode=!gridMode">{{gridMode ? 'Table View' : 'Grid View'}}
+      <i class="fas fa-th ml-1"></i>
+    </button>
+  </div>
   <div class="row">
     <div class="col">
       <div infiniteScroll

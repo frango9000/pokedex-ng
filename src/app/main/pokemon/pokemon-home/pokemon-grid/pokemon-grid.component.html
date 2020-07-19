@@ -1,29 +1,32 @@
 <!-- Card -->
-<div *ngFor="let pokemon of pokemonList">
-  <mdb-card>
-    <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-      <!-- Card img -->
-      <th scope="row">{{pokemon.url | splitId}}</th>
-      <td>{{pokemon.name | titlecase}}</td>
-      <td><img class="" height="40px"></td>
-
-      <mdb-card-img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url | splitId}}.png"
-        alt="{{pokemon.name | titlecase}}"></mdb-card-img>
-      <a>
-        <div class="mask"></div>
-      </a>
-    </div>
-    <!--Card content-->
-    <mdb-card-body>
-      <!--Title-->
-      <mdb-card-title>
-        <h4>{{pokemon.name | titlecase}}</h4>
-      </mdb-card-title>
-      <mdb-card-text>
-        Generation: {{pokemon.url | splitId | pokeGeneration}}
-      </mdb-card-text>
-    </mdb-card-body>
-  </mdb-card>
-  <!-- Card -->
+<div class="row justify-content-center">
+  <div class="m-1 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 poke-card" *ngFor="let pokemon of pokemonList">
+    <mdb-card>
+      <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+        <!-- Card img -->
+        <mdb-card-img class="img-fluid"
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url | splitId}}.png"
+                      alt="{{pokemon.name | titlecase}}"></mdb-card-img>
+        <a>
+          <div class="mask"></div>
+        </a>
+      </div>
+      <!--Card content-->
+      <mdb-card-body>
+        <!--Title-->
+        <mdb-card-title>
+          <div class="text-center">
+            <h5 class="text-nowrap overflow-hidden">{{pokemon.name | titlecase}}</h5>
+            <h6># {{pokemon.url | splitId}}</h6>
+          </div>
+        </mdb-card-title>
+        <mdb-card-text>
+          <div class="text-center">
+            {{pokemon.url | splitId | pokeGeneration | position}} Generation
+          </div>
+        </mdb-card-text>
+      </mdb-card-body>
+    </mdb-card>
+    <!-- Card -->
+  </div>
 </div>
