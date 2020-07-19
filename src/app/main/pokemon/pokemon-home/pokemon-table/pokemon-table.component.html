@@ -9,12 +9,15 @@
   </thead>
   <tbody>
   <tr *ngFor="let pokemon of pokemonList" class="m-0 p-0 cursor-pointer" [routerLink]="[pokemon.name]">
-    <th class="p-0 align-middle" scope="row">{{pokemon.url | splitId}}</th>
-    <td class="p-0 align-middle"><img class="m-o p-0" height="40px"
-                                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url | splitId}}.png">
+    <th class="p-0 align-middle" scope="row">{{pokemon.id}}</th>
+    <td class="p-0 align-middle">
+      <img class="m-o p-0"
+           height="40px"
+           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
+           alt="{{pokemon.name}}">
     </td>
     <td class="p-0 align-middle">{{pokemon.name | titlecase}}</td>
-    <td class="p-0 align-middle">{{pokemon.url | splitId | pokeGeneration}}</td>
+    <td class="p-0 align-middle">{{pokemon.id | pokeGeneration}}</td>
   </tr>
   </tbody>
 </table>

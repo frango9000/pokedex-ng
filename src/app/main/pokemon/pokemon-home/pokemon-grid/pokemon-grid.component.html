@@ -7,7 +7,7 @@
       <div class="view rgba-white-slight waves-light" mdbWavesEffect>
         <!-- Card img -->
         <mdb-card-img class="img-fluid"
-                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url | splitId}}.png"
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
                       alt="{{pokemon.name | titlecase}}"></mdb-card-img>
         <a>
           <div class="mask"></div>
@@ -19,12 +19,12 @@
         <mdb-card-title>
           <div class="text-center">
             <h5 class="text-nowrap overflow-hidden">{{pokemon.name | titlecase}}</h5>
-            <h6># {{pokemon.url | splitId}}</h6>
+            <h6># {{pokemon.id}}</h6>
           </div>
         </mdb-card-title>
         <mdb-card-text>
           <div class="text-center">
-            {{pokemon.url | splitId | pokeGeneration | position}} Generation
+            {{pokemon.id | pokeGeneration | position}} Generation
           </div>
         </mdb-card-text>
       </mdb-card-body>

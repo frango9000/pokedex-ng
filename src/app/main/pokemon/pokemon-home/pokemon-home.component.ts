@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon} from '../../../shared/domain/pokemon';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {map} from 'rxjs/operators';
-import {SplitIdPipe} from '../../../shared/pipes/split-id.pipe';
+import {NamedResource} from '../../../shared/domain/named-resource';
 
 @Component({
   selector: 'app-pokemon-home',
@@ -12,14 +11,13 @@ import {SplitIdPipe} from '../../../shared/pipes/split-id.pipe';
 export class PokemonHomeComponent implements OnInit {
 
 
-  public pokemonList: Pokemon[] = [];
+  public pokemonList: NamedResource[] = [];
 
   public gridMode = true;
 
   offset = 0;
 
-  constructor(private pokemonService: PokemonService,
-              private splitIdPipe: SplitIdPipe) {
+  constructor(private pokemonService: PokemonService) {
   }
 
   ngOnInit(): void {
@@ -29,9 +27,9 @@ export class PokemonHomeComponent implements OnInit {
 
   private fetchPokemonList(): void {
     this.pokemonService.getPokemonList(this.offset).pipe(
-      map(response => response.results)
+      map(response => response.results.map(value => new NamedResource(value)))
     ).subscribe(list => this.pokemonList.push(...list));
-    this.pokemonList.sort((a, b) => this.splitIdPipe.transform(a.url) > this.splitIdPipe.transform(b.url) ? 1 : -1);
+    this.pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
   }
 
   fetchMore(): void {

@@ -1,0 +1,65 @@
+<div class="container-fluid py-1 px-0 px-md-4" *ngIf="pokemon">
+  <div class="row mt-1 justify-content-center">
+    <mdb-card>
+      <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+        <!-- Card img -->
+        <img class="mx-auto my-1"
+             src="{{pokemon.sprites.front_default}}"
+             alt="Card image cap">
+      </div>
+      <!--Card content-->
+      <mdb-card-body>
+        <!--Title-->
+        <mdb-card-title>
+          <div class="text-center">
+            <h4>{{pokemon.name | titlecase}}</h4>
+            <div># {{pokemon.id}}</div>
+          </div>
+        </mdb-card-title>
+
+        <!--Text-->
+        <mdb-card-text class="text-center">
+          <p class="w-auto">{{pokemonSpecies.flavor_text_entries[0].flavor_text}}</p>
+        </mdb-card-text>
+        <table class="table">
+          <tbody>
+          <tr>
+            <td>Base Experience</td>
+            <td>{{pokemon.base_experience}}</td>
+          </tr>
+          <tr>
+            <td>Weight</td>
+            <td>{{pokemon.weight}}</td>
+          </tr>
+          <tr>
+            <td>Height</td>
+            <td>{{pokemon.height}}</td>
+          </tr>
+          <tr title="The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.">
+            <td>Base Happiness</td>
+            <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
+          </tr>
+          <tr title="The base capture rate; up to 255. The higher the number, the easier the catch.">
+            <td>Capture Rate</td>
+            <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
+          </tr>
+          <tr *ngIf="pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being female">
+            <td>Female Rate</td>
+            <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
+          </tr>
+          <tr *ngIf="pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being male">
+            <td>Male Rate</td>
+            <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
+          </tr>
+          <tr *ngIf="pokemonSpecies.gender_rate===-1"
+              title="The chance of this Pokémon being female, in eighths; or -1 for genderless.">
+            <td>Gender Rate</td>
+            <td>Genderless</td>
+          </tr>
+          </tbody>
+        </table>
+      </mdb-card-body>
+    </mdb-card>
+    <!-- Card -->
+  </div>
+</div>

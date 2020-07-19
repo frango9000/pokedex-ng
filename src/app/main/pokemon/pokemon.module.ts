@@ -10,7 +10,7 @@ import {PokemonDetailComponent} from './pokemon-detail/pokemon-detail.component'
 import {PokemonGridComponent} from './pokemon-home/pokemon-grid/pokemon-grid.component';
 import {PokemonTableComponent} from './pokemon-home/pokemon-table/pokemon-table.component';
 import {SharedModule} from '../../shared/shared.module';
-import {SplitIdPipe} from '../../shared/pipes/split-id.pipe';
+import {ResourceIdPipe} from '../../shared/pipes/resource-id.pipe';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import {SplitIdPipe} from '../../shared/pipes/split-id.pipe';
     InfiniteScrollModule
   ],
   providers: [
-    SplitIdPipe
+    ResourceIdPipe
   ]
 })
 export class PokemonModule {
