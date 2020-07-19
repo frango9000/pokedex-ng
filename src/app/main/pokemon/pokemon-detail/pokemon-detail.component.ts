@@ -4,6 +4,7 @@ import {PokemonService} from '../../../shared/services/pokemon.service';
 import {Pokemon} from '../../../shared/domain/pokemon';
 import {ResourceIdPipe} from '../../../shared/pipes/resource-id.pipe';
 import {PokemonSpecies} from '../../../shared/domain/pokemon-species';
+import {NamedResource} from '../../../shared/domain/named-resource';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -32,4 +33,7 @@ export class PokemonDetailComponent implements OnInit {
     });
   }
 
+  getLang(genera: [{ language: NamedResource }]) {
+    return genera.find(value => value.language.name === 'en');
+  }
 }

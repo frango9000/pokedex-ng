@@ -1,65 +1,127 @@
 <div class="container-fluid py-1 px-0 px-md-4" *ngIf="pokemon">
   <div class="row mt-1 justify-content-center">
-    <mdb-card>
-      <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-        <!-- Card img -->
-        <img class="mx-auto my-1"
-             src="{{pokemon.sprites.front_default}}"
-             alt="Card image cap">
-      </div>
-      <!--Card content-->
-      <mdb-card-body>
-        <!--Title-->
-        <mdb-card-title>
-          <div class="text-center">
-            <h4>{{pokemon.name | titlecase}}</h4>
-            <div># {{pokemon.id}}</div>
-          </div>
-        </mdb-card-title>
+    <div class="col-12 col-md-6 col-xl-4">
+      <mdb-card class="pokemon-profile pt-2">
+        <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
+          <h5 class="text-center text-white pt-1 "><span class="px-2 py-1 mx-1"
+                                                         *ngFor="let type of pokemon.types; let i = index"
+                                                         [ngStyle]="{'background-color':type.type.name | pokeTypeColor}">{{type.type.name | uppercase}}</span>
+          </h5>
+          <img class="mx-auto my-1 img-fluid" width="200"
+               src="{{pokemon.sprites.front_default}}"
+               alt="Card image cap">
+        </div>
+        <!--Card content-->
+        <mdb-card-body class="py-0">
+          <!--Title-->
+          <mdb-card-title>
+            <div class="text-center">
+              <h4>{{pokemon.name | titlecase}}</h4>
+            </div>
+          </mdb-card-title>
 
-        <!--Text-->
-        <mdb-card-text class="text-center">
-          <p class="w-auto">{{pokemonSpecies.flavor_text_entries[0].flavor_text}}</p>
-        </mdb-card-text>
-        <table class="table">
-          <tbody>
-          <tr>
-            <td>Base Experience</td>
-            <td>{{pokemon.base_experience}}</td>
-          </tr>
-          <tr>
-            <td>Weight</td>
-            <td>{{pokemon.weight}}</td>
-          </tr>
-          <tr>
-            <td>Height</td>
-            <td>{{pokemon.height}}</td>
-          </tr>
-          <tr title="The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.">
-            <td>Base Happiness</td>
-            <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr title="The base capture rate; up to 255. The higher the number, the easier the catch.">
-            <td>Capture Rate</td>
-            <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being female">
-            <td>Female Rate</td>
-            <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being male">
-            <td>Male Rate</td>
-            <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies.gender_rate===-1"
-              title="The chance of this Pokémon being female, in eighths; or -1 for genderless.">
-            <td>Gender Rate</td>
-            <td>Genderless</td>
-          </tr>
-          </tbody>
-        </table>
-      </mdb-card-body>
-    </mdb-card>
-    <!-- Card -->
+          <!--Text-->
+          <mdb-card-text class="text-center">
+            <div class="pb-2" *ngIf="pokemonSpecies && pokemonSpecies.genera">{{getLang(
+              pokemonSpecies.genera).genus}}</div>
+            <div *ngIf="pokemonSpecies && pokemonSpecies.flavor_text_entries" class="overflow-auto">{{getLang(
+              pokemonSpecies.flavor_text_entries).flavor_text}}</div>
+          </mdb-card-text>
+          <table class="table">
+            <tbody>
+            <tr>
+              <td>Pokedex Id</td>
+              <td># {{pokemon.id}}</td>
+            </tr>
+            <tr>
+              <td>Base Experience</td>
+              <td>{{pokemon.base_experience}} xp</td>
+            </tr>
+            <tr>
+              <td>Weight</td>
+              <td>{{pokemon.weight / 10}} kg.</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td>{{pokemon.height / 10}} m.</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies">
+              <td>Growth Rate</td>
+              <td>{{pokemonSpecies.growth_rate.name | titlecase}}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies && pokemonSpecies.egg_groups"
+                title="Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups.">
+              <td>Egg Groups</td>
+              <td>
+                <span *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}
+                  <span *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
+              </td>
+            </tr>
+            <tr *ngIf="pokemonSpecies">
+              <td>Hatch Steps</td>
+              <td>{{(+pokemonSpecies.hatch_counter + 1) * 255}}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies"
+                title="The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.">
+              <td>Base Happiness</td>
+              <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies"
+                title="The base capture rate; up to 255. The higher the number, the easier the catch.">
+              <td>Capture Rate</td>
+              <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being female">
+              <td>Female Rate</td>
+              <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being male">
+              <td>Male Rate</td>
+              <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
+            </tr>
+            <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate===-1"
+                title="Genderless Pokemon">
+              <td>Gender Rate</td>
+              <td>Genderless</td>
+            </tr>
+            </tbody>
+          </table>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4">
+      <mdb-card class="pokemon-profile">
+        <div class="container-fluid cursor-pointer border-bottom">
+          <div class="row m-2 align-items-center" title="Camera info">
+            <a mdbBtn floating="true">
+              <mdb-icon fas icon="info" size="1x"></mdb-icon>
+            </a>
+            <div class="overflow-hidden text-nowrap pl-2">Stats</div>
+          </div>
+        </div>
+
+        <mdb-card-body>
+          <mdb-card-text>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Stat</th>
+                <th scope="col">Base</th>
+                <th scope="col">EV</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let stat of pokemon.stats">
+                <th scope="col">{{stat.stat.name | titlecase}}</th>
+                <td>{{stat.base_stat}}</td>
+                <td>{{stat.effort}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
   </div>
 </div>

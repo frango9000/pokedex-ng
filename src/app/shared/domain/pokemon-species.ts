@@ -8,8 +8,12 @@ export interface PokemonSpecies {
   capture_rate: number;
   forms_switchable: boolean;
   gender_rate: number;
+  genera: [{
+    genus: string,
+    language: NamedResource
+  }];
   has_gender_differences: boolean;
-  hatch_encounter: number;
+  hatch_counter: number;
   is_baby: boolean;
   order: number;
   generation: NamedResource;

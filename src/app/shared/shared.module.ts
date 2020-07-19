@@ -6,6 +6,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {PokeGenerationPipe} from './pipes/poke-generation.pipe';
 import {PositionPipe} from './pipes/position.pipe';
 import {ResourceIdPipe} from './pipes/resource-id.pipe';
+import {PokeTypeColorPipe} from './pipes/poke-type-color.pipe';
 
 
 @NgModule({
@@ -14,14 +15,16 @@ import {ResourceIdPipe} from './pipes/resource-id.pipe';
     FooterComponent,
     PokeGenerationPipe,
     PositionPipe,
-    ResourceIdPipe
+    ResourceIdPipe,
+    PokeTypeColorPipe
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
     PokeGenerationPipe,
     PositionPipe,
-    ResourceIdPipe
+    ResourceIdPipe,
+    PokeTypeColorPipe
   ],
   imports: [
     CommonModule,
