@@ -22,4 +22,10 @@ export class PokemonService {
       tap(source => console.log(source))
     );
   }
+
+  getPokemon(pokemonId: string | number): Observable<Pokemon> {
+    return this.httpClient.get<Pokemon>(environment.apiUrl + '/pokemon/' + pokemonId).pipe(
+      tap(source => console.log(source))
+    );
+  }
 }

@@ -1,7 +1,9 @@
 <!-- Card -->
 <div class="row justify-content-center">
-  <div class="m-1 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 poke-card" *ngFor="let pokemon of pokemonList">
-    <mdb-card>
+  <div
+    class="m-0 p-1 col-6 w-100 col-sm-4 col-md-3 col-lg-2 mx-lg-1 px-lg-0 mx-xl-0 px-xl-1 col-xl-2 poke-card cursor-pointer"
+    *ngFor="let pokemon of pokemonList" [routerLink]="[pokemon.name]">
+    <mdb-card title="{{pokemon.name | titlecase}}">
       <div class="view rgba-white-slight waves-light" mdbWavesEffect>
         <!-- Card img -->
         <mdb-card-img class="img-fluid"
