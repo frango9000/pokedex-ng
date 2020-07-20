@@ -1,14 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {PokemonMove} from '../../domain/pokemon-move';
-import {PokemonMoveService} from '../../services/pokemon-move.service';
+import {PokemonMove} from '../../../../shared/domain/pokemon-move';
+import {PokemonMoveService} from '../../../../shared/services/pokemon-move.service';
 
 @Component({
-  selector: 'app-pokemon-moves',
-  templateUrl: './pokemon-moves.component.html',
-  styleUrls: ['./pokemon-moves.component.scss']
+  selector: 'app-pokemon-move',
+  templateUrl: './pokemon-move.component.html',
+  styleUrls: ['./pokemon-move.component.scss']
 })
-export class PokemonMovesComponent implements OnInit {
+export class PokemonMoveComponent implements OnInit {
 
 
   @Input() moveId: string | number;

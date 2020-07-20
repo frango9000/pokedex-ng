@@ -11,6 +11,8 @@ import {PokemonGridComponent} from './pokemon-home/pokemon-grid/pokemon-grid.com
 import {PokemonTableComponent} from './pokemon-home/pokemon-table/pokemon-table.component';
 import {SharedModule} from '../../shared/shared.module';
 import {ResourceIdPipe} from '../../shared/pipes/resource-id.pipe';
+import {PokemonAbilityComponent} from './pokemon-detail/pokemon-ability/pokemon-ability.component';
+import {PokemonMoveComponent} from './pokemon-detail/pokemon-moves/pokemon-move.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {ResourceIdPipe} from '../../shared/pipes/resource-id.pipe';
     PokemonHomeComponent,
     PokemonDetailComponent,
     PokemonGridComponent,
-    PokemonTableComponent
+    PokemonTableComponent,
+    PokemonAbilityComponent,
+    PokemonMoveComponent
   ],
   imports: [
     CommonModule,

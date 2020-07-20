@@ -34,10 +34,10 @@
               <td>Pokedex Id</td>
               <td># {{pokemon.id}}</td>
             </tr>
-            <tr>
-              <td>Game ID</td>
-              <td># {{pokemon.game_indices | pokeVersion | first}}</td>
-            </tr>
+            <!--            <tr>-->
+            <!--              <td>Game ID</td>-->
+            <!--              <td># {{pokemon.game_indices | pokeVersion | first}}</td>-->
+            <!--            </tr>-->
             <tr>
               <td>Base Experience</td>
               <td>{{pokemon.base_experience}} xp</td>
@@ -192,7 +192,7 @@
                 </div>
               </div>
               <div *ngIf="move.value" class="pb-2">
-                <app-pokemon-moves [moveId]="move.key.move.name"></app-pokemon-moves>
+                <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
               </div>
             </div>
           </mdb-card-text>
