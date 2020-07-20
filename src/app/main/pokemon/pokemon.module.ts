@@ -12,7 +12,7 @@ import {PokemonTableComponent} from './pokemon-home/pokemon-table/pokemon-table.
 import {SharedModule} from '../../shared/shared.module';
 import {ResourceIdPipe} from '../../shared/pipes/resource-id.pipe';
 import {PokemonAbilityComponent} from './pokemon-detail/pokemon-ability/pokemon-ability.component';
-import {PokemonMoveComponent} from './pokemon-detail/pokemon-moves/pokemon-move.component';
+import {PokemonMoveComponent} from './pokemon-detail/pokemon-move/pokemon-move.component';
 
 
 @NgModule({

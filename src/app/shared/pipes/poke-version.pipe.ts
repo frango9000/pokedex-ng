@@ -13,12 +13,9 @@ export class PokeVersionPipe implements PipeTransform {
 
   transform<T>(versions: T[], ...args: unknown[]): T[] {
     let requested = versions.filter((value: any) => value.version_group.name === this.pokemonVersionService.displayVersion);
-    if (!requested.length) {
+    if (requested.length === 0) {
       requested = versions.filter((value: any) => value.version_group.name === PokeVersionPipe.DEFAULT_VERSION);
     }
-    if (!requested.length) {
-      requested = versions.filter((value: any) => value.version_group.name === (versions[0] as any).version_group.name);
-    }
-    return requested;
+    return requested.length > 0 ? requested : versions;
   }
 }

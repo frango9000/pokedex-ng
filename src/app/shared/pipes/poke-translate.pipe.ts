@@ -13,9 +13,9 @@ export class PokeTranslatePipe implements PipeTransform {
 
   transform<T>(languages: T[], ...args: unknown[]): T[] {
     let requested = languages.filter((value: any) => value.language.name === this.pokemonLanguageService.displayLanguage);
-    if (!requested.length) {
+    if (requested.length === 0) {
       requested = languages.filter((value: any) => value.language.name === PokeTranslatePipe.DEFAULT_LANGUAGE);
     }
-    return requested;
+    return requested.length > 0 ? requested : languages;
   }
 }

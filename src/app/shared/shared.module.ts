@@ -42,7 +42,8 @@ import {ReplacePipe} from './pipes/replace.pipe';
     ExpandableResourcesPipe,
     PokeTranslatePipe,
     FirstPipe,
-    PokeVersionPipe
+    PokeVersionPipe,
+    ReplacePipe
   ],
   imports: [
     CommonModule,
