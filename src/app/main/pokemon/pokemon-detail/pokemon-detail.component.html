@@ -3,9 +3,10 @@
     <div class="col-12 col-md-6 col-xl-4">
       <mdb-card class="pokemon-profile pt-2">
         <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
-          <h5 class="text-center text-white pt-1 "><span class="px-2 py-1 mx-1"
-                                                         *ngFor="let type of pokemon.types; let i = index"
-                                                         [ngStyle]="{'background-color':type.type.name | pokeTypeColor}">{{type.type.name | uppercase}}</span>
+          <h5 class="text-center text-white pt-1 ">
+            <span class="px-2 py-1 mx-1"
+                  *ngFor="let type of pokemon.types; let i = index"
+                  [ngStyle]="{'background-color':type.type.name | pokeTypeColor}">{{type.type.name | uppercase}}</span>
           </h5>
           <img class="mx-auto my-1 img-fluid" width="200"
                src="{{pokemon.sprites.front_default}}"
@@ -53,8 +54,9 @@
                 title="Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups.">
               <td>Egg Groups</td>
               <td>
-                <span *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}
-                  <span *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
+                <span
+                  *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}<span
+                  *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
               </td>
             </tr>
             <tr *ngIf="pokemonSpecies">
@@ -91,9 +93,9 @@
     </div>
 
     <div class="col-12 col-md-6 col-xl-4">
-      <mdb-card class="pokemon-profile">
+      <mdb-card class="pokemon-profile ">
         <div class="container-fluid cursor-pointer border-bottom">
-          <div class="row m-2 align-items-center" title="Camera info">
+          <div class="row m-2 align-items-center" title="Stats">
             <a mdbBtn floating="true">
               <mdb-icon fas icon="info" size="1x"></mdb-icon>
             </a>
@@ -101,11 +103,11 @@
           </div>
         </div>
 
-        <mdb-card-body>
+        <mdb-card-body class="py-0">
           <mdb-card-text>
             <table class="table">
               <thead>
-              <tr>
+              <tr class="stats-table">
                 <th scope="col">Stat</th>
                 <th scope="col">Base</th>
                 <th scope="col">EV</th>
@@ -119,6 +121,41 @@
               </tr>
               </tbody>
             </table>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4">
+      <mdb-card class="pokemon-abilities">
+        <div class="container-fluid cursor-pointer border-bottom">
+          <div class="row m-2 align-items-center" title="Abilities">
+            <a mdbBtn floating="true">
+              <mdb-icon fas icon="info" size="1x"></mdb-icon>
+            </a>
+            <div class="overflow-hidden text-nowrap pl-2">Abilities</div>
+          </div>
+        </div>
+
+        <mdb-card-body class="py-0">
+          <mdb-card-text>
+            <div *ngFor="let ability of (pokemon.abilities | expandableResources)"
+                 class="container-fluid border-bottom">
+              <div class="row align-items-center">
+                <div class="col-3">{{ability.key.slot}}</div>
+                <div class="col-6">{{ability.key.ability.name | titlecase}}</div>
+                <div class="col-3 text-right">
+                  <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
+                     (click)="ability.value=!ability.value">
+                    <mdb-icon fas icon="chevron-right" size="1x" class=""
+                              [ngClass]="{'expanded': ability.value}"></mdb-icon>
+                  </a>
+                </div>
+              </div>
+              <div *ngIf="ability.value" class="pb-2">
+                <app-pokemon-ability [abilityId]="ability.key.ability.name"></app-pokemon-ability>
+              </div>
+            </div>
           </mdb-card-text>
         </mdb-card-body>
       </mdb-card>

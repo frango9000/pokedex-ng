@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {Pokemon} from '../../../shared/domain/pokemon';
-import {ResourceIdPipe} from '../../../shared/pipes/resource-id.pipe';
 import {PokemonSpecies} from '../../../shared/domain/pokemon-species';
 import {NamedResource} from '../../../shared/domain/named-resource';
+import {PokemonLanguageService} from '../../../shared/services/pokemon-language.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -18,7 +18,7 @@ export class PokemonDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private pokemonService: PokemonService,
-              private resourceIdPipe: ResourceIdPipe) {
+              private pokemonLanguageService: PokemonLanguageService) {
   }
 
   ngOnInit(): void {
@@ -26,14 +26,14 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonId = params['pokemon'];
       this.pokemonService.getPokemon(this.pokemonId).subscribe(response => {
         this.pokemon = response;
-        this.pokemonService.getPokemonSpecies(this.resourceIdPipe.transform(this.pokemon.species.url)).subscribe(response2 => {
+        this.pokemonService.getPokemonSpecies(this.pokemon.species.name).subscribe(response2 => {
           this.pokemonSpecies = response2;
         });
       });
     });
   }
 
-  getLang(genera: [{ language: NamedResource }]) {
-    return genera.find(value => value.language.name === 'en');
+  getLang(genera: [{ language: NamedResource }]): any {
+    return genera.find(value => value.language.name === this.pokemonLanguageService.displayLanguage);
   }
 }

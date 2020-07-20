@@ -31,7 +31,7 @@ export class PokemonService {
     );
   }
 
-  getPokemonSpecies(speciesId: number): Observable<PokemonSpecies> {
+  getPokemonSpecies(speciesId: string | number): Observable<PokemonSpecies> {
     return this.httpClient.get<PokemonSpecies>(environment.apiUrl + '/pokemon-species/' + speciesId).pipe(
       tap(source => console.log(source))
     );
