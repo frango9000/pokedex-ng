@@ -11,13 +11,23 @@
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown" dropdown *ngIf="this.versions$ | async as versions">
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="save"></mdb-icon>
+          <span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a *ngFor="let version of versions" class="dropdown-item waves-light" mdbWavesEffect
+             (click)="this.pokemonVersionService.setDisplayVersion(version.name)">{{version.name | titlecase}}</a>
+        </div>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown" dropdown *ngIf="this.languages$ | async as languages">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <mdb-icon fas icon="language"></mdb-icon>
-          Languages<span class="caret"></span></a>
+          <span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a *ngFor="let lang of this.languages | async" class="dropdown-item waves-light" mdbWavesEffect
-             (click)="this.pokemonLanguageService.setDisplayLanguage(lang.name)">{{lang.name | titlecase}}</a>
+          <a *ngFor="let language of languages" class="dropdown-item waves-light" mdbWavesEffect
+             (click)="this.pokemonLanguageService.setDisplayLanguage(language.name)">{{language.name | titlecase}}</a>
         </div>
       </li>
 

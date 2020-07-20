@@ -1,28 +1,28 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PokeApiResponse} from '../domain/poke-api-response';
 import {NamedResource} from '../domain/named-resource';
-import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonLanguageService {
+export class PokemonVersionService {
 
-  displayLanguage = 'en';
+  displayVersion = 'yellow';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getLanguageList(): Observable<PokeApiResponse<NamedResource>> {
-    return this.httpClient.get<PokeApiResponse<NamedResource>>(environment.apiUrl + '/language').pipe(
+  getVersionList(): Observable<PokeApiResponse<NamedResource>> {
+    return this.httpClient.get<PokeApiResponse<NamedResource>>(environment.apiUrl + '/version-group').pipe(
       tap(source => console.log(source))
     );
   }
 
-  setDisplayLanguage(lang: string): void {
-    this.displayLanguage = lang;
+  setDisplayVersion(lang: string): void {
+    this.displayVersion = lang;
   }
 }

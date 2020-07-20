@@ -3,6 +3,7 @@ import {PokemonLanguageService} from '../services/pokemon-language.service';
 import {Observable} from 'rxjs';
 import {NamedResource} from '../domain/named-resource';
 import {map} from 'rxjs/operators';
+import {PokemonVersionService} from '../services/pokemon-version.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +12,21 @@ import {map} from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
 
-  public languages: Observable<NamedResource[]>;
+  public languages$: Observable<NamedResource[]>;
+  public versions$: Observable<NamedResource[]>;
 
-  constructor(public pokemonLanguageService: PokemonLanguageService) {
-    this.languages = pokemonLanguageService.getPokemonList().pipe(
-      map(value => value.results)
-    );
+  constructor(public pokemonLanguageService: PokemonLanguageService,
+              public pokemonVersionService: PokemonVersionService) {
+
   }
 
   ngOnInit(): void {
+    this.languages$ = this.pokemonLanguageService.getLanguageList().pipe(
+      map(value => value.results)
+    );
+    this.versions$ = this.pokemonVersionService.getVersionList().pipe(
+      map(value => value.results)
+    );
   }
 
 }

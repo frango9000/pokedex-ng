@@ -11,13 +11,11 @@ export class PokeTranslatePipe implements PipeTransform {
   constructor(private pokemonLanguageService: PokemonLanguageService) {
   }
 
-  transform<T>(i18nList: T[], ...args: unknown[]): T {
-    const index = i18nList.findIndex(value => value.language.name === this.pokemonLanguageService.displayLanguage);
-    if (index > -1) {
-      return i18nList[index];
-    } else {
-      return i18nList.find(value => value.language.name === PokeTranslatePipe.DEFAULT_LANGUAGE);
+  transform<T>(languages: T[], ...args: unknown[]): T[] {
+    let requested = languages.filter((value: any) => value.language.name === this.pokemonLanguageService.displayLanguage);
+    if (!requested.length) {
+      requested = languages.filter((value: any) => value.language.name === PokeTranslatePipe.DEFAULT_LANGUAGE);
     }
+    return requested;
   }
-
 }

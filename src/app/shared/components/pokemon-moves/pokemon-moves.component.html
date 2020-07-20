@@ -1,0 +1,33 @@
+<div *ngIf="move$ | async as move" class="card p-1">
+  <table class="table mb-0">
+    <tbody>
+    <tr class="first-move-row">
+      <td>Name</td>
+      <td>{{move.name | titlecase}}</td>
+    </tr>
+    <tr>
+      <td>Local name</td>
+      <td>{{(move.names | pokeTranslate | first).name}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td class="w-100">{{(move.flavor_text_entries | pokeVersion | pokeTranslate | first).flavor_text}}</td>
+    </tr>
+    <tr title="">
+      <td>Generation</td>
+      <td>{{move.generation.name | titlecase}}</td>
+    </tr>
+    <tr title="">
+      <td>Damage Type</td>
+      <td>{{move.damage_class.name | titlecase}}</td>
+    </tr>
+    <tr title="">
+      <td>Effect</td>
+      <td *ngIf="move.effect_entries | pokeTranslate | first as effect_entry"
+          title="{{effect_entry.short_effect | replace:'$effect_chance%':move.effect_chance+'%'}}">{{effect_entry.effect | replace:'$effect_chance%':move.effect_chance
+      + '%'}}</td>
+    </tr>
+    <!--  TODO  list of pokemon? -->
+    </tbody>
+  </table>
+</div>

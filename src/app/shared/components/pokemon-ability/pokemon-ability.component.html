@@ -1,3 +1,23 @@
 <div *ngIf="ability$ | async as ability" class="card p-1">
-  {{(ability.flavor_text_entries | pokeTranslate).flavor_text}}
+  <table class="table mb-0">
+    <tbody>
+    <tr class="first-ability-row">
+      <td>Name</td>
+      <td>{{ability.name | titlecase}}</td>
+    </tr>
+    <tr>
+      <td>Local name</td>
+      <td>{{(ability.names | pokeTranslate | first).name}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{(ability.flavor_text_entries | pokeVersion | pokeTranslate | first).flavor_text}}</td>
+    </tr>
+    <tr title="The generation this ability originated in.">
+      <td>Generation</td>
+      <td>{{ability.generation.name | titlecase}}</td>
+    </tr>
+    <!--  TODO  list of pokemon? -->
+    </tbody>
+  </table>
 </div>

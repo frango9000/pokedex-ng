@@ -11,6 +11,10 @@ import {PokemonAbilityComponent} from './components/pokemon-ability/pokemon-abil
 import {NgVarDirective} from './directives/ng-var.directive';
 import {ExpandableResourcesPipe} from './pipes/expandable-resources.pipe';
 import {PokeTranslatePipe} from './pipes/poke-translate.pipe';
+import {PokemonMovesComponent} from './components/pokemon-moves/pokemon-moves.component';
+import {PokeVersionPipe} from './pipes/poke-version.pipe';
+import {FirstPipe} from './pipes/first.pipe';
+import {ReplacePipe} from './pipes/replace.pipe';
 
 
 @NgModule({
@@ -25,6 +29,11 @@ import {PokeTranslatePipe} from './pipes/poke-translate.pipe';
     NgVarDirective,
     ExpandableResourcesPipe,
     PokeTranslatePipe,
+    PokemonMovesComponent,
+    PokeVersionPipe,
+    FirstPipe,
+    ReplacePipe,
+    PokeVersionPipe,
   ],
   exports: [
     NavbarComponent,
@@ -35,7 +44,11 @@ import {PokeTranslatePipe} from './pipes/poke-translate.pipe';
     PokeTypeColorPipe,
     PokemonAbilityComponent,
     NgVarDirective,
-    ExpandableResourcesPipe
+    ExpandableResourcesPipe,
+    PokemonMovesComponent,
+    PokeTranslatePipe,
+    FirstPipe,
+    PokeVersionPipe
   ],
   imports: [
     CommonModule,
