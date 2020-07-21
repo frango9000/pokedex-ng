@@ -9,45 +9,38 @@ export interface Pokemon {
   order: number;
   is_default: boolean;
   species: NamedResource;
-  forms: [NamedResource];
-  abilities: [{
+  forms: NamedResource[];
+  moves: PokemonMoves[];
+  abilities: {
     is_hidden: boolean,
     slot: number,
     ability: NamedResource
-  }];
-  game_indices: [{
+  }[];
+  game_indices: {
     game_index: number,
     version: NamedResource
-  }];
-  held_items: [{
+  }[];
+  held_items: {
     item: NamedResource,
-    version_details: [{
+    version_details: {
       rarity: number,
       version: NamedResource
-    }]
-  }];
-  location_area_encounters: [{
+    }[]
+  }[];
+  location_area_encounters: {
     location_area: NamedResource,
-    version_details: [{
+    version_details: {
       max_chance: number,
-      encounter_details: [{
+      encounter_details: {
         min_level: number;
         max_level: number;
-        condition_values: [NamedResource],
+        condition_values: NamedResource[],
         chance: number,
         method: NamedResource;
-      }],
+      }[],
       version: NamedResource
-    }]
-  }];
-  moves: [{
-    move: NamedResource,
-    version_group_details: [{
-      level_learned_at: number,
-      version_group: NamedResource,
-      move_learn_method: NamedResource
-    }]
-  }];
+    }[]
+  }[];
   sprites: {
     back_default: string;
     back_female: string;
@@ -58,14 +51,25 @@ export interface Pokemon {
     front_shiny: string;
     front_shiny_female: string;
   };
-  stats: [{
+  stats: {
     base_stat: number,
     effort: number,
     stat: NamedResource
-  }];
-  types: [{
+  }[];
+  types: {
     slot: number,
     type: NamedResource
-  }];
+  }[];
 
+}
+
+export interface PokemonMoves {
+  move: NamedResource;
+  version_group_details: PokemonVersionGroupDetails[];
+}
+
+export interface PokemonVersionGroupDetails {
+  level_learned_at: number;
+  version_group: NamedResource;
+  move_learn_method: NamedResource;
 }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PokemonMoveService} from '../../../../shared/services/pokemon-move.service';
-import {PokemonAbility} from '../../../../shared/domain/pokemon-ability';
+import {PokemonMoveService} from '../../../../../shared/services/pokemon-move.service';
+import {PokemonAbility} from '../../../../../shared/domain/pokemon-ability';
 import {Observable} from 'rxjs';
 
 @Component({

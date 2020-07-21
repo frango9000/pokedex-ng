@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {PokeApiResponse} from '../domain/poke-api-response';
 import {NamedResource} from '../domain/named-resource';
 import {environment} from '../../../environments/environment';
@@ -11,7 +11,11 @@ import {tap} from 'rxjs/operators';
 })
 export class PokemonVersionService {
 
-  displayVersion = 'yellow';
+  public static readonly DEFAULT_VERSION: 'yellow';
+
+  public displayVersion = 'yellow';
+
+  public displayVersion$ = new BehaviorSubject(this.displayVersion);
 
   constructor(private httpClient: HttpClient) {
   }
@@ -24,5 +28,22 @@ export class PokemonVersionService {
 
   setDisplayVersion(lang: string): void {
     this.displayVersion = lang;
+    this.displayVersion$.next(this.displayVersion);
+  }
+
+  filterWithFallback<T>(versions: T[]): T[] {
+    let requested = this.filter(versions);
+    if (requested.length === 0) {
+      requested = versions.filter((value: any) => value.version_group.name === PokemonVersionService.DEFAULT_VERSION);
+    }
+    return requested.length > 0 ? requested : versions;
+  }
+
+  filter<T>(versions: T[]): T[] {
+    return versions.filter((value: any) => value.version_group.name === this.displayVersion);
+  }
+
+  matchesDisplayVersion(version: string): boolean {
+    return this.displayVersion === version;
   }
 }

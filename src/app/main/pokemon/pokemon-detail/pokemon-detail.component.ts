@@ -3,7 +3,6 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {Pokemon} from '../../../shared/domain/pokemon';
 import {PokemonSpecies} from '../../../shared/domain/pokemon-species';
-import {NamedResource} from '../../../shared/domain/named-resource';
 import {PokemonLanguageService} from '../../../shared/services/pokemon-language.service';
 
 @Component({
@@ -31,9 +30,5 @@ export class PokemonDetailComponent implements OnInit {
         });
       });
     });
-  }
-
-  getLang(genera: [{ language: NamedResource }]): any {
-    return genera.find(value => value.language.name === this.pokemonLanguageService.displayLanguage);
   }
 }

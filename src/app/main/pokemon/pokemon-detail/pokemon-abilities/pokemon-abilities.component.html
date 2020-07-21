@@ -1,0 +1,32 @@
+<mdb-card class="max-detail-size w-100 my-1">
+  <div class="container-fluid cursor-pointer border-bottom">
+    <div class="row m-2 align-items-center" title="Abilities">
+      <a mdbBtn floating="true">
+        <mdb-icon fas icon="info" size="1x"></mdb-icon>
+      </a>
+      <div class="overflow-hidden text-nowrap pl-2">Abilities</div>
+    </div>
+  </div>
+
+  <mdb-card-body class="py-0">
+    <mdb-card-text>
+      <div *ngFor="let ability of (pokemonAbilities | expandableResources)"
+           class="container-fluid border-bottom">
+        <div class="row align-items-center">
+          <div class="col-1">{{ability.key.slot}}</div>
+          <div class="col-8">{{ability.key.ability.name | titlecase}}</div>
+          <div class="col-3 text-right">
+            <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
+               (click)="ability.value=!ability.value">
+              <mdb-icon fas icon="chevron-right" size="1x" class=""
+                        [ngClass]="{'expanded': ability.value}"></mdb-icon>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="ability.value" class="pb-2">
+          <app-pokemon-ability [abilityId]="ability.key.ability.name"></app-pokemon-ability>
+        </div>
+      </div>
+    </mdb-card-text>
+  </mdb-card-body>
+</mdb-card>

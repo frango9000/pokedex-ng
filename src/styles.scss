@@ -2,3 +2,11 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.max-detail-size {
+  max-width: 600px !important;
+}
+
+.expanded {
+  transform: rotate(90deg);
+}

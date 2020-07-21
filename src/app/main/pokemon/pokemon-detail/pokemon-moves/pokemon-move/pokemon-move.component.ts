@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {PokemonMove} from '../../../../shared/domain/pokemon-move';
-import {PokemonMoveService} from '../../../../shared/services/pokemon-move.service';
+import {PokemonMove} from '../../../../../shared/domain/pokemon-move';
+import {PokemonMoveService} from '../../../../../shared/services/pokemon-move.service';
 
 @Component({
   selector: 'app-pokemon-move',

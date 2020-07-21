@@ -1,0 +1,34 @@
+<mdb-card class="max-detail-size">
+  <div class="container-fluid cursor-pointer border-bottom">
+    <div class="row m-2 align-items-center" title="Abilities">
+      <a mdbBtn floating="true">
+        <mdb-icon fas icon="info" size="1x"></mdb-icon>
+      </a>
+      <div class="overflow-hidden text-nowrap pl-2">{{cardTitle}}</div>
+    </div>
+  </div>
+  <mdb-card-body class="py-0">
+    <mdb-card-text>
+      <div class="container-fluid">
+        <div *ngFor="let move of (moves | expandableResources)" class="row align-items-center border-bottom">
+          <div class="col-1"><span
+            *ngIf="showLevels">{{(move.key.version_group_details | first).level_learned_at}}</span></div>
+          <div class="col-8">{{move.key.move.name | titlecase}}</div>
+          <div class="col-3 text-right">
+            <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
+               (click)="move.value=!move.value">
+              <mdb-icon fas icon="chevron-right" size="1x" class=""
+                        [ngClass]="{'expanded': move.value}"></mdb-icon>
+            </a>
+          </div>
+          <div *ngIf="move.value" class="pb-2">
+            <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
+          </div>
+        </div>
+      </div>
+    </mdb-card-text>
+  </mdb-card-body>
+</mdb-card>
+
+
+

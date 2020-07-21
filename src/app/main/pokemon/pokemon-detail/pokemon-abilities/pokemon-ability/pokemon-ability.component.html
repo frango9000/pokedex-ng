@@ -1,11 +1,7 @@
 <div *ngIf="ability$ | async as ability" class="card p-1">
   <table class="table mb-0">
     <tbody>
-    <tr class="first-ability-row">
-      <td>Name</td>
-      <td>{{ability.name | titlecase}}</td>
-    </tr>
-    <tr>
+    <tr class="first-row-border-0">
       <td>Local name</td>
       <td>{{(ability.names | pokeTranslate | first).name}}</td>
     </tr>

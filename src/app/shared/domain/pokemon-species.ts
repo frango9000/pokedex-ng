@@ -8,10 +8,10 @@ export interface PokemonSpecies {
   capture_rate: number;
   forms_switchable: boolean;
   gender_rate: number;
-  genera: [{
+  genera: {
     genus: string,
     language: NamedResource
-  }];
+  }[];
   has_gender_differences: boolean;
   hatch_counter: number;
   is_baby: boolean;
@@ -23,27 +23,27 @@ export interface PokemonSpecies {
   color: NamedResource;
   evolves_from_species: NamedResource;
   evolution_chain: Resource;
-  egg_groups: [NamedResource];
-  flavor_text_entries: [{
+  egg_groups: NamedResource[];
+  flavor_text_entries: {
     flavor_text: string;
     language: NamedResource;
     version: NamedResource
-  }];
-  form_descriptions: [{
+  }[];
+  form_descriptions: {
     description: string;
     language: NamedResource;
-  }];
-  park_pal_encounters: [{
+  }[];
+  park_pal_encounters: {
     area: NamedResource;
     base_score: number;
     rate: number;
-  }];
-  pokedex_numbers: [{
+  }[];
+  pokedex_numbers: {
     entry_number: number,
     pokedex: NamedResource
-  }];
-  varieties: [{
+  }[];
+  varieties: {
     is_default: boolean;
     pokemon: NamedResource
-  }];
+  }[];
 }

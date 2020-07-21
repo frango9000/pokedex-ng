@@ -11,8 +11,12 @@ import {PokemonGridComponent} from './pokemon-home/pokemon-grid/pokemon-grid.com
 import {PokemonTableComponent} from './pokemon-home/pokemon-table/pokemon-table.component';
 import {SharedModule} from '../../shared/shared.module';
 import {ResourceIdPipe} from '../../shared/pipes/resource-id.pipe';
-import {PokemonAbilityComponent} from './pokemon-detail/pokemon-ability/pokemon-ability.component';
-import {PokemonMoveComponent} from './pokemon-detail/pokemon-move/pokemon-move.component';
+import {PokemonAbilityComponent} from './pokemon-detail/pokemon-abilities/pokemon-ability/pokemon-ability.component';
+import {PokemonMoveComponent} from './pokemon-detail/pokemon-moves/pokemon-move/pokemon-move.component';
+import {PokemonMovesComponent} from './pokemon-detail/pokemon-moves/pokemon-moves.component';
+import {PokemonAbilitiesComponent} from './pokemon-detail/pokemon-abilities/pokemon-abilities.component';
+import {PokemonStatsComponent} from './pokemon-detail/pokemon-stats/pokemon-stats.component';
+import {PokemonMovesCardComponent} from './pokemon-detail/pokemon-moves/pokemon-moves-card/pokemon-moves-card.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import {PokemonMoveComponent} from './pokemon-detail/pokemon-move/pokemon-move.c
     PokemonGridComponent,
     PokemonTableComponent,
     PokemonAbilityComponent,
-    PokemonMoveComponent
+    PokemonMoveComponent,
+    PokemonMovesComponent,
+    PokemonAbilitiesComponent,
+    PokemonStatsComponent,
+    PokemonMovesCardComponent
   ],
   imports: [
     CommonModule,
