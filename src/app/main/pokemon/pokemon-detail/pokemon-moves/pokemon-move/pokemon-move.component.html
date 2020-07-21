@@ -1,4 +1,4 @@
-<div *ngIf="move$ | async as move" class="card p-1">
+<div *ngIf="move$ | async as move" class="card p-1 w-100">
   <table class="table mb-0">
     <tbody>
     <tr class="first-row-border-0">
@@ -13,15 +13,99 @@
       <td>Generation</td>
       <td>{{move.generation.name | titlecase}}</td>
     </tr>
-    <tr title="">
+    <tr title="" *ngIf="move.damage_class">
       <td>Damage Type</td>
       <td>{{move.damage_class.name | titlecase}}</td>
+    </tr>
+    <tr title="" *ngIf="move.accuracy">
+      <td>Accuracy</td>
+      <td>{{(move.accuracy / 100) | percent}}</td>
+    </tr>
+    <tr title="" *ngIf="move.effect_chance">
+      <td>Effect Chance</td>
+      <td>{{(move.effect_chance / 100) | percent}}</td>
     </tr>
     <tr title="">
       <td>Effect</td>
       <td *ngIf="move.effect_entries | pokeTranslate | first as effect_entry"
           title="{{effect_entry.short_effect | replace:'$effect_chance%':move.effect_chance+'%'}}">{{effect_entry.effect | replace:'$effect_chance%':move.effect_chance
       + '%'}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{(move.flavor_text_entries | pokeVersion | pokeTranslate | first).flavor_text}}</td>
+    </tr>
+    <tr>
+      <td>Power</td>
+      <td>{{move.power}}</td>
+    </tr>
+    <tr>
+      <td>PP</td>
+      <td>{{move.pp}}</td>
+    </tr>
+    <tr *ngIf="move.priority">
+      <td>Priority</td>
+      <td>{{move.priority}}</td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td>{{move.meta.category.name | titlecase}}</td>
+    </tr>
+    <tr *ngIf="move.meta.stat_chance">
+      <td>Stat Change Chance</td>
+      <td>{{(move.meta.stat_chance / 100) | percent}}</td>
+    </tr>
+    <ng-container *ngIf="move.stat_changes.length>0">
+      <tr *ngFor="let statChange of move.stat_changes">
+        <td>{{statChange.stat.name | titlecase}}</td>
+        <td>{{statChange.change}}</td>
+      </tr>
+    </ng-container>
+    <tr>
+      <td>Critical Rate</td>
+      <td>{{(move.meta.crit_rate / 100) | percent}}</td>
+    </tr>
+    <tr *ngIf="move.meta.healing">
+      <td>Healing</td>
+      <td>{{move.meta.healing}}</td>
+    </tr>
+    <tr *ngIf="move.meta.drain">
+      <td>{{move.meta.drain > 0 ? 'Drain' : 'Recoil'}}</td>
+      <td>{{move.meta.drain / 100 |percent}}</td>
+    </tr>
+    <ng-container *ngIf="move.meta.ailment_chance">
+      <tr>
+        <td>Ailment</td>
+        <td>{{move.meta.ailment.name | titlecase}}</td>
+      </tr>
+      <tr>
+        <td>Ailment Chance</td>
+        <td>{{(move.meta.ailment_chance / 100) | percent}}</td>
+      </tr>
+    </ng-container>
+    <tr *ngIf="move.meta.flinch_chance">
+      <td>Flinch Chance</td>
+      <td>{{(move.meta.flinch_chance / 100) | percent}}</td>
+    </tr>
+    <tr>
+      <td>Target Type</td>
+      <td>{{move.target.name | titlecase}}</td>
+    </tr>
+    <tr *ngIf="move.meta.min_hits">
+      <td>Min Hits</td>
+      <td>{{move.meta.min_hits}}</td>
+    </tr>
+    <tr *ngIf="move.meta.max_hits">
+      <td>Max hits</td>
+      <td>{{move.meta.max_hits}}</td>
+    </tr>
+    <tr *ngIf="move.meta.min_turns">
+      <td>Min Turns</td>
+      <td>{{move.meta.min_turns}}</td>
+    </tr>
+    <tr *ngIf="move.meta.max_turns">
+      <td>Max Turns</td>
+      <td>{{move.meta.max_turns}}</td>
     </tr>
     <!--  TODO  list of pokemon? -->
     </tbody>

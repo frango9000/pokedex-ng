@@ -1,8 +1,9 @@
-<app-pokemon-moves-card class="row justify-content-center mb-2" cardTitle="Level Up Moves" [moves]="levelMoves"
+<app-pokemon-moves-card *ngIf="levelMoves.length>0" class="row justify-content-center mb-2" cardTitle="Level Up Moves"
+                        [moves]="levelMoves"
                         [showLevels]="true"></app-pokemon-moves-card>
-<app-pokemon-moves-card class="row justify-content-center my-2" cardTitle="Machine Moves"
+<app-pokemon-moves-card *ngIf="machineMoves.length>0" class="row justify-content-center my-2" cardTitle="Machine Moves"
                         [moves]="machineMoves"></app-pokemon-moves-card>
-<app-pokemon-moves-card class="row justify-content-center my-2" cardTitle="Tutor Moves"
+<app-pokemon-moves-card *ngIf="tutorMoves.length>0" class="row justify-content-center my-2" cardTitle="Tutor Moves"
                         [moves]="tutorMoves"></app-pokemon-moves-card>
-<app-pokemon-moves-card class="row justify-content-center my-2" cardTitle="Egg Moves"
+<app-pokemon-moves-card *ngIf="eggMoves.length>0" class="row justify-content-center my-2" cardTitle="Egg Moves"
                         [moves]="eggMoves"></app-pokemon-moves-card>

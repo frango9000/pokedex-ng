@@ -22,7 +22,7 @@
                           [ngClass]="{'expanded': move.value}"></mdb-icon>
               </a>
             </div>
-            <div *ngIf="move.value" class="pb-2">
+            <div *ngIf="move.value" class="pb-2 w-100">
               <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
             </div>
           </div>

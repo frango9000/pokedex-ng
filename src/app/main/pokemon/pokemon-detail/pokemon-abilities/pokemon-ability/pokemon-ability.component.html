@@ -2,7 +2,7 @@
   <table class="table mb-0">
     <tbody>
     <tr class="first-row-border-0">
-      <td>Local name</td>
+      <td>Name</td>
       <td>{{(ability.names | pokeTranslate | first).name}}</td>
     </tr>
     <tr>
@@ -13,7 +13,16 @@
       <td>Generation</td>
       <td>{{ability.generation.name | titlecase}}</td>
     </tr>
-    <!--  TODO  list of pokemon? -->
+    <ng-container *ngVar="ability.effect_entries | pokeTranslate | first as effect_entry">
+      <tr title="Effect.">
+        <td>Effect</td>
+        <td>{{effect_entry.effect}}</td>
+      </tr>
+      <tr title="">
+        <td>Short</td>
+        <td>{{effect_entry.short_effect}}</td>
+      </tr>
+    </ng-container>
     </tbody>
   </table>
 </div>

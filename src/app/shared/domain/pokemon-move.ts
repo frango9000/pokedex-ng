@@ -21,8 +21,15 @@ export interface PokemonMove {
     };
   };
   contest_type: NamedResource;
+  contest_effect: Resource;
   damage_class: NamedResource;
-  effect_changes: [];
+  effect_changes: {
+    effect_entries: {
+      effect: string;
+      language: NamedResource
+    }[];
+    version_group: NamedResource
+  }[];
   effect_entries: {
     effect: string;
     language: NamedResource;
@@ -34,10 +41,32 @@ export interface PokemonMove {
     version_group: NamedResource;
   }[];
   generation: NamedResource;
-  meta: {};
+  machines: {
+    machine: Resource;
+    version_group: NamedResource;
+  }[];
+  meta: {
+    ailment: NamedResource;
+    category: NamedResource;
+    min_hits: number;
+    max_hits: number;
+    min_turns: number;
+    max_turns: number;
+    drain: number;
+    healing: number;
+    crit_rate: number;
+    ailment_chance: number;
+    flinch_chance: number;
+    stat_chance: number;
+  };
   names: {
     name: string;
     language: NamedResource
+  }[];
+  past_values: [];
+  stat_changes: {
+    change: number;
+    stat: NamedResource
   }[];
   super_contest_effect: Resource;
   target: NamedResource;
