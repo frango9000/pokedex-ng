@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PokemonMoves, PokemonVersionGroupDetails} from '../../../../shared/domain/pokemon';
+import {PokemonMoves} from '../../../../shared/domain/pokemon';
 import {PokemonVersionService} from '../../../../shared/services/pokemon-version.service';
 
 @Component({
@@ -37,18 +37,23 @@ export class PokemonMovesComponent implements OnInit {
   private filterMoves(): void {
     this.versionFilteredMoves = JSON.parse(JSON.stringify(this.pokemonMoves));
     this.versionFilteredMoves.forEach(move => move.version_group_details = move.version_group_details.filter(value => {
-      return this.pokemonVersionService.matchesDisplayVersion(value.version_group.name)
-        && value.level_learned_at && value.level_learned_at > 0;
+      return this.pokemonVersionService.matchesDisplayVersion(value.version_group.name);
     }));
 
     this.levelMoves = this.versionFilteredMoves.filter(
-      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.LEVEL_UP_METHOD).length > 0)
+      move => move.version_group_details.filter(detail => detail.level_learned_at && detail.level_learned_at > 0 && detail.move_learn_method.name === PokemonMovesComponent.LEVEL_UP_METHOD).length > 0)
     .sort((a, b) => a.version_group_details[0].level_learned_at > b.version_group_details[0].level_learned_at ? 1 : -1);
+
     this.machineMoves = this.versionFilteredMoves.filter(
-      move => move.version_group_details.filter((detail: PokemonVersionGroupDetails) => detail.move_learn_method.name === PokemonMovesComponent.MACHINE_METHOD).length > 0);
+      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.MACHINE_METHOD).length > 0)
+    .sort((a, b) => a.move.name < b.move.name ? -1 : 1);
+
     this.tutorMoves = this.versionFilteredMoves.filter(
-      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.TUTOR_METHOD).length > 0);
+      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.TUTOR_METHOD).length > 0)
+    .sort((a, b) => a.move.name < b.move.name ? -1 : 1);
+
     this.eggMoves = this.versionFilteredMoves.filter(
-      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.EGG_METHOD).length > 0);
+      move => move.version_group_details.filter(detail => detail.move_learn_method.name === PokemonMovesComponent.EGG_METHOD).length > 0)
+    .sort((a, b) => a.move.name < b.move.name ? -1 : 1);
   }
 }

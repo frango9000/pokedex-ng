@@ -13,8 +13,8 @@
       <div *ngFor="let ability of (pokemonAbilities | expandableResources)"
            class="container-fluid border-bottom">
         <div class="row align-items-center">
-          <div class="col-1">{{ability.key.slot}}</div>
-          <div class="col-8">{{ability.key.ability.name | titlecase}}</div>
+          <div class="col-2">{{ability.key.slot}}</div>
+          <div class="col-7">{{ability.key.ability.name | titlecase}}</div>
           <div class="col-3 text-right">
             <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
                (click)="ability.value=!ability.value">

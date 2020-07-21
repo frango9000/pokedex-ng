@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size">
+<mdb-card class="max-detail-size w-100">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="Abilities">
       <a mdbBtn floating="true">
@@ -10,21 +10,26 @@
   <mdb-card-body class="py-0">
     <mdb-card-text>
       <div class="container-fluid">
-        <div *ngFor="let move of (moves | expandableResources)" class="row align-items-center border-bottom">
-          <div class="col-1"><span
-            *ngIf="showLevels">{{(move.key.version_group_details | first).level_learned_at}}</span></div>
-          <div class="col-8">{{move.key.move.name | titlecase}}</div>
-          <div class="col-3 text-right">
-            <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
-               (click)="move.value=!move.value">
-              <mdb-icon fas icon="chevron-right" size="1x" class=""
-                        [ngClass]="{'expanded': move.value}"></mdb-icon>
-            </a>
-          </div>
-          <div *ngIf="move.value" class="pb-2">
-            <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
+        <div *ngIf="moves.length>0;else noMoves">
+          <div *ngFor="let move of (moves | expandableResources)" class="row align-items-center border-bottom">
+            <div class="col-2"><span
+              *ngIf="showLevels">{{(move.key.version_group_details | first).level_learned_at}}</span></div>
+            <div class="col-7">{{move.key.move.name | titlecase}}</div>
+            <div class="col-3 text-right">
+              <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
+                 (click)="move.value=!move.value">
+                <mdb-icon fas icon="chevron-right" size="1x" class=""
+                          [ngClass]="{'expanded': move.value}"></mdb-icon>
+              </a>
+            </div>
+            <div *ngIf="move.value" class="pb-2">
+              <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
+            </div>
           </div>
         </div>
+        <ng-template #noMoves>
+          <div class="row align-items-center mt-4">No moves of this type in this game version.</div>
+        </ng-template>
       </div>
     </mdb-card-text>
   </mdb-card-body>
