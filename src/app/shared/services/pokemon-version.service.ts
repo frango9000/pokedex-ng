@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {PokeApiResponse} from '../domain/poke-api-response';
-import {NamedResource} from '../domain/named-resource';
 import {environment} from '../../../environments/environment';
 import {tap} from 'rxjs/operators';
+import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,8 @@ export class PokemonVersionService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getVersionList(): Observable<PokeApiResponse<NamedResource>> {
-    return this.httpClient.get<PokeApiResponse<NamedResource>>(environment.apiUrl + '/version-group').pipe(
+  getVersionList(): Observable<ApiResponse<ApiNamedResource>> {
+    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
       tap(source => console.log(source))
     );
   }

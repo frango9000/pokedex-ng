@@ -1,14 +1,15 @@
-<mdb-card class="max-detail-size w-100" *ngIf="pokemonSpecies">
+<mdb-card class="max-detail-size w-100" *ngIf="evolutionChain">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="Evolution Chain">
       <a mdbBtn floating="true">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
-      <div class="overflow-hidden text-nowrap pl-2">Species</div>
+      <div class="overflow-hidden text-nowrap pl-2">Evolution Chain</div>
     </div>
   </div>
   <mdb-card-body class="py-0">
     <mdb-card-text>
+      <app-pokemon-evolution-link [link]="evolutionChain.chain" class="row"></app-pokemon-evolution-link>
     </mdb-card-text>
   </mdb-card-body>
 </mdb-card>

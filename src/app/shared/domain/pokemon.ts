@@ -1,4 +1,4 @@
-import {NamedResource} from './named-resource';
+import {ApiNamedResource} from './api-resource';
 
 export interface Pokemon {
   id: number;
@@ -8,68 +8,82 @@ export interface Pokemon {
   weight: number;
   order: number;
   is_default: boolean;
-  species: NamedResource;
-  forms: NamedResource[];
+  species: ApiNamedResource;
+  forms: ApiNamedResource[];
   moves: PokemonMoves[];
-  abilities: {
-    is_hidden: boolean,
-    slot: number,
-    ability: NamedResource
-  }[];
-  game_indices: {
-    game_index: number,
-    version: NamedResource
-  }[];
-  held_items: {
-    item: NamedResource,
-    version_details: {
-      rarity: number,
-      version: NamedResource
-    }[]
-  }[];
-  location_area_encounters: {
-    location_area: NamedResource,
-    version_details: {
-      max_chance: number,
-      encounter_details: {
-        min_level: number;
-        max_level: number;
-        condition_values: NamedResource[],
-        chance: number,
-        method: NamedResource;
-      }[],
-      version: NamedResource
-    }[]
-  }[];
-  sprites: {
-    back_default: string;
-    back_female: string;
-    back_shiny: string;
-    back_shiny_female: string;
-    front_default: string;
-    front_female: string;
-    front_shiny: string;
-    front_shiny_female: string;
-  };
-  stats: {
-    base_stat: number,
-    effort: number,
-    stat: NamedResource
-  }[];
-  types: {
-    slot: number,
-    type: NamedResource
-  }[];
+  abilities: PokemonAbilities[];
+  game_indices: PokemonGameIndices[];
+  held_items: PokemonHeldItems[];
+  location_area_encounters: PokemonLocationAreaEncounters[];
+  sprites: PokemonSprites;
+  stats: PokemonStats[];
+  types: PokemonTypes[];
 
 }
 
+interface PokemonTypes {
+  slot: number;
+  type: ApiNamedResource;
+}
+
+interface PokemonStats {
+  base_stat: number;
+  effort: number;
+  stat: ApiNamedResource;
+}
+
+interface PokemonSprites {
+  back_default: string;
+  back_female: string;
+  back_shiny: string;
+  back_shiny_female: string;
+  front_default: string;
+  front_female: string;
+  front_shiny: string;
+  front_shiny_female: string;
+}
+
+interface PokemonLocationAreaEncounters {
+  location_area: ApiNamedResource;
+  version_details: {
+    max_chance: number,
+    encounter_details: {
+      min_level: number;
+      max_level: number;
+      condition_values: ApiNamedResource[],
+      chance: number,
+      method: ApiNamedResource;
+    }[],
+    version: ApiNamedResource
+  }[];
+}
+
+interface PokemonHeldItems {
+  item: ApiNamedResource;
+  version_details: {
+    rarity: number,
+    version: ApiNamedResource
+  }[];
+}
+
+interface PokemonAbilities {
+  is_hidden: boolean;
+  slot: number;
+  ability: ApiNamedResource;
+}
+
+interface PokemonGameIndices {
+  game_index: number;
+  version: ApiNamedResource;
+}
+
 export interface PokemonMoves {
-  move: NamedResource;
+  move: ApiNamedResource;
   version_group_details: PokemonVersionGroupDetails[];
 }
 
 export interface PokemonVersionGroupDetails {
   level_learned_at: number;
-  version_group: NamedResource;
-  move_learn_method: NamedResource;
+  version_group: ApiNamedResource;
+  move_learn_method: ApiNamedResource;
 }

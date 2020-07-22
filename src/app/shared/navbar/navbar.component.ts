@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonLanguageService} from '../services/pokemon-language.service';
 import {Observable} from 'rxjs';
-import {NamedResource} from '../domain/named-resource';
 import {map} from 'rxjs/operators';
 import {PokemonVersionService} from '../services/pokemon-version.service';
+import {ApiNamedResource} from '../domain/api-resource';
 
 @Component({
   selector: 'app-navbar',
@@ -12,8 +12,8 @@ import {PokemonVersionService} from '../services/pokemon-version.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public languages$: Observable<NamedResource[]>;
-  public versions$: Observable<NamedResource[]>;
+  public languages$: Observable<ApiNamedResource[]>;
+  public versions$: Observable<ApiNamedResource[]>;
 
   constructor(public pokemonLanguageService: PokemonLanguageService,
               public pokemonVersionService: PokemonVersionService) {

@@ -21,6 +21,7 @@ import {PokemonTypeDamagesComponent} from './pokemon-detail/pokemon-type-damages
 import {PokemonSpeciesComponent} from './pokemon-detail/pokemon-species/pokemon-species.component';
 import {PokemonSpeciesInfoComponent} from './pokemon-detail/pokemon-species/pokemon-species-info/pokemon-species-info.component';
 import {PokemonEvolutionChainComponent} from './pokemon-detail/pokemon-species/pokemon-evolution-chain/pokemon-evolution-chain.component';
+import {PokemonEvolutionLinkComponent} from './pokemon-detail/pokemon-species/pokemon-evolution-chain/pokemon-evolution-link/pokemon-evolution-link.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {PokemonEvolutionChainComponent} from './pokemon-detail/pokemon-species/p
     PokemonTypeDamagesComponent,
     PokemonSpeciesComponent,
     PokemonSpeciesInfoComponent,
-    PokemonEvolutionChainComponent
+    PokemonEvolutionChainComponent,
+    PokemonEvolutionLinkComponent
   ],
   imports: [
     CommonModule,

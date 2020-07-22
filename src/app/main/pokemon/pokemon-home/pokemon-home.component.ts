@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {map} from 'rxjs/operators';
-import {NamedResource} from '../../../shared/domain/named-resource';
+import {ApiNamedResource} from '../../../shared/domain/api-resource';
 
 @Component({
   selector: 'app-pokemon-home',
@@ -11,7 +11,7 @@ import {NamedResource} from '../../../shared/domain/named-resource';
 export class PokemonHomeComponent implements OnInit {
 
 
-  public pokemonList: NamedResource[] = [];
+  public pokemonList: ApiNamedResource[] = [];
 
   public gridMode = true;
 
@@ -26,7 +26,7 @@ export class PokemonHomeComponent implements OnInit {
 
   private fetchPokemonList(): void {
     this.pokemonService.getPokemonList(this.offset).pipe(
-      map(response => response.results.map(value => new NamedResource(value)))
+      map(response => response.results.map(value => new ApiNamedResource(value)))
     ).subscribe(list => this.pokemonList.push(...list));
     this.pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
   }

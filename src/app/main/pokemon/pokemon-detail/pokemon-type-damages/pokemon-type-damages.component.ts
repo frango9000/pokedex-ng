@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NamedResource} from '../../../../shared/domain/named-resource';
 import {PokemonTypeService} from '../../../../shared/services/pokemon-type.service';
 import {PokemonType} from '../../../../shared/domain/pokemon-type';
+import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 
 @Component({
   selector: 'app-pokemon-type-damages',
@@ -12,7 +12,7 @@ export class PokemonTypeDamagesComponent implements OnInit {
 
   @Input() typeIds: {
     slot: number,
-    type: NamedResource
+    type: ApiNamedResource
   }[];
 
   types: PokemonType[];

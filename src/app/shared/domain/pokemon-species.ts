@@ -1,5 +1,4 @@
-import {NamedResource} from './named-resource';
-import {Resource} from './resource';
+import {ApiFlavorTextEntry, ApiNamedResource, ApiResource} from './api-resource';
 
 export interface PokemonSpecies {
   id: number;
@@ -10,40 +9,36 @@ export interface PokemonSpecies {
   gender_rate: number;
   genera: {
     genus: string,
-    language: NamedResource
+    language: ApiNamedResource
   }[];
   has_gender_differences: boolean;
   hatch_counter: number;
   is_baby: boolean;
   order: number;
-  generation: NamedResource;
-  growth_rate: NamedResource;
-  habitat: NamedResource;
-  shape: NamedResource;
-  color: NamedResource;
-  evolves_from_species: NamedResource;
-  evolution_chain: Resource;
-  egg_groups: NamedResource[];
-  flavor_text_entries: {
-    flavor_text: string;
-    language: NamedResource;
-    version: NamedResource
-  }[];
+  generation: ApiNamedResource;
+  growth_rate: ApiNamedResource;
+  habitat: ApiNamedResource;
+  shape: ApiNamedResource;
+  color: ApiNamedResource;
+  evolves_from_species: ApiNamedResource;
+  evolution_chain: ApiResource;
+  egg_groups: ApiNamedResource[];
+  flavor_text_entries: ApiFlavorTextEntry[];
   form_descriptions: {
     description: string;
-    language: NamedResource;
+    language: ApiNamedResource;
   }[];
   park_pal_encounters: {
-    area: NamedResource;
+    area: ApiNamedResource;
     base_score: number;
     rate: number;
   }[];
   pokedex_numbers: {
     entry_number: number,
-    pokedex: NamedResource
+    pokedex: ApiNamedResource
   }[];
   varieties: {
     is_default: boolean;
-    pokemon: NamedResource
+    pokemon: ApiNamedResource
   }[];
 }

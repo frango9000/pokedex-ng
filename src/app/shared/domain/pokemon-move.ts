@@ -1,5 +1,4 @@
-import {NamedResource} from './named-resource';
-import {Resource} from './resource';
+import {ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, ApiName, ApiNamedResource, ApiResource} from './api-resource';
 
 export interface PokemonMove {
   id: number;
@@ -10,65 +9,52 @@ export interface PokemonMove {
   priority: number;
   power: number;
 
-  contest_combos: {
-    normal: {
-      use_after: NamedResource[];
-      use_before: NamedResource[];
-    };
-    super: {
-      use_after: NamedResource[];
-      use_before: NamedResource[];
-    };
-  };
-  contest_type: NamedResource;
-  contest_effect: Resource;
-  damage_class: NamedResource;
-  effect_changes: {
-    effect_entries: {
-      effect: string;
-      language: NamedResource
-    }[];
-    version_group: NamedResource
-  }[];
-  effect_entries: {
-    effect: string;
-    language: NamedResource;
-    short_effect: string;
-  }[];
-  flavor_text_entries: {
-    flavor_text: string;
-    language: NamedResource;
-    version_group: NamedResource;
-  }[];
-  generation: NamedResource;
+  contest_combos: PokemonMoveContestCombos;
+  contest_type: ApiNamedResource;
+  contest_effect: ApiResource;
+  damage_class: ApiNamedResource;
+  effect_changes: ApiEffectChange[];
+  effect_entries: ApiEffectEntry[];
+  flavor_text_entries: ApiFlavorTextEntry[];
+  generation: ApiNamedResource;
   machines: {
-    machine: Resource;
-    version_group: NamedResource;
+    machine: ApiResource;
+    version_group: ApiNamedResource;
   }[];
-  meta: {
-    ailment: NamedResource;
-    category: NamedResource;
-    min_hits: number;
-    max_hits: number;
-    min_turns: number;
-    max_turns: number;
-    drain: number;
-    healing: number;
-    crit_rate: number;
-    ailment_chance: number;
-    flinch_chance: number;
-    stat_chance: number;
-  };
-  names: {
-    name: string;
-    language: NamedResource
-  }[];
+  meta: PokemonMoveMetadata;
+  names: ApiName[];
   past_values: [];
   stat_changes: {
     change: number;
-    stat: NamedResource
+    stat: ApiNamedResource
   }[];
-  super_contest_effect: Resource;
-  target: NamedResource;
-  type: NamedResource;
+  super_contest_effect: ApiResource;
+  target: ApiNamedResource;
+  type: ApiNamedResource;
+}
+
+interface PokemonMoveMetadata {
+  ailment: ApiNamedResource;
+  category: ApiNamedResource;
+  min_hits: number;
+  max_hits: number;
+  min_turns: number;
+  max_turns: number;
+  drain: number;
+  healing: number;
+  crit_rate: number;
+  ailment_chance: number;
+  flinch_chance: number;
+  stat_chance: number;
+}
+
+interface PokemonMoveContestCombos {
+  normal: {
+    use_after: ApiNamedResource[];
+    use_before: ApiNamedResource[];
+  };
+  super: {
+    use_after: ApiNamedResource[];
+    use_before: ApiNamedResource[];
+  };
 }

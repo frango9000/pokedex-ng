@@ -1,34 +1,17 @@
-import {NamedResource} from './named-resource';
+import {ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, ApiName, ApiNamedResource} from './api-resource';
 
 export interface PokemonAbility {
   id: number;
   is_main_series: boolean;
   name: string;
-  effect_changes: {
-    effect_entries: {
-      effect: string;
-      language: NamedResource
-    }[];
-    version_group: NamedResource;
-  }[];
-  effect_entries: {
-    effect: string;
-    language: NamedResource;
-    short_effect: string;
-  }[];
-  flavor_text_entries: {
-    flavor_text: string;
-    language: NamedResource;
-    version_group: NamedResource;
-  }[];
-  generation: NamedResource;
-  names: {
-    name: string;
-    language: NamedResource;
-  }[];
+  effect_changes: ApiEffectChange[];
+  effect_entries: ApiEffectEntry[];
+  flavor_text_entries: ApiFlavorTextEntry[];
+  generation: ApiNamedResource;
+  names: ApiName[];
   pokemon: {
     is_hidden: boolean;
-    pokemon: NamedResource;
+    pokemon: ApiNamedResource;
     slot: number;
   }[];
 

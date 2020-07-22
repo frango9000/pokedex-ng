@@ -4,8 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {tap} from 'rxjs/operators';
 import {PokemonType} from '../domain/pokemon-type';
-import {NamedResource} from '../domain/named-resource';
-import {PokeApiResponse} from '../domain/poke-api-response';
+import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +20,10 @@ export class PokemonTypeService {
     );
   }
 
-  getTypes(): Observable<PokeApiResponse<NamedResource>> {
+  getTypes(): Observable<ApiResponse<ApiNamedResource>> {
     const pageParams: HttpParams = new HttpParams()
     .append('limit', '100');
-    return this.httpClient.get<PokeApiResponse<NamedResource>>(environment.apiUrl + '/type/').pipe(
+    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/type/').pipe(
       tap(source => console.log(source))
     );
   }
