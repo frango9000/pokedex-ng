@@ -1,0 +1,18 @@
+<ng-container *ngIf="link.evolves_to.length>0">
+
+  <div class="container-fluid">
+    <ng-container *ngFor="let node of link.evolves_to">
+      <div class="row">
+        <div class="col-6">{{link.species.name}}</div>
+        <div class="col-6">{{node.species.name}}</div>
+        <div class="col-12" *ngFor="let method of node.evolution_details">
+          <ng-container *ngVar="getEvolutionMethodText(method) as triggerAndConditions">
+            <div class="row">{{triggerAndConditions.trigger}}</div>
+            <div class="row" *ngFor="let condition of triggerAndConditions.conditions">{{condition}}</div>
+          </ng-container>
+        </div>
+      </div>
+      <app-pokemon-evolution-link [link]="node"></app-pokemon-evolution-link>
+    </ng-container>
+  </div>
+</ng-container>
