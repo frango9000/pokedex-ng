@@ -16,7 +16,7 @@
           <div class="row my-1 align-items-center text-center" *ngFor="let weakness of weaknesses">
             <div class="col-8" [ngStyle]="{'background-color':weakness.name | pokeTypeColor}"><h6
               class="text-white my-1">{{weakness.name | uppercase}}</h6></div>
-            <div class="col-4 weakness-multiplier text-center"> = <b class="weakness-multi">x{{weakness.multiplier}}</b>
+            <div class="col-4 weakness-multiplier text-center"><b class="weakness-multi">x{{weakness.multiplier}}</b>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
           <div class="row my-1 align-items-center text-center" *ngFor="let resistance of resistances">
             <div class="col-8" [ngStyle]="{'background-color':resistance.name | pokeTypeColor}"><h6
               class="text-white my-1">{{resistance.name | uppercase}}</h6></div>
-            <div class="col-4 weakness-multiplier text-center"> = <b class="resist-multi">x{{resistance.multiplier}}</b>
+            <div class="col-4 weakness-multiplier text-center"><b class="resist-multi">x{{resistance.multiplier}}</b>
             </div>
           </div>
         </div>
