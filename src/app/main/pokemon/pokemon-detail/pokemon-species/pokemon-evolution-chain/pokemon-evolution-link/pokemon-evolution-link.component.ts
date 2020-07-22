@@ -8,7 +8,7 @@ import {PokemonEvolutionChainLink, PokemonEvolutionDetail} from '../../../../../
 })
 export class PokemonEvolutionLinkComponent implements OnInit {
 
-  @Input link: PokemonEvolutionChainLink;
+  @Input() link: PokemonEvolutionChainLink;
 
   constructor() {
   }
@@ -67,7 +67,7 @@ export class PokemonEvolutionLinkComponent implements OnInit {
       conditions.push('Time must be ' + method.time_of_day);
     }
     if (method.relative_physical_stats) {
-      conditions.push('Stats must be ' + method.relative_physical_stats > 0 ? 'offensive' : (method.relative_physical_stats < 0 ? 'defensive' : 'balanced'));
+      conditions.push('Stats must be ' + (method.relative_physical_stats > 0 ? 'offensive' : (method.relative_physical_stats < 0 ? 'defensive' : 'balanced')));
     }
     if (method.needs_overworld_rain) {
       conditions.push('Overworld rain required');
