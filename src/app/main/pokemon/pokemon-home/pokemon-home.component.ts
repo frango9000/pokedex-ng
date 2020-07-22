@@ -22,7 +22,6 @@ export class PokemonHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPokemonList();
-    this.pokemonService.getBulbapediaList().subscribe();
   }
 
   private fetchPokemonList(): void {

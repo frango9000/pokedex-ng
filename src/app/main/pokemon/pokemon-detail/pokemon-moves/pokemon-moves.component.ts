@@ -1,13 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {PokemonMoves} from '../../../../shared/domain/pokemon';
 import {PokemonVersionService} from '../../../../shared/services/pokemon-version.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-moves',
   templateUrl: './pokemon-moves.component.html',
   styleUrls: ['./pokemon-moves.component.scss']
 })
-export class PokemonMovesComponent implements OnInit {
+export class PokemonMovesComponent implements OnInit, OnDestroy {
 
   public static readonly LEVEL_UP_METHOD = 'level-up';
   public static readonly MACHINE_METHOD = 'machine';
@@ -22,16 +23,20 @@ export class PokemonMovesComponent implements OnInit {
   public tutorMoves: PokemonMoves[];
   public eggMoves: PokemonMoves[];
 
+  private versionSubscription: Subscription;
+
   constructor(private pokemonVersionService: PokemonVersionService) {
   }
 
   ngOnInit(): void {
-    this.pokemonVersionService.displayVersion$.subscribe(version => {
+    this.versionSubscription = this.pokemonVersionService.displayVersion$.subscribe(version => {
       console.log(version);
       this.filterMoves();
     });
+  }
 
-
+  ngOnDestroy(): void {
+    this.versionSubscription.unsubscribe();
   }
 
   private filterMoves(): void {

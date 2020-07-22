@@ -13,7 +13,10 @@
            class="overflow-auto text-center my-2">{{(pokemonSpecies.flavor_text_entries | pokeTranslate | first).flavor_text}}</div>
       <table class="table">
         <tbody>
-
+        <tr>
+          <td>Genus</td>
+          <td>{{(pokemonSpecies.genera | pokeTranslate | first).genus}}</td>
+        </tr>
         <tr>
           <td>Shape</td>
           <td>{{pokemonSpecies.shape.name | titlecase}}</td>
@@ -22,10 +25,6 @@
           <td>Color</td>
           <td>{{pokemonSpecies.color.name | titlecase}} <span
             [ngStyle]="{'background-color':pokemonSpecies.color.name}">__</span></td>
-        </tr>
-        <tr>
-          <td>Genus</td>
-          <td>{{(pokemonSpecies.genera | pokeTranslate | first).genus}}</td>
         </tr>
         <tr>
           <td>Growth Rate</td>

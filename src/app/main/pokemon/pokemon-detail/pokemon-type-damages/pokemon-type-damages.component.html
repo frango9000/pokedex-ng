@@ -4,23 +4,32 @@
       <a mdbBtn floating="true">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
-      <div class="overflow-hidden text-nowrap pl-2">Stats</div>
+      <div class="overflow-hidden text-nowrap pl-2">Type Damage Received</div>
     </div>
   </div>
 
-  <mdb-card-body class="py-0">
+  <mdb-card-body class="pb-1">
     <mdb-card-text>
-      <table class="table">
-        <thead>
-        <tr class="stats-table">
-          <th scope="col">Stat</th>
-          <th scope="col">Base</th>
-          <th scope="col">EV</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class="row  px-4">
+        <div class="col-12 col-sm-6">
+          <h6>Weaknesses</h6>
+          <div class="row my-1 align-items-center text-center" *ngFor="let weakness of weaknesses">
+            <div class="col-8" [ngStyle]="{'background-color':weakness.name | pokeTypeColor}"><h6
+              class="text-white my-1">{{weakness.name | uppercase}}</h6></div>
+            <div class="col-4 weakness-multiplier text-center"> = <b class="weakness-multi">x{{weakness.multiplier}}</b>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h6>Resistances</h6>
+          <div class="row my-1 align-items-center text-center" *ngFor="let resistance of resistances">
+            <div class="col-8" [ngStyle]="{'background-color':resistance.name | pokeTypeColor}"><h6
+              class="text-white my-1">{{resistance.name | uppercase}}</h6></div>
+            <div class="col-4 weakness-multiplier text-center"> = <b class="resist-multi">x{{resistance.multiplier}}</b>
+            </div>
+          </div>
+        </div>
+      </div>
     </mdb-card-text>
   </mdb-card-body>
 </mdb-card>
