@@ -2,7 +2,7 @@
   <table class="table mb-0">
     <tbody>
     <tr class="first-row-border-0">
-      <td>Local name</td>
+      <td>Name</td>
       <td>{{(move.names | pokeTranslate | first).name}}</td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <td>Power</td>
-      <td>{{move.power}}</td>
+      <td>{{move.power ? move.power : 'N/A'}}</td>
     </tr>
     <tr>
       <td>PP</td>

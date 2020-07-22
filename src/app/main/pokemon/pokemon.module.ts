@@ -17,6 +17,8 @@ import {PokemonMovesComponent} from './pokemon-detail/pokemon-moves/pokemon-move
 import {PokemonAbilitiesComponent} from './pokemon-detail/pokemon-abilities/pokemon-abilities.component';
 import {PokemonStatsComponent} from './pokemon-detail/pokemon-stats/pokemon-stats.component';
 import {PokemonMovesCardComponent} from './pokemon-detail/pokemon-moves/pokemon-moves-card/pokemon-moves-card.component';
+import {PokemonTypeDamagesComponent} from './pokemon-detail/pokemon-type-damages/pokemon-type-damages.component';
+import {PokemonSpeciesComponent} from './pokemon-detail/pokemon-species/pokemon-species.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {PokemonMovesCardComponent} from './pokemon-detail/pokemon-moves/pokemon-
     PokemonMovesComponent,
     PokemonAbilitiesComponent,
     PokemonStatsComponent,
-    PokemonMovesCardComponent
+    PokemonMovesCardComponent,
+    PokemonTypeDamagesComponent,
+    PokemonSpeciesComponent
   ],
   imports: [
     CommonModule,

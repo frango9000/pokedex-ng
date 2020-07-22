@@ -1,6 +1,6 @@
-<div class="container-fluid py-1 px-0 px-md-4" *ngIf="pokemon">
-  <div class="row justify-content-center">
-    <mdb-card class="pt-1 my-1 max-detail-size">
+<div class="container-fluid  px-0 px-md-4" *ngIf="pokemon">
+  <div class="row justify-content-center mb-2">
+    <mdb-card class="pt-2 max-detail-size w-100">
       <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
         <h5 class="text-center text-white pt-1 ">
             <span class="px-2 py-1 mx-1"
@@ -19,81 +19,38 @@
             <h4>{{pokemon.name | titlecase}}</h4>
           </div>
         </mdb-card-title>
-
         <!--Text-->
-        <mdb-card-text class="text-center">
-          <div class="pb-2"
-               *ngIf="pokemonSpecies && pokemonSpecies.genera">{{(pokemonSpecies.genera | pokeTranslate | first).genus}}</div>
-          <div *ngIf="pokemonSpecies && pokemonSpecies.flavor_text_entries"
-               class="overflow-auto">{{(pokemonSpecies.flavor_text_entries | pokeTranslate | first).flavor_text}}</div>
+        <mdb-card-text>
+          <table class="table">
+            <tbody>
+            <tr>
+              <td>Pokedex Id</td>
+              <td># {{pokemon.id}}</td>
+            </tr>
+            <tr>
+              <td>Base Experience</td>
+              <td>{{pokemon.base_experience}} xp</td>
+            </tr>
+            <tr>
+              <td>Weight</td>
+              <td>{{pokemon.weight / 10}} kg.</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td>{{pokemon.height / 10}} m.</td>
+            </tr>
+            </tbody>
+          </table>
         </mdb-card-text>
-        <table class="table">
-          <tbody>
-          <tr>
-            <td>Pokedex Id</td>
-            <td># {{pokemon.id}}</td>
-          </tr>
-          <tr>
-            <td>Base Experience</td>
-            <td>{{pokemon.base_experience}} xp</td>
-          </tr>
-          <tr>
-            <td>Weight</td>
-            <td>{{pokemon.weight / 10}} kg.</td>
-          </tr>
-          <tr>
-            <td>Height</td>
-            <td>{{pokemon.height / 10}} m.</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies">
-            <td>Growth Rate</td>
-            <td>{{pokemonSpecies.growth_rate.name | titlecase}}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies && pokemonSpecies.egg_groups"
-              title="Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups.">
-            <td>Egg Groups</td>
-            <td>
-                <span
-                  *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}<span
-                  *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
-            </td>
-          </tr>
-          <tr *ngIf="pokemonSpecies">
-            <td>Hatch Steps</td>
-            <td>{{(+pokemonSpecies.hatch_counter + 1) * 255}}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies"
-              title="The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.">
-            <td>Base Happiness</td>
-            <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies"
-              title="The base capture rate; up to 255. The higher the number, the easier the catch.">
-            <td>Capture Rate</td>
-            <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being female">
-            <td>Female Rate</td>
-            <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate>0" title="The chance of this Pokémon being male">
-            <td>Male Rate</td>
-            <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
-          </tr>
-          <tr *ngIf="pokemonSpecies && pokemonSpecies.gender_rate===-1"
-              title="Genderless Pokemon">
-            <td>Gender Rate</td>
-            <td>Genderless</td>
-          </tr>
-          </tbody>
-        </table>
       </mdb-card-body>
     </mdb-card>
   </div>
-
-  <app-pokemon-stats [pokemonStats]="pokemon.stats" class="row justify-content-center my-1"></app-pokemon-stats>
+  <app-pokemon-species [pokemonSpeciesId]="pokemon.species.name"
+                       class="row justify-content-center my-2"></app-pokemon-species>
+  <app-pokemon-stats [pokemonStats]="pokemon.stats" class="row justify-content-center my-2"></app-pokemon-stats>
+  <app-pokemon-type-damages [typeIds]="pokemon.types"
+                            class="row justify-content-center my-2"></app-pokemon-type-damages>
   <app-pokemon-abilities [pokemonAbilities]="pokemon.abilities"
-                         class="row justify-content-center my-1"></app-pokemon-abilities>
+                         class="row justify-content-center my-2"></app-pokemon-abilities>
   <app-pokemon-moves [pokemonMoves]="pokemon.moves" class=""></app-pokemon-moves>
-
 </div>

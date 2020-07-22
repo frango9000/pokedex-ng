@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {Pokemon} from '../../../shared/domain/pokemon';
-import {PokemonSpecies} from '../../../shared/domain/pokemon-species';
-import {PokemonLanguageService} from '../../../shared/services/pokemon-language.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -13,11 +11,9 @@ import {PokemonLanguageService} from '../../../shared/services/pokemon-language.
 export class PokemonDetailComponent implements OnInit {
   private pokemonId: string | number;
   public pokemon: Pokemon;
-  public pokemonSpecies: PokemonSpecies;
 
   constructor(private route: ActivatedRoute,
-              private pokemonService: PokemonService,
-              private pokemonLanguageService: PokemonLanguageService) {
+              private pokemonService: PokemonService) {
   }
 
   ngOnInit(): void {
@@ -25,9 +21,6 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonId = params['pokemon'];
       this.pokemonService.getPokemon(this.pokemonId).subscribe(response => {
         this.pokemon = response;
-        this.pokemonService.getPokemonSpecies(this.pokemon.species.name).subscribe(response2 => {
-          this.pokemonSpecies = response2;
-        });
       });
     });
   }

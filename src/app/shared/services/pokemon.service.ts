@@ -6,7 +6,6 @@ import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {NamedResource} from '../domain/named-resource';
-import {PokemonSpecies} from '../domain/pokemon-species';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +26,6 @@ export class PokemonService {
 
   getPokemon(pokemonId: string | number): Observable<Pokemon> {
     return this.httpClient.get<Pokemon>(environment.apiUrl + '/pokemon/' + pokemonId).pipe(
-      tap(source => console.log(source))
-    );
-  }
-
-  getPokemonSpecies(speciesId: string | number): Observable<PokemonSpecies> {
-    return this.httpClient.get<PokemonSpecies>(environment.apiUrl + '/pokemon-species/' + speciesId).pipe(
       tap(source => console.log(source))
     );
   }
