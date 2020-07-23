@@ -5,9 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: 'https://pokeapi.co/api/v2',
+  isCacheEnabled: false,
   logNetworkResponses: true,
-  logCachedResponses: false,
-  logServiceResponses: false
+  logCachedResponses: true,
+  logServiceResponses: true
 };
 
 /*

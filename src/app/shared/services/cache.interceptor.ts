@@ -12,7 +12,7 @@ export class CacheInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const cachedResponse = this.cacheService.get(request);
+    const cachedResponse = environment.isCacheEnabled ? this.cacheService.get(request) : null;
     if (cachedResponse && environment.logCachedResponses) {
       console.log('Cache', cachedResponse);
     }
@@ -25,11 +25,13 @@ export class CacheInterceptor implements HttpInterceptor {
     cache: CacheService): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       tap(event => {
-        if (environment.logNetworkResponses) {
-          console.log('Network', event);
-        }
         if (event instanceof HttpResponse) {
-          cache.put(req, event);
+          if (environment.logNetworkResponses) {
+            console.log('Network', event);
+          }
+          if (environment.isCacheEnabled) {
+            cache.put(req, event);
+          }
         }
       })
     );

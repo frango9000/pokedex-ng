@@ -30,7 +30,6 @@ export class PokemonMovesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.versionSubscription = this.pokemonVersionService.displayVersion$.subscribe(version => {
-      console.log(version);
       this.filterMoves();
     });
   }
