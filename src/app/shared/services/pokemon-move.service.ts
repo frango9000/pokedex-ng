@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {tap} from 'rxjs/operators';
+import {shareReplay, tap} from 'rxjs/operators';
 import {PokemonAbility} from '../domain/pokemon-ability';
 import {PokemonMove} from '../domain/pokemon-move';
 
@@ -16,12 +16,14 @@ export class PokemonMoveService {
 
   getAbility(abilityId: string | number): Observable<PokemonAbility> {
     return this.httpClient.get<PokemonAbility>(environment.apiUrl + '/ability/' + abilityId).pipe(
+      shareReplay(),
       tap(source => console.log(source))
     );
   }
 
   getMove(moveId: string | number): Observable<PokemonMove> {
     return this.httpClient.get<PokemonMove>(environment.apiUrl + '/move/' + moveId).pipe(
+      shareReplay(),
       tap(source => console.log(source))
     );
   }

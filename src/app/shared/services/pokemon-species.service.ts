@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PokemonSpecies} from '../domain/pokemon-species';
 import {environment} from '../../../environments/environment';
-import {tap} from 'rxjs/operators';
+import {shareReplay, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class PokemonSpeciesService {
 
   getPokemonSpecies(speciesId: string | number): Observable<PokemonSpecies> {
     return this.httpClient.get<PokemonSpecies>(environment.apiUrl + '/pokemon-species/' + speciesId).pipe(
+      shareReplay(),
       tap(source => console.log(source))
     );
   }
