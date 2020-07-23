@@ -1,15 +1,33 @@
 <ng-container *ngIf="link.evolves_to.length>0">
-
-  <div class="container-fluid">
+  <div class="">
     <ng-container *ngFor="let node of link.evolves_to">
-      <div class="row">
-        <div class="col-6">{{link.species.name}}</div>
-        <div class="col-6">{{node.species.name}}</div>
-        <div class="col-12" *ngFor="let method of node.evolution_details">
-          <ng-container *ngVar="getEvolutionMethodText(method) as triggerAndConditions">
-            <div class="row">{{triggerAndConditions.trigger}}</div>
-            <div class="row" *ngFor="let condition of triggerAndConditions.conditions">{{condition}}</div>
-          </ng-container>
+      <div class="row text-center border-bottom">
+        <div class="col-5 cursor-pointer">
+          <a [routerLink]="['/pokemon', link.species.name]">
+            <img class="mx-auto my-1 img-fluid" width="200"
+                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{link.species.url | resourceId}}.png"
+                 alt="Evolves From">
+            {{link.species.name | titlecase}}
+          </a>
+        </div>
+        <div class="col-2 my-auto">
+          <div class="row" *ngFor="let method of node.evolution_details">
+            <div *ngVar="getEvolutionMethodText(method) as triggerAndConditions" class="mx-auto">
+              <div>
+                <mdb-icon fas icon="long-arrow-alt-right" size="3x"></mdb-icon>
+              </div>
+              <div>{{triggerAndConditions.trigger}}</div>
+              <div class="overflow-auto" *ngFor="let condition of triggerAndConditions.conditions">{{condition}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 cursor-pointer">
+          <a [routerLink]="['/pokemon', node.species.name]">
+            <img class="mx-auto my-1 img-fluid" width="200"
+                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{node.species.url | resourceId}}.png"
+                 alt="Evolves To">
+            {{node.species.name | titlecase}}
+          </a>
         </div>
       </div>
       <app-pokemon-evolution-link [link]="node"></app-pokemon-evolution-link>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import {PokemonService} from '../../../shared/services/pokemon.service';
 import {Pokemon} from '../../../shared/domain/pokemon';
 
@@ -13,10 +13,17 @@ export class PokemonDetailComponent implements OnInit {
   public pokemon: Pokemon;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private pokemonService: PokemonService) {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
     this.route.params.subscribe((params: Params) => {
       this.pokemonId = params['pokemon'];
       this.pokemonService.getPokemon(this.pokemonId).subscribe(response => {
