@@ -6,6 +6,12 @@ import {Observable} from 'rxjs';
 import {shareReplay, tap} from 'rxjs/operators';
 import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
 
+export function serviceLog(response): void {
+  if (environment.logServiceResponses) {
+    console.log(response);
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,15 +25,15 @@ export class PokemonService {
     .append('limit', String(limit))
     .append('offset', String(offset));
     return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/pokemon', {params: pageParams}).pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 
   getPokemon(pokemonId: string | number): Observable<Pokemon> {
     return this.httpClient.get<Pokemon>(environment.apiUrl + '/pokemon/' + pokemonId).pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 }

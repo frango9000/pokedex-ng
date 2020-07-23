@@ -5,7 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {CacheService} from './shared/services/cache.service';
+import {CacheInterceptor} from './shared/services/cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import {HttpClientModule} from '@angular/common/http';
     MDBBootstrapModule.forRoot(),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CacheService,
+    {provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true}
+  ],
   bootstrap: [
     AppComponent
   ]

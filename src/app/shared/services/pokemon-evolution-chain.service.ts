@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
 import {PokemonEvolutionChain} from '../domain/pokemon-evolution-chain';
+import {serviceLog} from './pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class PokemonEvolutionChainService {
 
   getEvolutionChain(evolutionChainId: number): Observable<PokemonEvolutionChain> {
     return this.httpClient.get<PokemonEvolutionChain>(environment.apiUrl + '/evolution-chain/' + evolutionChainId).pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 }

@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
 import {PokemonType} from '../domain/pokemon-type';
 import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
+import {serviceLog} from './pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class PokemonTypeService {
 
   getType(typeId: string | number): Observable<PokemonType> {
     return this.httpClient.get<PokemonType>(environment.apiUrl + '/type/' + typeId).pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 
@@ -25,8 +26,8 @@ export class PokemonTypeService {
     const pageParams: HttpParams = new HttpParams()
     .append('limit', '100');
     return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/type/').pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 }

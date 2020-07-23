@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
 import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
+import {serviceLog} from './pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class PokemonVersionService {
 
   getVersionList(): Observable<ApiResponse<ApiNamedResource>> {
     return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 

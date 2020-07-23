@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
 import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
+import {serviceLog} from './pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class PokemonLanguageService {
 
   getLanguageList(): Observable<ApiResponse<ApiNamedResource>> {
     return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/language').pipe(
-      shareReplay(),
-      tap(source => console.log(source))
+      tap(serviceLog),
+      shareReplay()
     );
   }
 
