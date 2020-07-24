@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiNamedResource} from '../../../../shared/domain/api-resource';
+import {ApiNamedPokemon} from '../../../../shared/domain/pokemon';
 
 
 @Component({
@@ -9,7 +9,7 @@ import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 })
 export class PokemonTableComponent implements OnInit {
 
-  @Input() public pokemonList: ApiNamedResource[];
+  @Input() public pokemonList: ApiNamedPokemon[];
 
   constructor() {
   }

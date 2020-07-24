@@ -1,5 +1,12 @@
 import {ApiNamedResource} from './api-resource';
 
+export interface ApiNamedPokemon {
+  id: number;
+  name: string;
+  url: string;
+  types: string[];
+}
+
 export interface Pokemon {
   id: number;
   name: string;

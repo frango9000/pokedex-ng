@@ -12,7 +12,7 @@ export class ApiResource {
     Object.assign(this, data);
   }
 
-  private _id: number = null;
+  private _id?: number = null;
 
   get id(): number {
     if (!this._id) {

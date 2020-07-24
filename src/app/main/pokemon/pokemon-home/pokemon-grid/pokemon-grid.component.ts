@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiNamedResource} from '../../../../shared/domain/api-resource';
+import {ApiNamedPokemon} from '../../../../shared/domain/pokemon';
 
 @Component({
   selector: 'app-pokemon-grid',
@@ -8,7 +8,7 @@ import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 })
 export class PokemonGridComponent implements OnInit {
 
-  @Input() public pokemonList: ApiNamedResource[];
+  @Input() public pokemonList: ApiNamedPokemon[];
 
   constructor() {
   }
