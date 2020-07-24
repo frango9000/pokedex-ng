@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {PokemonSpecies} from '../../../../shared/domain/pokemon-species';
 import {PokemonSpeciesService} from '../../../../shared/services/pokemon-species.service';
 
@@ -7,7 +7,7 @@ import {PokemonSpeciesService} from '../../../../shared/services/pokemon-species
   templateUrl: './pokemon-species.component.html',
   styleUrls: ['./pokemon-species.component.scss']
 })
-export class PokemonSpeciesComponent implements OnInit {
+export class PokemonSpeciesComponent implements OnChanges {
 
   @Input() pokemonSpeciesId: string | number;
   public pokemonSpecies: PokemonSpecies;
@@ -15,7 +15,7 @@ export class PokemonSpeciesComponent implements OnInit {
   constructor(private pokemonSpeciesService: PokemonSpeciesService) {
   }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.pokemonSpeciesService.getPokemonSpecies(this.pokemonSpeciesId).subscribe(specie => {
       this.pokemonSpecies = specie;
     });

@@ -14,6 +14,7 @@ import {PokeVersionPipe} from './pipes/poke-version.pipe';
 import {FirstPipe} from './pipes/first.pipe';
 import {ReplacePipe} from './pipes/replace.pipe';
 import {RomanPipe} from './pipes/roman.pipe';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {RomanPipe} from './pipes/roman.pipe';
   ],
   imports: [
     CommonModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    RouterModule
   ]
 })
 export class SharedModule {

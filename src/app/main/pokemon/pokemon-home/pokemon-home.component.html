@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row mb-1">
-    <button class="btn btn-primary" (click)="gridMode=!gridMode">{{gridMode ? 'Table View' : 'Grid View'}}
+    <button class="btn btn-primary d-none" (click)="gridMode=!gridMode">{{gridMode ? 'Table View' : 'Grid View'}}
       <i class="fas fa-th ml-1"></i>
     </button>
   </div>
   <div class="row">
     <div class="col">
       <div infiniteScroll
-           [infiniteScrollDistance]="1"
-           [infiniteScrollThrottle]="0"
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="150"
            (scrolled)="fetchMore()">
         <app-pokemon-grid *ngIf="gridMode; else tableMode" [pokemonList]="pokemonList"></app-pokemon-grid>
         <ng-template #tableMode>
