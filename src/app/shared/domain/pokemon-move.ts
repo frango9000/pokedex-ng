@@ -1,5 +1,12 @@
 import {ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, ApiName, ApiNamedResource, ApiResource} from './api-resource';
 
+export interface ApiNamedMove {
+  id: number;
+  name: string;
+  url?: string;
+  type: string;
+}
+
 export interface PokemonMove {
   id: number;
   name: string;

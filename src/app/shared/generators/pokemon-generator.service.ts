@@ -2,13 +2,16 @@ import {Injectable} from '@angular/core';
 import {PokemonService} from '../services/pokemon.service';
 // import {saveAs} from 'file-saver/dist/FileSaver';
 import {ApiNamedPokemon} from '../domain/pokemon';
+import {PokemonMoveService} from '../services/pokemon-move.service';
+import {ApiNamedMove} from '../domain/pokemon-move';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonGeneratorService {
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService,
+              private pokemonMoveService: PokemonMoveService) {
 
   }
 
@@ -31,11 +34,29 @@ export class PokemonGeneratorService {
     });
     setTimeout(() => {
       pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
-      // const blob = new File([JSON.stringify(pokemonList)], 'pokemon-list.json', {type: 'application/json'});
-      // saveAs(blob);
-      // this.pokemonService.postPokemonList(pokemonList).subscribe();
-      pokemonList.forEach(value => this.pokemonService.postPokemonList(value).subscribe());
+      pokemonList.forEach(value => this.pokemonService.postFirebasePokemon(value).subscribe());
     }, 40000);
+  }
 
+
+  generateMovesList(): void {
+    const moveList: ApiNamedMove[] = [];
+    this.pokemonMoveService.getMoves().subscribe(list => {
+      list.results.forEach((moveId, index) => {
+        setTimeout(() => {
+          this.pokemonMoveService.getMove(moveId.name).subscribe(move => {
+            moveList.push({
+              name: move.name,
+              id: move.id,
+              type: move.type.name
+            });
+          });
+        }, 30);
+      });
+    });
+    setTimeout(() => {
+      moveList.sort((a, b) => a.id > b.id ? 1 : -1);
+      moveList.forEach(value => this.pokemonMoveService.postFirebaseMove(value).subscribe());
+    }, 30000);
   }
 }

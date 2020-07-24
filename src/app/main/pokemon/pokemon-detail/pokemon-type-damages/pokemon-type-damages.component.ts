@@ -27,7 +27,7 @@ export class PokemonTypeDamagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pokemonTypeService.getTypes().subscribe(value => this.allTypes = value.results.map(value1 => {
+    this.pokemonTypeService.getTypes().subscribe(value => this.allTypes = value.map(value1 => {
       return {name: value1.name, multiplier: 1};
     }));
 

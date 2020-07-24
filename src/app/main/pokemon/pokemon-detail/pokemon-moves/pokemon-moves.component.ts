@@ -2,6 +2,8 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {PokemonMoves} from '../../../../shared/domain/pokemon';
 import {PokemonVersionService} from '../../../../shared/services/pokemon-version.service';
 import {Subscription} from 'rxjs';
+import {PokemonMoveService} from '../../../../shared/services/pokemon-move.service';
+import {ApiNamedMove} from '../../../../shared/domain/pokemon-move';
 
 @Component({
   selector: 'app-pokemon-moves',
@@ -25,13 +27,17 @@ export class PokemonMovesComponent implements OnInit, OnDestroy {
 
   private versionSubscription: Subscription;
 
-  constructor(private pokemonVersionService: PokemonVersionService) {
+  public moveTypes: ApiNamedMove[];
+
+  constructor(private pokemonVersionService: PokemonVersionService,
+              private pokemonMoveService: PokemonMoveService) {
   }
 
   ngOnInit(): void {
     this.versionSubscription = this.pokemonVersionService.displayVersion$.subscribe(version => {
       this.filterMoves();
     });
+    this.pokemonMoveService.getFirebaseMoveList().subscribe(value => this.moveTypes = value);
   }
 
   ngOnDestroy(): void {

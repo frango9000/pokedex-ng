@@ -14,12 +14,18 @@
           <div *ngFor="let move of (moves | expandableResources)" class="row align-items-center border-bottom">
             <div class="col-2"><span
               *ngIf="showLevels">{{(move.key.version_group_details | first).level_learned_at}}</span></div>
-            <div class="col-7">{{move.key.move.name | titlecase}}</div>
-            <div class="col-3 text-right">
+            <div class="col-4">{{move.key.move.name | titlecase}}</div>
+            <div class="col-4 text-center">
+              <ng-container *ngIf="moveTypes">
+                <div class="text-center text-white pt-1" *ngVar="getType(move.key.move.name) as type">
+                  <span class="p-1" [ngStyle]="{'background-color':type | pokeTypeColor}">{{type | uppercase}}</span>
+                </div>
+              </ng-container>
+            </div>
+            <div class="col-2 text-right">
               <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
                  (click)="move.value=!move.value">
-                <mdb-icon fas icon="chevron-right" size="1x" class=""
-                          [ngClass]="{'expanded': move.value}"></mdb-icon>
+                <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{'expanded': move.value}"></mdb-icon>
               </a>
             </div>
             <div *ngIf="move.value" class="pb-2 w-100">

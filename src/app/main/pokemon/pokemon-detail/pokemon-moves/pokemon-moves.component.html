@@ -1,9 +1,25 @@
-<app-pokemon-moves-card *ngIf="levelMoves.length>0" class="row justify-content-center mb-2" cardTitle="Level Up Moves"
-                        [moves]="levelMoves"
-                        [showLevels]="true"></app-pokemon-moves-card>
-<app-pokemon-moves-card *ngIf="machineMoves.length>0" class="row justify-content-center my-2" cardTitle="Machine Moves"
-                        [moves]="machineMoves"></app-pokemon-moves-card>
-<app-pokemon-moves-card *ngIf="tutorMoves.length>0" class="row justify-content-center my-2" cardTitle="Tutor Moves"
-                        [moves]="tutorMoves"></app-pokemon-moves-card>
-<app-pokemon-moves-card *ngIf="eggMoves.length>0" class="row justify-content-center my-2" cardTitle="Egg Moves"
-                        [moves]="eggMoves"></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center mb-2"
+  cardTitle="Level Up Moves"
+  *ngIf="levelMoves.length>0"
+  [moves]="levelMoves"
+  [showLevels]="true"
+  [moveTypes]="moveTypes"></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="Machine Moves"
+  *ngIf="machineMoves.length>0"
+  [moves]="machineMoves"
+  [moveTypes]="moveTypes"></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="Tutor Moves"
+  *ngIf="tutorMoves.length>0"
+  [moves]="tutorMoves"
+  [moveTypes]="moveTypes"></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="Egg Moves"
+  *ngIf="eggMoves.length>0"
+  [moves]="eggMoves"
+  [moveTypes]="moveTypes"></app-pokemon-moves-card>

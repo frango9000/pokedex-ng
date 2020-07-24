@@ -5,30 +5,29 @@ export interface ApiResponse<T> {
   results: T[];
 }
 
-export class ApiResource {
+export interface ApiResource {
   url: string;
 
-  constructor(data: any) {
-    Object.assign(this, data);
-  }
-
-  private _id?: number = null;
-
-  get id(): number {
-    if (!this._id) {
-      this._id = Number(this.url.split('/').reverse()[1]);
-    }
-    return this._id;
-  }
-
-  set id(id: number) {
-    this._id = Number(this.url.split('/').reverse()[1]);
-  }
+  // constructor(data: any) {
+  //   Object.assign(this, data);
+  // }
+  //
+  // private _id?: number = null;
+  //
+  // get id(): number {
+  //   if (!this._id) {
+  //     this._id = Number(this.url.split('/').reverse()[1]);
+  //   }
+  //   return this._id;
+  // }
+  //
+  // set id(id: number) {
+  //   this._id = Number(this.url.split('/').reverse()[1]);
+  // }
 }
 
-export class ApiNamedResource extends ApiResource {
+export interface ApiNamedResource extends ApiResource {
   name: string;
-
 }
 
 export interface ApiName {

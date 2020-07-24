@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {shareReplay, tap} from 'rxjs/operators';
+import {map, shareReplay, tap} from 'rxjs/operators';
 import {PokemonAbility} from '../domain/pokemon-ability';
-import {PokemonMove} from '../domain/pokemon-move';
+import {ApiNamedMove, PokemonMove} from '../domain/pokemon-move';
 import {serviceLog} from './pokemon.service';
+import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,32 @@ export class PokemonMoveService {
     );
   }
 
+  getMoves(): Observable<ApiResponse<ApiNamedResource>> {
+    const pageParams: HttpParams = new HttpParams()
+    .append('limit', String(1000));
+    return this.httpClient.get(environment.apiUrl + '/move/', {params: pageParams}).pipe(
+      tap(serviceLog),
+      shareReplay()
+    );
+  }
+
   getMove(moveId: string | number): Observable<PokemonMove> {
     return this.httpClient.get<PokemonMove>(environment.apiUrl + '/move/' + moveId).pipe(
+      tap(serviceLog),
+      shareReplay()
+    );
+  }
+
+  postFirebaseMove(data: ApiNamedMove): Observable<any> {
+    return this.httpClient.put(environment.firebaseApi + '/move/' + data.id + '.json', data).pipe(
+      tap(serviceLog)
+    );
+  }
+
+
+  getFirebaseMoveList(): Observable<ApiNamedMove[]> {
+    return this.httpClient.get(environment.firebaseApi + '/move.json',).pipe(
+      map(id => Object.keys(id).map(move => id[move])),
       tap(serviceLog),
       shareReplay()
     );

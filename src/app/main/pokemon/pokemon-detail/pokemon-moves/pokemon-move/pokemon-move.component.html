@@ -13,8 +13,14 @@
       <td>Generation</td>
       <td>{{move.generation.name | titlecase}}</td>
     </tr>
-    <tr title="" *ngIf="move.damage_class">
+    <tr title="" *ngIf="move.type">
       <td>Damage Type</td>
+      <td><span class="p-1 text-white"
+                [ngStyle]="{'background-color':move.type.name | pokeTypeColor}">{{move.type.name | titlecase}}</span>
+      </td>
+    </tr>
+    <tr title="" *ngIf="move.damage_class">
+      <td>Type</td>
       <td>{{move.damage_class.name | titlecase}}</td>
     </tr>
     <tr title="" *ngIf="move.accuracy">
