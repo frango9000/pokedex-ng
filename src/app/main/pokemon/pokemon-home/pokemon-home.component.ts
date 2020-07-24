@@ -38,10 +38,10 @@ export class PokemonHomeComponent implements OnInit {
   }
 
   fetchMore(): void {
-    if (!this.loading && this.offset < 828) {
+    if (!this.loading && this.offset < 830) {
+      this.loading = true;
       this.offset += 36;
       this.fetchPokemonList();
-      this.loading = true;
     }
   }
 }

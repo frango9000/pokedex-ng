@@ -13,6 +13,7 @@ import {PokeTranslatePipe} from './pipes/poke-translate.pipe';
 import {PokeVersionPipe} from './pipes/poke-version.pipe';
 import {FirstPipe} from './pipes/first.pipe';
 import {ReplacePipe} from './pipes/replace.pipe';
+import {RomanPipe} from './pipes/roman.pipe';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {ReplacePipe} from './pipes/replace.pipe';
     FirstPipe,
     ReplacePipe,
     PokeVersionPipe,
+    RomanPipe,
   ],
   exports: [
     NavbarComponent,
@@ -43,7 +45,8 @@ import {ReplacePipe} from './pipes/replace.pipe';
     PokeTranslatePipe,
     FirstPipe,
     PokeVersionPipe,
-    ReplacePipe
+    ReplacePipe,
+    RomanPipe
   ],
   imports: [
     CommonModule,
