@@ -13,9 +13,8 @@
       </mdb-card-header>
       <div class="view rgba-white-slight waves-light" mdbWavesEffect>
         <!-- Card img -->
-        <mdb-card-img class="img-fluid"
-                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
-                      alt="{{pokemon.name | titlecase}}"></mdb-card-img>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
+             width="172" height="172" alt="{{pokemon.name | titlecase}}">
         <a>
           <div class="mask"></div>
         </a>
@@ -28,9 +27,8 @@
       </div>
       <mdb-card-footer class="px-0 mx-0">
         <div class="text-center text-white  ">
-            <span class="px-1 mx-1"
-                  *ngFor="let type of pokemon.types; let i = index"
-                  [ngStyle]="{'background-color':type | pokeTypeColor}">{{type | uppercase}}</span>
+            <span class="px-1 mx-1" *ngFor="let type of pokemon.types; let i = index"
+                  [ngStyle]="{'background-color':type|pokeTypeColor}">{{type|uppercase}}<br class="d-sm-none"></span>
         </div>
       </mdb-card-footer>
     </mdb-card>
