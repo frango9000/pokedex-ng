@@ -10,7 +10,9 @@ export class PokeVersionPipe implements PipeTransform {
   constructor(private pokemonVersionService: PokemonVersionService) {
   }
 
-  transform<T>(versions: T[], ...args: unknown[]): T[] {
-    return this.pokemonVersionService.filterWithFallback(versions);
+  transform(value: string, ...args: unknown[]): string {
+    console.log('pv-piping' + value);
+    return value + this.pokemonVersionService.activeVersion;
   }
+
 }

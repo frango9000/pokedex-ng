@@ -10,11 +10,13 @@ import {PokeTypeColorPipe} from './pipes/poke-type-color.pipe';
 import {NgVarDirective} from './directives/ng-var.directive';
 import {ExpandableResourcesPipe} from './pipes/expandable-resources.pipe';
 import {PokeTranslatePipe} from './pipes/poke-translate.pipe';
-import {PokeVersionPipe} from './pipes/poke-version.pipe';
+import {PokeVersionListPipe} from './pipes/poke-version-list.pipe';
 import {FirstPipe} from './pipes/first.pipe';
 import {ReplacePipe} from './pipes/replace.pipe';
 import {RomanPipe} from './pipes/roman.pipe';
 import {RouterModule} from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
+import {PokeVersionPipe} from './pipes/poke-version.pipe';
 
 
 @NgModule({
@@ -28,11 +30,12 @@ import {RouterModule} from '@angular/router';
     NgVarDirective,
     ExpandableResourcesPipe,
     PokeTranslatePipe,
-    PokeVersionPipe,
+    PokeVersionListPipe,
     FirstPipe,
     ReplacePipe,
-    PokeVersionPipe,
+    PokeVersionListPipe,
     RomanPipe,
+    PokeVersionPipe,
   ],
   exports: [
     NavbarComponent,
@@ -45,9 +48,11 @@ import {RouterModule} from '@angular/router';
     ExpandableResourcesPipe,
     PokeTranslatePipe,
     FirstPipe,
-    PokeVersionPipe,
+    PokeVersionListPipe,
     ReplacePipe,
-    RomanPipe
+    RomanPipe,
+    TranslateModule,
+    PokeVersionPipe
   ],
   imports: [
     CommonModule,

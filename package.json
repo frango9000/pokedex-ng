@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "^10.0.3",
     "@angular/router": "^10.0.3",
     "@fortawesome/fontawesome-free": "^5.13.1",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "@popperjs/core": "^2.4.4",
     "@types/chart.js": "^2.9.22",
     "angular-bootstrap-md": "^9.3.1",

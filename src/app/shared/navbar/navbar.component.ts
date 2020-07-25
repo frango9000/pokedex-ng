@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonLanguageService} from '../services/pokemon-language.service';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {PokemonVersionService} from '../services/pokemon-version.service';
 import {ApiNamedResource} from '../domain/api-resource';
 
@@ -21,12 +20,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.languages$ = this.pokemonLanguageService.getLanguageList().pipe(
-      map(value => value.results)
-    );
-    this.versions$ = this.pokemonVersionService.getVersionList().pipe(
-      map(value => value.results)
-    );
+    this.languages$ = this.pokemonLanguageService.getLanguageList();
+    this.versions$ = this.pokemonVersionService.getVersionList();
   }
 
 }

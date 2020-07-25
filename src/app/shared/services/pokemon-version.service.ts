@@ -1,10 +1,28 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
-import {shareReplay, tap} from 'rxjs/operators';
-import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
-import {serviceLog} from './pokemon.service';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {ApiNamedResource} from '../domain/api-resource';
+
+export const versions = [
+  {name: 'red-blue', url: 'https://pokeapi.co/api/v2/version-group/1/'},
+  {name: 'yellow', url: 'https://pokeapi.co/api/v2/version-group/2/'},
+  {name: 'gold-silver', url: 'https://pokeapi.co/api/v2/version-group/3/'},
+  {name: 'crystal', url: 'https://pokeapi.co/api/v2/version-group/4/'},
+  {name: 'ruby-sapphire', url: 'https://pokeapi.co/api/v2/version-group/5/'},
+  {name: 'emerald', url: 'https://pokeapi.co/api/v2/version-group/6/'},
+  {name: 'firered-leafgreen', url: 'https://pokeapi.co/api/v2/version-group/7/'},
+  {name: 'diamond-pearl', url: 'https://pokeapi.co/api/v2/version-group/8/'},
+  {name: 'platinum', url: 'https://pokeapi.co/api/v2/version-group/9/'},
+  {name: 'heartgold-soulsilver', url: 'https://pokeapi.co/api/v2/version-group/10/'},
+  {name: 'black-white', url: 'https://pokeapi.co/api/v2/version-group/11/'},
+  {name: 'colosseum', url: 'https://pokeapi.co/api/v2/version-group/12/'},
+  {name: 'xd', url: 'https://pokeapi.co/api/v2/version-group/13/'},
+  {name: 'black-2-white-2', url: 'https://pokeapi.co/api/v2/version-group/14/'},
+  {name: 'x-y', url: 'https://pokeapi.co/api/v2/version-group/15/'},
+  {name: 'omega-ruby-alpha-sapphire', url: 'https://pokeapi.co/api/v2/version-group/16/'},
+  {name: 'sun-moon', url: 'https://pokeapi.co/api/v2/version-group/17/'},
+  {name: 'ultra-sun-ultra-moon', url: 'https://pokeapi.co/api/v2/version-group/18/'},
+];
 
 @Injectable({
   providedIn: 'root'
@@ -13,38 +31,41 @@ export class PokemonVersionService {
 
   public static readonly DEFAULT_VERSION: 'yellow';
 
-  public displayVersion = 'yellow';
+  public activeVersion = 'yellow';
 
-  public displayVersion$ = new BehaviorSubject(this.displayVersion);
+  public activeVersion$ = new BehaviorSubject(this.activeVersion);
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getVersionList(): Observable<ApiResponse<ApiNamedResource>> {
-    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
-      tap(serviceLog),
-      shareReplay()
-    );
+  getVersionList(): Observable<ApiNamedResource[]> {
+    // return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
+    //   tap(serviceLog),
+    //   shareReplay()
+    // );
+    return of(versions);
   }
 
-  setDisplayVersion(lang: string): void {
-    this.displayVersion = lang;
-    this.displayVersion$.next(this.displayVersion);
-  }
-
-  filterWithFallback<T>(versions: T[]): T[] {
-    let requested = this.filter(versions);
-    if (requested.length === 0) {
-      requested = versions.filter((value: any) => value.version_group.name === PokemonVersionService.DEFAULT_VERSION);
+  setDisplayVersion(version: string): void {
+    if (versions.findIndex(value => value.name === version) > -1) {
+      this.activeVersion = version;
+      this.activeVersion$.next(this.activeVersion);
     }
-    return requested.length > 0 ? requested : versions;
   }
 
-  filter<T>(versions: T[]): T[] {
-    return versions.filter((value: any) => value.version_group.name === this.displayVersion);
+  filterWithFallback<T>(versionList: T[]): T[] {
+    let requested = this.filter(versionList);
+    if (requested.length === 0) {
+      requested = versionList.filter((value: any) => value.version_group.name === PokemonVersionService.DEFAULT_VERSION);
+    }
+    return requested.length > 0 ? requested : versionList;
+  }
+
+  filter<T>(versionList: T[]): T[] {
+    return versionList.filter((value: any) => value.version_group.name === this.activeVersion);
   }
 
   matchesDisplayVersion(version: string): boolean {
-    return this.displayVersion === version;
+    return this.activeVersion === version;
   }
 }

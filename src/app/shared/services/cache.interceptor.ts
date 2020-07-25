@@ -20,17 +20,21 @@ export class CacheInterceptor implements HttpInterceptor {
   }
 
   sendRequest(
-    req: HttpRequest<any>,
-    next: HttpHandler,
-    cache: CacheService): Observable<HttpEvent<any>> {
+    req: HttpRequest<any>, next: HttpHandler, cache: CacheService): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {
-          if (environment.logNetworkResponses) {
-            console.log('Network', event);
-          }
-          if (environment.isCacheEnabled) {
-            cache.put(req, event);
+          if (event.url.includes('/assets/i18n/')) {
+            if (environment.logTranslations) {
+              console.log('Translation', event);
+            }
+          } else {
+            if (environment.logNetworkResponses) {
+              console.log('Network', event);
+            }
+            if (environment.isCacheEnabled) {
+              cache.put(req, event);
+            }
           }
         }
       })

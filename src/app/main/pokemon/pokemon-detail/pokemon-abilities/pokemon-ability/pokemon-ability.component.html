@@ -1,26 +1,26 @@
-<div *ngIf="ability$ | async as ability" class="card p-1">
+<div *ngIf="ability as ability" class="card p-1">
   <table class="table mb-0">
     <tbody>
     <tr class="first-row-border-0">
-      <td>Name</td>
-      <td>{{(ability.names | pokeTranslate | first).name}}</td>
+      <td>{{'NAME' | translate}}</td>
+      <td>{{'ABILITY.' + ability.name + '.NAME' | translate}}</td>
     </tr>
     <tr>
       <td>Description</td>
-      <td>{{(ability.flavor_text_entries | pokeVersion | pokeTranslate | first).flavor_text}}</td>
+      <td>{{'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + this.activeVersion | translate}}</td>
     </tr>
     <tr title="The generation this ability originated in.">
       <td>Generation</td>
       <td>{{ability.generation.name | titlecase}}</td>
     </tr>
-    <ng-container *ngVar="ability.effect_entries | pokeTranslate | first as effect_entry">
+    <ng-container>
       <tr title="Effect.">
         <td>Effect</td>
-        <td>{{effect_entry.effect}}</td>
+        <td>{{'ABILITY.' + ability.name + '.EFFECT_ENTRY.EFFECT' | translate}}</td>
       </tr>
       <tr title="">
         <td>Short</td>
-        <td>{{effect_entry.short_effect}}</td>
+        <td>{{'ABILITY.' + ability.name + '.EFFECT_ENTRY.SHORT' | translate}}</td>
       </tr>
     </ng-container>
     </tbody>
