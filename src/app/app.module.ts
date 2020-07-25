@@ -10,9 +10,10 @@ import {CacheService} from './shared/services/cache.service';
 import {CacheInterceptor} from './shared/services/cache.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {environment} from '../environments/environment';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './' + environment.baseHref + 'assets/i18n/', '.json');
 }
 
 @NgModule({

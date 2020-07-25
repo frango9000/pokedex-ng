@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseHref: '',
   apiUrl: 'https://pokeapi.co/api/v2',
   isCacheEnabled: true,
   logNetworkResponses: false,
