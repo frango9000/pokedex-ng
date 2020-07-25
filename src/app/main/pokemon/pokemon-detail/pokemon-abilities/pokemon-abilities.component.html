@@ -1,10 +1,10 @@
 <mdb-card class="max-detail-size w-100 my-1">
   <div class="container-fluid cursor-pointer border-bottom">
-    <div class="row m-2 align-items-center" title="Abilities">
+    <div class="row m-2 align-items-center" title="{{'UI.ABILITY.ABILITIES'|translate}}">
       <a mdbBtn floating="true">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
-      <div class="overflow-hidden text-nowrap pl-2">Abilities</div>
+      <div class="overflow-hidden text-nowrap pl-2">{{'UI.ABILITY.ABILITIES'|translate}}</div>
     </div>
   </div>
 
@@ -18,8 +18,7 @@
           <div class="col-3 text-right">
             <a class="btn btn-primary p-1 px-2" role="button" aria-expanded="false" aria-controls=""
                (click)="ability.value=!ability.value">
-              <mdb-icon fas icon="chevron-right" size="1x" class=""
-                        [ngClass]="{'expanded': ability.value}"></mdb-icon>
+              <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{'expanded': ability.value}"></mdb-icon>
             </a>
           </div>
         </div>

@@ -1,4 +1,16 @@
 {
-  "HELLO": "HELLOOOO",
-  "NAME": "Name-en"
+  "UI": {
+    "ABILITY": {
+      "ABILITIES": "Abilities",
+      "NAME": "Name",
+      "DESCRIPTION_TITLE": "The flavor text of this ability",
+      "DESCRIPTION": "Description",
+      "GENERATION_TITLE": "The generation this ability originated in.",
+      "GENERATION": "Gen",
+      "EFFECT_TITLE": "The effect of this ability",
+      "EFFECT": "Effect",
+      "EFFECT_TITLE_SHORT": "The effect of this ability (brief)",
+      "EFFECT_SHORT": "Brief"
+    }
+  }
 }

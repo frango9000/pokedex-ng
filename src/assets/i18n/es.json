@@ -1,3 +1,16 @@
 {
-  "NAME": "Name-es"
+  "UI": {
+    "ABILITY": {
+      "ABILITIES": "Habilidades",
+      "NAME": "Nombre",
+      "DESCRIPTION_TITLE": "El texto descriptivo de esta habilidad",
+      "DESCRIPTION": "Descripción",
+      "GENERATION_TITLE": "La generación en la que esta habilidad se origino",
+      "GENERATION": "Gen",
+      "EFFECT_TITLE": "El efecto de esta habilidad",
+      "EFFECT": "Efecto",
+      "EFFECT_TITLE_SHORT": "El efecto de esta habilidad (corto)",
+      "EFFECT_SHORT": "Corto"
+    }
+  }
 }

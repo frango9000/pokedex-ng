@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiNamedResource} from '../../../../shared/domain/api-resource';
+import {PokemonAbilities} from '../../../../shared/domain/pokemon';
 
 @Component({
   selector: 'app-pokemon-abilities',
@@ -8,11 +8,7 @@ import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 })
 export class PokemonAbilitiesComponent implements OnInit {
 
-  @Input() pokemonAbilities: {
-    is_hidden: boolean,
-    slot: number,
-    ability: ApiNamedResource
-  }[];
+  @Input() pokemonAbilities: PokemonAbilities[];
 
   constructor() {
   }

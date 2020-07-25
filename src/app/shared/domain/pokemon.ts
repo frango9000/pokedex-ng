@@ -28,18 +28,18 @@ export interface Pokemon {
 
 }
 
-interface PokemonTypes {
+export interface PokemonTypes {
   slot: number;
   type: ApiNamedResource;
 }
 
-interface PokemonStats {
+export interface PokemonStats {
   base_stat: number;
   effort: number;
   stat: ApiNamedResource;
 }
 
-interface PokemonSprites {
+export interface PokemonSprites {
   back_default: string;
   back_female: string;
   back_shiny: string;
@@ -50,7 +50,7 @@ interface PokemonSprites {
   front_shiny_female: string;
 }
 
-interface PokemonLocationAreaEncounters {
+export interface PokemonLocationAreaEncounters {
   location_area: ApiNamedResource;
   version_details: {
     max_chance: number,
@@ -65,7 +65,7 @@ interface PokemonLocationAreaEncounters {
   }[];
 }
 
-interface PokemonHeldItems {
+export interface PokemonHeldItems {
   item: ApiNamedResource;
   version_details: {
     rarity: number,
@@ -73,13 +73,13 @@ interface PokemonHeldItems {
   }[];
 }
 
-interface PokemonAbilities {
+export interface PokemonAbilities {
   is_hidden: boolean;
   slot: number;
   ability: ApiNamedResource;
 }
 
-interface PokemonGameIndices {
+export interface PokemonGameIndices {
   game_index: number;
   version: ApiNamedResource;
 }
