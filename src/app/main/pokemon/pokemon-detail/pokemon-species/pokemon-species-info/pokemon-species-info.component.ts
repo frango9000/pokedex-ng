@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PokemonSpecies} from '../../../../../shared/domain/pokemon-species';
+import {PokemonVersionService} from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-species-info',
@@ -10,10 +11,13 @@ export class PokemonSpeciesInfoComponent implements OnInit {
 
   @Input() public pokemonSpecies: PokemonSpecies;
 
-  constructor() {
+  activeVersion: string = 'en';
+
+  constructor(private pokemonVersionService: PokemonVersionService) {
   }
 
   ngOnInit(): void {
+    this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
   }
 
 }

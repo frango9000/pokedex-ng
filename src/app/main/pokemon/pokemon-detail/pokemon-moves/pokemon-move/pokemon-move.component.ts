@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
 import {PokemonMove} from '../../../../../shared/domain/pokemon-move';
 import {PokemonMoveService} from '../../../../../shared/services/pokemon-move.service';
+import {TranslateService} from '@ngx-translate/core';
+import {PokemonVersionService} from '../../../../../shared/services/pokemon-version.service';
+import {PokemonLanguageService} from '../../../../../shared/services/pokemon-language.service';
 
 @Component({
   selector: 'app-pokemon-move',
@@ -13,13 +15,55 @@ export class PokemonMoveComponent implements OnInit {
 
   @Input() moveId: string | number;
 
-  move$: Observable<PokemonMove>;
+  move: PokemonMove;
 
-  constructor(private pokemonMoveService: PokemonMoveService) {
+  activeVersion: string = 'en';
+
+  constructor(private pokemonMoveService: PokemonMoveService,
+              private translateService: TranslateService,
+              private pokemonVersionService: PokemonVersionService,
+              private pokemonLanguageService: PokemonLanguageService) {
   }
 
   ngOnInit(): void {
-    this.move$ = this.pokemonMoveService.getMove(this.moveId);
+    this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
+    this.pokemonMoveService.getMove(this.moveId).subscribe(move => {
+      this.move = move;
+      this.generateTranslations(this.move);
+    });
   }
 
+  private generateTranslations(move: PokemonMove): void {
+    move.names.forEach(name => {
+      this.translateService.setTranslation(name.language.name, {MOVE: {[move.name]: {NAME: name.name}}}, true);
+    });
+    move.effect_entries.forEach(entry => {
+      this.translateService.setTranslation(entry.language.name, {
+        MOVE: {
+          [move.name]: {
+            EFFECT_ENTRY: {
+              SHORT: entry.short_effect,
+              EFFECT: entry.effect
+            }
+          }
+        }
+      }, true);
+    });
+    const defaultFlavorTextIndex = move.flavor_text_entries.findIndex(value => value.language.name === 'en');
+    const defaultFlavorText = defaultFlavorTextIndex > -1 ? move.flavor_text_entries[defaultFlavorTextIndex].flavor_text : 'MOVE_TRANSLATE_ERROR_001';
+    this.pokemonLanguageService.getLanguageList().subscribe(languages => {
+      this.pokemonVersionService.getVersionList().subscribe(versions => {
+        languages.forEach(language => {
+          const langDefaultFlavorTextIndex = move.flavor_text_entries.findIndex(value => value.language.name === language.name);
+          const langDefaultFlavorText = langDefaultFlavorTextIndex > -1 ? move.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text : 'MOVE_TRANSLATE_ERROR_002';
+          versions.forEach(version => {
+            this.translateService.setTranslation(language.name, {MOVE: {[move.name]: {FLAVOR_TEXT: {[version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText}}}}, true);
+          });
+        });
+      });
+    });
+    move.flavor_text_entries.forEach(entry => {
+      this.translateService.setTranslation(entry.language.name, {MOVE: {[move.name]: {FLAVOR_TEXT: {[entry.version_group.name]: entry.flavor_text}}}}, true);
+    });
+  }
 }

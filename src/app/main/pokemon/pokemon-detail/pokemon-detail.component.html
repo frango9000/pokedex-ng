@@ -4,9 +4,9 @@
     <mdb-card class="pt-2 max-detail-size w-100">
       <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
         <h5 class="text-center text-white pt-1 ">
-            <span class="px-2 py-1 mx-1"
-                  *ngFor="let type of pokemon.types; let i = index"
-                  [ngStyle]="{'background-color':type.type.name | pokeTypeColor}">{{type.type.name | uppercase}}</span>
+            <span class="px-2 py-1 mx-1" *ngFor="let type of pokemon.types; let i = index"
+                  [ngStyle]="{'background-color':type.type.name | pokeTypeColor}"
+            >{{'STATIC.TYPES.' + type.type.name | translate | uppercase}}</span>
         </h5>
         <img class="mx-auto my-1 img-fluid" width="200"
              src="{{pokemon.sprites.front_default}}"

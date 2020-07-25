@@ -1,4 +1,4 @@
-import {ApiFlavorTextEntry, ApiNamedResource, ApiResource} from './api-resource';
+import {ApiNamedResource, ApiResource} from './api-resource';
 
 export interface PokemonSpecies {
   id: number;
@@ -7,10 +7,7 @@ export interface PokemonSpecies {
   capture_rate: number;
   forms_switchable: boolean;
   gender_rate: number;
-  genera: {
-    genus: string,
-    language: ApiNamedResource
-  }[];
+  genera: PokemonSpeciesGenera[];
   has_gender_differences: boolean;
   hatch_counter: number;
   is_baby: boolean;
@@ -23,7 +20,7 @@ export interface PokemonSpecies {
   evolves_from_species: ApiNamedResource;
   evolution_chain: ApiResource;
   egg_groups: ApiNamedResource[];
-  flavor_text_entries: ApiFlavorTextEntry[];
+  flavor_text_entries: PokemonSpeciesFlavorTextEntry[];
   form_descriptions: {
     description: string;
     language: ApiNamedResource;
@@ -41,4 +38,15 @@ export interface PokemonSpecies {
     is_default: boolean;
     pokemon: ApiNamedResource
   }[];
+}
+
+interface PokemonSpeciesFlavorTextEntry {
+  flavor_text: string;
+  language: ApiNamedResource;
+  version: ApiNamedResource;
+}
+
+interface PokemonSpeciesGenera {
+  genus: string;
+  language: ApiNamedResource;
 }

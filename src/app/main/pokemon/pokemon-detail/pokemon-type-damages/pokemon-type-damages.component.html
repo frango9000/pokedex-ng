@@ -11,20 +11,20 @@
     <div class="container-fluid">
       <div class="row px-0">
         <div class="col-12 col-sm-6">
-          <h6>{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | translate}}</h6>
+          <div class="text-center"><h6>{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | translate}}</h6></div>
           <div class="row my-1 align-items-center text-center px-0" *ngFor="let weakness of weaknesses">
             <div class="col-9" [ngStyle]="{'background-color':weakness.name | pokeTypeColor}"><h6
-              class="text-white my-1">{{'TYPES.' + weakness.name | translate | uppercase}}</h6></div>
+              class="text-white my-1">{{'STATIC.TYPES.' + weakness.name | translate | uppercase}}</h6></div>
             <div class="col-3 weakness-multiplier text-left px-0 pl-4 pl-sm-2"><b
               class="weakness-multi">x{{weakness.multiplier}}</b>
             </div>
           </div>
         </div>
         <div class="col-12 col-sm-6">
-          <h6>{{'UI.TYPE_DAMAGES.RESISTANCES' | translate}}</h6>
+          <div class="text-center"><h6>{{'UI.TYPE_DAMAGES.RESISTANCES' | translate}}</h6></div>
           <div class="row my-1 align-items-center text-center " *ngFor="let resistance of resistances">
             <div class="col-9" [ngStyle]="{'background-color':resistance.name | pokeTypeColor}"><h6
-              class="text-white my-1">{{'TYPES.' + resistance.name | translate | uppercase}}</h6></div>
+              class="text-white my-1">{{'STATIC.TYPES.' + resistance.name | translate | uppercase}}</h6></div>
             <div class="col-3 weakness-multiplier text-left px-0 pl-4 pl-sm-2"><b
               class="resist-multi">x{{resistance.multiplier}}</b>
             </div>

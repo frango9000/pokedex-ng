@@ -5,6 +5,7 @@ export const environment = {
   logNetworkResponses: false,
   logCachedResponses: false,
   logServiceResponses: false,
+  logTranslations: false,
 
   firebaseApi: 'https://pokedex-ng.firebaseio.com',
 

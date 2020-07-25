@@ -28,15 +28,15 @@ export class PokemonAbilityComponent implements OnInit {
     this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
     this.pokemonMoveService.getAbility(this.abilityId).subscribe(ability => {
       this.ability = ability;
-      this.generateTranslations(ability);
+      this.generateTranslations(this.ability);
     });
   }
 
   private generateTranslations(ability: PokemonAbility): void {
-    this.ability.names.forEach(name => {
+    ability.names.forEach(name => {
       this.translateService.setTranslation(name.language.name, {ABILITY: {[ability.name]: {NAME: name.name}}}, true);
     });
-    this.ability.effect_entries.forEach(entry => {
+    ability.effect_entries.forEach(entry => {
       this.translateService.setTranslation(entry.language.name, {
         ABILITY: {
           [ability.name]: {
@@ -48,20 +48,20 @@ export class PokemonAbilityComponent implements OnInit {
         }
       }, true);
     });
-    const defaultFlavorTextIndex = this.ability.flavor_text_entries.findIndex(value => value.language.name === 'en');
-    const defaultFlavorText = defaultFlavorTextIndex > -1 ? this.ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text : 'ABILITY_TRANSLATE_ERROR_001';
+    const defaultFlavorTextIndex = ability.flavor_text_entries.findIndex(value => value.language.name === 'en');
+    const defaultFlavorText = defaultFlavorTextIndex > -1 ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text : 'ABILITY_TRANSLATE_ERROR_001';
     this.pokemonLanguageService.getLanguageList().subscribe(languages => {
       this.pokemonVersionService.getVersionList().subscribe(versions => {
         languages.forEach(language => {
-          const langDefaultFlavorTextIndex = this.ability.flavor_text_entries.findIndex(value => value.language.name === language.name);
-          const langDefaultFlavorText = langDefaultFlavorTextIndex > -1 ? this.ability.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text : 'ABILITY_TRANSLATE_ERROR_002';
+          const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(value => value.language.name === language.name);
+          const langDefaultFlavorText = langDefaultFlavorTextIndex > -1 ? ability.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text : 'ABILITY_TRANSLATE_ERROR_002';
           versions.forEach(version => {
             this.translateService.setTranslation(language.name, {ABILITY: {[ability.name]: {FLAVOR_TEXT: {[version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText}}}}, true);
           });
         });
       });
     });
-    this.ability.flavor_text_entries.forEach(entry => {
+    ability.flavor_text_entries.forEach(entry => {
       this.translateService.setTranslation(entry.language.name, {ABILITY: {[ability.name]: {FLAVOR_TEXT: {[entry.version_group.name]: entry.flavor_text}}}}, true);
     });
   }

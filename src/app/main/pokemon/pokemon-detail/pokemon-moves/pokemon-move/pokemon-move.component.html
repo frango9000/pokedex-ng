@@ -1,22 +1,23 @@
-<div *ngIf="move$ | async as move" class="card p-1 w-100">
-  <table class="table mb-0">
+<div class="card p-1">
+  <table class="table mb-0" *ngIf="move; else loading">
     <tbody>
     <tr class="first-row-border-0">
       <td>Name</td>
-      <td>{{(move.names | pokeTranslate | first).name}}</td>
+      <td>{{'MOVE.' + move.name + '.NAME' |translate}}</td>
     </tr>
     <tr>
-      <td>Description</td>
-      <td class="w-100">{{(move.flavor_text_entries | pokeVersionList | pokeTranslate | first).flavor_text}}</td>
+      <td>Category</td>
+      <td>{{'STATIC.MOVE.CATEGORIES.' + move.meta.category.name | translate | titlecase}}</td>
     </tr>
     <tr title="">
       <td>Generation</td>
       <td>{{move.generation.name | titlecase}}</td>
     </tr>
-    <tr title="" *ngIf="move.type">
+    <tr *ngIf="move.type">
       <td>Damage Type</td>
-      <td><span class="p-1 text-white"
-                [ngStyle]="{'background-color':move.type.name | pokeTypeColor}">{{move.type.name | titlecase}}</span>
+      <td>
+        <span [ngStyle]="{'background-color':move.type.name | pokeTypeColor}"
+              class="p-1 text-white">{{'STATIC.TYPES.' + move.type.name | translate | uppercase}}</span>
       </td>
     </tr>
     <tr title="" *ngIf="move.damage_class">
@@ -31,16 +32,6 @@
       <td>Effect Chance</td>
       <td>{{(move.effect_chance / 100) | percent}}</td>
     </tr>
-    <tr title="">
-      <td>Effect</td>
-      <td *ngIf="move.effect_entries | pokeTranslate | first as effect_entry"
-          title="{{effect_entry.short_effect | replace:'$effect_chance%':move.effect_chance+'%'}}">{{effect_entry.effect | replace:'$effect_chance%':move.effect_chance
-      + '%'}}</td>
-    </tr>
-    <tr>
-      <td>Description</td>
-      <td>{{(move.flavor_text_entries | pokeVersionList | pokeTranslate | first).flavor_text}}</td>
-    </tr>
     <tr>
       <td>Power</td>
       <td>{{move.power ? move.power : 'N/A'}}</td>
@@ -52,10 +43,6 @@
     <tr *ngIf="move.priority">
       <td>Priority</td>
       <td>{{move.priority}}</td>
-    </tr>
-    <tr>
-      <td>Category</td>
-      <td>{{move.meta.category.name | titlecase}}</td>
     </tr>
     <tr *ngIf="move.meta.stat_chance">
       <td>Stat Change Chance</td>
@@ -113,7 +100,25 @@
       <td>Max Turns</td>
       <td>{{move.meta.max_turns}}</td>
     </tr>
-    <!--  TODO  list of pokemon? -->
+    <tr title="{{'UI.MOVE.DESCRIPTION_TITLE' | translate}}">
+      <td>{{'UI.MOVE.DESCRIPTION' | translate}}</td>
+      <td>{{'MOVE.' + move.name + '.FLAVOR_TEXT.' + this.activeVersion | translate}}</td>
+    </tr>
+    <tr title="{{'UI.MOVE.EFFECT_TITLE' | translate}}">
+      <td>{{'UI.MOVE.EFFECT' | translate}}</td>
+      <td>{{'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | translate}}</td>
+    </tr>
+    <tr title="{{'UI.MOVE.EFFECT_TITLE_SHORT' | translate}}">
+      <td>{{'UI.MOVE.EFFECT_SHORT' | translate}}</td>
+      <td>{{'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | translate}}</td>
+    </tr>
     </tbody>
   </table>
+  <ng-template #loading>
+    <div class="text-center">
+      <div class="spinner-border m-4" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">{{'LOADING' | translate}}</span>
+      </div>
+    </div>
+  </ng-template>
 </div>

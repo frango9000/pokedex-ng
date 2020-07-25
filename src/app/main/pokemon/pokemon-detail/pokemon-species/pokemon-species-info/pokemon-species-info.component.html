@@ -10,12 +10,13 @@
   <mdb-card-body class="py-0">
     <mdb-card-text>
       <div *ngIf="pokemonSpecies && pokemonSpecies.flavor_text_entries"
-           class="overflow-auto text-center my-2">{{(pokemonSpecies.flavor_text_entries | pokeTranslate | first).flavor_text}}</div>
+           class="overflow-auto text-center my-2">{{'SPECIES.' + pokemonSpecies.name + '.FLAVOR_TEXT.'
+      + this.activeVersion | translate}}</div>
       <table class="table">
         <tbody>
         <tr>
           <td>Genus</td>
-          <td>{{(pokemonSpecies.genera | pokeTranslate | first).genus}}</td>
+          <td>{{'SPECIES.' + pokemonSpecies.name + '.GENERA' | translate }}</td>
         </tr>
         <tr>
           <td>Shape</td>
@@ -42,6 +43,14 @@
         <tr>
           <td>Hatch Steps</td>
           <td>{{(+pokemonSpecies.hatch_counter + 1) * 255}}</td>
+        </tr>
+        <tr>
+          <td>Generation</td>
+          <td>{{pokemonSpecies.generation.name}}</td>
+        </tr>
+        <tr>
+          <td>Habitat</td>
+          <td>{{pokemonSpecies.habitat.name}}</td>
         </tr>
         <tr title="The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.">
           <td>Base Happiness</td>
