@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100">
+<mdb-card class="max-detail-size w-100 pb-2">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="Stats">
       <a mdbBtn floating="true">
@@ -8,24 +8,22 @@
     </div>
   </div>
 
-  <mdb-card-body class="py-0">
-    <mdb-card-text>
-      <table class="table">
-        <thead>
-        <tr class="stats-table">
-          <th scope="col">Stat</th>
-          <th scope="col">Base</th>
-          <th scope="col">EV</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let stat of pokemonStats">
-          <th scope="col">{{stat.stat.name | titlecase}}</th>
-          <td>{{stat.base_stat}}</td>
-          <td>{{stat.effort}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </mdb-card-text>
+  <mdb-card-body class="py-0 px-2 px-sm-4">
+    <table class="table">
+      <thead>
+      <tr class="stats-table">
+        <th scope="col">Stat</th>
+        <th scope="col">Base</th>
+        <th scope="col">EV</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let stat of pokemonStats">
+        <th scope="col">{{stat.stat.name | titlecase}}</th>
+        <td>{{stat.base_stat}}</td>
+        <td>{{stat.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
   </mdb-card-body>
 </mdb-card>

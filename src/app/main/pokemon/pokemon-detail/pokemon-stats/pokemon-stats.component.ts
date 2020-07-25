@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiNamedResource} from '../../../../shared/domain/api-resource';
+import {PokemonStats} from '../../../../shared/domain/pokemon';
 
 @Component({
   selector: 'app-pokemon-stats',
@@ -8,11 +8,7 @@ import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 })
 export class PokemonStatsComponent implements OnInit {
 
-  @Input() pokemonStats: {
-    base_stat: number,
-    effort: number,
-    stat: ApiNamedResource
-  }[];
+  @Input() pokemonStats: PokemonStats[];
 
   constructor() {
   }

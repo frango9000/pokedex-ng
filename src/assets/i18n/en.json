@@ -1,7 +1,9 @@
 {
   "UI": {
     "ABILITY": {
+      "ABILITY": "Ability",
       "ABILITIES": "Abilities",
+      "SLOT": "Slot",
       "NAME": "Name",
       "DESCRIPTION_TITLE": "The flavor text of this ability",
       "DESCRIPTION": "Description",
@@ -11,6 +13,33 @@
       "EFFECT": "Effect",
       "EFFECT_TITLE_SHORT": "The effect of this ability (brief)",
       "EFFECT_SHORT": "Brief"
+    },
+    "TYPE_DAMAGES": {
+      "TITLE": "Type Damage Received",
+      "WEAKNESSES": "Weaknesses",
+      "RESISTANCES": "Resistances"
     }
+  },
+  "TYPES": {
+    "normal": "normal",
+    "fighting": "fighting",
+    "flying": "flying",
+    "poison": "poison",
+    "ground": "ground",
+    "rock": "rock",
+    "bug": "bug",
+    "ghost": "ghost",
+    "steel": "steel",
+    "fire": "fire",
+    "water": "water",
+    "grass": "grass",
+    "electric": "electric",
+    "psychic": "psychic",
+    "ice": "ice",
+    "dragon": "dragon",
+    "dark": "dark",
+    "fairy": "fairy",
+    "unknown": "unknown",
+    "shadow": "shadow"
   }
 }
