@@ -16,8 +16,147 @@
     },
     "TYPE_DAMAGES": {
       "TITLE": "Type Damage Received",
+      "TITLE_TITLE": "Type Damage Received",
       "WEAKNESSES": "Weaknesses",
       "RESISTANCES": "Resistances"
+    },
+    "MOVE": {
+      "TITLE_LEVEL_UP_MOVES": "Level Up Moves",
+      "TITLE_MACHINE_MOVES": "Machine Moves",
+      "TITLE_TUTOR_MOVES": "Tutor Moves",
+      "TITLE_EGG_MOVES": "Egg Moves",
+      "TITLE_LEVEL_UP_MOVES_TITLE": "Level Up Moves",
+      "TITLE_MACHINE_MOVES_TITLE": "Machine Moves",
+      "TITLE_TUTOR_MOVES_TITLE": "Tutor Moves",
+      "TITLE_EGG_MOVES_TITLE": "Egg Moves",
+      "LEVEL": "Level",
+      "MOVE": "Move",
+      "TYPE": "Type",
+      "NAME": "Name",
+      "CATEGORY": "Category",
+      "GENERATION_TITLE": "The generation in which this move was introduced.",
+      "GENERATION": "Gen",
+      "DAMAGE_TYPE_TITLE": "The elemental type of this move.",
+      "DAMAGE_TYPE": "Type",
+      "DAMAGE_CLASS_TITLE": "The type of damage the move inflicts on the target,",
+      "DAMAGE_CLASS": "Class",
+      "PP_TITLE": "Power points. The number of times this move can be used.",
+      "PP": "PP",
+      "ACCURACY_TITLE": "The percent value of how likely this move is to be successful.",
+      "ACCURACY": "Accuracy",
+      "POWER_TITLE": "The base power of this move with a value of 0 if it does not have a base power.",
+      "POWER": "Power",
+      "PRIORITY_TITLE": "A value between -8 and 8. Sets the order in which moves are executed during battle. ",
+      "PRIORITY": "Priority",
+      "STAT_CHANGE_CHANCE_TITLE": "The likelihood this attack will cause a stat change in the target Pokémon.",
+      "STAT_CHANGE_CHANCE": "Chance",
+      "STAT_CHANGE_TITLE": "The stat being affected.",
+      "CRITICAL_RATE_TITLE": "Critical hit rate bonus.",
+      "CRITICAL_RATE": "Critical",
+      "HEALING_TITLE": "The amount of hp gained by the attacking Pokemon, in percent of it's maximum HP.",
+      "HEALING": "Healing",
+      "DRAIN_RECOIL_TITLE": "HP drain (if positive) or Recoil damage (if negative), in percent of damage done.",
+      "DRAIN": "Drain",
+      "RECOIL": "Recoil",
+      "AILMENT_TITLE": "The status ailment this move inflicts on its target.",
+      "AILMENT": "Ailment",
+      "AILMENT_CHANCE_TITLE": "The likelihood this attack will cause an ailment.",
+      "AILMENT_CHANCE": "Ailment Rate",
+      "FLINCH_CHANCE_TITLE": "The likelihood this attack will cause the target Pokémon to flinch.",
+      "FLINCH_CHANCE": "Flinch Rate",
+      "TARGET_TYPE_TITLE": "The type of target that will receive the effects of the attack.",
+      "TARGET_TYPE": "Target",
+      "MIN_HITS": "Min Hits",
+      "MAX_HITS": "Max Hits",
+      "MIN_TURNS": "Min Turns",
+      "MAX_TURNS": "Max Turns",
+      "DESCRIPTION_TITLE": "The flavor text of this move",
+      "DESCRIPTION": "Description",
+      "EFFECT_CHANCE_TITLE": "The percent value of how likely it is this moves effect will happen.",
+      "EFFECT_CHANCE": "Effect Chance",
+      "EFFECT_TITLE": "The effect of this move ",
+      "EFFECT": "Effect",
+      "EFFECT_SHORT": "Short"
+    },
+    "STATS": {
+      "TITLE_TITLE": "A chart of base stat values for this Pokémon.",
+      "TITLE": "Stats",
+      "STAT_TITLE": "The stat the Pokémon has.",
+      "STAT": "Stat",
+      "BASE_TITLE": "The base value of the stat.",
+      "BASE": "Base",
+      "EV_TITLE": "The effort points (EV) the Pokémon has in the stat.",
+      "EV": "EV"
+    },
+    "EVOLUTION_CHAIN": {
+      "TITLE_TITLE": "The evolution chain this Pokémon species is a member of.",
+      "TITLE": "Evolution Chain",
+      "LINK": {
+        "LEVEL_UP": "Level Up",
+        "LEVEL_UP_AT": "Level {{value}}",
+        "WHEN_TRADED": "Trade",
+        "WHEN_TRADED_FOR": "Trade for {{value}}",
+        "WITH_ITEM": "Item",
+        "WITH_ITEM_USE": "Item: {{value}}",
+        "SHED_EVOLVE": "Pokéball in bag and free slot in party.",
+        "LOCATION": "@ {{value}}",
+        "KNOWN_MOVE_TYPE": "Know Move of type: {{value}}",
+        "KNOWN_MOVE": "Know Move {{value}}",
+        "MIN_AFFECTION": "Mn Affection: {{value}}",
+        "MIN_BEAUTY": "Min Beauty: {{value}}",
+        "MIN_HAPPINESS": "Min Happiness: {{value}}",
+        "GENDER": "Gender: {{value}}",
+        "HELD_ITEM": "Held Item: {{value}}",
+        "PARTY_POKEMON": "Have a {{value}} in Party",
+        "PARTY_POKEMON_TYPE": "Have a {{value}} Pokemon in party",
+        "TIME_OF_DAY": "When time is {{value}}",
+        "NEEDS_OVERWORLD_RAIN": "Needs Overworld Rain",
+        "TURN_UPSIDE_DOWN": "Turn 3DS Upside-Down",
+        "STATS_OFFENSIVE": "Offensive Stats",
+        "STATS_DEFENSIVE": "Defensive Stats",
+        "STATS_BALANCED": "Balanced Stats"
+      }
+    },
+    "SPECIES": {
+      "INFO": {
+        "TITLE_TITLE": "Species Info",
+        "TITLE": "Species Info",
+        "GENUS": "Genera",
+        "SHAPE": "Shape",
+        "COLOR": "Color",
+        "EGG_GROUPS_TITLE": "Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups.",
+        "EGG_GROUPS": "Egg Groups",
+        "BASE_HAPPINESS_TITLE": "The happiness when caught by a normal Pokéball. The higher the number, the happier the Pokémon.",
+        "BASE_HAPPINESS": "Happiness",
+        "CAPTURE_RATE_TITLE": "The base capture rate. The higher the number, the easier the catch.",
+        "CAPTURE_RATE": "Catch Rate",
+        "FEMALE_RATE_TITLE": "The chance of this Pokémon being female.",
+        "FEMALE_RATE": "Female Rate",
+        "MALE_RATE_TITLE": "The chance of this Pokémon being male.",
+        "MALE_RATE": "Male Rate",
+        "GROWTH_RATE_TITLE": "The rate at which this Pokémon species gains levels.",
+        "GROWTH_RATE": "Growth Rate",
+        "HATCH_STEPS_TITLE": "Initial hatch counter: one must walk unless utilizing bonuses like Flame Body's.",
+        "HATCH_STEPS": "Hatch Steps",
+        "GENERATION_TITLE": "The generation this Pokémon species was introduced in.",
+        "GENERATION": "Gen",
+        "HABITAT_TITLE": "The habitat this Pokémon species can be encountered in.",
+        "HABITAT": "Habitat",
+        "GENDERLESS_TITLE": "Genderless",
+        "GENDERLESS_RATE": "Gender",
+        "GENDERLESS": "Genderless"
+      }
+    },
+    "POKEMON": {
+      "INFO": {
+        "ID": "Id",
+        "BASE_EXPERIENCE": "Base Exp",
+        "BASE_EXPERIENCE_UNIT": "xp",
+        "WEIGHT": "Weight",
+        "WEIGHT_UNIT": "kg.",
+        "HEIGHT": "Height",
+        "HEIGHT_UNIT": "mt."
+      }
     }
   },
   "STATIC": {
@@ -43,6 +182,16 @@
       "unknown": "unknown",
       "shadow": "shadow"
     },
+    "STATS": {
+      "hp": "HP",
+      "attack": "Attack",
+      "defense": "Defense",
+      "special-attack": "Special Attack",
+      "special-defense": "Special Defense",
+      "speed": "Speed",
+      "accuracy": "Accuracy",
+      "evasion": "Evasion"
+    },
     "MOVE": {
       "CATEGORIES": {
         "damage": "Inflicts damage",
@@ -59,7 +208,125 @@
         "field-effect": "Effect on one side of the field",
         "force-switch": "Forces target to switch out",
         "unique": "Unique effect"
+      },
+      "TARGET_TYPE": {
+        "specific-move": {
+          "NAME": "Specific move",
+          "DESCRIPTION": "One specific move. How this move is chosen depends upon on the move being used."
+        },
+        "selected-pokemon-me-first": {
+          "NAME": "Selected Pokémon",
+          "DESCRIPTION": "One other Pokémon on the field, selected by the trainer. Stolen moves reuse the same target."
+        },
+        "ally": {
+          "NAME": "Ally",
+          "DESCRIPTION": "The user's ally (if any)."
+        },
+        "users-field": {
+          "NAME": "User's field",
+          "DESCRIPTION": "The user's side of the field. Affects the user and its ally (if any)."
+        },
+        "user-or-ally": {
+          "NAME": "User or ally",
+          "DESCRIPTION": "Either the user or its ally, selected by the trainer."
+        },
+        "opponents-field": {
+          "NAME": "Opponent's field",
+          "DESCRIPTION": "The opposing side of the field. Affects opposing Pokémon."
+        },
+        "user": {
+          "NAME": "User",
+          "DESCRIPTION": "The user"
+        },
+        "random-opponent": {
+          "NAME": "Random opponent",
+          "DESCRIPTION": "One opposing Pokémon, selected at random."
+        },
+        "all-other-pokemon": {
+          "NAME": "All other Pokémon",
+          "DESCRIPTION": "Every other Pokémon on the field."
+        },
+        "selected-pokemon": {
+          "NAME": "Selected Pokémon",
+          "DESCRIPTION": "One other Pokémon on the field, selected by the trainer."
+        },
+        "all-opponents": {
+          "NAME": "All opponents",
+          "DESCRIPTION": "All opposing Pokémon."
+        },
+        "entire-field": {
+          "NAME": "Entire field",
+          "DESCRIPTION": "The entire field. Affects all Pokémon."
+        },
+        "user-and-allies": {
+          "NAME": "User and allies",
+          "DESCRIPTION": "The user and its allies."
+        },
+        "all-pokemon": {
+          "NAME": "All Pokémon",
+          "DESCRIPTION": "Every Pokémon on the field."
+        }
+      },
+      "DAMAGE_CLASS": {
+        "status": {
+          "NAME": "status",
+          "DESCRIPTION": "No damage"
+        },
+        "physical": {
+          "NAME": "physical",
+          "DESCRIPTION": "Physical damage, controlled by Attack and Defense"
+        },
+        "special": {
+          "NAME": "special",
+          "DESCRIPTION": "Special damage, controlled by Special Attack and Special Defense"
+        }
+      },
+      "AILMENT": {
+        "unknown": "????",
+        "none": "none",
+        "paralysis": "paralysis",
+        "sleep": "sleep",
+        "freeze": "freeze",
+        "burn": "burn",
+        "poison": "poison",
+        "confusion": "confusion",
+        "infatuation": "infatuation",
+        "trap": "trap",
+        "nightmare": "nightmare",
+        "torment": "torment",
+        "disable": "disable",
+        "yawn": "yawn",
+        "heal-block": "heal block",
+        "no-type-immunity": "no type immunity",
+        "leech-seed": "leech seed",
+        "embargo": "embargo",
+        "perish-song": "perish-song",
+        "ingrain": "ingrain",
+        "silence": "silence"
       }
+    },
+    "GENERATION": {
+      "NUMBER": {
+        "generation-i": "1",
+        "generation-ii": "2",
+        "generation-iii": "3",
+        "generation-iv": "4",
+        "generation-v": "5",
+        "generation-vi": "6",
+        "generation-vii": "7",
+        "generation-viii": "8"
+      }
+    },
+    "HABITAT": {
+      "cave": "cave",
+      "forest": "forest",
+      "grassland": "grassland",
+      "mountain": "mountain",
+      "rare": "rare",
+      "rough-terrain": "rough terrain",
+      "sea": "sea",
+      "urban": "urban",
+      "waters-edge": "waters edge"
     }
   }
 }
