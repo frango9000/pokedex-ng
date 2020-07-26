@@ -46,7 +46,7 @@
           <td>{{'UI.SPECIES.INFO.GENERATION' | translate}}</td>
           <td>{{'STATIC.GENERATION.NUMBER.' + pokemonSpecies.generation.name|translate}}</td>
         </tr>
-        <tr title="{{'UI.SPECIES.INFO.HABITAT_TITLE' | translate}}">
+        <tr title="{{'UI.SPECIES.INFO.HABITAT_TITLE' | translate}}" *ngIf="pokemonSpecies.habitat">
           <td>{{'UI.SPECIES.INFO.HABITAT' | translate}}</td>
           <td>{{'STATIC.HABITAT.' + pokemonSpecies.habitat.name|translate | titlecase}}</td>
         </tr>

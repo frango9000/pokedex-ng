@@ -24,6 +24,7 @@ export class PokemonSpeciesComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
+    this.pokemonSpecies = null;
     this.pokemonSpeciesService.getPokemonSpecies(this.pokemonSpeciesId).subscribe(specie => {
       this.pokemonSpecies = specie;
       this.generateTranslations(this.pokemonSpecies);

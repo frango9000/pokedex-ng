@@ -30,10 +30,10 @@ export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.types = null;
     this.pokemonTypeService.getTypes().subscribe(value => this.allTypes = value.map(value1 => {
       return {name: value1.name, multiplier: 1};
     }));
-
     this.types = [];
     this.typeIds.forEach((typeId, index) => {
       this.pokemonTypeService.getType(typeId.type.name).subscribe(type => {

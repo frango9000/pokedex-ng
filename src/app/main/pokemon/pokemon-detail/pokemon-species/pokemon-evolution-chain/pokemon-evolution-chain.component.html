@@ -7,7 +7,7 @@
       <div class="overflow-hidden text-nowrap pl-2">{{'UI.EVOLUTION_CHAIN.TITLE' | translate}}</div>
     </div>
   </div>
-  <div *ngIf="evolutionChain; else loading">
+  <div *ngIf="pokemonSpecies && evolutionChain; else loading">
     <mdb-card-body class="py-0 px-2 px-sm-4">
       <app-pokemon-evolution-link [link]="evolutionChain.chain"></app-pokemon-evolution-link>
     </mdb-card-body>
