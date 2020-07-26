@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PokemonEvolutionChainLink, PokemonEvolutionDetail} from '../../../../../../shared/domain/pokemon-evolution-chain';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-pokemon-evolution-link',
@@ -10,71 +11,82 @@ export class PokemonEvolutionLinkComponent implements OnInit {
 
   @Input() link: PokemonEvolutionChainLink;
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
   }
 
   ngOnInit(): void {
   }
 
-  getEvolutionMethodText(method: PokemonEvolutionDetail): { trigger: string, conditions: string[] } {
-    let trigger = '';
-    const conditions: string[] = [];
+  getEvolutionMethodText(method: PokemonEvolutionDetail): PokemonEvolutionTriggerDetails {
+    let trigger: PokemonEvolutionTriggerDetail;
+    const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {
       case 'level-up':
-        trigger = 'Level ' + (method.min_level ? method.min_level : ' up');
+        trigger = method.min_level ? {title: 'LEVEL_UP_AT', value: method.min_level} : {title: 'LEVEL_UP'};
         break;
       case 'trade':
-        trigger = 'When Traded ' + (method.trade_species ? ('for ' + method.trade_species) : '');
+        trigger = method.trade_species ? {title: 'WHEN_TRADED_FOR', value: method.trade_species.name} : {title: 'WHEN_TRADED'};
         break;
       case 'use-item':
-        trigger = 'Use a ' + (method.item.name ? method.item.name : '');
+        trigger = method.item ? {title: 'WITH_ITEM_USE', value: method.item.name} : {title: 'WITH_ITEM'};
         break;
       case 'shed':
-        trigger = 'Pokeball in bag and free slot in party.';
+        trigger = {title: 'SHED_EVOLVE'};
         break;
     }
     if (method.location) {
-      trigger += (' @ ' + method.location.name);
+      conditions.push({title: 'LOCATION', value: method.location.name});
     }
     if (method.known_move_type) {
-      trigger += (' knowing a move of type: ' + method.known_move_type.name);
+      conditions.push({title: 'KNOWN_MOVE_TYPE', value: method.known_move_type.name});
     }
     if (method.known_move) {
-      trigger += (' knowing move: ' + method.known_move.name);
+      conditions.push({title: 'KNOWN_MOVE', value: method.known_move.name});
     }
     if (method.min_affection) {
-      trigger += ' with high affection';
+      conditions.push({title: 'MIN_AFFECTION', value: method.min_affection});
     }
     if (method.min_beauty) {
-      trigger += ' with high beauty';
+      conditions.push({title: 'MIN_BEAUTY', value: method.min_beauty});
     }
     if (method.min_happiness) {
-      trigger += ' with high happiness';
+      conditions.push({title: 'MIN_HAPPINESS', value: method.min_happiness});
     }
     if (method.gender) {
-      conditions.push('Gender: ' + method.gender);
-    } // TODO
+      conditions.push({title: 'GENDER', value: method.gender});
+    }
     if (method.held_item) {
-      conditions.push('Holding item: ' + method.held_item.name);
+      conditions.push({title: 'HELD_ITEM', value: method.held_item.name});
     }
     if (method.party_species) {
-      conditions.push(method.party_species.name + ' in party');
+      conditions.push({title: 'PARTY_POKEMON', value: method.party_species.name});
     }
     if (method.party_type) {
-      conditions.push('Pokemon of type ' + method.party_type.name + ' in party');
+      conditions.push({title: 'PARTY_POKEMON_TYPE', value: method.party_type.name});
     }
     if (method.time_of_day) {
-      conditions.push('Time: ' + method.time_of_day);
+      conditions.push({title: 'TIME_OF_DAY', value: method.time_of_day});
     }
     if (method.relative_physical_stats) {
-      conditions.push('Stats: ' + (method.relative_physical_stats > 0 ? 'offensive' : (method.relative_physical_stats < 0 ? 'defensive' : 'balanced')));
+      conditions.push({title: ('STATS_' + (method.relative_physical_stats > 0 ? 'OFFENSIVE' : (method.relative_physical_stats < 0 ? 'DEFENSIVE' : 'BALANCED')))});
     }
     if (method.needs_overworld_rain) {
-      conditions.push('Overworld rain required');
+      conditions.push({title: 'NEEDS_OVERWORLD_RAIN'});
     }
     if (method.turn_upside_down) {
-      conditions.push('Turn 3ds Up-side Down');
+      conditions.push({title: 'TURN_UPSIDE_DOWN'});
     }
     return {trigger, conditions};
   }
+}
+
+
+export interface PokemonEvolutionTriggerDetails {
+  trigger: PokemonEvolutionTriggerDetail;
+  conditions: PokemonEvolutionTriggerDetail[];
+}
+
+export interface PokemonEvolutionTriggerDetail {
+  title: string;
+  value?: number | string;
 }

@@ -25,7 +25,7 @@ export class PokemonMovesComponent implements OnInit, OnDestroy {
   public tutorMoves: PokemonMoves[];
   public eggMoves: PokemonMoves[];
 
-  private versionSubscription: Subscription;
+  private versionSub: Subscription;
 
   public moveTypes: ApiNamedMove[];
 
@@ -34,14 +34,14 @@ export class PokemonMovesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.versionSubscription = this.pokemonVersionService.activeVersion$.subscribe(version => {
+    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(version => {
       this.filterMoves();
     });
     this.pokemonMoveService.getFirebaseMoveList().subscribe(value => this.moveTypes = value);
   }
 
   ngOnDestroy(): void {
-    this.versionSubscription.unsubscribe();
+    this.versionSub.unsubscribe();
   }
 
   private filterMoves(): void {

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {ApiNamedResource} from '../domain/api-resource';
 
@@ -35,7 +34,7 @@ export class PokemonVersionService {
 
   public activeVersion$ = new BehaviorSubject(this.activeVersion);
 
-  constructor(private httpClient: HttpClient) {
+  constructor() {
   }
 
   getVersionList(): Observable<ApiNamedResource[]> {

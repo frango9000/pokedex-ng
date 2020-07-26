@@ -1,9 +1,8 @@
-<div id="top"></div>
 <div class="container-fluid  px-0 px-md-4" *ngIf="pokemon">
   <div class="row justify-content-center mb-2">
-    <mdb-card class="pt-2 max-detail-size w-100">
+    <mdb-card class="max-detail-size w-100 py-2">
       <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
-        <h5 class="text-center text-white pt-1 ">
+        <h5 class="text-center text-white pt-1">
             <span class="px-2 py-1 mx-1" *ngFor="let type of pokemon.types; let i = index"
                   [ngStyle]="{'background-color':type.type.name | pokeTypeColor}"
             >{{'STATIC.TYPES.' + type.type.name | translate | uppercase}}</span>
@@ -12,37 +11,30 @@
              src="{{pokemon.sprites.front_default}}"
              alt="Card image cap">
       </div>
-      <!--Card content-->
-      <mdb-card-body class="py-0">
-        <!--Title-->
-        <mdb-card-title>
-          <div class="text-center">
-            <h4>{{pokemon.name | titlecase}}</h4>
-          </div>
-        </mdb-card-title>
-        <!--Text-->
-        <mdb-card-text>
-          <table class="table">
-            <tbody>
-            <tr>
-              <td>Pokedex Id</td>
-              <td># {{pokemon.id}}</td>
-            </tr>
-            <tr>
-              <td>Base Experience</td>
-              <td>{{pokemon.base_experience}} xp</td>
-            </tr>
-            <tr>
-              <td>Weight</td>
-              <td>{{pokemon.weight / 10}} kg.</td>
-            </tr>
-            <tr>
-              <td>Height</td>
-              <td>{{pokemon.height / 10}} m.</td>
-            </tr>
-            </tbody>
-          </table>
-        </mdb-card-text>
+      <mdb-card-body class="py-0 px-2 px-sm-4">
+        <div class="text-center ">
+          <h4>{{pokemon.name | titlecase}}</h4>
+        </div>
+        <table class="table mb-0">
+          <tbody>
+          <tr>
+            <td>{{'UI.POKEMON.INFO.ID' | translate}}</td>
+            <td># {{pokemon.id}}</td>
+          </tr>
+          <tr>
+            <td>{{'UI.POKEMON.INFO.BASE_EXPERIENCE' | translate}}</td>
+            <td>{{pokemon.base_experience}} {{'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | translate}}</td>
+          </tr>
+          <tr>
+            <td>{{'UI.POKEMON.INFO.WEIGHT' | translate}}</td>
+            <td>{{pokemon.weight / 10}} {{'UI.POKEMON.INFO.WEIGHT_UNIT' | translate}}</td>
+          </tr>
+          <tr>
+            <td>{{'UI.POKEMON.INFO.HEIGHT' | translate}}</td>
+            <td>{{pokemon.height / 10}} {{'UI.POKEMON.INFO.HEIGHT_UNIT' | translate}}</td>
+          </tr>
+          </tbody>
+        </table>
       </mdb-card-body>
     </mdb-card>
   </div>

@@ -1,16 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {PokemonMove} from '../../../../../shared/domain/pokemon-move';
 import {PokemonMoveService} from '../../../../../shared/services/pokemon-move.service';
 import {TranslateService} from '@ngx-translate/core';
 import {PokemonVersionService} from '../../../../../shared/services/pokemon-version.service';
 import {PokemonLanguageService} from '../../../../../shared/services/pokemon-language.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-move',
   templateUrl: './pokemon-move.component.html',
   styleUrls: ['./pokemon-move.component.scss']
 })
-export class PokemonMoveComponent implements OnInit {
+export class PokemonMoveComponent implements OnInit, OnDestroy {
 
 
   @Input() moveId: string | number;
@@ -18,6 +19,7 @@ export class PokemonMoveComponent implements OnInit {
   move: PokemonMove;
 
   activeVersion: string = 'en';
+  private versionSub: Subscription;
 
   constructor(private pokemonMoveService: PokemonMoveService,
               private translateService: TranslateService,
@@ -26,11 +28,15 @@ export class PokemonMoveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
+    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
     this.pokemonMoveService.getMove(this.moveId).subscribe(move => {
       this.move = move;
       this.generateTranslations(this.move);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.versionSub.unsubscribe();
   }
 
   private generateTranslations(move: PokemonMove): void {

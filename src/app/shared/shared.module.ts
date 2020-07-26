@@ -12,6 +12,7 @@ import {ExpandableResourcesPipe} from './pipes/expandable-resources.pipe';
 import {RomanPipe} from './pipes/roman.pipe';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
+import {ReplacePipe} from './pipes/replace.pipe';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {TranslateModule} from '@ngx-translate/core';
     NgVarDirective,
     ExpandableResourcesPipe,
     RomanPipe,
+    ReplacePipe,
   ],
   exports: [
     NavbarComponent,
@@ -37,6 +39,7 @@ import {TranslateModule} from '@ngx-translate/core';
     ExpandableResourcesPipe,
     RomanPipe,
     TranslateModule,
+    ReplacePipe,
   ],
   imports: [
     CommonModule,
