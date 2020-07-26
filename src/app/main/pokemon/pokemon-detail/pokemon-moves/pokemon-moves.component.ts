@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {PokemonMoves} from '../../../../shared/domain/pokemon';
 import {PokemonVersionService} from '../../../../shared/services/pokemon-version.service';
 import {Subscription} from 'rxjs';
@@ -10,7 +10,7 @@ import {ApiNamedMove} from '../../../../shared/domain/pokemon-move';
   templateUrl: './pokemon-moves.component.html',
   styleUrls: ['./pokemon-moves.component.scss']
 })
-export class PokemonMovesComponent implements OnInit, OnDestroy {
+export class PokemonMovesComponent implements OnInit, OnDestroy, OnChanges {
 
   public static readonly LEVEL_UP_METHOD = 'level-up';
   public static readonly MACHINE_METHOD = 'machine';
@@ -34,10 +34,13 @@ export class PokemonMovesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    this.pokemonMoveService.getFirebaseMoveList().subscribe(value => this.moveTypes = value);
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(version => {
       this.filterMoves();
     });
-    this.pokemonMoveService.getFirebaseMoveList().subscribe(value => this.moveTypes = value);
   }
 
   ngOnDestroy(): void {

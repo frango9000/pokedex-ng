@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 pb-2" *ngIf="pokemonSpecies">
+<mdb-card class="max-detail-size w-100 pb-2">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="{{'UI.SPECIES.INFO.TITLE_TITLE' | translate}}">
       <a mdbBtn floating="true">
@@ -8,71 +8,80 @@
     </div>
   </div>
   <mdb-card-body class="py-0 px-2 px-sm-4">
-    <div *ngIf="pokemonSpecies.flavor_text_entries"
-         class="overflow-auto text-center my-2">{{'SPECIES.' + pokemonSpecies.name + '.FLAVOR_TEXT.'
-    + this.activeVersion | translate}}</div>
-    <table class="table mb-0">
-      <tbody>
-      <tr>
-        <td>{{'UI.SPECIES.INFO.GENUS'|translate}}</td>
-        <td>{{'SPECIES.' + pokemonSpecies.name + '.GENERA' | translate }}</td>
-      </tr>
-      <tr>
-        <td>{{'UI.SPECIES.INFO.SHAPE'|translate}}</td>
-        <td>{{pokemonSpecies.shape.name | titlecase}}</td>
-      </tr>
-      <tr>
-        <td>{{'UI.SPECIES.INFO.COLOR'|translate}}</td>
-        <td>{{pokemonSpecies.color.name | titlecase}} <span
-          [ngStyle]="{'background-color':pokemonSpecies.color.name}">__</span></td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.GROWTH_RATE_TITLE'|translate}}">
-        <td>{{'UI.SPECIES.INFO.GROWTH_RATE'|translate}}</td>
-        <td>{{pokemonSpecies.growth_rate.name | titlecase}}</td>
-      </tr>
-      <tr *ngIf="pokemonSpecies.egg_groups"
-          title="{{'UI.SPECIES.INFO.EGG_GROUPS_TITLE' |translate}}">
-        <td>{{'UI.SPECIES.INFO.EGG_GROUPS'|translate}}</td>
-        <td><span *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}<span
-          *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
-        </td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.HATCH_STEPS_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.HATCH_STEPS' | translate}}</td>
-        <td>{{(+pokemonSpecies.hatch_counter + 1) * 255}}</td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.GENERATION_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.GENERATION' | translate}}</td>
-        <td>{{'STATIC.GENERATION.NUMBER.' + pokemonSpecies.generation.name|translate}}</td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.HABITAT_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.HABITAT' | translate}}</td>
-        <td>{{'STATIC.HABITAT.' + pokemonSpecies.habitat.name|translate | titlecase}}</td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.BASE_HAPPINESS' | translate}}</td>
-        <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
-      </tr>
-      <tr title="{{'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.CAPTURE_RATE' | translate}}</td>
-        <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
-      </tr>
-      <ng-container *ngIf="pokemonSpecies.gender_rate>=0">
-        <tr title="{{'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | translate}}">
-          <td>{{'UI.SPECIES.INFO.FEMALE_RATE' | translate}}</td>
-          <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
+    <div *ngIf="pokemonSpecies; else loading">
+      <div *ngIf="pokemonSpecies.flavor_text_entries"
+           class="overflow-auto text-center my-2">{{'SPECIES.' + pokemonSpecies.name + '.FLAVOR_TEXT.'
+      + this.activeVersion | translate}}</div>
+      <table class="table mb-0">
+        <tbody>
+        <tr>
+          <td>{{'UI.SPECIES.INFO.GENUS'|translate}}</td>
+          <td>{{'SPECIES.' + pokemonSpecies.name + '.GENERA' | translate }}</td>
         </tr>
-        <tr title="{{'UI.SPECIES.INFO.MALE_RATE_TITLE' | translate}}">
-          <td>{{'UI.SPECIES.INFO.MALE_RATE' | translate}}</td>
-          <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
+        <tr>
+          <td>{{'UI.SPECIES.INFO.SHAPE'|translate}}</td>
+          <td>{{pokemonSpecies.shape.name | titlecase}}</td>
         </tr>
-      </ng-container>
-      <tr *ngIf="pokemonSpecies.gender_rate===-1"
-          title="{{'UI.SPECIES.INFO.GENDERLESS_TITLE' | translate}}">
-        <td>{{'UI.SPECIES.INFO.GENDERLESS_RATE' | translate}}</td>
-        <td>{{'UI.SPECIES.INFO.GENDERLESS' | translate}}</td>
-      </tr>
-      </tbody>
-    </table>
+        <tr>
+          <td>{{'UI.SPECIES.INFO.COLOR'|translate}}</td>
+          <td>{{pokemonSpecies.color.name | titlecase}} <span
+            [ngStyle]="{'background-color':pokemonSpecies.color.name}">__</span></td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.GROWTH_RATE_TITLE'|translate}}">
+          <td>{{'UI.SPECIES.INFO.GROWTH_RATE'|translate}}</td>
+          <td>{{pokemonSpecies.growth_rate.name | titlecase}}</td>
+        </tr>
+        <tr *ngIf="pokemonSpecies.egg_groups"
+            title="{{'UI.SPECIES.INFO.EGG_GROUPS_TITLE' |translate}}">
+          <td>{{'UI.SPECIES.INFO.EGG_GROUPS'|translate}}</td>
+          <td><span *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index">{{eggGroup.name | titlecase}}<span
+            *ngIf="pokemonSpecies.egg_groups.length-1 !== i">, </span></span>
+          </td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.HATCH_STEPS_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.HATCH_STEPS' | translate}}</td>
+          <td>{{(+pokemonSpecies.hatch_counter + 1) * 255}}</td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.GENERATION_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.GENERATION' | translate}}</td>
+          <td>{{'STATIC.GENERATION.NUMBER.' + pokemonSpecies.generation.name|translate}}</td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.HABITAT_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.HABITAT' | translate}}</td>
+          <td>{{'STATIC.HABITAT.' + pokemonSpecies.habitat.name|translate | titlecase}}</td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.BASE_HAPPINESS' | translate}}</td>
+          <td>{{(pokemonSpecies.base_happiness / 255)|percent:'1.0-2' }}</td>
+        </tr>
+        <tr title="{{'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.CAPTURE_RATE' | translate}}</td>
+          <td>{{(pokemonSpecies.capture_rate / 255)|percent:'1.0-2' }}</td>
+        </tr>
+        <ng-container *ngIf="pokemonSpecies.gender_rate>=0">
+          <tr title="{{'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | translate}}">
+            <td>{{'UI.SPECIES.INFO.FEMALE_RATE' | translate}}</td>
+            <td>{{(pokemonSpecies.gender_rate / 8)|percent:'1.0-2' }}</td>
+          </tr>
+          <tr title="{{'UI.SPECIES.INFO.MALE_RATE_TITLE' | translate}}">
+            <td>{{'UI.SPECIES.INFO.MALE_RATE' | translate}}</td>
+            <td>{{((8 - pokemonSpecies.gender_rate) / 8)|percent:'1.0-2' }}</td>
+          </tr>
+        </ng-container>
+        <tr *ngIf="pokemonSpecies.gender_rate===-1"
+            title="{{'UI.SPECIES.INFO.GENDERLESS_TITLE' | translate}}">
+          <td>{{'UI.SPECIES.INFO.GENDERLESS_RATE' | translate}}</td>
+          <td>{{'UI.SPECIES.INFO.GENDERLESS' | translate}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #loading>
+      <div class="text-center">
+        <div class="spinner-border m-4" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">{{'LOADING' | translate}}</span>
+        </div>
+      </div>
+    </ng-template>
   </mdb-card-body>
 </mdb-card>

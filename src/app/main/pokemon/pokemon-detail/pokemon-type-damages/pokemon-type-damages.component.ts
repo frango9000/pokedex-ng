@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {PokemonTypeService} from '../../../../shared/services/pokemon-type.service';
 import {PokemonType} from '../../../../shared/domain/pokemon-type';
 import {ApiNamedResource} from '../../../../shared/domain/api-resource';
@@ -8,7 +8,7 @@ import {ApiNamedResource} from '../../../../shared/domain/api-resource';
   templateUrl: './pokemon-type-damages.component.html',
   styleUrls: ['./pokemon-type-damages.component.scss']
 })
-export class PokemonTypeDamagesComponent implements OnInit {
+export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
 
   @Input() typeIds: {
     slot: number,
@@ -27,6 +27,9 @@ export class PokemonTypeDamagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.pokemonTypeService.getTypes().subscribe(value => this.allTypes = value.map(value1 => {
       return {name: value1.name, multiplier: 1};
     }));

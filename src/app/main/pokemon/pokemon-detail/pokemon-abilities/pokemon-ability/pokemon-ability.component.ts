@@ -35,6 +35,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
     });
   }
 
+
   ngOnDestroy(): void {
     this.versionSub.unsubscribe();
   }

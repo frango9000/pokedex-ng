@@ -18,6 +18,7 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.pokemon = null;
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
