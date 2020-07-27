@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {PokemonTypeService} from '../../../../shared/services/pokemon-type.service';
-import {PokemonType} from '../../../../shared/domain/pokemon-type';
+import {ApiNamedType} from '../../../../shared/domain/pokemon-type';
 import {ApiNamedResource} from '../../../../shared/domain/api-resource';
 
 @Component({
@@ -15,7 +15,7 @@ export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
     type: ApiNamedResource
   }[];
 
-  types: PokemonType[];
+  types: ApiNamedType[];
 
   allTypes: { name: string, multiplier: number }[] = [];
 
@@ -49,15 +49,15 @@ export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
     let generatedTypeDamages: { name: string, multiplier: number }[] = JSON.parse(JSON.stringify(this.allTypes));
     this.types.forEach(type => {
       type.damage_relations.double_damage_from.forEach(double => {
-        const found = generatedTypeDamages.findIndex(value => value.name === double.name);
+        const found = generatedTypeDamages.findIndex(value => value.name === double);
         generatedTypeDamages[found].multiplier *= 2;
       });
       type.damage_relations.half_damage_from.forEach(half => {
-        const found = generatedTypeDamages.findIndex(value => value.name === half.name);
+        const found = generatedTypeDamages.findIndex(value => value.name === half);
         generatedTypeDamages[found].multiplier *= 0.5;
       });
       type.damage_relations.no_damage_from.forEach(none => {
-        const found = generatedTypeDamages.findIndex(value => value.name === none.name);
+        const found = generatedTypeDamages.findIndex(value => value.name === none);
         generatedTypeDamages[found].multiplier *= 0;
       });
     });

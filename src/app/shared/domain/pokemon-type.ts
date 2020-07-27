@@ -1,5 +1,16 @@
 import {ApiName, ApiNamedResource} from './api-resource';
 
+export interface ApiNamedType extends ApiNamedResource {
+  damage_relations?: {
+    double_damage_from?: string[];
+    double_damage_to?: string[];
+    half_damage_from?: string[];
+    half_damage_to?: string[];
+    no_damage_from?: string[];
+    no_damage_to?: string[];
+  };
+}
+
 export interface PokemonType {
   id: number;
   name: string;

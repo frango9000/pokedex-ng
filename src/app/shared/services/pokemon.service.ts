@@ -40,21 +40,22 @@ export class PokemonService {
     );
   }
 
-  getFirebasePokemonList(offset: number = 1, limit: number = 36): Observable<ApiNamedPokemon[]> {
-    const pageParams: HttpParams = new HttpParams()
-    .append('orderBy', '"$key"')
-    .append('startAt', String('"' + offset + '"'))
-    .append('endAt', String('"' + (offset + (limit - 1)) + '"'));
-    return this.httpClient.get<ApiNamedPokemon[]>(environment.firebaseApi + '/pokemon.json', {params: pageParams}).pipe(
-      map(id => Object.keys(id).map(pokemon => id[pokemon])),
-      tap(serviceLog),
-      shareReplay()
-    );
-  }
-
-  postFirebasePokemon(data: ApiNamedPokemon): Observable<any> {
-    return this.httpClient.put(environment.firebaseApi + '/pokemon/' + data.id + '.json', data).pipe(
-      tap(serviceLog)
-    );
-  }
+  //
+  // getFirebasePokemonList(offset: number = 1, limit: number = 36): Observable<ApiNamedPokemon[]> {
+  //   const pageParams: HttpParams = new HttpParams()
+  //   .append('orderBy', '"$key"')
+  //   .append('startAt', String('"' + offset + '"'))
+  //   .append('endAt', String('"' + (offset + (limit - 1)) + '"'));
+  //   return this.httpClient.get<ApiNamedPokemon[]>(environment.firebaseApi + '/pokemon.json', {params: pageParams}).pipe(
+  //     map(id => Object.keys(id).map(pokemon => id[pokemon])),
+  //     tap(serviceLog),
+  //     shareReplay()
+  //   );
+  // }
+  //
+  // postFirebasePokemon(data: ApiNamedPokemon): Observable<any> {
+  //   return this.httpClient.put(environment.firebaseApi + '/pokemon/' + data.id + '.json', data).pipe(
+  //     tap(serviceLog)
+  //   );
+  // }
 }

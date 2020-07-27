@@ -6,6 +6,10 @@ import {PokemonMoveService} from '../services/pokemon-move.service';
 import {ApiNamedMove} from '../domain/pokemon-move';
 import {PokemonLanguageService} from '../services/pokemon-language.service';
 import {ApiNamedLanguage} from '../domain/pokemon-language';
+import {PokemonTypeService} from '../services/pokemon-type.service';
+import {ApiNamedType} from '../domain/pokemon-type';
+import {PokemonVersionService} from '../services/pokemon-version.service';
+import {ApiNamedVersionGroup} from '../domain/pokemon-version-group';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +18,9 @@ export class PokemonGeneratorService {
 
   constructor(private pokemonService: PokemonService,
               private pokemonMoveService: PokemonMoveService,
-              private languageService: PokemonLanguageService) {
+              private languageService: PokemonLanguageService,
+              private pokemonTypeService: PokemonTypeService,
+              private pokemonVersionService: PokemonVersionService) {
 
   }
 
@@ -76,7 +82,61 @@ export class PokemonGeneratorService {
             });
             if (languages.length === responseList.length) {
               languages.sort((a, b) => a.id > b.id ? 1 : -1);
-              console.log('languages', languages);
+              console.log('languages');
+              console.log(JSON.stringify(languages));
+            }
+          });
+        }, 100);
+      });
+    });
+  }
+
+  generateVersionList(): void {
+    const versions: ApiNamedVersionGroup[] = [];
+    this.pokemonVersionService.getApiVersionList().subscribe(responseList => {
+      responseList.forEach(versionName => {
+        setTimeout(() => {
+          this.pokemonVersionService.getApiVersion(versionName.name).subscribe(version => {
+            versions.push({
+              name: version.name,
+              id: version.id,
+              generation: version.generation.name,
+              order: version.order,
+              versions: version.versions.map(value => value.name),
+            });
+            if (versions.length === responseList.length) {
+              versions.sort((a, b) => a.id > b.id ? 1 : -1);
+              console.log('versions');
+              console.log(JSON.stringify(versions));
+            }
+          });
+        }, 100);
+      });
+    });
+  }
+
+  generateTypeList(): void {
+    const types: ApiNamedType[] = [];
+    this.pokemonTypeService.getApiTypes().subscribe(responseList => {
+      responseList.forEach(typeName => {
+        setTimeout(() => {
+          this.pokemonTypeService.getApiType(typeName.name).subscribe(type => {
+            types.push({
+              name: type.name,
+              id: type.id,
+              damage_relations: {
+                double_damage_from: type.damage_relations.double_damage_from.map(value => value.name),
+                double_damage_to: type.damage_relations.double_damage_to.map(value => value.name),
+                half_damage_from: type.damage_relations.half_damage_from.map(value => value.name),
+                half_damage_to: type.damage_relations.half_damage_to.map(value => value.name),
+                no_damage_from: type.damage_relations.no_damage_from.map(value => value.name),
+                no_damage_to: type.damage_relations.no_damage_to.map(value => value.name)
+              }
+            });
+            if (types.length === responseList.length) {
+              types.sort((a, b) => a.id > b.id ? 1 : -1);
+              console.log('types');
+              console.log(JSON.stringify(types));
             }
           });
         }, 100);

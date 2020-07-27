@@ -1,27 +1,13 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {ApiNamedResource} from '../domain/api-resource';
-
-export const versions = [
-  {name: 'red-blue', url: 'https://pokeapi.co/api/v2/version-group/1/'},
-  {name: 'yellow', url: 'https://pokeapi.co/api/v2/version-group/2/'},
-  {name: 'gold-silver', url: 'https://pokeapi.co/api/v2/version-group/3/'},
-  {name: 'crystal', url: 'https://pokeapi.co/api/v2/version-group/4/'},
-  {name: 'ruby-sapphire', url: 'https://pokeapi.co/api/v2/version-group/5/'},
-  {name: 'emerald', url: 'https://pokeapi.co/api/v2/version-group/6/'},
-  {name: 'firered-leafgreen', url: 'https://pokeapi.co/api/v2/version-group/7/'},
-  {name: 'diamond-pearl', url: 'https://pokeapi.co/api/v2/version-group/8/'},
-  {name: 'platinum', url: 'https://pokeapi.co/api/v2/version-group/9/'},
-  {name: 'heartgold-soulsilver', url: 'https://pokeapi.co/api/v2/version-group/10/'},
-  {name: 'black-white', url: 'https://pokeapi.co/api/v2/version-group/11/'},
-  {name: 'colosseum', url: 'https://pokeapi.co/api/v2/version-group/12/'},
-  {name: 'xd', url: 'https://pokeapi.co/api/v2/version-group/13/'},
-  {name: 'black-2-white-2', url: 'https://pokeapi.co/api/v2/version-group/14/'},
-  {name: 'x-y', url: 'https://pokeapi.co/api/v2/version-group/15/'},
-  {name: 'omega-ruby-alpha-sapphire', url: 'https://pokeapi.co/api/v2/version-group/16/'},
-  {name: 'sun-moon', url: 'https://pokeapi.co/api/v2/version-group/17/'},
-  {name: 'ultra-sun-ultra-moon', url: 'https://pokeapi.co/api/v2/version-group/18/'},
-];
+import {ApiNamedResource, ApiResponse} from '../domain/api-resource';
+import {environment} from '../../../environments/environment';
+import {map, shareReplay, tap} from 'rxjs/operators';
+import {serviceLog} from './cache/icache';
+import {HttpClient} from '@angular/common/http';
+import {PokemonType} from '../domain/pokemon-type';
+import {ApiNamedVersionGroup, PokemonVersionGroup} from '../domain/pokemon-version-group';
+import versions from '../../../assets/data/versions.json';
 
 @Injectable({
   providedIn: 'root'
@@ -34,15 +20,26 @@ export class PokemonVersionService {
 
   public activeVersion$ = new BehaviorSubject(this.activeVersion);
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
   }
 
-  getVersionList(): Observable<ApiNamedResource[]> {
-    // return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
-    //   tap(serviceLog),
-    //   shareReplay()
-    // );
+  getVersionList(): Observable<ApiNamedVersionGroup[]> {
     return of(versions);
+  }
+
+  getApiVersionList(): Observable<ApiNamedResource[]> {
+    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
+      map(value => value.results),
+      tap(serviceLog),
+      shareReplay()
+    );
+  }
+
+  getApiVersion(versionId: string | number): Observable<PokemonVersionGroup> {
+    return this.httpClient.get<PokemonType>(environment.apiUrl + '/version-group/' + versionId).pipe(
+      tap(serviceLog),
+      shareReplay()
+    );
   }
 
   setDisplayVersion(version: string): void {
@@ -52,19 +49,8 @@ export class PokemonVersionService {
     }
   }
 
-  filterWithFallback<T>(versionList: T[]): T[] {
-    let requested = this.filter(versionList);
-    if (requested.length === 0) {
-      requested = versionList.filter((value: any) => value.version_group.name === PokemonVersionService.DEFAULT_VERSION);
-    }
-    return requested.length > 0 ? requested : versionList;
-  }
-
-  filter<T>(versionList: T[]): T[] {
-    return versionList.filter((value: any) => value.version_group.name === this.activeVersion);
-  }
-
   matchesDisplayVersion(version: string): boolean {
     return this.activeVersion === version;
   }
 }
+

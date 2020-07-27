@@ -25,4 +25,12 @@ export class TestComponent implements OnInit {
   generateLangList(): void {
     this.pokemonListGeneratorService.generateLanguageList();
   }
+
+  generateTypeList(): void {
+    this.pokemonListGeneratorService.generateTypeList();
+  }
+
+  generateVersionList(): void {
+    this.pokemonListGeneratorService.generateVersionList();
+  }
 }

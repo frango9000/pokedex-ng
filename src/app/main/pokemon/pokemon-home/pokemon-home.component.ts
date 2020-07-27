@@ -14,7 +14,7 @@ export class PokemonHomeComponent implements OnInit {
 
   public gridMode = true;
 
-  offset = 1;
+  offset = 0;
   loading: boolean;
 
   constructor(private pokemonService: PokemonService) {
@@ -25,11 +25,6 @@ export class PokemonHomeComponent implements OnInit {
   }
 
   private fetchPokemonList(): void {
-    // this.pokemonService.getPokemonList(this.offset).pipe(
-    //   map(response => response.results.map(value => new ApiNamedResource(value)))
-    // ).subscribe(list => this.pokemonList.push(...list));
-    // this.pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
-
     this.pokemonService.getPokemonList(this.offset).pipe(
     ).subscribe(value => {
       this.pokemonList.push(...value);
