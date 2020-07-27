@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {PokemonSpecies} from '../domain/pokemon-species';
 import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
-import {serviceLog} from './pokemon.service';
+import {serviceLog} from './cache/icache';
 
 @Injectable({
   providedIn: 'root'

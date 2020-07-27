@@ -5,7 +5,7 @@ import {environment} from '../../../environments/environment';
 import {shareReplay, tap} from 'rxjs/operators';
 import {PokemonType} from '../domain/pokemon-type';
 import {ApiNamedResource} from '../domain/api-resource';
-import {serviceLog} from './pokemon.service';
+import {serviceLog} from './cache/icache';
 
 export const moves: ApiNamedResource[] = [
   {name: 'normal', url: 'https://pokeapi.co/api/v2/type/1/'},

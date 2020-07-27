@@ -15,7 +15,7 @@ export class TestComponent implements OnInit {
   }
 
   genPokeList(): void {
-    // this.pokemonListGeneratorService.generatePokemonList();
+    this.pokemonListGeneratorService.generatePokemonList();
   }
 
   generateMoveList(): void {

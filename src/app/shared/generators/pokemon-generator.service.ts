@@ -20,25 +20,24 @@ export class PokemonGeneratorService {
 
   generatePokemonList(): void {
     const pokemonList: ApiNamedPokemon[] = [];
-    this.pokemonService.getPokemonList(0, 807).subscribe(list => {
-      list.results.forEach((pokemonId, index) => {
+    this.pokemonService.getApiPokemonList(0, 10000).subscribe(responseList => {
+      responseList.forEach((pokemonId, index) => {
         setTimeout(() => {
-          this.pokemonService.getPokemon(pokemonId.name).subscribe(pokemon => {
+          this.pokemonService.getApiPokemon(pokemonId.name).subscribe(pokemon => {
             pokemonList.push({
-              ...pokemonId,
+              name: pokemon.name,
               id: pokemon.id,
-              types: pokemon.types.map(type => type.type.name),
-              // height: pokemon.height,
-              // weight: pokemon.weight,
+              types: pokemon.types.map(type => type.type.name)
             });
+            if (pokemonList.length === responseList.length) {
+              pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
+              console.log('pokemon');
+              console.log(JSON.stringify(pokemonList));
+            }
           });
         }, 20);
       });
     });
-    setTimeout(() => {
-      pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
-      pokemonList.forEach(value => this.pokemonService.postFirebasePokemon(value).subscribe());
-    }, 40000);
   }
 
 
@@ -51,10 +50,7 @@ export class PokemonGeneratorService {
             moves.push({
               name: move.name,
               id: move.id,
-              type: move.type.name,
-              // names: move.names.map(value => {
-              //   return { name: value.name, language: value.language.name };
-              // })
+              type: move.type.name
             });
             if (moves.length === responseList.length) {
               moves.sort((a, b) => a.id > b.id ? 1 : -1);

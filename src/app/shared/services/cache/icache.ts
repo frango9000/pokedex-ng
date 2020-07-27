@@ -1,4 +1,5 @@
 import {HttpRequest, HttpResponse} from '@angular/common/http';
+import {environment} from '../../../../environments/environment';
 
 export interface ICache {
 
@@ -15,4 +16,10 @@ export interface CacheEntry {
   url: string;
   response: HttpResponse<any>;
   creation: number;
+}
+
+export function serviceLog(response): void {
+  if (environment.logServiceResponses) {
+    console.log(response);
+  }
 }

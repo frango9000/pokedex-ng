@@ -5,9 +5,9 @@ import {TranslateService} from '@ngx-translate/core';
 import languages from '../../../assets/data/languages.json';
 import {environment} from '../../../environments/environment';
 import {map, tap} from 'rxjs/operators';
-import {serviceLog} from './pokemon.service';
 import {HttpClient} from '@angular/common/http';
 import {ApiNamedLanguage, PokemonLanguage} from '../domain/pokemon-language';
+import {serviceLog} from './cache/icache';
 
 
 @Injectable({

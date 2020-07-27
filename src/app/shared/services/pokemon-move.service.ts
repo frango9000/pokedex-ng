@@ -5,9 +5,9 @@ import {environment} from '../../../environments/environment';
 import {map, shareReplay, tap} from 'rxjs/operators';
 import {PokemonAbility} from '../domain/pokemon-ability';
 import {ApiNamedMove, PokemonMove} from '../domain/pokemon-move';
-import {serviceLog} from './pokemon.service';
 import {ApiNamedResource} from '../domain/api-resource';
 import moves from '../../../assets/data/moves.json';
+import {serviceLog} from './cache/icache';
 
 @Injectable({
   providedIn: 'root'

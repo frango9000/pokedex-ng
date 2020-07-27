@@ -30,7 +30,7 @@ export class PokemonHomeComponent implements OnInit {
     // ).subscribe(list => this.pokemonList.push(...list));
     // this.pokemonList.sort((a, b) => a.id > b.id ? 1 : -1);
 
-    this.pokemonService.getFirebasePokemonList(this.offset).pipe(
+    this.pokemonService.getPokemonList(this.offset).pipe(
     ).subscribe(value => {
       this.pokemonList.push(...value);
       this.loading = false;

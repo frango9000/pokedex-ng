@@ -27,7 +27,7 @@ export class PokemonDetailComponent implements OnInit {
     });
     this.route.params.subscribe((params: Params) => {
       this.pokemonId = params['pokemon'];
-      this.pokemonService.getPokemon(this.pokemonId).subscribe(response => {
+      this.pokemonService.getApiPokemon(this.pokemonId).subscribe(response => {
         this.pokemon = response;
       });
     });
