@@ -6,7 +6,8 @@ export interface ApiResponse<T> {
 }
 
 export interface ApiResource {
-  url: string;
+  id?: number;
+  url?: string;
 
   // constructor(data: any) {
   //   Object.assign(this, data);
@@ -27,7 +28,7 @@ export interface ApiResource {
 }
 
 export interface ApiNamedResource extends ApiResource {
-  name: string;
+  name?: string;
 }
 
 export interface ApiName {

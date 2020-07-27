@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './main.component';
 import {PokemonModule} from './pokemon/pokemon.module';
+import {TestComponent} from './test/test.component';
 
 export const loadPokemonModule = () => PokemonModule;
 
@@ -23,8 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'test',
-    redirectTo: 'pokemon',
-    // component: TestComponent
+    // redirectTo: 'pokemon',
+    component: TestComponent
   }
 ];
 

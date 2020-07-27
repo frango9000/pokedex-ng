@@ -29,7 +29,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(value => this.activeVersion = value);
-    this.pokemonMoveService.getMove(this.moveId).subscribe(move => {
+    this.pokemonMoveService.getApiMove(this.moveId).subscribe(move => {
       this.move = move;
       this.generateTranslations(this.move);
     });

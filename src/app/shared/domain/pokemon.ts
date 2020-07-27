@@ -1,9 +1,6 @@
 import {ApiNamedResource} from './api-resource';
 
-export interface ApiNamedPokemon {
-  id: number;
-  name: string;
-  url: string;
+export interface ApiNamedPokemon extends ApiNamedResource {
   types: string[];
 }
 

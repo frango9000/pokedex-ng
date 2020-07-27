@@ -37,7 +37,7 @@ export class PokemonMovesComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.pokemonMoveService.getFirebaseMoveList().subscribe(value => this.moveTypes = value);
+    this.pokemonMoveService.getMoves().subscribe(value => this.moveTypes = value);
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(version => {
       this.filterMoves();
     });
