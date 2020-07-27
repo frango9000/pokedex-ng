@@ -24,7 +24,6 @@ export class CacheLocalStorageImplService implements ICache {
         console.log('Domain Local Storage is Full!');
       }
     }
-    console.log('ls: ' + localStorage.length);
   }
 
 

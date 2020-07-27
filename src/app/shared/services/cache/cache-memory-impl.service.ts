@@ -18,7 +18,6 @@ export class CacheMemoryImplService implements ICache {
     const url = req.urlWithParams;
     const entry: CacheEntry = {url, response, creation: Date.now()};
     this.cache.set(url, entry);
-    console.log('ms: ' + this.cache.size);
   }
 
 
