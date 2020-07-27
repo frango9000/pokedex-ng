@@ -6,8 +6,8 @@ import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {CacheService} from './shared/services/cache.service';
-import {CacheInterceptor} from './shared/services/cache.interceptor';
+import {CacheService} from './shared/services/cache/cache.service';
+import {CacheInterceptor} from './shared/services/cache/cache.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 

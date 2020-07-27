@@ -1,33 +1,36 @@
 import {Injectable} from '@angular/core';
 import {HttpRequest, HttpResponse} from '@angular/common/http';
-
-const maxAge = 86400000;
+import {CacheEntry, ICache} from './icache';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CacheService {
+export class CacheMemoryImplService implements ICache {
+
+  private cache = new Map<string, CacheEntry>();
 
   constructor() {
   }
 
+
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;
     const entry: CacheEntry = {url, response, creation: Date.now()};
-    localStorage.setItem(url, JSON.stringify(entry));
+    this.cache.set(url, entry);
+    console.log('ms: ' + this.cache.size);
   }
 
 
-  get(req: HttpRequest<any>): HttpResponse<any> {
+  get(req: HttpRequest<any>): HttpResponse<any> | null {
     const url = req.urlWithParams;
-    const item = localStorage.getItem(url);
-    if (item !== null) {
-      const entry: CacheEntry = JSON.parse(item);
+    const entry = this.cache.get(url);
+    if (entry !== undefined) {
       const now = new Date().getTime();
       if (!entry) {
         return null;
       } else {
-        if (entry.creation && (entry.creation <= (now - maxAge))) {
+        if (entry.creation && (entry.creation <= (now - environment.maxCacheAge))) {
           this.remove(url);
           return null;
         }
@@ -38,17 +41,10 @@ export class CacheService {
   }
 
   remove(url: string): void {
-    localStorage.removeItem(url);
+    this.cache.delete(url);
   }
 
-  cleanLocalStorage(): void {
-    localStorage.clear();
+  cleanCache(): void {
+    this.cache.clear();
   }
-}
-
-
-export interface CacheEntry {
-  url: string;
-  response: HttpResponse<any>;
-  creation: number;
 }

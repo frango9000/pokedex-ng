@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Observable, of} from 'rxjs';
 import {CacheService} from './cache.service';
 import {tap} from 'rxjs/operators';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {

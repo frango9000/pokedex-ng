@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseHref: 'pokedex-ng/',
+  maxCacheAge: 86400000,
   apiUrl: 'https://pokeapi.co/api/v2',
   isCacheEnabled: true,
   logNetworkResponses: false,
