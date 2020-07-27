@@ -1,0 +1,67 @@
+[
+  {
+    "name": "en",
+    "url": "https://pokeapi.co/api/v2/language/9/",
+    "iso3166": "us"
+  },
+  {
+    "name": "es",
+    "url": "https://pokeapi.co/api/v2/language/7/",
+    "iso3166": "es"
+  },
+  {
+    "name": "ja",
+    "url": "https://pokeapi.co/api/v2/language/11/",
+    "iso3166": "jp"
+  },
+  {
+    "name": "ja-Hrkt",
+    "url": "https://pokeapi.co/api/v2/language/1/",
+    "iso3166": "jp"
+  },
+  {
+    "name": "roomaji",
+    "url": "https://pokeapi.co/api/v2/language/2/",
+    "iso3166": "jp"
+  },
+  {
+    "name": "ko",
+    "url": "https://pokeapi.co/api/v2/language/3/",
+    "iso3166": "kr"
+  },
+  {
+    "name": "fr",
+    "url": "https://pokeapi.co/api/v2/language/5/",
+    "iso3166": "fr"
+  },
+  {
+    "name": "de",
+    "url": "https://pokeapi.co/api/v2/language/6/",
+    "iso3166": "de"
+  },
+  {
+    "name": "it",
+    "url": "https://pokeapi.co/api/v2/language/8/",
+    "iso3166": "it"
+  },
+  {
+    "name": "cs",
+    "url": "https://pokeapi.co/api/v2/language/10/",
+    "iso3166": "cz"
+  },
+  {
+    "name": "zh-Hant",
+    "url": "https://pokeapi.co/api/v2/language/4/",
+    "iso3166": "cn"
+  },
+  {
+    "name": "zh-Hans",
+    "url": "https://pokeapi.co/api/v2/language/12/",
+    "iso3166": "cn"
+  },
+  {
+    "name": "pt-BR",
+    "url": "https://pokeapi.co/api/v2/language/13/",
+    "iso3166": "br"
+  }
+]

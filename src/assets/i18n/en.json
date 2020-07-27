@@ -327,6 +327,21 @@
       "sea": "sea",
       "urban": "urban",
       "waters-edge": "waters edge"
+    },
+    "LANGUAGES": {
+      "en": "English",
+      "es": "Spanish",
+      "ja": "Japanese",
+      "ja-Hrkt": "Japanese",
+      "roomaji": "Japanese",
+      "ko": "Korean",
+      "fr": "French",
+      "de": "German",
+      "it": "Italian",
+      "cs": "Czech",
+      "zh-Hant": "Chinese",
+      "zh-Hans": "Chinese",
+      "pt-BR": "Portuguese"
     }
   }
 }

@@ -13,6 +13,7 @@ import {RomanPipe} from './pipes/roman.pipe';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReplacePipe} from './pipes/replace.pipe';
+import {LocalePickerComponent} from './navbar/locale-picker/locale-picker.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ReplacePipe} from './pipes/replace.pipe';
     ExpandableResourcesPipe,
     RomanPipe,
     ReplacePipe,
+    LocalePickerComponent
   ],
   exports: [
     NavbarComponent,
@@ -44,7 +46,8 @@ import {ReplacePipe} from './pipes/replace.pipe';
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    RouterModule
+    RouterModule,
+    TranslateModule
   ]
 })
 export class SharedModule {
