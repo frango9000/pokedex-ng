@@ -20,7 +20,14 @@
   <div class="row my-2">
     <div class="col text-center">
       <button mdbBtn type="button" color="blue" mdbWavesEffect
-              (click)="fetchMore()">{{pokemonList.length > 0 ? 'Load More' : 'No Photos Found'}}</button>
+              (click)="fetchMore()">
+        <ng-container *ngIf="loading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"> Loading...</span>
+        </ng-container>
+        <ng-container *ngIf="!loading">
+          <span>{{offset < 807 ? 'Load More' : 'All Pokemon Loaded'}}</span>
+        </ng-container>
+      </button>
     </div>
   </div>
 </div>

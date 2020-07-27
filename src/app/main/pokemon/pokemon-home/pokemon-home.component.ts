@@ -15,7 +15,7 @@ export class PokemonHomeComponent implements OnInit {
   public gridMode = true;
 
   offset = 1;
-  private loading: boolean;
+  loading: boolean;
 
   constructor(private pokemonService: PokemonService) {
   }

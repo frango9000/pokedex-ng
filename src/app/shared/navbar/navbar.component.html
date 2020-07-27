@@ -10,8 +10,7 @@
 
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown *ngIf="this.versions$ | async as versions">
+      <li class="nav-item dropdown my-auto" dropdown *ngIf="this.versions$ | async as versions">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
           <mdb-icon fas icon="save"></mdb-icon>
           <span class="caret">{{pokemonVersionService.activeVersion}}</span></a>
@@ -21,10 +20,15 @@
         </div>
       </li>
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown my-auto" dropdown>
         <app-locale-picker></app-locale-picker>
       </li>
-
+      <li class="nav-item my-auto">
+        <a class="nav-link waves-light" mdbWavesEffect href="https://github.com/fsancheztemprano/pokedex-ng"
+           title="Code on Github">
+          <mdb-icon fab icon="github" size="2x"></mdb-icon>
+        </a>
+      </li>
     </ul>
     <!-- Links -->
   </links>
