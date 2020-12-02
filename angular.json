@@ -1,10 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "cli": {
-    "packageManager": "yarn"
-  },
-  "newProjectRoot": "projects",
   "projects": {
     "pokedex-ng": {
       "projectType": "application",
@@ -13,22 +8,22 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "root": "apps/pokedex-ng",
+      "sourceRoot": "apps/pokedex-ng/src",
+      "prefix": "pokedex-ng",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/pokedex-ng",
+            "index": "apps/pokedex-ng/src/index.html",
+            "main": "apps/pokedex-ng/src/main.ts",
+            "polyfills": "apps/pokedex-ng/src/polyfills.ts",
+            "tsConfig": "apps/pokedex-ng/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/pokedex-ng/src/favicon.ico",
+              "apps/pokedex-ng/src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -39,8 +34,7 @@
               "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "node_modules/animate.css/animate.css",
-              "src/styles.scss"
-            ],
+              "apps/pokedex-ng/src/styles.scss"],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js"
@@ -50,8 +44,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/pokedex-ng/src/environments/environment.ts",
+                  "with": "apps/pokedex-ng/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,9 +56,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "aot": true,
-              "deleteOutputPath": true,
-              "baseHref": "/pokedex-ng/",
               "budgets": [
                 {
                   "type": "initial",
@@ -97,40 +88,31 @@
             "browserTarget": "pokedex-ng:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "lintFilePatterns": ["apps/pokedex-ng/src/**/*.ts"]
           }
         },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "test": {
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "jestConfig": "apps/pokedex-ng/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "pokedex-ng-e2e": {
+      "root": "apps/pokedex-ng-e2e",
+      "sourceRoot": "apps/pokedex-ng-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pokedex-ng-e2e/cypress.json",
+            "tsConfig": "apps/pokedex-ng-e2e/tsconfig.e2e.json",
             "devServerTarget": "pokedex-ng:serve"
           },
           "configurations": {
@@ -139,11 +121,36 @@
             }
           }
         },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pokedex-ng-e2e/**/*.{js,ts}"]
+          }
         }
       }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "pokedex-ng"
