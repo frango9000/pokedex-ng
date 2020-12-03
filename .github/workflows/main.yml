@@ -1,0 +1,49 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2.1.2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - name: Prettier
+      uses: MansaGroup/nrwl-nx-action@v1.0.1
+      with: 
+        targets: format:check
+        all: 'true'
+        parallel: 'true'
+    - name: Lint
+      uses: MansaGroup/nrwl-nx-action@v1.0.1
+      with: 
+        targets: lint
+        all: 'true'
+        parallel: 'true'
+    - name: Test
+      uses: MansaGroup/nrwl-nx-action@v1.0.1
+      with: 
+        targets: test
+        all: 'true'
+        parallel: 'true'
+    - name: Build
+      uses: MansaGroup/nrwl-nx-action@v1.0.1
+      with: 
+        targets: build
+        all: 'true'
+        parallel: 'true'
