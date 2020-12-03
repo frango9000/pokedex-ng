@@ -1,19 +1,17 @@
-import {Injectable} from '@angular/core';
-import {CacheEntry, ICache} from './icache';
-import {HttpRequest, HttpResponse} from '@angular/common/http';
-import {environment} from '../../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { CacheEntry, ICache } from './icache';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CacheLocalStorageImplService implements ICache {
-
-  constructor() {
-  }
+  constructor() {}
 
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;
-    const entry: CacheEntry = {url, response, creation: Date.now()};
+    const entry: CacheEntry = { url, response, creation: Date.now() };
     try {
       localStorage.setItem(url, JSON.stringify(entry));
     } catch (e) {
@@ -26,7 +24,6 @@ export class CacheLocalStorageImplService implements ICache {
     }
   }
 
-
   get(req: HttpRequest<any>): HttpResponse<any> | null {
     const url = req.urlWithParams;
     const item = localStorage.getItem(url);
@@ -36,7 +33,7 @@ export class CacheLocalStorageImplService implements ICache {
       if (!entry) {
         return null;
       } else {
-        if (entry.creation && (entry.creation <= (now - environment.maxCacheAge))) {
+        if (entry.creation && entry.creation <= now - environment.maxCacheAge) {
           this.remove(url);
           return null;
         }

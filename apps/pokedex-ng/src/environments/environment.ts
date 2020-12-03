@@ -12,9 +12,7 @@ export const environment = {
   logServiceResponses: false,
   logTranslations: false,
 
-  firebaseApi: 'https://pokedex-ng.firebaseio.com'
-
-
+  firebaseApi: 'https://pokedex-ng.firebaseio.com',
 };
 
 /*

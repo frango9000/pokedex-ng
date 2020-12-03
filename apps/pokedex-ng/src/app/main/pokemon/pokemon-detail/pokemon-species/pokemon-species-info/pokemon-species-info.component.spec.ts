@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PokemonSpeciesInfoComponent} from './pokemon-species-info.component';
+import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
 describe('PokemonSpeciesInfoComponent', () => {
   let component: PokemonSpeciesInfoComponent;
@@ -8,9 +8,8 @@ describe('PokemonSpeciesInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PokemonSpeciesInfoComponent]
-    })
-    .compileComponents();
+      declarations: [PokemonSpeciesInfoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,25 +1,21 @@
-import {Injectable} from '@angular/core';
-import {HttpRequest, HttpResponse} from '@angular/common/http';
-import {CacheEntry, ICache} from './icache';
-import {environment} from '../../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { CacheEntry, ICache } from './icache';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CacheMemoryImplService implements ICache {
-
   private cache = new Map<string, CacheEntry>();
 
-  constructor() {
-  }
-
+  constructor() {}
 
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;
-    const entry: CacheEntry = {url, response, creation: Date.now()};
+    const entry: CacheEntry = { url, response, creation: Date.now() };
     this.cache.set(url, entry);
   }
-
 
   get(req: HttpRequest<any>): HttpResponse<any> | null {
     const url = req.urlWithParams;
@@ -29,7 +25,7 @@ export class CacheMemoryImplService implements ICache {
       if (!entry) {
         return null;
       } else {
-        if (entry.creation && (entry.creation <= (now - environment.maxCacheAge))) {
+        if (entry.creation && entry.creation <= now - environment.maxCacheAge) {
           this.remove(url);
           return null;
         }

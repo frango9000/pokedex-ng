@@ -1,8 +1,7 @@
-import {HttpRequest, HttpResponse} from '@angular/common/http';
-import {environment} from '../../../../environments/environment';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 export interface ICache {
-
   put(req: HttpRequest<any>, response: HttpResponse<any>): void;
 
   get(req: HttpRequest<any>): HttpResponse<any> | null;

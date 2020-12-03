@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PokemonGridComponent} from './pokemon-grid.component';
+import { PokemonGridComponent } from './pokemon-grid.component';
 
 describe('PokemonGridComponent', () => {
   let component: PokemonGridComponent;
@@ -8,9 +8,8 @@ describe('PokemonGridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PokemonGridComponent]
-    })
-    .compileComponents();
+      declarations: [PokemonGridComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

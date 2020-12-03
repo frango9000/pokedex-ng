@@ -1,4 +1,4 @@
-import {ApiNamedResource} from './api-resource';
+import { ApiNamedResource } from './api-resource';
 
 export interface ApiNamedPokemon extends ApiNamedResource {
   types: string[];
@@ -22,7 +22,6 @@ export interface Pokemon {
   sprites: PokemonSprites;
   stats: PokemonStats[];
   types: PokemonTypes[];
-
 }
 
 export interface PokemonTypes {
@@ -50,23 +49,23 @@ export interface PokemonSprites {
 export interface PokemonLocationAreaEncounters {
   location_area: ApiNamedResource;
   version_details: {
-    max_chance: number,
+    max_chance: number;
     encounter_details: {
       min_level: number;
       max_level: number;
-      condition_values: ApiNamedResource[],
-      chance: number,
+      condition_values: ApiNamedResource[];
+      chance: number;
       method: ApiNamedResource;
-    }[],
-    version: ApiNamedResource
+    }[];
+    version: ApiNamedResource;
   }[];
 }
 
 export interface PokemonHeldItems {
   item: ApiNamedResource;
   version_details: {
-    rarity: number,
-    version: ApiNamedResource
+    rarity: number;
+    version: ApiNamedResource;
   }[];
 }
 

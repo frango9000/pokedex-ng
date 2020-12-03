@@ -1,10 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pokeTypeColor'
+  name: 'pokeTypeColor',
 })
 export class PokeTypeColorPipe implements PipeTransform {
-
   transform(value: string, ...args: unknown[]): string {
     switch (value) {
       case 'normal':
@@ -49,5 +48,4 @@ export class PokeTypeColorPipe implements PipeTransform {
         return '#';
     }
   }
-
 }

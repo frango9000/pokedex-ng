@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PokemonEvolutionLinkComponent} from './pokemon-evolution-link.component';
+import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link.component';
 
 describe('PokemonEvolutionLinkComponent', () => {
   let component: PokemonEvolutionLinkComponent;
@@ -8,9 +8,8 @@ describe('PokemonEvolutionLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PokemonEvolutionLinkComponent]
-    })
-    .compileComponents();
+      declarations: [PokemonEvolutionLinkComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

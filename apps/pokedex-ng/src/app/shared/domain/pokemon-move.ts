@@ -1,8 +1,15 @@
-import {ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, ApiName, ApiNamedResource, ApiResource} from './api-resource';
+import {
+  ApiEffectChange,
+  ApiEffectEntry,
+  ApiFlavorTextEntry,
+  ApiName,
+  ApiNamedResource,
+  ApiResource,
+} from './api-resource';
 
 export interface ApiNamedMove extends ApiNamedResource {
   type: string;
-  names?: { name: string, language: string }[];
+  names?: { name: string; language: string }[];
 }
 
 export interface PokemonMove {
@@ -31,7 +38,7 @@ export interface PokemonMove {
   past_values: [];
   stat_changes: {
     change: number;
-    stat: ApiNamedResource
+    stat: ApiNamedResource;
   }[];
   super_contest_effect: ApiResource;
   target: ApiNamedResource;

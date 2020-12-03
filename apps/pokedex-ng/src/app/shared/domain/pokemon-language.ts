@@ -1,4 +1,4 @@
-import {ApiName, ApiNamedResource} from './api-resource';
+import { ApiName, ApiNamedResource } from './api-resource';
 
 export interface PokemonLanguage {
   id: number;

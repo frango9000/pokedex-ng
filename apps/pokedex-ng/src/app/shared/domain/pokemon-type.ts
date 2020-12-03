@@ -1,4 +1,4 @@
-import {ApiName, ApiNamedResource} from './api-resource';
+import { ApiName, ApiNamedResource } from './api-resource';
 
 export interface ApiNamedType extends ApiNamedResource {
   damage_relations?: {
@@ -25,7 +25,7 @@ export interface PokemonType {
   names: ApiName[];
   pokemon: {
     slot: number;
-    pokemon: ApiNamedResource
+    pokemon: ApiNamedResource;
   }[];
   moves: ApiNamedResource[];
 }

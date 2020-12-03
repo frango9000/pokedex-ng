@@ -1,14 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'resourceId'
+  name: 'resourceId',
 })
 export class ResourceIdPipe implements PipeTransform {
-
   transform(url: string, ...args: unknown[]): number {
     return splitResourceId(url);
   }
-
 }
 
 export function splitResourceId(url: string): number {

@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {LocalePickerComponent} from './locale-picker.component';
+import { LocalePickerComponent } from './locale-picker.component';
 
 describe('LocalePickerComponent', () => {
   let component: LocalePickerComponent;
@@ -8,9 +8,8 @@ describe('LocalePickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LocalePickerComponent]
-    })
-    .compileComponents();
+      declarations: [LocalePickerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

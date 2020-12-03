@@ -1,10 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pokeGeneration'
+  name: 'pokeGeneration',
 })
 export class PokeGenerationPipe implements PipeTransform {
-
   transform(id: number, ...args: unknown[]): number {
     if (id < 1) {
       return -1;
@@ -28,5 +27,4 @@ export class PokeGenerationPipe implements PipeTransform {
       return -1;
     }
   }
-
 }

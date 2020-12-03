@@ -1,10 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'position'
+  name: 'position',
 })
 export class PositionPipe implements PipeTransform {
-
   transform(value: number, ...args: unknown[]): string {
     switch (value) {
       case 1:
@@ -17,5 +16,4 @@ export class PositionPipe implements PipeTransform {
         return value + 'th';
     }
   }
-
 }

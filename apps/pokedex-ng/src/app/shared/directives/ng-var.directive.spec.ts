@@ -1,4 +1,4 @@
-import {NgVarDirective} from './ng-var.directive';
+import { NgVarDirective } from './ng-var.directive';
 
 describe('NgVarDirective', () => {
   it('should create an instance', () => {

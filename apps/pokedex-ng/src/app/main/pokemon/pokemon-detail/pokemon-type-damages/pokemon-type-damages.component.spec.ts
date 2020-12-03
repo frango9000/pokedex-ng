@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PokemonTypeDamagesComponent} from './pokemon-type-damages.component';
+import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
 
 describe('PokemonTypeDamagesComponent', () => {
   let component: PokemonTypeDamagesComponent;
@@ -8,9 +8,8 @@ describe('PokemonTypeDamagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PokemonTypeDamagesComponent]
-    })
-    .compileComponents();
+      declarations: [PokemonTypeDamagesComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

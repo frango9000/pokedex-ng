@@ -1,10 +1,9 @@
-import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[ngVar]'
+  selector: '[ngVar]',
 })
 export class NgVarDirective {
-
   @Input()
   set ngVar(context: any) {
     this.context.$implicit = this.context.ngVar = context;
@@ -13,8 +12,10 @@ export class NgVarDirective {
 
   context: any = {};
 
-  constructor(private vcRef: ViewContainerRef, private templateRef: TemplateRef<any>) {
-  }
+  constructor(
+    private vcRef: ViewContainerRef,
+    private templateRef: TemplateRef<any>
+  ) {}
 
   updateView(): void {
     this.vcRef.clear();

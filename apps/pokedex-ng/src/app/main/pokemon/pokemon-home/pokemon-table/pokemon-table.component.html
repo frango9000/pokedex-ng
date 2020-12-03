@@ -1,25 +1,33 @@
 <div class="table-responsive">
   <table class="table table-hover table-sm">
     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Gen</th>
-    </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Gen</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let pokemon of pokemonList" class="" [routerLink]="[pokemon.name]">
-      <th class="align-middle" scope="row">{{pokemon.id}}</th>
-      <td class="align-middle py-0">
-        <img class="py-0"
-             height="40px"
-             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
-             alt="{{pokemon.name}}">
-      </td>
-      <td class="p-0 align-middle">{{pokemon.name | titlecase}}</td>
-      <td class="p-0 align-middle">{{pokemon.id | pokeGeneration}}</td>
-    </tr>
+      <tr
+        *ngFor="let pokemon of pokemonList"
+        class=""
+        [routerLink]="[pokemon.name]"
+      >
+        <th class="align-middle" scope="row">{{ pokemon.id }}</th>
+        <td class="align-middle py-0">
+          <img
+            class="py-0"
+            height="40px"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+              pokemon.id
+            }}.png"
+            alt="{{ pokemon.name }}"
+          />
+        </td>
+        <td class="p-0 align-middle">{{ pokemon.name | titlecase }}</td>
+        <td class="p-0 align-middle">{{ pokemon.id | pokeGeneration }}</td>
+      </tr>
     </tbody>
   </table>
 </div>

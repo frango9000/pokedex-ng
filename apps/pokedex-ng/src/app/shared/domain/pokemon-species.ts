@@ -1,4 +1,4 @@
-import {ApiNamedResource, ApiResource} from './api-resource';
+import { ApiNamedResource, ApiResource } from './api-resource';
 
 export interface PokemonSpecies {
   id: number;
@@ -31,12 +31,12 @@ export interface PokemonSpecies {
     rate: number;
   }[];
   pokedex_numbers: {
-    entry_number: number,
-    pokedex: ApiNamedResource
+    entry_number: number;
+    pokedex: ApiNamedResource;
   }[];
   varieties: {
     is_default: boolean;
-    pokemon: ApiNamedResource
+    pokemon: ApiNamedResource;
   }[];
 }
 

@@ -1,4 +1,4 @@
-import {ApiNamedResource} from './api-resource';
+import { ApiNamedResource } from './api-resource';
 
 export interface PokemonVersionGroup {
   name: string;

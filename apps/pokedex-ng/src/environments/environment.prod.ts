@@ -9,5 +9,4 @@ export const environment = {
   logTranslations: false,
 
   firebaseApi: 'https://pokedex-ng.firebaseio.com',
-
 };

@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {MainComponent} from './main.component';
-import {PokemonModule} from './pokemon/pokemon.module';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from './main.component';
+import { PokemonModule } from './pokemon/pokemon.module';
 
 export const loadPokemonModule = () => PokemonModule;
 
@@ -13,28 +13,23 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'pokemon',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'pokemon',
-        loadChildren: loadPokemonModule
-      }
-    ]
+        loadChildren: loadPokemonModule,
+      },
+    ],
   },
   {
     path: 'test',
     redirectTo: 'pokemon',
     // component: TestComponent
-  }
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class MainRoutingModule {
-}
+export class MainRoutingModule {}
