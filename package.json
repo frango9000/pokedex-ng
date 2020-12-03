@@ -7,8 +7,8 @@
     "build": "ng build",
     "prod": "ng build --prod",
     "start-prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex-ng",
-    "deploy": "ng deploy --base-href=/pokedex-ng/",
-    "quick-deploy": "ng deploy --base-href=/pokedex-ng/ --no-build",
+    "deploy": "ng deploy",
+    "quick-deploy": "ng deploy --no-build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
