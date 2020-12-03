@@ -5,13 +5,13 @@ name: Verify
 
 on:
   push:
+    branches-ignore:
+      - master
   pull_request:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
@@ -25,25 +25,25 @@ jobs:
     - run: npm install
     - name: Prettier
       uses: MansaGroup/nrwl-nx-action@v1.0.1
-      with: 
+      with:
         targets: format:check
         all: 'true'
         parallel: 'true'
     - name: Lint
       uses: MansaGroup/nrwl-nx-action@v1.0.1
-      with: 
+      with:
         targets: lint
         all: 'true'
         parallel: 'true'
     - name: Test
       uses: MansaGroup/nrwl-nx-action@v1.0.1
-      with: 
+      with:
         targets: test
         all: 'true'
         parallel: 'true'
     - name: Build
       uses: MansaGroup/nrwl-nx-action@v1.0.1
-      with: 
+      with:
         targets: build
         all: 'true'
         parallel: 'true'
