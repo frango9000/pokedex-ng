@@ -57,6 +57,9 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "aot": true,
+              "deleteOutputPath": true,
+              "baseHref": "/pokedex-ng/",
               "budgets": [
                 {
                   "type": "initial",
@@ -127,11 +130,18 @@
           "options": {
             "lintFilePatterns": ["apps/pokedex-ng-e2e/**/*.{js,ts}"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/pokedex-ng/"
+          }
         }
       }
     }
   },
   "cli": {
+    "packageManager": "yarn",
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
