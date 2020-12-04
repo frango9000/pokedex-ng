@@ -20,8 +20,8 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   private versionSub: Subscription;
 
   constructor(
-    private pokemonMoveService: PokemonMoveService,
     private translateService: TranslateService,
+    private pokemonMoveService: PokemonMoveService,
     private pokemonVersionService: PokemonVersionService,
     private pokemonLanguageService: PokemonLanguageService
   ) {}
@@ -41,6 +41,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   }
 
   private generateTranslations(ability: PokemonAbility): void {
+    if (!ability.names) return;
     ability.names.forEach((name) => {
       this.translateService.setTranslation(
         name.language.name,
