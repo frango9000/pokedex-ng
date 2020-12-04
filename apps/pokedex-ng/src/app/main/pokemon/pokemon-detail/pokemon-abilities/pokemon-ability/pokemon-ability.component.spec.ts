@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
@@ -18,7 +18,7 @@ describe('PokemonAbilityComponent', () => {
     activeVersion$: of({}),
   };
   const pokemonLanguageService = {
-    getLanguageList: of({}),
+    getLanguageList: of([]),
   };
 
   beforeEach(

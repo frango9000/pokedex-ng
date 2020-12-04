@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { PokemonSpecies } from '../../../../shared/domain/pokemon-species';
-import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
 import { TranslateService } from '@ngx-translate/core';
-import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
+import { PokemonSpecies } from '../../../../shared/domain/pokemon-species';
 import { PokemonLanguageService } from '../../../../shared/services/pokemon-language.service';
+import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
+import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-species',
@@ -16,8 +16,8 @@ export class PokemonSpeciesComponent implements OnChanges {
   public pokemonSpecies: PokemonSpecies;
 
   constructor(
-    private pokemonSpeciesService: PokemonSpeciesService,
     private translateService: TranslateService,
+    private pokemonSpeciesService: PokemonSpeciesService,
     private pokemonVersionService: PokemonVersionService,
     private pokemonLanguageService: PokemonLanguageService
   ) {}

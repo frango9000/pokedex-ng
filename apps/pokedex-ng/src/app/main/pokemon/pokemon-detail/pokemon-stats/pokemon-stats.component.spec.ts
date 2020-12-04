@@ -1,4 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { PokemonStatsComponent } from './pokemon-stats.component';
 
@@ -6,11 +8,14 @@ describe('PokemonStatsComponent', () => {
   let component: PokemonStatsComponent;
   let fixture: ComponentFixture<PokemonStatsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PokemonStatsComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        declarations: [PokemonStatsComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonStatsComponent);
