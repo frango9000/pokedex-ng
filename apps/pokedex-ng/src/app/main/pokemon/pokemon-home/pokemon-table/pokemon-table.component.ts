@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
 
 @Component({
@@ -6,10 +6,6 @@ import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
   templateUrl: './pokemon-table.component.html',
   styleUrls: ['./pokemon-table.component.scss'],
 })
-export class PokemonTableComponent implements OnInit {
+export class PokemonTableComponent {
   @Input() public pokemonList: ApiNamedPokemon[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

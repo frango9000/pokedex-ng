@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
-import { PokemonAbility } from '../../../../../shared/domain/pokemon-ability';
 import { TranslateService } from '@ngx-translate/core';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
-import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { Subscription } from 'rxjs';
+import { PokemonAbility } from '../../../../../shared/domain/pokemon-ability';
+import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
+import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
+import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-ability',
@@ -16,7 +16,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
 
   ability: PokemonAbility;
 
-  activeVersion: string = 'en';
+  activeVersion = 'en';
   private versionSub: Subscription;
 
   constructor(

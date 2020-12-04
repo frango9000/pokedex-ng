@@ -1,21 +1,15 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
-import { PokemonEvolutionChainService } from '../../../../../shared/services/pokemon-evolution-chain.service';
-import { splitResourceId } from '../../../../../shared/pipes/resource-id.pipe';
+import { Component, Input, OnChanges } from '@angular/core';
 import { PokemonEvolutionChain } from '../../../../../shared/domain/pokemon-evolution-chain';
+import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
+import { splitResourceId } from '../../../../../shared/pipes/resource-id.pipe';
+import { PokemonEvolutionChainService } from '../../../../../shared/services/pokemon-evolution-chain.service';
 
 @Component({
   selector: 'app-pokemon-evolution-chain',
   templateUrl: './pokemon-evolution-chain.component.html',
   styleUrls: ['./pokemon-evolution-chain.component.scss'],
 })
-export class PokemonEvolutionChainComponent implements OnInit, OnChanges {
+export class PokemonEvolutionChainComponent implements OnChanges {
   @Input() public pokemonSpecies: PokemonSpecies;
 
   public evolutionChain: PokemonEvolutionChain;
@@ -24,9 +18,7 @@ export class PokemonEvolutionChainComponent implements OnInit, OnChanges {
     private pokemonEvolutionChainService: PokemonEvolutionChainService
   ) {}
 
-  ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (this.pokemonSpecies) {
       this.evolutionChain = null;
       this.pokemonEvolutionChainService

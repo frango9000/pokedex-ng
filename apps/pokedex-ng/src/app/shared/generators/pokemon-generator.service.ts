@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { PokemonService } from '../services/pokemon.service';
-// import {saveAs} from 'file-saver/dist/FileSaver';
 import { ApiNamedPokemon } from '../domain/pokemon';
-import { PokemonMoveService } from '../services/pokemon-move.service';
-import { ApiNamedMove } from '../domain/pokemon-move';
-import { PokemonLanguageService } from '../services/pokemon-language.service';
 import { ApiNamedLanguage } from '../domain/pokemon-language';
-import { PokemonTypeService } from '../services/pokemon-type.service';
+import { ApiNamedMove } from '../domain/pokemon-move';
 import { ApiNamedType } from '../domain/pokemon-type';
-import { PokemonVersionService } from '../services/pokemon-version.service';
 import { ApiNamedVersionGroup } from '../domain/pokemon-version-group';
+import { PokemonLanguageService } from '../services/pokemon-language.service';
+import { PokemonMoveService } from '../services/pokemon-move.service';
+import { PokemonTypeService } from '../services/pokemon-type.service';
+import { PokemonVersionService } from '../services/pokemon-version.service';
+import { PokemonService } from '../services/pokemon.service';
+
+// import {saveAs} from 'file-saver/dist/FileSaver';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class PokemonGeneratorService {
     this.pokemonService
       .getApiPokemonList(0, 10000)
       .subscribe((responseList) => {
-        responseList.forEach((pokemonId, index) => {
+        responseList.forEach((pokemonId) => {
           setTimeout(() => {
             this.pokemonService
               .getApiPokemon(pokemonId.name)

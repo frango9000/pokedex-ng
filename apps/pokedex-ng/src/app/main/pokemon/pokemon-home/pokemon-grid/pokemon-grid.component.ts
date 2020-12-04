@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
 
 @Component({
@@ -6,10 +6,6 @@ import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
   templateUrl: './pokemon-grid.component.html',
   styleUrls: ['./pokemon-grid.component.scss'],
 })
-export class PokemonGridComponent implements OnInit {
+export class PokemonGridComponent {
   @Input() public pokemonList: ApiNamedPokemon[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

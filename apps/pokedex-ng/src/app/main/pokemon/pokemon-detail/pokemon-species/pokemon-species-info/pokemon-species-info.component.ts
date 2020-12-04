@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
 import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-species-info',
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class PokemonSpeciesInfoComponent implements OnInit, OnDestroy {
   @Input() public pokemonSpecies: PokemonSpecies;
 
-  activeVersion: string = 'en';
+  activeVersion = 'en';
   private versionSub: Subscription;
 
   constructor(private pokemonVersionService: PokemonVersionService) {}

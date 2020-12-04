@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'resourceId',
 })
 export class ResourceIdPipe implements PipeTransform {
-  transform(url: string, ...args: unknown[]): number {
+  transform(url: string): number {
     return splitResourceId(url);
   }
 }

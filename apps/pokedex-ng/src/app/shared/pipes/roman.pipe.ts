@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'roman',
 })
 export class RomanPipe implements PipeTransform {
-  transform(num: number, ...args: unknown[]): string {
+  transform(num: number): string {
     const lookup = {
       M: 1000,
       CM: 900,

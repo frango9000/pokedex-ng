@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
-import { CacheEntry, ICache } from './icache';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { CacheEntry, ICache } from './icache';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CacheMemoryImplService implements ICache {
   private cache = new Map<string, CacheEntry>();
-
-  constructor() {}
 
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;

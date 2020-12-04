@@ -1,20 +1,14 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { PokemonTypeService } from '../../../../shared/services/pokemon-type.service';
-import { ApiNamedType } from '../../../../shared/domain/pokemon-type';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ApiNamedResource } from '../../../../shared/domain/api-resource';
+import { ApiNamedType } from '../../../../shared/domain/pokemon-type';
+import { PokemonTypeService } from '../../../../shared/services/pokemon-type.service';
 
 @Component({
   selector: 'app-pokemon-type-damages',
   templateUrl: './pokemon-type-damages.component.html',
   styleUrls: ['./pokemon-type-damages.component.scss'],
 })
-export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
+export class PokemonTypeDamagesComponent implements OnChanges {
   @Input() typeIds: {
     slot: number;
     type: ApiNamedResource;
@@ -29,9 +23,7 @@ export class PokemonTypeDamagesComponent implements OnInit, OnChanges {
 
   constructor(private pokemonTypeService: PokemonTypeService) {}
 
-  ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.types = null;
     this.pokemonTypeService.getTypes().subscribe(
       (value) =>

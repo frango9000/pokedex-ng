@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { PokemonMove } from '../../../../../shared/domain/pokemon-move';
-import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
 import { TranslateService } from '@ngx-translate/core';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
-import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { Subscription } from 'rxjs';
+import { PokemonMove } from '../../../../../shared/domain/pokemon-move';
+import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
+import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
+import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-move',
@@ -16,7 +16,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
 
   move: PokemonMove;
 
-  activeVersion: string = 'en';
+  activeVersion = 'en';
   private versionSub: Subscription;
 
   constructor(

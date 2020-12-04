@@ -1,21 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   PokemonEvolutionChainLink,
   PokemonEvolutionDetail,
 } from '../../../../../../shared/domain/pokemon-evolution-chain';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-pokemon-evolution-link',
   templateUrl: './pokemon-evolution-link.component.html',
   styleUrls: ['./pokemon-evolution-link.component.scss'],
 })
-export class PokemonEvolutionLinkComponent implements OnInit {
+export class PokemonEvolutionLinkComponent {
   @Input() link: PokemonEvolutionChainLink;
-
-  constructor(private translateService: TranslateService) {}
-
-  ngOnInit(): void {}
 
   getEvolutionMethodText(
     method: PokemonEvolutionDetail

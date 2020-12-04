@@ -14,19 +14,13 @@ import pokemon from '../../../assets/data/pokemon.json';
 export class PokemonService {
   constructor(private httpClient: HttpClient) {}
 
-  getPokemonList(
-    offset: number = 0,
-    limit: number = 36
-  ): Observable<ApiNamedPokemon[]> {
+  getPokemonList(offset = 0, limit = 36): Observable<ApiNamedPokemon[]> {
     return of(pokemon).pipe(
       map((value) => value.slice(offset, +(offset + limit)))
     );
   }
 
-  getApiPokemonList(
-    offset: number = 0,
-    limit: number = 36
-  ): Observable<ApiNamedResource[]> {
+  getApiPokemonList(offset = 0, limit = 36): Observable<ApiNamedResource[]> {
     const pageParams: HttpParams = new HttpParams()
       .append('limit', String(limit))
       .append('offset', String(offset));

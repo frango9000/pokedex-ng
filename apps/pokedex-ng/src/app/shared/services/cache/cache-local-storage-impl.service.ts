@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-import { CacheEntry, ICache } from './icache';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { CacheEntry, ICache } from './icache';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CacheLocalStorageImplService implements ICache {
-  constructor() {}
-
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;
     const entry: CacheEntry = { url, response, creation: Date.now() };

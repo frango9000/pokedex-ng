@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PokemonMoves } from '../../../../../shared/domain/pokemon';
 import { ApiNamedMove } from '../../../../../shared/domain/pokemon-move';
 
@@ -7,16 +7,12 @@ import { ApiNamedMove } from '../../../../../shared/domain/pokemon-move';
   templateUrl: './pokemon-moves-card.component.html',
   styleUrls: ['./pokemon-moves-card.component.scss'],
 })
-export class PokemonMovesCardComponent implements OnInit {
+export class PokemonMovesCardComponent {
   @Input() moves: PokemonMoves[] = [];
-  @Input() cardTitle: string = '';
-  @Input() showLevels: boolean = false;
+  @Input() cardTitle = '';
+  @Input() showLevels = false;
 
   @Input() moveTypes: ApiNamedMove[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   getType(move: string): string {
     const type = this.moveTypes.findIndex((value) => value.name === move);

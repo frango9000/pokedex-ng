@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'position',
 })
 export class PositionPipe implements PipeTransform {
-  transform(value: number, ...args: unknown[]): string {
+  transform(value: number): string {
     switch (value) {
       case 1:
         return '1st';

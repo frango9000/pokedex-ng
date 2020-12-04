@@ -38,6 +38,6 @@ export class CacheService implements ICache {
   }
 
   remove(url: string): void {
-    this.caches.forEach((cache) => this.remove(url));
+    this.caches.forEach(() => this.remove(url));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonLanguageService } from '../../services/pokemon-language.service';
 
 @Component({
@@ -6,8 +6,6 @@ import { PokemonLanguageService } from '../../services/pokemon-language.service'
   templateUrl: './locale-picker.component.html',
   styleUrls: ['./locale-picker.component.scss'],
 })
-export class LocalePickerComponent implements OnInit {
+export class LocalePickerComponent {
   constructor(public languageService: PokemonLanguageService) {}
-
-  ngOnInit(): void {}
 }

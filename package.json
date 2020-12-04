@@ -29,7 +29,8 @@
     "update": "ng update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "validate": "nx workspace-lint && ng lint && nx format:check && ng test && ng build --prod"
   },
   "private": true,
   "dependencies": {

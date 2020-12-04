@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pokeTypeColor',
 })
 export class PokeTypeColorPipe implements PipeTransform {
-  transform(value: string, ...args: unknown[]): string {
+  transform(value: string): string {
     switch (value) {
       case 'normal':
         return '#9C9C63';

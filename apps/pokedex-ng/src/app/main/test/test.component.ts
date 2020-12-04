@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonGeneratorService } from '../../shared/generators/pokemon-generator.service';
 
 @Component({
@@ -6,10 +6,8 @@ import { PokemonGeneratorService } from '../../shared/generators/pokemon-generat
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
 })
-export class TestComponent implements OnInit {
+export class TestComponent {
   constructor(private pokemonListGeneratorService: PokemonGeneratorService) {}
-
-  ngOnInit(): void {}
 
   genPokeList(): void {
     this.pokemonListGeneratorService.generatePokemonList();

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PokemonStats } from '../../../../shared/domain/pokemon';
 
 @Component({
@@ -6,10 +6,6 @@ import { PokemonStats } from '../../../../shared/domain/pokemon';
   templateUrl: './pokemon-stats.component.html',
   styleUrls: ['./pokemon-stats.component.scss'],
 })
-export class PokemonStatsComponent implements OnInit {
+export class PokemonStatsComponent {
   @Input() pokemonStats: PokemonStats[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

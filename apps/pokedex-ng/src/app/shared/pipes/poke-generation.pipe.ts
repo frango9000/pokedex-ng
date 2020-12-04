@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pokeGeneration',
 })
 export class PokeGenerationPipe implements PipeTransform {
-  transform(id: number, ...args: unknown[]): number {
+  transform(id: number): number {
     if (id < 1) {
       return -1;
     } else if (id < 152) {
