@@ -11,7 +11,6 @@ export class PokemonMovesCardComponent {
   @Input() moves: PokemonMoves[] = [];
   @Input() cardTitle = '';
   @Input() showLevels = false;
-
   @Input() moveTypes: ApiNamedMove[];
 
   getType(move: string): string {
