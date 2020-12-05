@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { PokeGenerationPipe } from './pipes/poke-generation.pipe';
-import { PositionPipe } from './pipes/position.pipe';
-import { ResourceIdPipe } from './pipes/resource-id.pipe';
-import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
-import { NgVarDirective } from './directives/ng-var.directive';
-import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
-import { RomanPipe } from './pipes/roman.pipe';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReplacePipe } from './pipes/replace.pipe';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgVarDirective } from './directives/ng-var.directive';
+import { FooterComponent } from './footer/footer.component';
 import { LocalePickerComponent } from './navbar/locale-picker/locale-picker.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
+import { PokeGenerationPipe } from './pipes/poke-generation.pipe';
+import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
+import { PositionPipe } from './pipes/position.pipe';
+import { ReplacePipe } from './pipes/replace.pipe';
+import { ResourceIdPipe } from './pipes/resource-id.pipe';
+import { RomanPipe } from './pipes/roman.pipe';
 
 @NgModule({
   declarations: [
@@ -42,11 +42,6 @@ import { LocalePickerComponent } from './navbar/locale-picker/locale-picker.comp
     TranslateModule,
     ReplacePipe,
   ],
-  imports: [
-    CommonModule,
-    MDBBootstrapModule.forRoot(),
-    RouterModule,
-    TranslateModule,
-  ],
+  imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })
 export class SharedModule {}

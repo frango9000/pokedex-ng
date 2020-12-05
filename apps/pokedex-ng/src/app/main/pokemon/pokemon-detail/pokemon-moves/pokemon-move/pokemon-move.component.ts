@@ -21,15 +21,13 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
 
   constructor(
     private pokemonMoveService: PokemonMoveService,
-    private translateService: TranslateService,
     private pokemonVersionService: PokemonVersionService,
-    private pokemonLanguageService: PokemonLanguageService
+    private pokemonLanguageService: PokemonLanguageService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(
-      (value) => (this.activeVersion = value)
-    );
+    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
     this.pokemonMoveService.getApiMove(this.moveId).subscribe((move) => {
       this.move = move;
       this.generateTranslations(this.move);
@@ -42,11 +40,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
 
   private generateTranslations(move: PokemonMove): void {
     move.names.forEach((name) => {
-      this.translateService.setTranslation(
-        name.language.name,
-        { MOVE: { [move.name]: { NAME: name.name } } },
-        true
-      );
+      this.translateService.setTranslation(name.language.name, { MOVE: { [move.name]: { NAME: name.name } } }, true);
     });
     move.effect_entries.forEach((entry) => {
       this.translateService.setTranslation(
@@ -64,9 +58,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
         true
       );
     });
-    const defaultFlavorTextIndex = move.flavor_text_entries.findIndex(
-      (value) => value.language.name === 'en'
-    );
+    const defaultFlavorTextIndex = move.flavor_text_entries.findIndex((value) => value.language.name === 'en');
     const defaultFlavorText =
       defaultFlavorTextIndex > -1
         ? move.flavor_text_entries[defaultFlavorTextIndex].flavor_text
@@ -88,10 +80,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
                 MOVE: {
                   [move.name]: {
                     FLAVOR_TEXT: {
-                      [version.name]:
-                        langDefaultFlavorTextIndex > -1
-                          ? langDefaultFlavorText
-                          : defaultFlavorText,
+                      [version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText,
                     },
                   },
                 },

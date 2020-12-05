@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ApiNamedPokemon, Pokemon } from '../domain/pokemon';
-import { environment } from '../../../environments/environment';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
-import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
-import { serviceLog } from './cache/icache';
 import pokemon from '../../../assets/data/pokemon.json';
+import { environment } from '../../../environments/environment';
+import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
+import { ApiNamedPokemon, Pokemon } from '../domain/pokemon';
+import { serviceLog } from './cache/icache';
 
 @Injectable({
   providedIn: 'root',
@@ -15,15 +15,11 @@ export class PokemonService {
   constructor(private httpClient: HttpClient) {}
 
   getPokemonList(offset = 0, limit = 36): Observable<ApiNamedPokemon[]> {
-    return of(pokemon).pipe(
-      map((value) => value.slice(offset, +(offset + limit)))
-    );
+    return of(pokemon).pipe(map((value) => value.slice(offset, +(offset + limit))));
   }
 
   getApiPokemonList(offset = 0, limit = 36): Observable<ApiNamedResource[]> {
-    const pageParams: HttpParams = new HttpParams()
-      .append('limit', String(limit))
-      .append('offset', String(offset));
+    const pageParams: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
       .get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/pokemon', {
         params: pageParams,

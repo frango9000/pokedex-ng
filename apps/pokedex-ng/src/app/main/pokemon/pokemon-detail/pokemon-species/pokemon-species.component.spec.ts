@@ -4,40 +4,22 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
-import { PokemonSpecies } from '../../../../shared/domain/pokemon-species';
 import { PokemonLanguageService } from '../../../../shared/services/pokemon-language.service';
-import { PokemonMoveService } from '../../../../shared/services/pokemon-move.service';
+import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
 import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
-import { SharedModule } from '../../../../shared/shared.module';
-import { PokemonEvolutionLinkComponent } from './pokemon-evolution-chain/pokemon-evolution-link/pokemon-evolution-link.component';
-import { PokemonSpeciesInfoComponent } from './pokemon-species-info/pokemon-species-info.component';
-
-@Component({
-  selector: 'app-pokemon-evolution-chain',
-  template: '',
-})
-class PokemonEvolutionChainComponent {
-  @Input() public pokemonSpecies: PokemonSpecies;
-}
-
-@Component({
-  selector: 'app-pokemon-species',
-  template: '',
-})
-class PokemonSpeciesComponent {
-  @Input() pokemonSpeciesId: string | number;
-}
+import { PokemonEvolutionChainComponentStub } from './pokemon-evolution-chain/pokemon-evolution-chain.component.spec';
+import { PokemonSpeciesInfoComponentStub } from './pokemon-species-info/pokemon-species-info.component.spec';
+import { PokemonSpeciesComponent } from './pokemon-species.component';
 
 describe('PokemonSpeciesComponent', () => {
   let component: PokemonSpeciesComponent;
   let fixture: ComponentFixture<PokemonSpeciesComponent>;
 
-  const pokemonMoveService = {
+  const pokemonSpeciesService = {
     getPokemonSpecies: () => of(null),
   };
   const pokemonVersionService = {
     getVersionList: of([]),
-    activeVersion$: of({}),
   };
   const pokemonLanguageService = {
     getLanguageList: of([]),
@@ -46,21 +28,10 @@ describe('PokemonSpeciesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [
-          RouterModule,
-          TranslateModule.forRoot(),
-          MDBBootstrapModule.forRoot(),
-          SharedModule,
-          // HttpClientTestingModule,
-        ],
-        declarations: [
-          PokemonSpeciesComponent,
-          PokemonSpeciesInfoComponent,
-          PokemonEvolutionLinkComponent,
-          PokemonEvolutionChainComponent,
-        ],
+        imports: [RouterModule, TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoComponentStub, PokemonEvolutionChainComponentStub],
         providers: [
-          { provide: PokemonMoveService, useValue: pokemonMoveService },
+          { provide: PokemonSpeciesService, useValue: pokemonSpeciesService },
           { provide: PokemonVersionService, useValue: pokemonVersionService },
           { provide: PokemonLanguageService, useValue: pokemonLanguageService },
         ],
@@ -78,3 +49,8 @@ describe('PokemonSpeciesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({ selector: 'app-pokemon-species', template: '' })
+export class PokemonSpeciesComponentStub implements Partial<PokemonSpeciesComponent> {
+  @Input() pokemonSpeciesId: string | number;
+}

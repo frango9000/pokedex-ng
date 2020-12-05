@@ -1,23 +1,25 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { APP_BASE_HREF } from '@angular/common';
+import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
+import { FooterComponent } from './shared/footer/footer.component';
+
+@Component({
+  selector: 'app-navbar',
+  template: '',
+})
+export class NavbarComponent {}
 
 describe('AppComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          MDBBootstrapModule.forRoot(),
-          SharedModule,
-          HttpClientTestingModule,
-        ],
-        declarations: [AppComponent],
+        imports: [TranslateModule.forRoot(), RouterTestingModule, MDBBootstrapModule.forRoot()],
+        declarations: [AppComponent, NavbarComponent, FooterComponent],
+        providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
     })
   );

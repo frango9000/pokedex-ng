@@ -1,16 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
-import { environment } from '../../../environments/environment';
 import { map, shareReplay, tap } from 'rxjs/operators';
-import { serviceLog } from './cache/icache';
-import { HttpClient } from '@angular/common/http';
-import { PokemonType } from '../domain/pokemon-type';
-import {
-  ApiNamedVersionGroup,
-  PokemonVersionGroup,
-} from '../domain/pokemon-version-group';
 import versions from '../../../assets/data/versions.json';
+import { environment } from '../../../environments/environment';
+import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
+import { PokemonType } from '../domain/pokemon-type';
+import { ApiNamedVersionGroup, PokemonVersionGroup } from '../domain/pokemon-version-group';
+import { serviceLog } from './cache/icache';
 
 @Injectable({
   providedIn: 'root',
@@ -29,13 +26,11 @@ export class PokemonVersionService {
   }
 
   getApiVersionList(): Observable<ApiNamedResource[]> {
-    return this.httpClient
-      .get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group')
-      .pipe(
-        map((value) => value.results),
-        tap(serviceLog),
-        shareReplay()
-      );
+    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/version-group').pipe(
+      map((value) => value.results),
+      tap(serviceLog),
+      shareReplay()
+    );
   }
 
   getApiVersion(versionId: string | number): Observable<PokemonVersionGroup> {

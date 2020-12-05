@@ -13,6 +13,7 @@ export class PokemonHomeComponent implements OnInit {
   public gridMode = true;
 
   offset = 0;
+  increment = 36;
   loading: boolean;
 
   constructor(private pokemonService: PokemonService) {}
@@ -34,7 +35,7 @@ export class PokemonHomeComponent implements OnInit {
   fetchMore(): void {
     if (!this.loading && this.offset < 830) {
       this.loading = true;
-      this.offset += 36;
+      this.offset += this.increment;
       this.fetchPokemonList();
     }
   }

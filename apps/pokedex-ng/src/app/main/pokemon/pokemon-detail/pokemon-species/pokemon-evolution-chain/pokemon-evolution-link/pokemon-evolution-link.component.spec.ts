@@ -1,4 +1,6 @@
+import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { PokemonEvolutionChainLink } from '../../../../../../shared/domain/pokemon-evolution-chain';
 
 import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link.component';
 
@@ -22,3 +24,8 @@ describe('PokemonEvolutionLinkComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({ selector: 'app-pokemon-evolution-link', template: '' })
+export class PokemonEvolutionLinkComponentStub implements Partial<PokemonEvolutionLinkComponent> {
+  @Input() link: PokemonEvolutionChainLink;
+}

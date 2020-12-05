@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { shareReplay, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { PokemonEvolutionChain } from '../domain/pokemon-evolution-chain';
 import { serviceLog } from './cache/icache';
 

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
-import { ICache } from './icache';
+import { Injectable } from '@angular/core';
 import { CacheLocalStorageImplService } from './cache-local-storage-impl.service';
 import { CacheMemoryImplService } from './cache-memory-impl.service';
+import { ICache } from './icache';
 
 @Injectable({
   providedIn: 'root',

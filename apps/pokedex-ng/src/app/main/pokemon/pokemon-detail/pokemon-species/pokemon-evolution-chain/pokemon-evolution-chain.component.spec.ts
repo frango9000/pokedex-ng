@@ -1,4 +1,6 @@
+import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
 
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain.component';
 
@@ -22,3 +24,8 @@ describe('PokemonEvolutionChainComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({ selector: 'app-pokemon-evolution-chain', template: '' })
+export class PokemonEvolutionChainComponentStub {
+  @Input() public pokemonSpecies: PokemonSpecies;
+}
