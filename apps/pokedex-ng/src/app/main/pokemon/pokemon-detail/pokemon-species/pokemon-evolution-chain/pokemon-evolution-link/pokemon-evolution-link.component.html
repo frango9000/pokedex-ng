@@ -1,0 +1,53 @@
+<ng-container *ngIf="link?.evolves_to?.length > 0">
+  <ng-container *ngFor="let node of link.evolves_to">
+    <div class="container-fluid">
+      <div class="row text-center border-bottom">
+        <div class="col-4 cursor-pointer px-0">
+          <a [routerLink]="['/pokemon', link.species.name]">
+            <img
+              class="mx-auto my-1 img-fluid"
+              width="200"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+                link.species.url | resourceId
+              }}.png"
+              alt="Evolves From"
+            />
+            {{ link.species.name | titlecase }}
+          </a>
+        </div>
+        <div class="col-4 my-auto">
+          <div class="row" *ngFor="let method of node.evolution_details">
+            <div *ngVar="getEvolutionMethodText(method) as triggerAndConditions" class="mx-auto">
+              <div>
+                <mdb-icon fas icon="long-arrow-alt-right" size="3x"></mdb-icon>
+              </div>
+              <div>
+                {{
+                  'UI.EVOLUTION_CHAIN.LINK.' + triggerAndConditions.trigger.title
+                    | translate: { value: triggerAndConditions.trigger.value }
+                }}
+              </div>
+              <div class="overflow-auto" *ngFor="let condition of triggerAndConditions.conditions">
+                {{ 'UI.EVOLUTION_CHAIN.LINK.' + condition.title | translate: { value: condition.value } }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 cursor-pointer px-0">
+          <a [routerLink]="['/pokemon', node.species.name]">
+            <img
+              class="mx-auto my-1 img-fluid"
+              width="200"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+                node.species.url | resourceId
+              }}.png"
+              alt="Evolves To"
+            />
+            {{ node.species.name | titlecase }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <app-pokemon-evolution-link [link]="node"></app-pokemon-evolution-link>
+  </ng-container>
+</ng-container>

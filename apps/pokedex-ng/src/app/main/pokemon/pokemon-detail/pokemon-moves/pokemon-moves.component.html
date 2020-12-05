@@ -1,0 +1,29 @@
+<app-pokemon-moves-card
+  class="row justify-content-center mb-2"
+  cardTitle="LEVEL_UP_MOVES"
+  *ngIf="levelMoves.length > 0"
+  [moves]="levelMoves"
+  [showLevels]="true"
+  [moveTypes]="moveTypes"
+></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="MACHINE_MOVES"
+  *ngIf="machineMoves.length > 0"
+  [moves]="machineMoves"
+  [moveTypes]="moveTypes"
+></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="TUTOR_MOVES"
+  *ngIf="tutorMoves.length > 0"
+  [moves]="tutorMoves"
+  [moveTypes]="moveTypes"
+></app-pokemon-moves-card>
+<app-pokemon-moves-card
+  class="row justify-content-center my-2"
+  cardTitle="EGG_MOVES"
+  *ngIf="eggMoves.length > 0"
+  [moves]="eggMoves"
+  [moveTypes]="moveTypes"
+></app-pokemon-moves-card>
