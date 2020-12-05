@@ -8,18 +8,13 @@
       <tr title="{{ 'UI.ABILITY.DESCRIPTION_TITLE' | translate }}">
         <td>{{ 'UI.ABILITY.DESCRIPTION' | translate }}</td>
         <td>
-          {{
-            'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + this.activeVersion
-              | translate
-          }}
+          {{ 'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + this.activeVersion | translate }}
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.GENERATION_TITLE' | translate }}">
         <td>{{ 'UI.ABILITY.GENERATION' | translate }}</td>
         <td>
-          {{
-            'STATIC.GENERATION.NUMBER.' + ability.generation.name | translate
-          }}
+          {{ 'STATIC.GENERATION.NUMBER.' + ability.generation.name | translate }}
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.EFFECT_TITLE' | translate }}">
@@ -38,11 +33,7 @@
   </table>
   <ng-template #loading>
     <div class="text-center">
-      <div
-        class="spinner-border m-4"
-        style="width: 3rem; height: 3rem"
-        role="status"
-      >
+      <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
         <span class="sr-only">{{ 'LOADING' | translate }}</span>
       </div>
     </div>

@@ -14,32 +14,25 @@ import { serviceLog } from './cache/icache';
 })
 export class PokemonLanguageService {
   public activeLanguage = languages[0];
-  public activeLanguage$: BehaviorSubject<
-    ApiNamedLanguage
-  > = new BehaviorSubject<ApiNamedLanguage>(this.activeLanguage);
+  public activeLanguage$: BehaviorSubject<ApiNamedLanguage> = new BehaviorSubject<ApiNamedLanguage>(
+    this.activeLanguage
+  );
 
-  constructor(
-    private httpClient: HttpClient,
-    private translateService: TranslateService
-  ) {
+  constructor(private httpClient: HttpClient, private translateService: TranslateService) {
     languages.forEach((value) => {
       this.translateService.getTranslation(value.name);
     });
   }
 
   getApiLanguageList(): Observable<ApiNamedResource[]> {
-    return this.httpClient
-      .get<ApiNamedResource[]>(environment.apiUrl + '/language')
-      .pipe(
-        tap(serviceLog),
-        map((value) => value.results)
-      );
+    return this.httpClient.get<ApiNamedResource[]>(environment.apiUrl + '/language').pipe(
+      tap(serviceLog),
+      map((value) => value.results)
+    );
   }
 
   getApiLanguage(languageId: string | number): Observable<PokemonLanguage> {
-    return this.httpClient
-      .get<PokemonLanguage>(environment.apiUrl + '/language/' + languageId)
-      .pipe(tap(serviceLog));
+    return this.httpClient.get<PokemonLanguage>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
   }
 
   getLanguageList(): Observable<ApiNamedLanguage[]> {

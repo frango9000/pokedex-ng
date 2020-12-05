@@ -1,9 +1,6 @@
 <mdb-card class="max-detail-size w-100 pb-2">
   <div class="container-fluid cursor-pointer border-bottom">
-    <div
-      class="row m-2 align-items-center"
-      title="{{ 'UI.MOVE.TITLE_' + cardTitle + '_TITLE' | translate }}"
-    >
+    <div class="row m-2 align-items-center" title="{{ 'UI.MOVE.TITLE_' + cardTitle + '_TITLE' | translate }}">
       <a mdbBtn floating="true">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
@@ -28,24 +25,21 @@
         <ng-container *ngFor="let move of moves | expandableResources">
           <tr>
             <td class="align-middle">
-              <span *ngIf="showLevels">{{
-                move.key.version_group_details[0].level_learned_at
-              }}</span>
+              <span *ngIf="showLevels">{{ move.key.version_group_details[0].level_learned_at }}</span>
             </td>
             <td class="align-middle w-75">
               {{ move.key.move.name | titlecase }}
             </td>
             <td>
               <ng-container *ngIf="moveTypes">
-                <div
-                  class="text-center text-white pt-1"
-                  *ngVar="getType(move.key.move.name) as type"
-                >
+                <div class="text-center text-white pt-1" *ngVar="getType(move.key.move.name) as type">
                   <span
                     class="p-1"
                     [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-                    >{{ 'STATIC.TYPES.' + type | translate | uppercase }}</span
+                    *ngVar="'STATIC.TYPES.' + type | translate | uppercase as typeName"
                   >
+                    {{ typeName }}
+                  </span>
                 </div>
               </ng-container>
             </td>
@@ -57,24 +51,13 @@
                 aria-controls=""
                 (click)="move.value = !move.value"
               >
-                <mdb-icon
-                  fas
-                  icon="chevron-right"
-                  size="1x"
-                  [ngClass]="{ expanded: move.value }"
-                ></mdb-icon>
+                <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: move.value }"></mdb-icon>
               </a>
             </td>
           </tr>
           <tr *ngIf="move.value">
-            <td
-              colspan="4"
-              [ngClass]="{ 'border-top-0': move.value }"
-              class="px-0 pb-3"
-            >
-              <app-pokemon-move
-                [moveId]="move.key.move.name"
-              ></app-pokemon-move>
+            <td colspan="4" [ngClass]="{ 'border-top-0': move.value }" class="px-0 pb-3">
+              <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
             </td>
           </tr>
         </ng-container>

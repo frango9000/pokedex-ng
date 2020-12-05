@@ -24,12 +24,10 @@ export class PokemonSpeciesComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.pokemonSpecies = null;
-    this.pokemonSpeciesService
-      .getPokemonSpecies(this.pokemonSpeciesId)
-      .subscribe((specie) => {
-        this.pokemonSpecies = specie;
-        this.generateTranslations(this.pokemonSpecies);
-      });
+    this.pokemonSpeciesService.getPokemonSpecies(this.pokemonSpeciesId).subscribe((specie) => {
+      this.pokemonSpecies = specie;
+      this.generateTranslations(this.pokemonSpecies);
+    });
   }
 
   private generateTranslations(specie: PokemonSpecies): void {
@@ -40,9 +38,7 @@ export class PokemonSpeciesComponent implements OnChanges {
         true
       );
     });
-    const defaultFlavorTextIndex = specie.flavor_text_entries.findIndex(
-      (value) => value.language.name === 'en'
-    );
+    const defaultFlavorTextIndex = specie.flavor_text_entries.findIndex((value) => value.language.name === 'en');
     const defaultFlavorText =
       defaultFlavorTextIndex > -1
         ? specie.flavor_text_entries[defaultFlavorTextIndex].flavor_text
@@ -55,8 +51,7 @@ export class PokemonSpeciesComponent implements OnChanges {
           );
           const langDefaultFlavorText =
             langDefaultFlavorTextIndex > -1
-              ? specie.flavor_text_entries[langDefaultFlavorTextIndex]
-                  .flavor_text
+              ? specie.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text
               : 'SPECIES_TRANSLATE_ERROR_002';
           versions.forEach((version) => {
             this.translateService.setTranslation(
@@ -65,10 +60,7 @@ export class PokemonSpeciesComponent implements OnChanges {
                 SPECIES: {
                   [specie.name]: {
                     FLAVOR_TEXT: {
-                      [version.name]:
-                        langDefaultFlavorTextIndex > -1
-                          ? langDefaultFlavorText
-                          : defaultFlavorText,
+                      [version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText,
                     },
                   },
                 },
@@ -78,9 +70,7 @@ export class PokemonSpeciesComponent implements OnChanges {
           });
         });
         specie.flavor_text_entries.forEach((entry) => {
-          const groupIndex = versions.findIndex((value) =>
-            value.name.includes(entry.version.name)
-          );
+          const groupIndex = versions.findIndex((value) => value.name.includes(entry.version.name));
           this.translateService.setTranslation(
             entry.language.name,
             {

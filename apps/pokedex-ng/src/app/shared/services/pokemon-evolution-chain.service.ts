@@ -12,13 +12,9 @@ import { serviceLog } from './cache/icache';
 export class PokemonEvolutionChainService {
   constructor(private httpClient: HttpClient) {}
 
-  getEvolutionChain(
-    evolutionChainId: number
-  ): Observable<PokemonEvolutionChain> {
+  getEvolutionChain(evolutionChainId: number): Observable<PokemonEvolutionChain> {
     return this.httpClient
-      .get<PokemonEvolutionChain>(
-        environment.apiUrl + '/evolution-chain/' + evolutionChainId
-      )
+      .get<PokemonEvolutionChain>(environment.apiUrl + '/evolution-chain/' + evolutionChainId)
       .pipe(tap(serviceLog), shareReplay());
   }
 }

@@ -1,9 +1,6 @@
 <mdb-card class="max-detail-size w-100 pb-2">
   <div class="container-fluid cursor-pointer border-bottom">
-    <div
-      class="row m-2 align-items-center"
-      title="{{ 'UI.SPECIES.INFO.TITLE_TITLE' | translate }}"
-    >
+    <div class="row m-2 align-items-center" title="{{ 'UI.SPECIES.INFO.TITLE_TITLE' | translate }}">
       <a mdbBtn floating="true">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
@@ -14,16 +11,8 @@
   </div>
   <mdb-card-body class="py-0 px-2 px-sm-4">
     <div *ngIf="pokemonSpecies; else loading">
-      <div
-        *ngIf="pokemonSpecies.flavor_text_entries"
-        class="overflow-auto text-center my-2"
-      >
-        {{
-          'SPECIES.' +
-            pokemonSpecies.name +
-            '.FLAVOR_TEXT.' +
-            this.activeVersion | translate
-        }}
+      <div *ngIf="pokemonSpecies.flavor_text_entries" class="overflow-auto text-center my-2">
+        {{ 'SPECIES.' + pokemonSpecies.name + '.FLAVOR_TEXT.' + this.activeVersion | translate }}
       </div>
       <table class="table mb-0">
         <tbody>
@@ -41,31 +30,18 @@
             <td>{{ 'UI.SPECIES.INFO.COLOR' | translate }}</td>
             <td>
               {{ pokemonSpecies.color.name | titlecase }}
-              <span
-                [ngStyle]="{ 'background-color': pokemonSpecies.color.name }"
-                >__</span
-              >
+              <span [ngStyle]="{ 'background-color': pokemonSpecies.color.name }">__</span>
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | translate }}">
             <td>{{ 'UI.SPECIES.INFO.GROWTH_RATE' | translate }}</td>
             <td>{{ pokemonSpecies.growth_rate.name | titlecase }}</td>
           </tr>
-          <tr
-            *ngIf="pokemonSpecies.egg_groups"
-            title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | translate }}"
-          >
+          <tr *ngIf="pokemonSpecies.egg_groups" title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | translate }}">
             <td>{{ 'UI.SPECIES.INFO.EGG_GROUPS' | translate }}</td>
             <td>
-              <span
-                *ngFor="
-                  let eggGroup of pokemonSpecies.egg_groups;
-                  let i = index
-                "
-                >{{ eggGroup.name | titlecase
-                }}<span *ngIf="pokemonSpecies.egg_groups.length - 1 !== i"
-                  >,
-                </span></span
+              <span *ngFor="let eggGroup of pokemonSpecies.egg_groups; let i = index"
+                >{{ eggGroup.name | titlecase }}<span *ngIf="pokemonSpecies.egg_groups.length - 1 !== i">, </span></span
               >
             </td>
           </tr>
@@ -76,23 +52,13 @@
           <tr title="{{ 'UI.SPECIES.INFO.GENERATION_TITLE' | translate }}">
             <td>{{ 'UI.SPECIES.INFO.GENERATION' | translate }}</td>
             <td>
-              {{
-                'STATIC.GENERATION.NUMBER.' + pokemonSpecies.generation.name
-                  | translate
-              }}
+              {{ 'STATIC.GENERATION.NUMBER.' + pokemonSpecies.generation.name | translate }}
             </td>
           </tr>
-          <tr
-            title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | translate }}"
-            *ngIf="pokemonSpecies.habitat"
-          >
+          <tr title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | translate }}" *ngIf="pokemonSpecies.habitat">
             <td>{{ 'UI.SPECIES.INFO.HABITAT' | translate }}</td>
             <td>
-              {{
-                'STATIC.HABITAT.' + pokemonSpecies.habitat.name
-                  | translate
-                  | titlecase
-              }}
+              {{ 'STATIC.HABITAT.' + pokemonSpecies.habitat.name | translate | titlecase }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | translate }}">
@@ -117,10 +83,7 @@
               </td>
             </tr>
           </ng-container>
-          <tr
-            *ngIf="pokemonSpecies.gender_rate === -1"
-            title="{{ 'UI.SPECIES.INFO.GENDERLESS_TITLE' | translate }}"
-          >
+          <tr *ngIf="pokemonSpecies.gender_rate === -1" title="{{ 'UI.SPECIES.INFO.GENDERLESS_TITLE' | translate }}">
             <td>{{ 'UI.SPECIES.INFO.GENDERLESS_RATE' | translate }}</td>
             <td>{{ 'UI.SPECIES.INFO.GENDERLESS' | translate }}</td>
           </tr>
@@ -129,11 +92,7 @@
     </div>
     <ng-template #loading>
       <div class="text-center">
-        <div
-          class="spinner-border m-4"
-          style="width: 3rem; height: 3rem"
-          role="status"
-        >
+        <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
           <span class="sr-only">{{ 'LOADING' | translate }}</span>
         </div>
       </div>

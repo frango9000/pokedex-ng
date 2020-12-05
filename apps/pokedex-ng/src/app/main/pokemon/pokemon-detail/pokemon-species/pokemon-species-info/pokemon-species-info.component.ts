@@ -17,9 +17,7 @@ export class PokemonSpeciesInfoComponent implements OnInit, OnDestroy {
   constructor(private pokemonVersionService: PokemonVersionService) {}
 
   ngOnInit(): void {
-    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(
-      (value) => (this.activeVersion = value)
-    );
+    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
   }
 
   ngOnDestroy(): void {

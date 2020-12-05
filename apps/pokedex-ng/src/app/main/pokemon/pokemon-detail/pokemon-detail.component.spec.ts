@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ExpandableResourcesPipeStub } from '../../../shared/pipes/expandable-resources.pipe.spec';
 import { PokeTypeColorPipeStub } from '../../../shared/pipes/poke-type-color.pipe.spec';
 import { pokemonServiceStubProvider } from '../../../shared/services/pokemon.service.spec';
 import { PokemonAbilitiesComponentStub } from './pokemon-abilities/pokemon-abilities.component.spec';
@@ -27,6 +28,7 @@ describe('PokemonDetailComponent', () => {
           PokemonTypeDamagesComponentStub,
           PokemonAbilitiesComponentStub,
           PokemonMovesComponentStub,
+          ExpandableResourcesPipeStub,
         ],
         providers: [pokemonServiceStubProvider],
       }).compileComponents();

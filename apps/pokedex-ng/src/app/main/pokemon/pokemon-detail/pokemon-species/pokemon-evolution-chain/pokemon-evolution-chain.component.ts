@@ -14,17 +14,13 @@ export class PokemonEvolutionChainComponent implements OnChanges {
 
   public evolutionChain: PokemonEvolutionChain;
 
-  constructor(
-    private pokemonEvolutionChainService: PokemonEvolutionChainService
-  ) {}
+  constructor(private pokemonEvolutionChainService: PokemonEvolutionChainService) {}
 
   ngOnChanges(): void {
     if (this.pokemonSpecies) {
       this.evolutionChain = null;
       this.pokemonEvolutionChainService
-        .getEvolutionChain(
-          splitResourceId(this.pokemonSpecies.evolution_chain.url)
-        )
+        .getEvolutionChain(splitResourceId(this.pokemonSpecies.evolution_chain.url))
         .subscribe((value) => {
           this.evolutionChain = value;
         });

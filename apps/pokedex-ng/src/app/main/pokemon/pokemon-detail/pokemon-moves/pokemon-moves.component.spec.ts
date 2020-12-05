@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PokemonMoves } from '../../../../shared/domain/pokemon';
+import { ExpandableResourcesPipeStub } from '../../../../shared/pipes/expandable-resources.pipe.spec';
+import { PokeTypeColorPipeStub } from '../../../../shared/pipes/poke-type-color.pipe.spec';
 import { pokemonMoveServiceStubProvider } from '../../../../shared/services/pokemon-move.service.spec';
-import { pokemonServiceStubProvider } from '../../../../shared/services/pokemon-version.service.spec';
+import { pokemonVersionServiceStubProvider } from '../../../../shared/services/pokemon-version.service.spec';
 import { PokemonMovesCardComponentStub } from './pokemon-moves-card/pokemon-moves-card.component.spec';
 
 import { PokemonMovesComponent } from './pokemon-moves.component';
@@ -14,8 +16,13 @@ describe('PokemonMovesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [PokemonMovesComponent, PokemonMovesCardComponentStub],
-        providers: [pokemonServiceStubProvider, pokemonMoveServiceStubProvider],
+        declarations: [
+          PokemonMovesComponent,
+          PokemonMovesCardComponentStub,
+          ExpandableResourcesPipeStub,
+          PokeTypeColorPipeStub,
+        ],
+        providers: [pokemonVersionServiceStubProvider, pokemonMoveServiceStubProvider],
       }).compileComponents();
     })
   );

@@ -23,9 +23,7 @@
                   [ngStyle]="{
                     'background-color': type.type.name | pokeTypeColor
                   }"
-                  >{{
-                    'STATIC.TYPES.' + type.type.name | translate | uppercase
-                  }}</span
+                  >{{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}</span
                 >
               </h5>
             </div>
@@ -90,14 +88,8 @@
     </mdb-card>
   </div>
   <div *ngIf="pokemon; else loading">
-    <app-pokemon-species
-      [pokemonSpeciesId]="pokemon.species.name"
-      class=""
-    ></app-pokemon-species>
-    <app-pokemon-stats
-      [pokemonStats]="pokemon.stats"
-      class="row justify-content-center my-2"
-    ></app-pokemon-stats>
+    <app-pokemon-species [pokemonSpeciesId]="pokemon.species.name" class=""></app-pokemon-species>
+    <app-pokemon-stats [pokemonStats]="pokemon.stats" class="row justify-content-center my-2"></app-pokemon-stats>
     <app-pokemon-type-damages
       [typeIds]="pokemon.types"
       class="row justify-content-center my-2"
@@ -106,19 +98,12 @@
       [pokemonAbilities]="pokemon.abilities"
       class="row justify-content-center my-2"
     ></app-pokemon-abilities>
-    <app-pokemon-moves
-      [pokemonMoves]="pokemon.moves"
-      class=""
-    ></app-pokemon-moves>
+    <app-pokemon-moves [pokemonMoves]="pokemon.moves" class=""></app-pokemon-moves>
   </div>
 </div>
 <ng-template #loading>
   <div class="text-center">
-    <div
-      class="spinner-border m-4"
-      style="width: 3rem; height: 3rem"
-      role="status"
-    >
+    <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
       <span class="sr-only">{{ 'LOADING' | translate }}</span>
     </div>
   </div>

@@ -8,11 +8,7 @@
       <tr>
         <td>{{ 'UI.MOVE.CATEGORY' | translate }}</td>
         <td>
-          {{
-            'STATIC.MOVE.CATEGORIES.' + move.meta.category.name
-              | translate
-              | titlecase
-          }}
+          {{ 'STATIC.MOVE.CATEGORIES.' + move.meta.category.name | translate | titlecase }}
         </td>
       </tr>
       <tr title="{{ 'UI.MOVE.GENERATION_TITLE' | translate }}">
@@ -21,47 +17,27 @@
           {{ 'STATIC.GENERATION.NUMBER.' + move.generation.name | translate }}
         </td>
       </tr>
-      <tr
-        *ngIf="move.type"
-        title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | translate }}"
-      >
+      <tr *ngIf="move.type" title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | translate }}">
         <td>{{ 'UI.MOVE.DAMAGE_TYPE' | translate }}</td>
         <td>
-          <span
-            [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }"
-            class="p-1 text-white"
-            >{{
-              'STATIC.TYPES.' + move.type.name | translate | uppercase
-            }}</span
-          >
+          <span [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }" class="p-1 text-white">{{
+            'STATIC.TYPES.' + move.type.name | translate | uppercase
+          }}</span>
         </td>
       </tr>
       <tr *ngIf="move.damage_class">
         <td title="{{ 'UI.MOVE.DAMAGE_CLASS_TITLE' | translate }}">
           {{ 'UI.MOVE.DAMAGE_CLASS' | translate }}
         </td>
-        <td
-          title="{{
-            'STATIC.MOVE.DAMAGE_CLASS.' +
-              move.damage_class.name +
-              '.DESCRIPTION' | translate
-          }}"
-        >
-          {{
-            'STATIC.MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.NAME'
-              | translate
-              | titlecase
-          }}
+        <td title="{{ 'STATIC.MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.DESCRIPTION' | translate }}">
+          {{ 'STATIC.MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.NAME' | translate | titlecase }}
         </td>
       </tr>
       <tr title="{{ 'UI.MOVE.PP_TITLE' | translate }}">
         <td>{{ 'UI.MOVE.PP' | translate }}</td>
         <td>{{ move.pp }}</td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.ACCURACY_TITLE' | translate }}"
-        *ngIf="move.accuracy"
-      >
+      <tr title="{{ 'UI.MOVE.ACCURACY_TITLE' | translate }}" *ngIf="move.accuracy">
         <td>{{ 'UI.MOVE.ACCURACY' | translate }}</td>
         <td>{{ move.accuracy / 100 | percent }}</td>
       </tr>
@@ -69,25 +45,16 @@
         <td>{{ 'UI.MOVE.POWER' | translate }}</td>
         <td>{{ move.power ? move.power : 'N/A' }}</td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.PRIORITY_TITLE' | translate }}"
-        *ngIf="move.priority"
-      >
+      <tr title="{{ 'UI.MOVE.PRIORITY_TITLE' | translate }}" *ngIf="move.priority">
         <td>{{ 'UI.MOVE.PRIORITY' | translate }}</td>
         <td>{{ move.priority }}</td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | translate }}"
-        *ngIf="move.meta.stat_chance"
-      >
+      <tr title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | translate }}" *ngIf="move.meta.stat_chance">
         <td>{{ 'UI.MOVE.STAT_CHANGE_CHANCE' | translate }}</td>
         <td>{{ move.meta.stat_chance / 100 | percent }}</td>
       </tr>
       <ng-container *ngIf="move.stat_changes.length > 0">
-        <tr
-          title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | translate }}"
-          *ngFor="let statChange of move.stat_changes"
-        >
+        <tr title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | translate }}" *ngFor="let statChange of move.stat_changes">
           <td>{{ 'STATIC.STATS.' + statChange.stat.name | translate }}</td>
           <td>{{ statChange.change }}</td>
         </tr>
@@ -96,22 +63,13 @@
         <td>{{ 'UI.MOVE.CRITICAL_RATE' | translate }}</td>
         <td>{{ move.meta.crit_rate / 100 | percent }}</td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.HEALING_TITLE' | translate }}"
-        *ngIf="move.meta.healing"
-      >
+      <tr title="{{ 'UI.MOVE.HEALING_TITLE' | translate }}" *ngIf="move.meta.healing">
         <td>{{ 'UI.MOVE.HEALING' | translate }}</td>
         <td>{{ move.meta.healing }}</td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | translate }}"
-        *ngIf="move.meta.drain"
-      >
+      <tr title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | translate }}" *ngIf="move.meta.drain">
         <td>
-          {{
-            (move.meta.drain > 0 ? 'UI.MOVE.DRAIN' : 'UI.MOVE.RECOIL')
-              | translate
-          }}
+          {{ (move.meta.drain > 0 ? 'UI.MOVE.DRAIN' : 'UI.MOVE.RECOIL') | translate }}
         </td>
         <td>{{ move.meta.drain / 100 | percent }}</td>
       </tr>
@@ -119,11 +77,7 @@
         <tr title="{{ 'UI.MOVE.AILMENT_TITLE' | translate }}">
           <td>{{ 'UI.MOVE.AILMENT' | translate }}</td>
           <td>
-            {{
-              'STATIC.MOVE.AILMENT.' + move.meta.ailment.name
-                | translate
-                | titlecase
-            }}
+            {{ 'STATIC.MOVE.AILMENT.' + move.meta.ailment.name | translate | titlecase }}
           </td>
         </tr>
         <tr title="{{ 'UI.MOVE.AILMENT_CHANCE_TITLE' | translate }}">
@@ -131,10 +85,7 @@
           <td>{{ move.meta.ailment_chance / 100 | percent }}</td>
         </tr>
       </ng-container>
-      <tr
-        title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | translate }}"
-        *ngIf="move.meta.flinch_chance"
-      >
+      <tr title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | translate }}" *ngIf="move.meta.flinch_chance">
         <td>{{ 'UI.MOVE.FLINCH_CHANCE' | translate }}</td>
         <td>{{ move.meta.flinch_chance / 100 | percent }}</td>
       </tr>
@@ -142,15 +93,8 @@
         <td title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | translate }}">
           {{ 'UI.MOVE.TARGET_TYPE' | translate }}
         </td>
-        <td
-          title="{{
-            'STATIC.MOVE.TARGET_TYPE.' + move.target.name + '.DESCRIPTION'
-              | translate
-          }}"
-        >
-          {{
-            'STATIC.MOVE.TARGET_TYPE.' + move.target.name + '.NAME' | translate
-          }}
+        <td title="{{ 'STATIC.MOVE.TARGET_TYPE.' + move.target.name + '.DESCRIPTION' | translate }}">
+          {{ 'STATIC.MOVE.TARGET_TYPE.' + move.target.name + '.NAME' | translate }}
         </td>
       </tr>
       <tr *ngIf="move.meta.min_hits">
@@ -172,40 +116,24 @@
       <tr title="{{ 'UI.MOVE.DESCRIPTION_TITLE' | translate }}">
         <td>{{ 'UI.MOVE.DESCRIPTION' | translate }}</td>
         <td>
-          {{
-            'MOVE.' + move.name + '.FLAVOR_TEXT.' + this.activeVersion
-              | translate
-          }}
+          {{ 'MOVE.' + move.name + '.FLAVOR_TEXT.' + this.activeVersion | translate }}
         </td>
       </tr>
-      <tr
-        title="{{ 'UI.MOVE.EFFECT_CHANCE_TITLE' | translate }}"
-        *ngIf="move.effect_chance"
-      >
+      <tr title="{{ 'UI.MOVE.EFFECT_CHANCE_TITLE' | translate }}" *ngIf="move.effect_chance">
         <td>{{ 'UI.MOVE.EFFECT_CHANCE' | translate }}</td>
         <td>{{ move.effect_chance / 100 | percent }}</td>
       </tr>
-      <ng-container
-        *ngVar="move.effect_chance ? move.effect_chance : '' as effect_chance"
-      >
+      <ng-container *ngVar="move.effect_chance ? move.effect_chance : '' as effect_chance">
         <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | translate }}">
           <td>{{ 'UI.MOVE.EFFECT' | translate }}</td>
           <td>
-            {{
-              'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT'
-                | translate
-                | replace: '$effect_chance':effect_chance
-            }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | translate | replace: '$effect_chance':effect_chance }}
           </td>
         </tr>
         <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | translate }}">
           <td>{{ 'UI.MOVE.EFFECT_SHORT' | translate }}</td>
           <td>
-            {{
-              'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT'
-                | translate
-                | replace: '$effect_chance':effect_chance
-            }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | translate | replace: '$effect_chance':effect_chance }}
           </td>
         </tr>
       </ng-container>
@@ -213,11 +141,7 @@
   </table>
   <ng-template #loading>
     <div class="text-center">
-      <div
-        class="spinner-border m-4"
-        style="width: 3rem; height: 3rem"
-        role="status"
-      >
+      <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
         <span class="sr-only">{{ 'LOADING' | translate }}</span>
       </div>
     </div>

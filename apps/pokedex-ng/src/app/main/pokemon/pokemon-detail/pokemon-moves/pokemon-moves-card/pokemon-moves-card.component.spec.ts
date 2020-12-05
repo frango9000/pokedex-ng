@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { PokemonMoves } from '../../../../../shared/domain/pokemon';
 import { ApiNamedMove } from '../../../../../shared/domain/pokemon-move';
-import { SharedModule } from '../../../../../shared/shared.module';
-import { PokemonMoveComponent } from '../pokemon-move/pokemon-move.component';
+import { ExpandableResourcesPipeStub } from '../../../../../shared/pipes/expandable-resources.pipe.spec';
+import { PokeTypeColorPipeStub } from '../../../../../shared/pipes/poke-type-color.pipe.spec';
+import { PokemonMoveComponentStub } from '../pokemon-move/pokemon-move.component.spec';
 
 import { PokemonMovesCardComponent } from './pokemon-moves-card.component';
 
@@ -16,8 +18,14 @@ describe('PokemonMovesCardComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot(), SharedModule],
-        declarations: [PokemonMovesCardComponent],
+        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        declarations: [
+          PokemonMovesCardComponent,
+          PokemonMoveComponentStub,
+          ExpandableResourcesPipeStub,
+          PokeTypeColorPipeStub,
+          NgVarDirective,
+        ],
       }).compileComponents();
     })
   );

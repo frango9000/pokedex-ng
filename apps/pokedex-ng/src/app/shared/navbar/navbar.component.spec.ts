@@ -1,4 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { pokemonVersionServiceStubProvider } from '../services/pokemon-version.service.spec';
+import { LocalePickerComponentStub } from './locale-picker/locale-picker.component.spec';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -6,11 +10,15 @@ describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
+        declarations: [NavbarComponent, LocalePickerComponentStub],
+        providers: [pokemonVersionServiceStubProvider],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);

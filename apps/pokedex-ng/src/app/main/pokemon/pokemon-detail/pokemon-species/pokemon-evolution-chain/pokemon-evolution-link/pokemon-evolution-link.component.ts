@@ -12,16 +12,12 @@ import {
 export class PokemonEvolutionLinkComponent {
   @Input() link: PokemonEvolutionChainLink;
 
-  getEvolutionMethodText(
-    method: PokemonEvolutionDetail
-  ): PokemonEvolutionTriggerDetails {
+  getEvolutionMethodText(method: PokemonEvolutionDetail): PokemonEvolutionTriggerDetails {
     let trigger: PokemonEvolutionTriggerDetail;
     const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {
       case 'level-up':
-        trigger = method.min_level
-          ? { title: 'LEVEL_UP_AT', value: method.min_level }
-          : { title: 'LEVEL_UP' };
+        trigger = method.min_level ? { title: 'LEVEL_UP_AT', value: method.min_level } : { title: 'LEVEL_UP' };
         break;
       case 'trade':
         trigger = method.trade_species
@@ -29,9 +25,7 @@ export class PokemonEvolutionLinkComponent {
           : { title: 'WHEN_TRADED' };
         break;
       case 'use-item':
-        trigger = method.item
-          ? { title: 'WITH_ITEM_USE', value: method.item.name }
-          : { title: 'WITH_ITEM' };
+        trigger = method.item ? { title: 'WITH_ITEM_USE', value: method.item.name } : { title: 'WITH_ITEM' };
         break;
       case 'shed':
         trigger = { title: 'SHED_EVOLVE' };

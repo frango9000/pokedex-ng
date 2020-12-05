@@ -27,9 +27,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(
-      (value) => (this.activeVersion = value)
-    );
+    this.versionSub = this.pokemonVersionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
     this.pokemonMoveService.getAbility(this.abilityId).subscribe((ability) => {
       this.ability = ability;
       this.generateTranslations(this.ability);
@@ -65,9 +63,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
         true
       );
     });
-    const defaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
-      (value) => value.language.name === 'en'
-    );
+    const defaultFlavorTextIndex = ability.flavor_text_entries.findIndex((value) => value.language.name === 'en');
     const defaultFlavorText =
       defaultFlavorTextIndex > -1
         ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
@@ -80,8 +76,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
           );
           const langDefaultFlavorText =
             langDefaultFlavorTextIndex > -1
-              ? ability.flavor_text_entries[langDefaultFlavorTextIndex]
-                  .flavor_text
+              ? ability.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text
               : 'ABILITY_TRANSLATE_ERROR_002';
           versions.forEach((version) => {
             this.translateService.setTranslation(
@@ -90,10 +85,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
                 ABILITY: {
                   [ability.name]: {
                     FLAVOR_TEXT: {
-                      [version.name]:
-                        langDefaultFlavorTextIndex > -1
-                          ? langDefaultFlavorText
-                          : defaultFlavorText,
+                      [version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText,
                     },
                   },
                 },

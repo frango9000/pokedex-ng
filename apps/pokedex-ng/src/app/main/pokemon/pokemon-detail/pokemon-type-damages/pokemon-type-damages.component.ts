@@ -49,32 +49,20 @@ export class PokemonTypeDamagesComponent implements OnChanges {
     }[] = JSON.parse(JSON.stringify(this.allTypes));
     this.types.forEach((type) => {
       type.damage_relations.double_damage_from.forEach((double) => {
-        const found = generatedTypeDamages.findIndex(
-          (value) => value.name === double
-        );
+        const found = generatedTypeDamages.findIndex((value) => value.name === double);
         generatedTypeDamages[found].multiplier *= 2;
       });
       type.damage_relations.half_damage_from.forEach((half) => {
-        const found = generatedTypeDamages.findIndex(
-          (value) => value.name === half
-        );
+        const found = generatedTypeDamages.findIndex((value) => value.name === half);
         generatedTypeDamages[found].multiplier *= 0.5;
       });
       type.damage_relations.no_damage_from.forEach((none) => {
-        const found = generatedTypeDamages.findIndex(
-          (value) => value.name === none
-        );
+        const found = generatedTypeDamages.findIndex((value) => value.name === none);
         generatedTypeDamages[found].multiplier *= 0;
       });
     });
-    generatedTypeDamages = generatedTypeDamages.filter(
-      (value) => value.multiplier !== 1
-    );
-    this.weaknesses = generatedTypeDamages.filter(
-      (value) => value.multiplier > 1
-    );
-    this.resistances = generatedTypeDamages.filter(
-      (value) => value.multiplier < 1
-    );
+    generatedTypeDamages = generatedTypeDamages.filter((value) => value.multiplier !== 1);
+    this.weaknesses = generatedTypeDamages.filter((value) => value.multiplier > 1);
+    this.resistances = generatedTypeDamages.filter((value) => value.multiplier < 1);
   }
 }

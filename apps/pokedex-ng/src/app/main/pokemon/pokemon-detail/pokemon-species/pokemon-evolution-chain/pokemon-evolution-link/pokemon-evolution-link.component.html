@@ -1,4 +1,4 @@
-<ng-container *ngIf="link.evolves_to.length > 0">
+<ng-container *ngIf="link?.evolves_to?.length > 0">
   <ng-container *ngFor="let node of link.evolves_to">
     <div class="container-fluid">
       <div class="row text-center border-bottom">
@@ -17,28 +17,18 @@
         </div>
         <div class="col-4 my-auto">
           <div class="row" *ngFor="let method of node.evolution_details">
-            <div
-              *ngVar="getEvolutionMethodText(method) as triggerAndConditions"
-              class="mx-auto"
-            >
+            <div *ngVar="getEvolutionMethodText(method) as triggerAndConditions" class="mx-auto">
               <div>
                 <mdb-icon fas icon="long-arrow-alt-right" size="3x"></mdb-icon>
               </div>
               <div>
                 {{
-                  'UI.EVOLUTION_CHAIN.LINK.' +
-                    triggerAndConditions.trigger.title
+                  'UI.EVOLUTION_CHAIN.LINK.' + triggerAndConditions.trigger.title
                     | translate: { value: triggerAndConditions.trigger.value }
                 }}
               </div>
-              <div
-                class="overflow-auto"
-                *ngFor="let condition of triggerAndConditions.conditions"
-              >
-                {{
-                  'UI.EVOLUTION_CHAIN.LINK.' + condition.title
-                    | translate: { value: condition.value }
-                }}
+              <div class="overflow-auto" *ngFor="let condition of triggerAndConditions.conditions">
+                {{ 'UI.EVOLUTION_CHAIN.LINK.' + condition.title | translate: { value: condition.value } }}
               </div>
             </div>
           </div>

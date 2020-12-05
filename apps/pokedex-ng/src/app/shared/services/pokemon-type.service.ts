@@ -25,19 +25,15 @@ export class PokemonTypeService {
   }
 
   getType(typeId: string): Observable<ApiNamedType> {
-    return this.getTypes().pipe(
-      map((value) => value.find((value1) => value1.name === typeId))
-    );
+    return this.getTypes().pipe(map((value) => value.find((value1) => value1.name === typeId)));
   }
 
   getApiTypes(): Observable<ApiNamedResource[]> {
     // const pageParams: HttpParams = new HttpParams().append('limit', '100');
-    return this.httpClient
-      .get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/type/')
-      .pipe(
-        map((value) => value.results),
-        tap(serviceLog),
-        shareReplay()
-      );
+    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/type/').pipe(
+      map((value) => value.results),
+      tap(serviceLog),
+      shareReplay()
+    );
   }
 }

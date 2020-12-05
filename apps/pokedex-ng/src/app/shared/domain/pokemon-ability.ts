@@ -1,10 +1,4 @@
-import {
-  ApiEffectChange,
-  ApiEffectEntry,
-  ApiFlavorTextEntry,
-  ApiName,
-  ApiNamedResource,
-} from './api-resource';
+import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, ApiName, ApiNamedResource } from './api-resource';
 
 export interface PokemonAbility {
   id: number;

@@ -10,5 +10,5 @@ describe('ExpandableResourcesPipe', () => {
 
 @Pipe({ name: 'expandableResources' })
 export class ExpandableResourcesPipeStub implements Partial<ExpandableResourcesPipe> {
-  public transform = jest.fn();
+  public transform = jest.fn(() => []);
 }

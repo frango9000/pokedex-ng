@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
+import { pokemonVersionServiceStubProvider } from '../../../../../shared/services/pokemon-version.service.spec';
 
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
@@ -8,11 +11,15 @@ describe('PokemonSpeciesInfoComponent', () => {
   let component: PokemonSpeciesInfoComponent;
   let fixture: ComponentFixture<PokemonSpeciesInfoComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PokemonSpeciesInfoComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        declarations: [PokemonSpeciesInfoComponent],
+        providers: [pokemonVersionServiceStubProvider],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonSpeciesInfoComponent);
@@ -25,10 +32,7 @@ describe('PokemonSpeciesInfoComponent', () => {
   });
 });
 
-@Component({
-  selector: 'app-pokemon-species-info',
-  template: '',
-})
+@Component({ selector: 'app-pokemon-species-info', template: '' })
 export class PokemonSpeciesInfoComponentStub implements Partial<PokemonSpeciesInfoComponent> {
   @Input() public pokemonSpecies: PokemonSpecies;
 }

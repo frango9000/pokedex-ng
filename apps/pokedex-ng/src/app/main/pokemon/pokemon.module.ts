@@ -41,13 +41,7 @@ import { PokemonEvolutionLinkComponent } from './pokemon-detail/pokemon-species/
     PokemonEvolutionChainComponent,
     PokemonEvolutionLinkComponent,
   ],
-  imports: [
-    CommonModule,
-    PokemonRoutingModule,
-    MDBBootstrapModule.forRoot(),
-    SharedModule,
-    InfiniteScrollModule,
-  ],
+  imports: [CommonModule, PokemonRoutingModule, MDBBootstrapModule.forRoot(), SharedModule, InfiniteScrollModule],
   providers: [ResourceIdPipe],
 })
 export class PokemonModule {}
