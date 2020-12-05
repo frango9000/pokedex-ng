@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PokemonAbilities } from '../../../../shared/domain/pokemon';
-import { ExpandableResourcesPipe } from '../../../../shared/pipes/expandable-resources.pipe';
 import { PokemonAbilitiesComponent } from './pokemon-abilities.component';
-import { PokemonAbilityComponent } from './pokemon-ability/pokemon-ability.component';
+import { ExpandableResourcesPipeStub } from '../../../../shared/pipes/expandable-resources.pipe.spec';
+import { PokemonAbilityComponentStub } from './pokemon-ability/pokemon-ability.component.spec';
 
 describe('PokemonAbilitiesComponent', () => {
   let component: PokemonAbilitiesComponent;
@@ -15,7 +15,7 @@ describe('PokemonAbilitiesComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonAbilitiesComponent, ExpandableResourcesPipe, PokemonAbilityComponent],
+        declarations: [PokemonAbilitiesComponent, ExpandableResourcesPipeStub, PokemonAbilityComponentStub],
       }).compileComponents();
     })
   );
@@ -34,5 +34,5 @@ describe('PokemonAbilitiesComponent', () => {
 
 @Component({ selector: 'app-pokemon-abilities', template: '' })
 export class PokemonAbilitiesComponentStub implements Partial<PokemonAbilitiesComponent> {
-  @Input() pokemonAbilities: PokemonAbilities[];
+  @Input() pokemonAbilities: PokemonAbilities[] = [];
 }

@@ -18,9 +18,7 @@ describe('PokemonLanguageService', () => {
   });
 });
 
-export class PokemonLanguageServiceStub implements Partial<PokemonLanguageService> {
-  // public getPokemonList = jest.fn((offset: number) => of([]));
-}
+export class PokemonLanguageServiceStub implements Partial<PokemonLanguageService> {}
 
 export const pokemonLanguageServiceStubProvider = {
   provide: PokemonLanguageService,

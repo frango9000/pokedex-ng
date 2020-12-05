@@ -39,7 +39,7 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    this.versionSub.unsubscribe();
+    this.versionSub?.unsubscribe();
   }
 
   private filterMoves(): void {

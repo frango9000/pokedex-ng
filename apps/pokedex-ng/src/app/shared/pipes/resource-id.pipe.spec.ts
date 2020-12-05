@@ -1,6 +1,5 @@
 import { Pipe } from '@angular/core';
 import { ResourceIdPipe } from './resource-id.pipe';
-import { RomanPipe } from './roman.pipe';
 
 describe('ResourceIdPipe', () => {
   it('create an instance', () => {

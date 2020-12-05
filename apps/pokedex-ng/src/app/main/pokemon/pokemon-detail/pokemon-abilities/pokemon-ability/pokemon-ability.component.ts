@@ -39,7 +39,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   }
 
   private generateTranslations(ability: PokemonAbility): void {
-    if (!ability.names) return;
+    if (!ability?.names) return;
     ability.names.forEach((name) => {
       this.translateService.setTranslation(
         name.language.name,

@@ -10,20 +10,13 @@ import { PokemonVersionService } from '../../../../shared/services/pokemon-versi
 import { PokemonEvolutionChainComponentStub } from './pokemon-evolution-chain/pokemon-evolution-chain.component.spec';
 import { PokemonSpeciesInfoComponentStub } from './pokemon-species-info/pokemon-species-info.component.spec';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
+import { pokemonVersionServiceStubProvider } from '../../../../shared/services/pokemon-version.service.spec';
+import { pokemonLanguageServiceStubProvider } from '../../../../shared/services/pokemon-language.service.spec';
+import { pokemonSpeciesServiceStubProvider } from '../../../../shared/services/pokemon-species.service.spec';
 
 describe('PokemonSpeciesComponent', () => {
   let component: PokemonSpeciesComponent;
   let fixture: ComponentFixture<PokemonSpeciesComponent>;
-
-  const pokemonSpeciesService = {
-    getPokemonSpecies: () => of(null),
-  };
-  const pokemonVersionService = {
-    getVersionList: of([]),
-  };
-  const pokemonLanguageService = {
-    getLanguageList: of([]),
-  };
 
   beforeEach(
     waitForAsync(() => {
@@ -31,9 +24,9 @@ describe('PokemonSpeciesComponent', () => {
         imports: [RouterModule, TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoComponentStub, PokemonEvolutionChainComponentStub],
         providers: [
-          { provide: PokemonSpeciesService, useValue: pokemonSpeciesService },
-          { provide: PokemonVersionService, useValue: pokemonVersionService },
-          { provide: PokemonLanguageService, useValue: pokemonLanguageService },
+          pokemonSpeciesServiceStubProvider,
+          pokemonVersionServiceStubProvider,
+          pokemonLanguageServiceStubProvider,
         ],
       }).compileComponents();
     })

@@ -21,6 +21,7 @@ describe('PokemonMoveService', () => {
 export class PokemonMoveServiceStub implements Partial<PokemonMoveService> {
   public getMoves = jest.fn(() => of([]));
   public getApiMove = jest.fn(() => of(null));
+  public getAbility = jest.fn(() => of(null));
 }
 
 export const pokemonMoveServiceStubProvider = {

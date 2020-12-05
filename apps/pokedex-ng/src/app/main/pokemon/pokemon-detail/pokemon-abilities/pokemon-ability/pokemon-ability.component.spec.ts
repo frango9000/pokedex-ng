@@ -1,25 +1,16 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
-import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 import { PokemonAbilityComponent } from './pokemon-ability.component';
+import { pokemonMoveServiceStubProvider } from '../../../../../shared/services/pokemon-move.service.spec';
+import { pokemonVersionServiceStubProvider } from '../../../../../shared/services/pokemon-version.service.spec';
+import { pokemonLanguageServiceStubProvider } from '../../../../../shared/services/pokemon-language.service.spec';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 describe('PokemonAbilityComponent', () => {
   let component: PokemonAbilityComponent;
   let fixture: ComponentFixture<PokemonAbilityComponent>;
-
-  const pokemonMoveService = {
-    getAbility: () => of(null),
-  };
-  const pokemonVersionService = {
-    activeVersion$: of({}),
-  };
-  const pokemonLanguageService = {
-    getLanguageList: of([]),
-  };
 
   beforeEach(
     waitForAsync(() => {
@@ -27,9 +18,9 @@ describe('PokemonAbilityComponent', () => {
         imports: [TranslateModule.forRoot()],
         declarations: [PokemonAbilityComponent],
         providers: [
-          { provide: PokemonMoveService, useValue: pokemonMoveService },
-          { provide: PokemonVersionService, useValue: pokemonVersionService },
-          { provide: PokemonLanguageService, useValue: pokemonLanguageService },
+          pokemonMoveServiceStubProvider,
+          pokemonVersionServiceStubProvider,
+          pokemonLanguageServiceStubProvider,
         ],
       }).compileComponents();
     })
@@ -45,3 +36,8 @@ describe('PokemonAbilityComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({ selector: 'app-pokemon-ability', template: '' })
+export class PokemonAbilityComponentStub implements Partial<PokemonAbilityComponent> {
+  @Input() abilityId: string | number;
+}

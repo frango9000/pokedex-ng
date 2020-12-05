@@ -1,6 +1,5 @@
 import { Pipe } from '@angular/core';
 import { ReplacePipe } from './replace.pipe';
-import { RomanPipe } from './roman.pipe';
 
 describe('ReplacePipe', () => {
   it('create an instance', () => {

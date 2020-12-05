@@ -2,9 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
-import { PokeGenerationPipe } from '../../../../shared/pipes/poke-generation.pipe';
-
 import { PokemonTableComponent } from './pokemon-table.component';
+import { PokeGenerationPipeStub } from '../../../../shared/pipes/poke-generation.pipe.spec';
 
 describe('PokemonTableComponent', () => {
   let component: PokemonTableComponent;
@@ -14,7 +13,7 @@ describe('PokemonTableComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule],
-        declarations: [PokemonTableComponent, PokeGenerationPipe],
+        declarations: [PokemonTableComponent, PokeGenerationPipeStub],
       }).compileComponents();
     })
   );

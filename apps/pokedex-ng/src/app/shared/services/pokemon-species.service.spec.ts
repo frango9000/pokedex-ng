@@ -1,6 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { PokemonSpeciesService } from './pokemon-species.service';
+import { PokemonService } from './pokemon.service';
+import { of } from 'rxjs';
 
 describe('PokemonSpeciesService', () => {
   let service: PokemonSpeciesService;
@@ -16,3 +18,10 @@ describe('PokemonSpeciesService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+export class PokemonSpeciesServiceStub implements Partial<PokemonSpeciesService> {}
+
+export const pokemonSpeciesServiceStubProvider = {
+  provide: PokemonSpeciesService,
+  useFactory: () => new PokemonSpeciesServiceStub(),
+};
