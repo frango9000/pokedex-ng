@@ -2,7 +2,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { PokemonTypeService } from './pokemon-type.service';
-import { PokemonService } from './pokemon.service';
 
 describe('PokemonTypeService', () => {
   let service: PokemonTypeService;
@@ -19,12 +18,12 @@ describe('PokemonTypeService', () => {
   });
 });
 
-export class PokemonTypeServiceStub implements Partial<PokemonTypeService> {
+export class PokemonTypeStubService implements Partial<PokemonTypeService> {
   getType = jest.fn(() => of(null));
   getTypes = jest.fn(() => of([]));
 }
 
-export const pokemonTypeServiceStubProvider = {
+export const pokemonTypeStubServiceProvider = {
   provide: PokemonTypeService,
-  useFactory: () => new PokemonTypeServiceStub(),
+  useFactory: () => new PokemonTypeStubService(),
 };

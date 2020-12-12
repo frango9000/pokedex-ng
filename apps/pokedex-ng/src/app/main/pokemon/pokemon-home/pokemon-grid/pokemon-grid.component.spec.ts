@@ -4,9 +4,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
-import { PokeGenerationPipeStub } from '../../../../shared/pipes/poke-generation.pipe.spec';
-import { PokeTypeColorPipeStub } from '../../../../shared/pipes/poke-type-color.pipe.spec';
-import { RomanPipeStub } from '../../../../shared/pipes/roman.pipe.spec';
+import { PokeGenerationStubPipe } from '../../../../shared/pipes/poke-generation.pipe.spec';
+import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
+import { RomanStubPipe } from '../../../../shared/pipes/roman.pipe.spec';
 
 import { PokemonGridComponent } from './pokemon-grid.component';
 
@@ -18,7 +18,7 @@ describe('PokemonGridComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), TranslateModule.forRoot()],
-        declarations: [PokemonGridComponent, PokeGenerationPipeStub, RomanPipeStub, PokeTypeColorPipeStub],
+        declarations: [PokemonGridComponent, PokeGenerationStubPipe, RomanStubPipe, PokeTypeColorStubPipe],
       }).compileComponents();
     })
   );
@@ -35,6 +35,6 @@ describe('PokemonGridComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-grid', template: '' })
-export class PokemonGridComponentStub implements Partial<PokemonGridComponent> {
+export class PokemonGridStubComponent implements Partial<PokemonGridComponent> {
   @Input() public pokemonList: ApiNamedPokemon[];
 }

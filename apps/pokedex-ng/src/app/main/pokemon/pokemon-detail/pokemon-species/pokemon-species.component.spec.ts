@@ -3,16 +3,12 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { of } from 'rxjs';
-import { PokemonLanguageService } from '../../../../shared/services/pokemon-language.service';
-import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
-import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
-import { PokemonEvolutionChainComponentStub } from './pokemon-evolution-chain/pokemon-evolution-chain.component.spec';
-import { PokemonSpeciesInfoComponentStub } from './pokemon-species-info/pokemon-species-info.component.spec';
+import { pokemonLanguageStubServiceProvider } from '../../../../shared/services/pokemon-language.service.spec';
+import { pokemonSpeciesStubServiceProvider } from '../../../../shared/services/pokemon-species.service';
+import { pokemonVersionStubServiceProvider } from '../../../../shared/services/pokemon-version.service.spec';
+import { PokemonEvolutionChainStubComponent } from './pokemon-evolution-chain/pokemon-evolution-chain.component.spec';
+import { PokemonSpeciesInfoStubComponent } from './pokemon-species-info/pokemon-species-info.component.spec';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
-import { pokemonVersionServiceStubProvider } from '../../../../shared/services/pokemon-version.service.spec';
-import { pokemonLanguageServiceStubProvider } from '../../../../shared/services/pokemon-language.service.spec';
-import { pokemonSpeciesServiceStubProvider } from '../../../../shared/services/pokemon-species.service.spec';
 
 describe('PokemonSpeciesComponent', () => {
   let component: PokemonSpeciesComponent;
@@ -22,11 +18,11 @@ describe('PokemonSpeciesComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterModule, TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoComponentStub, PokemonEvolutionChainComponentStub],
+        declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoStubComponent, PokemonEvolutionChainStubComponent],
         providers: [
-          pokemonSpeciesServiceStubProvider,
-          pokemonVersionServiceStubProvider,
-          pokemonLanguageServiceStubProvider,
+          pokemonSpeciesStubServiceProvider,
+          pokemonVersionStubServiceProvider,
+          pokemonLanguageStubServiceProvider,
         ],
       }).compileComponents();
     })
@@ -44,6 +40,6 @@ describe('PokemonSpeciesComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-species', template: '' })
-export class PokemonSpeciesComponentStub implements Partial<PokemonSpeciesComponent> {
+export class PokemonSpeciesStubComponent implements Partial<PokemonSpeciesComponent> {
   @Input() pokemonSpeciesId: string | number;
 }

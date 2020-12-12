@@ -1,4 +1,4 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { PokeGenerationPipe } from './poke-generation.pipe';
 
 describe('PokeGenerationPipe', () => {
@@ -9,6 +9,6 @@ describe('PokeGenerationPipe', () => {
 });
 
 @Pipe({ name: 'pokeGeneration' })
-export class PokeGenerationPipeStub implements Partial<PokeGenerationPipe> {
+export class PokeGenerationStubPipe implements PipeTransform, Partial<PokeGenerationPipe> {
   public transform = jest.fn();
 }

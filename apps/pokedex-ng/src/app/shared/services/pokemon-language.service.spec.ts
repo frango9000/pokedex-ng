@@ -18,9 +18,9 @@ describe('PokemonLanguageService', () => {
   });
 });
 
-export class PokemonLanguageServiceStub implements Partial<PokemonLanguageService> {}
+export class PokemonLanguageStubService implements Partial<PokemonLanguageService> {}
 
-export const pokemonLanguageServiceStubProvider = {
+export const pokemonLanguageStubServiceProvider = {
   provide: PokemonLanguageService,
-  useFactory: () => new PokemonLanguageServiceStub(),
+  useFactory: () => new PokemonLanguageStubService(),
 };

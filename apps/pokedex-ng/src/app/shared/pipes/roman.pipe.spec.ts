@@ -1,4 +1,4 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { RomanPipe } from './roman.pipe';
 
 describe('RomanPipe', () => {
@@ -9,6 +9,6 @@ describe('RomanPipe', () => {
 });
 
 @Pipe({ name: 'roman' })
-export class RomanPipeStub implements Partial<RomanPipe> {
+export class RomanStubPipe implements PipeTransform, Partial<RomanPipe> {
   public transform = jest.fn();
 }

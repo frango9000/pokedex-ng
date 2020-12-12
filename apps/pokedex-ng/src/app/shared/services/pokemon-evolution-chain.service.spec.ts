@@ -1,9 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { BehaviorSubject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { PokemonEvolutionChain } from '../domain/pokemon-evolution-chain';
 import { PokemonEvolutionChainService } from './pokemon-evolution-chain.service';
-import { PokemonVersionService } from './pokemon-version.service';
 
 describe('PokemonEvolutionChainService', () => {
   let service: PokemonEvolutionChainService;
@@ -20,11 +19,11 @@ describe('PokemonEvolutionChainService', () => {
   });
 });
 
-export class PokemonEvolutionChainServiceStub implements Partial<PokemonEvolutionChainService> {
+export class PokemonEvolutionChainStubService implements Partial<PokemonEvolutionChainService> {
   public getEvolutionChain = jest.fn((n: number) => of({} as PokemonEvolutionChain));
 }
 
-export const pokemonEvolutionChainServiceStubProvider = {
+export const pokemonEvolutionChainStubServiceProvider = {
   provide: PokemonEvolutionChainService,
-  useFactory: () => new PokemonEvolutionChainServiceStub(),
+  useFactory: () => new PokemonEvolutionChainStubService(),
 };

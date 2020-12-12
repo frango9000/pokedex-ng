@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgVarDirective } from '../../../../../../shared/directives/ng-var.directive';
 import { PokemonEvolutionChainLink } from '../../../../../../shared/domain/pokemon-evolution-chain';
-import { ResourceIdPipe } from '../../../../../../shared/pipes/resource-id.pipe';
-import { ResourceIdPipeStub } from '../../../../../../shared/pipes/resource-id.pipe.spec';
+import { ResourceIdStubPipe } from '../../../../../../shared/pipes/resource-id.pipe.spec';
 
 import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link.component';
 
@@ -18,7 +17,7 @@ describe('PokemonEvolutionLinkComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), TranslateModule.forRoot()],
-        declarations: [PokemonEvolutionLinkComponent, ResourceIdPipeStub, NgVarDirective],
+        declarations: [PokemonEvolutionLinkComponent, ResourceIdStubPipe, NgVarDirective],
       }).compileComponents();
     })
   );
@@ -35,6 +34,6 @@ describe('PokemonEvolutionLinkComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-evolution-link', template: '' })
-export class PokemonEvolutionLinkComponentStub implements Partial<PokemonEvolutionLinkComponent> {
+export class PokemonEvolutionLinkStubComponent implements Partial<PokemonEvolutionLinkComponent> {
   @Input() link: PokemonEvolutionChainLink;
 }

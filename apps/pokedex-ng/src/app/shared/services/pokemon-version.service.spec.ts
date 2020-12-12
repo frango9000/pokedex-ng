@@ -18,13 +18,13 @@ describe('PokemonVersionService', () => {
   });
 });
 
-export class PokemonVersionServiceStub implements Partial<PokemonVersionService> {
+export class PokemonVersionStubService implements Partial<PokemonVersionService> {
   public activeVersion$ = new BehaviorSubject('');
   public matchesDisplayVersion = jest.fn((string) => string === 'true');
   public getVersionList = jest.fn(() => of([]));
 }
 
-export const pokemonVersionServiceStubProvider = {
+export const pokemonVersionStubServiceProvider = {
   provide: PokemonVersionService,
-  useFactory: () => new PokemonVersionServiceStub(),
+  useFactory: () => new PokemonVersionStubService(),
 };

@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
-import { pokemonEvolutionChainServiceStubProvider } from '../../../../../shared/services/pokemon-evolution-chain.service.spec';
-
+import { pokemonEvolutionChainStubServiceProvider } from '../../../../../shared/services/pokemon-evolution-chain.service.spec';
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain.component';
-import { PokemonEvolutionLinkComponentStub } from './pokemon-evolution-link/pokemon-evolution-link.component.spec';
+import { PokemonEvolutionLinkStubComponent } from './pokemon-evolution-link/pokemon-evolution-link.component.spec';
 
 describe('PokemonEvolutionChainComponent', () => {
   let component: PokemonEvolutionChainComponent;
@@ -16,8 +15,8 @@ describe('PokemonEvolutionChainComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkComponentStub],
-        providers: [pokemonEvolutionChainServiceStubProvider],
+        declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkStubComponent],
+        providers: [pokemonEvolutionChainStubServiceProvider],
       }).compileComponents();
     })
   );
@@ -34,6 +33,6 @@ describe('PokemonEvolutionChainComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-evolution-chain', template: '' })
-export class PokemonEvolutionChainComponentStub {
+export class PokemonEvolutionChainStubComponent {
   @Input() public pokemonSpecies: PokemonSpecies;
 }

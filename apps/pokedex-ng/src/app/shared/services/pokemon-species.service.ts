@@ -18,3 +18,8 @@ export class PokemonSpeciesService {
       .pipe(tap(serviceLog), shareReplay());
   }
 }
+export class PokemonSpeciesStubService implements Partial<PokemonSpeciesService> {}
+export const pokemonSpeciesStubServiceProvider = {
+  provide: PokemonSpeciesService,
+  useFactory: () => new PokemonSpeciesStubService(),
+};
