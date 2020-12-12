@@ -2430,10 +2430,12 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-angular-bootstrap-md@^9.3.1:
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/angular-bootstrap-md/-/angular-bootstrap-md-9.4.0.tgz#3b02d62a181ae3a2db0a5ce47e29b742f1067afe"
-  integrity sha512-HqP8XIR7TeHi9Ofg2F1AJff5ucIcIg0r5A6ko68ZLhqE0LZhoAsqXBhlq61VBrkKKKcepMKSIdqxf2rsWYMNDA==
+angular-bootstrap-md@^10.1.1:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/angular-bootstrap-md/-/angular-bootstrap-md-10.1.1.tgz#b1c570dec35ea9a51e664c8654e674f75836b291"
+  integrity sha512-+PjtOjqPfBV+FtayUZ6Lg3KTwRWiV+k0+VJ73cDCYTlvqf3u6N0hSEhXbZ/T1xMZsTBaHrIVQR1Rxw6LwZ+QhA==
+  dependencies:
+    tslib "^2.0.0"
 
 angular-cli-ghpages@^1.0.0-rc.1:
   version "1.0.0-rc.1"
