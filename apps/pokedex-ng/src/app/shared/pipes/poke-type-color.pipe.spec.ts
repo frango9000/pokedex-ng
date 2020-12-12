@@ -1,4 +1,4 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { PokeTypeColorPipe } from './poke-type-color.pipe';
 
 describe('PokeTypeColorPipe', () => {
@@ -9,6 +9,6 @@ describe('PokeTypeColorPipe', () => {
 });
 
 @Pipe({ name: 'pokeTypeColor' })
-export class PokeTypeColorPipeStub implements Partial<PokeTypeColorPipe> {
+export class PokeTypeColorStubPipe implements PipeTransform, Partial<PokeTypeColorPipe> {
   public transform = jest.fn();
 }

@@ -13,11 +13,6 @@ import { PokemonVersionService } from '../../../../shared/services/pokemon-versi
 export class PokemonMovesComponent implements OnDestroy, OnChanges {
   @Input() pokemonMoves: PokemonMoves[] = [];
 
-  public static readonly LEVEL_UP_METHOD = 'level-up';
-  public static readonly MACHINE_METHOD = 'machine';
-  public static readonly EGG_METHOD = 'egg';
-  public static readonly TUTOR_METHOD = 'tutor';
-
   private versionFilteredMoves: PokemonMoves[] = [];
 
   public levelMoves: PokemonMoves[] = [];
@@ -58,7 +53,7 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
             (detail) =>
               detail.level_learned_at &&
               detail.level_learned_at > 0 &&
-              detail.move_learn_method.name === PokemonMovesComponent.LEVEL_UP_METHOD
+              detail.move_learn_method.name === MoveLearnMethod.LEVEL_UP_METHOD
           ).length > 0
       )
       .sort((a, b) =>
@@ -69,7 +64,7 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
       .filter(
         (move) =>
           move.version_group_details.filter(
-            (detail) => detail.move_learn_method.name === PokemonMovesComponent.MACHINE_METHOD
+            (detail) => detail.move_learn_method.name === MoveLearnMethod.MACHINE_METHOD
           ).length > 0
       )
       .sort((a, b) => (a.move.name < b.move.name ? -1 : 1));
@@ -77,19 +72,24 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
     this.tutorMoves = this.versionFilteredMoves
       .filter(
         (move) =>
-          move.version_group_details.filter(
-            (detail) => detail.move_learn_method.name === PokemonMovesComponent.TUTOR_METHOD
-          ).length > 0
+          move.version_group_details.filter((detail) => detail.move_learn_method.name === MoveLearnMethod.TUTOR_METHOD)
+            .length > 0
       )
       .sort((a, b) => (a.move.name < b.move.name ? -1 : 1));
 
     this.eggMoves = this.versionFilteredMoves
       .filter(
         (move) =>
-          move.version_group_details.filter(
-            (detail) => detail.move_learn_method.name === PokemonMovesComponent.EGG_METHOD
-          ).length > 0
+          move.version_group_details.filter((detail) => detail.move_learn_method.name === MoveLearnMethod.EGG_METHOD)
+            .length > 0
       )
       .sort((a, b) => (a.move.name < b.move.name ? -1 : 1));
   }
+}
+
+enum MoveLearnMethod {
+  LEVEL_UP_METHOD = 'level-up',
+  MACHINE_METHOD = 'machine',
+  EGG_METHOD = 'egg',
+  TUTOR_METHOD = 'tutor',
 }

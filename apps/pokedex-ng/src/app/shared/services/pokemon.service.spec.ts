@@ -18,11 +18,11 @@ describe('PokemonService', () => {
   });
 });
 
-export class PokemonServiceStub implements Partial<PokemonService> {
+export class PokemonStubService implements Partial<PokemonService> {
   public getPokemonList = jest.fn((offset: number) => of([]));
 }
 
-export const pokemonServiceStubProvider = {
+export const pokemonStubServiceProvider = {
   provide: PokemonService,
-  useFactory: () => new PokemonServiceStub(),
+  useFactory: () => new PokemonStubService(),
 };

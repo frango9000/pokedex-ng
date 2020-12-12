@@ -1,4 +1,4 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { ResourceIdPipe } from './resource-id.pipe';
 
 describe('ResourceIdPipe', () => {
@@ -9,6 +9,6 @@ describe('ResourceIdPipe', () => {
 });
 
 @Pipe({ name: 'resourceId' })
-export class ResourceIdPipeStub implements Partial<ResourceIdPipe> {
+export class ResourceIdStubPipe implements PipeTransform, Partial<ResourceIdPipe> {
   public transform = jest.fn();
 }

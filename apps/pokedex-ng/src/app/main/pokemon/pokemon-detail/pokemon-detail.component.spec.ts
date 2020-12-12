@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ExpandableResourcesPipeStub } from '../../../shared/pipes/expandable-resources.pipe.spec';
-import { PokeTypeColorPipeStub } from '../../../shared/pipes/poke-type-color.pipe.spec';
-import { pokemonServiceStubProvider } from '../../../shared/services/pokemon.service.spec';
-import { PokemonAbilitiesComponentStub } from './pokemon-abilities/pokemon-abilities.component.spec';
+import { ExpandableResourcesStubPipe } from '../../../shared/pipes/expandable-resources.pipe.spec';
+import { PokeTypeColorStubPipe } from '../../../shared/pipes/poke-type-color.pipe.spec';
+import { pokemonStubServiceProvider } from '../../../shared/services/pokemon.service.spec';
+import { PokemonAbilitiesStubComponent } from './pokemon-abilities/pokemon-abilities.component.spec';
 import { PokemonDetailComponent } from './pokemon-detail.component';
-import { PokemonMovesComponentStub } from './pokemon-moves/pokemon-moves.component.spec';
-import { PokemonSpeciesComponentStub } from './pokemon-species/pokemon-species.component.spec';
-import { PokemonStatsComponentStub } from './pokemon-stats/pokemon-stats.component.spec';
-import { PokemonTypeDamagesComponentStub } from './pokemon-type-damages/pokemon-type-damages.component.spec';
+import { PokemonMovesStubComponent } from './pokemon-moves/pokemon-moves.component.spec';
+import { PokemonSpeciesStubComponent } from './pokemon-species/pokemon-species.component.spec';
+import { PokemonStatsStubComponent } from './pokemon-stats/pokemon-stats.component.spec';
+import { PokemonTypeDamagesStubComponent } from './pokemon-type-damages/pokemon-type-damages.component.spec';
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -22,15 +22,15 @@ describe('PokemonDetailComponent', () => {
         imports: [TranslateModule.forRoot(), RouterTestingModule, MDBBootstrapModule.forRoot()],
         declarations: [
           PokemonDetailComponent,
-          PokeTypeColorPipeStub,
-          PokemonSpeciesComponentStub,
-          PokemonStatsComponentStub,
-          PokemonTypeDamagesComponentStub,
-          PokemonAbilitiesComponentStub,
-          PokemonMovesComponentStub,
-          ExpandableResourcesPipeStub,
+          PokeTypeColorStubPipe,
+          PokemonSpeciesStubComponent,
+          PokemonStatsStubComponent,
+          PokemonTypeDamagesStubComponent,
+          PokemonAbilitiesStubComponent,
+          PokemonMovesStubComponent,
+          ExpandableResourcesStubPipe,
         ],
-        providers: [pokemonServiceStubProvider],
+        providers: [pokemonStubServiceProvider],
       }).compileComponents();
     })
   );

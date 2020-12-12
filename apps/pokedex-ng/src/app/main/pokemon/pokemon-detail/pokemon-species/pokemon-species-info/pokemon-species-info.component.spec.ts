@@ -3,8 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
-import { pokemonVersionServiceStubProvider } from '../../../../../shared/services/pokemon-version.service.spec';
-
+import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.spec';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
 describe('PokemonSpeciesInfoComponent', () => {
@@ -16,7 +15,7 @@ describe('PokemonSpeciesInfoComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesInfoComponent],
-        providers: [pokemonVersionServiceStubProvider],
+        providers: [pokemonVersionStubServiceProvider],
       }).compileComponents();
     })
   );
@@ -33,6 +32,6 @@ describe('PokemonSpeciesInfoComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-species-info', template: '' })
-export class PokemonSpeciesInfoComponentStub implements Partial<PokemonSpeciesInfoComponent> {
+export class PokemonSpeciesInfoStubComponent implements Partial<PokemonSpeciesInfoComponent> {
   @Input() public pokemonSpecies: PokemonSpecies;
 }

@@ -46,7 +46,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -67,7 +66,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -89,7 +89,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pokedex-ng/src/**/*.ts"]
+            "lintFilePatterns": ["apps/pokedex-ng/src/**/*.ts", "apps/pokedex-ng/src/**/*.html"]
           }
         },
         "test": {
@@ -97,7 +97,8 @@
           "options": {
             "jestConfig": "apps/pokedex-ng/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/pokedex-ng"]
         }
       }
     },

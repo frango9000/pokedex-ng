@@ -1,12 +1,10 @@
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { of } from 'rxjs';
-
+import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.spec';
+import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.spec';
+import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.spec';
 import { PokemonAbilityComponent } from './pokemon-ability.component';
-import { pokemonMoveServiceStubProvider } from '../../../../../shared/services/pokemon-move.service.spec';
-import { pokemonVersionServiceStubProvider } from '../../../../../shared/services/pokemon-version.service.spec';
-import { pokemonLanguageServiceStubProvider } from '../../../../../shared/services/pokemon-language.service.spec';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 describe('PokemonAbilityComponent', () => {
   let component: PokemonAbilityComponent;
@@ -18,9 +16,9 @@ describe('PokemonAbilityComponent', () => {
         imports: [TranslateModule.forRoot()],
         declarations: [PokemonAbilityComponent],
         providers: [
-          pokemonMoveServiceStubProvider,
-          pokemonVersionServiceStubProvider,
-          pokemonLanguageServiceStubProvider,
+          pokemonMoveStubServiceProvider,
+          pokemonVersionStubServiceProvider,
+          pokemonLanguageStubServiceProvider,
         ],
       }).compileComponents();
     })
@@ -38,6 +36,6 @@ describe('PokemonAbilityComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-ability', template: '' })
-export class PokemonAbilityComponentStub implements Partial<PokemonAbilityComponent> {
+export class PokemonAbilityStubComponent implements Partial<PokemonAbilityComponent> {
   @Input() abilityId: string | number;
 }
