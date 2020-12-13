@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Yarn Install
-    - run: yarn install
+      run: yarn install
     - name: Prettier
       uses: MansaGroup/nrwl-nx-action@v1.0.1
       with:
