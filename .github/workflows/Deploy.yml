@@ -43,5 +43,9 @@ jobs:
           targets: build
           all: 'true'
           parallel: 'true'
-          args: 'prod'
-      - run: npm run deploy
+          args: '--prod=true --base-href=/pokedex-ng/'
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/pokedex-ng

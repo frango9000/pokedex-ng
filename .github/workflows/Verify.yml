@@ -47,4 +47,4 @@ jobs:
         targets: build
         all: 'true'
         parallel: 'true'
-        args: 'prod'
+        args: '--prod=true'

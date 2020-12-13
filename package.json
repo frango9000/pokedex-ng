@@ -25,7 +25,7 @@
     "affected": "nx affected",
     "format": "nx format:write",
     "format:write": "nx format:write",
-    "format:check": "nx format:check --base=origin/master --head=HEAD --parallel",
+    "format:check": "nx format:check --base=origin/development --head=HEAD --parallel",
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
