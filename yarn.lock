@@ -1764,6 +1764,25 @@
     tslib "^2.0.0"
     yargs-parser "20.0.0"
 
+"@nrwl/tao@11.0.20":
+  version "11.0.20"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-11.0.20.tgz#dfca062d81bcb1ddff03cfe9f99ba05786cc101d"
+  integrity sha512-S/jaeenZ0ueQZgz54AGhMtK1Obs6KTwsojfHdB+FiEve2ipBbKKeBZXXfeXlH2priH5ej5FhosCEV1DKqXLlUg==
+  dependencies:
+    "@angular-devkit/architect" "~0.1100.1"
+    "@angular-devkit/core" "~11.0.1"
+    "@angular-devkit/schematics" "~11.0.1"
+    chalk "4.1.0"
+    fs-extra "7.0.1"
+    inquirer "^6.3.1"
+    minimist "^1.2.5"
+    rxjs "^6.5.4"
+    semver "6.3.0"
+    strip-json-comments "2.0.1"
+    tmp "0.0.33"
+    tslib "^2.0.0"
+    yargs-parser "20.0.0"
+
 "@nrwl/workspace@11.0.1":
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-11.0.1.tgz#304805bf1a933ac602115160155b126fc725dd6d"
