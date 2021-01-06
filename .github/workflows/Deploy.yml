@@ -43,9 +43,14 @@ jobs:
           parallel: 'true'
           affected: 'false'
       - name: Build
-        run: yarn run build:prod
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: MansaGroup/nrwl-nx-action@v1.0.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/pokedex-ng
+          targets: build
+          all: 'true'
+          parallel: 'true'
+          affected: 'false'
+          args: '--prod=true --base-href=/pokedex-ng/'
+      - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run ng -- deploy --base-href=/pokedex-ng/ --no-silent
