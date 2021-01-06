@@ -1,15 +1,28 @@
 {
   "name": "pokedex-ng",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
+  "author": {
+    "email": "frango9000@gmail.com ",
+    "name": "Francisco Sanchez",
+    "url": "https://fsancheztemprano.github.io/"
+  },
+  "homepage": "https://fsancheztemprano.github.io/pokedex-ng/pokemon",
+  "repository": {
+    "url": "https://github.com/fsancheztemprano/pokedex-ng",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/fsancheztemprano/pokedex-ng/issues"
+  },
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
-    "start": "ng serve -o --host=localhost --port=4200",
+    "start": "ng serve -o --port=4200",
     "build": "ng build",
-    "prod": "ng build --prod",
-    "start-prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex-ng",
+    "build:prod": "ng build --prod",
+    "start:prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex-ng",
     "deploy": "ng deploy",
     "quick-deploy": "ng deploy --no-build",
     "test": "ng test",
@@ -46,7 +59,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
-    "@nrwl/angular": "11.0.1",
+    "@nrwl/angular": "11.0.20",
     "@popperjs/core": "^2.6.0",
     "@types/chart.js": "^2.9.29",
     "angular-bootstrap-md": "^10.1.1",
@@ -57,7 +70,7 @@
     "jquery": "^3.5.1",
     "ngx-infinite-scroll": "^10.0.1",
     "rxjs": "~6.6.3",
-    "tslib": "^2.0.3",
+    "tslib": "^2.1.0",
     "zone.js": "^0.11.3"
   },
   "devDependencies": {
@@ -67,14 +80,14 @@
     "@angular-devkit/schematics": "^11.0.5",
     "@angular-eslint/eslint-plugin": "1.0.0",
     "@angular-eslint/eslint-plugin-template": "1.0.0",
-    "@angular-eslint/template-parser": "0.8.0-beta.5",
+    "@angular-eslint/template-parser": "1.0.0",
     "@angular/cli": "~11.0.5",
     "@angular/compiler-cli": "^11.0.4",
     "@angular/language-service": "^11.0.5",
     "@nrwl/cli": "11.0.20",
-    "@nrwl/cypress": "11.0.1",
-    "@nrwl/eslint-plugin-nx": "11.0.1",
-    "@nrwl/jest": "11.0.1",
+    "@nrwl/cypress": "11.0.20",
+    "@nrwl/eslint-plugin-nx": "11.0.20",
+    "@nrwl/jest": "11.0.20",
     "@nrwl/tao": "11.0.20",
     "@nrwl/workspace": "11.0.20",
     "@types/jest": "26.0.19",
