@@ -109,7 +109,9 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/pokedex-ng/",
-            "cname": ""
+            "name": "Github Deploy Workflow",
+            "email": "frango9000@gmail.com",
+            "cname": "https://fsancheztemprano.github.io/"
           }
         }
       }
