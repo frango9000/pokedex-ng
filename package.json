@@ -1,15 +1,28 @@
 {
   "name": "pokedex-ng",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
+  "author": {
+    "email": "frango9000@gmail.com ",
+    "name": "Francisco Sanchez",
+    "url": "https://fsancheztemprano.github.io/"
+  },
+  "homepage": "https://fsancheztemprano.github.io/pokedex-ng/pokemon",
+  "repository": {
+    "url": "https://github.com/fsancheztemprano/pokedex-ng",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/fsancheztemprano/pokedex-ng/issues"
+  },
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
-    "start": "ng serve -o --host=localhost --port=4200",
+    "start": "ng serve -o --port=4200",
     "build": "ng build",
-    "prod": "ng build --prod",
-    "start-prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex-ng",
+    "build:prod": "ng build --prod",
+    "start:prod": "angular-http-server -o -p 8080 --path dist --baseHref pokedex-ng",
     "deploy": "ng deploy",
     "quick-deploy": "ng deploy --no-build",
     "test": "ng test",
