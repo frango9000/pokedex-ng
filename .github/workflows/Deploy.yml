@@ -15,15 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
-
       - name: Use Node ${{ matrix.node-version }}
         uses: actions/setup-node@v2.1.2
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: Yarn Install
         run: yarn install
-
       - name: Prettier
         uses: MansaGroup/nrwl-nx-action@v1.0.1
         with:
@@ -31,7 +28,6 @@ jobs:
           all: 'true'
           parallel: 'true'
           affected: 'false'
-
       - name: Lint
         uses: MansaGroup/nrwl-nx-action@v1.0.1
         with:
@@ -39,7 +35,6 @@ jobs:
           all: 'true'
           parallel: 'true'
           affected: 'false'
-
       - name: Test
         uses: MansaGroup/nrwl-nx-action@v1.0.1
         with:
@@ -47,10 +42,8 @@ jobs:
           all: 'true'
           parallel: 'true'
           affected: 'false'
-
       - name: Build
         run: yarn run build:prod
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
