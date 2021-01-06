@@ -61,4 +61,10 @@ jobs:
           parallel: 'true'
           affected: 'false'
       - name: Build
-        run: yarn run build:prod
+        uses: MansaGroup/nrwl-nx-action@v1.0.1
+        with:
+          targets: build
+          all: 'true'
+          parallel: 'true'
+          affected: 'false'
+          args: '--prod=true --base-href=/pokedex-ng/'

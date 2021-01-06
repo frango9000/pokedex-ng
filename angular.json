@@ -89,7 +89,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pokedex-ng/src/**/*.ts", "apps/pokedex-ng/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/pokedex-ng/src/**/*.ts",
+              "apps/pokedex-ng/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -98,7 +101,16 @@
             "jestConfig": "apps/pokedex-ng/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/pokedex-ng"]
+          "outputs": [
+            "coverage/apps/pokedex-ng"
+          ]
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/pokedex-ng/",
+            "cname": ""
+          }
         }
       }
     },
@@ -124,12 +136,6 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/pokedex-ng-e2e/**/*.{js,ts}"]
-          }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "/pokedex-ng/"
           }
         }
       }
