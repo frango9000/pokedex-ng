@@ -141,10 +141,10 @@
   dependencies:
     "@typescript-eslint/experimental-utils" "4.3.0"
 
-"@angular-eslint/template-parser@0.8.0-beta.5":
-  version "0.8.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-0.8.0-beta.5.tgz#ffdfcd4eb493a29943fe7a22bebb9a67e061460b"
-  integrity sha512-Nt+lzyyF0N6l58KtoXZexWbb2P2rG++JoOpr54xAa2jqLppyL056cRH0kGredxpw3jI3qM6oHHgbBNO13FsQ0A==
+"@angular-eslint/template-parser@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-1.0.0.tgz#e4d431db36e64bf14cca90e19f40eb48c3c20402"
+  integrity sha512-M7rj907yOoEzq10FO5BDX7Ylw24V+YfdsYfyEi/TzzQtNGxCwQhbEwXc1PAZgsQ+P1wbGFbg9mb3yFkps7/LEA==
   dependencies:
     eslint-scope "^5.1.0"
 
@@ -1620,17 +1620,6 @@
     jasmine-marbles "~0.6.0"
     tslib "^2.0.0"
 
-"@nrwl/cli@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-11.0.1.tgz#2c453f9ac1a3c008a804a9410c5f21e5f521239a"
-  integrity sha512-zJ00oLco14vMQkEnhPkNuyrFtkHBvflwsKW1OErBlw0It7uYcLNkmpDar3y3/Wva63L65BwaCoK4Lpk1RlTmVw==
-  dependencies:
-    "@nrwl/tao" "11.0.1"
-    chalk "4.1.0"
-    tmp "0.0.33"
-    yargs "15.4.1"
-    yargs-parser "20.0.0"
-
 "@nrwl/cli@11.0.20":
   version "11.0.20"
   resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-11.0.20.tgz#b9b53124d9735c889ea9321d60bcd2d45966481d"
@@ -1668,6 +1657,16 @@
   integrity sha512-QmIQlSDFSFs8rswc6nb5Rrj2viKA6ApT9Jin9bElcpQM3iS9IxjR4gusvqwI6v9Av3eH1pG0iBjLrL3O7FsOzA==
   dependencies:
     "@nrwl/tao" "11.0.1"
+    ejs "^3.1.5"
+    strip-json-comments "2.0.1"
+    tslib "^2.0.0"
+
+"@nrwl/devkit@11.0.20":
+  version "11.0.20"
+  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-11.0.20.tgz#8793d2279680e049aa209810914a6eb3670f7625"
+  integrity sha512-enhdAZeC96ZQad9lciNtm7CGNjI8PUNme4J5/y2ZlGMShrqDaijag9yktVVkErfdizaXL4o2Rny7UFXSXdElEw==
+  dependencies:
+    "@nrwl/tao" "11.0.20"
     ejs "^3.1.5"
     strip-json-comments "2.0.1"
     tslib "^2.0.0"
@@ -1743,16 +1742,16 @@
     tslib "^2.0.0"
     yargs-parser "20.0.0"
 
-"@nrwl/workspace@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-11.0.1.tgz#304805bf1a933ac602115160155b126fc725dd6d"
-  integrity sha512-03nV5QvBSQlB9P9KsEJoz6rlTtpoEXCyYFgucNJ3xoRIkjT2y/Jwy8o2W+awOhsb4AL5z+VO6DQTj7vnSzG5XA==
+"@nrwl/workspace@11.0.20":
+  version "11.0.20"
+  resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-11.0.20.tgz#d36532e8041f018662e6e3eced17867c775b972f"
+  integrity sha512-tpT7mgKkLNh2ZCcmseyflcyxAA96/FCZHnPFrl65n79GVdy/ScyZ/cVArTR8QYloICg++41SB+jfEtJiOxMyeA==
   dependencies:
     "@angular-devkit/architect" "~0.1100.1"
     "@angular-devkit/core" "~11.0.1"
     "@angular-devkit/schematics" "~11.0.1"
-    "@nrwl/cli" "11.0.1"
-    "@nrwl/devkit" "11.0.1"
+    "@nrwl/cli" "11.0.20"
+    "@nrwl/devkit" "11.0.20"
     axios "0.19.2"
     chalk "4.1.0"
     cosmiconfig "^4.0.0"
