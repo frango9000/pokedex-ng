@@ -1631,6 +1631,17 @@
     yargs "15.4.1"
     yargs-parser "20.0.0"
 
+"@nrwl/cli@11.1.1":
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-11.1.1.tgz#e7f0235bee5b5197c475b5a31fd162de8d816533"
+  integrity sha512-d1m7+V4gOE8ZbqDFk+eHgiJno0IRLeu02K46jRFeiiDuaEvkxQ5iQxawoqiJsXbEhMA7GDaGTBAdaGSar+CnVw==
+  dependencies:
+    "@nrwl/tao" "11.1.1"
+    chalk "4.1.0"
+    tmp "0.0.33"
+    yargs "15.4.1"
+    yargs-parser "20.0.0"
+
 "@nrwl/cypress@11.0.20":
   version "11.0.20"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-11.0.20.tgz#2fdba30238ef5d140604e1e5394edb6858e47312"
@@ -1698,6 +1709,25 @@
   version "11.0.20"
   resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-11.0.20.tgz#dfca062d81bcb1ddff03cfe9f99ba05786cc101d"
   integrity sha512-S/jaeenZ0ueQZgz54AGhMtK1Obs6KTwsojfHdB+FiEve2ipBbKKeBZXXfeXlH2priH5ej5FhosCEV1DKqXLlUg==
+  dependencies:
+    "@angular-devkit/architect" "~0.1100.1"
+    "@angular-devkit/core" "~11.0.1"
+    "@angular-devkit/schematics" "~11.0.1"
+    chalk "4.1.0"
+    fs-extra "7.0.1"
+    inquirer "^6.3.1"
+    minimist "^1.2.5"
+    rxjs "^6.5.4"
+    semver "6.3.0"
+    strip-json-comments "2.0.1"
+    tmp "0.0.33"
+    tslib "^2.0.0"
+    yargs-parser "20.0.0"
+
+"@nrwl/tao@11.1.1":
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-11.1.1.tgz#956e0961fe7bee2bcb50c321eb9f468eef583be3"
+  integrity sha512-cSGCaOV0sHkZ+PkvJK2IILDD4IuIOegq8qOBKwC+kxvfDEBgB528L14CoQwmVkpq5IrGdCLi/zr2h6W5N/6RpA==
   dependencies:
     "@angular-devkit/architect" "~0.1100.1"
     "@angular-devkit/core" "~11.0.1"
