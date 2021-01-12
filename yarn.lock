@@ -1661,10 +1661,10 @@
     strip-json-comments "2.0.1"
     tslib "^2.0.0"
 
-"@nrwl/eslint-plugin-nx@11.0.20":
-  version "11.0.20"
-  resolved "https://registry.yarnpkg.com/@nrwl/eslint-plugin-nx/-/eslint-plugin-nx-11.0.20.tgz#d0103a780673cc87b94a6ae9c7fad150d4334a60"
-  integrity sha512-A7EZTJQE8h1OZ15dxp8bPZkGDfTCuHoSlT2nGjPDM3rDfks4cI8bzlfWHQq8kYXAlLLCOs+tBb2+MNchX7rMGQ==
+"@nrwl/eslint-plugin-nx@11.1.2":
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/eslint-plugin-nx/-/eslint-plugin-nx-11.1.2.tgz#f5c85c9ccdb04638c16807713abbb5787ca886e8"
+  integrity sha512-LxVbuJ/LAh89MDEKLRDPKLdr7v7jZZKDkFOsMgHF/d1K1h3VNtV1lbYA2Uu788V/b7InWTUc8eJw743WjHVpgg==
   dependencies:
     "@angular-devkit/core" "~11.0.1"
     "@typescript-eslint/experimental-utils" "^4.3.0"
