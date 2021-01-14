@@ -2,12 +2,20 @@
 # yarn lockfile v1
 
 
-"@angular-devkit/architect@0.1100.6", "@angular-devkit/architect@~0.1100.1", "@angular-devkit/architect@~0.1100.5":
+"@angular-devkit/architect@0.1100.6":
   version "0.1100.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1100.6.tgz#ce90ffb78d1d945cafc339d4cfc63b3582cb8e6a"
   integrity sha512-4O+cg3AimI2bNAxxdu5NrqSf4Oa8r8xL0+G2Ycd3jLoFv0h0ecJiNKEG5F6IpTprb4aexZD6pcxBJCqQ8MmzWQ==
   dependencies:
     "@angular-devkit/core" "11.0.6"
+    rxjs "6.6.3"
+
+"@angular-devkit/architect@~0.1100.1", "@angular-devkit/architect@~0.1100.7":
+  version "0.1100.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1100.7.tgz#6c39b886bbdb5d0e5a2d9921aa5816209041e105"
+  integrity sha512-b2zv2yiRbdhJ7hJfZsAvGYcqgh2DVtc7gRIPo1eDPvOAKrenmZ4zo/v0PRYScrTsPzqmoCokNA5nIwufwUEnuA==
+  dependencies:
+    "@angular-devkit/core" "11.0.7"
     rxjs "6.6.3"
 
 "@angular-devkit/build-angular@~0.1100.6":
@@ -105,10 +113,21 @@
     "@angular-devkit/core" "11.0.6"
     rxjs "6.6.3"
 
-"@angular-devkit/core@11.0.6", "@angular-devkit/core@^11.0.6", "@angular-devkit/core@~11.0.1":
+"@angular-devkit/core@11.0.6":
   version "11.0.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.0.6.tgz#b3ea815ecdea5f77dae58f3f410b268453d7eb8b"
   integrity sha512-nhvU5hH01r9qcexAqvIFU233treWWeW3ncs9UFYjD9Hys9sDSvqC3+bvGvl9vCG5FsyY7oDsjaVAipyUc+SFAg==
+  dependencies:
+    ajv "6.12.6"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.3"
+    source-map "0.7.3"
+
+"@angular-devkit/core@11.0.7", "@angular-devkit/core@^11.0.6", "@angular-devkit/core@~11.0.1":
+  version "11.0.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.0.7.tgz#05b82be7e11ddc2a7836c777297ee45eee20ff55"
+  integrity sha512-1GKnIT++YSUHpzzRx9QC0+8yOw4wy+ZpiJVDlroPSeK4FGrTCJqJKenkfRjVFRFOSrzTiJds+IU6kI4+bFbw9g==
   dependencies:
     ajv "6.12.6"
     fast-json-stable-stringify "2.1.0"
