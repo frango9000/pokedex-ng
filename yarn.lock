@@ -136,13 +136,22 @@
     rxjs "6.6.3"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@11.0.6", "@angular-devkit/schematics@^11.0.6", "@angular-devkit/schematics@~11.0.1":
+"@angular-devkit/schematics@11.0.6", "@angular-devkit/schematics@~11.0.1":
   version "11.0.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-11.0.6.tgz#06631190cb22609462597cd6659080fc3313582a"
   integrity sha512-hCyu/SSSiC6dKl/NxdWctknIrBqKR6pRe7DMArWowrZX6P9oi36LpKEFnKutE8+tXjsOqQj8XMBq9L64sXZWqg==
   dependencies:
     "@angular-devkit/core" "11.0.6"
     ora "5.1.0"
+    rxjs "6.6.3"
+
+"@angular-devkit/schematics@^11.1.0":
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-11.1.0.tgz#451ed0a5c4fe9ac3cf367f4ecf7adac15430c2c8"
+  integrity sha512-6qfR5w1jyk8MC+5Tfimz+Czsq3WlsVoB57dpxSZfhGGsv1Vxc8Q41y5f3BrAyEqHYjcH7NtaoLQoJjtra5KaAg==
+  dependencies:
+    "@angular-devkit/core" "11.1.0"
+    ora "5.2.0"
     rxjs "6.6.3"
 
 "@angular-eslint/eslint-plugin-template@1.0.0":
