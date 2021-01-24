@@ -1,3 +1,6 @@
+![Verify](https://github.com/fsancheztemprano/pokedex-ng/workflows/Verify/badge.svg)
+![Deploy](https://github.com/fsancheztemprano/pokedex-ng/workflows/Deploy/badge.svg?branch=master)
+
 # Pokedex
 
 ## => [DEMO](https://fsancheztemprano.github.io/pokedex-ng) <=
