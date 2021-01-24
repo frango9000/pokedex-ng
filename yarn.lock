@@ -125,10 +125,21 @@
     rxjs "6.6.3"
     source-map "0.7.3"
 
-"@angular-devkit/core@11.1.0", "@angular-devkit/core@^11.0.6":
+"@angular-devkit/core@11.1.0":
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.1.0.tgz#dec7967df922414f9935365f5ff7938ef6e54a52"
   integrity sha512-O2oIcqpQKGvYJH88d/NCgLYZGc9laA1eo2d1s0FH1Udu4c2L+bAsviQqtTKNmzyaqODHrlkt+eKx7uakdwWtnQ==
+  dependencies:
+    ajv "6.12.6"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.3"
+    source-map "0.7.3"
+
+"@angular-devkit/core@^11.1.1":
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.1.1.tgz#9b3d036e5ac84a72b784cb7fc29ca3405747b3b4"
+  integrity sha512-eQTRmcuVCgGE7mR3qyabjlvXlQCMDI+gDCkcAlzn161pJY9Yxmw0Q1rXN2sZlUdfZuc9sSg0m2MaQQFBSGp+XA==
   dependencies:
     ajv "6.12.6"
     fast-json-stable-stringify "2.1.0"
