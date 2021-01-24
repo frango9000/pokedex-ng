@@ -61,7 +61,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@nrwl/angular": "11.1.5",
     "@popperjs/core": "^2.6.0",
-    "@types/chart.js": "^2.9.29",
+    "@types/chart.js": "^2.9.30",
     "angular-bootstrap-md": "^10.1.1",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.6.0",
