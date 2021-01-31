@@ -21,7 +21,10 @@
             "polyfills": "apps/pokedex-ng/src/polyfills.ts",
             "tsConfig": "apps/pokedex-ng/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/pokedex-ng/src/favicon.ico", "apps/pokedex-ng/src/assets"],
+            "assets": [
+              "apps/pokedex-ng/src/favicon.ico",
+              "apps/pokedex-ng/src/assets"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
@@ -33,7 +36,10 @@
               "node_modules/animate.css/animate.css",
               "apps/pokedex-ng/src/styles.scss"
             ],
-            "scripts": ["node_modules/chart.js/dist/Chart.js", "node_modules/hammerjs/hammer.min.js"]
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -67,7 +73,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -91,6 +99,7 @@
           "options": {
             "lintFilePatterns": [
               "apps/pokedex-ng/src/**/*.ts",
+              "apps/pokedex-ng/src/**/*.html",
               "apps/pokedex-ng/src/**/*.html"
             ]
           }
@@ -137,7 +146,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pokedex-ng-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/pokedex-ng-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

@@ -18,10 +18,10 @@
           }
         ],
         "@angular-eslint/component-selector": [
-          "error",
+          "off",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "pokedex-ng",
             "style": "kebab-case"
           }
         ]
