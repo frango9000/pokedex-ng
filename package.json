@@ -87,7 +87,7 @@
     "@nrwl/cli": "11.2.10",
     "@nrwl/cypress": "11.2.10",
     "@nrwl/eslint-plugin-nx": "11.2.10",
-    "@nrwl/jest": "11.2.10",
+    "@nrwl/jest": "11.2.11",
     "@nrwl/tao": "11.2.10",
     "@nrwl/workspace": "11.2.10",
     "@types/jest": "26.0.20",
