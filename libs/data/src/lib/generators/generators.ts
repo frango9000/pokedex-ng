@@ -6,7 +6,6 @@ import {
   NamedApiMove,
   NamedApiPokemon,
   NamedApiPokemonType,
-  NamedApiResource,
   NamedAPIResourceList,
   NamedApiVersionGroup,
   Pokemon,
@@ -56,19 +55,17 @@ export abstract class AbstractGenerator<T, N> {
   onError = () => console.error;
 
   generateResource() {
-    Axios.get<NamedAPIResourceList<NamedApiResource>>(`${this.host}/${this.getResourceName()}`).subscribe(
-      (countResponse) => {
-        this.total = 10 || countResponse?.data?.count;
-        Axios.get<NamedAPIResourceList<NamedApiResource>>(
-          `${this.host}/${this.getResourceName()}?limit=${this.total}`
-        ).subscribe((fullListResponse) => {
+    Axios.get<NamedAPIResourceList>(`${this.host}/${this.getResourceName()}`).subscribe((countResponse) => {
+      this.total = 10 || countResponse?.data?.count;
+      Axios.get<NamedAPIResourceList>(`${this.host}/${this.getResourceName()}?limit=${this.total}`).subscribe(
+        (fullListResponse) => {
           fullListResponse.data.results.forEach((resource) => {
             this.subject$.next(Axios.get<T>(resource.url).pipe(map((value) => value.data)));
           });
           this.subject$.complete();
-        });
-      }
-    );
+        }
+      );
+    });
   }
 }
 
