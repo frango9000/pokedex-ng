@@ -35,8 +35,6 @@ describe('PokemonHomeComponent', () => {
 
   it('should fetch pokemon list on init', () => {
     expect(pokemonStubService.getPokemonList).toHaveBeenCalledTimes(1);
-    // @ts-ignore
-    expect(pokemonStubService.getPokemonList.mock.calls[0][0]).toBe(0);
   });
 
   it('should load more on button click', () => {
@@ -44,7 +42,5 @@ describe('PokemonHomeComponent', () => {
     expect(loadModeButton).toBeTruthy();
     loadModeButton.nativeElement.click();
     expect(pokemonStubService.getPokemonList).toHaveBeenCalledTimes(2);
-    // @ts-ignore
-    expect(pokemonStubService.getPokemonList.mock.calls[1][0]).toBe(component.increment);
   });
 });
