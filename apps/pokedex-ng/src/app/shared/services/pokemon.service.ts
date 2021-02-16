@@ -1,11 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NamedApiPokemon, NamedApiResource, NamedAPIResourceList, Pokemon } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import pokemon from '../../../assets/data/pokemon.json';
 import { environment } from '../../../environments/environment';
-import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
-import { ApiNamedPokemon, Pokemon } from '../domain/pokemon';
 import { serviceLog } from './cache/icache';
 
 @Injectable({
@@ -14,14 +13,14 @@ import { serviceLog } from './cache/icache';
 export class PokemonService {
   constructor(private httpClient: HttpClient) {}
 
-  getPokemonList(offset = 0, limit = 36): Observable<ApiNamedPokemon[]> {
+  getPokemonList(offset = 0, limit = 36): Observable<NamedApiPokemon[]> {
     return of(pokemon).pipe(map((value) => value.slice(offset, +(offset + limit))));
   }
 
-  getApiPokemonList(offset = 0, limit = 36): Observable<ApiNamedResource[]> {
+  getApiPokemonList(offset = 0, limit = 36): Observable<NamedApiResource[]> {
     const pageParams: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
-      .get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/pokemon', {
+      .get<NamedAPIResourceList>(environment.apiUrl + '/pokemon', {
         params: pageParams,
       })
       .pipe(

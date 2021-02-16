@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
 import { PokeGenerationStubPipe } from '../../../../shared/pipes/poke-generation.pipe.spec';
 import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
 import { RomanStubPipe } from '../../../../shared/pipes/roman.pipe.spec';
@@ -36,5 +36,5 @@ describe('PokemonGridComponent', () => {
 
 @Component({ selector: 'app-pokemon-grid', template: '' })
 export class PokemonGridStubComponent implements Partial<PokemonGridComponent> {
-  @Input() public pokemonList: ApiNamedPokemon[];
+  @Input() public pokemonList: NamedApiPokemon[];
 }

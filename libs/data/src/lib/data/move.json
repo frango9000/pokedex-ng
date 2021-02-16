@@ -1,0 +1,222 @@
+[
+  {
+    "name": "pound",
+    "id": 1,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "はたく", "language": "ja-Hrkt" },
+      { "name": "막치기", "language": "ko" },
+      { "name": "拍擊", "language": "zh-Hant" },
+      { "name": "Écras’Face", "language": "fr" },
+      { "name": "Pfund", "language": "de" },
+      { "name": "Destructor", "language": "es" },
+      { "name": "Botta", "language": "it" },
+      { "name": "Pound", "language": "en" },
+      { "name": "はたく", "language": "ja" },
+      { "name": "拍击", "language": "zh-Hans" }
+    ],
+    "power": 40,
+    "pp": 35,
+    "type": "normal"
+  },
+  {
+    "name": "karate-chop",
+    "id": 2,
+    "accuracy": 100,
+    "crit_rate": 1,
+    "generation": "generation-i",
+    "names": [
+      { "name": "からてチョップ", "language": "ja-Hrkt" },
+      { "name": "태권당수", "language": "ko" },
+      { "name": "空手劈", "language": "zh-Hant" },
+      { "name": "Poing Karaté", "language": "fr" },
+      { "name": "Karateschlag", "language": "de" },
+      { "name": "Golpe Kárate", "language": "es" },
+      { "name": "Colpokarate", "language": "it" },
+      { "name": "Karate Chop", "language": "en" },
+      { "name": "からてチョップ", "language": "ja" },
+      { "name": "空手劈", "language": "zh-Hans" }
+    ],
+    "power": 50,
+    "pp": 25,
+    "type": "fighting"
+  },
+  {
+    "name": "double-slap",
+    "id": 3,
+    "accuracy": 85,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "おうふくビンタ", "language": "ja-Hrkt" },
+      { "name": "연속뺨치기", "language": "ko" },
+      { "name": "連環巴掌", "language": "zh-Hant" },
+      { "name": "Torgnoles", "language": "fr" },
+      { "name": "Duplexhieb", "language": "de" },
+      { "name": "Doble Bofetón", "language": "es" },
+      { "name": "Doppiasberla", "language": "it" },
+      { "name": "Double Slap", "language": "en" },
+      { "name": "おうふくビンタ", "language": "ja" },
+      { "name": "连环巴掌", "language": "zh-Hans" }
+    ],
+    "power": 15,
+    "pp": 10,
+    "type": "normal"
+  },
+  {
+    "name": "comet-punch",
+    "id": 4,
+    "accuracy": 85,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "れんぞくパンチ", "language": "ja-Hrkt" },
+      { "name": "연속펀치", "language": "ko" },
+      { "name": "連續拳", "language": "zh-Hant" },
+      { "name": "Poing Comète", "language": "fr" },
+      { "name": "Kometenhieb", "language": "de" },
+      { "name": "Puño Cometa", "language": "es" },
+      { "name": "Cometapugno", "language": "it" },
+      { "name": "Comet Punch", "language": "en" },
+      { "name": "れんぞくパンチ", "language": "ja" },
+      { "name": "连续拳", "language": "zh-Hans" }
+    ],
+    "power": 18,
+    "pp": 15,
+    "type": "normal"
+  },
+  {
+    "name": "mega-punch",
+    "id": 5,
+    "accuracy": 85,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "メガトンパンチ", "language": "ja-Hrkt" },
+      { "name": "메가톤펀치", "language": "ko" },
+      { "name": "百萬噸重拳", "language": "zh-Hant" },
+      { "name": "Ultimapoing", "language": "fr" },
+      { "name": "Megahieb", "language": "de" },
+      { "name": "Megapuño", "language": "es" },
+      { "name": "Megapugno", "language": "it" },
+      { "name": "Mega Punch", "language": "en" },
+      { "name": "メガトンパンチ", "language": "ja" },
+      { "name": "百万吨重拳", "language": "zh-Hans" }
+    ],
+    "power": 80,
+    "pp": 20,
+    "type": "normal"
+  },
+  {
+    "name": "pay-day",
+    "id": 6,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "ネコにこばん", "language": "ja-Hrkt" },
+      { "name": "고양이돈받기", "language": "ko" },
+      { "name": "聚寶功", "language": "zh-Hant" },
+      { "name": "Jackpot", "language": "fr" },
+      { "name": "Zahltag", "language": "de" },
+      { "name": "Día de Pago", "language": "es" },
+      { "name": "Giornopaga", "language": "it" },
+      { "name": "Pay Day", "language": "en" },
+      { "name": "ネコにこばん", "language": "ja" },
+      { "name": "聚宝功", "language": "zh-Hans" }
+    ],
+    "power": 40,
+    "pp": 20,
+    "type": "normal"
+  },
+  {
+    "name": "fire-punch",
+    "id": 7,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "ほのおのパンチ", "language": "ja-Hrkt" },
+      { "name": "불꽃펀치", "language": "ko" },
+      { "name": "火焰拳", "language": "zh-Hant" },
+      { "name": "Poing Feu", "language": "fr" },
+      { "name": "Feuerschlag", "language": "de" },
+      { "name": "Puño Fuego", "language": "es" },
+      { "name": "Fuocopugno", "language": "it" },
+      { "name": "Fire Punch", "language": "en" },
+      { "name": "ほのおのパンチ", "language": "ja" },
+      { "name": "火焰拳", "language": "zh-Hans" }
+    ],
+    "power": 75,
+    "pp": 15,
+    "type": "fire"
+  },
+  {
+    "name": "ice-punch",
+    "id": 8,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "れいとうパンチ", "language": "ja-Hrkt" },
+      { "name": "냉동펀치", "language": "ko" },
+      { "name": "冰凍拳", "language": "zh-Hant" },
+      { "name": "Poing Glace", "language": "fr" },
+      { "name": "Eishieb", "language": "de" },
+      { "name": "Puño Hielo", "language": "es" },
+      { "name": "Gelopugno", "language": "it" },
+      { "name": "Ice Punch", "language": "en" },
+      { "name": "れいとうパンチ", "language": "ja" },
+      { "name": "冰冻拳", "language": "zh-Hans" }
+    ],
+    "power": 75,
+    "pp": 15,
+    "type": "ice"
+  },
+  {
+    "name": "thunder-punch",
+    "id": 9,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "かみなりパンチ", "language": "ja-Hrkt" },
+      { "name": "번개펀치", "language": "ko" },
+      { "name": "雷電拳", "language": "zh-Hant" },
+      { "name": "Poing Éclair", "language": "fr" },
+      { "name": "Donnerschlag", "language": "de" },
+      { "name": "Puño Trueno", "language": "es" },
+      { "name": "Tuonopugno", "language": "it" },
+      { "name": "Thunder Punch", "language": "en" },
+      { "name": "かみなりパンチ", "language": "ja" },
+      { "name": "雷电拳", "language": "zh-Hans" }
+    ],
+    "power": 75,
+    "pp": 15,
+    "type": "electric"
+  },
+  {
+    "name": "scratch",
+    "id": 10,
+    "accuracy": 100,
+    "crit_rate": 0,
+    "generation": "generation-i",
+    "names": [
+      { "name": "ひっかく", "language": "ja-Hrkt" },
+      { "name": "할퀴기", "language": "ko" },
+      { "name": "抓", "language": "zh-Hant" },
+      { "name": "Griffe", "language": "fr" },
+      { "name": "Kratzer", "language": "de" },
+      { "name": "Arañazo", "language": "es" },
+      { "name": "Graffio", "language": "it" },
+      { "name": "Scratch", "language": "en" },
+      { "name": "ひっかく", "language": "ja" },
+      { "name": "抓", "language": "zh-Hans" }
+    ],
+    "power": 40,
+    "pp": 35,
+    "type": "normal"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  { "name": "bulbasaur", "id": 1, "types": ["grass", "poison"] },
+  { "name": "ivysaur", "id": 2, "types": ["grass", "poison"] },
+  { "name": "venusaur", "id": 3, "types": ["grass", "poison"] },
+  { "name": "charmander", "id": 4, "types": ["fire"] },
+  { "name": "charmeleon", "id": 5, "types": ["fire"] },
+  { "name": "charizard", "id": 6, "types": ["fire", "flying"] },
+  { "name": "squirtle", "id": 7, "types": ["water"] },
+  { "name": "wartortle", "id": 8, "types": ["water"] },
+  { "name": "blastoise", "id": 9, "types": ["water"] },
+  { "name": "caterpie", "id": 10, "types": ["bug"] }
+]

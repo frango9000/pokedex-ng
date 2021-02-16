@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
-import { PokemonMoves } from '../../../../../shared/domain/pokemon';
-import { ApiNamedMove } from '../../../../../shared/domain/pokemon-move';
 import { ExpandableResourcesStubPipe } from '../../../../../shared/pipes/expandable-resources.pipe.spec';
 import { PokeTypeColorStubPipe } from '../../../../../shared/pipes/poke-type-color.pipe.spec';
 import { PokemonMoveStubComponent } from '../pokemon-move/pokemon-move.component.spec';
@@ -45,5 +44,5 @@ export class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardCo
   @Input() moves: PokemonMoves[] = [];
   @Input() cardTitle = '';
   @Input() showLevels = false;
-  @Input() moveTypes: ApiNamedMove[];
+  @Input() moveTypes: NamedApiMove[];
 }

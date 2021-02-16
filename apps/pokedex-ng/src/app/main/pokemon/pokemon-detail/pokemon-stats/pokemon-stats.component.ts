@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PokemonStats } from '../../../../shared/domain/pokemon';
+import { PokemonStats } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-stats',

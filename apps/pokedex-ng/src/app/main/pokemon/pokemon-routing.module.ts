@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
 
 const routes: Routes = [
   {

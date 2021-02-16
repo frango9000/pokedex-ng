@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
+import { NamedApiPokemon } from '@pokedex-ng/domain';
+
+// import { ApiNamedPokemon } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-grid',
@@ -7,5 +9,5 @@ import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
   styleUrls: ['./pokemon-grid.component.scss'],
 })
 export class PokemonGridComponent {
-  @Input() public pokemonList: ApiNamedPokemon[];
+  @Input() public pokemonList: NamedApiPokemon[];
 }

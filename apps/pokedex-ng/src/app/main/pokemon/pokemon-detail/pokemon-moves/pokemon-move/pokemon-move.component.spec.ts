@@ -4,9 +4,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { PokeTypeColorStubPipe } from '../../../../../shared/pipes/poke-type-color.pipe.spec';
 import { ReplaceStubPipe } from '../../../../../shared/pipes/replace.pipe.spec';
-import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.spec';
-import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.spec';
-import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.spec';
+import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.stub';
+import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.stub';
+import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.stub';
 import { PokemonMoveComponent } from './pokemon-move.component';
 
 describe('PokemonMovesComponent', () => {

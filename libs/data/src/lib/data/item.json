@@ -1,0 +1,192 @@
+[
+  {
+    "name": "master-ball",
+    "id": 1,
+    "category": "standard-balls",
+    "cost": 0,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "マスターボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "마스터볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "大師球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Master Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Meisterball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Master Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Master Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Master Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "マスターボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "大师球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png"
+  },
+  {
+    "name": "ultra-ball",
+    "id": 2,
+    "category": "standard-balls",
+    "cost": 800,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "ハイパーボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "하이퍼볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "高級球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Hyper Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Hyperball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Ultra Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Ultra Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Ultra Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "ハイパーボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "高级球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png"
+  },
+  {
+    "name": "great-ball",
+    "id": 3,
+    "category": "standard-balls",
+    "cost": 600,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "スーパーボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "수퍼볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "超級球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Super Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Superball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Super Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Mega Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Great Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "スーパーボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "超级球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png"
+  },
+  {
+    "name": "poke-ball",
+    "id": 4,
+    "category": "standard-balls",
+    "cost": 200,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "モンスターボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "몬스터볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "精靈球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Poké Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Pokéball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Poké Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Poké Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Poké Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "モンスターボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "精灵球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+  },
+  {
+    "name": "safari-ball",
+    "id": 5,
+    "category": "standard-balls",
+    "cost": 0,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "サファリボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "사파리볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "狩獵球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Safari Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Safariball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Safari Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Safari Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Safari Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "サファリボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "狩猎球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/safari-ball.png"
+  },
+  {
+    "name": "net-ball",
+    "id": 6,
+    "category": "special-balls",
+    "cost": 1000,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "ネットボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "넷트볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "捕網球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Filet Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Netzball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Malla Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Rete Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Net Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "ネットボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "捕网球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/net-ball.png"
+  },
+  {
+    "name": "dive-ball",
+    "id": 7,
+    "category": "special-balls",
+    "cost": 1000,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "ダイブボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "다이브볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "潛水球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Scuba Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Tauchball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Buceo Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Sub Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Dive Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "ダイブボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "潜水球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dive-ball.png"
+  },
+  {
+    "name": "nest-ball",
+    "id": 8,
+    "category": "special-balls",
+    "cost": 1000,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "ネストボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "네스트볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "巢穴球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Faiblo Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Nestball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Nido Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Minor Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Nest Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "ネストボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "巢穴球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/nest-ball.png"
+  },
+  {
+    "name": "repeat-ball",
+    "id": 9,
+    "category": "special-balls",
+    "cost": 1000,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "リピートボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "리피드볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "重複球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Bis Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Wiederball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Acopio Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Bis Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Repeat Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "リピートボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "重复球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/repeat-ball.png"
+  },
+  {
+    "name": "timer-ball",
+    "id": 10,
+    "category": "special-balls",
+    "cost": 1000,
+    "names": [
+      { "language": { "name": "ja-Hrkt", "url": "https://pokeapi.co/api/v2/language/1/" }, "name": "タイマーボール" },
+      { "language": { "name": "ko", "url": "https://pokeapi.co/api/v2/language/3/" }, "name": "타이마볼" },
+      { "language": { "name": "zh-Hant", "url": "https://pokeapi.co/api/v2/language/4/" }, "name": "計時球" },
+      { "language": { "name": "fr", "url": "https://pokeapi.co/api/v2/language/5/" }, "name": "Chrono Ball" },
+      { "language": { "name": "de", "url": "https://pokeapi.co/api/v2/language/6/" }, "name": "Timerball" },
+      { "language": { "name": "es", "url": "https://pokeapi.co/api/v2/language/7/" }, "name": "Turno Ball" },
+      { "language": { "name": "it", "url": "https://pokeapi.co/api/v2/language/8/" }, "name": "Timer Ball" },
+      { "language": { "name": "en", "url": "https://pokeapi.co/api/v2/language/9/" }, "name": "Timer Ball" },
+      { "language": { "name": "ja", "url": "https://pokeapi.co/api/v2/language/11/" }, "name": "タイマーボール" },
+      { "language": { "name": "zh-Hans", "url": "https://pokeapi.co/api/v2/language/12/" }, "name": "计时球" }
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png"
+  }
+]

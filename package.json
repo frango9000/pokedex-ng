@@ -17,7 +17,7 @@
   },
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
     "start": "ng serve -o --port=4200",
     "build": "ng build",
@@ -42,8 +42,9 @@
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "validate": "nx workspace-lint && ng lint && npm run format:check && ng test && ng build --prod",
-    "workspace-generator": "nx workspace-generator"
+    "validate": "npm run lint && npm run format:check && ng test && ng build --prod",
+    "workspace-generator": "nx workspace-generator",
+    "data-generator": "ts-node --project ./libs/data/tsconfig.lib.json ./libs/data/src/lib/generators/generate-all.ts"
   },
   "private": true,
   "dependencies": {
@@ -97,6 +98,8 @@
     "@typescript-eslint/parser": "4.15.1",
     "angular-cli-ghpages": "^1.0.0-rc.1",
     "angular-http-server": "^1.10.0",
+    "axios": "^0.21.1",
+    "axios-observable": "^1.1.6",
     "codelyzer": "6.0.1",
     "cypress": "^6.5.0",
     "dotenv": "8.2.0",

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.spec';
-import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.spec';
-import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.spec';
+import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.stub';
+import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.stub';
+import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.stub';
 import { PokemonAbilityComponent } from './pokemon-ability.component';
 
 describe('PokemonAbilityComponent', () => {

@@ -17,10 +17,3 @@ describe('PokemonLanguageService', () => {
     expect(service).toBeTruthy();
   });
 });
-
-export class PokemonLanguageStubService implements Partial<PokemonLanguageService> {}
-
-export const pokemonLanguageStubServiceProvider = {
-  provide: PokemonLanguageService,
-  useFactory: () => new PokemonLanguageStubService(),
-};

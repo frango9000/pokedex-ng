@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { PokemonAbilities } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { PokemonAbilities } from '../../../../shared/domain/pokemon';
 import { ExpandableResourcesStubPipe } from '../../../../shared/pipes/expandable-resources.pipe.spec';
 import { PokemonAbilitiesComponent } from './pokemon-abilities.component';
 import { PokemonAbilityStubComponent } from './pokemon-ability/pokemon-ability.component.spec';

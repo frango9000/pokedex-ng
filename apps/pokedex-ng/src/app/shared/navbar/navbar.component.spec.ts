@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { pokemonVersionStubServiceProvider } from '../services/pokemon-version.service.spec';
+import { pokemonVersionStubServiceProvider } from '../services/pokemon-version.service.stub';
 import { LocalePickerStubComponent } from './locale-picker/locale-picker.component.spec';
 
 import { NavbarComponent } from './navbar.component';

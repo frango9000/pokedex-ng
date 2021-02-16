@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  PokemonEvolutionChainLink,
-  PokemonEvolutionDetail,
-} from '../../../../../../shared/domain/pokemon-evolution-chain';
+import { EvolutionChainLink, EvolutionDetail } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-evolution-link',
@@ -10,9 +7,9 @@ import {
   styleUrls: ['./pokemon-evolution-link.component.scss'],
 })
 export class PokemonEvolutionLinkComponent {
-  @Input() link: PokemonEvolutionChainLink;
+  @Input() link: EvolutionChainLink;
 
-  getEvolutionMethodText(method: PokemonEvolutionDetail): PokemonEvolutionTriggerDetails {
+  getEvolutionMethodText(method: EvolutionDetail): PokemonEvolutionTriggerDetails {
     let trigger: PokemonEvolutionTriggerDetail;
     const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {

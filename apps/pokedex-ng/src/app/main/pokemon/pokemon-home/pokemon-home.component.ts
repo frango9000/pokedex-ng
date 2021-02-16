@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiNamedPokemon } from '../../../shared/domain/pokemon';
+import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { PokemonService } from '../../../shared/services/pokemon.service';
   styleUrls: ['./pokemon-home.component.scss'],
 })
 export class PokemonHomeComponent implements OnInit {
-  public pokemonList: ApiNamedPokemon[] = [];
+  public pokemonList: NamedApiPokemon[] = [];
 
   public gridMode = true;
 

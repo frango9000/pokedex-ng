@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NamedApiPokemonType, NamedApiResource, NamedAPIResourceList, PokemonType } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import types from '../../../assets/data/types.json';
 import { environment } from '../../../environments/environment';
-import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
-import { ApiNamedType, PokemonType } from '../domain/pokemon-type';
 import { serviceLog } from './cache/icache';
 
 @Injectable({
@@ -20,17 +19,17 @@ export class PokemonTypeService {
       .pipe(tap(serviceLog), shareReplay());
   }
 
-  getTypes(): Observable<ApiNamedResource[]> {
+  getTypes(): Observable<NamedApiResource[]> {
     return of(types);
   }
 
-  getType(typeId: string): Observable<ApiNamedType> {
+  getType(typeId: string): Observable<NamedApiPokemonType> {
     return this.getTypes().pipe(map((value) => value.find((value1) => value1.name === typeId)));
   }
 
-  getApiTypes(): Observable<ApiNamedResource[]> {
+  getApiTypes(): Observable<NamedApiResource[]> {
     // const pageParams: HttpParams = new HttpParams().append('limit', '100');
-    return this.httpClient.get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/type/').pipe(
+    return this.httpClient.get<NamedAPIResourceList<NamedApiResource>>(environment.apiUrl + '/type/').pipe(
       map((value) => value.results),
       tap(serviceLog),
       shareReplay()

@@ -28,11 +28,12 @@
     },
     "pokedex-ng-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "pokedex-ng"
-      ]
+      "implicitDependencies": ["pokedex-ng"]
     },
     "data": {
+      "tags": []
+    },
+    "domain": {
       "tags": []
     }
   }

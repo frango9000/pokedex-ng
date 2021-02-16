@@ -1,12 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { ApiNamedResource } from '../domain/api-resource';
 import { TranslateService } from '@ngx-translate/core';
+import { NamedApiLanguage, NamedApiResource, PokemonLanguage } from '@pokedex-ng/domain';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import languages from '../../../assets/data/languages.json';
 import { environment } from '../../../environments/environment';
-import { map, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { ApiNamedLanguage, PokemonLanguage } from '../domain/pokemon-language';
 import { serviceLog } from './cache/icache';
 
 @Injectable({
@@ -14,7 +13,7 @@ import { serviceLog } from './cache/icache';
 })
 export class PokemonLanguageService {
   public activeLanguage = languages[0];
-  public activeLanguage$: BehaviorSubject<ApiNamedLanguage> = new BehaviorSubject<ApiNamedLanguage>(
+  public activeLanguage$: BehaviorSubject<NamedApiLanguage> = new BehaviorSubject<NamedApiLanguage>(
     this.activeLanguage
   );
 
@@ -24,8 +23,8 @@ export class PokemonLanguageService {
     });
   }
 
-  getApiLanguageList(): Observable<ApiNamedResource[]> {
-    return this.httpClient.get<ApiNamedResource[]>(environment.apiUrl + '/language').pipe(
+  getApiLanguageList(): Observable<NamedApiResource[]> {
+    return this.httpClient.get<NamedApiResource[]>(environment.apiUrl + '/language').pipe(
       tap(serviceLog),
       map((value) => value.results)
     );
@@ -35,7 +34,7 @@ export class PokemonLanguageService {
     return this.httpClient.get<PokemonLanguage>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
   }
 
-  getLanguageList(): Observable<ApiNamedLanguage[]> {
+  getLanguageList(): Observable<NamedApiLanguage[]> {
     return of(languages);
   }
 

@@ -1,6 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
 import { PokemonService } from './pokemon.service';
 
 describe('PokemonService', () => {
@@ -17,12 +16,3 @@ describe('PokemonService', () => {
     expect(service).toBeTruthy();
   });
 });
-
-export class PokemonStubService implements Partial<PokemonService> {
-  public getPokemonList = jest.fn((offset: number) => of([]));
-}
-
-export const pokemonStubServiceProvider = {
-  provide: PokemonService,
-  useFactory: () => new PokemonStubService(),
-};

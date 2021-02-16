@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PokemonService } from '../../../shared/services/pokemon.service';
-import { PokemonStubService, pokemonStubServiceProvider } from '../../../shared/services/pokemon.service.spec';
+import { PokemonStubService, pokemonStubServiceProvider } from '../../../shared/services/pokemon.service.stub';
 import { PokemonGridStubComponent } from './pokemon-grid/pokemon-grid.component.spec';
 import { PokemonHomeComponent } from './pokemon-home.component';
 import { PokemonTableStubComponent } from './pokemon-table/pokemon-table.component.spec';

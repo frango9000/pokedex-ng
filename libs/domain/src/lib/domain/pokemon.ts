@@ -1,10 +1,16 @@
-import { ApiNamedResource } from './api-resource';
+import { Ability } from './ability';
+import { ApiResource, NamedApiResource } from './domain';
+import { Item } from './item';
+import { Move } from './move';
+import { PokemonType } from './pokemon-type';
+import { Species } from './species';
+import { GameVersion, NamedApiVersionGroup } from './version-group';
 
-export interface ApiNamedPokemon extends ApiNamedResource {
+export interface NamedApiPokemon extends NamedApiResource<Pokemon> {
   types: string[];
 }
 
-export interface Pokemon {
+export interface Pokemon extends ApiResource {
   id: number;
   name: string;
   base_experience: number;
@@ -12,8 +18,8 @@ export interface Pokemon {
   weight: number;
   order: number;
   is_default: boolean;
-  species: ApiNamedResource;
-  forms: ApiNamedResource[];
+  species: NamedApiResource<Species>;
+  forms: NamedApiResource[];
   moves: PokemonMoves[];
   abilities: PokemonAbilities[];
   game_indices: PokemonGameIndices[];
@@ -26,13 +32,13 @@ export interface Pokemon {
 
 export interface PokemonTypes {
   slot: number;
-  type: ApiNamedResource;
+  type: NamedApiResource<PokemonType>;
 }
 
 export interface PokemonStats {
   base_stat: number;
   effort: number;
-  stat: ApiNamedResource;
+  stat: NamedApiResource;
 }
 
 export interface PokemonSprites {
@@ -47,46 +53,46 @@ export interface PokemonSprites {
 }
 
 export interface PokemonLocationAreaEncounters {
-  location_area: ApiNamedResource;
+  location_area: NamedApiResource;
   version_details: {
     max_chance: number;
     encounter_details: {
       min_level: number;
       max_level: number;
-      condition_values: ApiNamedResource[];
+      condition_values: NamedApiResource[];
       chance: number;
-      method: ApiNamedResource;
+      method: NamedApiResource;
     }[];
-    version: ApiNamedResource;
+    version: NamedApiResource<GameVersion>;
   }[];
 }
 
 export interface PokemonHeldItems {
-  item: ApiNamedResource;
+  item: NamedApiResource<Item>;
   version_details: {
     rarity: number;
-    version: ApiNamedResource;
+    version: NamedApiResource<GameVersion>;
   }[];
 }
 
 export interface PokemonAbilities {
   is_hidden: boolean;
   slot: number;
-  ability: ApiNamedResource;
+  ability: NamedApiResource<Ability>;
 }
 
 export interface PokemonGameIndices {
   game_index: number;
-  version: ApiNamedResource;
+  version: NamedApiResource<GameVersion>;
 }
 
 export interface PokemonMoves {
-  move: ApiNamedResource;
+  move: NamedApiResource<Move>;
   version_group_details: PokemonVersionGroupDetails[];
 }
 
 export interface PokemonVersionGroupDetails {
   level_learned_at: number;
-  version_group: ApiNamedResource;
-  move_learn_method: ApiNamedResource;
+  version_group: NamedApiVersionGroup;
+  move_learn_method: NamedApiResource;
 }

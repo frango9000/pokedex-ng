@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { NamedApiResource } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ApiNamedResource } from '../../../../shared/domain/api-resource';
 import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
-import { pokemonTypeStubServiceProvider } from '../../../../shared/services/pokemon-type.service.spec';
+import { pokemonTypeStubServiceProvider } from '../../../../shared/services/pokemon-type.service.stub';
 
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
 
@@ -35,5 +35,5 @@ describe('PokemonTypeDamagesComponent', () => {
 
 @Component({ selector: 'app-pokemon-type-damages', template: '' })
 export class PokemonTypeDamagesStubComponent implements Partial<PokemonTypeDamagesComponent> {
-  @Input() typeIds: { slot: number; type: ApiNamedResource }[];
+  @Input() typeIds: { slot: number; type: NamedApiResource }[];
 }

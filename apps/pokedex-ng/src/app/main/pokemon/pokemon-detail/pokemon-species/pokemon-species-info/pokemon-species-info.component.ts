@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Species } from '@pokedex-ng/domain';
 import { Subscription } from 'rxjs';
-import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
 import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PokemonVersionService } from '../../../../../shared/services/pokemon-ve
   styleUrls: ['./pokemon-species-info.component.scss'],
 })
 export class PokemonSpeciesInfoComponent implements OnInit, OnDestroy {
-  @Input() public pokemonSpecies: PokemonSpecies;
+  @Input() public pokemonSpecies: Species;
 
   activeVersion = 'en';
   private versionSub: Subscription;

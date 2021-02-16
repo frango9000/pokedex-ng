@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ExpandableResourcesStubPipe } from '../../../shared/pipes/expandable-resources.pipe.spec';
 import { PokeTypeColorStubPipe } from '../../../shared/pipes/poke-type-color.pipe.spec';
-import { pokemonStubServiceProvider } from '../../../shared/services/pokemon.service.spec';
+import { pokemonStubServiceProvider } from '../../../shared/services/pokemon.service.stub';
 import { PokemonAbilitiesStubComponent } from './pokemon-abilities/pokemon-abilities.component.spec';
 import { PokemonDetailComponent } from './pokemon-detail.component';
 import { PokemonMovesStubComponent } from './pokemon-moves/pokemon-moves.component.spec';

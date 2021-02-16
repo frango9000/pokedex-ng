@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PokemonAbilities } from '../../../../shared/domain/pokemon';
+import { PokemonAbilities } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-abilities',

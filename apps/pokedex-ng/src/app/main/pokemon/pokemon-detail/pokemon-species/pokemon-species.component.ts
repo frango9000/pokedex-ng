@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { PokemonSpecies } from '../../../../shared/domain/pokemon-species';
+import { Species } from '@pokedex-ng/domain';
 import { PokemonLanguageService } from '../../../../shared/services/pokemon-language.service';
 import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
 import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
@@ -13,7 +13,7 @@ import { PokemonVersionService } from '../../../../shared/services/pokemon-versi
 export class PokemonSpeciesComponent implements OnChanges {
   @Input() pokemonSpeciesId: string | number;
 
-  public pokemonSpecies: PokemonSpecies;
+  public pokemonSpecies: Species;
 
   constructor(
     private translateService: TranslateService,
@@ -30,7 +30,7 @@ export class PokemonSpeciesComponent implements OnChanges {
     });
   }
 
-  private generateTranslations(specie: PokemonSpecies): void {
+  private generateTranslations(specie: Species): void {
     specie.genera.forEach((name) => {
       this.translateService.setTranslation(
         name.language.name,
