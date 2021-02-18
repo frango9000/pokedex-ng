@@ -1,12 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { PokemonMoves } from '@pokedex-ng/domain';
-import { ExpandableResourcesStubPipe } from '../../../../shared/pipes/expandable-resources.pipe.spec';
-import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
-import { pokemonMoveStubServiceProvider } from '../../../../shared/services/pokemon-move.service.stub';
+import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
+import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
 import { gameVersionStubServiceProvider } from '../../../../shared/services/game-version.service.stub';
-import { PokemonMovesCardStubComponent } from './pokemon-moves-card/pokemon-moves-card.component.spec';
+import { pokemonMoveStubServiceProvider } from '../../../../shared/services/pokemon-move.service.stub';
+import { PokemonMovesCardComponent } from './pokemon-moves-card/pokemon-moves-card.component';
 import { PokemonMovesComponent } from './pokemon-moves.component';
+
+@Component({ selector: 'app-pokemon-moves-card', template: '' })
+export class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardComponent> {
+  @Input() moves: PokemonMoves[] = [];
+  @Input() cardTitle = '';
+  @Input() showLevels = false;
+  @Input() moveTypes: NamedApiMove[];
+}
 
 describe('PokemonMovesComponent', () => {
   let component: PokemonMovesComponent;
@@ -18,8 +25,8 @@ describe('PokemonMovesComponent', () => {
         declarations: [
           PokemonMovesComponent,
           PokemonMovesCardStubComponent,
-          ExpandableResourcesStubPipe,
-          PokeTypeColorStubPipe,
+          StubExpandableResourcesPipe,
+          StubPokeTypeColorPipe,
         ],
         providers: [gameVersionStubServiceProvider, pokemonMoveStubServiceProvider],
       }).compileComponents();
@@ -36,8 +43,3 @@ describe('PokemonMovesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-moves', template: '' })
-export class PokemonMovesStubComponent implements Partial<PokemonMovesComponent> {
-  @Input() pokemonMoves: PokemonMoves[];
-}

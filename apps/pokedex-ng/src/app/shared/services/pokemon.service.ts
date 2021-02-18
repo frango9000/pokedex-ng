@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { getAllPokemon } from '@pokedex-ng/data';
 import { NamedApiPokemon, NamedApiResource, NamedApiResourceList, Pokemon } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 
@@ -13,16 +13,16 @@ import { serviceLog } from './cache/icache';
 export class PokemonService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllPokemon(offset = 0, limit = 36): Observable<NamedApiPokemon[]> {
-    return this._getAllPokemonLocal(offset, limit);
+  getAllPokemon(offset = 0, limit = 0): Observable<NamedApiPokemon[]> {
+    return this._getAllPokemonLocal(offset, limit).pipe(take(1));
   }
 
   getOnePokemon(pokemonId: string | number): Observable<Pokemon> {
     return this._getOnePokemonApi(pokemonId);
   }
 
-  private _getAllPokemonLocal(offset = 0, limit = 36): Observable<NamedApiPokemon[]> {
-    return getAllPokemon().pipe(map((value) => value.slice(offset, +(offset + limit))));
+  private _getAllPokemonLocal(offset = 0, limit = 0): Observable<NamedApiPokemon[]> {
+    return getAllPokemon().pipe(map((value) => value.slice(offset, limit ? +(offset + limit) : undefined)));
   }
 
   private _getAllPokemonApi(offset = 0, limit = 36): Observable<NamedApiResource[]> {

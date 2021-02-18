@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { PokemonStats } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PokemonStatsComponent } from './pokemon-stats.component';
 
@@ -28,8 +26,3 @@ describe('PokemonStatsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-stats', template: '' })
-export class PokemonStatsStubComponent implements Partial<PokemonStatsComponent> {
-  @Input() pokemonStats: PokemonStats[];
-}

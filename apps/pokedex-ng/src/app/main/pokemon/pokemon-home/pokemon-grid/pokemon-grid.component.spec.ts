@@ -1,12 +1,8 @@
-import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { PokeGenerationStubPipe } from '../../../../shared/pipes/poke-generation.pipe.spec';
-import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
-import { RomanStubPipe } from '../../../../shared/pipes/roman.pipe.spec';
+import { StubPokeGenerationPipe, StubPokeTypeColorPipe, StubRomanPipe } from '../../../../shared/pipes/stubs';
 
 import { PokemonGridComponent } from './pokemon-grid.component';
 
@@ -18,7 +14,7 @@ describe('PokemonGridComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), TranslateModule.forRoot()],
-        declarations: [PokemonGridComponent, PokeGenerationStubPipe, RomanStubPipe, PokeTypeColorStubPipe],
+        declarations: [PokemonGridComponent, StubPokeGenerationPipe, StubRomanPipe, StubPokeTypeColorPipe],
       }).compileComponents();
     })
   );
@@ -33,8 +29,3 @@ describe('PokemonGridComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-grid', template: '' })
-export class StubPokemonGridComponent implements Partial<PokemonGridComponent> {
-  @Input() public pokemonList: NamedApiPokemon[];
-}

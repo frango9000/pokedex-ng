@@ -1,4 +1,3 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { RomanPipe } from './roman.pipe';
 
 describe('RomanPipe', () => {
@@ -7,8 +6,3 @@ describe('RomanPipe', () => {
     expect(pipe).toBeTruthy();
   });
 });
-
-@Pipe({ name: 'roman' })
-export class RomanStubPipe implements PipeTransform, Partial<RomanPipe> {
-  public transform = jest.fn();
-}
