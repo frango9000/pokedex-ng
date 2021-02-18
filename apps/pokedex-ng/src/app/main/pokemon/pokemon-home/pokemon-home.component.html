@@ -1,24 +1,24 @@
-<div class='container'>
-  <div class='row mb-1'>
-    <button class='btn btn-primary' (click)='toggleGridMode()'>
+<div class="container">
+  <div class="row mb-1">
+    <button class="btn btn-primary" (click)="toggleGridMode()">
       {{ gridMode ? 'Table View' : 'Grid View' }}
-      <i class='fas fa-th ml-1'></i>
+      <i class="fas fa-th ml-1"></i>
     </button>
   </div>
   <pokedex-ng-filter></pokedex-ng-filter>
-  <div class='row'>
-    <div class='col'>
-      <div infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='150' (scrolled)='renderMore()'>
-        <app-pokemon-grid *ngIf='gridMode; else tableMode' [pokemonList]='pokemonList'></app-pokemon-grid>
+  <div class="row">
+    <div class="col">
+      <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="150" (scrolled)="renderMore()">
+        <app-pokemon-grid *ngIf="gridMode; else tableMode" [pokemonList]="pokemonList"></app-pokemon-grid>
         <ng-template #tableMode>
-          <app-pokemon-table [pokemonList]='pokemonList'></app-pokemon-table>
+          <app-pokemon-table [pokemonList]="pokemonList"></app-pokemon-table>
         </ng-template>
       </div>
     </div>
   </div>
-  <div class='row my-2'>
-    <div class='col text-center'>
-      <button mdbBtn type='button' color='blue' mdbWavesEffect (click)='renderMore()' class='load-more-button'>
+  <div class="row my-2">
+    <div class="col text-center">
+      <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="renderMore()" class="load-more-button">
         <span>Load More</span>
       </button>
     </div>
