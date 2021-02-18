@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  GameVersionGroup,
   NamedApiResource,
-  NamedAPIResourceList,
+  NamedApiResourceList,
   NamedApiVersionGroup,
   PokemonType,
-  VersionGroup,
 } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { serviceLog } from './cache/icache';
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonVersionService {
+export class GameVersionService {
   public static readonly DEFAULT_VERSION: 'yellow';
 
   public activeVersion = 'yellow';
@@ -30,14 +30,14 @@ export class PokemonVersionService {
   }
 
   getApiVersionList(): Observable<NamedApiResource[]> {
-    return this.httpClient.get<NamedAPIResourceList<NamedApiResource>>(environment.apiUrl + '/version-group').pipe(
+    return this.httpClient.get<NamedApiResourceList<NamedApiResource>>(environment.apiUrl + '/version-group').pipe(
       map((value) => value.results),
       tap(serviceLog),
       shareReplay()
     );
   }
 
-  getApiVersion(versionId: string | number): Observable<VersionGroup> {
+  getApiVersion(versionId: string | number): Observable<GameVersionGroup> {
     return this.httpClient
       .get<PokemonType>(environment.apiUrl + '/version-group/' + versionId)
       .pipe(tap(serviceLog), shareReplay());

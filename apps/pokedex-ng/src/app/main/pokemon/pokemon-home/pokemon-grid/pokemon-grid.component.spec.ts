@@ -35,6 +35,6 @@ describe('PokemonGridComponent', () => {
 });
 
 @Component({ selector: 'app-pokemon-grid', template: '' })
-export class PokemonGridStubComponent implements Partial<PokemonGridComponent> {
+export class StubPokemonGridComponent implements Partial<PokemonGridComponent> {
   @Input() public pokemonList: NamedApiPokemon[];
 }

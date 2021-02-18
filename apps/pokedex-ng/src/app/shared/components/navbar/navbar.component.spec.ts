@@ -1,10 +1,13 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { pokemonVersionStubServiceProvider } from '../services/pokemon-version.service.stub';
-import { LocalePickerStubComponent } from './locale-picker/locale-picker.component.spec';
+import { gameVersionStubServiceProvider } from '../../services/game-version.service.stub';
 
 import { NavbarComponent } from './navbar.component';
+
+@Component({ selector: 'pokedex-ng-locale-picker', template: '' })
+class StubLocalePickerComponent {}
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -14,8 +17,8 @@ describe('NavbarComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
-        declarations: [NavbarComponent, LocalePickerStubComponent],
-        providers: [pokemonVersionStubServiceProvider],
+        declarations: [NavbarComponent, StubLocalePickerComponent],
+        providers: [gameVersionStubServiceProvider],
       }).compileComponents();
     })
   );

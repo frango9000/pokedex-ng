@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { PokemonVersionService } from './pokemon-version.service';
+import { GameVersionService } from './game-version.service';
 
-describe('PokemonVersionService', () => {
-  let service: PokemonVersionService;
+describe('GameVersionService', () => {
+  let service: GameVersionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(PokemonVersionService);
+    service = TestBed.inject(GameVersionService);
   });
 
   it('should be created', () => {

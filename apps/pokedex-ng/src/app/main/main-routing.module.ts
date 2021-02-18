@@ -21,11 +21,6 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'test',
-    redirectTo: 'pokemon',
-    // component: TestComponent
-  },
 ];
 
 @NgModule({

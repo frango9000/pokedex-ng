@@ -9,7 +9,7 @@ import { serviceLog } from './cache/icache';
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonEvolutionChainService {
+export class EvolutionChainService {
   constructor(private httpClient: HttpClient) {}
 
   getEvolutionChain(evolutionChainId: number): Observable<EvolutionChain> {

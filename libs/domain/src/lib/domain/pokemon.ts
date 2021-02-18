@@ -1,10 +1,10 @@
 import { Ability } from './ability';
 import { ApiResource, NamedApiResource } from './domain';
+import { GameVersion, NamedApiVersionGroup } from './game-version';
 import { Item } from './item';
 import { Move } from './move';
 import { PokemonType } from './pokemon-type';
 import { Species } from './species';
-import { GameVersion, NamedApiVersionGroup } from './version-group';
 
 export interface NamedApiPokemon extends NamedApiResource<Pokemon> {
   types: string[];

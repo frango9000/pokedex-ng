@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { PokemonEvolutionChainService } from './pokemon-evolution-chain.service';
+import { EvolutionChainService } from './evolution-chain.service';
 
-describe('PokemonEvolutionChainService', () => {
-  let service: PokemonEvolutionChainService;
+describe('EvolutionChainService', () => {
+  let service: EvolutionChainService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(PokemonEvolutionChainService);
+    service = TestBed.inject(EvolutionChainService);
   });
 
   it('should be created', () => {

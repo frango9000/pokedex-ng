@@ -4,9 +4,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { PokeTypeColorStubPipe } from '../../../../../shared/pipes/poke-type-color.pipe.spec';
 import { ReplaceStubPipe } from '../../../../../shared/pipes/replace.pipe.spec';
+import { gameVersionStubServiceProvider } from '../../../../../shared/services/game-version.service.stub';
 import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.stub';
 import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.stub';
-import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.stub';
 import { PokemonMoveComponent } from './pokemon-move.component';
 
 describe('PokemonMovesComponent', () => {
@@ -18,11 +18,7 @@ describe('PokemonMovesComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
         declarations: [PokemonMoveComponent, PokeTypeColorStubPipe, ReplaceStubPipe, NgVarDirective],
-        providers: [
-          pokemonMoveStubServiceProvider,
-          pokemonVersionStubServiceProvider,
-          pokemonLanguageStubServiceProvider,
-        ],
+        providers: [pokemonMoveStubServiceProvider, gameVersionStubServiceProvider, pokemonLanguageStubServiceProvider],
       }).compileComponents();
     })
   );

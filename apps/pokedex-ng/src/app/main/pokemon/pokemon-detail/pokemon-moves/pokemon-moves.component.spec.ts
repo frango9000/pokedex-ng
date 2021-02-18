@@ -4,7 +4,7 @@ import { PokemonMoves } from '@pokedex-ng/domain';
 import { ExpandableResourcesStubPipe } from '../../../../shared/pipes/expandable-resources.pipe.spec';
 import { PokeTypeColorStubPipe } from '../../../../shared/pipes/poke-type-color.pipe.spec';
 import { pokemonMoveStubServiceProvider } from '../../../../shared/services/pokemon-move.service.stub';
-import { pokemonVersionStubServiceProvider } from '../../../../shared/services/pokemon-version.service.stub';
+import { gameVersionStubServiceProvider } from '../../../../shared/services/game-version.service.stub';
 import { PokemonMovesCardStubComponent } from './pokemon-moves-card/pokemon-moves-card.component.spec';
 import { PokemonMovesComponent } from './pokemon-moves.component';
 
@@ -21,7 +21,7 @@ describe('PokemonMovesComponent', () => {
           ExpandableResourcesStubPipe,
           PokeTypeColorStubPipe,
         ],
-        providers: [pokemonVersionStubServiceProvider, pokemonMoveStubServiceProvider],
+        providers: [gameVersionStubServiceProvider, pokemonMoveStubServiceProvider],
       }).compileComponents();
     })
   );

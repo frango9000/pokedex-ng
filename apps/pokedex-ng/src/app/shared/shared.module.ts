@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FilterComponent } from './components/filter/filter.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LocalePickerComponent } from './components/navbar/locale-picker/locale-picker.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgVarDirective } from './directives/ng-var.directive';
-import { FooterComponent } from './footer/footer.component';
-import { LocalePickerComponent } from './navbar/locale-picker/locale-picker.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
 import { PokeGenerationPipe } from './pipes/poke-generation.pipe';
 import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
@@ -28,6 +29,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     RomanPipe,
     ReplacePipe,
     LocalePickerComponent,
+    FilterComponent,
   ],
   exports: [
     NavbarComponent,
@@ -41,6 +43,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     RomanPipe,
     TranslateModule,
     ReplacePipe,
+    FilterComponent,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })

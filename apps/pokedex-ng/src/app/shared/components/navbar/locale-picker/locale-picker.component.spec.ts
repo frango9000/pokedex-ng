@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgVarDirective } from '../../directives/ng-var.directive';
-import { pokemonLanguageStubServiceProvider } from '../../services/pokemon-language.service.stub';
+import { NgVarDirective } from '../../../directives/ng-var.directive';
+import { pokemonLanguageStubServiceProvider } from '../../../services/pokemon-language.service.stub';
 import { LocalePickerComponent } from './locale-picker.component';
 
 describe('LocalePickerComponent', () => {
@@ -29,6 +28,3 @@ describe('LocalePickerComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-locale-picker', template: '' })
-export class LocalePickerStubComponent {}

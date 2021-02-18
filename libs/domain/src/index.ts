@@ -9,6 +9,6 @@ export * from './lib/domain/pokemon';
 export * from './lib/domain/pokemon-language';
 export * from './lib/domain/pokemon-type';
 export * from './lib/domain/species';
-export * from './lib/domain/version-group';
+export * from './lib/domain/game-version';
 
 export * from './lib/domain.module';

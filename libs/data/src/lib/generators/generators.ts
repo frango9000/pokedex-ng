@@ -1,27 +1,33 @@
 import {
+  GameVersionGroup,
   Item,
+  Machine,
   Move,
   NamedApiItem,
   NamedApiLanguage,
   NamedApiMove,
   NamedApiPokemon,
   NamedApiPokemonType,
-  NamedAPIResourceList,
+  NamedApiResourceList,
   NamedApiVersionGroup,
   Pokemon,
   PokemonLanguage,
   PokemonType,
-  VersionGroup,
 } from '@pokedex-ng/domain';
 import { Axios } from 'axios-observable';
-import fs from 'fs';
+import * as fs from 'fs';
 import { Observable, Subject } from 'rxjs';
-import { concatAll, map } from 'rxjs/operators';
+import { concatAll, delay, map, retry } from 'rxjs/operators';
 
 export abstract class AbstractGenerator<T, N> {
   private host = 'https://pokeapi.co/api/v2';
   private filePath = './libs/data/src/lib/data';
+  private append = false;
   private total = 0;
+  private offset = 0;
+  private limit = 9999;
+  private delay = 200;
+
   private list = [];
   private subject$: Subject<Observable<T>> = new Subject<Observable<T>>();
 
@@ -33,39 +39,88 @@ export abstract class AbstractGenerator<T, N> {
     });
   }
 
-  abstract mapResource(resource: T): N;
+  public setAppend(append: boolean): AbstractGenerator<T, N> {
+    this.append = append;
+    return this;
+  }
 
-  abstract getResourceName(): string;
+  public setOffset(offset: number): AbstractGenerator<T, N> {
+    this.offset = offset;
+    return this;
+  }
 
-  onNext(resource: T) {
-    // console.log(resource);
+  public setLimit(limit: number): AbstractGenerator<T, N> {
+    this.limit = limit;
+    return this;
+  }
+
+  public setDelay(delay: number): AbstractGenerator<T, N> {
+    this.delay = delay;
+    return this;
+  }
+
+  protected abstract mapResource(resource: T): N;
+
+  protected abstract getResourceName(): string;
+
+  protected onNext(resource: T): void {
     this.list.push(this.mapResource(resource));
-  }
-
-  onComplete(): void {
-    console.log(
-      `Resource ${this.getResourceName()} generated. [${this.list.length}/${this.total}]${
-        this.list.length !== this.total ? ' -' + (this.total - this.list.length) : ''
-      }`
+    process.stdout.clearLine(0);
+    process.stdout.cursorTo(0);
+    process.stdout.write(
+      `${this._getPercentage()}% | [${this.list.length}/${
+        this.total
+      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${(resource as any).id}`
     );
-    fs.writeFileSync(`${this.filePath}/${this.getResourceName()}.json`, JSON.stringify(this.list));
-    console.log(`Resource ${this.getResourceName()} written to file.`);
   }
 
-  onError = () => console.error;
-
-  generateResource() {
-    Axios.get<NamedAPIResourceList>(`${this.host}/${this.getResourceName()}`).subscribe((countResponse) => {
-      this.total = 10 || countResponse?.data?.count;
-      Axios.get<NamedAPIResourceList>(`${this.host}/${this.getResourceName()}?limit=${this.total}`).subscribe(
-        (fullListResponse) => {
-          fullListResponse.data.results.forEach((resource) => {
-            this.subject$.next(Axios.get<T>(resource.url).pipe(map((value) => value.data)));
-          });
-          this.subject$.complete();
-        }
+  protected onComplete(): void {
+    if (this.list.length > 0) {
+      console.log(
+        `\nResource ${this.getResourceName()} generated. [${this.list.length}/${this.total}]${
+          this.list.length !== this.total ? ' -' + (this.total - this.list.length) : ''
+        }`
       );
-    });
+      const writeOrAppend = this.append ? fs.appendFileSync : fs.writeFileSync;
+      writeOrAppend(`${this.filePath}/${this.getResourceName()}.json`, JSON.stringify(this.list));
+      console.log(`Resource ${this.getResourceName()} written to file.`);
+    } else {
+      console.log('No Resources found');
+    }
+  }
+
+  protected onError(err) {
+    console.log(`\n${this._getPercentage()}% | ${this.getResourceName()}: Error --> ${this.list.length}/${this.total}`);
+    console.trace('\n' + err);
+    this.onComplete();
+  }
+
+  public generateResource(): void {
+    Axios.get<NamedApiResourceList>(
+      `${this.host}/${this.getResourceName()}?offset=${this.offset}&limit=${this.limit}`
+    ).subscribe((res) => {
+      this.total = res?.data?.results?.length || 0;
+      console.log(`Total ${this.getResourceName()}: ${this.total}`);
+      console.log(`Estimate ${this._getRemainingTime()} seconds`);
+      res.data.results.forEach((resource) => {
+        this.subject$.next(
+          Axios.get<T>(resource.url).pipe(
+            retry(10),
+            delay(this.delay),
+            map((value) => value.data)
+          )
+        );
+      });
+      this.subject$.complete();
+    }, console.error);
+  }
+
+  private _getPercentage(): number {
+    return Math.trunc((this.list.length * 100) / this.total);
+  }
+
+  private _getRemainingTime(): number {
+    return Math.trunc((this.total - this.list.length) / (1000 / this.delay));
   }
 }
 
@@ -93,7 +148,7 @@ export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove>
       name: resource.name,
       id: resource.id,
       accuracy: resource.accuracy,
-      crit_rate: resource.meta.crit_rate,
+      crit_rate: resource.meta?.crit_rate,
       generation: resource.generation.name,
       names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
       power: resource.power,
@@ -103,12 +158,12 @@ export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove>
   }
 }
 
-export class PokemonVersionGenerator extends AbstractGenerator<VersionGroup, NamedApiVersionGroup> {
+export class PokemonVersionGenerator extends AbstractGenerator<GameVersionGroup, NamedApiVersionGroup> {
   getResourceName(): string {
     return 'version-group';
   }
 
-  mapResource(resource: VersionGroup): NamedApiVersionGroup {
+  mapResource(resource: GameVersionGroup): NamedApiVersionGroup {
     return {
       name: resource.name,
       id: resource.id,
@@ -168,5 +223,15 @@ export class PokemonItemGenerator extends AbstractGenerator<Item, NamedApiItem> 
       names: resource.names,
       sprite: resource.sprites.default,
     };
+  }
+}
+
+export class PokemonMachineGenerator extends AbstractGenerator<Machine, Machine> {
+  getResourceName(): string {
+    return 'machine';
+  }
+
+  mapResource(resource: Machine): Machine {
+    return resource;
   }
 }

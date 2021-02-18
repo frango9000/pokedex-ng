@@ -1,10 +1,10 @@
 import { of } from 'rxjs';
-import item from './item.json';
-import language from './language.json';
-import move from './move.json';
-import pokemon from './pokemon.json';
-import type from './type.json';
-import version from './version-group.json';
+import item from './data/item.json';
+import language from './data/language.json';
+import move from './data/move.json';
+import pokemon from './data/pokemon.json';
+import type from './data/type.json';
+import version from './data/version-group.json';
 
 export function getAllPokemon() {
   return of(pokemon);

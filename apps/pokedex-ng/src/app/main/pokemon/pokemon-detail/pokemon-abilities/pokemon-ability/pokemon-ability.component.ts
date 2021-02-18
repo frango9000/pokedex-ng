@@ -2,9 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Ability } from '@pokedex-ng/domain';
 import { Subscription } from 'rxjs';
+import { GameVersionService } from '../../../../../shared/services/game-version.service';
 import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-ability',
@@ -22,7 +22,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   constructor(
     private translateService: TranslateService,
     private pokemonMoveService: PokemonMoveService,
-    private pokemonVersionService: PokemonVersionService,
+    private pokemonVersionService: GameVersionService,
     private pokemonLanguageService: PokemonLanguageService
   ) {}
 

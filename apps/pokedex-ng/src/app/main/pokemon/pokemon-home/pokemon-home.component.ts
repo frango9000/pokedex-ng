@@ -10,7 +10,7 @@ import { PokemonService } from '../../../shared/services/pokemon.service';
 export class PokemonHomeComponent implements OnInit {
   public pokemonList: NamedApiPokemon[] = [];
 
-  public gridMode = true;
+  public gridMode = false;
 
   offset = 0;
   increment = 36;
@@ -24,7 +24,7 @@ export class PokemonHomeComponent implements OnInit {
 
   private fetchPokemonList(): void {
     this.pokemonService
-      .getPokemonList(this.offset)
+      .getAllPokemon(this.offset)
       .pipe()
       .subscribe((value) => {
         this.pokemonList.push(...value);

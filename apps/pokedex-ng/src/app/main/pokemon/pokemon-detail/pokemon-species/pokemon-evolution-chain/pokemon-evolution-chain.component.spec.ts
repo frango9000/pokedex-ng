@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { pokemonEvolutionChainStubServiceProvider } from '../../../../../shared/services/pokemon-evolution-chain.service.stub';
+import { evolutionChainStubServiceProvider } from '../../../../../shared/services/evolution-chain.service.stub';
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain.component';
 import { PokemonEvolutionLinkStubComponent } from './pokemon-evolution-link/pokemon-evolution-link.component.spec';
 
@@ -16,7 +16,7 @@ describe('PokemonEvolutionChainComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkStubComponent],
-        providers: [pokemonEvolutionChainStubServiceProvider],
+        providers: [evolutionChainStubServiceProvider],
       }).compileComponents();
     })
   );

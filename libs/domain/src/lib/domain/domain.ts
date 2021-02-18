@@ -1,6 +1,6 @@
 import { PokemonLanguage } from './pokemon-language';
 
-export interface NamedAPIResourceList<T extends NamedApiResource = NamedApiResource> {
+export interface NamedApiResourceList<T extends NamedApiResource = NamedApiResource> {
   count: number;
   next: string;
   previous: string;

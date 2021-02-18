@@ -1,7 +1,12 @@
 import { ApiName, ApiResource, NamedApiResource } from './domain';
 import { Generation } from './generation';
 
-export interface VersionGroup extends ApiResource {
+export interface GameVersion extends ApiResource {
+  names: ApiName[];
+  version_group: NamedApiVersionGroup;
+}
+
+export interface GameVersionGroup extends ApiResource {
   name: string;
   id: number;
   order: number;
@@ -12,13 +17,8 @@ export interface VersionGroup extends ApiResource {
   versions: NamedApiResource<GameVersion>[];
 }
 
-export interface NamedApiVersionGroup extends NamedApiResource<VersionGroup> {
+export interface NamedApiVersionGroup extends NamedApiResource<GameVersionGroup> {
   generation?: string;
   order?: number;
   versions?: string[];
-}
-
-export interface GameVersion extends ApiResource {
-  names: ApiName[];
-  version_group: NamedApiVersionGroup;
 }

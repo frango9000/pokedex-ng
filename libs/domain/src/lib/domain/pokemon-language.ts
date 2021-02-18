@@ -1,5 +1,5 @@
 import { ApiName, ApiResource, NamedApiResource } from './domain';
-import { VersionGroup } from './version-group';
+import { GameVersionGroup } from './game-version';
 
 export interface PokemonLanguage extends ApiResource {
   id: number;
@@ -17,7 +17,7 @@ export interface NamedApiLanguage extends NamedApiResource<PokemonLanguage> {
 export interface ApiFlavorTextEntry {
   flavor_text: string;
   language: NamedApiResource;
-  version_group: NamedApiResource<VersionGroup>;
+  version_group: NamedApiResource<GameVersionGroup>;
 }
 
 export interface ApiEffectEntry {
@@ -28,5 +28,5 @@ export interface ApiEffectEntry {
 
 export interface ApiEffectChange {
   effect_entries: ApiEffectEntry[];
-  version_group: NamedApiResource<VersionGroup>;
+  version_group: NamedApiResource<GameVersionGroup>;
 }

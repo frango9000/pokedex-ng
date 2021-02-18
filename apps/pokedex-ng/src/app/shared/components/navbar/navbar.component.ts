@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NamedApiResource } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { PokemonVersionService } from '../services/pokemon-version.service';
+import { GameVersionService } from '../../services/game-version.service';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'pokedex-ng-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   public versions$: Observable<NamedApiResource[]>;
 
-  constructor(public pokemonVersionService: PokemonVersionService) {}
+  constructor(public pokemonVersionService: GameVersionService) {}
 
   ngOnInit(): void {
     this.versions$ = this.pokemonVersionService.getVersionList();
