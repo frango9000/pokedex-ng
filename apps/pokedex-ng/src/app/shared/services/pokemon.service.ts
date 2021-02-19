@@ -1,11 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import pokemon from '../../../assets/data/pokemon.json';
+import { getAllPokemon } from '@pokedex-ng/data';
+import { NamedApiPokemon, NamedApiResource, NamedApiResourceList, Pokemon } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
+import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { ApiNamedResource, ApiResponse } from '../domain/api-resource';
-import { ApiNamedPokemon, Pokemon } from '../domain/pokemon';
 import { serviceLog } from './cache/icache';
 
 @Injectable({
@@ -14,14 +13,22 @@ import { serviceLog } from './cache/icache';
 export class PokemonService {
   constructor(private httpClient: HttpClient) {}
 
-  getPokemonList(offset = 0, limit = 36): Observable<ApiNamedPokemon[]> {
-    return of(pokemon).pipe(map((value) => value.slice(offset, +(offset + limit))));
+  getAllPokemon(offset = 0, limit = 0): Observable<NamedApiPokemon[]> {
+    return this._getAllPokemonLocal(offset, limit).pipe(take(1));
   }
 
-  getApiPokemonList(offset = 0, limit = 36): Observable<ApiNamedResource[]> {
+  getOnePokemon(pokemonId: string | number): Observable<Pokemon> {
+    return this._getOnePokemonApi(pokemonId);
+  }
+
+  private _getAllPokemonLocal(offset = 0, limit = 0): Observable<NamedApiPokemon[]> {
+    return getAllPokemon().pipe(map((value) => value.slice(offset, limit ? +(offset + limit) : undefined)));
+  }
+
+  private _getAllPokemonApi(offset = 0, limit = 36): Observable<NamedApiResource[]> {
     const pageParams: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
-      .get<ApiResponse<ApiNamedResource>>(environment.apiUrl + '/pokemon', {
+      .get<NamedApiResourceList>(environment.apiUrl + '/pokemon', {
         params: pageParams,
       })
       .pipe(
@@ -31,28 +38,13 @@ export class PokemonService {
       );
   }
 
-  getApiPokemon(pokemonId: string | number): Observable<Pokemon> {
+  private _getOnePokemonApi(pokemonId: string | number): Observable<Pokemon> {
     return this.httpClient
       .get<Pokemon>(environment.apiUrl + '/pokemon/' + pokemonId)
       .pipe(tap(serviceLog), shareReplay());
   }
 
-  //
-  // getFirebasePokemonList(offset: number = 1, limit: number = 36): Observable<ApiNamedPokemon[]> {
-  //   const pageParams: HttpParams = new HttpParams()
-  //   .append('orderBy', '"$key"')
-  //   .append('startAt', String('"' + offset + '"'))
-  //   .append('endAt', String('"' + (offset + (limit - 1)) + '"'));
-  //   return this.httpClient.get<ApiNamedPokemon[]>(environment.firebaseApi + '/pokemon.json', {params: pageParams}).pipe(
-  //     map(id => Object.keys(id).map(pokemon => id[pokemon])),
-  //     tap(serviceLog),
-  //     shareReplay()
-  //   );
-  // }
-  //
-  // postFirebasePokemon(data: ApiNamedPokemon): Observable<any> {
-  //   return this.httpClient.put(environment.firebaseApi + '/pokemon/' + data.id + '.json', data).pipe(
-  //     tap(serviceLog)
-  //   );
-  // }
+  private _getOnePokemonLocal(pokemonId: string | number): Observable<NamedApiPokemon> {
+    return this._getAllPokemonLocal().pipe(map((allPokemon) => allPokemon.find((pokemon) => pokemon.id === pokemonId)));
+  }
 }

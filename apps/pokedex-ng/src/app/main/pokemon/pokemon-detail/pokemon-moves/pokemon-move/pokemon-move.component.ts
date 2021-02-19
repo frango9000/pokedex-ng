@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Move } from '@pokedex-ng/domain';
 import { Subscription } from 'rxjs';
-import { PokemonMove } from '../../../../../shared/domain/pokemon-move';
+import { GameVersionService } from '../../../../../shared/services/game-version.service';
 import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-move',
@@ -14,14 +14,14 @@ import { PokemonVersionService } from '../../../../../shared/services/pokemon-ve
 export class PokemonMoveComponent implements OnInit, OnDestroy {
   @Input() moveId: string | number;
 
-  move: PokemonMove;
+  move: Move;
 
   activeVersion = 'en';
   private versionSub: Subscription;
 
   constructor(
     private pokemonMoveService: PokemonMoveService,
-    private pokemonVersionService: PokemonVersionService,
+    private pokemonVersionService: GameVersionService,
     private pokemonLanguageService: PokemonLanguageService,
     private translateService: TranslateService
   ) {}
@@ -40,7 +40,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
     this.versionSub?.unsubscribe();
   }
 
-  private generateTranslations(move: PokemonMove): void {
+  private generateTranslations(move: Move): void {
     move.names.forEach((name) => {
       this.translateService.setTranslation(name.language.name, { MOVE: { [move.name]: { NAME: name.name } } }, true);
     });

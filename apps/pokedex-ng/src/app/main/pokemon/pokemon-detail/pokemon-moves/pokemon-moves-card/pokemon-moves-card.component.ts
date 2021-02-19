@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PokemonMoves } from '../../../../../shared/domain/pokemon';
-import { ApiNamedMove } from '../../../../../shared/domain/pokemon-move';
+import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-moves-card',
@@ -11,7 +10,7 @@ export class PokemonMovesCardComponent {
   @Input() moves: PokemonMoves[] = [];
   @Input() cardTitle = '';
   @Input() showLevels = false;
-  @Input() moveTypes: ApiNamedMove[];
+  @Input() moveTypes: NamedApiMove[];
 
   getType(move: string): string {
     const type = this.moveTypes.findIndex((value) => value.name === move);

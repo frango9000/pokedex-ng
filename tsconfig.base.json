@@ -17,7 +17,10 @@
     "skipDefaultLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@pokedex-ng/data": ["libs/data/src/index.ts"],
+      "@pokedex-ng/domain": ["libs/domain/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

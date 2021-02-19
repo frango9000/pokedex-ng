@@ -5,10 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'pokedex-ng-navbar',
   template: '',
 })
 export class NavbarComponent {}

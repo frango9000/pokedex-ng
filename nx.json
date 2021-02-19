@@ -1,7 +1,7 @@
 {
   "npmScope": "pokedex-ng",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "development"
   },
   "implicitDependencies": {
     "angular.json": "*",
@@ -29,6 +29,12 @@
     "pokedex-ng-e2e": {
       "tags": [],
       "implicitDependencies": ["pokedex-ng"]
+    },
+    "data": {
+      "tags": []
+    },
+    "domain": {
+      "tags": []
     }
   }
 }

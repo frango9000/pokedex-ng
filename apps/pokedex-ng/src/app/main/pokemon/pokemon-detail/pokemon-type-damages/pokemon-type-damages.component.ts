@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ApiNamedResource } from '../../../../shared/domain/api-resource';
-import { ApiNamedType } from '../../../../shared/domain/pokemon-type';
+import { NamedApiPokemonType, NamedApiResource } from '@pokedex-ng/domain';
 import { PokemonTypeService } from '../../../../shared/services/pokemon-type.service';
 
 @Component({
@@ -11,10 +10,10 @@ import { PokemonTypeService } from '../../../../shared/services/pokemon-type.ser
 export class PokemonTypeDamagesComponent implements OnChanges {
   @Input() typeIds: {
     slot: number;
-    type: ApiNamedResource;
+    type: NamedApiResource;
   }[];
 
-  types: ApiNamedType[];
+  types: NamedApiPokemonType[];
 
   allTypes: { name: string; multiplier: number }[] = [];
 

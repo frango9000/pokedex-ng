@@ -1,8 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { PokemonEvolutionChain } from '../../../../../shared/domain/pokemon-evolution-chain';
-import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
+import { EvolutionChain, Species } from '@pokedex-ng/domain';
 import { splitResourceId } from '../../../../../shared/pipes/resource-id.pipe';
-import { PokemonEvolutionChainService } from '../../../../../shared/services/pokemon-evolution-chain.service';
+import { EvolutionChainService } from '../../../../../shared/services/evolution-chain.service';
 
 @Component({
   selector: 'app-pokemon-evolution-chain',
@@ -10,11 +9,11 @@ import { PokemonEvolutionChainService } from '../../../../../shared/services/pok
   styleUrls: ['./pokemon-evolution-chain.component.scss'],
 })
 export class PokemonEvolutionChainComponent implements OnChanges {
-  @Input() public pokemonSpecies: PokemonSpecies;
+  @Input() public pokemonSpecies: Species;
 
-  public evolutionChain: PokemonEvolutionChain;
+  public evolutionChain: EvolutionChain;
 
-  constructor(private pokemonEvolutionChainService: PokemonEvolutionChainService) {}
+  constructor(private pokemonEvolutionChainService: EvolutionChainService) {}
 
   ngOnChanges(): void {
     if (this.pokemonSpecies) {

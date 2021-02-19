@@ -1,11 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { EvolutionChainLink } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { PokemonSpecies } from '../../../../../shared/domain/pokemon-species';
-import { pokemonEvolutionChainStubServiceProvider } from '../../../../../shared/services/pokemon-evolution-chain.service.spec';
+import { evolutionChainStubServiceProvider } from '../../../../../shared/services/evolution-chain.service.stub';
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain.component';
-import { PokemonEvolutionLinkStubComponent } from './pokemon-evolution-link/pokemon-evolution-link.component.spec';
+import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link/pokemon-evolution-link.component';
+
+@Component({ selector: 'app-pokemon-evolution-link', template: '' })
+export class PokemonEvolutionLinkStubComponent implements Partial<PokemonEvolutionLinkComponent> {
+  @Input() link: EvolutionChainLink;
+}
 
 describe('PokemonEvolutionChainComponent', () => {
   let component: PokemonEvolutionChainComponent;
@@ -16,7 +21,7 @@ describe('PokemonEvolutionChainComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkStubComponent],
-        providers: [pokemonEvolutionChainStubServiceProvider],
+        providers: [evolutionChainStubServiceProvider],
       }).compileComponents();
     })
   );
@@ -31,8 +36,3 @@ describe('PokemonEvolutionChainComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-evolution-chain', template: '' })
-export class PokemonEvolutionChainStubComponent {
-  @Input() public pokemonSpecies: PokemonSpecies;
-}

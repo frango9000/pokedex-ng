@@ -2,10 +2,14 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { PokemonAbilities } from '../../../../shared/domain/pokemon';
-import { ExpandableResourcesStubPipe } from '../../../../shared/pipes/expandable-resources.pipe.spec';
+import { StubExpandableResourcesPipe } from '../../../../shared/pipes/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities.component';
-import { PokemonAbilityStubComponent } from './pokemon-ability/pokemon-ability.component.spec';
+import { PokemonAbilityComponent } from './pokemon-ability/pokemon-ability.component';
+
+@Component({ selector: 'app-pokemon-ability', template: '' })
+export class PokemonAbilityStubComponent implements Partial<PokemonAbilityComponent> {
+  @Input() abilityId: string | number;
+}
 
 describe('PokemonAbilitiesComponent', () => {
   let component: PokemonAbilitiesComponent;
@@ -15,7 +19,7 @@ describe('PokemonAbilitiesComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonAbilitiesComponent, ExpandableResourcesStubPipe, PokemonAbilityStubComponent],
+        declarations: [PokemonAbilitiesComponent, StubExpandableResourcesPipe, PokemonAbilityStubComponent],
       }).compileComponents();
     })
   );
@@ -31,8 +35,3 @@ describe('PokemonAbilitiesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-abilities', template: '' })
-export class PokemonAbilitiesStubComponent implements Partial<PokemonAbilitiesComponent> {
-  @Input() pokemonAbilities: PokemonAbilities[] = [];
-}

@@ -1,4 +1,3 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { PokeGenerationPipe } from './poke-generation.pipe';
 
 describe('PokeGenerationPipe', () => {
@@ -7,8 +6,3 @@ describe('PokeGenerationPipe', () => {
     expect(pipe).toBeTruthy();
   });
 });
-
-@Pipe({ name: 'pokeGeneration' })
-export class PokeGenerationStubPipe implements PipeTransform, Partial<PokeGenerationPipe> {
-  public transform = jest.fn();
-}

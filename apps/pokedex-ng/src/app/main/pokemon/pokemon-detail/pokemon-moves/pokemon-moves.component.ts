@@ -1,9 +1,8 @@
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
 import { Subscription } from 'rxjs';
-import { PokemonMoves } from '../../../../shared/domain/pokemon';
-import { ApiNamedMove } from '../../../../shared/domain/pokemon-move';
+import { GameVersionService } from '../../../../shared/services/game-version.service';
 import { PokemonMoveService } from '../../../../shared/services/pokemon-move.service';
-import { PokemonVersionService } from '../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-moves',
@@ -22,9 +21,9 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
 
   private versionSub: Subscription;
 
-  public moveTypes: ApiNamedMove[] = [];
+  public moveTypes: NamedApiMove[] = [];
 
-  constructor(private pokemonVersionService: PokemonVersionService, private pokemonMoveService: PokemonMoveService) {}
+  constructor(private pokemonVersionService: GameVersionService, private pokemonMoveService: PokemonMoveService) {}
 
   ngOnChanges(): void {
     this.pokemonMoveService.getMoves().subscribe((value) => (this.moveTypes = value));

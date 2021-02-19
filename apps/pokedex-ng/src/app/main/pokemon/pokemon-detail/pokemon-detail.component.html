@@ -23,7 +23,7 @@
                   [ngStyle]="{
                     'background-color': type.type.name | pokeTypeColor
                   }"
-                  >{{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}</span
+                >{{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}</span
                 >
               </h5>
             </div>
@@ -56,31 +56,31 @@
           </div>
           <table class="table mb-0">
             <tbody>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.ID' | translate }}</td>
-                <td># {{ pokemon.id }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | translate }}</td>
-                <td>
-                  {{ pokemon.base_experience }}
-                  {{ 'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | translate }}
-                </td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.WEIGHT' | translate }}</td>
-                <td>
-                  {{ pokemon.weight / 10 }}
-                  {{ 'UI.POKEMON.INFO.WEIGHT_UNIT' | translate }}
-                </td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.HEIGHT' | translate }}</td>
-                <td>
-                  {{ pokemon.height / 10 }}
-                  {{ 'UI.POKEMON.INFO.HEIGHT_UNIT' | translate }}
-                </td>
-              </tr>
+            <tr>
+              <td>{{ 'UI.POKEMON.INFO.ID' | translate }}</td>
+              <td># {{ pokemon.id }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | translate }}</td>
+              <td>
+                {{ pokemon.base_experience }}
+                {{ 'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | translate }}
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'UI.POKEMON.INFO.WEIGHT' | translate }}</td>
+              <td>
+                {{ pokemon.weight / 10 }}
+                {{ 'UI.POKEMON.INFO.WEIGHT_UNIT' | translate }}
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'UI.POKEMON.INFO.HEIGHT' | translate }}</td>
+              <td>
+                {{ pokemon.height / 10 }}
+                {{ 'UI.POKEMON.INFO.HEIGHT_UNIT' | translate }}
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>

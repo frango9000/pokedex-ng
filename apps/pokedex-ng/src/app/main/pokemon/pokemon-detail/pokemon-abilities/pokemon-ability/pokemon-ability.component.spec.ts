@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.spec';
-import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.spec';
-import { pokemonVersionStubServiceProvider } from '../../../../../shared/services/pokemon-version.service.spec';
+import { gameVersionStubServiceProvider } from '../../../../../shared/services/game-version.service.stub';
+import { pokemonLanguageStubServiceProvider } from '../../../../../shared/services/pokemon-language.service.stub';
+import { pokemonMoveStubServiceProvider } from '../../../../../shared/services/pokemon-move.service.stub';
 import { PokemonAbilityComponent } from './pokemon-ability.component';
 
 describe('PokemonAbilityComponent', () => {
@@ -15,11 +14,7 @@ describe('PokemonAbilityComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
         declarations: [PokemonAbilityComponent],
-        providers: [
-          pokemonMoveStubServiceProvider,
-          pokemonVersionStubServiceProvider,
-          pokemonLanguageStubServiceProvider,
-        ],
+        providers: [pokemonMoveStubServiceProvider, gameVersionStubServiceProvider, pokemonLanguageStubServiceProvider],
       }).compileComponents();
     })
   );
@@ -34,8 +29,3 @@ describe('PokemonAbilityComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-ability', template: '' })
-export class PokemonAbilityStubComponent implements Partial<PokemonAbilityComponent> {
-  @Input() abilityId: string | number;
-}

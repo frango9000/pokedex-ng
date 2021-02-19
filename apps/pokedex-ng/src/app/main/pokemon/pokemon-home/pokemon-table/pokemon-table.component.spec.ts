@@ -1,8 +1,6 @@
-import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ApiNamedPokemon } from '../../../../shared/domain/pokemon';
-import { PokeGenerationStubPipe } from '../../../../shared/pipes/poke-generation.pipe.spec';
+import { StubPokeGenerationPipe } from '../../../../shared/pipes/stubs';
 import { PokemonTableComponent } from './pokemon-table.component';
 
 describe('PokemonTableComponent', () => {
@@ -13,7 +11,7 @@ describe('PokemonTableComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule],
-        declarations: [PokemonTableComponent, PokeGenerationStubPipe],
+        declarations: [PokemonTableComponent, StubPokeGenerationPipe],
       }).compileComponents();
     })
   );
@@ -28,8 +26,3 @@ describe('PokemonTableComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-@Component({ selector: 'app-pokemon-table', template: '' })
-export class PokemonTableStubComponent implements Partial<PokemonTableComponent> {
-  @Input() public pokemonList: ApiNamedPokemon[];
-}

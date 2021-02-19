@@ -9,13 +9,13 @@ _Pokedex base with module routing, nav-bar and header (shared module) and depend
 
 ## Built with 🛠️
 
-* [Angular](https://angular.io/) - Web application framework
-* [Nx](https://nx.dev/angular) - Nx Workspace
-* [NodeJS](https://nodejs.org/) - JavaScript runtime
-* [Yarn](https://yarnpkg.com/) -  NodeJS Package Manager
-* [IntelliJ IDEA](https://www.jetbrains.com/idea/) - IDE
-* [MD Bootstrap](https://mdbootstrap.com/docs/angular/) - Component Framework
+- [Angular](https://angular.io/) - Web application framework
+- [Nx](https://nx.dev/angular) - Nx Workspace
+- [NodeJS](https://nodejs.org/) - JavaScript runtime
+- [Yarn](https://yarnpkg.com/) - NodeJS Package Manager
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/) - IDE
+- [MD Bootstrap](https://mdbootstrap.com/docs/angular/) - Component Framework
 
 ## Author ✒️
 
-* **Francisco Sanchez** - [fsancheztemprano](https://github.com/fsancheztemprano)
+- **Francisco Sanchez** - [fsancheztemprano](https://github.com/fsancheztemprano)

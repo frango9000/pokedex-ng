@@ -1,4 +1,3 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { ExpandableResourcesPipe } from './expandable-resources.pipe';
 
 describe('ExpandableResourcesPipe', () => {
@@ -7,8 +6,3 @@ describe('ExpandableResourcesPipe', () => {
     expect(pipe).toBeTruthy();
   });
 });
-
-@Pipe({ name: 'expandableResources' })
-export class ExpandableResourcesStubPipe implements PipeTransform, Partial<ExpandableResourcesPipe> {
-  public transform = jest.fn(() => []);
-}

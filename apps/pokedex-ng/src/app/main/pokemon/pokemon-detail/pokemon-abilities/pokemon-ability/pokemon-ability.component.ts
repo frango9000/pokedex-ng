@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Ability } from '@pokedex-ng/domain';
 import { Subscription } from 'rxjs';
-import { PokemonAbility } from '../../../../../shared/domain/pokemon-ability';
+import { GameVersionService } from '../../../../../shared/services/game-version.service';
 import { PokemonLanguageService } from '../../../../../shared/services/pokemon-language.service';
 import { PokemonMoveService } from '../../../../../shared/services/pokemon-move.service';
-import { PokemonVersionService } from '../../../../../shared/services/pokemon-version.service';
 
 @Component({
   selector: 'app-pokemon-ability',
@@ -14,7 +14,7 @@ import { PokemonVersionService } from '../../../../../shared/services/pokemon-ve
 export class PokemonAbilityComponent implements OnInit, OnDestroy {
   @Input() abilityId: string | number;
 
-  ability: PokemonAbility;
+  ability: Ability;
 
   activeVersion = 'en';
   private versionSub: Subscription;
@@ -22,7 +22,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   constructor(
     private translateService: TranslateService,
     private pokemonMoveService: PokemonMoveService,
-    private pokemonVersionService: PokemonVersionService,
+    private pokemonVersionService: GameVersionService,
     private pokemonLanguageService: PokemonLanguageService
   ) {}
 
@@ -38,8 +38,10 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
     this.versionSub.unsubscribe();
   }
 
-  private generateTranslations(ability: PokemonAbility): void {
-    if (!ability?.names) return;
+  private generateTranslations(ability: Ability): void {
+    if (!ability?.names) {
+      return;
+    }
     ability.names.forEach((name) => {
       this.translateService.setTranslation(
         name.language.name,
