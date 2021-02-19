@@ -24,7 +24,7 @@ export class PokemonTypeDamagesComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.types = null;
-    this.pokemonTypeService.getTypes().subscribe(
+    this.pokemonTypeService.getAllTypesLocal().subscribe(
       (value) =>
         (this.allTypes = value.map((value1) => {
           return { name: value1.name, multiplier: 1 };
@@ -32,7 +32,7 @@ export class PokemonTypeDamagesComponent implements OnChanges {
     );
     this.types = [];
     this.typeIds.forEach((typeId, index) => {
-      this.pokemonTypeService.getType(typeId.type.name).subscribe((type) => {
+      this.pokemonTypeService.getOneTypeLocal(typeId.type.name).subscribe((type) => {
         this.types.push(type);
         if (index === this.typeIds.length - 1) {
           this.generateTypeDamages();

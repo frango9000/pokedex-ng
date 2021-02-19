@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FilterBarComponent } from './components/filter/filter-bar.component';
+import { GenerationFilterComponent } from './components/filters/generation-filter/generation-filter.component';
+import { TypeFilterComponent } from './components/filters/type-filter/type-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LocalePickerComponent } from './components/navbar/locale-picker/locale-picker.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,6 +32,8 @@ import { RomanPipe } from './pipes/roman.pipe';
     ReplacePipe,
     LocalePickerComponent,
     FilterBarComponent,
+    GenerationFilterComponent,
+    TypeFilterComponent,
   ],
   exports: [
     NavbarComponent,
@@ -44,6 +48,8 @@ import { RomanPipe } from './pipes/roman.pipe';
     TranslateModule,
     ReplacePipe,
     FilterBarComponent,
+    GenerationFilterComponent,
+    TypeFilterComponent,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })

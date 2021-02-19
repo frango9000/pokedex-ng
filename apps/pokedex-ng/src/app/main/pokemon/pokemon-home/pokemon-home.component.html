@@ -2,6 +2,16 @@
   <div class="row">
     <div class="col">
       <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="150" (scrolled)="renderMore()">
+        <div class="pokemon-list-filters d-flex align-items-center" *ngIf="filterService.getShowFilters$() | async">
+          <pokedex-ng-generation-filter></pokedex-ng-generation-filter>
+          <pokedex-ng-type-filter></pokedex-ng-type-filter>
+          <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="testReset()" class="load-more-button">
+            <span>Reset</span>
+          </button>
+          <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="testNoReset()" class="load-more-button">
+            <span>NO Reset</span>
+          </button>
+        </div>
         <app-pokemon-grid
           *ngIf="this.filterService.getGridMode$() | async; else tableMode"
           [pokemonList]="pokemonList"

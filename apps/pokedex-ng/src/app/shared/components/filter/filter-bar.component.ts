@@ -10,6 +10,6 @@ export class FilterBarComponent {
   constructor(public filterService: FilterService) {}
 
   onQueryInput(query: HTMLInputElement) {
-    this.filterService.emitQuery(query.value);
+    this.filterService.setQueryFilter(query.value);
   }
 }

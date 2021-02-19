@@ -1,26 +1,21 @@
 <div class="md-form d-flex justify-content-between align-items-center pt-2 text-white">
-  <div class="d-flex justify-content-between align-items-center" *ngIf="filterService.getShowSearchBar() | async">
+  <div class="d-flex justify-content-between align-items-center" *ngIf="filterService.getShowSearchBar$() | async">
     <input
       id="form1"
       #query
-      class="ml-1 w-75 text-white"
+      class="mx-2 w-100 text-white text-input"
       type="text"
       placeholder="Search"
       aria-label="Search"
       (input)="onQueryInput(query)"
       mdbInput
     />
-    <mdb-icon class="mr-1" fas icon="search" aria-hidden="true"></mdb-icon>
+    <!--    <mdb-icon class="mr-1" fas icon="search" aria-hidden="true"></mdb-icon>-->
   </div>
-  <mdb-icon
-    *ngIf="filterService.getShowFiltersButton() | async"
-    class="mx-1"
-    fas
-    icon="filter"
-    aria-hidden="true"
-    mdbTooltip="{{ 'Toggle Filters' }}"
-  ></mdb-icon>
-  <div class="mx-1 grid-toggle-button" *ngIf="filterService.getShowGridButton() | async">
+  <a (click)="filterService.toggleFilters()" *ngIf="filterService.getShowFiltersButton$() | async">
+    <mdb-icon class="mx-1" fas icon="filter" aria-hidden="true" mdbTooltip="{{ 'Toggle Filters' }}"></mdb-icon>
+  </a>
+  <div class="mx-1 ml-2 grid-toggle-button" *ngIf="filterService.getShowGridButton$() | async">
     <a
       *ngVar="this.filterService.getGridMode$() | async as gridMode"
       (click)="this.filterService.toggleGridMode()"

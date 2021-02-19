@@ -2,7 +2,7 @@ import { of } from 'rxjs';
 import { PokemonService } from './pokemon.service';
 
 export class StubPokemonService implements Partial<PokemonService> {
-  public getAllPokemon = jest.fn(() => of([]));
+  public getAllPokemonLocal = jest.fn(() => of([]));
 }
 
 export const stubPokemonServiceProvider = {

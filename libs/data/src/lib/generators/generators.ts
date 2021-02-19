@@ -1,5 +1,6 @@
 import {
   GameVersionGroup,
+  Generation,
   Item,
   Machine,
   Move,
@@ -232,6 +233,16 @@ export class PokemonMachineGenerator extends AbstractGenerator<Machine, Machine>
   }
 
   mapResource(resource: Machine): Machine {
+    return resource;
+  }
+}
+
+export class PokemonGenerationGenerator extends AbstractGenerator<Generation, Generation> {
+  getResourceName(): string {
+    return 'generation';
+  }
+
+  mapResource(resource: Generation): Generation {
     return resource;
   }
 }

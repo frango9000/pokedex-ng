@@ -1,0 +1,11 @@
+<div class="dropdown" mdbDropdown>
+  <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+    Generations
+  </button>
+
+  <div class="dropdown-menu dropdown-primary">
+    <button *ngFor="let generation of _selectableGenerations" class="dropdown-item">
+      {{ generation.generation.name | titlecase }}
+    </button>
+  </div>
+</div>

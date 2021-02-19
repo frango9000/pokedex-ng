@@ -24,7 +24,7 @@ export class PokeGenerationPipe implements PipeTransform {
     } else if (id <= 896) {
       return 8;
     } else {
-      return -1;
+      return 9;
     }
   }
 }
