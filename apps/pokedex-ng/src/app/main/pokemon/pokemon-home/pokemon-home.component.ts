@@ -12,7 +12,6 @@ import { PokemonService } from '../../../shared/services/pokemon.service';
 export class PokemonHomeComponent implements OnInit, OnDestroy {
   public baseList: NamedApiPokemon[] = [];
   public pokemonList: NamedApiPokemon[] = [];
-  public gridMode = false;
 
   public offset = 0;
   public increment = 72;
@@ -22,7 +21,7 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private pokemonService: PokemonService, private filterService: FilterService) {}
+  constructor(private pokemonService: PokemonService, public filterService: FilterService) {}
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -31,22 +30,27 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
         this.fetchPokemon();
       })
     );
+    this.subscriptions.add(
+      this.filterService.getGridMode$().subscribe(() => {
+        this.offset = 0;
+        this.pokemonList = this.baseList.slice(0, this.increment);
+      })
+    );
+    this.filterService.showAll();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+    this.filterService.hideAll();
   }
 
   private fetchPokemon(): void {
     this.pokemonService.getAllPokemon().subscribe((allPoke) => {
-      if (this.query?.length) {
-        this.baseList = allPoke.filter((poke) => poke.name.includes(this.query.toLowerCase()));
-        this.pokemonList = this.baseList.slice(0, this.increment);
-      } else {
-        this.baseList = allPoke;
-        this.pokemonList = this.baseList.slice(0, this.increment);
-        this.offset = 0;
-      }
+      this.baseList = !this.query?.length
+        ? allPoke
+        : allPoke.filter((poke) => poke.name.includes(this.query.toLowerCase()));
+      this.pokemonList = this.baseList.slice(0, this.increment);
+      this.offset = this.increment;
     });
   }
 
@@ -59,11 +63,5 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
       this.offset += this.increment;
     }
     this.pokemonList.push(...increment);
-  }
-
-  toggleGridMode() {
-    this.gridMode = !this.gridMode;
-    this.offset = 0;
-    this.pokemonList = this.baseList.slice(0, this.increment);
   }
 }

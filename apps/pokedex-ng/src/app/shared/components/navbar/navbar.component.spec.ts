@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { gameVersionStubServiceProvider } from '../../services/game-version.service.stub';
+import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -17,7 +18,7 @@ describe('NavbarComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
-        declarations: [NavbarComponent, StubLocalePickerComponent],
+        declarations: [NavbarComponent, StubLocalePickerComponent, StubFilterBarComponent],
         providers: [gameVersionStubServiceProvider],
       }).compileComponents();
     })

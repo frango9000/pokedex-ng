@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FilterComponent } from './components/filter/filter.component';
+import { FilterBarComponent } from './components/filter/filter-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LocalePickerComponent } from './components/navbar/locale-picker/locale-picker.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,7 +29,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     RomanPipe,
     ReplacePipe,
     LocalePickerComponent,
-    FilterComponent,
+    FilterBarComponent,
   ],
   exports: [
     NavbarComponent,
@@ -43,7 +43,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     RomanPipe,
     TranslateModule,
     ReplacePipe,
-    FilterComponent,
+    FilterBarComponent,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })
