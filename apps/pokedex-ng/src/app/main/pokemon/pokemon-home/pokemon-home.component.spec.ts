@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { StubGenerationFilterComponent } from '../../../shared/components/filters/generation-filter/generation-filter.component.stub';
+import { StubTypeFilterComponent } from '../../../shared/components/filters/generation-filter/type-filter.component.stub';
 import { stubFilterServiceProvider } from '../../../shared/services/filter.service.stub';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 import { StubPokemonService, stubPokemonServiceProvider } from '../../../shared/services/pokemon.service.stub';
@@ -28,7 +30,13 @@ describe('PokemonHomeComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [InfiniteScrollModule],
-        declarations: [PokemonHomeComponent, StubPokemonGridComponent, StubPokemonTableComponent],
+        declarations: [
+          PokemonHomeComponent,
+          StubPokemonGridComponent,
+          StubPokemonTableComponent,
+          StubGenerationFilterComponent,
+          StubTypeFilterComponent,
+        ],
         providers: [stubPokemonServiceProvider, stubFilterServiceProvider],
       }).compileComponents();
     })
@@ -46,6 +54,6 @@ describe('PokemonHomeComponent', () => {
   });
 
   it('should fetch pokemon list on init', () => {
-    expect(pokemonStubService.getAllPokemon).toHaveBeenCalledTimes(1);
+    expect(pokemonStubService.getAllPokemonLocal).toHaveBeenCalledTimes(1);
   });
 });

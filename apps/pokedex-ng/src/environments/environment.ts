@@ -7,10 +7,11 @@ export const environment = {
   maxCacheAge: 86400000,
   apiUrl: 'https://pokeapi.co/api/v2',
   isCacheEnabled: true,
-  logNetworkResponses: true,
-  logCachedResponses: true,
+  logNetworkResponses: false,
+  logCachedResponses: false,
   logServiceResponses: false,
   logTranslations: false,
+  logDebug: false,
 
   firebaseApi: 'https://pokedex-ng.firebaseio.com',
 };

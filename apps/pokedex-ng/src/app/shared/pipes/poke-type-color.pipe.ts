@@ -43,9 +43,9 @@ export class PokeTypeColorPipe implements PipeTransform {
       case 'fairy':
         return '#E87890';
       case 'unknown':
-        return '#';
+        return '#888';
       case 'shadow':
-        return '#';
+        return '#444';
     }
   }
 }

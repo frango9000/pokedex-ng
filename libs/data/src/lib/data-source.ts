@@ -1,4 +1,6 @@
-import { of } from 'rxjs';
+import { NamedApiPokemonType } from '@pokedex-ng/domain';
+import { Observable, of } from 'rxjs';
+import generation from './data/generation.json';
 import item from './data/item.json';
 import language from './data/language.json';
 import move from './data/move.json';
@@ -18,7 +20,7 @@ export function getAllMoves() {
   return of(move);
 }
 
-export function getAllTypes() {
+export function getAllTypes(): Observable<NamedApiPokemonType[]> {
   return of(type);
 }
 
@@ -28,4 +30,8 @@ export function getAllVersionGroups() {
 
 export function getAllItems() {
   return of(item);
+}
+
+export function getAllGenerations() {
+  return of(generation);
 }

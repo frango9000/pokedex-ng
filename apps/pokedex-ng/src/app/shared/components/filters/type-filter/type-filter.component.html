@@ -1,0 +1,30 @@
+<div class="dropdown" mdbDropdown>
+  <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+    Types
+  </button>
+
+  <div class="dropdown-menu dropdown-primary">
+    <mdb-checkbox
+      #checkbox
+      class="dropdown-item pr-0"
+      [checked]="this.filterService.getTypesFilterInclusiveness$() | async"
+      (change)="this.filterService.setTypeFilterInclusiveness($event.checked)"
+    >
+      <div class="checkbox-label text-center">{{ checkbox.checked ? 'Inclusive' : 'Exclusive' }}</div>
+    </mdb-checkbox>
+    <div class="divider dropdown-divider"></div>
+    <mdb-checkbox
+      *ngFor="let type of _selectableTypes"
+      class="dropdown-item pr-0"
+      [checked]="type.active"
+      (change)="onFilterChange($event, type)"
+    >
+      <div
+        [ngStyle]="{ 'background-color': type.type.name | pokeTypeColor }"
+        class="text-white px-1 text-center checkbox-label"
+      >
+        {{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}
+      </div>
+    </mdb-checkbox>
+  </div>
+</div>

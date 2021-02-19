@@ -22,3 +22,9 @@ export function serviceLog(response): void {
     console.log(response);
   }
 }
+
+export function debugLog(msg): void {
+  if (environment.logDebug) {
+    console.log(msg);
+  }
+}

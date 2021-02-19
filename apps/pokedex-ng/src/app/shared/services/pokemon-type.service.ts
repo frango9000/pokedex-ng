@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { getAllTypes } from '@pokedex-ng/data';
 import { NamedApiPokemonType, NamedApiResource, NamedApiResourceList, PokemonType } from '@pokedex-ng/domain';
-import { Observable, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import types from '../../../assets/data/types.json';
+import { Observable } from 'rxjs';
+import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 
@@ -13,26 +13,28 @@ import { serviceLog } from './cache/icache';
 export class PokemonTypeService {
   constructor(public httpClient: HttpClient) {}
 
-  getApiType(typeId: string | number): Observable<PokemonType> {
+  getAllTypesLocal(): Observable<NamedApiPokemonType[]> {
+    return getAllTypes().pipe(take(1));
+  }
+
+  getOneTypeApi(typeId: string | number): Observable<PokemonType> {
     return this.httpClient
       .get<PokemonType>(environment.apiUrl + '/type/' + typeId)
       .pipe(tap(serviceLog), shareReplay());
   }
 
-  getTypes(): Observable<NamedApiResource[]> {
-    return of(types);
+  getOneTypeLocal(typeId: string | number): Observable<NamedApiPokemonType> {
+    return this.getAllTypesLocal().pipe(map((value) => value.find((value1) => value1.name === typeId)));
   }
 
-  getType(typeId: string): Observable<NamedApiPokemonType> {
-    return this.getTypes().pipe(map((value) => value.find((value1) => value1.name === typeId)));
-  }
-
-  getApiTypes(): Observable<NamedApiResource[]> {
-    // const pageParams: HttpParams = new HttpParams().append('limit', '100');
-    return this.httpClient.get<NamedApiResourceList<NamedApiResource>>(environment.apiUrl + '/type/').pipe(
-      map((value) => value.results),
-      tap(serviceLog),
-      shareReplay()
-    );
+  getAllTypesApi(offset = 0, limit = 100): Observable<NamedApiResource[]> {
+    const params: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
+    return this.httpClient
+      .get<NamedApiResourceList>(environment.apiUrl + '/type', { params })
+      .pipe(
+        map((value) => value.results),
+        tap(serviceLog),
+        shareReplay()
+      );
   }
 }

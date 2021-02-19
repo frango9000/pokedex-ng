@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NamedApiPokemon } from '@pokedex-ng/domain';
 
-// import { ApiNamedPokemon } from '@pokedex-ng/domain';
-
 @Component({
   selector: 'app-pokemon-grid',
   templateUrl: './pokemon-grid.component.html',

@@ -2,10 +2,16 @@ import { of } from 'rxjs';
 import { FilterService } from './filter.service';
 
 export class StubFilterService implements Partial<FilterService> {
-  getQueryObservable = () => of('');
   getGridMode$ = () => of(true);
   showAll = () => undefined;
   hideAll = () => undefined;
+  getTypeFilter$ = () => of([]);
+  getTypesFilterInclusiveness$ = () => of(true);
+  getShowFilters$ = () => of(true);
+  getQueryFilter$ = () => of('');
+  hideFilters = () => undefined;
+  filterPokemonByName = (x) => x;
+  filterPokemonByType = (x) => x;
 }
 
 export const stubFilterServiceProvider = {

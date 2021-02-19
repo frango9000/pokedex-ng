@@ -1,23 +1,36 @@
 import { Injectable } from '@angular/core';
+import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { debounce } from 'rxjs/operators';
+import { debounce, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  private _query$ = new BehaviorSubject('');
+  private _queryFilter$ = new BehaviorSubject('');
+  private _typesFilter$ = new BehaviorSubject<string[]>([]);
+  private _typesFilterInclusiveness$ = new BehaviorSubject<boolean>(true);
   private _gridMode$ = new BehaviorSubject(true);
   private _showGridButton$ = new BehaviorSubject(false);
   private _showSearchBar$ = new BehaviorSubject(false);
   private _showFiltersButton$ = new BehaviorSubject(false);
+  private _showFilters$ = new BehaviorSubject(true);
 
-  getQueryObservable(): Observable<string> {
-    return this._query$.asObservable().pipe(debounce(() => interval(500)));
+  getQueryFilter$(): Observable<string> {
+    return this._queryFilter$.asObservable().pipe(debounce(() => interval(500)));
   }
 
-  emitQuery(query: string) {
-    this._query$.next(query);
+  setQueryFilter(query: string) {
+    if (this._queryFilter$.value !== query) {
+      this._queryFilter$.next(query);
+    }
+  }
+
+  filterPokemonByName(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+    const trimmedName = this._queryFilter$.value.trim().toLowerCase();
+    return !this._queryFilter$.value.length
+      ? pokemonList
+      : pokemonList.filter((poke) => poke.name.includes(trimmedName));
   }
 
   getGridMode$(): Observable<boolean> {
@@ -25,58 +38,107 @@ export class FilterService {
   }
 
   setGridMode(gridMode: boolean) {
-    this._gridMode$.next(gridMode);
+    if (this._gridMode$.value !== gridMode) {
+      this._gridMode$.next(gridMode);
+    }
   }
 
-  toggleGridMode() {
+  toggleGridMode(): void {
     this._gridMode$.next(!this._gridMode$.value);
   }
 
-  showGridButton() {
+  showGridButton(): void {
     this._showGridButton$.next(true);
   }
 
-  hideGridButton() {
+  hideGridButton(): void {
     this._showGridButton$.next(false);
   }
 
-  getShowGridButton() {
+  getShowGridButton$(): Observable<boolean> {
     return this._showGridButton$.asObservable();
   }
 
-  showSearchBar() {
+  showSearchBar(): void {
     this._showSearchBar$.next(true);
   }
 
-  hideSearchBar() {
+  hideSearchBar(): void {
     this._showSearchBar$.next(false);
+    this._queryFilter$.next('');
   }
 
-  getShowSearchBar() {
+  getShowSearchBar$(): Observable<boolean> {
     return this._showSearchBar$.asObservable();
   }
 
-  showFiltersButton() {
+  showFiltersButton(): void {
     this._showFiltersButton$.next(true);
   }
 
-  hideFiltersButton() {
+  hideFiltersButton(): void {
     this._showFiltersButton$.next(false);
   }
 
-  getShowFiltersButton() {
+  getShowFiltersButton$(): Observable<boolean> {
     return this._showFiltersButton$.asObservable();
   }
 
-  showAll() {
+  showAll(): void {
     this.showSearchBar();
     this.showGridButton();
     this.showFiltersButton();
   }
 
-  hideAll() {
+  hideAll(): void {
     this.hideSearchBar();
     this.hideGridButton();
     this.hideFiltersButton();
+  }
+
+  showFilters(): void {
+    this._showFilters$.next(true);
+  }
+
+  hideFilters(): void {
+    this._showFilters$.next(false);
+  }
+
+  toggleFilters(): void {
+    this._showFilters$.next(!this._showFilters$.value);
+  }
+
+  getShowFilters$(): Observable<boolean> {
+    return this._showFilters$.asObservable();
+  }
+
+  setTypeFilter(filter: string[]): void {
+    this._typesFilter$.next(filter);
+  }
+
+  getTypeFilter$(): Observable<string[]> {
+    return this._typesFilter$.asObservable();
+  }
+
+  filterPokemonByType(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+    return !this._typesFilter$.value.length
+      ? pokemonList
+      : pokemonList.filter((poke) =>
+          this._typesFilterInclusiveness$.value
+            ? poke.types.some((type) => this._typesFilter$.value.some((filterType) => filterType === type))
+            : this._typesFilter$.value.length === poke.types.length &&
+              this._typesFilter$.value.every((type) => poke.types.some((filterType) => filterType === type))
+        );
+  }
+
+  setTypeFilterInclusiveness(inclusiveness: boolean): void {
+    if (this._typesFilterInclusiveness$.value !== inclusiveness) {
+      this._typesFilterInclusiveness$.next(inclusiveness);
+      this._typesFilter$.next(this._typesFilter$.value);
+    }
+  }
+
+  getTypesFilterInclusiveness$(): Observable<boolean> {
+    return this._typesFilterInclusiveness$.pipe(take(1));
   }
 }
