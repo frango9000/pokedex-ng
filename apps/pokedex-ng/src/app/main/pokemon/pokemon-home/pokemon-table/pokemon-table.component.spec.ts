@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { StubPokeGenerationPipe, StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
+import { StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
 import { PokemonTableComponent } from './pokemon-table.component';
 
 describe('PokemonTableComponent', () => {
@@ -12,7 +12,7 @@ describe('PokemonTableComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, TranslateModule.forRoot()],
-        declarations: [PokemonTableComponent, StubPokeGenerationPipe, StubPokeTypeColorPipe],
+        declarations: [PokemonTableComponent, StubPokeTypeColorPipe],
       }).compileComponents();
     })
   );

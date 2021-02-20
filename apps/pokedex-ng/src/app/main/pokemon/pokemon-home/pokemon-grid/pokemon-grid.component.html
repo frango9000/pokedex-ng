@@ -5,12 +5,12 @@
     *ngFor="let pokemon of pokemonList"
     [routerLink]="[pokemon.name]"
   >
-    <mdb-card class="h-100" title="{{ pokemon.name | titlecase }}">
+    <mdb-card class="h-100" *ngVar="pokemon.name | titlecase as pokemonName" title="{{ pokemonName }}">
       <mdb-card-header>
         <div class="row">
           <div class="col-6 text-left border-right" title="Pokedex ID">#{{ pokemon.id }}</div>
-          <div class="col-6 text-right pokemon-roman-gen" title="Generation {{ pokemon.id | pokeGeneration }}">
-            {{ pokemon.id | pokeGeneration | roman }}
+          <div class="col-6 text-right pokemon-roman-gen" title="Generation {{ pokemon.generation }}">
+            {{ pokemon.generation }}
           </div>
         </div>
       </mdb-card-header>
@@ -20,7 +20,7 @@
           <img
             class="poke-img img-fluid w-100"
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"
-            alt="{{ pokemon.name | titlecase }}"
+            alt="{{ pokemonName }}"
           />
           <a>
             <div class="mask"></div>
@@ -30,7 +30,7 @@
         <!--Title-->
         <div class="text-center">
           <h5 class="text-nowrap overflow-hidden">
-            {{ pokemon.name | titlecase }}
+            {{ pokemonName }}
           </h5>
           <h6></h6>
         </div>

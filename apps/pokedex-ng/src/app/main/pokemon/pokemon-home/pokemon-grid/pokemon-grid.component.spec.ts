@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { StubPokeGenerationPipe, StubPokeTypeColorPipe, StubRomanPipe } from '../../../../shared/pipes/stubs';
+import { NgVarDirective } from '../../../../shared/directives/ng-var.directive';
+import { StubPokeTypeColorPipe, StubRomanPipe } from '../../../../shared/pipes/stubs';
 
 import { PokemonGridComponent } from './pokemon-grid.component';
 
@@ -14,7 +15,7 @@ describe('PokemonGridComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), TranslateModule.forRoot()],
-        declarations: [PokemonGridComponent, StubPokeGenerationPipe, StubRomanPipe, StubPokeTypeColorPipe],
+        declarations: [PokemonGridComponent, StubRomanPipe, StubPokeTypeColorPipe, NgVarDirective],
       }).compileComponents();
     })
   );

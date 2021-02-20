@@ -11,7 +11,6 @@ import { LocalePickerComponent } from './components/navbar/locale-picker/locale-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgVarDirective } from './directives/ng-var.directive';
 import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
-import { PokeGenerationPipe } from './pipes/poke-generation.pipe';
 import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
 import { PositionPipe } from './pipes/position.pipe';
 import { ReplacePipe } from './pipes/replace.pipe';
@@ -22,7 +21,6 @@ import { RomanPipe } from './pipes/roman.pipe';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    PokeGenerationPipe,
     PositionPipe,
     ResourceIdPipe,
     PokeTypeColorPipe,
@@ -38,7 +36,6 @@ import { RomanPipe } from './pipes/roman.pipe';
   exports: [
     NavbarComponent,
     FooterComponent,
-    PokeGenerationPipe,
     PositionPipe,
     ResourceIdPipe,
     PokeTypeColorPipe,
