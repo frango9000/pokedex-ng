@@ -14,23 +14,24 @@ import {
   Pokemon,
   PokemonLanguage,
   PokemonType,
+  Species,
 } from '@pokedex-ng/domain';
 import { Axios } from 'axios-observable';
 import * as fs from 'fs';
 import { Observable, Subject } from 'rxjs';
-import { concatAll, delay, map, retry } from 'rxjs/operators';
+import { concatAll, delay, map, mergeMap, retry } from 'rxjs/operators';
 
 export abstract class AbstractGenerator<T, N> {
-  private host = 'https://pokeapi.co/api/v2';
-  private filePath = './libs/data/src/lib/data';
-  private append = false;
-  private total = 0;
-  private offset = 0;
-  private limit = 9999;
-  private delay = 200;
+  protected host = 'https://pokeapi.co/api/v2';
+  protected filePath = './libs/data/src/lib/data';
+  protected append = false;
+  protected total = 0;
+  protected offset = 0;
+  protected limit = 9999;
+  protected delay = 200;
 
-  private list = [];
-  private subject$: Subject<Observable<T>> = new Subject<Observable<T>>();
+  protected list = [];
+  protected subject$: Subject<Observable<T>> = new Subject<Observable<T>>();
 
   constructor() {
     this.subject$.pipe(concatAll()).subscribe({
@@ -116,26 +117,75 @@ export abstract class AbstractGenerator<T, N> {
     }, console.error);
   }
 
-  private _getPercentage(): number {
+  protected _getPercentage(): number {
     return Math.trunc((this.list.length * 100) / this.total);
   }
 
-  private _getRemainingTime(): number {
+  protected _getRemainingTime(): number {
     return Math.trunc((this.total - this.list.length) / (1000 / this.delay));
   }
 }
 
-export class PokemonGenerator extends AbstractGenerator<Pokemon, NamedApiPokemon> {
+function getId(url: string): number {
+  return Number(url.split('/').reverse()[1]) || 0;
+}
+
+interface PokemonWithGeneration {
+  pokemon: Pokemon;
+  species: Species;
+}
+
+export class PokemonGenerator extends AbstractGenerator<PokemonWithGeneration, NamedApiPokemon> {
   getResourceName() {
     return 'pokemon';
   }
 
-  mapResource(resource: Pokemon): NamedApiPokemon {
+  mapResource(resource: PokemonWithGeneration): NamedApiPokemon {
     return {
-      name: resource.name,
-      id: resource.id,
-      types: resource.types.map((type) => type.type.name),
+      name: resource.pokemon.name,
+      id: resource.pokemon.id,
+      types: resource.pokemon.types.map((type) => type.type.name),
+      generation: getId(resource.species.generation.url),
     };
+  }
+
+  public generateResource(): void {
+    Axios.get<NamedApiResourceList>(
+      `${this.host}/${this.getResourceName()}?offset=${this.offset}&limit=${this.limit}`
+    ).subscribe((res) => {
+      this.total = res?.data?.results?.length || 0;
+      console.log(`Total ${this.getResourceName()}: ${this.total}`);
+      console.log(`Estimate ${this._getRemainingTime()} seconds`);
+      res.data.results.forEach((resource) => {
+        this.subject$.next(
+          Axios.get<Pokemon>(resource.url).pipe(
+            retry(10),
+            delay(this.delay),
+            map((value) => value.data),
+            mergeMap((pokemon) =>
+              Axios.get<Species>(pokemon.species.url).pipe(
+                retry(10),
+                delay(this.delay),
+                map((value) => value.data),
+                map((species) => ({ pokemon, species }))
+              )
+            )
+          )
+        );
+      });
+      this.subject$.complete();
+    }, console.error);
+  }
+
+  protected onNext(resource: PokemonWithGeneration): void {
+    this.list.push(this.mapResource(resource));
+    process.stdout.clearLine(0);
+    process.stdout.cursorTo(0);
+    process.stdout.write(
+      `${this._getPercentage()}% | [${this.list.length}/${
+        this.total
+      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${resource.pokemon.id}`
+    );
   }
 }
 

@@ -7,7 +7,8 @@ import { PokemonType } from './pokemon-type';
 import { Species } from './species';
 
 export interface NamedApiPokemon extends NamedApiResource<Pokemon> {
-  types: string[];
+  types?: string[];
+  generation?: number;
 }
 
 export interface Pokemon extends ApiResource {

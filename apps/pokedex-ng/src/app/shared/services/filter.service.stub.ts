@@ -10,6 +10,7 @@ export class StubFilterService implements Partial<FilterService> {
   getShowFilters$ = () => of(true);
   getQueryFilter$ = () => of('');
   hideFilters = () => undefined;
+  clearAllFilters = () => undefined;
   filterPokemonByName = (x) => x;
   filterPokemonByType = (x) => x;
 }
