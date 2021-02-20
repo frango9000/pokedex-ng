@@ -4,4 +4,4 @@
 /coverage
 /node_modules
 /.idea
-/libs/data/src/lib/data
+/apps/pokedex-ng/src/assets/data

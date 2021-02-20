@@ -1,6 +1,6 @@
 import * as Generators from './generators';
 
-new Generators.PokemonGenerator().setDelay(0).setOffset(1024).generateResource();
+new Generators.PokemonGenerator().generateResource();
 // new Generators.PokemonMovesGenerator().generateResource();
 // new Generators.PokemonVersionGenerator().generateResource();
 // new Generators.PokemonLanguageGenerator().generateResource();

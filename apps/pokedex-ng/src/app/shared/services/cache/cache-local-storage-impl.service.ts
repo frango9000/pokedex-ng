@@ -42,7 +42,9 @@ export class CacheLocalStorageImplService implements ICache {
   }
 
   remove(url: string): void {
-    localStorage.removeItem(url);
+    if (!url.startsWith('/assets')) {
+      localStorage.removeItem(url);
+    }
   }
 
   cleanCache(): void {
@@ -51,7 +53,9 @@ export class CacheLocalStorageImplService implements ICache {
     const topHalf = Array(Math.ceil(size));
     for (const index of topHalf) {
       const key = localStorage.key(index);
-      localStorage.removeItem(key);
+      if (!key.startsWith('/assets')) {
+        localStorage.removeItem(key);
+      }
     }
   }
 }

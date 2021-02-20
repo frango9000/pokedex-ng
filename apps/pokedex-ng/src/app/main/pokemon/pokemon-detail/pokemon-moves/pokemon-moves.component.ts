@@ -26,7 +26,7 @@ export class PokemonMovesComponent implements OnDestroy, OnChanges {
   constructor(private pokemonVersionService: GameVersionService, private pokemonMoveService: PokemonMoveService) {}
 
   ngOnChanges(): void {
-    this.pokemonMoveService.getMoves().subscribe((value) => (this.moveTypes = value));
+    this.pokemonMoveService.getAllMoves().subscribe((value) => (this.moveTypes = value));
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe(() => {
       this.filterMoves();
     });

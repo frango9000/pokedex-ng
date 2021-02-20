@@ -15,7 +15,7 @@ export class TypeFilterComponent implements OnInit {
   constructor(public filterService: FilterService, private typeService: PokemonTypeService) {}
 
   ngOnInit(): void {
-    this.typeService.getAllTypesLocal().subscribe((types) => {
+    this.typeService.getAllTypes().subscribe((types) => {
       this._selectableTypes = types.map((type) => ({ type, active: false }));
     });
     this.filterService.getTypeFilter$().subscribe((types) => {
