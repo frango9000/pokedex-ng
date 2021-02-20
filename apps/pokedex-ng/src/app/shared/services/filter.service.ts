@@ -141,4 +141,9 @@ export class FilterService {
   getTypesFilterInclusiveness$(): Observable<boolean> {
     return this._typesFilterInclusiveness$.pipe(take(1));
   }
+
+  clearAllFilters() {
+    this._queryFilter$.next('');
+    this._typesFilter$.next([]);
+  }
 }

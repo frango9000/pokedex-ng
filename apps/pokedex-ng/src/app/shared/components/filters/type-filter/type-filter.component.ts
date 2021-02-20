@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NamedApiPokemonType } from '@pokedex-ng/domain';
+import { SelectableType } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { FilterService } from '../../../services/filter.service';
 import { PokemonTypeService } from '../../../services/pokemon-type.service';
@@ -10,7 +10,7 @@ import { PokemonTypeService } from '../../../services/pokemon-type.service';
   styleUrls: ['./type-filter.component.scss'],
 })
 export class TypeFilterComponent implements OnInit {
-  _selectableTypes: { type: NamedApiPokemonType; active: boolean }[] = [];
+  _selectableTypes: SelectableType[] = [];
 
   constructor(public filterService: FilterService, private typeService: PokemonTypeService) {}
 
@@ -18,9 +18,14 @@ export class TypeFilterComponent implements OnInit {
     this.typeService.getAllTypesLocal().subscribe((types) => {
       this._selectableTypes = types.map((type) => ({ type, active: false }));
     });
+    this.filterService.getTypeFilter$().subscribe((types) => {
+      this._selectableTypes.forEach((selectables) => {
+        selectables.active = types.some((type) => type === selectables.type.name);
+      });
+    });
   }
 
-  onFilterChange($event: MdbCheckboxChange, type: { type: NamedApiPokemonType; active: boolean }) {
+  onFilterChange($event: MdbCheckboxChange, type: SelectableType) {
     type.active = $event.checked;
     this.filterService.setTypeFilter(this._selectableTypes.filter((type) => type.active).map((type) => type.type.name));
   }

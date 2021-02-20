@@ -1,5 +1,13 @@
-<div class="dropdown" mdbDropdown>
-  <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+<div class="btn-group" mdbDropdown>
+  <button
+    mdbDropdownToggle
+    mdbBtn
+    color="primary"
+    size="sm"
+    class="dropdown-toggle waves-light p-2"
+    type="button"
+    mdbWavesEffect
+  >
     Types
   </button>
 
@@ -21,10 +29,22 @@
     >
       <div
         [ngStyle]="{ 'background-color': type.type.name | pokeTypeColor }"
-        class="text-white px-1 text-center checkbox-label"
+        class="text-white px-1 rounded-lg text-center checkbox-label"
       >
         {{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}
       </div>
     </mdb-checkbox>
   </div>
+
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    class="waves-light p-2"
+    mdbWavesEffect
+    size="sm"
+    (click)="filterService.setTypeFilter([])"
+  >
+    <i class="fas fa-times"></i>
+  </button>
 </div>

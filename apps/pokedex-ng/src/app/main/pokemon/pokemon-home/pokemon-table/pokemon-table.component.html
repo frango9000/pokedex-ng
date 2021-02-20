@@ -5,6 +5,7 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Image</th>
+        <th scope="col">Types</th>
         <th scope="col">Gen</th>
       </tr>
     </thead>
@@ -21,6 +22,14 @@
         </td>
         <td class="p-0 align-middle">{{ pokemon.name | titlecase }}</td>
         <td class="p-0 align-middle">{{ pokemon.id | pokeGeneration }}</td>
+        <td class="p-0 align-middle d-flex justify-content-start">
+          <span
+            class="m-1 px-2 rounded-lg"
+            *ngFor="let type of pokemon.types"
+            [ngStyle]="{ 'background-color': type | pokeTypeColor }"
+            >{{ 'STATIC.TYPES.' + type | translate | uppercase }}<br class="d-sm-none"
+          /></span>
+        </td>
       </tr>
     </tbody>
   </table>
