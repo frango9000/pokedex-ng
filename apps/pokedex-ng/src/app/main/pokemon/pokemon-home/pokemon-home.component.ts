@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NamedApiPokemon } from '@pokedex-ng/domain';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, merge, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
 import { FilterService } from '../../../shared/services/filter.service';
 import { PokemonService } from '../../../shared/services/pokemon.service';
@@ -24,9 +24,15 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this._getFilteredList().subscribe((list) => {
-        this.pokemonList = list;
-      })
+      this._filterChange$
+        .pipe(
+          tap((x) => (x ? (this.offset = this.increment) : (this.offset += this.increment))),
+          switchMap(() => this.pokemonService.getAllPokemonFiltered()),
+          map((list) => list.slice(0, this.offset))
+        )
+        .subscribe((list) => {
+          this.pokemonList = list;
+        })
     );
     this.subscriptions.add(
       this.filterService
@@ -38,21 +44,15 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
         })
     );
     this.subscriptions.add(
-      this.filterService
-        .getQueryFilter$()
-        .pipe(skip(1))
-        .subscribe(() => {
-          this._filterChange$.next(true);
-        })
+      merge(
+        this.filterService.getQueryFilter$().pipe(skip(1)),
+        this.filterService.getTypeFilter$().pipe(skip(1)),
+        this.filterService.getGenerationFilter$().pipe(skip(1))
+      ).subscribe(() => {
+        this._filterChange$.next(true);
+      })
     );
-    this.subscriptions.add(
-      this.filterService
-        .getTypeFilter$()
-        .pipe(skip(1))
-        .subscribe(() => {
-          this._filterChange$.next(true);
-        })
-    );
+
     this.filterService.showAll();
   }
 
@@ -65,17 +65,6 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   renderMore(): void {
     this._filterChange$.next(false);
-  }
-
-  private _getFilteredList(): Observable<NamedApiPokemon[]> {
-    return this._filterChange$.pipe(
-      // debugLog(console.log),
-      tap((x) => (x ? (this.offset = this.increment) : (this.offset += this.increment))),
-      switchMap(() => this.pokemonService.getAllPokemonLocal()),
-      map((list) => this.filterService.filterPokemonByName(list)),
-      map((list) => this.filterService.filterPokemonByType(list)),
-      map((list) => list.slice(0, this.offset))
-    );
   }
 
   testReset() {

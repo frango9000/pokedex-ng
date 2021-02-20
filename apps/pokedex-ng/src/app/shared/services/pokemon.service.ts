@@ -3,19 +3,29 @@ import { Injectable } from '@angular/core';
 import { getAllPokemon } from '@pokedex-ng/data';
 import { NamedApiPokemon, NamedApiResource, NamedApiResourceList, Pokemon } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
+import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private filterService: FilterService) {}
 
   getAllPokemonLocal(offset = 0, limit = 0): Observable<NamedApiPokemon[]> {
     return getAllPokemon().pipe(
+      take(1),
       map((value) => (!offset && !limit ? value : value.slice(offset, limit ? +(offset + limit) : undefined)))
+    );
+  }
+
+  getAllPokemonFiltered(): Observable<NamedApiPokemon[]> {
+    return this.getAllPokemonLocal().pipe(
+      map((list: NamedApiPokemon[]) => this.filterService.filterPokemonByGeneration(list)),
+      map((list: NamedApiPokemon[]) => this.filterService.filterPokemonByType(list)),
+      map((list: NamedApiPokemon[]) => this.filterService.filterPokemonByName(list))
     );
   }
 

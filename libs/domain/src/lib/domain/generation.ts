@@ -23,3 +23,8 @@ export interface GenerationGameIndex {
   game_index: number;
   generation: NamedApiResource<Generation>;
 }
+
+export interface SelectableGeneration {
+  generation: Generation;
+  active: boolean;
+}

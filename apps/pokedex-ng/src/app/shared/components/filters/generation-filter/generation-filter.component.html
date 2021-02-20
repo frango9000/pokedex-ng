@@ -12,13 +12,24 @@
   </button>
 
   <div class="dropdown-menu dropdown-primary">
-    <button *ngFor="let generation of _selectableGenerations" class="dropdown-item">
-      {{ generation.generation.name | titlecase }}
-    </button>
-    <div class="dropdown-divider"></div>
+    <mdb-checkbox
+      *ngFor="let generation of _selectableGenerations"
+      class="dropdown-item pr-0"
+      [checked]="generation.active"
+      (change)="onFilterChange($event, generation)"
+      >Generation {{ generation.generation.id }}</mdb-checkbox
+    >
   </div>
 
-  <button type="button" mdbBtn color="primary" class="waves-light p-2" mdbWavesEffect size="sm">
+  <button
+    type="button"
+    mdbBtn
+    color="primary"
+    class="waves-light p-2"
+    mdbWavesEffect
+    size="sm"
+    (click)="filterService.setGenerationFilter([])"
+  >
     <i class="fas fa-times"></i>
   </button>
 </div>
