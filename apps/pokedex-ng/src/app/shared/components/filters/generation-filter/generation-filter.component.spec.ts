@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CheckboxModule } from 'angular-bootstrap-md';
 
 import { GenerationFilterComponent } from './generation-filter.component';
 
@@ -8,9 +9,9 @@ describe('GenerationFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenerationFilterComponent ]
-    })
-    .compileComponents();
+      imports: [CheckboxModule],
+      declarations: [GenerationFilterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

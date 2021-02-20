@@ -8,6 +8,7 @@ import { debounce, take } from 'rxjs/operators';
 })
 export class FilterService {
   private _queryFilter$ = new BehaviorSubject('');
+  private _generationsFilter$ = new BehaviorSubject<number[]>([]);
   private _typesFilter$ = new BehaviorSubject<string[]>([]);
   private _typesFilterInclusiveness$ = new BehaviorSubject<boolean>(true);
   private _gridMode$ = new BehaviorSubject(true);
@@ -145,5 +146,20 @@ export class FilterService {
   clearAllFilters() {
     this._queryFilter$.next('');
     this._typesFilter$.next([]);
+    this._generationsFilter$.next([]);
+  }
+
+  setGenerationFilter(filter: number[]): void {
+    this._generationsFilter$.next(filter);
+  }
+
+  getGenerationFilter$(): Observable<number[]> {
+    return this._generationsFilter$.asObservable();
+  }
+
+  filterPokemonByGeneration(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+    return !this._generationsFilter$.value.length
+      ? pokemonList
+      : pokemonList.filter((poke) => this._generationsFilter$.value.includes(poke.generation));
   }
 }

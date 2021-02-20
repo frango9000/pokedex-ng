@@ -21,3 +21,7 @@ export interface ApiName {
   name: string;
   language: NamedApiResource<PokemonLanguage>;
 }
+
+export function getId(url: string): number {
+  return Number(url.split('/').reverse()[1]) || 0;
+}
