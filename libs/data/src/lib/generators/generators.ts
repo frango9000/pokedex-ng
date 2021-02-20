@@ -23,7 +23,7 @@ import { concatAll, delay, map, mergeMap, retry } from 'rxjs/operators';
 
 export abstract class AbstractGenerator<T, N> {
   protected host = 'https://pokeapi.co/api/v2';
-  protected filePath = './libs/data/src/lib/data';
+  protected filePath = './apps/pokedex-ng/src/assets/data';
   protected append = false;
   protected total = 0;
   protected offset = 0;

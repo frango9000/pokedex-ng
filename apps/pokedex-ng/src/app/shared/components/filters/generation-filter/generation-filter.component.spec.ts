@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CheckboxModule } from 'angular-bootstrap-md';
 
@@ -9,7 +10,7 @@ describe('GenerationFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckboxModule],
+      imports: [HttpClientTestingModule, CheckboxModule],
       declarations: [GenerationFilterComponent],
     }).compileComponents();
   });

@@ -28,7 +28,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
-    this.pokemonMoveService.getApiMove(this.moveId).subscribe((move) => {
+    this.pokemonMoveService.apiOneMove(this.moveId).subscribe((move) => {
       this.move = move;
       if (move) {
         this.generateTranslations(this.move);
@@ -65,8 +65,8 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
       defaultFlavorTextIndex > -1
         ? move.flavor_text_entries[defaultFlavorTextIndex].flavor_text
         : 'MOVE_TRANSLATE_ERROR_001';
-    this.pokemonLanguageService.getLanguageList().subscribe((languages) => {
-      this.pokemonVersionService.getVersionList().subscribe((versions) => {
+    this.pokemonLanguageService.getAllLanguages().subscribe((languages) => {
+      this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = move.flavor_text_entries.findIndex(
             (value) => value.language.name === language.name

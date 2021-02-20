@@ -28,7 +28,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.versionSub = this.pokemonVersionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
-    this.pokemonMoveService.getAbility(this.abilityId).subscribe((ability) => {
+    this.pokemonMoveService.apiOneAbility(this.abilityId).subscribe((ability) => {
       this.ability = ability;
       this.generateTranslations(this.ability);
     });
@@ -70,8 +70,8 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
       defaultFlavorTextIndex > -1
         ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
         : 'ABILITY_TRANSLATE_ERROR_001';
-    this.pokemonLanguageService.getLanguageList().subscribe((languages) => {
-      this.pokemonVersionService.getVersionList().subscribe((versions) => {
+    this.pokemonLanguageService.getAllLanguages().subscribe((languages) => {
+      this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
             (value) => value.language.name === language.name

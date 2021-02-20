@@ -1,9 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ability, Move, NamedApiMove, NamedApiResource } from '@pokedex-ng/domain';
-import { Observable, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import moves from '../../../assets/data/moves.json';
+import { Observable } from 'rxjs';
+import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 
@@ -13,38 +12,26 @@ import { serviceLog } from './cache/icache';
 export class PokemonMoveService {
   constructor(private httpClient: HttpClient) {}
 
-  getAbility(abilityId: string | number): Observable<Ability> {
-    return this.httpClient
-      .get<Ability>(environment.apiUrl + '/ability/' + abilityId)
-      .pipe(tap(serviceLog), shareReplay());
+  getAllMoves(): Observable<NamedApiMove[]> {
+    return this.httpClient.get<NamedApiMove[]>('/assets/data/move.json').pipe(take(1));
   }
 
-  getMoves(): Observable<NamedApiMove[]> {
-    return of(moves);
-  }
-
-  getApiMoves(): Observable<NamedApiResource[]> {
+  apiAllMoves(): Observable<NamedApiResource[]> {
     const pageParams: HttpParams = new HttpParams().append('limit', String(1000));
     return this.httpClient.get(environment.apiUrl + '/move/', { params: pageParams }).pipe(
       tap(serviceLog),
-      map((value) => value.results),
-      shareReplay()
+      shareReplay(),
+      map((value) => value.results)
     );
   }
 
-  getApiMove(moveId: string | number): Observable<Move> {
+  apiOneMove(moveId: string | number): Observable<Move> {
     return this.httpClient.get<Move>(environment.apiUrl + '/move/' + moveId).pipe(tap(serviceLog), shareReplay());
   }
 
-  postFirebaseMove(data: NamedApiMove): Observable<any> {
-    return this.httpClient.put(environment.firebaseApi + '/move/' + data.id + '.json', data).pipe(tap(serviceLog));
-  }
-
-  getFirebaseMoveList(): Observable<NamedApiMove[]> {
-    return this.httpClient.get(environment.firebaseApi + '/move.json').pipe(
-      map((id) => Object.keys(id).map((move) => id[move])),
-      tap(serviceLog),
-      shareReplay()
-    );
+  apiOneAbility(abilityId: string | number): Observable<Ability> {
+    return this.httpClient
+      .get<Ability>(environment.apiUrl + '/ability/' + abilityId)
+      .pipe(tap(serviceLog), shareReplay());
   }
 }

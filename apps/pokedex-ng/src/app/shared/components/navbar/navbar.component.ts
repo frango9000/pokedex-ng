@@ -14,6 +14,6 @@ export class NavbarComponent implements OnInit {
   constructor(public pokemonVersionService: GameVersionService) {}
 
   ngOnInit(): void {
-    this.versions$ = this.pokemonVersionService.getVersionList();
+    this.versions$ = this.pokemonVersionService.getAllVersionGroups();
   }
 }

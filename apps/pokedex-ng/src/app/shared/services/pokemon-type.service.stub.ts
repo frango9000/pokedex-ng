@@ -2,8 +2,8 @@ import { of } from 'rxjs';
 import { PokemonTypeService } from './pokemon-type.service';
 
 export class PokemonTypeStubService implements Partial<PokemonTypeService> {
-  getOneTypeLocal = jest.fn(() => of(null));
-  getAllTypesLocal = jest.fn(() => of([]));
+  getOneType = jest.fn(() => of(null));
+  getAllTypes = jest.fn(() => of([]));
 }
 
 export const pokemonTypeStubServiceProvider = {
