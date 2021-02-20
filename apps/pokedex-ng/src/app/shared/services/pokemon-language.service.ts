@@ -23,7 +23,7 @@ export class PokemonLanguageService {
   }
 
   getAllLanguages(): Observable<NamedApiLanguage[]> {
-    return this.httpClient.get<NamedApiLanguage[]>('/assets/data/language.json').pipe(take(1));
+    return this.httpClient.get<NamedApiLanguage[]>(environment.baseHref + '/assets/data/language.json').pipe(take(1));
   }
 
   apiGetAllLanguages(): Observable<NamedApiResource[]> {

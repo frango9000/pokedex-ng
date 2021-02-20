@@ -8,4 +8,5 @@ export const environment = {
   logServiceResponses: false,
   logTranslations: false,
   logDebug: false,
+  baseHref: '/pokedex-ng',
 };

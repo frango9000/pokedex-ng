@@ -13,7 +13,7 @@ export class PokemonMoveService {
   constructor(private httpClient: HttpClient) {}
 
   getAllMoves(): Observable<NamedApiMove[]> {
-    return this.httpClient.get<NamedApiMove[]>('/assets/data/move.json').pipe(take(1));
+    return this.httpClient.get<NamedApiMove[]>(environment.baseHref + '/assets/data/move.json').pipe(take(1));
   }
 
   apiAllMoves(): Observable<NamedApiResource[]> {

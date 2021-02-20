@@ -14,7 +14,7 @@ export class PokemonService {
   constructor(private httpClient: HttpClient, private filterService: FilterService) {}
 
   getAllPokemon(): Observable<NamedApiPokemon[]> {
-    return this.httpClient.get<NamedApiPokemon[]>('/assets/data/pokemon.json').pipe(take(1));
+    return this.httpClient.get<NamedApiPokemon[]>(environment.baseHref + '/assets/data/pokemon.json').pipe(take(1));
   }
 
   getAllPokemonFiltered(): Observable<NamedApiPokemon[]> {

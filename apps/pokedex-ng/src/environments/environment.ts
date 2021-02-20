@@ -11,8 +11,8 @@ export const environment = {
   logCachedResponses: false,
   logServiceResponses: false,
   logTranslations: false,
-  logDebug: false
-
+  logDebug: false,
+  baseHref: '',
 };
 
 /*

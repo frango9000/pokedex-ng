@@ -25,7 +25,9 @@ export class GameVersionService {
   constructor(private httpClient: HttpClient) {}
 
   getAllVersionGroups(): Observable<NamedApiVersionGroup[]> {
-    return this.httpClient.get<NamedApiVersionGroup[]>('/assets/data/version-group.json').pipe(take(1));
+    return this.httpClient
+      .get<NamedApiVersionGroup[]>(environment.baseHref + '/assets/data/version-group.json')
+      .pipe(take(1));
   }
 
   apiAllVersionGroups(): Observable<NamedApiResource[]> {

@@ -13,7 +13,7 @@ export class PokemonTypeService {
   constructor(public httpClient: HttpClient) {}
 
   getAllTypes(): Observable<NamedApiPokemonType[]> {
-    return this.httpClient.get<NamedApiPokemonType[]>('/assets/data/type.json').pipe(take(1));
+    return this.httpClient.get<NamedApiPokemonType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
   }
 
   getOneType(typeId: string | number): Observable<NamedApiPokemonType> {
