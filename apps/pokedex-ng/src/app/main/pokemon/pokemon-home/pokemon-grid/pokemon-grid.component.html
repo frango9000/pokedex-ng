@@ -1,11 +1,11 @@
 <!-- Card -->
 <div class="row justify-content-center">
   <div
-    class="m-0 p-1 col-6 w-100 col-sm-4 col-md-3 col-lg-2 mx-lg-1 px-lg-0 mx-xl-0 px-xl-1 col-xl-2 poke-card cursor-pointer"
+    class="m-0 p-1 w-100 col-6 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 poke-card cursor-pointer"
     *ngFor="let pokemon of pokemonList"
     [routerLink]="[pokemon.name]"
   >
-    <mdb-card title="{{ pokemon.name | titlecase }}">
+    <mdb-card class="h-100" title="{{ pokemon.name | titlecase }}">
       <mdb-card-header>
         <div class="row">
           <div class="col-6 text-left border-right" title="Pokedex ID">#{{ pokemon.id }}</div>
@@ -14,31 +14,32 @@
           </div>
         </div>
       </mdb-card-header>
-      <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-        <!-- Card img -->
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"
-          width="172"
-          height="172"
-          alt="{{ pokemon.name | titlecase }}"
-        />
-        <a>
-          <div class="mask"></div>
-        </a>
+      <div class="h-100">
+        <div class="view rgba-white-slight waves-light d-flex justify-content-center" mdbWavesEffect>
+          <!-- Card img -->
+          <img
+            class="poke-img img-fluid w-100"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"
+            alt="{{ pokemon.name | titlecase }}"
+          />
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+        <!--Card content-->
+        <!--Title-->
+        <div class="text-center">
+          <h5 class="text-nowrap overflow-hidden">
+            {{ pokemon.name | titlecase }}
+          </h5>
+          <h6></h6>
+        </div>
       </div>
-      <!--Card content-->
-      <!--Title-->
-      <div class="text-center">
-        <h5 class="text-nowrap overflow-hidden">
-          {{ pokemon.name | titlecase }}
-        </h5>
-        <h6></h6>
-      </div>
-      <mdb-card-footer class="px-0 mx-0">
-        <div class="text-center text-white">
+      <mdb-card-footer class="p-1 mx-0 h-100">
+        <div class="text-center text-white h-100 d-flex justify-content-around align-items-center flex-wrap">
           <span
-            class="px-1 mx-1"
-            *ngFor="let type of pokemon.types; let i = index"
+            class="m-1 px-2 rounded-lg"
+            *ngFor="let type of pokemon.types"
             [ngStyle]="{ 'background-color': type | pokeTypeColor }"
             >{{ 'STATIC.TYPES.' + type | translate | uppercase }}<br class="d-sm-none"
           /></span>

@@ -1,30 +1,42 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
-      <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="150" (scrolled)="renderMore()">
-        <div class="pokemon-list-filters d-flex align-items-center" *ngIf="filterService.getShowFilters$() | async">
-          <pokedex-ng-generation-filter></pokedex-ng-generation-filter>
-          <pokedex-ng-type-filter></pokedex-ng-type-filter>
-          <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="testReset()" class="load-more-button">
-            <span>Reset</span>
-          </button>
-          <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="testNoReset()" class="load-more-button">
-            <span>NO Reset</span>
-          </button>
-        </div>
-        <app-pokemon-grid
-          *ngIf="this.filterService.getGridMode$() | async; else tableMode"
-          [pokemonList]="pokemonList"
-        ></app-pokemon-grid>
-        <ng-template #tableMode>
-          <app-pokemon-table [pokemonList]="pokemonList"></app-pokemon-table>
-        </ng-template>
-      </div>
+    <div
+      class="pokemon-list-filters d-flex flex-wrap align-items-center"
+      *ngIf="filterService.getShowFilters$() | async"
+    >
+      <pokedex-ng-generation-filter></pokedex-ng-generation-filter>
+      <pokedex-ng-type-filter class="ml-1"></pokedex-ng-type-filter>
+      <button mdbBtn type="button" color="primary" class="px-3 ml-1" mdbWavesEffect (click)="clearFilters()" size="sm">
+        <i class="fas fa-times"></i>
+      </button>
+      <!--      <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="testReset()" size="sm">-->
+      <!--        <span>Reset</span>-->
+      <!--      </button>-->
+      <!--      <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="testNoReset()" size="sm">-->
+      <!--        <span>NO Reset</span>-->
+      <!--      </button>-->
     </div>
   </div>
-  <div class="row my-2">
+  <div class="row px-md-2 px-lg-4">
+    <div
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="150"
+      (scrolled)="renderMore()"
+      class="w-100"
+    >
+      <app-pokemon-grid
+        *ngIf="this.filterService.getGridMode$() | async; else tableMode"
+        [pokemonList]="pokemonList"
+      ></app-pokemon-grid>
+      <ng-template #tableMode>
+        <app-pokemon-table [pokemonList]="pokemonList"></app-pokemon-table>
+      </ng-template>
+    </div>
+  </div>
+  <div class="row my-2 px-md-2 px-lg-4">
     <div class="col text-center">
-      <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="renderMore()" class="load-more-button">
+      <button mdbBtn type="button" color="blue" mdbWavesEffect (click)="renderMore()">
         <span>Load More</span>
       </button>
     </div>

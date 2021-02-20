@@ -60,6 +60,7 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
     this.filterService.hideAll();
     this.filterService.hideFilters();
+    this.filterService.clearAllFilters();
   }
 
   renderMore(): void {
@@ -83,5 +84,9 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   testNoReset() {
     this._filterChange$.next(false);
+  }
+
+  clearFilters() {
+    this.filterService.clearAllFilters();
   }
 }

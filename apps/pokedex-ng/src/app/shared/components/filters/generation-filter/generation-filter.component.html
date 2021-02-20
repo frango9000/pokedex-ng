@@ -1,5 +1,13 @@
-<div class="dropdown" mdbDropdown>
-  <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+<div class="btn-group" mdbDropdown>
+  <button
+    mdbDropdownToggle
+    mdbBtn
+    color="primary"
+    size="sm"
+    class="dropdown-toggle waves-light p-2"
+    type="button"
+    mdbWavesEffect
+  >
     Generations
   </button>
 
@@ -7,5 +15,10 @@
     <button *ngFor="let generation of _selectableGenerations" class="dropdown-item">
       {{ generation.generation.name | titlecase }}
     </button>
+    <div class="dropdown-divider"></div>
   </div>
+
+  <button type="button" mdbBtn color="primary" class="waves-light p-2" mdbWavesEffect size="sm">
+    <i class="fas fa-times"></i>
+  </button>
 </div>
