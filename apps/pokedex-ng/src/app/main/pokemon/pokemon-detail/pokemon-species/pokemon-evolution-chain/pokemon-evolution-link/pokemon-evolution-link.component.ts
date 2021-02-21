@@ -1,5 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { EvolutionChainLink, EvolutionDetail } from '@pokedex-ng/domain';
+import {
+  EvolutionChainLink,
+  EvolutionDetail,
+  PokemonEvolutionTriggerDetail,
+  PokemonEvolutionTriggerDetails,
+} from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-evolution-link',
@@ -89,14 +94,4 @@ export class PokemonEvolutionLinkComponent {
     }
     return { trigger, conditions };
   }
-}
-
-export interface PokemonEvolutionTriggerDetails {
-  trigger: PokemonEvolutionTriggerDetail;
-  conditions: PokemonEvolutionTriggerDetail[];
-}
-
-export interface PokemonEvolutionTriggerDetail {
-  title: string;
-  value?: number | string;
 }

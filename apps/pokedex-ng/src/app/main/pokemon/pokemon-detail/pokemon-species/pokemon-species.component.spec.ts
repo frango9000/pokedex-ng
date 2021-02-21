@@ -1,24 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import {
-  stubGameVersionServiceProvider,
-  stubLanguageServiceProvider,
-  stubSpeciesServiceProvider,
-} from '../../../../shared/services/stubs';
+import { stubSpeciesServiceProvider } from '../../../../shared/services/stubs';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info/pokemon-species-info.component';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
 
 @Component({ selector: 'app-pokemon-species-info', template: '' })
-export class PokemonSpeciesInfoStubComponent implements Partial<PokemonSpeciesInfoComponent> {
+export class StubPokemonSpeciesInfoComponent implements Partial<PokemonSpeciesInfoComponent> {
   @Input() public pokemonSpecies: Species;
 }
 
 @Component({ selector: 'app-pokemon-evolution-chain', template: '' })
-export class PokemonEvolutionChainStubComponent {
+export class StubPokemonEvolutionChainComponent {
   @Input() public pokemonSpecies: Species;
 }
 
@@ -29,9 +22,9 @@ describe('PokemonSpeciesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [RouterModule, TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoStubComponent, PokemonEvolutionChainStubComponent],
-        providers: [stubSpeciesServiceProvider, stubGameVersionServiceProvider, stubLanguageServiceProvider],
+        imports: [],
+        declarations: [PokemonSpeciesComponent, StubPokemonSpeciesInfoComponent, StubPokemonEvolutionChainComponent],
+        providers: [stubSpeciesServiceProvider],
       }).compileComponents();
     })
   );

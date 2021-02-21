@@ -39,3 +39,13 @@ export interface EvolutionTrigger {
   name: string;
   names: ApiName[];
 }
+
+export interface PokemonEvolutionTriggerDetails {
+  trigger: PokemonEvolutionTriggerDetail;
+  conditions: PokemonEvolutionTriggerDetail[];
+}
+
+export interface PokemonEvolutionTriggerDetail {
+  title: string;
+  value?: number | string;
+}
