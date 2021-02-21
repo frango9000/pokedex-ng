@@ -1,8 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AppInitService } from './app-init.service';
-import { stubPokemonLanguageServiceProvider } from './shared/services/pokemon-language.service.stub';
-import { pokemonTypeStubServiceProvider } from './shared/services/pokemon-type.service.stub';
+import {
+  stubAbilityServiceProvider,
+  stubLanguageServiceProvider,
+  stubMoveServiceProvider,
+  stubTypeServiceProvider,
+} from './shared/services/stubs';
 
 describe('AppInitService', () => {
   let service: AppInitService;
@@ -10,7 +14,12 @@ describe('AppInitService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
-      providers: [stubPokemonLanguageServiceProvider, pokemonTypeStubServiceProvider],
+      providers: [
+        stubLanguageServiceProvider,
+        stubTypeServiceProvider,
+        stubMoveServiceProvider,
+        stubAbilityServiceProvider,
+      ],
     });
     service = TestBed.inject(AppInitService);
   });

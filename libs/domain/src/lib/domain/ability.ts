@@ -1,10 +1,15 @@
 import { ApiName, ApiResource, NamedApiResource } from './domain';
-import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry } from './pokemon-language';
+import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, LocalizedName } from './pokemon-language';
+
+export interface NamedApiAbility extends NamedApiResource<Ability> {
+  generation: number;
+  names: LocalizedName[];
+}
 
 export interface Ability extends ApiResource {
   id: number;
-  is_main_series: boolean;
   name: string;
+  is_main_series: boolean;
   effect_changes: ApiEffectChange[];
   effect_entries: ApiEffectEntry[];
   flavor_text_entries: ApiFlavorTextEntry[];

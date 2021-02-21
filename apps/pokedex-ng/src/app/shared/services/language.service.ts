@@ -10,7 +10,7 @@ import { serviceLog } from './cache/icache';
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonLanguageService {
+export class LanguageService {
   private readonly defaultLanguage: NamedApiLanguage = {
     name: 'en',
     id: 9,
@@ -29,15 +29,26 @@ export class PokemonLanguageService {
     return this.activeLanguage$.asObservable();
   }
 
-  setDisplayLanguage(language: NamedApiLanguage): void {
-    if (this.availableLanguages$.value.includes(language)) {
+  setDisplayLanguage(selectedLanguage: string): void {
+    const language = this.availableLanguages$.value.find((value) => value.name === selectedLanguage);
+    if (language) {
       this.translateService.use(language.name).subscribe();
       this.activeLanguage$.next(language);
     }
   }
 
-  getAllLanguages$(): Observable<NamedApiLanguage[]> {
+  refresh() {
+    this.setDisplayLanguage(this.activeLanguage$.value.name);
+  }
+
+  getAvailableLanguages$(): Observable<NamedApiLanguage[]> {
     return this.availableLanguages$.asObservable();
+  }
+
+  getAvailableLanguageIds$(): Observable<string[]> {
+    return this.getAvailableLanguages$().pipe(
+      map((namedLanguages) => namedLanguages.map((namedLanguage) => namedLanguage.name))
+    );
   }
 
   private _fetchAllLanguages(): Observable<NamedApiLanguage[]> {

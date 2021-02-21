@@ -27,7 +27,7 @@
             class="m-1 px-2 rounded-lg"
             *ngFor="let type of pokemon.types"
             [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-            >{{ 'STATIC.TYPES.' + type | translate | uppercase }}<br class="d-sm-none"
+            >{{ "TYPE." + type | translate | uppercase }}<br class="d-sm-none"
           /></span>
         </td>
       </tr>

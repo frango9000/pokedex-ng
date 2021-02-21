@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectableType } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { FilterService } from '../../../services/filter.service';
-import { PokemonTypeService } from '../../../services/pokemon-type.service';
+import { TypeService } from '../../../services/type.service';
 
 @Component({
   selector: 'pokedex-ng-type-filter',
@@ -12,7 +12,7 @@ import { PokemonTypeService } from '../../../services/pokemon-type.service';
 export class TypeFilterComponent implements OnInit {
   _selectableTypes: SelectableType[] = [];
 
-  constructor(public filterService: FilterService, private typeService: PokemonTypeService) {}
+  constructor(public filterService: FilterService, private typeService: TypeService) {}
 
   ngOnInit(): void {
     this.typeService.getAllTypes().subscribe((types) => {

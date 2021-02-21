@@ -4,9 +4,11 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { gameVersionStubServiceProvider } from '../../../../shared/services/game-version.service.stub';
-import { stubPokemonLanguageServiceProvider } from '../../../../shared/services/pokemon-language.service.stub';
-import { pokemonSpeciesStubServiceProvider } from '../../../../shared/services/pokemon-species.service';
+import {
+  stubGameVersionServiceProvider,
+  stubLanguageServiceProvider,
+  stubSpeciesServiceProvider,
+} from '../../../../shared/services/stubs';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info/pokemon-species-info.component';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
 
@@ -29,11 +31,7 @@ describe('PokemonSpeciesComponent', () => {
       TestBed.configureTestingModule({
         imports: [RouterModule, TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesComponent, PokemonSpeciesInfoStubComponent, PokemonEvolutionChainStubComponent],
-        providers: [
-          pokemonSpeciesStubServiceProvider,
-          gameVersionStubServiceProvider,
-          stubPokemonLanguageServiceProvider,
-        ],
+        providers: [stubSpeciesServiceProvider, stubGameVersionServiceProvider, stubLanguageServiceProvider],
       }).compileComponents();
     })
   );

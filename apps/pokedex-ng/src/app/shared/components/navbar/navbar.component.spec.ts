@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { gameVersionStubServiceProvider } from '../../services/game-version.service.stub';
+import { stubGameVersionServiceProvider } from '../../services/stubs';
 import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
 
 import { NavbarComponent } from './navbar.component';
@@ -19,7 +19,7 @@ describe('NavbarComponent', () => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
         declarations: [NavbarComponent, StubLocalePickerComponent, StubFilterBarComponent],
-        providers: [gameVersionStubServiceProvider],
+        providers: [stubGameVersionServiceProvider],
       }).compileComponents();
     })
   );

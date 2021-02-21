@@ -2,8 +2,8 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { GameVersionService } from '../../../../shared/services/game-version.service';
-import { PokemonLanguageService } from '../../../../shared/services/pokemon-language.service';
-import { PokemonSpeciesService } from '../../../../shared/services/pokemon-species.service';
+import { LanguageService } from '../../../../shared/services/language.service';
+import { SpeciesService } from '../../../../shared/services/species.service';
 
 @Component({
   selector: 'app-pokemon-species',
@@ -17,14 +17,14 @@ export class PokemonSpeciesComponent implements OnChanges {
 
   constructor(
     private translateService: TranslateService,
-    private pokemonSpeciesService: PokemonSpeciesService,
+    private pokemonSpeciesService: SpeciesService,
     private pokemonVersionService: GameVersionService,
-    private pokemonLanguageService: PokemonLanguageService
+    private pokemonLanguageService: LanguageService
   ) {}
 
   ngOnChanges(): void {
     this.pokemonSpecies = null;
-    this.pokemonSpeciesService.getPokemonSpecies(this.pokemonSpeciesId).subscribe((specie) => {
+    this.pokemonSpeciesService.fetchApiOneSpecies(this.pokemonSpeciesId).subscribe((specie) => {
       this.pokemonSpecies = specie;
       this.generateTranslations(this.pokemonSpecies);
     });
@@ -43,7 +43,7 @@ export class PokemonSpeciesComponent implements OnChanges {
       defaultFlavorTextIndex > -1
         ? specie.flavor_text_entries[defaultFlavorTextIndex].flavor_text
         : 'SPECIES_TRANSLATE_ERROR_001';
-    this.pokemonLanguageService.getAllLanguages$().subscribe((languages) => {
+    this.pokemonLanguageService.getAvailableLanguages$().subscribe((languages) => {
       this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = specie.flavor_text_entries.findIndex(

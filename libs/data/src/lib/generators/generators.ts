@@ -1,10 +1,12 @@
 import {
+  Ability,
   ApiResource,
   GameVersionGroup,
   Generation,
   Item,
   Machine,
   Move,
+  NamedApiAbility,
   NamedApiItem,
   NamedApiLanguage,
   NamedApiMove,
@@ -212,6 +214,21 @@ export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove>
       power: resource.power,
       pp: resource.pp,
       type: resource.type.name,
+    };
+  }
+}
+
+export class PokemonAbilitiesGenerator extends AbstractGenerator<Ability, NamedApiAbility> {
+  getResourceName(): string {
+    return 'ability';
+  }
+
+  mapResource(resource: Ability): NamedApiAbility {
+    return {
+      id: resource.id,
+      name: resource.name,
+      generation: getId(resource.generation?.url),
+      names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
     };
   }
 }

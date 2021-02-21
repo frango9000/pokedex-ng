@@ -18,7 +18,7 @@
       [checked]="this.filterService.getTypesFilterInclusiveness$() | async"
       (change)="this.filterService.setTypeFilterInclusiveness($event.checked)"
     >
-      <div class="checkbox-label text-center">{{ checkbox.checked ? 'Inclusive' : 'Exclusive' }}</div>
+      <div class="checkbox-label text-center">{{ checkbox.checked ? "Inclusive" : "Exclusive" }}</div>
     </mdb-checkbox>
     <div class="divider dropdown-divider"></div>
     <mdb-checkbox
@@ -31,7 +31,7 @@
         [ngStyle]="{ 'background-color': type.type.name | pokeTypeColor }"
         class="text-white px-1 rounded-lg text-center checkbox-label"
       >
-        {{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}
+        {{ "TYPE." + type.type.name | translate | uppercase }}
       </div>
     </mdb-checkbox>
   </div>

@@ -9,19 +9,12 @@ import { serviceLog } from './cache/icache';
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonSpeciesService {
+export class SpeciesService {
   constructor(private httpClient: HttpClient) {}
 
-  getPokemonSpecies(speciesId: string | number): Observable<Species> {
+  fetchApiOneSpecies(speciesId: string | number): Observable<Species> {
     return this.httpClient
       .get<Species>(environment.apiUrl + '/pokemon-species/' + speciesId)
       .pipe(tap(serviceLog), shareReplay());
   }
 }
-
-export class PokemonSpeciesStubService implements Partial<PokemonSpeciesService> {}
-
-export const pokemonSpeciesStubServiceProvider = {
-  provide: PokemonSpeciesService,
-  useFactory: () => new PokemonSpeciesStubService(),
-};

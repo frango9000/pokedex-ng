@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { NamedApiResource, Pokemon, PokemonAbilities, PokemonMoves, PokemonStats } from '@pokedex-ng/domain';
-import { stubPokemonServiceProvider } from '../../../shared/services/pokemon.service.stub';
+import { stubPokemonServiceProvider } from '../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonDetailComponent } from './pokemon-detail.component';
 import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';

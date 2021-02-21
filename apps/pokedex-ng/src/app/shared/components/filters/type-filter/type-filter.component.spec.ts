@@ -2,8 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'angular-bootstrap-md';
 import { StubPokeTypeColorPipe } from '../../../pipes/stubs';
-import { stubFilterServiceProvider } from '../../../services/filter.service.stub';
-import { pokemonTypeStubServiceProvider } from '../../../services/pokemon-type.service.stub';
+import { stubFilterServiceProvider, stubTypeServiceProvider } from '../../../services/stubs';
 
 import { TypeFilterComponent } from './type-filter.component';
 
@@ -15,7 +14,7 @@ describe('TypeFilterComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CheckboxModule, TranslateModule.forRoot()],
       declarations: [TypeFilterComponent, StubPokeTypeColorPipe],
-      providers: [stubFilterServiceProvider, pokemonTypeStubServiceProvider],
+      providers: [stubFilterServiceProvider, stubTypeServiceProvider],
     }).compileComponents();
   });
 

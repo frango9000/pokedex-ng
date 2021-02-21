@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { NamedApiPokemonType, NamedApiResource } from '@pokedex-ng/domain';
-import { PokemonTypeService } from '../../../../shared/services/pokemon-type.service';
+import { TypeService } from '../../../../shared/services/type.service';
 
 @Component({
   selector: 'app-pokemon-type-damages',
@@ -20,7 +20,7 @@ export class PokemonTypeDamagesComponent implements OnChanges {
   weaknesses: { name: string; multiplier: number }[] = [];
   resistances: { name: string; multiplier: number }[] = [];
 
-  constructor(private pokemonTypeService: PokemonTypeService) {}
+  constructor(private pokemonTypeService: TypeService) {}
 
   ngOnChanges(): void {
     this.types = null;

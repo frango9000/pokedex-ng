@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgVarDirective } from '../../../directives/ng-var.directive';
-import { stubPokemonLanguageServiceProvider } from '../../../services/pokemon-language.service.stub';
+import { stubLanguageServiceProvider } from '../../../services/stubs';
 import { LocalePickerComponent } from './locale-picker.component';
 
 describe('LocalePickerComponent', () => {
@@ -13,7 +13,7 @@ describe('LocalePickerComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
         declarations: [LocalePickerComponent, NgVarDirective],
-        providers: [stubPokemonLanguageServiceProvider],
+        providers: [stubLanguageServiceProvider],
       }).compileComponents();
     })
   );

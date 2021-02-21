@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PokemonLanguageService } from '../../../services/pokemon-language.service';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'pokedex-ng-locale-picker',
@@ -7,5 +7,5 @@ import { PokemonLanguageService } from '../../../services/pokemon-language.servi
   styleUrls: ['./locale-picker.component.scss'],
 })
 export class LocalePickerComponent {
-  constructor(public languageService: PokemonLanguageService) {}
+  constructor(public languageService: LanguageService) {}
 }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
-import { pokemonTypeStubServiceProvider } from '../../../../shared/services/pokemon-type.service.stub';
+import { stubTypeServiceProvider } from '../../../../shared/services/stubs';
 
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
 
@@ -15,7 +15,7 @@ describe('PokemonTypeDamagesComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonTypeDamagesComponent, StubPokeTypeColorPipe],
-        providers: [pokemonTypeStubServiceProvider],
+        providers: [stubTypeServiceProvider],
       }).compileComponents();
     })
   );

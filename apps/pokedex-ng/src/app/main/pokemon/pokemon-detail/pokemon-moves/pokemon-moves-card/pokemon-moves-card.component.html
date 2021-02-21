@@ -5,7 +5,7 @@
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
       <div class="overflow-hidden text-nowrap pl-2">
-        {{ 'UI.MOVE.TITLE_' + cardTitle | translate }}
+        {{ "UI.MOVE.TITLE_" + cardTitle | translate }}
       </div>
     </div>
   </div>
@@ -14,10 +14,10 @@
       <thead>
         <tr>
           <th scope="col">
-            <span *ngIf="showLevels">{{ 'UI.MOVE.LEVEL' | translate }}</span>
+            <span *ngIf="showLevels">{{ "UI.MOVE.LEVEL" | translate }}</span>
           </th>
-          <th scope="col">{{ 'UI.MOVE.MOVE' | translate }}</th>
-          <th scope="col">{{ 'UI.MOVE.TYPE' | translate }}</th>
+          <th scope="col">{{ "UI.MOVE.MOVE" | translate }}</th>
+          <th scope="col">{{ "UI.MOVE.TYPE" | translate }}</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -28,15 +28,15 @@
               <span *ngIf="showLevels">{{ move.key.version_group_details[0].level_learned_at }}</span>
             </td>
             <td class="align-middle w-75">
-              {{ move.key.move.name | titlecase }}
+              {{ "MOVE." + move.key.move.name + ".NAME" | translate }}
             </td>
             <td>
               <ng-container *ngIf="moveTypes">
                 <div class="text-center text-white pt-1" *ngVar="getType(move.key.move.name) as type">
                   <span
-                    class="p-1"
+                    class="p-1 rounded-lg"
                     [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-                    *ngVar="'STATIC.TYPES.' + type | translate | uppercase as typeName"
+                    *ngVar="'TYPE.' + type | translate | uppercase as typeName"
                   >
                     {{ typeName }}
                   </span>

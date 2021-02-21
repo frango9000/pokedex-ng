@@ -6,14 +6,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
+import { LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonTypeService {
+export class TypeService {
   private types$ = new BehaviorSubject<NamedApiPokemonType[]>([]);
 
-  constructor(public httpClient: HttpClient, private translateService: TranslateService) {
+  constructor(
+    private httpClient: HttpClient,
+    private translateService: TranslateService,
+    private languageService: LanguageService
+  ) {
     this._fetchAllTypes().subscribe((types) => {
       this.types$.next(types);
     });
@@ -50,19 +55,26 @@ export class PokemonTypeService {
 
   parseTranslations() {
     this.types$.pipe(skip(1)).subscribe((value) => {
-      value.forEach((type) => {
-        type.names.forEach((name) => {
-          this.translateService.setTranslation(
-            name.language,
-            {
-              TYPE: {
-                [type.name]: name.name,
-              },
-            },
-            true
-          );
+      this.languageService
+        .getAvailableLanguages$()
+        .pipe(map((namedLanguages) => namedLanguages.map((language) => language.name)))
+        .subscribe((languages) => {
+          value.forEach((type) => {
+            type.names
+              .filter((localizedName) => languages.includes(localizedName.language))
+              .forEach((name) => {
+                this.translateService.setTranslation(
+                  name.language,
+                  {
+                    TYPE: {
+                      [type.name]: name.name,
+                    },
+                  },
+                  true
+                );
+              });
+          });
         });
-      });
     });
   }
 }

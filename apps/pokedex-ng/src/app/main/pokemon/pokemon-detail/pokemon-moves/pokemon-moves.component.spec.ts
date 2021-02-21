@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
 import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
-import { gameVersionStubServiceProvider } from '../../../../shared/services/game-version.service.stub';
-import { pokemonMoveStubServiceProvider } from '../../../../shared/services/pokemon-move.service.stub';
+import { stubGameVersionServiceProvider, stubMoveServiceProvider } from '../../../../shared/services/stubs';
 import { PokemonMovesCardComponent } from './pokemon-moves-card/pokemon-moves-card.component';
 import { PokemonMovesComponent } from './pokemon-moves.component';
 
@@ -28,7 +27,7 @@ describe('PokemonMovesComponent', () => {
           StubExpandableResourcesPipe,
           StubPokeTypeColorPipe,
         ],
-        providers: [gameVersionStubServiceProvider, pokemonMoveStubServiceProvider],
+        providers: [stubGameVersionServiceProvider, stubMoveServiceProvider],
       }).compileComponents();
     })
   );
