@@ -22,6 +22,7 @@ export class PokemonLanguageService {
   constructor(private httpClient: HttpClient, private translateService: TranslateService) {
     this.getAllLanguages().subscribe((languages) => {
       this.availableLanguages$.next(languages);
+      this._parseTranslations(languages);
     });
   }
 
@@ -40,18 +41,6 @@ export class PokemonLanguageService {
     return this.httpClient.get<PokemonLanguage>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
   }
 
-  //
-  // setDisplayLanguage(language: string): void {
-  //   this.getAllLanguages().subscribe((languages) => {
-  //     const index = languages.findIndex((value) => value.name === language);
-  //     if (index > -1) {
-  //       this.activeLanguage$.next(languages[index]);
-  //       // this.translateService.getTranslation(languages[index].name);
-  //       this.translateService.use(language).subscribe();
-  //     }
-  //   });
-  // }
-
   getDisplayLanguage$(): Observable<NamedApiLanguage> {
     return this.activeLanguage$.asObservable();
   }
@@ -65,5 +54,21 @@ export class PokemonLanguageService {
 
   getAvailableLanguages$(): Observable<NamedApiLanguage[]> {
     return this.availableLanguages$.asObservable();
+  }
+
+  private _parseTranslations(languages: NamedApiLanguage[]) {
+    languages.forEach((language) => {
+      language.names.forEach((name) => {
+        this.translateService.setTranslation(
+          name.language,
+          {
+            LANGUAGE: {
+              [language.name]: name.name,
+            },
+          },
+          true
+        );
+      });
+    });
   }
 }

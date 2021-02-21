@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { gameVersionStubServiceProvider } from '../../../../shared/services/game-version.service.stub';
-import { pokemonLanguageStubServiceProvider } from '../../../../shared/services/pokemon-language.service.stub';
+import { stubPokemonLanguageServiceProvider } from '../../../../shared/services/pokemon-language.service.stub';
 import { pokemonSpeciesStubServiceProvider } from '../../../../shared/services/pokemon-species.service';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info/pokemon-species-info.component';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
@@ -32,7 +32,7 @@ describe('PokemonSpeciesComponent', () => {
         providers: [
           pokemonSpeciesStubServiceProvider,
           gameVersionStubServiceProvider,
-          pokemonLanguageStubServiceProvider,
+          stubPokemonLanguageServiceProvider,
         ],
       }).compileComponents();
     })

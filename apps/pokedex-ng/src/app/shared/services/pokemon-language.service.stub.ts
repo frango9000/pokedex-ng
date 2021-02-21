@@ -1,8 +1,11 @@
+import { of } from 'rxjs';
 import { PokemonLanguageService } from './pokemon-language.service';
 
-export class PokemonLanguageStubService implements Partial<PokemonLanguageService> {}
+export class StubPokemonLanguageService implements Partial<PokemonLanguageService> {
+  getDisplayLanguage$ = () => of(null);
+}
 
-export const pokemonLanguageStubServiceProvider = {
+export const stubPokemonLanguageServiceProvider = {
   provide: PokemonLanguageService,
-  useFactory: () => new PokemonLanguageStubService(),
+  useFactory: () => new StubPokemonLanguageService(),
 };

@@ -3,7 +3,7 @@
   mdbWavesEffect
   type="button"
   class="nav-link dropdown-toggle waves-light"
-  title="{{ 'STATIC.LANGUAGES.' + activeLanguage.name | translate }}"
+  title="{{ 'LANGUAGE.' + activeLanguage.name | translate }}"
   *ngIf="languageService.getDisplayLanguage$() | async as activeLanguage"
 >
   <img alt="" src="https://www.countryflags.io/{{ activeLanguage.iso3166 }}/shiny/32.png" />
@@ -16,6 +16,6 @@
     (click)="languageService.setDisplayLanguage(language)"
   >
     <img alt="" src="https://www.countryflags.io/{{ language.iso3166 }}/shiny/24.png" />
-    <span> {{ 'STATIC.LANGUAGES.' + language.name | translate }}</span>
+    <span> {{ 'LANGUAGE.' + language.name | translate }}</span>
   </a>
 </div>
