@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { CacheEntry, ICache } from './icache';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CacheLocalStorageImplService implements ICache {
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
@@ -42,20 +42,16 @@ export class CacheLocalStorageImplService implements ICache {
   }
 
   remove(url: string): void {
-    if (!url.startsWith(environment.baseHref + '/assets')) {
-      localStorage.removeItem(url);
-    }
+    localStorage.removeItem(url);
   }
 
   cleanCache(): void {
-    // localStorage.clear();
-    const size = localStorage.length / 2;
-    const topHalf = Array(Math.ceil(size));
-    for (const index of topHalf) {
-      const key = localStorage.key(index);
-      if (!key.startsWith(environment.baseHref + '/assets')) {
-        localStorage.removeItem(key);
+    for (let i = 0; i < localStorage.length / 2; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith(environment.baseHref + '/assets')) {
+        continue;
       }
+      localStorage.removeItem(key);
     }
   }
 }

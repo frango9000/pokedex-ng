@@ -1,13 +1,13 @@
 import { ApiName, ApiResource, NamedApiResource } from './domain';
 import { Generation } from './generation';
-import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry } from './pokemon-language';
+import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, LocalizedName } from './pokemon-language';
 import { PokemonType } from './pokemon-type';
 
 export interface NamedApiMove extends NamedApiResource<Move> {
   accuracy?: number;
   crit_rate?: number;
-  generation?: string;
-  names?: { name: string; language: string }[];
+  generation?: number;
+  names?: LocalizedName[];
   power?: number;
   pp?: number;
   type?: string;

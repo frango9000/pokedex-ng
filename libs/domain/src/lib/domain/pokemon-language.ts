@@ -12,6 +12,7 @@ export interface PokemonLanguage extends ApiResource {
 
 export interface NamedApiLanguage extends NamedApiResource<PokemonLanguage> {
   iso3166: string;
+  names?: LocalizedName[];
 }
 
 export interface ApiFlavorTextEntry {
@@ -29,4 +30,9 @@ export interface ApiEffectEntry {
 export interface ApiEffectChange {
   effect_entries: ApiEffectEntry[];
   version_group: NamedApiResource<GameVersionGroup>;
+}
+
+export interface LocalizedName {
+  name: string;
+  language: string;
 }

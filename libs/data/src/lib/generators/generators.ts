@@ -1,4 +1,5 @@
 import {
+  ApiResource,
   GameVersionGroup,
   Generation,
   Item,
@@ -19,9 +20,9 @@ import {
 import { Axios } from 'axios-observable';
 import * as fs from 'fs';
 import { Observable, Subject } from 'rxjs';
-import { concatAll, delay, map, mergeMap, retry } from 'rxjs/operators';
+import { concatAll, delay, filter, map, mergeMap, retry } from 'rxjs/operators';
 
-export abstract class AbstractGenerator<T, N> {
+export abstract class AbstractGenerator<T extends ApiResource, N extends ApiResource> {
   protected host = 'https://pokeapi.co/api/v2';
   protected filePath = './apps/pokedex-ng/src/assets/data';
   protected append = false;
@@ -72,7 +73,7 @@ export abstract class AbstractGenerator<T, N> {
     process.stdout.write(
       `${this._getPercentage()}% | [${this.list.length}/${
         this.total
-      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${(resource as any).id}`
+      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${this.getResourceId(resource)}`
     );
   }
 
@@ -109,7 +110,8 @@ export abstract class AbstractGenerator<T, N> {
           Axios.get<T>(resource.url).pipe(
             retry(10),
             delay(this.delay),
-            map((value) => value.data)
+            map((value) => value.data),
+            filter((value) => this.filterResources(value))
           )
         );
       });
@@ -124,13 +126,25 @@ export abstract class AbstractGenerator<T, N> {
   protected _getRemainingTime(): number {
     return Math.trunc((this.total - this.list.length) / (1000 / this.delay));
   }
+
+  protected getResourceId(resource: T) {
+    return resource.id;
+  }
+
+  protected filterResources(resource: T) {
+    return !!resource;
+  }
 }
 
 function getId(url: string): number {
-  return Number(url.split('/').reverse()[1]) || 0;
+  try {
+    return Number(url?.split('/').reverse()[1]) || 0;
+  } catch (e) {
+    return 0;
+  }
 }
 
-interface PokemonWithGeneration {
+interface PokemonWithGeneration extends ApiResource {
   pokemon: Pokemon;
   species: Species;
 }
@@ -177,15 +191,8 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithGeneration, N
     }, console.error);
   }
 
-  protected onNext(resource: PokemonWithGeneration): void {
-    this.list.push(this.mapResource(resource));
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    process.stdout.write(
-      `${this._getPercentage()}% | [${this.list.length}/${
-        this.total
-      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${resource.pokemon.id}`
-    );
+  protected getResourceId(resource: PokemonWithGeneration) {
+    return resource.pokemon.id;
   }
 }
 
@@ -200,7 +207,7 @@ export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove>
       id: resource.id,
       accuracy: resource.accuracy,
       crit_rate: resource.meta?.crit_rate,
-      generation: resource.generation.name,
+      generation: getId(resource.generation?.url),
       names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
       power: resource.power,
       pp: resource.pp,
@@ -235,7 +242,12 @@ export class PokemonLanguageGenerator extends AbstractGenerator<PokemonLanguage,
       name: resource.name,
       id: resource.id,
       iso3166: resource.iso3166,
+      names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
     };
+  }
+
+  protected filterResources(resource: PokemonLanguage): boolean {
+    return super.filterResources(resource) && resource.names.length && resource.official;
   }
 }
 
@@ -256,6 +268,7 @@ export class PokemonTypeGenerator extends AbstractGenerator<PokemonType, NamedAp
         no_damage_from: resource.damage_relations.no_damage_from.map((value) => value.name),
         no_damage_to: resource.damage_relations.no_damage_to.map((value) => value.name),
       },
+      names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
     };
   }
 }
@@ -271,7 +284,7 @@ export class PokemonItemGenerator extends AbstractGenerator<Item, NamedApiItem> 
       id: resource.id,
       category: resource.category.name,
       cost: resource.cost,
-      names: resource.names,
+      names: resource.names.map((name) => ({ name: name.name, language: name.language.name })),
       sprite: resource.sprites.default,
     };
   }

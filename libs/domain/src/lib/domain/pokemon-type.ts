@@ -1,4 +1,5 @@
 import { ApiName, NamedApiResource } from './domain';
+import { LocalizedName } from './pokemon-language';
 
 export interface NamedApiPokemonType extends NamedApiResource<PokemonType> {
   damage_relations?: {
@@ -9,6 +10,7 @@ export interface NamedApiPokemonType extends NamedApiResource<PokemonType> {
     no_damage_from?: string[];
     no_damage_to?: string[];
   };
+  names?: LocalizedName[];
 }
 
 export interface PokemonType {

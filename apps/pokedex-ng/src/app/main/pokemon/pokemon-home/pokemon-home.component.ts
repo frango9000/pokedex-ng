@@ -26,21 +26,19 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this._filterChange$
         .pipe(
-          tap((x) => (x ? (this.offset = this.increment) : (this.offset += this.increment))),
+          tap((reset) => (reset ? (this.offset = this.increment) : (this.offset += this.increment))),
           switchMap(() => this.pokemonService.getAllPokemonFiltered()),
           map((list) => list.slice(0, this.offset))
         )
-        .subscribe((list) => {
-          this.pokemonList = list;
-        })
+        .subscribe((list) => (this.pokemonList = list))
     );
     this.subscriptions.add(
       this.filterService
         .getGridMode$()
         .pipe(skip(1))
         .subscribe((gridMode) => {
-          this._filterChange$.next(this.gridMode != gridMode);
           this.gridMode = gridMode;
+          this._filterChange$.next(this.gridMode != gridMode);
         })
     );
     this.subscriptions.add(

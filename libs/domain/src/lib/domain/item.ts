@@ -4,8 +4,9 @@ import {
   ApiName,
   ApiResource,
   EvolutionChain,
+  GameVersion,
   GenerationGameIndex,
-  ItemHolderPokemonVersionDetail,
+  LocalizedName,
   NamedApiResource,
   NamedApiVersionGroup,
   Pokemon,
@@ -13,7 +14,7 @@ import {
 
 export interface NamedApiItem extends NamedApiResource<Item> {
   cost: number;
-  names: ApiName[];
+  names: LocalizedName[];
   category: string;
   sprite: string;
 }
@@ -44,6 +45,11 @@ export interface ItemCategory extends ApiResource {
 
 export interface ItemSprites {
   default: string;
+}
+
+export interface ItemHolderPokemonVersionDetail {
+  rarity: number;
+  version: NamedApiResource<GameVersion>;
 }
 
 export interface ItemHolderPokemon {
