@@ -2,31 +2,31 @@
   <table class="table mb-0" *ngIf="ability; else loading">
     <tbody>
       <tr class="first-row-border-0">
-        <td>{{ 'UI.ABILITY.NAME' | translate }}</td>
-        <td>{{ 'ABILITY.' + ability.name + '.NAME' | translate }}</td>
+        <td>{{ "UI.ABILITY.NAME" | translate }}</td>
+        <td>{{ "ABILITY." + ability.name + ".NAME" | translate }}</td>
       </tr>
       <tr title="{{ 'UI.ABILITY.DESCRIPTION_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.DESCRIPTION' | translate }}</td>
+        <td>{{ "UI.ABILITY.DESCRIPTION" | translate }}</td>
         <td>
-          {{ 'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + this.activeVersion | translate }}
+          {{ "ABILITY." + ability.name + ".FLAVOR_TEXT." | withVersionGroup | async }}
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.GENERATION_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.GENERATION' | translate }}</td>
+        <td>{{ "UI.ABILITY.GENERATION" | translate }}</td>
         <td>
-          {{ 'STATIC.GENERATION.NUMBER.' + ability.generation.name | translate }}
+          {{ "STATIC.GENERATION.NUMBER." + ability.generation.name | translate }}
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.EFFECT_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.EFFECT' | translate }}</td>
+        <td>{{ "UI.ABILITY.EFFECT" | translate }}</td>
         <td>
-          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.EFFECT' | translate }}
+          {{ "ABILITY." + ability.name + ".EFFECT_ENTRY.EFFECT" | translate }}
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.EFFECT_TITLE_SHORT' | translate }}">
-        <td>{{ 'UI.ABILITY.EFFECT_SHORT' | translate }}</td>
+        <td>{{ "UI.ABILITY.EFFECT_SHORT" | translate }}</td>
         <td>
-          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.SHORT' | translate }}
+          {{ "ABILITY." + ability.name + ".EFFECT_ENTRY.SHORT" | translate }}
         </td>
       </tr>
     </tbody>
@@ -34,7 +34,7 @@
   <ng-template #loading>
     <div class="text-center">
       <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-        <span class="sr-only">{{ 'LOADING' | translate }}</span>
+        <span class="sr-only">{{ "LOADING" | translate }}</span>
       </div>
     </div>
   </ng-template>

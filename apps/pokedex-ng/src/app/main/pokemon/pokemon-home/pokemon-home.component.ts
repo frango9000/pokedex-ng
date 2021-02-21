@@ -23,7 +23,7 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private pokemonService: PokemonService,
-    private filterService: FilterService,
+    public filterService: FilterService,
     public appNavbarService: AppNavbarService
   ) {}
 
@@ -68,17 +68,5 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   renderMore(): void {
     this._filterChange$.next(false);
-  }
-
-  testReset() {
-    this._filterChange$.next(true);
-  }
-
-  testNoReset() {
-    this._filterChange$.next(false);
-  }
-
-  clearFilters() {
-    this.filterService.clearAllFilters();
   }
 }

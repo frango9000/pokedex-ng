@@ -16,6 +16,7 @@ import { PositionPipe } from './pipes/position.pipe';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { ResourceIdPipe } from './pipes/resource-id.pipe';
 import { RomanPipe } from './pipes/roman.pipe';
+import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     FilterBarComponent,
     GenerationFilterComponent,
     TypeFilterComponent,
+    WithVersionGroupPipe,
   ],
   exports: [
     NavbarComponent,
@@ -47,6 +49,7 @@ import { RomanPipe } from './pipes/roman.pipe';
     FilterBarComponent,
     GenerationFilterComponent,
     TypeFilterComponent,
+    WithVersionGroupPipe,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })

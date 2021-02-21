@@ -6,15 +6,17 @@
     >
       <pokedex-ng-generation-filter></pokedex-ng-generation-filter>
       <pokedex-ng-type-filter class="ml-1"></pokedex-ng-type-filter>
-      <button mdbBtn type="button" color="primary" class="px-3 ml-1" mdbWavesEffect (click)="clearFilters()" size="sm">
+      <button
+        mdbBtn
+        type="button"
+        color="primary"
+        class="px-3 ml-1"
+        mdbWavesEffect
+        (click)="this.filterService.clearAllFilters()"
+        size="sm"
+      >
         <i class="fas fa-times"></i>
       </button>
-      <!--      <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="testReset()" size="sm">-->
-      <!--        <span>Reset</span>-->
-      <!--      </button>-->
-      <!--      <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="testNoReset()" size="sm">-->
-      <!--        <span>NO Reset</span>-->
-      <!--      </button>-->
     </div>
   </div>
   <div class="row px-md-2 px-lg-4">

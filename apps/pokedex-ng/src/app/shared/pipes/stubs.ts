@@ -29,3 +29,8 @@ export class StubResourceIdPipe implements PipeTransform, Partial<ResourceIdPipe
 export class StubRomanPipe implements PipeTransform, Partial<RomanPipe> {
   public transform = jest.fn();
 }
+
+@Pipe({ name: 'withVersionGroup' })
+export class StubWithVersionGroupPipe implements PipeTransform, Partial<StubWithVersionGroupPipe> {
+  transform = () => '';
+}

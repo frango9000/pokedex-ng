@@ -10,9 +10,9 @@
     </div>
   </div>
   <mdb-card-body class="py-0 px-2 px-sm-4">
-    <div *ngIf="pokemonSpecies; else loading">
+    <div>
       <div *ngIf="pokemonSpecies.flavor_text_entries" class="overflow-auto text-center my-2">
-        {{ "SPECIES." + pokemonSpecies.name + ".FLAVOR_TEXT." + this.activeVersion | translate }}
+        {{ "SPECIES." + pokemonSpecies.name + ".FLAVOR_TEXT." | withVersionGroup | async }}
       </div>
       <table class="table mb-0">
         <tbody>
@@ -30,7 +30,9 @@
             <td>{{ "UI.SPECIES.INFO.COLOR" | translate }}</td>
             <td>
               {{ pokemonSpecies.color.name | titlecase }}
-              <span [ngStyle]="{ 'background-color': pokemonSpecies.color.name }">__</span>
+              <span [ngStyle]="{ 'background-color': pokemonSpecies.color.name, color: pokemonSpecies.color.name }"
+                >__</span
+              >
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | translate }}">
@@ -90,13 +92,6 @@
         </tbody>
       </table>
     </div>
-    <ng-template #loading>
-      <div class="text-center">
-        <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-          <span class="sr-only">{{ "LOADING" | translate }}</span>
-        </div>
-      </div>
-    </ng-template>
   </mdb-card-body>
 </mdb-card>
 <ng-template #loading>

@@ -20,7 +20,7 @@
       <tr *ngIf="move.type" title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | translate }}">
         <td>{{ "UI.MOVE.DAMAGE_TYPE" | translate }}</td>
         <td>
-          <span [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }" class="p-1 text-white">{{
+          <span [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }" class="p-1 text-white rounded-lg">{{
             "TYPE." + move.type.name | translate | uppercase
           }}</span>
         </td>
@@ -116,7 +116,7 @@
       <tr title="{{ 'UI.MOVE.DESCRIPTION_TITLE' | translate }}">
         <td>{{ "UI.MOVE.DESCRIPTION" | translate }}</td>
         <td>
-          {{ "MOVE." + move.name + ".FLAVOR_TEXT." + this.activeVersion | translate }}
+          {{ "MOVE." + move.name + ".FLAVOR_TEXT." | withVersionGroup | async }}
         </td>
       </tr>
       <tr title="{{ 'UI.MOVE.EFFECT_CHANCE_TITLE' | translate }}" *ngIf="move.effect_chance">

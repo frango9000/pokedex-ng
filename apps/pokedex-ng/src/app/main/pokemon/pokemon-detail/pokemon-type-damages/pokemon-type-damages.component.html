@@ -10,7 +10,7 @@
     </div>
   </div>
   <mdb-card-body class="p-2 py-0 px-sm-4">
-    <div class="container-fluid" *ngIf="types && types.length > 0; else loading">
+    <div class="container-fluid" *ngIf="types?.length; else loading">
       <div class="row px-0">
         <div class="col-12 col-sm-6">
           <div class="text-center">

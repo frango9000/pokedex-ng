@@ -1,7 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Move } from '@pokedex-ng/domain';
-import { Subscription } from 'rxjs';
-import { GameVersionService } from '../../../../../shared/services/game-version.service';
 import { MoveService } from '../../../../../shared/services/move.service';
 
 @Component({
@@ -9,24 +7,16 @@ import { MoveService } from '../../../../../shared/services/move.service';
   templateUrl: './pokemon-move.component.html',
   styleUrls: ['./pokemon-move.component.scss'],
 })
-export class PokemonMoveComponent implements OnInit, OnDestroy {
+export class PokemonMoveComponent implements OnInit {
   @Input() moveId: string | number;
 
-  move: Move;
+  public move: Move;
 
-  activeVersion = 'en';
-  private versionSub: Subscription;
-
-  constructor(private pokemonMoveService: MoveService, private pokemonVersionService: GameVersionService) {}
+  constructor(private pokemonMoveService: MoveService) {}
 
   ngOnInit(): void {
-    this.versionSub = this.pokemonVersionService.getActiveVersion$().subscribe((value) => (this.activeVersion = value));
     this.pokemonMoveService.fetchApiOneMove(this.moveId).subscribe((move) => {
       this.move = move;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.versionSub?.unsubscribe();
   }
 }
