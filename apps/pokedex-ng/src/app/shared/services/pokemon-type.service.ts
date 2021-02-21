@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NamedApiPokemonType, NamedApiResource, NamedApiResourceList, PokemonType } from '@pokedex-ng/domain';
-import { Observable } from 'rxjs';
-import { map, shareReplay, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 
@@ -10,17 +11,27 @@ import { serviceLog } from './cache/icache';
   providedIn: 'root',
 })
 export class PokemonTypeService {
-  constructor(public httpClient: HttpClient) {}
+  private types$ = new BehaviorSubject<NamedApiPokemonType[]>([]);
+
+  constructor(public httpClient: HttpClient, private translateService: TranslateService) {
+    this._fetchAllTypes().subscribe((types) => {
+      this.types$.next(types);
+    });
+  }
 
   getAllTypes(): Observable<NamedApiPokemonType[]> {
-    return this.httpClient.get<NamedApiPokemonType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
+    return this.types$.asObservable();
   }
 
   getOneType(typeId: string | number): Observable<NamedApiPokemonType> {
     return this.getAllTypes().pipe(map((value) => value.find((value1) => value1.name === typeId)));
   }
 
-  apiAllTypes(offset = 0, limit = 100): Observable<NamedApiResource[]> {
+  private _fetchAllTypes(): Observable<NamedApiPokemonType[]> {
+    return this.httpClient.get<NamedApiPokemonType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
+  }
+
+  private _fetchApiAllTypes(offset = 0, limit = 100): Observable<NamedApiResource[]> {
     const params: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
       .get<NamedApiResourceList>(environment.apiUrl + '/type', { params })
@@ -31,9 +42,27 @@ export class PokemonTypeService {
       );
   }
 
-  apiOneType(typeId: string | number): Observable<PokemonType> {
+  private _fetchApiOneType(typeId: string | number): Observable<PokemonType> {
     return this.httpClient
       .get<PokemonType>(environment.apiUrl + '/type/' + typeId)
       .pipe(tap(serviceLog), shareReplay());
+  }
+
+  parseTranslations() {
+    this.types$.pipe(skip(1)).subscribe((value) => {
+      value.forEach((type) => {
+        type.names.forEach((name) => {
+          this.translateService.setTranslation(
+            name.language,
+            {
+              TYPE: {
+                [type.name]: name.name,
+              },
+            },
+            true
+          );
+        });
+      });
+    });
   }
 }

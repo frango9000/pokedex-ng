@@ -2,16 +2,20 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NamedApiResource, PokemonAbilities, PokemonMoves, PokemonStats } from '@pokedex-ng/domain';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../shared/pipes/stubs';
+import { NamedApiResource, Pokemon, PokemonAbilities, PokemonMoves, PokemonStats } from '@pokedex-ng/domain';
 import { stubPokemonServiceProvider } from '../../../shared/services/pokemon.service.stub';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonDetailComponent } from './pokemon-detail.component';
+import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
 import { PokemonMovesComponent } from './pokemon-moves/pokemon-moves.component';
 import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.component';
 import { PokemonStatsComponent } from './pokemon-stats/pokemon-stats.component';
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type-damages.component';
+
+@Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
+export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
+  @Input() public pokemon: Pokemon;
+}
 
 @Component({ selector: 'app-pokemon-species', template: '' })
 export class PokemonSpeciesStubComponent implements Partial<PokemonSpeciesComponent> {
@@ -45,11 +49,10 @@ describe('PokemonDetailComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), RouterTestingModule, MDBBootstrapModule.forRoot()],
+        imports: [TranslateModule.forRoot(), RouterTestingModule],
         declarations: [
-          StubPokeTypeColorPipe,
-          StubExpandableResourcesPipe,
           PokemonDetailComponent,
+          StubPokemonInfoComponent,
           PokemonSpeciesStubComponent,
           PokemonStatsStubComponent,
           PokemonTypeDamagesStubComponent,

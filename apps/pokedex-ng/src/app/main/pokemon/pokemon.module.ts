@@ -23,6 +23,7 @@ import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
 import { PokemonTableComponent } from './pokemon-home/pokemon-table/pokemon-table.component';
 
 import { PokemonRoutingModule } from './pokemon-routing.module';
+import { PokemonInfoComponent } from './pokemon-detail/pokemon-info/pokemon-info.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     PokemonSpeciesInfoComponent,
     PokemonEvolutionChainComponent,
     PokemonEvolutionLinkComponent,
+    PokemonInfoComponent,
   ],
   imports: [CommonModule, PokemonRoutingModule, MDBBootstrapModule.forRoot(), SharedModule, InfiniteScrollModule],
   providers: [ResourceIdPipe],

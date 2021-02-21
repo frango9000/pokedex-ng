@@ -65,7 +65,7 @@ export class PokemonMoveComponent implements OnInit, OnDestroy {
       defaultFlavorTextIndex > -1
         ? move.flavor_text_entries[defaultFlavorTextIndex].flavor_text
         : 'MOVE_TRANSLATE_ERROR_001';
-    this.pokemonLanguageService.getAllLanguages().subscribe((languages) => {
+    this.pokemonLanguageService.getAllLanguages$().subscribe((languages) => {
       this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = move.flavor_text_entries.findIndex(

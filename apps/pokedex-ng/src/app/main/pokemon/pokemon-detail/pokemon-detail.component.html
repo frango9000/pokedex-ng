@@ -1,110 +1,21 @@
-<div class="container-fluid px-0 px-md-4">
-  <div class="row justify-content-center mb-2">
-    <mdb-card class="max-detail-size w-100 py-2">
-      <div class="view rgba-white-slight waves-light pt-1" mdbWavesEffect>
-        <div *ngIf="pokemon; else loading" class="container-fluid">
-          <div class="row">
-            <div class="col-2 text-left align-middle">
-              <a
-                class="btn btn-primary p-1 px-2"
-                role="button"
-                aria-expanded="false"
-                aria-controls=""
-                [routerLink]="['/pokemon', this.pokemon.id - 1]"
-              >
-                <mdb-icon fas icon="chevron-left" size="1x"></mdb-icon>
-              </a>
-            </div>
-            <div class="col-8">
-              <h5 class="text-center text-white pt-1">
-                <span
-                  class="px-2 py-1 mx-1 rounded-lg"
-                  *ngFor="let type of pokemon.types"
-                  [ngStyle]="{
-                    'background-color': type.type.name | pokeTypeColor
-                  }"
-                  >{{ 'STATIC.TYPES.' + type.type.name | translate | uppercase }}</span
-                >
-              </h5>
-            </div>
-            <div class="col-2 text-right align-middle">
-              <a
-                class="btn btn-primary p-1 px-2"
-                role="button"
-                aria-expanded="false"
-                aria-controls=""
-                [routerLink]="['/pokemon', this.pokemon.id + 1]"
-              >
-                <mdb-icon fas icon="chevron-right" size="1x"></mdb-icon>
-              </a>
-            </div>
-          </div>
-          <div class="row">
-            <img
-              class="mx-auto my-1 img-fluid"
-              width="200"
-              src="{{ pokemon.sprites.front_default }}"
-              alt="Card image cap"
-            />
-          </div>
-        </div>
-      </div>
-      <mdb-card-body class="py-0 px-2 px-sm-4">
-        <div *ngIf="pokemon; else loading">
-          <div class="text-center">
-            <h4>{{ pokemon.name | titlecase }}</h4>
-          </div>
-          <table class="table mb-0">
-            <tbody>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.ID' | translate }}</td>
-                <td># {{ pokemon.id }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | translate }}</td>
-                <td>
-                  {{ pokemon.base_experience }}
-                  {{ 'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | translate }}
-                </td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.WEIGHT' | translate }}</td>
-                <td>
-                  {{ pokemon.weight / 10 }}
-                  {{ 'UI.POKEMON.INFO.WEIGHT_UNIT' | translate }}
-                </td>
-              </tr>
-              <tr>
-                <td>{{ 'UI.POKEMON.INFO.HEIGHT' | translate }}</td>
-                <td>
-                  {{ pokemon.height / 10 }}
-                  {{ 'UI.POKEMON.INFO.HEIGHT_UNIT' | translate }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
-  <div *ngIf="pokemon; else loading">
-    <app-pokemon-species [pokemonSpeciesId]="pokemon.species.name" class=""></app-pokemon-species>
-    <app-pokemon-stats [pokemonStats]="pokemon.stats" class="row justify-content-center my-2"></app-pokemon-stats>
-    <app-pokemon-type-damages
-      [typeIds]="pokemon.types"
-      class="row justify-content-center my-2"
-    ></app-pokemon-type-damages>
-    <app-pokemon-abilities
-      [pokemonAbilities]="pokemon.abilities"
-      class="row justify-content-center my-2"
-    ></app-pokemon-abilities>
-    <app-pokemon-moves [pokemonMoves]="pokemon.moves" class=""></app-pokemon-moves>
-  </div>
+<div class="mt-2 px-0 px-md-4 d-flex flex-column align-items-center" *ngIf="pokemon; else loading">
+  <pokedex-ng-pokemon-info [pokemon]="pokemon" class="pokemon-section w-100 my-2"></pokedex-ng-pokemon-info>
+  <app-pokemon-species
+    [pokemonSpeciesId]="pokemon.species.name"
+    class="pokemon-section w-100 my-2"
+  ></app-pokemon-species>
+  <app-pokemon-stats [pokemonStats]="pokemon.stats" class="pokemon-section w-100 my-2"></app-pokemon-stats>
+  <app-pokemon-type-damages [typeIds]="pokemon.types" class="pokemon-section w-100 my-2"></app-pokemon-type-damages>
+  <app-pokemon-abilities
+    [pokemonAbilities]="pokemon.abilities"
+    class="pokemon-section w-100 my-2"
+  ></app-pokemon-abilities>
+  <app-pokemon-moves [pokemonMoves]="pokemon.moves" class="pokemon-section w-100 my-2"></app-pokemon-moves>
 </div>
 <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-      <span class="sr-only">{{ 'LOADING' | translate }}</span>
+      <span class="sr-only">{{ "LOADING" | translate }}</span>
     </div>
   </div>
 </ng-template>

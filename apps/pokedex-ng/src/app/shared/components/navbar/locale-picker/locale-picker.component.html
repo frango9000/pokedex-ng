@@ -10,12 +10,12 @@
 </a>
 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
   <a
-    *ngFor="let language of languageService.getAvailableLanguages$() | async"
+    *ngFor="let language of languageService.getAllLanguages$() | async"
     mdbWavesEffect
     class="dropdown-item waves-light"
     (click)="languageService.setDisplayLanguage(language)"
   >
     <img alt="" src="https://www.countryflags.io/{{ language.iso3166 }}/shiny/24.png" />
-    <span> {{ 'LANGUAGE.' + language.name | translate }}</span>
+    <span> {{ "LANGUAGE." + language.name | translate }}</span>
   </a>
 </div>

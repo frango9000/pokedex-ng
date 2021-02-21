@@ -43,7 +43,7 @@ export class PokemonSpeciesComponent implements OnChanges {
       defaultFlavorTextIndex > -1
         ? specie.flavor_text_entries[defaultFlavorTextIndex].flavor_text
         : 'SPECIES_TRANSLATE_ERROR_001';
-    this.pokemonLanguageService.getAllLanguages().subscribe((languages) => {
+    this.pokemonLanguageService.getAllLanguages$().subscribe((languages) => {
       this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = specie.flavor_text_entries.findIndex(

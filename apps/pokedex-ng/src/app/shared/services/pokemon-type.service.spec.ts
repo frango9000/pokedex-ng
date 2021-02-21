@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { PokemonTypeService } from './pokemon-type.service';
 
 describe('PokemonTypeService', () => {
@@ -7,7 +8,7 @@ describe('PokemonTypeService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
     });
     service = TestBed.inject(PokemonTypeService);
   });
