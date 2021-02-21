@@ -11,13 +11,13 @@ import { serviceLog } from './cache/icache';
   providedIn: 'root',
 })
 export class LanguageService {
-  private readonly defaultLanguage: NamedApiLanguage = {
+  private readonly DEFAULT_LANGUAGE: NamedApiLanguage = {
     name: 'en',
     id: 9,
     iso3166: 'us',
   };
-  private availableLanguages$ = new BehaviorSubject<NamedApiLanguage[]>([this.defaultLanguage]);
-  private activeLanguage$ = new BehaviorSubject<NamedApiLanguage>(this.defaultLanguage);
+  private availableLanguages$ = new BehaviorSubject<NamedApiLanguage[]>([this.DEFAULT_LANGUAGE]);
+  private activeLanguage$ = new BehaviorSubject<NamedApiLanguage>(this.DEFAULT_LANGUAGE);
 
   constructor(private httpClient: HttpClient, private translateService: TranslateService) {
     this._fetchAllLanguages().subscribe((languages) => {

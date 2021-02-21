@@ -1,6 +1,7 @@
 import { EvolutionChain } from '@pokedex-ng/domain';
-import { BehaviorSubject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { AbilityService } from './ability.service';
+import { AppNavbarService } from './app-navbar.service';
 import { EvolutionChainService } from './evolution-chain.service';
 import { FilterService } from './filter.service';
 import { GameVersionService } from './game-version.service';
@@ -67,9 +68,9 @@ export const stubPokemonServiceProvider = {
 };
 
 export class StubGameVersionService implements Partial<GameVersionService> {
-  public activeVersion$ = new BehaviorSubject('');
-  public matchesDisplayVersion = jest.fn(() => true);
-  public getAllVersionGroups = jest.fn(() => of([]));
+  public getActiveVersion$ = () => of('');
+  public matchesDisplayVersion = () => true;
+  public getAllVersionGroups = () => of([]);
 }
 
 export const stubGameVersionServiceProvider = {
@@ -78,15 +79,10 @@ export const stubGameVersionServiceProvider = {
 };
 
 export class StubFilterService implements Partial<FilterService> {
-  getGridMode$ = () => of(true);
-  showAll = () => undefined;
-  hideAll = () => undefined;
   getGenerationFilter$ = () => of([]);
   getTypeFilter$ = () => of([]);
   getTypesFilterInclusiveness$ = () => of(true);
-  getShowFilters$ = () => of(true);
   getQueryFilter$ = () => of('');
-  hideFilters = () => undefined;
   clearAllFilters = () => undefined;
   filterPokemonByName = (x) => x;
   filterPokemonByType = (x) => x;
@@ -96,6 +92,19 @@ export class StubFilterService implements Partial<FilterService> {
 export const stubFilterServiceProvider = {
   provide: FilterService,
   useClass: StubFilterService,
+};
+
+export class StubAppNavbarService implements Partial<AppNavbarService> {
+  showAll = () => undefined;
+  hideAll = () => undefined;
+  getShowFilters$ = () => of(true);
+  hideFilters = () => undefined;
+  getGridMode$ = () => of(true);
+}
+
+export const stubAppNavbarServiceProvider = {
+  provide: AppNavbarService,
+  useFactory: () => new StubAppNavbarService(),
 };
 
 export class StubEvolutionChainService implements Partial<EvolutionChainService> {

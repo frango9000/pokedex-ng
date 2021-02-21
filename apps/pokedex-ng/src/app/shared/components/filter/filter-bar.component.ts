@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppNavbarService } from '../../services/app-navbar.service';
 import { FilterService } from '../../services/filter.service';
 
 @Component({
@@ -7,9 +8,5 @@ import { FilterService } from '../../services/filter.service';
   styleUrls: ['./filter-bar.component.scss'],
 })
 export class FilterBarComponent {
-  constructor(public filterService: FilterService) {}
-
-  onQueryInput(query: HTMLInputElement) {
-    this.filterService.setQueryFilter(query.value);
-  }
+  constructor(public filterService: FilterService, public appNavbarService: AppNavbarService) {}
 }

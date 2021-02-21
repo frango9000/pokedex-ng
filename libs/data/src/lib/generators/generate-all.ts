@@ -1,11 +1,11 @@
 import * as Generators from './generators';
 
-// new Generators.PokemonGenerator().generateResource();
-// new Generators.PokemonMovesGenerator().generateResource();
-new Generators.PokemonAbilitiesGenerator().generateResource();
-// new Generators.PokemonVersionGenerator().generateResource();
-// new Generators.PokemonLanguageGenerator().generateResource();
-// new Generators.PokemonTypeGenerator().generateResource();
-// new Generators.PokemonItemGenerator().generateResource();
-// new Generators.PokemonMachineGenerator().generateResource();
-// new Generators.PokemonGenerationGenerator().generateResource();
+// new Generators.Generator().generateResource();
+// new Generators.MovesGenerator().generateResource();
+// new Generators.AbilitiesGenerator().generateResource();
+new Generators.VersionGroupGenerator().generateResource();
+// new Generators.LanguageGenerator().generateResource();
+// new Generators.TypeGenerator().generateResource();
+// new Generators.ItemGenerator().generateResource();
+// new Generators.MachineGenerator().generateResource();
+// new Generators.GenerationGenerator().generateResource();

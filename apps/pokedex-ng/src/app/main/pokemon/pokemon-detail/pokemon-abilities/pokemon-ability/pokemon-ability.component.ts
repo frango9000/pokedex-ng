@@ -20,7 +20,7 @@ export class PokemonAbilityComponent implements OnInit, OnDestroy {
   constructor(private abilityService: AbilityService, private versionService: GameVersionService) {}
 
   ngOnInit(): void {
-    this.versionSub = this.versionService.activeVersion$.subscribe((value) => (this.activeVersion = value));
+    this.versionSub = this.versionService.getActiveVersion$().subscribe((value) => (this.activeVersion = value));
     this.abilityService.fetchApiOneAbility(this.abilityId).subscribe((ability) => {
       this.ability = ability;
     });

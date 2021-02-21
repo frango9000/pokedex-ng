@@ -18,7 +18,7 @@ export interface GameVersionGroup extends ApiResource {
 }
 
 export interface NamedApiVersionGroup extends NamedApiResource<GameVersionGroup> {
-  generation?: string;
+  generation?: number;
   order?: number;
   versions?: string[];
 }

@@ -198,7 +198,7 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithGeneration, N
   }
 }
 
-export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove> {
+export class MovesGenerator extends AbstractGenerator<Move, NamedApiMove> {
   getResourceName(): string {
     return 'move';
   }
@@ -218,7 +218,7 @@ export class PokemonMovesGenerator extends AbstractGenerator<Move, NamedApiMove>
   }
 }
 
-export class PokemonAbilitiesGenerator extends AbstractGenerator<Ability, NamedApiAbility> {
+export class AbilitiesGenerator extends AbstractGenerator<Ability, NamedApiAbility> {
   getResourceName(): string {
     return 'ability';
   }
@@ -233,7 +233,7 @@ export class PokemonAbilitiesGenerator extends AbstractGenerator<Ability, NamedA
   }
 }
 
-export class PokemonVersionGenerator extends AbstractGenerator<GameVersionGroup, NamedApiVersionGroup> {
+export class VersionGroupGenerator extends AbstractGenerator<GameVersionGroup, NamedApiVersionGroup> {
   getResourceName(): string {
     return 'version-group';
   }
@@ -242,14 +242,14 @@ export class PokemonVersionGenerator extends AbstractGenerator<GameVersionGroup,
     return {
       name: resource.name,
       id: resource.id,
-      generation: resource.generation.name,
+      generation: getId(resource.generation.url),
       order: resource.order,
       versions: resource.versions.map((value) => value.name),
     };
   }
 }
 
-export class PokemonLanguageGenerator extends AbstractGenerator<PokemonLanguage, NamedApiLanguage> {
+export class LanguageGenerator extends AbstractGenerator<PokemonLanguage, NamedApiLanguage> {
   getResourceName(): string {
     return 'language';
   }
@@ -268,7 +268,7 @@ export class PokemonLanguageGenerator extends AbstractGenerator<PokemonLanguage,
   }
 }
 
-export class PokemonTypeGenerator extends AbstractGenerator<PokemonType, NamedApiPokemonType> {
+export class TypeGenerator extends AbstractGenerator<PokemonType, NamedApiPokemonType> {
   getResourceName(): string {
     return 'type';
   }
@@ -290,7 +290,7 @@ export class PokemonTypeGenerator extends AbstractGenerator<PokemonType, NamedAp
   }
 }
 
-export class PokemonItemGenerator extends AbstractGenerator<Item, NamedApiItem> {
+export class ItemGenerator extends AbstractGenerator<Item, NamedApiItem> {
   getResourceName(): string {
     return 'item';
   }
@@ -307,7 +307,7 @@ export class PokemonItemGenerator extends AbstractGenerator<Item, NamedApiItem> 
   }
 }
 
-export class PokemonMachineGenerator extends AbstractGenerator<Machine, Machine> {
+export class MachineGenerator extends AbstractGenerator<Machine, Machine> {
   getResourceName(): string {
     return 'machine';
   }
@@ -317,7 +317,7 @@ export class PokemonMachineGenerator extends AbstractGenerator<Machine, Machine>
   }
 }
 
-export class PokemonGenerationGenerator extends AbstractGenerator<Generation, Generation> {
+export class GenerationGenerator extends AbstractGenerator<Generation, Generation> {
   getResourceName(): string {
     return 'generation';
   }

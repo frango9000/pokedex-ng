@@ -1,12 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  GameVersionGroup,
-  NamedApiResource,
-  NamedApiResourceList,
-  NamedApiVersionGroup,
-  PokemonType,
-} from '@pokedex-ng/domain';
+import { GameVersionGroup, NamedApiResource, NamedApiResourceList, NamedApiVersionGroup } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -16,21 +10,32 @@ import { serviceLog } from './cache/icache';
   providedIn: 'root',
 })
 export class GameVersionService {
-  public static readonly DEFAULT_VERSION: 'yellow';
+  private readonly DEFAULT_VERSION = 'yellow';
 
-  public activeVersion = 'yellow';
+  private activeVersion$ = new BehaviorSubject<string>(this.DEFAULT_VERSION);
+  private availableVersions$ = new BehaviorSubject<NamedApiVersionGroup[]>([]);
 
-  public activeVersion$ = new BehaviorSubject(this.activeVersion);
-
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this._fetchAllVersionGroups().subscribe((versionGroups) => {
+      this.availableVersions$.next(versionGroups);
+    });
+  }
 
   getAllVersionGroups(): Observable<NamedApiVersionGroup[]> {
+    return this.availableVersions$.asObservable();
+  }
+
+  getActiveVersion$(): Observable<string> {
+    return this.activeVersion$.asObservable();
+  }
+
+  _fetchAllVersionGroups(): Observable<NamedApiVersionGroup[]> {
     return this.httpClient
       .get<NamedApiVersionGroup[]>(environment.baseHref + '/assets/data/version-group.json')
       .pipe(take(1));
   }
 
-  apiAllVersionGroups(): Observable<NamedApiResource[]> {
+  private apiAllVersionGroups(): Observable<NamedApiResource[]> {
     return this.httpClient.get<NamedApiResourceList<NamedApiResource>>(environment.apiUrl + '/version-group').pipe(
       map((value) => value.results),
       tap(serviceLog),
@@ -38,22 +43,19 @@ export class GameVersionService {
     );
   }
 
-  apiOneVersionGroup(versionId: string | number): Observable<GameVersionGroup> {
+  private apiOneVersionGroup(versionId: string | number): Observable<GameVersionGroup> {
     return this.httpClient
-      .get<PokemonType>(environment.apiUrl + '/version-group/' + versionId)
+      .get<GameVersionGroup>(environment.apiUrl + '/version-group/' + versionId)
       .pipe(tap(serviceLog), shareReplay());
   }
 
   setDisplayVersion(version: string): void {
-    this.getAllVersionGroups().subscribe((versions) => {
-      if (versions.findIndex((value) => value.name === version) > -1) {
-        this.activeVersion = version;
-        this.activeVersion$.next(this.activeVersion);
-      }
-    });
+    if (this.availableVersions$.value.find((value) => value.name === version)) {
+      this.activeVersion$.next(version);
+    }
   }
 
   matchesDisplayVersion(version: string): boolean {
-    return this.activeVersion === version;
+    return this.activeVersion$.value === version;
   }
 }

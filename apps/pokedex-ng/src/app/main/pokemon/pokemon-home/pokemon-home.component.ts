@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NamedApiPokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, merge, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
+import { AppNavbarService } from '../../../shared/services/app-navbar.service';
 import { FilterService } from '../../../shared/services/filter.service';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 
@@ -20,7 +21,11 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
 
   private _filterChange$ = new BehaviorSubject<boolean>(true);
 
-  constructor(private pokemonService: PokemonService, public filterService: FilterService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private filterService: FilterService,
+    public appNavbarService: AppNavbarService
+  ) {}
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -33,7 +38,7 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
         .subscribe((list) => (this.pokemonList = list))
     );
     this.subscriptions.add(
-      this.filterService
+      this.appNavbarService
         .getGridMode$()
         .pipe(skip(1))
         .subscribe((gridMode) => {
@@ -51,13 +56,13 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
       })
     );
 
-    this.filterService.showAll();
+    this.appNavbarService.showAll();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    this.filterService.hideAll();
-    this.filterService.hideFilters();
+    this.appNavbarService.hideAll();
+    this.appNavbarService.hideFilters();
     this.filterService.clearAllFilters();
   }
 
