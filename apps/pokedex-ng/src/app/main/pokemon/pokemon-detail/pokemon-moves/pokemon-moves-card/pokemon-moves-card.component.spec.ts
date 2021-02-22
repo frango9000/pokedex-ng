@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../../../shared/pipes/stubs';
+import { stubMoveServiceProvider } from '../../../../../shared/services/stubs';
 import { PokemonMoveComponent } from '../pokemon-move/pokemon-move.component';
 import { PokemonMovesCardComponent } from './pokemon-moves-card.component';
 
@@ -27,6 +28,7 @@ describe('PokemonMovesCardComponent', () => {
           StubPokeTypeColorPipe,
           NgVarDirective,
         ],
+        providers: [stubMoveServiceProvider],
       }).compileComponents();
     })
   );

@@ -53,7 +53,7 @@
         <td>{{ "UI.MOVE.STAT_CHANGE_CHANCE" | translate }}</td>
         <td>{{ move.meta.stat_chance / 100 | percent }}</td>
       </tr>
-      <ng-container *ngIf="move.stat_changes.length > 0">
+      <ng-container *ngIf="move.stat_changes?.length > 0">
         <tr title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | translate }}" *ngFor="let statChange of move.stat_changes">
           <td>{{ "STATIC.STATS." + statChange.stat.name | translate }}</td>
           <td>{{ statChange.change }}</td>

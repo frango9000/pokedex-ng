@@ -90,6 +90,8 @@ export interface PokemonGameIndices {
 export interface PokemonMoves {
   move: NamedApiResource<Move>;
   version_group_details: PokemonVersionGroupDetails[];
+  version_group_detail?: PokemonVersionGroupDetails;
+  type: string;
 }
 
 export interface PokemonVersionGroupDetails {

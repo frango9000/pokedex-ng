@@ -71,3 +71,10 @@ interface PokemonMoveContestCombos {
     use_before: NamedApiResource[];
   };
 }
+
+export enum MoveLearnMethod {
+  LEVEL_UP_METHOD = 'level-up',
+  MACHINE_METHOD = 'machine',
+  EGG_METHOD = 'egg',
+  TUTOR_METHOD = 'tutor',
+}

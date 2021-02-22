@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pokedex-ng-pokemon-info',
@@ -7,5 +8,5 @@ import { Pokemon } from '@pokedex-ng/domain';
   styleUrls: ['./pokemon-info.component.scss'],
 })
 export class PokemonInfoComponent {
-  @Input() public pokemon: Pokemon;
+  @Input() pokemon: Observable<Pokemon>;
 }

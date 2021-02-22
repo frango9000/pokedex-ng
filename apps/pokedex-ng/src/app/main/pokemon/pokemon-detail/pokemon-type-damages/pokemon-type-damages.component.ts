@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { NamedApiPokemonType, NamedApiResource } from '@pokedex-ng/domain';
+import { NamedApiPokemonType, NamedApiResource, Pokemon } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
 import { TypeService } from '../../../../shared/services/type.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class PokemonTypeDamagesComponent implements OnChanges {
     slot: number;
     type: NamedApiResource;
   }[];
+
+  @Input() public pokemon: Observable<Pokemon>;
 
   types: NamedApiPokemonType[];
 

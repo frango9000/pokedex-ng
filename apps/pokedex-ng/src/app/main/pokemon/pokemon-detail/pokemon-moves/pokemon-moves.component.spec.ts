@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NamedApiMove, PokemonMoves } from '@pokedex-ng/domain';
+import { Pokemon, PokemonMoves } from '@pokedex-ng/domain';
+import { Observable, of } from 'rxjs';
 import {
   StubExpandableResourcesPipe,
   StubPokeTypeColorPipe,
@@ -12,11 +13,30 @@ import { PokemonMovesComponent } from './pokemon-moves.component';
 
 @Component({ selector: 'app-pokemon-moves-card', template: '' })
 export class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardComponent> {
-  @Input() moves: PokemonMoves[] = [];
+  @Input() moves$: Observable<PokemonMoves[]> = of([]);
   @Input() cardTitle = '';
   @Input() showLevels = false;
-  @Input() moveTypes: NamedApiMove[];
 }
+
+const mockPokemon: Pokemon = {
+  abilities: [],
+  base_experience: 0,
+  forms: [],
+  game_indices: [],
+  height: 0,
+  held_items: [],
+  id: 0,
+  is_default: false,
+  location_area_encounters: [],
+  moves: [],
+  name: '',
+  order: 0,
+  species: undefined,
+  sprites: undefined,
+  stats: [],
+  types: [],
+  weight: 0,
+};
 
 describe('PokemonMovesComponent', () => {
   let component: PokemonMovesComponent;
@@ -40,6 +60,7 @@ describe('PokemonMovesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesComponent);
     component = fixture.componentInstance;
+    component.pokemon = of(mockPokemon);
     fixture.detectChanges();
   });
 

@@ -1,16 +1,16 @@
-<div class="mt-2 px-0 px-md-4 d-flex flex-column align-items-center" *ngIf="pokemon; else loading">
-  <pokedex-ng-pokemon-info [pokemon]="pokemon" class="pokemon-section w-100 my-2"></pokedex-ng-pokemon-info>
-  <app-pokemon-species
-    [pokemonSpeciesId]="pokemon.species.name"
+<div class="mt-2 px-0 px-md-4 d-flex flex-column align-items-center">
+  <pokedex-ng-pokemon-info
+    [pokemon]="getDisplayedPokemon$()"
     class="pokemon-section w-100 my-2"
-  ></app-pokemon-species>
-  <app-pokemon-stats [pokemonStats]="pokemon.stats" class="pokemon-section w-100 my-2"></app-pokemon-stats>
-  <app-pokemon-type-damages [typeIds]="pokemon.types" class="pokemon-section w-100 my-2"></app-pokemon-type-damages>
-  <app-pokemon-abilities
-    [pokemonAbilities]="pokemon.abilities"
-    class="pokemon-section w-100 my-2"
-  ></app-pokemon-abilities>
-  <app-pokemon-moves [pokemonMoves]="pokemon.moves" class="pokemon-section w-100 my-2"></app-pokemon-moves>
+  ></pokedex-ng-pokemon-info>
+  <!--  <app-pokemon-species [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-species>-->
+  <!--  <app-pokemon-stats [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-stats>-->
+  <!--  <app-pokemon-type-damages-->
+  <!--    [pokemon]="getDisplayedPokemon$()"-->
+  <!--    class="pokemon-section w-100 my-2"-->
+  <!--  ></app-pokemon-type-damages>-->
+  <!--  <app-pokemon-abilities [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>-->
+  <app-pokemon-moves [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-moves>
 </div>
 <ng-template #loading>
   <div class="text-center">

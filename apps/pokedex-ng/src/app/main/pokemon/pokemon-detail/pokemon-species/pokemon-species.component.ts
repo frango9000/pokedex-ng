@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Species } from '@pokedex-ng/domain';
+import { Pokemon, Species } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
 import { SpeciesService } from '../../../../shared/services/species.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { SpeciesService } from '../../../../shared/services/species.service';
 })
 export class PokemonSpeciesComponent implements OnChanges {
   @Input() pokemonSpeciesId: string | number;
+  @Input() pokemon: Observable<Pokemon>;
 
   public pokemonSpecies: Species;
 

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { PokemonAbilities } from '@pokedex-ng/domain';
+import { Pokemon, PokemonAbilities } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-abilities',
@@ -8,4 +9,5 @@ import { PokemonAbilities } from '@pokedex-ng/domain';
 })
 export class PokemonAbilitiesComponent {
   @Input() pokemonAbilities: PokemonAbilities[];
+  @Input() public pokemon: Observable<Pokemon>;
 }

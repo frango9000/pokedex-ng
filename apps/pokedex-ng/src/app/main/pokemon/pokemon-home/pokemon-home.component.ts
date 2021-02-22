@@ -42,8 +42,8 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
         .getGridMode$()
         .pipe(skip(1))
         .subscribe((gridMode) => {
-          this.gridMode = gridMode;
           this._filterChange$.next(this.gridMode != gridMode);
+          this.gridMode = gridMode;
         })
     );
     this.subscriptions.add(

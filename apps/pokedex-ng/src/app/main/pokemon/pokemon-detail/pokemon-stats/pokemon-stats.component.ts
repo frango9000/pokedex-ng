@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { PokemonStats } from '@pokedex-ng/domain';
+import { Pokemon, PokemonStats } from '@pokedex-ng/domain';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-stats',
@@ -8,4 +9,5 @@ import { PokemonStats } from '@pokedex-ng/domain';
 })
 export class PokemonStatsComponent {
   @Input() pokemonStats: PokemonStats[];
+  @Input() public pokemon: Observable<Pokemon>;
 }
