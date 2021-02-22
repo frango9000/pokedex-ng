@@ -60,7 +60,7 @@
     "@fortawesome/fontawesome-free": "~5.15.2",
     "@ngx-translate/core": "~13.0.0",
     "@ngx-translate/http-loader": "~6.0.0",
-    "@popperjs/core": "~2.7.0",
+    "@popperjs/core": "~2.8.2",
     "@types/chart.js": "~2.9.30",
     "angular-bootstrap-md": "~10.1.1",
     "animate.css": "~4.1.1",
