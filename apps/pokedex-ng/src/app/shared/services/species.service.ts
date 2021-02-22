@@ -46,7 +46,7 @@ export class SpeciesService {
         defaultFlavorTextIndex > -1
           ? specie.flavor_text_entries[defaultFlavorTextIndex].flavor_text
           : 'SPECIES_TRANSLATE_ERROR_001';
-      this.pokemonVersionService.getAllVersionGroups().subscribe((versions) => {
+      this.pokemonVersionService.getAllVersionGroups$().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = specie.flavor_text_entries.findIndex(
             (value) => value.language.name === language

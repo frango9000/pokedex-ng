@@ -2,13 +2,20 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { GameVersionService } from '../../services/game-version.service';
 import { stubGameVersionServiceProvider } from '../../services/stubs';
 import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
+import { VersionGroupFilterComponent } from '../filters/version-group-filter/version-group-filter.component';
 
 import { NavbarComponent } from './navbar.component';
 
 @Component({ selector: 'pokedex-ng-locale-picker', template: '' })
 class StubLocalePickerComponent {}
+
+@Component({ selector: 'pokedex-ng-version-group-filter', template: '' })
+export class StubVersionGroupFilterComponent implements Partial<VersionGroupFilterComponent> {
+  constructor(public gameVersionService: GameVersionService) {}
+}
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -18,7 +25,12 @@ describe('NavbarComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
-        declarations: [NavbarComponent, StubLocalePickerComponent, StubFilterBarComponent],
+        declarations: [
+          NavbarComponent,
+          StubLocalePickerComponent,
+          StubFilterBarComponent,
+          StubVersionGroupFilterComponent,
+        ],
         providers: [stubGameVersionServiceProvider],
       }).compileComponents();
     })

@@ -12,20 +12,8 @@
       <li class="nav-item my-auto">
         <pokedex-ng-filter-bar></pokedex-ng-filter-bar>
       </li>
-      <li class="nav-item dropdown my-auto" dropdown *ngIf="this.versions$ | async as versions">
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
-          <mdb-icon fas icon="save"></mdb-icon>
-          <span class="caret">{{ pokemonVersionService.activeVersion }}</span></a
-        >
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a
-            *ngFor="let version of versions"
-            class="dropdown-item waves-light"
-            mdbWavesEffect
-            (click)="this.pokemonVersionService.setDisplayVersion(version.name)"
-            >{{ version.name | titlecase }}</a
-          >
-        </div>
+      <li class="nav-item dropdown my-auto" dropdown *ngIf="appNavbarService.getShowVersionGroupPicker$() | async">
+        <pokedex-ng-version-group-filter></pokedex-ng-version-group-filter>
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown my-auto" dropdown>

@@ -21,7 +21,7 @@ export class GameVersionService {
     });
   }
 
-  getAllVersionGroups(): Observable<NamedApiVersionGroup[]> {
+  getAllVersionGroups$(): Observable<NamedApiVersionGroup[]> {
     return this.availableVersions$.asObservable();
   }
 

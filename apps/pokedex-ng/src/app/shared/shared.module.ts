@@ -6,6 +6,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FilterBarComponent } from './components/filter/filter-bar.component';
 import { GenerationFilterComponent } from './components/filters/generation-filter/generation-filter.component';
 import { TypeFilterComponent } from './components/filters/type-filter/type-filter.component';
+import { VersionGroupFilterComponent } from './components/filters/version-group-filter/version-group-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LocalePickerComponent } from './components/navbar/locale-picker/locale-picker.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,6 +35,7 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     GenerationFilterComponent,
     TypeFilterComponent,
     WithVersionGroupPipe,
+    VersionGroupFilterComponent,
   ],
   exports: [
     NavbarComponent,

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Pokemon } from '@pokedex-ng/domain';
+import { AppNavbarService } from '../../../shared/services/app-navbar.service';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 
 @Component({
@@ -8,10 +9,14 @@ import { PokemonService } from '../../../shared/services/pokemon.service';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent implements OnInit, OnDestroy {
   public pokemon: Pokemon;
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private pokemonService: PokemonService,
+    private appNavbarService: AppNavbarService
+  ) {}
 
   ngOnInit(): void {
     this.pokemon = null;
@@ -20,5 +25,10 @@ export class PokemonDetailComponent implements OnInit {
         this.pokemon = response;
       });
     });
+    this.appNavbarService.showVersionGroupPicker$();
+  }
+
+  ngOnDestroy(): void {
+    this.appNavbarService.hideVersionGroupPicker$();
   }
 }

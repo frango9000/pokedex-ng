@@ -94,7 +94,7 @@ export class AbilityService {
           defaultFlavorTextIndex > -1
             ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
             : 'ABILITY_TRANSLATE_ERROR_001';
-        this.versionService.getAllVersionGroups().subscribe((versions) => {
+        this.versionService.getAllVersionGroups$().subscribe((versions) => {
           languages.forEach((language) => {
             const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
               (value) => value.language.name === language

@@ -1,0 +1,29 @@
+<a
+  dropdownToggle
+  mdbWavesEffect
+  type="button"
+  class="nav-link dropdown-toggle waves-light"
+  title="{{ activeVersion }}"
+  *ngIf="gameVersionService.getActiveVersion$() | async as activeVersion"
+>
+  <img
+    alt="activeVersion"
+    class="img-fluid rounded-lg border border-dark version-group-image"
+    src="/assets/images/version-group/{{ activeVersion }}.jpg"
+  />
+</a>
+<div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+  <a
+    *ngFor="let version of gameVersionService.getAllVersionGroups$() | async"
+    class="dropdown-item waves-light py-1"
+    mdbWavesEffect
+    (click)="gameVersionService.setDisplayVersion(version.name)"
+  >
+    <img
+      alt=""
+      class="img-fluid rounded-lg version-group-list-image"
+      src="/assets/images/version-group/{{ version.name }}.jpg"
+    />
+    <span>{{ version.name | titlecase }}</span>
+  </a>
+</div>

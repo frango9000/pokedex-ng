@@ -10,6 +10,7 @@ export class AppNavbarService {
   private _showSearchBar$ = new BehaviorSubject(false);
   private _showFiltersButton$ = new BehaviorSubject(false);
   private _showFilters$ = new BehaviorSubject(true);
+  private _showVersionGroupPicker$ = new BehaviorSubject<boolean>(false);
 
   getGridMode$(): Observable<boolean> {
     return this._gridMode$.asObservable();
@@ -87,5 +88,17 @@ export class AppNavbarService {
 
   getShowFilters$(): Observable<boolean> {
     return this._showFilters$.asObservable();
+  }
+
+  getShowVersionGroupPicker$(): Observable<boolean> {
+    return this._showVersionGroupPicker$.asObservable();
+  }
+
+  showVersionGroupPicker$() {
+    this._showVersionGroupPicker$.next(true);
+  }
+
+  hideVersionGroupPicker$() {
+    this._showVersionGroupPicker$.next(false);
   }
 }

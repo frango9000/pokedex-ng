@@ -14,7 +14,7 @@ export class CacheService implements ICache {
     private cacheLocalStorageImplService: CacheLocalStorageImplService,
     private cacheMemoryImplService: CacheMemoryImplService
   ) {
-    this.caches.push(cacheMemoryImplService);
+    // this.caches.push(cacheMemoryImplService);
     this.caches.push(cacheLocalStorageImplService);
   }
 
