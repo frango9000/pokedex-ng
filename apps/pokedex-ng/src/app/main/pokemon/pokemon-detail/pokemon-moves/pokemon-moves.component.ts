@@ -83,9 +83,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
               move.version_group_detail.level_learned_at > 0 &&
               move.version_group_detail.move_learn_method.name === MLM.LEVEL_UP_METHOD
           )
-          .sort((a, b) =>
-            a.version_group_details[0].level_learned_at > b.version_group_details[0].level_learned_at ? 1 : -1
-          )
+          .sort((a, b) => (a.version_group_detail.level_learned_at > b.version_group_detail.level_learned_at ? 1 : -1))
       )
     );
   }
