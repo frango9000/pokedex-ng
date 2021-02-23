@@ -90,7 +90,7 @@
     "@nrwl/eslint-plugin-nx": "11.3.0",
     "@nrwl/jest": "11.3.0",
     "@nrwl/node": "11.3.0",
-    "@nrwl/tao": "11.3.0",
+    "@nrwl/tao": "11.3.1",
     "@nrwl/workspace": "11.3.0",
     "@types/jest": "26.0.20",
     "@types/node": "14.14.31",
