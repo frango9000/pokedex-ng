@@ -27,7 +27,6 @@ describe('PokemonAbilitiesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonAbilitiesComponent);
     component = fixture.componentInstance;
-    component.pokemonAbilities = [];
     fixture.detectChanges();
   });
 
