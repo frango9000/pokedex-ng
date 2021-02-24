@@ -28,10 +28,10 @@ export interface Pokemon extends ApiResource {
   location_area_encounters: PokemonLocationAreaEncounters[];
   sprites: PokemonSprites;
   stats: PokemonStats[];
-  types: PokemonTypes[];
+  types: PokeSlotType[];
 }
 
-export interface PokemonTypes {
+export interface PokeSlotType {
   slot: number;
   type: NamedApiResource<PokemonType>;
 }

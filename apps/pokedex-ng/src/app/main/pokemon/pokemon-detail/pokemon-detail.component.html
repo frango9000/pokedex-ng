@@ -8,10 +8,10 @@
   ></pokedex-ng-pokemon-info>
   <app-pokemon-species [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-species>
   <app-pokemon-stats [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-stats>
-  <!--    <app-pokemon-type-damages-->
-  <!--      [pokemon]="getDisplayedPokemon$()"-->
-  <!--      class="pokemon-section w-100 my-2"-->
-  <!--    ></app-pokemon-type-damages>-->
+  <app-pokemon-type-damages
+    [pokemon$]="getDisplayedPokemon$()"
+    class="pokemon-section w-100 my-2"
+  ></app-pokemon-type-damages>
   <app-pokemon-abilities [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>
   <app-pokemon-moves [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-moves>
 </div>

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NamedApiResource, Pokemon } from '@pokedex-ng/domain';
+import { Pokemon } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { stubPokemonServiceProvider } from '../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
@@ -25,7 +25,7 @@ export class PokemonSpeciesStubComponent implements Partial<PokemonSpeciesCompon
 
 @Component({ selector: 'app-pokemon-type-damages', template: '' })
 export class PokemonTypeDamagesStubComponent implements Partial<PokemonTypeDamagesComponent> {
-  @Input() typeIds: { slot: number; type: NamedApiResource }[];
+  @Input() public pokemon$: Observable<Pokemon>;
 }
 
 @Component({ selector: 'app-pokemon-stats', template: '' })

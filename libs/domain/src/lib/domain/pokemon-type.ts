@@ -45,3 +45,13 @@ export interface SelectableType {
   type: NamedApiPokemonType;
   active: boolean;
 }
+
+interface TypeDamageEntry {
+  name: string;
+  multiplier: number;
+}
+
+export interface TypeDamages {
+  weaknesses: TypeDamageEntry[];
+  resistances: TypeDamageEntry[];
+}

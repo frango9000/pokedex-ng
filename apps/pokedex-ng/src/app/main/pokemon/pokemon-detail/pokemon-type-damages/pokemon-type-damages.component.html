@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 pb-2">
+<mdb-card class="max-detail-size w-100 pb-2" *ngIf="typeDamages$ | async as typeDamages; else loading">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="{{ 'UI.TYPE_DAMAGES.TITLE_TITLE' | translate }}">
       <a mdbBtn floating="true">
@@ -10,13 +10,13 @@
     </div>
   </div>
   <mdb-card-body class="p-2 py-0 px-sm-4">
-    <div class="container-fluid" *ngIf="types?.length; else loading">
+    <div class="container-fluid">
       <div class="row px-0">
         <div class="col-12 col-sm-6">
           <div class="text-center">
             <h6>{{ "UI.TYPE_DAMAGES.WEAKNESSES" | translate }}</h6>
           </div>
-          <div class="row my-1 align-items-center text-center px-0" *ngFor="let weakness of weaknesses">
+          <div class="row my-1 align-items-center text-center px-0" *ngFor="let weakness of typeDamages.weaknesses">
             <div class="col-9 rounded-lg" [ngStyle]="{ 'background-color': weakness.name | pokeTypeColor }">
               <h6 class="text-white my-1">
                 {{ "TYPE." + weakness.name | translate | uppercase }}
@@ -31,7 +31,7 @@
           <div class="text-center">
             <h6>{{ "UI.TYPE_DAMAGES.RESISTANCES" | translate }}</h6>
           </div>
-          <div class="row my-1 align-items-center text-center" *ngFor="let resistance of resistances">
+          <div class="row my-1 align-items-center text-center" *ngFor="let resistance of typeDamages.resistances">
             <div
               class="col-9 rounded-lg"
               [ngStyle]="{
@@ -49,12 +49,12 @@
         </div>
       </div>
     </div>
-    <ng-template #loading>
-      <div class="text-center">
-        <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-          <span class="sr-only">{{ "LOADING" | translate }}</span>
-        </div>
-      </div>
-    </ng-template>
   </mdb-card-body>
 </mdb-card>
+<ng-template #loading>
+  <div class="text-center">
+    <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">{{ "LOADING" | translate }}</span>
+    </div>
+  </div>
+</ng-template>
