@@ -60,7 +60,7 @@ describe('PokemonMovesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesComponent);
     component = fixture.componentInstance;
-    component.pokemon = of(mockPokemon);
+    component.pokemon$ = of(mockPokemon);
     fixture.detectChanges();
   });
 

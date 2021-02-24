@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NamedApiResource, Pokemon, PokemonAbilities, PokemonStats } from '@pokedex-ng/domain';
+import { NamedApiResource, Pokemon, PokemonStats } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { stubPokemonServiceProvider } from '../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
@@ -15,7 +15,7 @@ import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type
 
 @Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
 export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
-  @Input() public pokemon: Observable<Pokemon>;
+  @Input() public pokemon$: Observable<Pokemon>;
 }
 
 @Component({ selector: 'app-pokemon-species', template: '' })
@@ -35,12 +35,12 @@ export class PokemonStatsStubComponent implements Partial<PokemonStatsComponent>
 
 @Component({ selector: 'app-pokemon-moves', template: '' })
 export class PokemonMovesStubComponent implements Partial<PokemonMovesComponent> {
-  @Input() pokemon: Observable<Pokemon>;
+  @Input() pokemon$: Observable<Pokemon>;
 }
 
 @Component({ selector: 'app-pokemon-abilities', template: '' })
 export class PokemonAbilitiesStubComponent implements Partial<PokemonAbilitiesComponent> {
-  @Input() pokemonAbilities: PokemonAbilities[] = [];
+  @Input() pokemon$: Observable<Pokemon>;
 }
 
 describe('PokemonDetailComponent', () => {

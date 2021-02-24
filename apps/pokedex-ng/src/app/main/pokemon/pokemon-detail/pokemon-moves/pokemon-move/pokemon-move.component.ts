@@ -15,8 +15,6 @@ export class PokemonMoveComponent implements OnInit {
   constructor(private pokemonMoveService: MoveService) {}
 
   ngOnInit(): void {
-    this.pokemonMoveService.fetchApiOneMove(this.moveId).subscribe((move) => {
-      this.move = move;
-    });
+    this.pokemonMoveService.fetchApiOneMove(this.moveId).subscribe((move) => (this.move = move));
   }
 }

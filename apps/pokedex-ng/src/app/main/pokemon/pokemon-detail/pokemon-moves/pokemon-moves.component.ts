@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MoveLearnMethod as MLM, NamedApiMove, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
+import { MoveLearnMethod as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, mergeMap, skip, take } from 'rxjs/operators';
 import { GameVersionService } from '../../../../shared/services/game-version.service';
@@ -11,63 +11,17 @@ import { MoveService } from '../../../../shared/services/move.service';
   styleUrls: ['./pokemon-moves.component.scss'],
 })
 export class PokemonMovesComponent implements OnDestroy, OnInit {
-  @Input() public pokemon: Observable<Pokemon>;
+  @Input() public pokemon$: Observable<Pokemon>;
 
   private versionFilteredMoves$: BehaviorSubject<PokemonMoves[]> = new BehaviorSubject<PokemonMoves[]>([]);
 
   private subscriptions: Subscription = new Subscription();
 
-  public moveTypes: NamedApiMove[] = [];
-
   constructor(private gameVersionService: GameVersionService, private moveService: MoveService) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.pokemon
-        .pipe(
-          mergeMap((pokemon) =>
-            this.gameVersionService.getActiveVersion$().pipe(
-              take(1),
-              map((version) => ({ pokemon, version }))
-            )
-          )
-        )
-        .subscribe((pair) => this._emitFilteredMoves(pair.pokemon, pair.version))
-    );
-    this.subscriptions.add(
-      this.gameVersionService
-        .getActiveVersion$()
-        .pipe(
-          skip(1),
-          mergeMap((version) =>
-            this.pokemon.pipe(
-              take(1),
-              map((pokemon) => ({ version, pokemon }))
-            )
-          )
-        )
-        .subscribe((pair) => {
-          this._emitFilteredMoves(pair.pokemon, pair.version);
-        })
-    );
-  }
-
-  private _emitFilteredMoves(pokemon: Pokemon, version: string) {
-    this.moveService.getAllMoves().subscribe((moves) =>
-      this.versionFilteredMoves$.next(
-        pokemon.moves
-          .filter((filteredMove) =>
-            filteredMove.version_group_details.some((detail) => detail.version_group.name === version)
-          )
-          .map((filteredMove) => ({
-            ...filteredMove,
-            type: moves.find((move) => move.name === filteredMove.move.name)?.type,
-            version_group_detail: filteredMove.version_group_details.find(
-              (value) => value.version_group.name === version
-            ),
-          }))
-      )
-    );
+    this.subscriptions.add(this._pokemonUpdateSubscription());
+    this.subscriptions.add(this._versionUpdatesSubscription());
   }
 
   ngOnDestroy(): void {
@@ -114,6 +68,54 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
         moves
           .filter((move) => move.version_group_detail.move_learn_method.name === MLM.EGG_METHOD)
           .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
+      )
+    );
+  }
+
+  private _versionUpdatesSubscription(): Subscription {
+    return this.gameVersionService
+      .getActiveVersion$()
+      .pipe(
+        skip(1),
+        mergeMap((version) =>
+          this.pokemon$.pipe(
+            take(1),
+            map((pokemon) => ({ version, pokemon }))
+          )
+        )
+      )
+      .subscribe((pair) => {
+        this._emitFilteredMoves(pair.pokemon, pair.version);
+      });
+  }
+
+  private _pokemonUpdateSubscription(): Subscription {
+    return this.pokemon$
+      .pipe(
+        mergeMap((pokemon) =>
+          this.gameVersionService.getActiveVersion$().pipe(
+            take(1),
+            map((version) => ({ pokemon, version }))
+          )
+        )
+      )
+      .subscribe((pair) => this._emitFilteredMoves(pair.pokemon, pair.version));
+  }
+
+  private _emitFilteredMoves(pokemon: Pokemon, version: string): void {
+    this.moveService.getAllMoves().subscribe((moves) =>
+      this.versionFilteredMoves$.next(
+        pokemon.moves
+          .filter((filteredMove) =>
+            filteredMove.version_group_details.some((detail) => detail.version_group.name === version)
+          )
+          .map((filteredMove) => ({
+            ...filteredMove,
+            type: moves.find((move) => move.name === filteredMove.move.name)?.type,
+            version_group_detail: filteredMove.version_group_details.find(
+              (value) => value.version_group.name === version
+            ),
+          }))
       )
     );
   }
