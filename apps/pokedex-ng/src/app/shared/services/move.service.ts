@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Move, NamedApiMove, NamedApiResource } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
+import { filter, map, shareReplay, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 import { GameVersionService } from './game-version.service';
@@ -21,9 +21,7 @@ export class MoveService {
     private pokemonVersionService: GameVersionService,
     private languageService: LanguageService
   ) {
-    this._fetchAllMoves().subscribe((moves) => {
-      this.moves$.next(moves);
-    });
+    this._fetchAllMoves().subscribe((moves) => this.moves$.next(moves));
   }
 
   getAllMoves(): Observable<NamedApiMove[]> {
@@ -32,11 +30,9 @@ export class MoveService {
 
   fetchApiOneMove(moveId: string | number): Observable<Move> {
     return this.httpClient.get<Move>(environment.apiUrl + '/move/' + moveId).pipe(
+      take(1),
       tap(serviceLog),
-      shareReplay(),
-      tap((move) => {
-        this.parseTranslation(move);
-      })
+      tap((move) => this.parseTranslation(move))
     );
   }
 
@@ -54,18 +50,25 @@ export class MoveService {
   }
 
   parseTranslations() {
-    this.moves$.pipe(skip(1)).subscribe((value) => {
-      this.languageService.getAvailableLanguageIds$().subscribe((languages) => {
-        value.forEach((move) => {
-          move.names
-            .filter((localizedName) => languages.includes(localizedName.language))
-            .forEach((name) => {
-              this.translateService.setTranslation(name.language, { MOVE: { [move.name]: { NAME: name.name } } }, true);
-            });
+    this.moves$
+      .pipe(skip(1))
+      .pipe(filter((moves) => !!moves.length))
+      .subscribe((value) => {
+        this.languageService.getAvailableLanguageIds$().subscribe((languages) => {
+          value.forEach((move) => {
+            move.names
+              .filter((localizedName) => languages.includes(localizedName.language))
+              .forEach((name) => {
+                this.translateService.setTranslation(
+                  name.language,
+                  { MOVE: { [move.name]: { NAME: name.name } } },
+                  true
+                );
+              });
+          });
+          this.languageService.refresh();
         });
-        this.languageService.refresh();
       });
-    });
   }
 
   private parseTranslation(move: Move) {

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Pokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { AppNavbarService } from '../../../shared/services/app-navbar.service';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 
@@ -21,12 +21,12 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.pokemonService.apiOnePokemon(params['pokemon']).subscribe((response) => {
+    this.route.params
+      .pipe(switchMap((params: Params) => this.pokemonService.apiOnePokemon(params['pokemon'])))
+      .subscribe((response) => {
         this.pokemon$.next(response);
       });
-    });
-    this.appNavbarService.showVersionGroupPicker$();
+    this.appNavbarService.showVersionGroupPicker();
   }
 
   getDisplayedPokemon$(): Observable<Pokemon> {
@@ -34,6 +34,6 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.appNavbarService.hideVersionGroupPicker$();
+    this.appNavbarService.hideVersionGroupPicker();
   }
 }

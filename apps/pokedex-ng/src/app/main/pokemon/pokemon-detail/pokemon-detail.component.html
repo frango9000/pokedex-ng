@@ -1,6 +1,9 @@
-<div class="mt-2 px-0 px-md-4 d-flex flex-column align-items-center">
+<div
+  class="mt-2 px-0 px-md-4 d-flex flex-column align-items-center"
+  *ngIf="getDisplayedPokemon$() | async; else loading"
+>
   <pokedex-ng-pokemon-info
-    [pokemon]="getDisplayedPokemon$()"
+    [pokemon$]="getDisplayedPokemon$()"
     class="pokemon-section w-100 my-2"
   ></pokedex-ng-pokemon-info>
   <!--  <app-pokemon-species [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-species>-->
@@ -9,8 +12,8 @@
   <!--    [pokemon]="getDisplayedPokemon$()"-->
   <!--    class="pokemon-section w-100 my-2"-->
   <!--  ></app-pokemon-type-damages>-->
-  <!--  <app-pokemon-abilities [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>-->
-  <app-pokemon-moves [pokemon]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-moves>
+  <app-pokemon-abilities [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>
+  <app-pokemon-moves [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-moves>
 </div>
 <ng-template #loading>
   <div class="text-center">

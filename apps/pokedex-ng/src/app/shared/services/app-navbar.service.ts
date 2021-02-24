@@ -94,11 +94,11 @@ export class AppNavbarService {
     return this._showVersionGroupPicker$.asObservable();
   }
 
-  showVersionGroupPicker$() {
+  showVersionGroupPicker() {
     this._showVersionGroupPicker$.next(true);
   }
 
-  hideVersionGroupPicker$() {
+  hideVersionGroupPicker() {
     this._showVersionGroupPicker$.next(false);
   }
 }

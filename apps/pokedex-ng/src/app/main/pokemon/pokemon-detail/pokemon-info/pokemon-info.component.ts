@@ -8,5 +8,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon-info.component.scss'],
 })
 export class PokemonInfoComponent {
-  @Input() pokemon: Observable<Pokemon>;
+  @Input() pokemon$: Observable<Pokemon>;
 }

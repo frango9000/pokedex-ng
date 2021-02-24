@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 my-1 pb-2">
+<mdb-card class="max-detail-size w-100 my-1 pb-2" *ngIf="pokemon$ | async as pokemon">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="{{ 'UI.ABILITY.ABILITIES' | translate }}">
       <a mdbBtn floating="true">
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let ability of pokemonAbilities | expandableResources">
+        <ng-container *ngFor="let ability of pokemon.abilities | expandableResources">
           <tr>
             <td class="align-middle">{{ ability.key.slot }}</td>
             <td class="align-middle w-75">

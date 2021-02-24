@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Ability, NamedApiAbility } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
+import { map, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 import { GameVersionService } from './game-version.service';
@@ -36,11 +36,9 @@ export class AbilityService {
 
   fetchApiOneAbility(abilityId: string | number): Observable<Ability> {
     return this.httpClient.get<Ability>(environment.apiUrl + '/ability/' + abilityId).pipe(
+      take(1),
       tap(serviceLog),
-      shareReplay(),
-      tap((ability) => {
-        this.parseTranslation(ability);
-      })
+      tap((ability) => this.parseTranslation(ability))
     );
   }
 
