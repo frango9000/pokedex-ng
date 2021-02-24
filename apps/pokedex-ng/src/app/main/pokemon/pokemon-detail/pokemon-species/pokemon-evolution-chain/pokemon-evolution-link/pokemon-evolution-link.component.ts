@@ -15,6 +15,7 @@ export class PokemonEvolutionLinkComponent {
   @Input() link: EvolutionChainLink;
 
   getEvolutionMethodText(method: EvolutionDetail): PokemonEvolutionTriggerDetails {
+    //TODO: Make this more efficient
     let trigger: PokemonEvolutionTriggerDetail;
     const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {

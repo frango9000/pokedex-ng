@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { shareReplay, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { serviceLog } from './cache/icache';
 import { GameVersionService } from './game-version.service';
@@ -22,11 +22,9 @@ export class SpeciesService {
 
   fetchApiOneSpecies(speciesId: string | number): Observable<Species> {
     return this.httpClient.get<Species>(environment.apiUrl + '/pokemon-species/' + speciesId).pipe(
+      take(1),
       tap(serviceLog),
-      shareReplay(),
-      tap((species) => {
-        this.parseTranslation(species);
-      })
+      tap((species) => this.parseTranslation(species))
     );
   }
 
@@ -34,13 +32,13 @@ export class SpeciesService {
     this.languageService.getAvailableLanguageIds$().subscribe((languages) => {
       specie.genera
         .filter((effect) => languages.includes(effect.language.name))
-        .forEach((name) => {
+        .forEach((name) =>
           this.translateService.setTranslation(
             name.language.name,
             { SPECIES: { [specie.name]: { GENERA: name.genus } } },
             true
-          );
-        });
+          )
+        );
       const defaultFlavorTextIndex = specie.flavor_text_entries.findIndex((value) => value.language.name === 'en');
       const defaultFlavorText =
         defaultFlavorTextIndex > -1
@@ -75,19 +73,21 @@ export class SpeciesService {
           .filter((effect) => languages.includes(effect.language.name))
           .forEach((entry) => {
             const groupIndex = versions.findIndex((value) => value.name.includes(entry.version.name));
-            this.translateService.setTranslation(
-              entry.language.name,
-              {
-                SPECIES: {
-                  [specie.name]: {
-                    FLAVOR_TEXT: {
-                      [versions[groupIndex].name]: entry.flavor_text,
+            if (groupIndex > -1) {
+              this.translateService.setTranslation(
+                entry.language.name,
+                {
+                  SPECIES: {
+                    [specie.name]: {
+                      FLAVOR_TEXT: {
+                        [versions[groupIndex].name]: entry.flavor_text,
+                      },
                     },
                   },
                 },
-              },
-              true
-            );
+                true
+              );
+            }
           });
       });
       this.languageService.refresh();

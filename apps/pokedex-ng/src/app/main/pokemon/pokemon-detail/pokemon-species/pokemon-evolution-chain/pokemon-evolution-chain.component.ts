@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { EvolutionChain, Species } from '@pokedex-ng/domain';
-import { splitResourceId } from '../../../../../shared/pipes/resource-id.pipe';
+import { Component, Input, OnInit } from '@angular/core';
+import { EvolutionChain } from '@pokedex-ng/domain';
+import { Observable, Subject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { EvolutionChainService } from '../../../../../shared/services/evolution-chain.service';
 
 @Component({
@@ -8,21 +9,15 @@ import { EvolutionChainService } from '../../../../../shared/services/evolution-
   templateUrl: './pokemon-evolution-chain.component.html',
   styleUrls: ['./pokemon-evolution-chain.component.scss'],
 })
-export class PokemonEvolutionChainComponent implements OnChanges {
-  @Input() public pokemonSpecies: Species;
-
-  public evolutionChain: EvolutionChain;
+export class PokemonEvolutionChainComponent implements OnInit {
+  @Input() evolutionChainId$: Observable<number>;
+  public evolutionChain$: Subject<EvolutionChain> = new Subject();
 
   constructor(private pokemonEvolutionChainService: EvolutionChainService) {}
 
-  ngOnChanges(): void {
-    if (this.pokemonSpecies) {
-      this.evolutionChain = null;
-      this.pokemonEvolutionChainService
-        .getEvolutionChain(splitResourceId(this.pokemonSpecies.evolution_chain.url))
-        .subscribe((value) => {
-          this.evolutionChain = value;
-        });
-    }
+  ngOnInit(): void {
+    this.evolutionChainId$
+      .pipe(switchMap((speciesId) => this.pokemonEvolutionChainService.getEvolutionChain(speciesId)))
+      .subscribe((value) => this.evolutionChain$.next(value));
   }
 }

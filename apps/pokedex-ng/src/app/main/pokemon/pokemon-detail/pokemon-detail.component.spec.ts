@@ -15,12 +15,12 @@ import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type
 
 @Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
 export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
-  @Input() public pokemon$: Observable<Pokemon>;
+  @Input() pokemon$: Observable<Pokemon>;
 }
 
 @Component({ selector: 'app-pokemon-species', template: '' })
 export class PokemonSpeciesStubComponent implements Partial<PokemonSpeciesComponent> {
-  @Input() pokemonSpeciesId: string | number;
+  @Input() pokemon$: Observable<Pokemon>;
 }
 
 @Component({ selector: 'app-pokemon-type-damages', template: '' })

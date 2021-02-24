@@ -23,12 +23,12 @@
               </div>
               <div>
                 {{
-                  'UI.EVOLUTION_CHAIN.LINK.' + triggerAndConditions.trigger.title
+                  "UI.EVOLUTION_CHAIN.LINK." + triggerAndConditions.trigger.title
                     | translate: { value: triggerAndConditions.trigger.value }
                 }}
               </div>
               <div class="overflow-auto" *ngFor="let condition of triggerAndConditions.conditions">
-                {{ 'UI.EVOLUTION_CHAIN.LINK.' + condition.title | translate: { value: condition.value } }}
+                {{ "UI.EVOLUTION_CHAIN.LINK." + condition.title | translate: { value: condition.value } }}
               </div>
             </div>
           </div>

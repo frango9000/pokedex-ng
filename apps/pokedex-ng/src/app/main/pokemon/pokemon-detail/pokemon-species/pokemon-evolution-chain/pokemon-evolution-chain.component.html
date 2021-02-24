@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 pb-2" *ngIf="pokemonSpecies; else loading">
+<mdb-card class="max-detail-size w-100 pb-2" *ngIf="evolutionChain$ | async as evolutionChain; else loading">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="{{ 'UI.EVOLUTION_CHAIN.TITLE_TITLE' | translate }}">
       <a mdbBtn floating="true">
@@ -9,11 +9,9 @@
       </div>
     </div>
   </div>
-  <div *ngIf="pokemonSpecies && evolutionChain; else loading">
-    <mdb-card-body class="py-0 px-2 px-sm-4">
-      <app-pokemon-evolution-link [link]="evolutionChain.chain"></app-pokemon-evolution-link>
-    </mdb-card-body>
-  </div>
+  <mdb-card-body class="py-0 px-2 px-sm-4">
+    <app-pokemon-evolution-link [link]="evolutionChain.chain"></app-pokemon-evolution-link>
+  </mdb-card-body>
 </mdb-card>
 <ng-template #loading>
   <div class="text-center">

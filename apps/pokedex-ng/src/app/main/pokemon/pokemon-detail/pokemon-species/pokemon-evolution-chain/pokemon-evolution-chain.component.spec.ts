@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { EvolutionChainLink } from '@pokedex-ng/domain';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 import { stubEvolutionChainServiceProvider } from '../../../../../shared/services/stubs';
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain.component';
 import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link/pokemon-evolution-link.component';
@@ -29,6 +30,7 @@ describe('PokemonEvolutionChainComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonEvolutionChainComponent);
     component = fixture.componentInstance;
+    component.evolutionChainId$ = of(null);
     fixture.detectChanges();
   });
 
