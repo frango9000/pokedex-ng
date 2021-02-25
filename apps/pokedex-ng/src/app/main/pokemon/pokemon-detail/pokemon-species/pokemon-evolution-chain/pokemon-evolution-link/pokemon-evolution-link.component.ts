@@ -1,21 +1,47 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   EvolutionChainLink,
   EvolutionDetail,
   PokemonEvolutionTriggerDetail,
   PokemonEvolutionTriggerDetails,
 } from '@pokedex-ng/domain';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-evolution-link',
   templateUrl: './pokemon-evolution-link.component.html',
   styleUrls: ['./pokemon-evolution-link.component.scss'],
 })
-export class PokemonEvolutionLinkComponent {
-  @Input() link: EvolutionChainLink;
+export class PokemonEvolutionLinkComponent implements OnInit {
+  @Input() link$: Observable<EvolutionChainLink>;
+
+  generatedContent$: BehaviorSubject<EvolutionChainLink> = new BehaviorSubject<EvolutionChainLink>(null);
+
+  ngOnInit(): void {
+    this.link$
+      .pipe(
+        map((link) => {
+          this.recursivelyAddLinkObservable(link);
+          link.evolves_to.forEach((evolvesTo) => {
+            evolvesTo.evolution_details.forEach((evoDetail) => {
+              evoDetail.processed_details = this.getEvolutionMethodText(evoDetail);
+            });
+          });
+          return link;
+        })
+      )
+      .subscribe((link) => this.generatedContent$.next(link));
+  }
+
+  private recursivelyAddLinkObservable(link: EvolutionChainLink) {
+    link.evolves_to.forEach((value) => {
+      value.self$ = of(value);
+      this.recursivelyAddLinkObservable(value);
+    });
+  }
 
   getEvolutionMethodText(method: EvolutionDetail): PokemonEvolutionTriggerDetails {
-    //TODO: Make this more efficient
     let trigger: PokemonEvolutionTriggerDetail;
     const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {

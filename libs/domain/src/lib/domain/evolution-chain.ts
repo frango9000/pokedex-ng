@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { ApiName, ApiResource, NamedApiResource } from './domain';
 
 export interface EvolutionChain extends ApiResource {
@@ -11,6 +12,9 @@ export interface EvolutionChainLink {
   species: NamedApiResource;
   evolution_details: EvolutionDetail[];
   evolves_to?: EvolutionChainLink[];
+
+  //Non Api Content, Used in templates
+  self$: Observable<EvolutionChainLink>;
 }
 
 export interface EvolutionDetail {
@@ -32,6 +36,9 @@ export interface EvolutionDetail {
   time_of_day: string;
   trade_species: NamedApiResource;
   turn_upside_down: boolean;
+
+  //Non Api Content, Used in templates
+  processed_details: PokemonEvolutionTriggerDetails;
 }
 
 export interface EvolutionTrigger {

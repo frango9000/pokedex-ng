@@ -10,5 +10,5 @@ export class ResourceIdPipe implements PipeTransform {
 }
 
 export function splitResourceId(url: string): number {
-  return Number(url.split('/').reverse()[1]);
+  return url ? Number(url.split('/').reverse()[1]) : null;
 }

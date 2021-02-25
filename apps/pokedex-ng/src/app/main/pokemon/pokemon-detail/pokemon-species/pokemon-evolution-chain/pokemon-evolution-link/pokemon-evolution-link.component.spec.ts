@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 import { NgVarDirective } from '../../../../../../shared/directives/ng-var.directive';
 import { StubResourceIdPipe } from '../../../../../../shared/pipes/stubs';
 
@@ -23,6 +24,7 @@ describe('PokemonEvolutionLinkComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonEvolutionLinkComponent);
     component = fixture.componentInstance;
+    component.link$ = of(null);
     fixture.detectChanges();
   });
 

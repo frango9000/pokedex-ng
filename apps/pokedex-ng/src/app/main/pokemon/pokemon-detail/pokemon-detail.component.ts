@@ -24,6 +24,7 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
     this.route.params
       .pipe(switchMap((params: Params) => this.pokemonService.apiOnePokemon(params['pokemon'])))
       .subscribe((response) => {
+        this.pokemon$.next(null);
         this.pokemon$.next(response);
       });
     this.appNavbarService.showVersionGroupPicker();

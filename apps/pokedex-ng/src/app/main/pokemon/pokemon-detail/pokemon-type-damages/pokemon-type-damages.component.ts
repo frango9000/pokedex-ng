@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NamedApiPokemonType, Pokemon, PokeSlotType, TypeDamages } from '@pokedex-ng/domain';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { TypeService } from '../../../../shared/services/type.service';
 
@@ -12,7 +12,7 @@ import { TypeService } from '../../../../shared/services/type.service';
 export class PokemonTypeDamagesComponent implements OnInit, OnDestroy {
   @Input() public pokemon$: Observable<Pokemon>;
 
-  public typeDamages$: Subject<TypeDamages> = new Subject<TypeDamages>();
+  public typeDamages$: BehaviorSubject<TypeDamages> = new BehaviorSubject<TypeDamages>(null);
 
   private subscription = new Subscription();
 

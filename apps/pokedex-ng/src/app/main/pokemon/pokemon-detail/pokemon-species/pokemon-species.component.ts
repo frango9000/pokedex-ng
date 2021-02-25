@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon, Species } from '@pokedex-ng/domain';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { splitResourceId } from '../../../../shared/pipes/resource-id.pipe';
 import { SpeciesService } from '../../../../shared/services/species.service';
@@ -13,7 +13,7 @@ import { SpeciesService } from '../../../../shared/services/species.service';
 export class PokemonSpeciesComponent implements OnInit {
   @Input() pokemon$: Observable<Pokemon>;
 
-  private pokemonSpecies$: Subject<Species> = new BehaviorSubject<Species>(null);
+  private pokemonSpecies$: BehaviorSubject<Species> = new BehaviorSubject<Species>(null);
 
   constructor(private speciesService: SpeciesService) {}
 
@@ -26,10 +26,13 @@ export class PokemonSpeciesComponent implements OnInit {
   }
 
   getPokemonSpecies$(): Observable<Species> {
-    return this.pokemonSpecies$.pipe(filter((specie) => !!specie));
+    return this.pokemonSpecies$.asObservable();
   }
 
   getSpeciesEvolutionChainId(): Observable<number> {
-    return this.getPokemonSpecies$().pipe(map((specie) => splitResourceId(specie.evolution_chain.url)));
+    return this.getPokemonSpecies$().pipe(
+      filter((species) => !!species),
+      map((specie) => splitResourceId(specie?.evolution_chain?.url))
+    );
   }
 }
