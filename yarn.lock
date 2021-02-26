@@ -1695,6 +1695,18 @@
     strip-json-comments "2.0.1"
     tslib "^2.0.0"
 
+"@nrwl/devkit@11.4.0":
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-11.4.0.tgz#acd0d1af9bf31e71afe9d6330e2bc1fef7a618fe"
+  integrity sha512-G7Y5pGQucf+KEvJoXycdEEMBXXFnJ0hG62h/waIsPZpaKFj/hMqICAhqXG7ilKFI6jnTNh/c3Tw9GMaVnakDzw==
+  dependencies:
+    "@nrwl/tao" "11.4.0"
+    ejs "^3.1.5"
+    ignore "^5.0.4"
+    semver "6.3.0"
+    strip-json-comments "2.0.1"
+    tslib "^2.0.0"
+
 "@nrwl/eslint-plugin-nx@11.3.2":
   version "11.3.2"
   resolved "https://registry.yarnpkg.com/@nrwl/eslint-plugin-nx/-/eslint-plugin-nx-11.3.2.tgz#2cf69ef3f5f5b8dad8e7ce020be97691e8285c09"
@@ -1710,6 +1722,17 @@
   integrity sha512-S6BzRmvuq3tHlyuU5Yqc0qRHdLNw4ltQQvA7yjAkfvnrY1WhZbnOLac0juFqHUYnJYaLcy58Wyly7szU21X76A==
   dependencies:
     "@nrwl/devkit" "11.3.2"
+    jest-resolve "^26.6.2"
+    rxjs "^6.5.4"
+    strip-json-comments "2.0.1"
+    tslib "^2.0.0"
+
+"@nrwl/jest@11.4.0":
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-11.4.0.tgz#1bae17e86982ba73564c78468488d75cef2ff87e"
+  integrity sha512-PJ9TyyIzoQE7s294pgAGzpqJMA5AmEJBzlikj9me2x2aEylpKVtj6/egkYR1xvFVtr1ILUSkeVgCI8vEV5WgJg==
+  dependencies:
+    "@nrwl/devkit" "11.4.0"
     jest-resolve "^26.6.2"
     rxjs "^6.5.4"
     strip-json-comments "2.0.1"
@@ -1758,6 +1781,23 @@
   version "11.3.2"
   resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-11.3.2.tgz#9f81de23f0ffa417cbc72e316e670f96f1813934"
   integrity sha512-fWRO3c09QuGu2Mp6AX3hDh5PL9OFkW6D7vnetapgEYIaLxZ4fSQv7vNWDgzchDEk30QBSyiDv7wDAL0iVC8mpg==
+  dependencies:
+    chalk "4.1.0"
+    fs-extra "7.0.1"
+    inquirer "^6.3.1"
+    minimist "^1.2.5"
+    rxjs "^6.5.4"
+    rxjs-for-await "0.0.2"
+    semver "6.3.0"
+    strip-json-comments "2.0.1"
+    tmp "0.0.33"
+    tslib "^2.0.0"
+    yargs-parser "20.0.0"
+
+"@nrwl/tao@11.4.0":
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-11.4.0.tgz#0e9365531a6fa5a3e47d12dc6903045590e82bb9"
+  integrity sha512-vQY/xzfAsdCxjXpz2Pob9HdE5HNrfnWbVqdH1z6yC2BdXXB7i3q0WTW167jlBq9ObMfKso+SnkCqbpTDXp1zqw==
   dependencies:
     chalk "4.1.0"
     fs-extra "7.0.1"
