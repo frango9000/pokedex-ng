@@ -4,8 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Ability, PxAbility } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
 import { GameVersionService } from './game-version.service';
 import { LanguageService } from './language.service';
 
@@ -26,18 +24,17 @@ export class AbilityService {
     });
   }
 
-  getAllMoves(): Observable<PxAbility[]> {
+  getAllAbilities(): Observable<PxAbility[]> {
     return this.abilities$.asObservable();
   }
 
   private _fetchAllAbilities(): Observable<PxAbility[]> {
-    return this.httpClient.get<PxAbility[]>(environment.baseHref + '/assets/data/ability.json').pipe(take(1));
+    return this.httpClient.get<PxAbility[]>('pokedex-ng/assets/data/ability.json').pipe(take(1));
   }
 
   fetchApiOneAbility(abilityId: string | number): Observable<Ability> {
-    return this.httpClient.get<Ability>(environment.apiUrl + '/ability/' + abilityId).pipe(
+    return this.httpClient.get<Ability>('api/ability/' + abilityId).pipe(
       take(1),
-      tap(serviceLog),
       tap((ability) => this.parseTranslation(ability))
     );
   }

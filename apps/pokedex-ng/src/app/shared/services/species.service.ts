@@ -4,8 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
 import { GameVersionService } from './game-version.service';
 import { LanguageService } from './language.service';
 
@@ -21,9 +19,8 @@ export class SpeciesService {
   ) {}
 
   fetchApiOneSpecies(speciesId: string | number): Observable<Species> {
-    return this.httpClient.get<Species>(environment.apiUrl + '/pokemon-species/' + speciesId).pipe(
+    return this.httpClient.get<Species>('api/pokemon-species/' + speciesId).pipe(
       take(1),
-      tap(serviceLog),
       tap((species) => this.parseTranslation(species))
     );
   }

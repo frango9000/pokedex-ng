@@ -8,8 +8,9 @@ import { AppInitService } from './app-init.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CacheInterceptor } from './shared/services/cache/cache.interceptor';
-import { CacheService } from './shared/services/cache/cache.service';
+import { ApiUrlInterceptor } from './shared/interceptors/api-url/api-url.interceptor';
+import { CacheInterceptor } from './shared/interceptors/cache/cache.interceptor';
+import { CacheService } from './shared/interceptors/cache/cache.service';
 import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -41,6 +42,7 @@ export function initializeApp(appInitService: AppInitService) {
   ],
   providers: [
     CacheService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitService], multi: true },
   ],

@@ -1,11 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language, PxLanguage, NamedApiResource } from '@pokedex-ng/domain';
+import { ApiResourceList, Language, NamedApiResource, PxLanguage } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, skip, take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
+import { map, skip, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +17,7 @@ export class LanguageService {
   private availableLanguages$ = new BehaviorSubject<PxLanguage[]>([this.DEFAULT_LANGUAGE]);
   private activeLanguage$ = new BehaviorSubject<PxLanguage>(this.DEFAULT_LANGUAGE);
 
-  constructor(private httpClient: HttpClient, private translateService: TranslateService) {
+  constructor(private http: HttpClient, private translateService: TranslateService) {
     this._fetchAllLanguages().subscribe((languages) => {
       this.availableLanguages$.next(languages);
     });
@@ -52,18 +50,18 @@ export class LanguageService {
   }
 
   private _fetchAllLanguages(): Observable<PxLanguage[]> {
-    return this.httpClient.get<PxLanguage[]>(environment.baseHref + '/assets/data/language.json').pipe(take(1));
+    return this.http.get<PxLanguage[]>('pokedex-ng/assets/data/language.json').pipe(take(1));
   }
 
   private _apiFetchAllLanguages(): Observable<NamedApiResource[]> {
-    return this.httpClient.get<NamedApiResource[]>(environment.apiUrl + '/language').pipe(
-      tap(serviceLog),
+    return this.http.get<ApiResourceList>('api/language').pipe(
+      take(1),
       map((value) => value.results)
     );
   }
 
   private _apiFetchLanguage(languageId: string | number): Observable<Language> {
-    return this.httpClient.get<Language>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
+    return this.http.get<Language>('api/language/' + languageId).pipe(take(1));
   }
 
   parseTranslations() {

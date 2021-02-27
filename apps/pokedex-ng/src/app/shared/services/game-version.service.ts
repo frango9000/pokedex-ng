@@ -2,9 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResourceList, GameVersionGroup, NamedApiResource, PxGameVersionGroup } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay, take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -36,22 +34,17 @@ export class GameVersionService {
   }
 
   _fetchAllVersionGroups(): Observable<PxGameVersionGroup[]> {
-    return this.httpClient
-      .get<PxGameVersionGroup[]>(environment.baseHref + '/assets/data/version-group.json')
-      .pipe(take(1));
+    return this.httpClient.get<PxGameVersionGroup[]>('pokedex-ng/assets/data/version-group.json').pipe(take(1));
   }
 
   private apiAllVersionGroups(): Observable<NamedApiResource[]> {
-    return this.httpClient.get<ApiResourceList>(environment.apiUrl + '/version-group').pipe(
-      map((value) => value.results),
-      tap(serviceLog),
-      shareReplay()
+    return this.httpClient.get<ApiResourceList>('api/version-group').pipe(
+      take(1),
+      map((value) => value.results)
     );
   }
 
   private apiOneVersionGroup(versionId: string | number): Observable<GameVersionGroup> {
-    return this.httpClient
-      .get<GameVersionGroup>(environment.apiUrl + '/version-group/' + versionId)
-      .pipe(tap(serviceLog), shareReplay());
+    return this.httpClient.get<GameVersionGroup>('api/version-group/' + versionId).pipe(take(1));
   }
 }

@@ -1,11 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Move, NamedApiResource, PxMove } from '@pokedex-ng/domain';
+import { ApiResourceList, Move, NamedApiResource, PxMove } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, shareReplay, skip, take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
+import { filter, map, skip, take, tap } from 'rxjs/operators';
 import { GameVersionService } from './game-version.service';
 import { LanguageService } from './language.service';
 
@@ -29,24 +27,21 @@ export class MoveService {
   }
 
   fetchApiOneMove(moveId: string | number): Observable<Move> {
-    return this.httpClient.get<Move>(environment.apiUrl + '/move/' + moveId).pipe(
+    return this.httpClient.get<Move>('api/move/' + moveId).pipe(
       take(1),
-      tap(serviceLog),
       tap((move) => this.parseTranslation(move))
     );
   }
 
   private _fetchAllMoves(): Observable<PxMove[]> {
-    return this.httpClient.get<PxMove[]>(environment.baseHref + '/assets/data/move.json').pipe(take(1));
+    return this.httpClient.get<PxMove[]>('pokedex-ng/assets/data/move.json').pipe(take(1));
   }
 
   private _fetchApiAllMoves(): Observable<NamedApiResource[]> {
-    const pageParams: HttpParams = new HttpParams().append('limit', String(1000));
-    return this.httpClient.get(environment.apiUrl + '/move/', { params: pageParams }).pipe(
-      tap(serviceLog),
-      shareReplay(),
-      map((value) => value.results)
-    );
+    const params: HttpParams = new HttpParams().append('limit', String(1000));
+    return this.httpClient
+      .get<ApiResourceList>('api/move/', { params })
+      .pipe(map((value) => value.results));
   }
 
   parseTranslations() {

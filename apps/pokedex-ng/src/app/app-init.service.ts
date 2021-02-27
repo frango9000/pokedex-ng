@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 import { AbilityService } from './shared/services/ability.service';
 import { LanguageService } from './shared/services/language.service';
 import { MoveService } from './shared/services/move.service';
@@ -18,7 +17,6 @@ export class AppInitService {
 
   init() {
     return new Promise<void>((resolve) => {
-      environment.logDebug ? console.log('Pokedex Init') : undefined;
       this.languageService.parseTranslations();
       this.typeService.parseTranslations();
       this.moveService.parseTranslations();

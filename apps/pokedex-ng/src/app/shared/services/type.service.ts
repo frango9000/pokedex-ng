@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiResourceList, NamedApiResource, PokeType, PxType } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { serviceLog } from './cache/icache';
+import { map, skip, take } from 'rxjs/operators';
 import { LanguageService } from './language.service';
 
 @Injectable({
@@ -33,22 +31,21 @@ export class TypeService {
   }
 
   private _fetchAllTypes(): Observable<PxType[]> {
-    return this.httpClient.get<PxType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
+    return this.httpClient.get<PxType[]>('pokedex-ng/assets/data/type.json').pipe(take(1));
   }
 
   private _fetchApiAllTypes(offset = 0, limit = 100): Observable<NamedApiResource[]> {
     const params: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
-      .get<ApiResourceList>(environment.apiUrl + '/type', { params })
+      .get<ApiResourceList>('api/type', { params })
       .pipe(
-        map((value) => value.results),
-        tap(serviceLog),
-        shareReplay()
+        take(1),
+        map((value) => value.results)
       );
   }
 
   private _fetchApiOneType(typeId: string | number): Observable<PokeType> {
-    return this.httpClient.get<PokeType>(environment.apiUrl + '/type/' + typeId).pipe(tap(serviceLog), shareReplay());
+    return this.httpClient.get<PokeType>('api/type/' + typeId).pipe(take(1));
   }
 
   parseTranslations() {
