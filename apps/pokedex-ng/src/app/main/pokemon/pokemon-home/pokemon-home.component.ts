@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NamedApiPokemon } from '@pokedex-ng/domain';
+import { PxPokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, merge, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
 import { AppNavbarService } from '../../../shared/services/app-navbar.service';
@@ -12,7 +12,7 @@ import { PokemonService } from '../../../shared/services/pokemon.service';
   styleUrls: ['./pokemon-home.component.scss'],
 })
 export class PokemonHomeComponent implements OnInit, OnDestroy {
-  public pokemonList: NamedApiPokemon[] = [];
+  public pokemonList: PxPokemon[] = [];
   public offset = 0;
   public increment = 72;
 

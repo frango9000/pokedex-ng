@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NamedApiPokemonType, Pokemon, PokeSlotType, TypeDamages } from '@pokedex-ng/domain';
+import { Pokemon, PokeSlotType, PxType, TypeDamages } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { TypeService } from '../../../../shared/services/type.service';
@@ -36,7 +36,7 @@ export class PokemonTypeDamagesComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  private generateTypeDamages(namedTypes: PokeSlotType[], allTypes: NamedApiPokemonType[]): void {
+  private generateTypeDamages(namedTypes: PokeSlotType[], allTypes: PxType[]): void {
     let generatedTypeDamages = allTypes.map((value1) => ({ name: value1.name, multiplier: 1 }));
     const pokeTypes = namedTypes.map((namedType) => allTypes.find((type) => type.name === namedType.type.name));
     pokeTypes.forEach((type) => {

@@ -1,17 +1,22 @@
-import { Ability } from './ability';
-import { ApiResource, NamedApiResource } from './domain';
-import { GameVersion, NamedApiVersionGroup } from './game-version';
-import { Item } from './item';
-import { Move } from './move';
-import { PokemonType } from './pokemon-type';
-import { Species } from './species';
+import {
+  Ability,
+  ApiEntity,
+  GameVersion,
+  Item,
+  Move,
+  NamedApiResource,
+  PokedexResource,
+  PokeType,
+  PxGameVersionGroup,
+  Species,
+} from '@pokedex-ng/domain';
 
-export interface NamedApiPokemon extends NamedApiResource<Pokemon> {
+export interface PxPokemon extends PokedexResource {
   types?: string[];
   generation?: number;
 }
 
-export interface Pokemon extends ApiResource {
+export interface Pokemon extends ApiEntity {
   id: number;
   name: string;
   base_experience: number;
@@ -33,7 +38,7 @@ export interface Pokemon extends ApiResource {
 
 export interface PokeSlotType {
   slot: number;
-  type: NamedApiResource<PokemonType>;
+  type: NamedApiResource<PokeType>;
 }
 
 export interface PokemonStats {
@@ -96,6 +101,6 @@ export interface PokemonMoves {
 
 export interface PokemonVersionGroupDetails {
   level_learned_at: number;
-  version_group: NamedApiVersionGroup;
+  version_group: PxGameVersionGroup;
   move_learn_method: NamedApiResource;
 }

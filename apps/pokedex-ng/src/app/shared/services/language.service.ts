@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NamedApiLanguage, NamedApiResource, PokemonLanguage } from '@pokedex-ng/domain';
+import { Language, PxLanguage, NamedApiResource } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -11,13 +11,13 @@ import { serviceLog } from './cache/icache';
   providedIn: 'root',
 })
 export class LanguageService {
-  private readonly DEFAULT_LANGUAGE: NamedApiLanguage = {
+  private readonly DEFAULT_LANGUAGE: PxLanguage = {
     name: 'en',
     id: 9,
     iso3166: 'us',
   };
-  private availableLanguages$ = new BehaviorSubject<NamedApiLanguage[]>([this.DEFAULT_LANGUAGE]);
-  private activeLanguage$ = new BehaviorSubject<NamedApiLanguage>(this.DEFAULT_LANGUAGE);
+  private availableLanguages$ = new BehaviorSubject<PxLanguage[]>([this.DEFAULT_LANGUAGE]);
+  private activeLanguage$ = new BehaviorSubject<PxLanguage>(this.DEFAULT_LANGUAGE);
 
   constructor(private httpClient: HttpClient, private translateService: TranslateService) {
     this._fetchAllLanguages().subscribe((languages) => {
@@ -25,7 +25,7 @@ export class LanguageService {
     });
   }
 
-  getDisplayLanguage$(): Observable<NamedApiLanguage> {
+  getDisplayLanguage$(): Observable<PxLanguage> {
     return this.activeLanguage$.asObservable();
   }
 
@@ -41,7 +41,7 @@ export class LanguageService {
     this.setDisplayLanguage(this.activeLanguage$.value.name);
   }
 
-  getAvailableLanguages$(): Observable<NamedApiLanguage[]> {
+  getAvailableLanguages$(): Observable<PxLanguage[]> {
     return this.availableLanguages$.asObservable();
   }
 
@@ -51,8 +51,8 @@ export class LanguageService {
     );
   }
 
-  private _fetchAllLanguages(): Observable<NamedApiLanguage[]> {
-    return this.httpClient.get<NamedApiLanguage[]>(environment.baseHref + '/assets/data/language.json').pipe(take(1));
+  private _fetchAllLanguages(): Observable<PxLanguage[]> {
+    return this.httpClient.get<PxLanguage[]>(environment.baseHref + '/assets/data/language.json').pipe(take(1));
   }
 
   private _apiFetchAllLanguages(): Observable<NamedApiResource[]> {
@@ -62,8 +62,8 @@ export class LanguageService {
     );
   }
 
-  private _apiFetchLanguage(languageId: string | number): Observable<PokemonLanguage> {
-    return this.httpClient.get<PokemonLanguage>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
+  private _apiFetchLanguage(languageId: string | number): Observable<Language> {
+    return this.httpClient.get<Language>(environment.apiUrl + '/language/' + languageId).pipe(tap(serviceLog));
   }
 
   parseTranslations() {

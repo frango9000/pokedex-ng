@@ -1,12 +1,20 @@
-import { ApiName, ApiResource, NamedApiResource } from './domain';
-import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, LocalizedName } from './pokemon-language';
+import {
+  ApiEffectChange,
+  ApiEffectEntry,
+  ApiEntity,
+  ApiFlavorTextEntry,
+  ApiName,
+  LocalizedName,
+  NamedApiResource,
+  PokedexResource,
+} from '@pokedex-ng/domain';
 
-export interface NamedApiAbility extends NamedApiResource<Ability> {
+export interface PxAbility extends PokedexResource {
   generation: number;
   names: LocalizedName[];
 }
 
-export interface Ability extends ApiResource {
+export interface Ability extends ApiEntity {
   id: number;
   name: string;
   is_main_series: boolean;

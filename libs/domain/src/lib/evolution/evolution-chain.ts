@@ -1,7 +1,7 @@
+import { ApiEntity, ApiName, NamedApiResource } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { ApiName, ApiResource, NamedApiResource } from './domain';
 
-export interface EvolutionChain extends ApiResource {
+export interface EvolutionChain extends ApiEntity {
   id: number;
   baby_trigger_item: NamedApiResource;
   chain: EvolutionChainLink;
@@ -14,7 +14,7 @@ export interface EvolutionChainLink {
   evolves_to?: EvolutionChainLink[];
 
   //Non Api Content, Used in templates
-  self$: Observable<EvolutionChainLink>;
+  self$?: Observable<EvolutionChainLink>;
 }
 
 export interface EvolutionDetail {
@@ -38,7 +38,7 @@ export interface EvolutionDetail {
   turn_upside_down: boolean;
 
   //Non Api Content, Used in templates
-  processed_details: PokemonEvolutionTriggerDetails;
+  processed_details?: PokemonEvolutionTriggerDetails;
 }
 
 export interface EvolutionTrigger {

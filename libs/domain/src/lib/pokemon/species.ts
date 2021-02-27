@@ -1,6 +1,6 @@
-import { ApiResource, NamedApiResource } from './domain';
+import { ApiEntity, NamedApiResource } from '@pokedex-ng/domain';
 
-export interface Species extends ApiResource {
+export interface Species extends ApiEntity {
   id: number;
   name: string;
   base_happiness: number;

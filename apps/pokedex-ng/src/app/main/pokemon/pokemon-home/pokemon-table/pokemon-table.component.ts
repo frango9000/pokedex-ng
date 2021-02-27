@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NamedApiPokemon } from '@pokedex-ng/domain';
+import { PxPokemon } from '@pokedex-ng/domain';
 
 @Component({
   selector: 'app-pokemon-table',
@@ -7,5 +7,5 @@ import { NamedApiPokemon } from '@pokedex-ng/domain';
   styleUrls: ['./pokemon-table.component.scss'],
 })
 export class PokemonTableComponent {
-  @Input() public pokemonList: NamedApiPokemon[];
+  @Input() public pokemonList: PxPokemon[];
 }

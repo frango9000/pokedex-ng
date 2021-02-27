@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Ability, NamedApiAbility } from '@pokedex-ng/domain';
+import { Ability, PxAbility } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -13,7 +13,7 @@ import { LanguageService } from './language.service';
   providedIn: 'root',
 })
 export class AbilityService {
-  private abilities$ = new BehaviorSubject<NamedApiAbility[]>([]);
+  private abilities$ = new BehaviorSubject<PxAbility[]>([]);
 
   constructor(
     private httpClient: HttpClient,
@@ -26,12 +26,12 @@ export class AbilityService {
     });
   }
 
-  getAllMoves(): Observable<NamedApiAbility[]> {
+  getAllMoves(): Observable<PxAbility[]> {
     return this.abilities$.asObservable();
   }
 
-  private _fetchAllAbilities(): Observable<NamedApiAbility[]> {
-    return this.httpClient.get<NamedApiAbility[]>(environment.baseHref + '/assets/data/ability.json').pipe(take(1));
+  private _fetchAllAbilities(): Observable<PxAbility[]> {
+    return this.httpClient.get<PxAbility[]>(environment.baseHref + '/assets/data/ability.json').pipe(take(1));
   }
 
   fetchApiOneAbility(abilityId: string | number): Observable<Ability> {

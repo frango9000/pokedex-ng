@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GameVersionGroup, NamedApiResource, NamedApiResourceList, NamedApiVersionGroup } from '@pokedex-ng/domain';
+import { ApiResourceList, GameVersionGroup, NamedApiResource, PxGameVersionGroup } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -13,7 +13,7 @@ export class GameVersionService {
   private readonly DEFAULT_VERSION = 'yellow';
 
   private activeVersion$ = new BehaviorSubject<string>(this.DEFAULT_VERSION);
-  private availableVersions$ = new BehaviorSubject<NamedApiVersionGroup[]>([]);
+  private availableVersions$ = new BehaviorSubject<PxGameVersionGroup[]>([]);
 
   constructor(private httpClient: HttpClient) {
     this._fetchAllVersionGroups().subscribe((versionGroups) => {
@@ -21,7 +21,7 @@ export class GameVersionService {
     });
   }
 
-  getAllVersionGroups$(): Observable<NamedApiVersionGroup[]> {
+  getAllVersionGroups$(): Observable<PxGameVersionGroup[]> {
     return this.availableVersions$.asObservable();
   }
 
@@ -35,14 +35,14 @@ export class GameVersionService {
     }
   }
 
-  _fetchAllVersionGroups(): Observable<NamedApiVersionGroup[]> {
+  _fetchAllVersionGroups(): Observable<PxGameVersionGroup[]> {
     return this.httpClient
-      .get<NamedApiVersionGroup[]>(environment.baseHref + '/assets/data/version-group.json')
+      .get<PxGameVersionGroup[]>(environment.baseHref + '/assets/data/version-group.json')
       .pipe(take(1));
   }
 
   private apiAllVersionGroups(): Observable<NamedApiResource[]> {
-    return this.httpClient.get<NamedApiResourceList<NamedApiResource>>(environment.apiUrl + '/version-group').pipe(
+    return this.httpClient.get<ApiResourceList>(environment.apiUrl + '/version-group').pipe(
       map((value) => value.results),
       tap(serviceLog),
       shareReplay()

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Move, NamedApiMove, NamedApiResource } from '@pokedex-ng/domain';
+import { Move, NamedApiResource, PxMove } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, shareReplay, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -13,7 +13,7 @@ import { LanguageService } from './language.service';
   providedIn: 'root',
 })
 export class MoveService {
-  private moves$ = new BehaviorSubject<NamedApiMove[]>([]);
+  private moves$ = new BehaviorSubject<PxMove[]>([]);
 
   constructor(
     private httpClient: HttpClient,
@@ -24,7 +24,7 @@ export class MoveService {
     this._fetchAllMoves().subscribe((moves) => this.moves$.next(moves));
   }
 
-  getAllMoves(): Observable<NamedApiMove[]> {
+  getAllMoves(): Observable<PxMove[]> {
     return this.moves$.asObservable();
   }
 
@@ -36,8 +36,8 @@ export class MoveService {
     );
   }
 
-  private _fetchAllMoves(): Observable<NamedApiMove[]> {
-    return this.httpClient.get<NamedApiMove[]>(environment.baseHref + '/assets/data/move.json').pipe(take(1));
+  private _fetchAllMoves(): Observable<PxMove[]> {
+    return this.httpClient.get<PxMove[]>(environment.baseHref + '/assets/data/move.json').pipe(take(1));
   }
 
   private _fetchApiAllMoves(): Observable<NamedApiResource[]> {

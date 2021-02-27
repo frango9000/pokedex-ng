@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NamedApiPokemon } from '@pokedex-ng/domain';
+import { PxPokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { debounce, take } from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class FilterService {
     }
   }
 
-  filterPokemonByName(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+  filterPokemonByName(pokemonList: PxPokemon[]): PxPokemon[] {
     const trimmedName = this._queryFilter$.value.trim().toLowerCase();
     return !this._queryFilter$.value.length
       ? pokemonList
@@ -37,7 +37,7 @@ export class FilterService {
     return this._typesFilter$.asObservable();
   }
 
-  filterPokemonByType(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+  filterPokemonByType(pokemonList: PxPokemon[]): PxPokemon[] {
     return !this._typesFilter$.value.length
       ? pokemonList
       : pokemonList.filter((poke) =>
@@ -73,7 +73,7 @@ export class FilterService {
     return this._generationsFilter$.asObservable();
   }
 
-  filterPokemonByGeneration(pokemonList: NamedApiPokemon[]): NamedApiPokemon[] {
+  filterPokemonByGeneration(pokemonList: PxPokemon[]): PxPokemon[] {
     return !this._generationsFilter$.value.length
       ? pokemonList
       : pokemonList.filter((poke) => this._generationsFilter$.value.includes(poke.generation));

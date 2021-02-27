@@ -56,7 +56,7 @@
             </tr>
             <tr *ngIf="move.value">
               <td colspan="4" [ngClass]="{ 'border-top-0': move.value }" class="px-0 pb-3">
-                <app-pokemon-move [moveId]="move.key.move.id"></app-pokemon-move>
+                <app-pokemon-move [moveId]="move.key.move.name"></app-pokemon-move>
               </td>
             </tr>
           </ng-container>

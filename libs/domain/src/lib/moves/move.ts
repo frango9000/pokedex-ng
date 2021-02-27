@@ -1,9 +1,18 @@
-import { ApiName, ApiResource, NamedApiResource } from './domain';
-import { Generation } from './generation';
-import { ApiEffectChange, ApiEffectEntry, ApiFlavorTextEntry, LocalizedName } from './pokemon-language';
-import { PokemonType } from './pokemon-type';
+import {
+  ApiEffectChange,
+  ApiEffectEntry,
+  ApiEntity,
+  ApiFlavorTextEntry,
+  ApiName,
+  Description,
+  Generation,
+  LocalizedName,
+  NamedApiResource,
+  PokedexResource,
+  PokeType,
+} from '@pokedex-ng/domain';
 
-export interface NamedApiMove extends NamedApiResource<Move> {
+export interface PxMove extends PokedexResource {
   accuracy?: number;
   crit_rate?: number;
   generation?: number;
@@ -13,7 +22,7 @@ export interface NamedApiMove extends NamedApiResource<Move> {
   type?: string;
 }
 
-export interface Move extends ApiResource {
+export interface Move extends ApiEntity {
   id: number;
   name: string;
   accuracy: number;
@@ -43,7 +52,7 @@ export interface Move extends ApiResource {
   }[];
   super_contest_effect: NamedApiResource;
   target: NamedApiResource;
-  type: NamedApiResource<PokemonType>;
+  type: NamedApiResource<PokeType>;
 }
 
 interface PokemonMoveMetadata {
@@ -70,6 +79,14 @@ interface PokemonMoveContestCombos {
     use_after: NamedApiResource[];
     use_before: NamedApiResource[];
   };
+}
+
+export interface MoveDamageClass extends ApiEntity {
+  id: number;
+  name: string;
+  descriptions: Description[];
+  moves: NamedApiResource<Move>[];
+  names: ApiName[];
 }
 
 export enum MoveLearnMethod {

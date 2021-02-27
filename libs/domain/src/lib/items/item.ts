@@ -1,32 +1,33 @@
 import {
   ApiEffectEntry,
+  ApiEntity,
   ApiFlavorTextEntry,
   ApiName,
-  ApiResource,
   EvolutionChain,
   GameVersion,
   GenerationGameIndex,
   LocalizedName,
   NamedApiResource,
-  NamedApiVersionGroup,
+  PokedexResource,
   Pokemon,
+  PxGameVersionGroup,
 } from '@pokedex-ng/domain';
 
-export interface NamedApiItem extends NamedApiResource<Item> {
+export interface PxItem extends PokedexResource {
   cost: number;
   names: LocalizedName[];
   category: string;
   sprite: string;
 }
 
-export interface Item extends ApiResource {
+export interface Item extends ApiEntity {
   id: number;
   name: string;
   cost: number;
   fling_power: number;
   fling_effect: NamedApiResource;
   attributes: NamedApiResource;
-  category: ItemCategory;
+  category: NamedApiResource<ItemCategory>;
   effect_entries: ApiEffectEntry[];
   flavor_text_entries: ApiFlavorTextEntry[];
   game_indices: GenerationGameIndex[];
@@ -37,7 +38,7 @@ export interface Item extends ApiResource {
   machines: MachineVersionDetail[];
 }
 
-export interface ItemCategory extends ApiResource {
+export interface ItemCategory extends ApiEntity {
   items: NamedApiResource<Item>[];
   names: ApiName[];
   pocket: NamedApiResource;
@@ -59,5 +60,5 @@ export interface ItemHolderPokemon {
 
 export interface MachineVersionDetail {
   machine: NamedApiResource;
-  version_group: NamedApiVersionGroup;
+  version_group: PxGameVersionGroup;
 }

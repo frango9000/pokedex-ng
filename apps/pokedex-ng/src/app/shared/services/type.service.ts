@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NamedApiPokemonType, NamedApiResource, NamedApiResourceList, PokemonType } from '@pokedex-ng/domain';
+import { ApiResourceList, NamedApiResource, PokeType, PxType } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, skip, take, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -12,7 +12,7 @@ import { LanguageService } from './language.service';
   providedIn: 'root',
 })
 export class TypeService {
-  private types$ = new BehaviorSubject<NamedApiPokemonType[]>([]);
+  private types$ = new BehaviorSubject<PxType[]>([]);
 
   constructor(
     private httpClient: HttpClient,
@@ -24,22 +24,22 @@ export class TypeService {
     });
   }
 
-  getAllTypes(): Observable<NamedApiPokemonType[]> {
+  getAllTypes(): Observable<PxType[]> {
     return this.types$.asObservable();
   }
 
-  getOneType(typeId: string | number): Observable<NamedApiPokemonType> {
+  getOneType(typeId: string | number): Observable<PxType> {
     return this.getAllTypes().pipe(map((value) => value.find((value1) => value1.name === typeId)));
   }
 
-  private _fetchAllTypes(): Observable<NamedApiPokemonType[]> {
-    return this.httpClient.get<NamedApiPokemonType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
+  private _fetchAllTypes(): Observable<PxType[]> {
+    return this.httpClient.get<PxType[]>(environment.baseHref + '/assets/data/type.json').pipe(take(1));
   }
 
   private _fetchApiAllTypes(offset = 0, limit = 100): Observable<NamedApiResource[]> {
     const params: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
     return this.httpClient
-      .get<NamedApiResourceList>(environment.apiUrl + '/type', { params })
+      .get<ApiResourceList>(environment.apiUrl + '/type', { params })
       .pipe(
         map((value) => value.results),
         tap(serviceLog),
@@ -47,10 +47,8 @@ export class TypeService {
       );
   }
 
-  private _fetchApiOneType(typeId: string | number): Observable<PokemonType> {
-    return this.httpClient
-      .get<PokemonType>(environment.apiUrl + '/type/' + typeId)
-      .pipe(tap(serviceLog), shareReplay());
+  private _fetchApiOneType(typeId: string | number): Observable<PokeType> {
+    return this.httpClient.get<PokeType>(environment.apiUrl + '/type/' + typeId).pipe(tap(serviceLog), shareReplay());
   }
 
   parseTranslations() {

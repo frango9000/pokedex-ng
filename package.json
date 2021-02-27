@@ -44,7 +44,7 @@
     "help": "nx help",
     "validate": "npm run lint && npm run format:check && ng test && ng build --prod",
     "workspace-generator": "nx workspace-generator",
-    "data-generator": "ts-node --project ./libs/data/tsconfig.lib.json ./libs/data/src/lib/generators/generate-all.ts"
+    "data-generator": "ts-node --project ./libs/data/tsconfig.lib.json ./libs/data/src/lib/generate-all.ts"
   },
   "private": true,
   "dependencies": {

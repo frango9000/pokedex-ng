@@ -1,7 +1,6 @@
-import { ApiName, NamedApiResource } from './domain';
-import { LocalizedName } from './pokemon-language';
+import { ApiEntity, ApiName, LocalizedName, NamedApiResource, PokedexResource } from '@pokedex-ng/domain';
 
-export interface NamedApiPokemonType extends NamedApiResource<PokemonType> {
+export interface PxType extends PokedexResource {
   damage_relations?: {
     double_damage_from?: string[];
     double_damage_to?: string[];
@@ -13,7 +12,7 @@ export interface NamedApiPokemonType extends NamedApiResource<PokemonType> {
   names?: LocalizedName[];
 }
 
-export interface PokemonType {
+export interface PokeType extends ApiEntity {
   id: number;
   name: string;
 
@@ -42,7 +41,7 @@ export interface PokemonTypeDamageRelations {
 }
 
 export interface SelectableType {
-  type: NamedApiPokemonType;
+  type: PxType;
   active: boolean;
 }
 

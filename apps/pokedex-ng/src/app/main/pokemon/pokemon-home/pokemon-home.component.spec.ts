@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NamedApiPokemon } from '@pokedex-ng/domain';
+import { PxPokemon } from '@pokedex-ng/domain';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StubGenerationFilterComponent } from '../../../shared/components/filters/generation-filter/generation-filter.component.stub';
 import { StubTypeFilterComponent } from '../../../shared/components/filters/type-filter/type-filter.component.stub';
@@ -12,12 +12,12 @@ import { PokemonTableComponent } from './pokemon-table/pokemon-table.component';
 
 @Component({ selector: 'app-pokemon-table', template: '' })
 export class StubPokemonTableComponent implements Partial<PokemonTableComponent> {
-  @Input() public pokemonList: NamedApiPokemon[];
+  @Input() public pokemonList: PxPokemon[];
 }
 
 @Component({ selector: 'app-pokemon-grid', template: '' })
 export class StubPokemonGridComponent implements Partial<PokemonGridComponent> {
-  @Input() public pokemonList: NamedApiPokemon[];
+  @Input() public pokemonList: PxPokemon[];
 }
 
 describe('PokemonHomeComponent', () => {
