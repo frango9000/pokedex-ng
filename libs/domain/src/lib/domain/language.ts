@@ -1,5 +1,4 @@
-import { ApiEntity, ApiName } from './domain';
-import { LocalizedName, PokedexResource } from './pokedex';
+import { ApiEntity, ApiName, LocalizedName } from './domain';
 
 export interface Language extends ApiEntity {
   id: number;
@@ -10,7 +9,7 @@ export interface Language extends ApiEntity {
   names: ApiName[];
 }
 
-export interface PxLanguage extends PokedexResource {
+export interface PxLanguage extends ApiEntity {
   iso3166: string;
   names?: LocalizedName[];
 }

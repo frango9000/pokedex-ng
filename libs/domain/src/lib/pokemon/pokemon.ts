@@ -5,13 +5,12 @@ import {
   Item,
   Move,
   NamedApiResource,
-  PokedexResource,
   PokeType,
   PxGameVersionGroup,
   Species,
 } from '@pokedex-ng/domain';
 
-export interface PxPokemon extends PokedexResource {
+export interface PxPokemon extends ApiEntity {
   types?: string[];
   generation?: number;
 }

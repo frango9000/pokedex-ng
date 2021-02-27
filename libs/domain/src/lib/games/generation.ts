@@ -2,22 +2,22 @@ import {
   Ability,
   ApiEntity,
   ApiName,
+  GameVersionGroup,
+  LocalizedName,
   Move,
   NamedApiResource,
-  PokedexResource,
   PokeType,
-  PxGameVersionGroup,
   Species,
 } from '@pokedex-ng/domain';
 
-export interface PxGeneration extends PokedexResource {
-  abilities: NamedApiResource<Ability>[];
-  names: ApiName[];
-  main_region: NamedApiResource;
-  moves: NamedApiResource<Move>[];
-  pokemon_species: NamedApiResource<Species>[];
-  types: NamedApiResource<PokeType>[];
-  version_groups: PxGameVersionGroup[];
+export interface PxGeneration extends ApiEntity {
+  abilities: string[];
+  names: LocalizedName[];
+  main_region: string;
+  moves: string[];
+  pokemon_species: string[];
+  types: string[];
+  version_groups: string[];
 }
 
 export interface Generation extends ApiEntity {
@@ -27,7 +27,7 @@ export interface Generation extends ApiEntity {
   moves: NamedApiResource<Move>[];
   pokemon_species: NamedApiResource<Species>[];
   types: NamedApiResource<PokeType>[];
-  version_groups: PxGameVersionGroup[];
+  version_groups: NamedApiResource<GameVersionGroup>[];
 }
 
 export interface GenerationGameIndex {

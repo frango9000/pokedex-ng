@@ -8,11 +8,10 @@ import {
   Generation,
   LocalizedName,
   NamedApiResource,
-  PokedexResource,
   PokeType,
 } from '@pokedex-ng/domain';
 
-export interface PxMove extends PokedexResource {
+export interface PxMove extends ApiEntity {
   accuracy?: number;
   crit_rate?: number;
   generation?: number;

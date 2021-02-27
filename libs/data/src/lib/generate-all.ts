@@ -8,5 +8,5 @@ import * as Generators from '../index';
 // new Generators.TypeGenerator().generateResource();
 // new Generators.ItemGenerator().generateResource();
 // new Generators.MachineGenerator().generateResource();
-// new Generators.GenerationGenerator().generateResource();
-new Generators.StatGenerator().generateResource();
+new Generators.GenerationGenerator().generateResource();
+// new Generators.StatGenerator().generateResource();

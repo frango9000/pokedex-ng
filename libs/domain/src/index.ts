@@ -1,4 +1,3 @@
-export * from './lib/domain/pokedex';
 export * from './lib/domain/domain';
 export * from './lib/domain/language';
 export * from './lib/domain/common';

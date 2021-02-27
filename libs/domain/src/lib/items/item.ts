@@ -8,12 +8,11 @@ import {
   GenerationGameIndex,
   LocalizedName,
   NamedApiResource,
-  PokedexResource,
   Pokemon,
   PxGameVersionGroup,
 } from '@pokedex-ng/domain';
 
-export interface PxItem extends PokedexResource {
+export interface PxItem extends ApiEntity {
   cost: number;
   names: LocalizedName[];
   category: string;

@@ -38,3 +38,8 @@ export function getId(url: string): number {
     return 0;
   }
 }
+
+export interface LocalizedName {
+  name: string;
+  language: string;
+}

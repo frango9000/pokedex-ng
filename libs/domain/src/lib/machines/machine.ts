@@ -1,6 +1,6 @@
-import { ApiEntity, GameVersionGroup, Item, Move, NamedApiResource, PokedexResource } from '@pokedex-ng/domain';
+import { ApiEntity, GameVersionGroup, Item, Move, NamedApiResource } from '@pokedex-ng/domain';
 
-export interface PokedexMachine extends PokedexResource {
+export interface PokedexMachine extends ApiEntity {
   item: string;
   move: string;
   version_group: string;

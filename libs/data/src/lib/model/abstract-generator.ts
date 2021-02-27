@@ -1,10 +1,10 @@
-import { ApiEntity, ApiName, ApiResourceList, LocalizedName, PokedexResource } from '@pokedex-ng/domain';
+import { ApiEntity, ApiName, ApiResourceList, LocalizedName, NamedApiResource } from '@pokedex-ng/domain';
 import { Axios } from 'axios-observable';
 import fs from 'fs';
 import { Observable, Subject } from 'rxjs';
 import { concatAll, delay, filter, map, retry } from 'rxjs/operators';
 
-export abstract class AbstractGenerator<T extends ApiEntity, N extends PokedexResource> {
+export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity> {
   protected host = 'https://pokeapi.co/api/v2';
   protected filePath = './apps/pokedex-ng/src/assets/data';
   protected append = false;
@@ -130,5 +130,9 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends PokedexRe
     } catch (e) {
       return 0;
     }
+  }
+
+  protected mapNamedApiResourcesToNames(resources: NamedApiResource<T>[]): string[] {
+    return resources.map((resource) => resource.name);
   }
 }

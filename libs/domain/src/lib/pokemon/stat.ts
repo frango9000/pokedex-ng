@@ -1,14 +1,6 @@
-import {
-  ApiEntity,
-  ApiName,
-  LocalizedName,
-  Move,
-  MoveDamageClass,
-  NamedApiResource,
-  PokedexResource,
-} from '@pokedex-ng/domain';
+import { ApiEntity, ApiName, LocalizedName, Move, MoveDamageClass, NamedApiResource } from '@pokedex-ng/domain';
 
-export interface PxStat extends PokedexResource {
+export interface PxStat extends ApiEntity {
   id: number;
   name: string;
   names: LocalizedName[];

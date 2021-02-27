@@ -6,10 +6,9 @@ import {
   ApiName,
   LocalizedName,
   NamedApiResource,
-  PokedexResource,
 } from '@pokedex-ng/domain';
 
-export interface PxAbility extends PokedexResource {
+export interface PxAbility extends ApiEntity {
   generation: number;
   names: LocalizedName[];
 }

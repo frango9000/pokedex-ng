@@ -1,14 +1,9 @@
 {
   "npmScope": "pokedex-ng",
-  "affected": {
-    "defaultBase": "development"
-  },
+  "affected": { "defaultBase": "development" },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -17,24 +12,8 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": {
-    "pokedex-ng": {
-      "tags": []
-    },
-    "pokedex-ng-e2e": {
-      "tags": [],
-      "implicitDependencies": ["pokedex-ng"]
-    },
-    "data": {
-      "tags": []
-    },
-    "domain": {
-      "tags": []
-    }
-  }
+  "projects": { "pokedex-ng": { "tags": [] }, "data": { "tags": [] }, "domain": { "tags": [] } }
 }

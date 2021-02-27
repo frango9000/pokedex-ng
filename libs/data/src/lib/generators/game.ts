@@ -1,4 +1,4 @@
-import { GameVersionGroup, Generation, PxGameVersionGroup } from '@pokedex-ng/domain';
+import { GameVersionGroup, Generation, PxGameVersionGroup, PxGeneration } from '@pokedex-ng/domain';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class VersionGroupGenerator extends AbstractGenerator<GameVersionGroup, PxGameVersionGroup> {
@@ -8,21 +8,31 @@ export class VersionGroupGenerator extends AbstractGenerator<GameVersionGroup, P
 
   mapResource(resource: GameVersionGroup): PxGameVersionGroup {
     return {
-      name: resource.name,
       id: resource.id,
+      name: resource.name,
       generation: this.getId(resource.generation.url),
       order: resource.order,
-      versions: resource.versions.map((value) => value.name),
+      versions: this.mapNamedApiResourcesToNames(resource.versions),
     };
   }
 }
 
-export class GenerationGenerator extends AbstractGenerator<Generation, Generation> {
+export class GenerationGenerator extends AbstractGenerator<Generation, PxGeneration> {
   getResourceName(): string {
     return 'generation';
   }
 
-  mapResource(resource: Generation): Generation {
-    return resource;
+  mapResource(resource: Generation): PxGeneration {
+    return {
+      id: resource.id,
+      name: resource.name,
+      abilities: this.mapNamedApiResourcesToNames(resource.abilities),
+      main_region: resource.main_region.name,
+      moves: this.mapNamedApiResourcesToNames(resource.moves),
+      names: this.filterAndMapNames(resource.names),
+      pokemon_species: this.mapNamedApiResourcesToNames(resource.pokemon_species),
+      types: this.mapNamedApiResourcesToNames(resource.types),
+      version_groups: this.mapNamedApiResourcesToNames(resource.version_groups),
+    };
   }
 }

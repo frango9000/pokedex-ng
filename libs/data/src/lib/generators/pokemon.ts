@@ -1,7 +1,7 @@
 import {
   Ability,
+  ApiEntity,
   ApiResourceList,
-  PokedexResource,
   Pokemon,
   PokeType,
   PxAbility,
@@ -15,12 +15,12 @@ import { Axios } from 'axios-observable';
 import { delay, map, mergeMap, retry } from 'rxjs/operators';
 import { AbstractGenerator } from '../model/abstract-generator';
 
-export class PokemonGenerator extends AbstractGenerator<PokemonWithGeneration, PxPokemon> {
+export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPokemon> {
   getResourceName() {
     return 'pokemon';
   }
 
-  mapResource(resource: PokemonWithGeneration): PxPokemon {
+  mapResource(resource: PokemonWithSpecies): PxPokemon {
     return {
       name: resource.pokemon.name,
       id: resource.pokemon.id,
@@ -57,12 +57,12 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithGeneration, P
     }, console.error);
   }
 
-  protected getResourceId(resource: PokemonWithGeneration) {
+  protected getResourceId(resource: PokemonWithSpecies) {
     return resource.pokemon.id;
   }
 }
 
-interface PokemonWithGeneration extends PokedexResource {
+interface PokemonWithSpecies extends ApiEntity {
   pokemon: Pokemon;
   species: Species;
 }

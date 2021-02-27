@@ -1,6 +1,6 @@
-import { ApiEntity, ApiName, LocalizedName, NamedApiResource, PokedexResource } from '@pokedex-ng/domain';
+import { ApiEntity, ApiName, LocalizedName, NamedApiResource } from '@pokedex-ng/domain';
 
-export interface PxType extends PokedexResource {
+export interface PxType extends ApiEntity {
   damage_relations?: {
     double_damage_from?: string[];
     double_damage_to?: string[];
