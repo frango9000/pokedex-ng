@@ -55,7 +55,7 @@
       </tr>
       <ng-container *ngIf="move.stat_changes?.length > 0">
         <tr title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | translate }}" *ngFor="let statChange of move.stat_changes">
-          <td>{{ "STATIC.STATS." + statChange.stat.name | translate }}</td>
+          <td>{{ "STAT." + statChange.stat.name | translate }}</td>
           <td>{{ statChange.change }}</td>
         </tr>
       </ng-container>

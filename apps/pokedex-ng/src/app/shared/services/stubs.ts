@@ -8,6 +8,7 @@ import { GameVersionService } from './game/game-version.service';
 import { AbilityService } from './pokemon/ability.service';
 import { MoveService } from './pokemon/move.service';
 import { PokemonService } from './pokemon/pokemon.service';
+import { StatService } from './pokemon/stat.service';
 import { TypeService } from './pokemon/type.service';
 import { SpeciesService } from './species/species.service';
 
@@ -114,4 +115,11 @@ export class StubEvolutionChainService implements Partial<EvolutionChainService>
 export const stubEvolutionChainServiceProvider = {
   provide: EvolutionChainService,
   useFactory: () => new StubEvolutionChainService(),
+};
+
+export class StubStatService implements Partial<StatService> {}
+
+export const stubStatServiceProvider = {
+  provide: StatService,
+  useFactory: () => new StubStatService(),
 };

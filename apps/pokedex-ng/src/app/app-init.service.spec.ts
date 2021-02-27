@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AppInitService } from './app-init.service';
 import {
   stubAbilityServiceProvider,
   stubLanguageServiceProvider,
   stubMoveServiceProvider,
+  stubStatServiceProvider,
   stubTypeServiceProvider,
 } from './shared/services/stubs';
 
@@ -19,6 +19,7 @@ describe('AppInitService', () => {
         stubTypeServiceProvider,
         stubMoveServiceProvider,
         stubAbilityServiceProvider,
+        stubStatServiceProvider,
       ],
     });
     service = TestBed.inject(AppInitService);

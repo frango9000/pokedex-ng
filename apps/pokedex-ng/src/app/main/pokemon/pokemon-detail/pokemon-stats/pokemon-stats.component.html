@@ -28,7 +28,7 @@
       <tbody>
         <tr *ngFor="let stat of pokemon.stats">
           <th scope="col">
-            {{ "STATIC.STATS." + stat.stat.name | translate | titlecase }}
+            {{ "STAT." + stat.stat.name | translate }}
           </th>
           <td>{{ stat.base_stat }}</td>
           <td>{{ stat.effort }}</td>
