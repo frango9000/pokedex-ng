@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Move } from '@pokedex-ng/domain';
-import { MoveService } from '../../../../../shared/services/move.service';
+import { MoveService } from '../../../../../shared/services/pokemon/move.service';
 
 @Component({
   selector: 'app-pokemon-move',

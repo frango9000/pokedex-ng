@@ -4,7 +4,7 @@ import { PxPokemon } from '@pokedex-ng/domain';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StubGenerationFilterComponent } from '../../../shared/components/filters/generation-filter/generation-filter.component.stub';
 import { StubTypeFilterComponent } from '../../../shared/components/filters/type-filter/type-filter.component.stub';
-import { PokemonService } from '../../../shared/services/pokemon.service';
+import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
 import { stubFilterServiceProvider, stubPokemonServiceProvider } from '../../../shared/services/stubs';
 import { PokemonGridComponent } from './pokemon-grid/pokemon-grid.component';
 import { PokemonHomeComponent } from './pokemon-home.component';

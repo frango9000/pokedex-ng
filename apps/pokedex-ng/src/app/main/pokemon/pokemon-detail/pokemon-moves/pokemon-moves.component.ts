@@ -2,8 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MoveLearnMethod as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, mergeMap, skip, take } from 'rxjs/operators';
-import { GameVersionService } from '../../../../shared/services/game-version.service';
-import { MoveService } from '../../../../shared/services/move.service';
+import { GameVersionService } from '../../../../shared/services/game/game-version.service';
+import { MoveService } from '../../../../shared/services/pokemon/move.service';
 
 @Component({
   selector: 'app-pokemon-moves',

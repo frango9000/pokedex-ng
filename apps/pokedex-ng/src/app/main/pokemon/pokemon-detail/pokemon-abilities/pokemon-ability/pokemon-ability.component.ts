@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Ability } from '@pokedex-ng/domain';
-import { AbilityService } from '../../../../../shared/services/ability.service';
+import { AbilityService } from '../../../../../shared/services/pokemon/ability.service';
 
 @Component({
   selector: 'app-pokemon-ability',

@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PxPokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, merge, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
-import { AppNavbarService } from '../../../shared/services/app-navbar.service';
-import { FilterService } from '../../../shared/services/filter.service';
-import { PokemonService } from '../../../shared/services/pokemon.service';
+import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
+import { FilterService } from '../../../shared/services/app/filter.service';
+import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-home',

@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Species } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
-import { GameVersionService } from './game-version.service';
-import { LanguageService } from './language.service';
+import { LanguageService } from '../app/language.service';
+import { GameVersionService } from '../game/game-version.service';
 
 @Injectable({
   providedIn: 'root',

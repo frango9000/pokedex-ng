@@ -14,7 +14,7 @@ export class LanguageService {
     id: 9,
     iso3166: 'us',
   };
-  private availableLanguages$ = new BehaviorSubject<PxLanguage[]>([this.DEFAULT_LANGUAGE]);
+  public availableLanguages$ = new BehaviorSubject<PxLanguage[]>([this.DEFAULT_LANGUAGE]);
   private activeLanguage$ = new BehaviorSubject<PxLanguage>(this.DEFAULT_LANGUAGE);
 
   constructor(private http: HttpClient, private translateService: TranslateService) {

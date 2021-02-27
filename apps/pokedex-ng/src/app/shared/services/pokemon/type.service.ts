@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiResourceList, NamedApiResource, PokeType, PxType } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take } from 'rxjs/operators';
-import { LanguageService } from './language.service';
+import { LanguageService } from '../app/language.service';
 
 @Injectable({
   providedIn: 'root',

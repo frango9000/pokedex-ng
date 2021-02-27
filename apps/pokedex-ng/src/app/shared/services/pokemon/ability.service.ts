@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Ability, PxAbility } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take, tap } from 'rxjs/operators';
-import { GameVersionService } from './game-version.service';
-import { LanguageService } from './language.service';
+import { LanguageService } from '../app/language.service';
+import { GameVersionService } from '../game/game-version.service';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +43,10 @@ export class AbilityService {
     this.abilities$.pipe(skip(1)).subscribe((value) => {
       this.languageService
         .getAvailableLanguages$()
-        .pipe(map((namedLanguages) => namedLanguages.map((language) => language.name)))
+        .pipe(
+          take(1),
+          map((namedLanguages) => namedLanguages.map((language) => language.name))
+        )
         .subscribe((languages) => {
           value.forEach((ability) => {
             ability.names
@@ -64,7 +67,10 @@ export class AbilityService {
   private parseTranslation(ability: Ability): void {
     this.languageService
       .getAvailableLanguages$()
-      .pipe(map((namedLanguages) => namedLanguages.map((language) => language.name)))
+      .pipe(
+        take(1),
+        map((namedLanguages) => namedLanguages.map((language) => language.name))
+      )
       .subscribe((languages) => {
         ability.effect_entries
           .filter((effect) => languages.includes(effect.language.name))
@@ -133,5 +139,6 @@ export class AbilityService {
           });
         this.languageService.refresh();
       });
+    this.languageService.availableLanguages$.next(this.languageService.availableLanguages$.value);
   }
 }

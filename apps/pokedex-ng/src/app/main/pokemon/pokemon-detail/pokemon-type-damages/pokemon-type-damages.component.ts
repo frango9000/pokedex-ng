@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon, PokeSlotType, PxType, TypeDamages } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { TypeService } from '../../../../shared/services/type.service';
+import { TypeService } from '../../../../shared/services/pokemon/type.service';
 
 @Component({
   selector: 'app-pokemon-type-damages',

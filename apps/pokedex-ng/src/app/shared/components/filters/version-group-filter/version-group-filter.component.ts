@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { GameVersionService } from '../../../services/game-version.service';
+import { GameVersionService } from '../../../services/game/game-version.service';
 
 @Component({
   selector: 'pokedex-ng-version-group-filter',

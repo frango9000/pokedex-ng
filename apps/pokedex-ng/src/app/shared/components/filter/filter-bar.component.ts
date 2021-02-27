@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AppNavbarService } from '../../services/app-navbar.service';
-import { FilterService } from '../../services/filter.service';
+import { AppNavbarService } from '../../services/app/app-navbar.service';
+import { FilterService } from '../../services/app/filter.service';
 
 @Component({
   selector: 'pokedex-ng-filter-bar',

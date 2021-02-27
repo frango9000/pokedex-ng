@@ -1,15 +1,15 @@
 import { EvolutionChain } from '@pokedex-ng/domain';
 import { of } from 'rxjs';
-import { AbilityService } from './ability.service';
-import { AppNavbarService } from './app-navbar.service';
-import { EvolutionChainService } from './evolution-chain.service';
-import { FilterService } from './filter.service';
-import { GameVersionService } from './game-version.service';
-import { LanguageService } from './language.service';
-import { MoveService } from './move.service';
-import { PokemonService } from './pokemon.service';
-import { SpeciesService } from './species.service';
-import { TypeService } from './type.service';
+import { AppNavbarService } from './app/app-navbar.service';
+import { FilterService } from './app/filter.service';
+import { LanguageService } from './app/language.service';
+import { EvolutionChainService } from './evolution/evolution-chain.service';
+import { GameVersionService } from './game/game-version.service';
+import { AbilityService } from './pokemon/ability.service';
+import { MoveService } from './pokemon/move.service';
+import { PokemonService } from './pokemon/pokemon.service';
+import { TypeService } from './pokemon/type.service';
+import { SpeciesService } from './species/species.service';
 
 export class StubTypeService implements Partial<TypeService> {
   getOneType = jest.fn(() => of(null));

@@ -3,7 +3,7 @@ import { Pokemon, Species } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { splitResourceId } from '../../../../shared/pipes/resource-id.pipe';
-import { SpeciesService } from '../../../../shared/services/species.service';
+import { SpeciesService } from '../../../../shared/services/species/species.service';
 
 @Component({
   selector: 'app-pokemon-species',

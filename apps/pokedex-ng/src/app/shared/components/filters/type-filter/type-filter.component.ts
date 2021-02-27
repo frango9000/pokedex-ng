@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectableType } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
-import { FilterService } from '../../../services/filter.service';
-import { TypeService } from '../../../services/type.service';
+import { FilterService } from '../../../services/app/filter.service';
+import { TypeService } from '../../../services/pokemon/type.service';
 
 @Component({
   selector: 'pokedex-ng-type-filter',

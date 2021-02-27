@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { GameVersionService } from '../../services/game-version.service';
+import { GameVersionService } from '../../services/game/game-version.service';
 import { stubGameVersionServiceProvider } from '../../services/stubs';
 import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
 import { VersionGroupFilterComponent } from '../filters/version-group-filter/version-group-filter.component';

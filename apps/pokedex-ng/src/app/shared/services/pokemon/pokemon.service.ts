@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiResourceList, NamedApiResource, Pokemon, PxPokemon } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { FilterService } from './filter.service';
+import { FilterService } from '../app/filter.service';
 
 @Injectable({
   providedIn: 'root',

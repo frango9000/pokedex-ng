@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { EvolutionChainLink } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { EvolutionChainService } from '../../../../../shared/services/evolution-chain.service';
+import { EvolutionChainService } from '../../../../../shared/services/evolution/evolution-chain.service';
 
 @Component({
   selector: 'app-pokemon-evolution-chain',

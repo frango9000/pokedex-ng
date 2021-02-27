@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { GameVersionService } from '../services/game-version.service';
+import { GameVersionService } from '../services/game/game-version.service';
 
 @Pipe({
   name: 'withVersionGroup',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectableGeneration } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
-import { FilterService } from '../../../services/filter.service';
-import { GenerationService } from '../../../services/generation.service';
+import { FilterService } from '../../../services/app/filter.service';
+import { GenerationService } from '../../../services/game/generation.service';
 
 @Component({
   selector: 'pokedex-ng-generation-filter',

@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Pokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { AppNavbarService } from '../../../shared/services/app-navbar.service';
-import { PokemonService } from '../../../shared/services/pokemon.service';
+import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
+import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-detail',
