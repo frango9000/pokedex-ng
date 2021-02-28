@@ -26,7 +26,7 @@ export class PokemonTypeDamagesComponent implements OnInit, OnDestroy {
     return this.pokemon$
       .pipe(
         switchMap((pokemon: Pokemon) =>
-          this.pokemonTypeService.getAllTypes().pipe(
+          this.pokemonTypeService.getAll().pipe(
             map((types) => {
               return this.generateTypeDamages(pokemon.types, types);
             })

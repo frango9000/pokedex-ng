@@ -2,6 +2,7 @@ import { of } from 'rxjs';
 import { AppNavbarService } from './app/app-navbar.service';
 import { FilterService } from './app/filter.service';
 import { LanguageService } from './app/language.service';
+import { BaseService } from './base-service';
 import { EvolutionChainService } from './evolution/evolution-chain.service';
 import { VersionGroupService } from './game/version-group.service';
 import { AbilityService } from './pokemon/ability.service';
@@ -11,10 +12,11 @@ import { StatService } from './pokemon/stat.service';
 import { TypeService } from './pokemon/type.service';
 import { SpeciesService } from './species/species.service';
 
-export class StubTypeService implements Partial<TypeService> {
-  getOneType = jest.fn(() => of(null));
-  getAllTypes = jest.fn(() => of([]));
+class StubBaseService<T> implements Partial<BaseService<T, T>> {
+  getAll = () => of([]);
 }
+
+export class StubTypeService extends StubBaseService<TypeService> implements Partial<TypeService> {}
 
 export const stubTypeServiceProvider = {
   provide: TypeService,

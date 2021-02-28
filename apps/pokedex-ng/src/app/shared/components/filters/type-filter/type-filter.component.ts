@@ -15,7 +15,7 @@ export class TypeFilterComponent implements OnInit {
   constructor(public filterService: FilterService, private typeService: TypeService) {}
 
   ngOnInit(): void {
-    this.typeService.getAllTypes().subscribe((types) => {
+    this.typeService.getAll().subscribe((types) => {
       this._selectableTypes = types.map((type) => ({ type, active: false }));
     });
     this.filterService.getTypeFilter$().subscribe((types) => {

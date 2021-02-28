@@ -20,9 +20,9 @@ export class AppInitService {
   init() {
     return new Promise<void>((resolve) => {
       this.languageService.parseTranslations();
-      this.typeService.parseTranslations();
       this.moveService.parseTranslations();
       this.abilityService.parseTranslations();
+      this.typeService.getAll().subscribe();
       this.statService.getAll().subscribe();
       resolve();
     });
