@@ -1,20 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiEntity, ApiResourceList, NamedApiResource } from '@pokedex-ng/domain';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, take, tap } from 'rxjs/operators';
+import { merge } from 'lodash-es';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, filter, map, take, tap } from 'rxjs/operators';
 import { LanguageService } from './app/language.service';
 
 export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
   protected resources$ = new BehaviorSubject<P[]>([]);
 
-  constructor(
-    protected http: HttpClient,
-    protected translateService: TranslateService,
-    protected languageService: LanguageService,
-    protected name: string
-  ) {
-    this._fetchAll().subscribe((resources) => this.resources$.next(resources));
+  constructor(protected name: string, protected http: HttpClient) {
+    this._fetchAll()
+      .pipe(catchError(() => of([])))
+      .subscribe((resources) => this.resources$.next(resources));
   }
 
   public getOne(id: string | number): Observable<P> {
@@ -45,41 +43,67 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
 }
 
 export abstract class TranslatedService<T, P> extends BaseService<T, P> {
-  public setTranslations(resources: P[]) {
-    return this.languageService.getAvailableLanguageIds$().pipe(
-      take(1),
-      tap((languages) => this._insertTranslations(this._parseTranslations(resources, languages))),
-      tap(() => this.languageService.refresh())
-    );
+  constructor(
+    protected name: string,
+    protected http: HttpClient,
+    protected translateService: TranslateService,
+    protected languageService: LanguageService
+  ) {
+    super(name, http);
   }
 
-  protected _insertTranslations(translations: { language: string; object: any }[]) {
-    translations.forEach((translation) =>
-      this.translateService.setTranslation(translation.language, translation.object, true)
-    );
+  protected abstract _parseAllTranslations(resources: P[]): Observable<MergingMap>;
+
+  protected abstract _parseOneTranslation(resource: T): Observable<MergingMap>;
+
+  protected _setTranslations(resource: T | P[]): void {
+    const translations$ = Array.isArray(resource)
+      ? this._parseAllTranslations(resource)
+      : this._parseOneTranslation(resource);
+    translations$.pipe(take(1)).subscribe((translations) => {
+      translations.forEach((translation, language) =>
+        this.translateService.setTranslation(language, translation, true)
+      );
+      if (Object.keys(translations).length) {
+        this.languageService.refresh();
+      }
+    });
   }
-
-  protected abstract _parseTranslations(resources: P[], languages: string[]): { language: string; object: any }[];
-
-  protected _setTranslation(resource: T) {
-    return this.languageService.getAvailableLanguageIds$().pipe(
-      take(1),
-      tap((languages) => this._insertTranslations(this._parseTranslation(resource, languages)))
-    );
-  }
-
-  protected abstract _parseTranslation(resource: T, languages: string[]): { language: string; object: any }[];
 }
 
-export abstract class AutoTranslatedService<T, P> extends TranslatedService<T, P> {
+export class MergingMap extends Map {
+  merge(key: any, value: any) {
+    const hasKey = this.get(key);
+    return super.set(key, hasKey ? merge(hasKey, value) : value);
+  }
+}
+
+export abstract class SingleTranslatedService<T, P> extends TranslatedService<T, P> {
   fetchApiOne(id: string | number): Observable<T> {
-    return super.fetchApiOne(id).pipe(tap((resource) => this._setTranslation(resource).subscribe()));
+    return super.fetchApiOne(id).pipe(tap((resource) => this._setTranslations(resource)));
+  }
+
+  protected _parseAllTranslations(): Observable<MergingMap> {
+    return of(new MergingMap());
+  }
+}
+
+export abstract class MultiTranslatedService<T, P> extends TranslatedService<T, P> {
+  _fetchAll(): Observable<P[]> {
+    return super._fetchAll().pipe(tap((resources) => this._setTranslations(resources)));
+  }
+
+  protected _parseOneTranslation(): Observable<MergingMap> {
+    return of(new MergingMap());
+  }
+}
+
+export abstract class FullyTranslatedService<T, P> extends TranslatedService<T, P> {
+  fetchApiOne(id: string | number): Observable<T> {
+    return super.fetchApiOne(id).pipe(tap((resource) => this._setTranslations(resource)));
   }
 
   _fetchAll(): Observable<P[]> {
-    return super._fetchAll().pipe(
-      tap((resources) => this.setTranslations(resources).subscribe()),
-      tap(() => this.languageService.refresh())
-    );
+    return super._fetchAll().pipe(tap((resources) => this._setTranslations(resources)));
   }
 }

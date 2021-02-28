@@ -36,6 +36,6 @@ export interface GenerationGameIndex {
 }
 
 export interface SelectableGeneration {
-  generation: Generation;
+  generation: PxGeneration;
   active: boolean;
 }

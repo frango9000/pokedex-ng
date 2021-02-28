@@ -11,8 +11,8 @@
   </div>
   <mdb-card-body class="py-0 px-2 px-sm-4">
     <div>
-      <div *ngIf="species.flavor_text_entries" class="overflow-auto text-center my-2">
-        {{ "SPECIES." + species.name + ".FLAVOR_TEXT." | withVersionGroup | async }}
+      <div *ngIf="'' | withVersionGroup | async as group" class="overflow-auto text-center my-2">
+        {{ "SPECIES." + species.name + ".FLAVOR_TEXT." + group | translate }}
       </div>
       <table class="table mb-0">
         <tbody>

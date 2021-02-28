@@ -17,7 +17,7 @@ export class PokemonEvolutionChainComponent implements OnInit {
 
   ngOnInit(): void {
     this.evolutionChainId$
-      .pipe(switchMap((speciesId) => this._pokemonEvolutionChainService.getEvolutionChain(speciesId)))
+      .pipe(switchMap((speciesId) => this._pokemonEvolutionChainService.fetchApiOne(speciesId)))
       .subscribe((value) => this.evolutionChain$.next(value.chain));
   }
 

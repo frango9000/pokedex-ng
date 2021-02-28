@@ -19,10 +19,8 @@ export class PokemonSpeciesComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemon$
-      .pipe(switchMap((value) => this.speciesService.fetchApiOneSpecies(value.species.name)))
-      .subscribe((specie) => {
-        this.pokemonSpecies$.next(specie);
-      });
+      .pipe(switchMap((value) => this.speciesService.fetchApiOne(value.species.name)))
+      .subscribe((specie) => this.pokemonSpecies$.next(specie));
   }
 
   getPokemonSpecies$(): Observable<Species> {

@@ -2,35 +2,29 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { PxStat, Stat } from '@pokedex-ng/domain';
+import { Observable, of } from 'rxjs';
 import { LanguageService } from '../app/language.service';
-import { AutoTranslatedService } from '../base-service';
+import { MergingMap, MultiTranslatedService } from '../base-service';
 
 @Injectable({ providedIn: 'root' })
-export class StatService extends AutoTranslatedService<Stat, PxStat> {
+export class StatService extends MultiTranslatedService<Stat, PxStat> {
   constructor(
     protected http: HttpClient,
     protected translateService: TranslateService,
     protected languageService: LanguageService
   ) {
-    super(http, translateService, languageService, 'stat');
+    super('stat', http, translateService, languageService);
   }
 
-  protected _parseTranslation(): { language: string; object: any }[] {
-    return [];
-  }
-
-  protected _parseTranslations(resources: PxStat[]): { language: string; object: any }[] {
-    const list: { language: string; object: any }[] = [];
+  protected _parseAllTranslations(resources: PxStat[]): Observable<MergingMap> {
+    const map = new MergingMap();
     resources.forEach((stat) =>
       stat.names.forEach((name) =>
-        list.push({
-          language: name.language,
-          object: {
-            STAT: { [stat.name]: name.name },
-          },
+        map.merge(name.language, {
+          STAT: { [stat.name]: name.name },
         })
       )
     );
-    return list;
+    return of(map);
   }
 }

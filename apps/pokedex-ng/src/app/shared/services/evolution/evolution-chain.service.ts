@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EvolutionChain } from '@pokedex-ng/domain';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { BaseService } from '../base-service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EvolutionChainService {
-  constructor(private httpClient: HttpClient) {}
+export class EvolutionChainService extends BaseService<EvolutionChain, EvolutionChain> {
+  constructor(protected http: HttpClient) {
+    super('evolution-chain', http);
+  }
 
-  getEvolutionChain(evolutionChainId: number): Observable<EvolutionChain> {
-    return this.httpClient.get<EvolutionChain>('api/evolution-chain/' + evolutionChainId).pipe(take(1));
+  protected _fetchAll(): Observable<EvolutionChain[]> {
+    return of([]);
   }
 }

@@ -1,4 +1,3 @@
-import { EvolutionChain } from '@pokedex-ng/domain';
 import { of } from 'rxjs';
 import { AppNavbarService } from './app/app-navbar.service';
 import { FilterService } from './app/filter.service';
@@ -108,9 +107,7 @@ export const stubAppNavbarServiceProvider = {
   useFactory: () => new StubAppNavbarService(),
 };
 
-export class StubEvolutionChainService implements Partial<EvolutionChainService> {
-  public getEvolutionChain = jest.fn(() => of({} as EvolutionChain));
-}
+export class StubEvolutionChainService implements Partial<EvolutionChainService> {}
 
 export const stubEvolutionChainServiceProvider = {
   provide: EvolutionChainService,

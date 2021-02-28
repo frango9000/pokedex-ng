@@ -15,7 +15,7 @@ export class GenerationFilterComponent implements OnInit {
   constructor(public filterService: FilterService, private generationService: GenerationService) {}
 
   ngOnInit(): void {
-    this.generationService.getAllGenerations().subscribe((gens) => {
+    this.generationService.getAll().subscribe((gens) => {
       this._selectableGenerations = gens.map((generation) => ({ generation, active: false }));
     });
     this.filterService.getGenerationFilter$().subscribe((generations) => {
