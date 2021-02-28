@@ -22,7 +22,7 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params
-      .pipe(switchMap((params: Params) => this.pokemonService.apiOnePokemon(params['pokemon'])))
+      .pipe(switchMap((params: Params) => this.pokemonService.fetchApiOne(params['pokemon'])))
       .subscribe((response) => {
         this.pokemon$.next(null);
         this.pokemon$.next(response);
