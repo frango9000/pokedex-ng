@@ -15,6 +15,6 @@ export class PokemonAbilityComponent implements OnInit {
   constructor(private abilityService: AbilityService) {}
 
   ngOnInit(): void {
-    this.abilityService.fetchApiOneAbility(this.abilityId).subscribe((ability) => (this.ability = ability));
+    this.abilityService.fetchApiOne(this.abilityId).subscribe((ability) => (this.ability = ability));
   }
 }

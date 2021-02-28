@@ -1,144 +1,80 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Ability, PxAbility } from '@pokedex-ng/domain';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, skip, take, tap } from 'rxjs/operators';
+import { Ability, MergingMap, PxAbility } from '@pokedex-ng/domain';
+import { Observable, of } from 'rxjs';
+import { map, mergeMap, take } from 'rxjs/operators';
 import { LanguageService } from '../app/language.service';
+import { FullyTranslatedService } from '../base-service';
 import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AbilityService {
-  private abilities$ = new BehaviorSubject<PxAbility[]>([]);
-
+export class AbilityService extends FullyTranslatedService<Ability, PxAbility> {
   constructor(
-    private httpClient: HttpClient,
-    private translateService: TranslateService,
-    private languageService: LanguageService,
+    protected http: HttpClient,
+    protected translateService: TranslateService,
+    protected languageService: LanguageService,
     private versionService: VersionGroupService
   ) {
-    this._fetchAllAbilities().subscribe((abilities) => {
-      this.abilities$.next(abilities);
-    });
+    super('ability', http, translateService, languageService);
   }
 
-  getAllAbilities(): Observable<PxAbility[]> {
-    return this.abilities$.asObservable();
-  }
-
-  private _fetchAllAbilities(): Observable<PxAbility[]> {
-    return this.httpClient.get<PxAbility[]>('pokedex-ng/assets/data/ability.json').pipe(take(1));
-  }
-
-  fetchApiOneAbility(abilityId: string | number): Observable<Ability> {
-    return this.httpClient.get<Ability>('api/ability/' + abilityId).pipe(
-      take(1),
-      tap((ability) => this.parseTranslation(ability))
-    );
-  }
-
-  parseTranslations() {
-    this.abilities$.pipe(skip(1)).subscribe((value) => {
-      this.languageService
-        .getAvailableLanguages$()
-        .pipe(
-          take(1),
-          map((namedLanguages) => namedLanguages.map((language) => language.name))
-        )
-        .subscribe((languages) => {
-          value.forEach((ability) => {
-            ability.names
-              .filter((localizedName) => languages.includes(localizedName.language))
-              .forEach((name) => {
-                this.translateService.setTranslation(
-                  name.language,
-                  { ABILITY: { [ability.name]: { NAME: name.name } } },
-                  true
-                );
-              });
-          });
-          this.languageService.refresh();
-        });
-    });
-  }
-
-  private parseTranslation(ability: Ability): void {
-    this.languageService
-      .getAvailableLanguages$()
-      .pipe(
-        take(1),
-        map((namedLanguages) => namedLanguages.map((language) => language.name))
+  protected _parseAllTranslations(resources: PxAbility[]): Observable<MergingMap> {
+    const translations = new MergingMap();
+    resources.forEach((ability) =>
+      ability.names.forEach((name) =>
+        translations.merge(name.language, { ABILITY: { [ability.name]: { NAME: name.name } } })
       )
-      .subscribe((languages) => {
-        ability.effect_entries
-          .filter((effect) => languages.includes(effect.language.name))
-          .forEach((entry) => {
-            this.translateService.setTranslation(
-              entry.language.name,
-              {
-                ABILITY: {
-                  [ability.name]: {
-                    EFFECT_ENTRY: {
-                      SHORT: entry.short_effect,
-                      EFFECT: entry.effect,
-                    },
-                  },
-                },
-              },
-              true
-            );
-          });
-        const defaultFlavorTextIndex = ability.flavor_text_entries.findIndex((value) => value.language.name === 'en');
-        const defaultFlavorText =
-          defaultFlavorTextIndex > -1
-            ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
-            : 'ABILITY_TRANSLATE_ERROR_001';
-        this.versionService.getAll().subscribe((versions) => {
-          languages.forEach((language) => {
-            const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
-              (value) => value.language.name === language
-            );
-            const langDefaultFlavorText =
-              langDefaultFlavorTextIndex > -1
-                ? ability.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text
-                : 'ABILITY_TRANSLATE_ERROR_002';
-            versions.forEach((versionGroup) => {
-              this.translateService.setTranslation(
-                language,
-                {
-                  ABILITY: {
-                    [ability.name]: {
-                      FLAVOR_TEXT: {
-                        [versionGroup.name]:
-                          langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText,
-                      },
-                    },
-                  },
-                },
-                true
-              );
+    );
+    return of(translations);
+  }
+
+  protected _parseOneTranslation(ability: Ability): Observable<MergingMap> {
+    return this.languageService.getAvailableLanguageIds$().pipe(
+      take(1),
+      mergeMap((languages) =>
+        this.versionService.getAll().pipe(
+          take(1),
+          map((versions) => {
+            const translations = new MergingMap();
+            ability.effect_entries.forEach((entry) => {
+              translations.merge(entry.language.name, {
+                ABILITY: { [ability.name]: { EFFECT_ENTRY: { SHORT: entry.short_effect, EFFECT: entry.effect } } },
+              });
             });
-          });
-        });
-        ability.flavor_text_entries
-          .filter((effect) => languages.includes(effect.language.name))
-          .forEach((entry) => {
-            this.translateService.setTranslation(
-              entry.language.name,
-              {
-                ABILITY: {
-                  [ability.name]: {
-                    FLAVOR_TEXT: { [entry.version_group.name]: entry.flavor_text },
-                  },
-                },
-              },
-              true
+            const defaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
+              (value) => value.language.name === 'en'
             );
-          });
-        this.languageService.refresh();
-      });
-    this.languageService.availableLanguages$.next(this.languageService.availableLanguages$.value);
+            const defaultFlavorText =
+              defaultFlavorTextIndex > -1
+                ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
+                : 'ABILITY_TRANSLATE_ERROR_001';
+            languages.forEach((language) => {
+              const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
+                (value) => value.language.name === language
+              );
+              const langDefaultFlavorText =
+                langDefaultFlavorTextIndex > -1
+                  ? ability.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text
+                  : 'ABILITY_TRANSLATE_ERROR_002';
+              versions.forEach((versionGroup) => {
+                const flavorText = langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText;
+                translations.merge(language, {
+                  ABILITY: { [ability.name]: { FLAVOR_TEXT: { [versionGroup.name]: flavorText } } },
+                });
+              });
+            });
+            ability.flavor_text_entries.forEach((entry) => {
+              translations.merge(entry.language.name, {
+                ABILITY: { [ability.name]: { FLAVOR_TEXT: { [entry.version_group.name]: entry.flavor_text } } },
+              });
+            });
+            return translations;
+          })
+        )
+      )
+    );
   }
 }

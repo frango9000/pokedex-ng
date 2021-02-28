@@ -14,6 +14,7 @@ import { SpeciesService } from './species/species.service';
 
 class StubBaseService<T> implements Partial<BaseService<T, T>> {
   getAll = () => of([]);
+  fetchApiOne = () => of(null);
 }
 
 export class StubTypeService extends StubBaseService<TypeService> implements Partial<TypeService> {}
@@ -34,9 +35,7 @@ export const stubMoveServiceProvider = {
   useFactory: () => new StubMoveService(),
 };
 
-export class StubAbilityService implements Partial<AbilityService> {
-  fetchApiOneAbility = () => of(null);
-}
+export class StubAbilityService extends StubBaseService<AbilityService> implements Partial<AbilityService> {}
 
 export const stubAbilityServiceProvider = {
   provide: AbilityService,

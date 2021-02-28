@@ -8,7 +8,9 @@
       <tr title="{{ 'UI.ABILITY.DESCRIPTION_TITLE' | translate }}">
         <td>{{ "UI.ABILITY.DESCRIPTION" | translate }}</td>
         <td>
-          {{ "ABILITY." + ability.name + ".FLAVOR_TEXT." | withVersionGroup | async }}
+          <span *ngIf="'' | withVersionGroup | async as versionGroup">{{
+            "ABILITY." + ability.name + ".FLAVOR_TEXT." + versionGroup | translate
+          }}</span>
         </td>
       </tr>
       <tr title="{{ 'UI.ABILITY.GENERATION_TITLE' | translate }}">

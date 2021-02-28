@@ -21,7 +21,7 @@ export class AppInitService {
     return new Promise<void>((resolve) => {
       this.languageService.parseTranslations();
       this.moveService.parseTranslations();
-      this.abilityService.parseTranslations();
+      this.abilityService.getAll().subscribe();
       this.typeService.getAll().subscribe();
       this.statService.getAll().subscribe();
       resolve();
