@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { LanguageService } from '../app/language.service';
 import { SingleTranslatedService } from '../base-service';
-import { GameVersionService } from '../game/game-version.service';
+import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class SpeciesService extends SingleTranslatedService<Species, Species> {
     protected http: HttpClient,
     protected translateService: TranslateService,
     protected languageService: LanguageService,
-    private pokemonVersionService: GameVersionService
+    private pokemonVersionService: VersionGroupService
   ) {
     super('pokemon-species', http, translateService, languageService);
   }
@@ -29,7 +29,7 @@ export class SpeciesService extends SingleTranslatedService<Species, Species> {
     return this.languageService.getAvailableLanguageIds$().pipe(
       take(1),
       mergeMap((languages) =>
-        this.pokemonVersionService.getAllVersionGroups$().pipe(
+        this.pokemonVersionService.getAll().pipe(
           take(1),
           map((versions) => {
             const translations = new MergingMap();

@@ -9,7 +9,7 @@ import {
   LocalizedName,
   NamedApiResource,
   Pokemon,
-  PxGameVersionGroup,
+  PxVersionGroup,
 } from '@pokedex-ng/domain';
 
 export interface PxItem extends ApiEntity {
@@ -59,5 +59,5 @@ export interface ItemHolderPokemon {
 
 export interface MachineVersionDetail {
   machine: NamedApiResource;
-  version_group: PxGameVersionGroup;
+  version_group: PxVersionGroup;
 }

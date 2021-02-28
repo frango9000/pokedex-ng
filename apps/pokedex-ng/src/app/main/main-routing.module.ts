@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
-import { PokemonModule } from './pokemon/pokemon.module';
 
-export const loadPokemonModule = () => PokemonModule;
+export const loadPokemonModule = () => import('./pokemon/pokemon.module').then((m) => m.PokemonModule);
 
 const routes: Routes = [
   {

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { StubPokeTypeColorPipe, StubReplacePipe, StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { stubGameVersionServiceProvider, stubMoveServiceProvider } from '../../../../../shared/services/stubs';
+import { stubMoveServiceProvider, stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
 import { PokemonMoveComponent } from './pokemon-move.component';
 
 describe('PokemonMovesComponent', () => {
@@ -20,7 +20,7 @@ describe('PokemonMovesComponent', () => {
           NgVarDirective,
           StubWithVersionGroupPipe,
         ],
-        providers: [stubMoveServiceProvider, stubGameVersionServiceProvider],
+        providers: [stubMoveServiceProvider, stubVersionGroupServiceProvider],
       }).compileComponents();
     })
   );

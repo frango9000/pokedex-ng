@@ -1,11 +1,11 @@
-import { GameVersionGroup } from '../games/game-version';
+import { VersionGroup } from '../games/version-group';
 import { NamedApiResource } from './domain';
 import { Language } from './language';
 
 export interface ApiFlavorTextEntry {
   flavor_text: string;
   language: NamedApiResource;
-  version_group: NamedApiResource<GameVersionGroup>;
+  version_group: NamedApiResource<VersionGroup>;
 }
 
 export interface ApiEffectEntry {
@@ -16,5 +16,5 @@ export interface ApiEffectEntry {
 
 export interface ApiEffectChange {
   effect_entries: ApiEffectEntry[];
-  version_group: NamedApiResource<GameVersionGroup>;
+  version_group: NamedApiResource<VersionGroup>;
 }

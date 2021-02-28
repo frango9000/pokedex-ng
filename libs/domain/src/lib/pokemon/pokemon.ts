@@ -6,7 +6,7 @@ import {
   Move,
   NamedApiResource,
   PokeType,
-  PxGameVersionGroup,
+  PxVersionGroup,
   Species,
 } from '@pokedex-ng/domain';
 
@@ -100,6 +100,6 @@ export interface PokemonMoves {
 
 export interface PokemonVersionGroupDetails {
   level_learned_at: number;
-  version_group: PxGameVersionGroup;
+  version_group: PxVersionGroup;
   move_learn_method: NamedApiResource;
 }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { stubGameVersionServiceProvider } from '../../../services/stubs';
+import { stubVersionGroupServiceProvider } from '../../../services/stubs';
 
 import { VersionGroupFilterComponent } from './version-group-filter.component';
 
@@ -10,7 +10,7 @@ describe('VersionGroupFilterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [VersionGroupFilterComponent],
-      providers: [stubGameVersionServiceProvider],
+      providers: [stubVersionGroupServiceProvider],
     }).compileComponents();
   });
 

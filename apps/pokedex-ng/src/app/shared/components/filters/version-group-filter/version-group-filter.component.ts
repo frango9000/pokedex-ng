@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { GameVersionService } from '../../../services/game/game-version.service';
+import { VersionGroupService } from '../../../services/game/version-group.service';
 
 @Component({
   selector: 'pokedex-ng-version-group-filter',
@@ -10,5 +10,5 @@ import { GameVersionService } from '../../../services/game/game-version.service'
 export class VersionGroupFilterComponent {
   baseUrl = environment.baseHref;
 
-  constructor(public gameVersionService: GameVersionService) {}
+  constructor(public gameVersionService: VersionGroupService) {}
 }

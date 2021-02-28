@@ -5,7 +5,7 @@ import { ApiResourceList, Move, NamedApiResource, PxMove } from '@pokedex-ng/dom
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, skip, take, tap } from 'rxjs/operators';
 import { LanguageService } from '../app/language.service';
-import { GameVersionService } from '../game/game-version.service';
+import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class MoveService {
   constructor(
     private httpClient: HttpClient,
     private translateService: TranslateService,
-    private pokemonVersionService: GameVersionService,
+    private pokemonVersionService: VersionGroupService,
     private languageService: LanguageService
   ) {
     this._fetchAllMoves().subscribe((moves) => this.moves$.next(moves));
@@ -91,7 +91,7 @@ export class MoveService {
         defaultFlavorTextIndex > -1
           ? move.flavor_text_entries[defaultFlavorTextIndex].flavor_text
           : 'MOVE_TRANSLATE_ERROR_001';
-      this.pokemonVersionService.getAllVersionGroups$().subscribe((versions) => {
+      this.pokemonVersionService.getAll().subscribe((versions) => {
         languages.forEach((language) => {
           const langDefaultFlavorTextIndex = move.flavor_text_entries.findIndex(
             (value) => value.language.name === language

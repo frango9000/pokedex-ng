@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MoveLearnMethod as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, mergeMap, skip, take } from 'rxjs/operators';
-import { GameVersionService } from '../../../../shared/services/game/game-version.service';
+import { VersionGroupService } from '../../../../shared/services/game/version-group.service';
 import { MoveService } from '../../../../shared/services/pokemon/move.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private gameVersionService: GameVersionService, private moveService: MoveService) {}
+  constructor(private gameVersionService: VersionGroupService, private moveService: MoveService) {}
 
   ngOnInit(): void {
     this.subscriptions.add(this._pokemonUpdateSubscription());
@@ -74,7 +74,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
 
   private _versionUpdatesSubscription(): Subscription {
     return this.gameVersionService
-      .getActiveVersion$()
+      .getActiveVersionGroup$()
       .pipe(
         skip(1),
         mergeMap((version) =>
@@ -93,7 +93,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
     return this.pokemon$
       .pipe(
         mergeMap((pokemon) =>
-          this.gameVersionService.getActiveVersion$().pipe(
+          this.gameVersionService.getActiveVersionGroup$().pipe(
             take(1),
             map((version) => ({ pokemon, version }))
           )

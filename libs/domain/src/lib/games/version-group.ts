@@ -1,17 +1,12 @@
-import { ApiEntity, ApiName, Generation, NamedApiResource } from '@pokedex-ng/domain';
+import { ApiEntity, GameVersion, Generation, NamedApiResource } from '@pokedex-ng/domain';
 
-export interface PxGameVersionGroup extends ApiEntity {
+export interface PxVersionGroup extends ApiEntity {
   generation?: number;
   order?: number;
   versions?: string[];
 }
 
-export interface GameVersion extends ApiEntity {
-  names: ApiName[];
-  version_group: GameVersionGroup;
-}
-
-export interface GameVersionGroup extends ApiEntity {
+export interface VersionGroup extends ApiEntity {
   name: string;
   id: number;
   order: number;

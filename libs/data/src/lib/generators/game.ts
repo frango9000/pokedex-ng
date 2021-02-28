@@ -1,12 +1,12 @@
-import { GameVersionGroup, Generation, PxGameVersionGroup, PxGeneration } from '@pokedex-ng/domain';
+import { VersionGroup, Generation, PxVersionGroup, PxGeneration } from '@pokedex-ng/domain';
 import { AbstractGenerator } from '../model/abstract-generator';
 
-export class VersionGroupGenerator extends AbstractGenerator<GameVersionGroup, PxGameVersionGroup> {
+export class VersionGroupGenerator extends AbstractGenerator<VersionGroup, PxVersionGroup> {
   getResourceName(): string {
-    return 'version-group';
+    return 'version.ts-group';
   }
 
-  mapResource(resource: GameVersionGroup): PxGameVersionGroup {
+  mapResource(resource: VersionGroup): PxVersionGroup {
     return {
       id: resource.id,
       name: resource.name,

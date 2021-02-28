@@ -5,7 +5,7 @@ import { Ability, PxAbility } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, skip, take, tap } from 'rxjs/operators';
 import { LanguageService } from '../app/language.service';
-import { GameVersionService } from '../game/game-version.service';
+import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AbilityService {
     private httpClient: HttpClient,
     private translateService: TranslateService,
     private languageService: LanguageService,
-    private versionService: GameVersionService
+    private versionService: VersionGroupService
   ) {
     this._fetchAllAbilities().subscribe((abilities) => {
       this.abilities$.next(abilities);
@@ -95,7 +95,7 @@ export class AbilityService {
           defaultFlavorTextIndex > -1
             ? ability.flavor_text_entries[defaultFlavorTextIndex].flavor_text
             : 'ABILITY_TRANSLATE_ERROR_001';
-        this.versionService.getAllVersionGroups$().subscribe((versions) => {
+        this.versionService.getAll().subscribe((versions) => {
           languages.forEach((language) => {
             const langDefaultFlavorTextIndex = ability.flavor_text_entries.findIndex(
               (value) => value.language.name === language

@@ -3,7 +3,7 @@ import { AppNavbarService } from './app/app-navbar.service';
 import { FilterService } from './app/filter.service';
 import { LanguageService } from './app/language.service';
 import { EvolutionChainService } from './evolution/evolution-chain.service';
-import { GameVersionService } from './game/game-version.service';
+import { VersionGroupService } from './game/version-group.service';
 import { AbilityService } from './pokemon/ability.service';
 import { MoveService } from './pokemon/move.service';
 import { PokemonService } from './pokemon/pokemon.service';
@@ -67,15 +67,13 @@ export const stubPokemonServiceProvider = {
   useFactory: () => new StubPokemonService(),
 };
 
-export class StubGameVersionService implements Partial<GameVersionService> {
-  public getActiveVersion$ = () => of('');
-  public matchesDisplayVersion = () => true;
-  public getAllVersionGroups = () => of([]);
+export class StubVersionGroupService implements Partial<VersionGroupService> {
+  public getActiveVersionGroup$ = () => of('');
 }
 
-export const stubGameVersionServiceProvider = {
-  provide: GameVersionService,
-  useFactory: () => new StubGameVersionService(),
+export const stubVersionGroupServiceProvider = {
+  provide: VersionGroupService,
+  useFactory: () => new StubVersionGroupService(),
 };
 
 export class StubFilterService implements Partial<FilterService> {

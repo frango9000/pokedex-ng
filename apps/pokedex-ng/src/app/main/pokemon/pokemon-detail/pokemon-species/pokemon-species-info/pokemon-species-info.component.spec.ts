@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { stubGameVersionServiceProvider } from '../../../../../shared/services/stubs';
+import { stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
 describe('PokemonSpeciesInfoComponent', () => {
@@ -14,7 +14,7 @@ describe('PokemonSpeciesInfoComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesInfoComponent, StubWithVersionGroupPipe],
-        providers: [stubGameVersionServiceProvider],
+        providers: [stubVersionGroupServiceProvider],
       }).compileComponents();
     })
   );

@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { stubGameVersionServiceProvider, stubLanguageServiceProvider } from '../stubs';
+import { stubLanguageServiceProvider, stubVersionGroupServiceProvider } from '../stubs';
 import { SpeciesService } from './species.service';
 
 describe('PokemonSpeciesService', () => {
@@ -10,7 +10,7 @@ describe('PokemonSpeciesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, TranslateModule.forRoot()],
-      providers: [stubGameVersionServiceProvider, stubLanguageServiceProvider],
+      providers: [stubVersionGroupServiceProvider, stubLanguageServiceProvider],
     });
     service = TestBed.inject(SpeciesService);
   });

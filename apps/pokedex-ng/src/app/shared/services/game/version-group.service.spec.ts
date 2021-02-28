@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { GameVersionService } from './game-version.service';
+import { VersionGroupService } from './version-group.service';
 
-describe('GameVersionService', () => {
-  let service: GameVersionService;
+describe('VersionGroupService', () => {
+  let service: VersionGroupService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(GameVersionService);
+    service = TestBed.inject(VersionGroupService);
   });
 
   it('should be created', () => {

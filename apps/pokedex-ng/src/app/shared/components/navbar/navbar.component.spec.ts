@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { GameVersionService } from '../../services/game/game-version.service';
-import { stubGameVersionServiceProvider } from '../../services/stubs';
+import { VersionGroupService } from '../../services/game/version-group.service';
+import { stubVersionGroupServiceProvider } from '../../services/stubs';
 import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
 import { VersionGroupFilterComponent } from '../filters/version-group-filter/version-group-filter.component';
 
@@ -14,7 +14,7 @@ class StubLocalePickerComponent {}
 
 @Component({ selector: 'pokedex-ng-version-group-filter', template: '' })
 export class StubVersionGroupFilterComponent implements Partial<VersionGroupFilterComponent> {
-  constructor(public gameVersionService: GameVersionService) {}
+  constructor(public gameVersionService: VersionGroupService) {}
 }
 
 describe('NavbarComponent', () => {
@@ -31,7 +31,7 @@ describe('NavbarComponent', () => {
           StubFilterBarComponent,
           StubVersionGroupFilterComponent,
         ],
-        providers: [stubGameVersionServiceProvider],
+        providers: [stubVersionGroupServiceProvider],
       }).compileComponents();
     })
   );
