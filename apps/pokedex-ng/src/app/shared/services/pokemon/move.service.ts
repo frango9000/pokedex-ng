@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { MergingMap, Move, PxMove } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
-import { LanguageService } from '../app/language.service';
 import { FullyTranslatedService } from '../base-service';
+import { LanguageService } from '../game/language.service';
 import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class MoveService extends FullyTranslatedService<Move, PxMove> {
   }
 
   protected _parseOneTranslation(move: Move): Observable<MergingMap> {
-    return this.languageService.getAvailableLanguageIds$().pipe(
+    return this.languageService.getAllIds$().pipe(
       take(1),
       mergeMap((languages) =>
         this.versionGroupService.getAll().pipe(

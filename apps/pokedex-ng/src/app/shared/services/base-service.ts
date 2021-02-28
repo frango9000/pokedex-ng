@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiEntity, ApiResourceList, MergingMap, NamedApiResource } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, filter, map, take, tap } from 'rxjs/operators';
-import { LanguageService } from './app/language.service';
+import { LanguageService } from './game/language.service';
 
 export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
   protected resources$ = new BehaviorSubject<P[]>([]);
@@ -20,6 +20,10 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
 
   public getAll(): Observable<P[]> {
     return this.resources$.pipe(filter((res) => !!res && !!res.length));
+  }
+
+  getAllIds$(): Observable<string[]> {
+    return this.getAll().pipe(map((resources) => resources.map((resource) => resource.name)));
   }
 
   protected _fetchAll(): Observable<P[]> {

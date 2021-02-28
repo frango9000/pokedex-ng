@@ -1,9 +1,9 @@
 import { of } from 'rxjs';
 import { AppNavbarService } from './app/app-navbar.service';
 import { FilterService } from './app/filter.service';
-import { LanguageService } from './app/language.service';
 import { BaseService } from './base-service';
 import { EvolutionChainService } from './evolution/evolution-chain.service';
+import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
 import { AbilityService } from './pokemon/ability.service';
 import { MoveService } from './pokemon/move.service';

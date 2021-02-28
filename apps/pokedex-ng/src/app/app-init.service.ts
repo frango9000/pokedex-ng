@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LanguageService } from './shared/services/app/language.service';
+import { LanguageService } from './shared/services/game/language.service';
 import { AbilityService } from './shared/services/pokemon/ability.service';
 import { MoveService } from './shared/services/pokemon/move.service';
 import { StatService } from './shared/services/pokemon/stat.service';
@@ -19,7 +19,7 @@ export class AppInitService {
 
   init() {
     return new Promise<void>((resolve) => {
-      this.languageService.parseTranslations();
+      this.languageService.getAll().subscribe();
       this.moveService.getAll().subscribe();
       this.abilityService.getAll().subscribe();
       this.typeService.getAll().subscribe();

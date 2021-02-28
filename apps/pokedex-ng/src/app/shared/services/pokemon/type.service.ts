@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MergingMap, PokeType, PxType } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
-import { LanguageService } from '../app/language.service';
 import { MultiTranslatedService } from '../base-service';
+import { LanguageService } from '../game/language.service';
 
 @Injectable({
   providedIn: 'root',
