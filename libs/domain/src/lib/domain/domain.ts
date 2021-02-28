@@ -43,3 +43,8 @@ export interface LocalizedName {
   name: string;
   language: string;
 }
+
+export interface ExpandableResource<T> {
+  resource: T;
+  expanded: boolean;
+}
