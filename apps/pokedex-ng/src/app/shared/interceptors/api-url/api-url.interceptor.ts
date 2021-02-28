@@ -12,8 +12,8 @@ export class ApiUrlInterceptor implements HttpInterceptor {
       case 'api':
         root = environment.apiUrl;
         break;
-      case 'pokedex-ng':
-        root = environment.baseHref;
+      case 'assets':
+        root = environment.baseHref + '/assets';
         break;
     }
     return next.handle(

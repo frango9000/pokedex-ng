@@ -50,7 +50,7 @@ export class LanguageService {
   }
 
   private _fetchAllLanguages(): Observable<PxLanguage[]> {
-    return this.http.get<PxLanguage[]>('pokedex-ng/assets/data/language.json').pipe(take(1));
+    return this.http.get<PxLanguage[]>('assets/data/language.json').pipe(take(1));
   }
 
   private _apiFetchAllLanguages(): Observable<NamedApiResource[]> {

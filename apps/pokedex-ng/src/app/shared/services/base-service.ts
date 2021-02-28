@@ -23,7 +23,7 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
   }
 
   protected _fetchAll(): Observable<P[]> {
-    return this.http.get<P[]>(`pokedex-ng/assets/data/${this.name}.json`).pipe(take(1));
+    return this.http.get<P[]>(`assets/data/${this.name}.json`).pipe(take(1));
   }
 
   public fetchApiAll(offset = 0, limit = 9999): Observable<NamedApiResource<T>[]> {
