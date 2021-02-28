@@ -13,8 +13,3 @@ export interface PxLanguage extends ApiEntity {
   iso3166: string;
   names?: LocalizedName[];
 }
-
-export interface InsertableTranslation {
-  language: string;
-  object: any;
-}

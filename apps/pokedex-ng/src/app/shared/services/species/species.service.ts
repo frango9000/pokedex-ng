@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Species } from '@pokedex-ng/domain';
+import { MergingMap, Species } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { LanguageService } from '../app/language.service';
-import { MergingMap, SingleTranslatedService } from '../base-service';
+import { SingleTranslatedService } from '../base-service';
 import { GameVersionService } from '../game/game-version.service';
 
 @Injectable({
@@ -67,13 +67,7 @@ export class SpeciesService extends SingleTranslatedService<Species, Species> {
               const groupIndex = versions.findIndex((value) => value.name.includes(entry.version.name));
               if (groupIndex > -1) {
                 translations.merge(entry.language.name, {
-                  SPECIES: {
-                    [specie.name]: {
-                      FLAVOR_TEXT: {
-                        [versions[groupIndex].name]: entry.flavor_text,
-                      },
-                    },
-                  },
+                  SPECIES: { [specie.name]: { FLAVOR_TEXT: { [versions[groupIndex].name]: entry.flavor_text } } },
                 });
               }
             });

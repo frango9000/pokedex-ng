@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { ApiEntity, ApiResourceList, NamedApiResource } from '@pokedex-ng/domain';
-import { merge } from 'lodash-es';
+import { ApiEntity, ApiResourceList, MergingMap, NamedApiResource } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, filter, map, take, tap } from 'rxjs/operators';
 import { LanguageService } from './app/language.service';
@@ -68,13 +67,6 @@ export abstract class TranslatedService<T, P> extends BaseService<T, P> {
         this.languageService.refresh();
       }
     });
-  }
-}
-
-export class MergingMap extends Map {
-  merge(key: any, value: any) {
-    const hasKey = this.get(key);
-    return super.set(key, hasKey ? merge(hasKey, value) : value);
   }
 }
 

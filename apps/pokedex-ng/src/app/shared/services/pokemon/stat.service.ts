@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { PxStat, Stat } from '@pokedex-ng/domain';
+import { MergingMap, PxStat, Stat } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { LanguageService } from '../app/language.service';
-import { MergingMap, MultiTranslatedService } from '../base-service';
+import { MultiTranslatedService } from '../base-service';
 
 @Injectable({ providedIn: 'root' })
 export class StatService extends MultiTranslatedService<Stat, PxStat> {
@@ -19,11 +19,7 @@ export class StatService extends MultiTranslatedService<Stat, PxStat> {
   protected _parseAllTranslations(resources: PxStat[]): Observable<MergingMap> {
     const map = new MergingMap();
     resources.forEach((stat) =>
-      stat.names.forEach((name) =>
-        map.merge(name.language, {
-          STAT: { [stat.name]: name.name },
-        })
-      )
+      stat.names.forEach((name) => map.merge(name.language, { STAT: { [stat.name]: name.name } }))
     );
     return of(map);
   }

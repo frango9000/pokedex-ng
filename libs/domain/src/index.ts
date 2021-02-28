@@ -1,6 +1,7 @@
 export * from './lib/domain/domain';
 export * from './lib/domain/language';
 export * from './lib/domain/common';
+export * from './lib/domain/merge-map';
 export * from './lib/games/generation';
 export * from './lib/games/game-version';
 export * from './lib/pokemon/pokemon';
