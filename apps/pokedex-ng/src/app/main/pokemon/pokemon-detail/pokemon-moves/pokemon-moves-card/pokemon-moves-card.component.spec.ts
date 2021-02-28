@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../../../shared/pipes/stubs';
 import { stubMoveServiceProvider } from '../../../../../shared/services/stubs';
@@ -36,6 +37,7 @@ describe('PokemonMovesCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesCardComponent);
     component = fixture.componentInstance;
+    component.moves$ = of(null);
     fixture.detectChanges();
   });
 
