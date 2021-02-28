@@ -103,7 +103,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
   }
 
   private _emitFilteredMoves(pokemon: Pokemon, version: string): void {
-    this.moveService.getAllMoves().subscribe((moves) =>
+    this.moveService.getAll().subscribe((moves) =>
       this.versionFilteredMoves$.next(
         pokemon.moves
           .filter((filteredMove) =>

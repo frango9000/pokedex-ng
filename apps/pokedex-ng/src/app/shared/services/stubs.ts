@@ -24,11 +24,7 @@ export const stubTypeServiceProvider = {
   useFactory: () => new StubTypeService(),
 };
 
-export class StubMoveService implements Partial<MoveService> {
-  public getAllMoves = jest.fn(() => of([]));
-  public fetchApiOneMove = jest.fn(() => of(null));
-  public fetchApiOneAbility = jest.fn(() => of(null));
-}
+export class StubMoveService extends StubBaseService<MoveService> implements Partial<MoveService> {}
 
 export const stubMoveServiceProvider = {
   provide: MoveService,
