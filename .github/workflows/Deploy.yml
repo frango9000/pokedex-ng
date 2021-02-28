@@ -16,6 +16,17 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '14'
+      - name: Cache node modules
+        uses: actions/cache@v2.1.4
+        env:
+          cache-name: cache-node-modules-v3
+        with:
+          path: |
+            ~/.npm
+            ./node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Yarn Install
         run: yarn install
       - name: Prettier
