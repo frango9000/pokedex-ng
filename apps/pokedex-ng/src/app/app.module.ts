@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { environment } from '../environments/environment';
 import { AppInitService } from './app-init.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +15,7 @@ import { CacheService } from './shared/interceptors/cache/cache.service';
 import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, environment.baseHref + '/assets/i18n/', '.json');
 }
 
 export function initializeApp(appInitService: AppInitService) {
