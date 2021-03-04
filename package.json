@@ -82,7 +82,7 @@
     "@angular-eslint/eslint-plugin": "1.2.0",
     "@angular-eslint/eslint-plugin-template": "1.2.0",
     "@angular-eslint/template-parser": "1.2.0",
-    "@angular/cli": "~11.2.2",
+    "@angular/cli": "~11.2.3",
     "@angular/compiler-cli": "11.2.3",
     "@angular/language-service": "~11.2.3",
     "@nrwl/angular": "11.4.0",
