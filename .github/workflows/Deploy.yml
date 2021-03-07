@@ -50,14 +50,6 @@ jobs:
           all: 'true'
           parallel: 'true'
           affected: 'false'
-      - name: Build
-        uses: MansaGroup/nrwl-nx-action@v2.1.0
-        with:
-          targets: build
-          all: 'true'
-          parallel: 'true'
-          affected: 'false'
-          args: '--prod=true --base-href=/pokedex-ng/'
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
