@@ -2,10 +2,11 @@
   dropdownToggle
   mdbWavesEffect
   type="button"
-  class="nav-link dropdown-toggle waves-light"
+  class="nav-link dropdown-toggle waves-light d-inline"
   title="{{ activeVersion }}"
   *ngIf="gameVersionService.getActiveVersionGroup$() | async as activeVersion"
 >
+  <span class="d-sm-none text-white pr-3" *ngIf="showLabel">Version Picker</span>
   <img
     alt="activeVersion"
     class="img-fluid rounded-lg border border-dark version-group-image"

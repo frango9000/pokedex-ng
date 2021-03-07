@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { StubFilterToolbarComponent } from '../../../shared/components/filter-toolbar/filter-toolbar.component.stub';
 import { StubPokeTypeColorPipe } from '../../../shared/pipes/stubs';
 import {
   stubAppNavbarServiceProvider,
@@ -16,7 +17,7 @@ describe('MoveListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
-      declarations: [MoveListComponent, StubPokeTypeColorPipe],
+      declarations: [MoveListComponent, StubPokeTypeColorPipe, StubFilterToolbarComponent],
       providers: [stubMoveServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
     }).compileComponents();
   });

@@ -1,6 +1,11 @@
+<pokedex-ng-filter-toolbar
+  *ngIf="this.appNavbarService.getShowFilters$() | async"
+  [showGenerationFilter]="true"
+  [showTypeFilter]="true"
+></pokedex-ng-filter-toolbar>
 <div class="table-responsive">
   <table class="table table-hover table-sm">
-    <caption>
+    <caption class="d-none">
       All Moves
     </caption>
     <thead>

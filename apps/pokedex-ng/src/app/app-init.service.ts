@@ -6,9 +6,7 @@ import { MoveService } from './shared/services/pokemon/move.service';
 import { StatService } from './shared/services/pokemon/stat.service';
 import { TypeService } from './shared/services/pokemon/type.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AppInitService {
   constructor(
     private translateService: TranslateService,

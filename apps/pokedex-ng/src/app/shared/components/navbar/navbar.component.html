@@ -1,4 +1,4 @@
-<mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark indigo sticky-top">
+<mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark indigo sticky-top py-1">
   <mdb-navbar-brand>
     <a class="navbar-brand" [routerLink]="['/pokemon']">
       <img src="assets/images/pokeball.png" height="30px" alt="" />
@@ -7,7 +7,15 @@
   </mdb-navbar-brand>
   <!-- Collapsible content -->
   <links>
-    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item my-auto">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/pokemon']">Pokemon</a>
+      </li>
+      <li class="nav-item my-auto">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/move']">Moves</a>
+      </li>
+    </ul>
+
     <ul class="navbar-nav ml-auto">
       <li class="nav-item my-auto" *ngIf="appNavbarService.getShowSearchBar$() | async">
         <pokedex-ng-query-filter></pokedex-ng-query-filter>
@@ -21,7 +29,6 @@
       <li class="nav-item dropdown my-auto" dropdown *ngIf="appNavbarService.getShowVersionGroupPicker$() | async">
         <pokedex-ng-version-group-picker></pokedex-ng-version-group-picker>
       </li>
-      <!-- Dropdown -->
       <li class="nav-item dropdown my-auto" dropdown>
         <pokedex-ng-locale-picker></pokedex-ng-locale-picker>
       </li>

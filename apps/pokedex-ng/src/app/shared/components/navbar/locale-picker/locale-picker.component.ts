@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LanguageService } from '../../../services/game/language.service';
 
 @Component({
@@ -7,5 +7,7 @@ import { LanguageService } from '../../../services/game/language.service';
   styleUrls: ['./locale-picker.component.scss'],
 })
 export class LocalePickerComponent {
+  @Input() public showLabel = true;
+
   constructor(public languageService: LanguageService) {}
 }

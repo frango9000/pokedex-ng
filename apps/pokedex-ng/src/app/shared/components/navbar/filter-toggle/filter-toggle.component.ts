@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppNavbarService } from '../../../services/app/app-navbar.service';
 
 @Component({
@@ -7,5 +7,7 @@ import { AppNavbarService } from '../../../services/app/app-navbar.service';
   styleUrls: ['./filter-toggle.component.scss'],
 })
 export class FilterToggleComponent {
+  @Input() public showLabel = true;
+
   constructor(public appNavbarService: AppNavbarService) {}
 }

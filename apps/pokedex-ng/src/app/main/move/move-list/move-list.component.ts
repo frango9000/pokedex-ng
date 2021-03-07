@@ -21,13 +21,14 @@ export class MoveListComponent implements OnInit, OnDestroy {
   constructor(
     private moveService: MoveService,
     private filterService: FilterService,
-    private appNavbarService: AppNavbarService
+    public appNavbarService: AppNavbarService
   ) {}
 
   ngOnInit(): void {
     this.subscriptions.add(this._updateListSubscription());
     this.subscriptions.add(this._filterChangesSubscription());
     this.appNavbarService.showSearchBar();
+    this.appNavbarService.showFiltersButton();
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,10 @@
 <div class="container-fluid">
   <div class="row px-md-2 px-lg-4">
-    <pokedex-ng-filter-toolbar *ngIf="appNavbarService.getShowFilters$() | async"></pokedex-ng-filter-toolbar>
+    <pokedex-ng-filter-toolbar
+      *ngIf="appNavbarService.getShowFilters$() | async"
+      [showGenerationFilter]="true"
+      [showTypesFilter]="true"
+    ></pokedex-ng-filter-toolbar>
   </div>
   <div class="row px-md-2 px-lg-4">
     <div

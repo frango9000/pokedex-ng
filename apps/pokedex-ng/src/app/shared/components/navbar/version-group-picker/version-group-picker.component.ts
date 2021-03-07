@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { VersionGroupService } from '../../../services/game/version-group.service';
 
@@ -9,6 +9,7 @@ import { VersionGroupService } from '../../../services/game/version-group.servic
 })
 export class VersionGroupPickerComponent {
   baseUrl = environment.baseHref;
+  @Input() public showLabel = true;
 
   constructor(public gameVersionService: VersionGroupService) {}
 }

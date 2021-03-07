@@ -1,3 +1,4 @@
 <a (click)="appNavbarService.toggleFilters()">
+  <span class="d-sm-none text-white pr-3" *ngIf="showLabel">Toggle Filters</span>
   <mdb-icon class="mx-1 text-white" fas icon="filter" aria-hidden="true" mdbTooltip="{{ 'Toggle Filters' }}"></mdb-icon>
 </a>

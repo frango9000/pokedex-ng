@@ -2,10 +2,11 @@
   dropdownToggle
   mdbWavesEffect
   type="button"
-  class="nav-link dropdown-toggle waves-light"
+  class="nav-link dropdown-toggle waves-light d-inline"
   title="{{ 'LANGUAGE.' + activeLanguage.name | translate }}"
   *ngIf="languageService.getDisplayLanguage$() | async as activeLanguage"
 >
+  <span class="d-sm-none text-white pr-3" *ngIf="showLabel">Locale Picker</span>
   <img alt="" src="https://www.countryflags.io/{{ activeLanguage.iso3166 }}/shiny/32.png" />
 </a>
 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
