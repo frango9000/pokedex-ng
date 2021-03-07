@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { PxPokemon } from '@pokedex-ng/domain';
+import { LocalizedName } from '@pokedex-ng/domain';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { debounce, take } from 'rxjs/operators';
+import { LanguageService } from '../game/language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,10 @@ export class FilterService {
   private _queryFilter$ = new BehaviorSubject('');
   private _generationsFilter$ = new BehaviorSubject<number[]>([]);
   private _typesFilter$ = new BehaviorSubject<string[]>([]);
+  private _typeFilter$ = new BehaviorSubject<string>('');
   private _typesFilterInclusiveness$ = new BehaviorSubject<boolean>(true);
+
+  constructor(private languageService: LanguageService) {}
 
   getQueryFilter$(): Observable<string> {
     return this._queryFilter$.asObservable().pipe(debounce(() => interval(500)));
@@ -22,33 +26,23 @@ export class FilterService {
     }
   }
 
-  filterPokemonByName(pokemonList: PxPokemon[]): PxPokemon[] {
-    const trimmedName = this._queryFilter$.value.trim().toLowerCase();
-    return !this._queryFilter$.value.length
-      ? pokemonList
-      : pokemonList.filter((poke) => poke.name.includes(trimmedName));
-  }
-
-  setTypeFilter(filter: string[]): void {
+  setTypesFilter(filter: string[]): void {
     this._typesFilter$.next(filter);
   }
 
-  getTypeFilter$(): Observable<string[]> {
+  getTypesFilter$(): Observable<string[]> {
     return this._typesFilter$.asObservable();
   }
 
-  filterPokemonByType(pokemonList: PxPokemon[]): PxPokemon[] {
-    return !this._typesFilter$.value.length
-      ? pokemonList
-      : pokemonList.filter((poke) =>
-          this._typesFilterInclusiveness$.value
-            ? poke.types.some((type) => this._typesFilter$.value.some((filterType) => filterType === type))
-            : this._typesFilter$.value.length === poke.types.length &&
-              this._typesFilter$.value.every((type) => poke.types.some((filterType) => filterType === type))
-        );
+  setTypeFilter(filter: string): void {
+    this._typeFilter$.next(filter);
   }
 
-  setTypeFilterInclusiveness(inclusiveness: boolean): void {
+  getTypeFilter$(): Observable<string> {
+    return this._typeFilter$.asObservable();
+  }
+
+  setTypesFilterInclusiveness(inclusiveness: boolean): void {
     if (this._typesFilterInclusiveness$.value !== inclusiveness) {
       this._typesFilterInclusiveness$.next(inclusiveness);
       this._typesFilter$.next(this._typesFilter$.value);
@@ -62,6 +56,7 @@ export class FilterService {
   clearAllFilters() {
     this._queryFilter$.next('');
     this._typesFilter$.next([]);
+    this._typeFilter$.next('');
     this._generationsFilter$.next([]);
   }
 
@@ -73,9 +68,39 @@ export class FilterService {
     return this._generationsFilter$.asObservable();
   }
 
-  filterPokemonByGeneration(pokemonList: PxPokemon[]): PxPokemon[] {
+  filterByName<N extends { name?: string }>(resourceList: N[]): N[] {
+    const trimmedName = this._queryFilter$.value.trim().toLowerCase();
+    return !this._queryFilter$.value.length
+      ? resourceList
+      : resourceList.filter((poke) => poke.name.includes(trimmedName));
+  }
+
+  filterByLocalizedName<N extends { names: LocalizedName[] }>(resourceList: N[]) {
+    return !this._queryFilter$.value.length
+      ? resourceList
+      : this.languageService.filterByLocalizedName(resourceList, this._queryFilter$.value);
+  }
+
+  filterByTypes<T extends { types: string[] }>(resourceList: T[]): T[] {
+    return !this._typesFilter$.value.length
+      ? resourceList
+      : resourceList.filter((resource) =>
+          this._typesFilterInclusiveness$.value
+            ? resource.types.some((type) => this._typesFilter$.value.includes(type))
+            : this._typesFilter$.value.length === resource.types.length &&
+              this._typesFilter$.value.every((type) => resource.types.includes(type))
+        );
+  }
+
+  filterByType<T extends { type: string }>(resourceList: T[]): T[] {
+    return !this._typeFilter$.value.length
+      ? resourceList
+      : resourceList.filter((resource) => resource.type === this._typeFilter$.value);
+  }
+
+  filterByGeneration<G extends { generation?: number }>(resourceList: G[]): G[] {
     return !this._generationsFilter$.value.length
-      ? pokemonList
-      : pokemonList.filter((poke) => this._generationsFilter$.value.includes(poke.generation));
+      ? resourceList
+      : resourceList.filter((resource) => this._generationsFilter$.value.includes(resource.generation));
   }
 }

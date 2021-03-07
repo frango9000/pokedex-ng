@@ -1,4 +1,4 @@
-<div class="btn-group" mdbDropdown>
+<div class="btn-group px-1" mdbDropdown>
   <button
     mdbDropdownToggle
     mdbBtn
@@ -16,7 +16,7 @@
       #checkbox
       class="dropdown-item pr-0"
       [checked]="this.filterService.getTypesFilterInclusiveness$() | async"
-      (change)="this.filterService.setTypeFilterInclusiveness($event.checked)"
+      (change)="this.filterService.setTypesFilterInclusiveness($event.checked)"
     >
       <div class="checkbox-label text-center">{{ checkbox.checked ? "Inclusive" : "Exclusive" }}</div>
     </mdb-checkbox>
@@ -43,8 +43,8 @@
     class="waves-light p-2"
     mdbWavesEffect
     size="sm"
-    (click)="filterService.setTypeFilter([])"
+    (click)="filterService.setTypesFilter([])"
   >
-    <i class="fas fa-times"></i>
+    <i class="fas fa-times" aria-hidden="true"></i>
   </button>
 </div>

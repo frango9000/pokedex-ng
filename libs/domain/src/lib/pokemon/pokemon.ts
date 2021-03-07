@@ -11,8 +11,8 @@ import {
 } from '@pokedex-ng/domain';
 
 export interface PxPokemon extends ApiEntity {
-  types?: string[];
-  generation?: number;
+  types: string[];
+  generation: number;
 }
 
 export interface Pokemon extends ApiEntity {

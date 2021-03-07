@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'angular-bootstrap-md';
 
 import { GenerationFilterComponent } from './generation-filter.component';
@@ -10,7 +11,7 @@ describe('GenerationFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, CheckboxModule],
+      imports: [HttpClientTestingModule, CheckboxModule, TranslateModule.forRoot()],
       declarations: [GenerationFilterComponent],
     }).compileComponents();
   });

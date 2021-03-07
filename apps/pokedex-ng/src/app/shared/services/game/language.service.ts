@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language, MergingMap, PxLanguage } from '@pokedex-ng/domain';
+import { Language, LocalizedName, MergingMap, PxLanguage } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { MultiTranslatedService } from '../base-service';
 
@@ -43,5 +43,12 @@ export class LanguageService extends MultiTranslatedService<Language, PxLanguage
       language.names.forEach((name) => translations.merge(name.language, { LANGUAGE: { [language.name]: name.name } }))
     );
     return of(translations);
+  }
+
+  filterByLocalizedName<L extends { names: LocalizedName[] }>(fullResource: L[], like: string): L[] {
+    return fullResource.filter((resource) => {
+      const localized = resource.names.find((value) => value.language === this.activeLanguage$.value.name);
+      return localized?.name?.trim().toLowerCase().includes(like?.trim().toLowerCase());
+    });
   }
 }

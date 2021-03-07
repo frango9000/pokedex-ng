@@ -1,23 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div
-      class="pokemon-list-filters d-flex flex-wrap align-items-center"
-      *ngIf="appNavbarService.getShowFilters$() | async"
-    >
-      <pokedex-ng-generation-filter></pokedex-ng-generation-filter>
-      <pokedex-ng-type-filter class="ml-1"></pokedex-ng-type-filter>
-      <button
-        mdbBtn
-        type="button"
-        color="primary"
-        class="px-3 ml-1"
-        mdbWavesEffect
-        (click)="this.filterService.clearAllFilters()"
-        size="sm"
-      >
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+  <div class="row px-md-2 px-lg-4">
+    <pokedex-ng-filter-toolbar *ngIf="appNavbarService.getShowFilters$() | async"></pokedex-ng-filter-toolbar>
   </div>
   <div class="row px-md-2 px-lg-4">
     <div

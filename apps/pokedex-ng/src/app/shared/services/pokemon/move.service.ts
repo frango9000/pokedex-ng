@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MergingMap, Move, PxMove } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
+import { FilterService } from '../app/filter.service';
 import { FullyTranslatedService } from '../base-service';
 import { LanguageService } from '../game/language.service';
 import { VersionGroupService } from '../game/version-group.service';
@@ -16,9 +17,18 @@ export class MoveService extends FullyTranslatedService<Move, PxMove> {
     protected http: HttpClient,
     protected translateService: TranslateService,
     protected languageService: LanguageService,
-    private versionGroupService: VersionGroupService
+    private versionGroupService: VersionGroupService,
+    private filterService: FilterService
   ) {
     super('move', http, translateService, languageService);
+  }
+
+  getAllFiltered(): Observable<PxMove[]> {
+    return this.getAll().pipe(
+      map((list: PxMove[]) => this.filterService.filterByGeneration(list)),
+      map((list: PxMove[]) => this.filterService.filterByType(list)),
+      map((list: PxMove[]) => this.filterService.filterByLocalizedName(list))
+    );
   }
 
   protected _parseAllTranslations(moves: PxMove[]): Observable<MergingMap> {

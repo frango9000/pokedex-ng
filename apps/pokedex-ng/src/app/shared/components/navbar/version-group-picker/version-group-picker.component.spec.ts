@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { stubVersionGroupServiceProvider } from '../../../services/stubs';
 
-import { VersionGroupFilterComponent } from './version-group-filter.component';
+import { VersionGroupPickerComponent } from './version-group-picker.component';
 
 describe('VersionGroupFilterComponent', () => {
-  let component: VersionGroupFilterComponent;
-  let fixture: ComponentFixture<VersionGroupFilterComponent>;
+  let component: VersionGroupPickerComponent;
+  let fixture: ComponentFixture<VersionGroupPickerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VersionGroupFilterComponent],
+      declarations: [VersionGroupPickerComponent],
       providers: [stubVersionGroupServiceProvider],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VersionGroupFilterComponent);
+    fixture = TestBed.createComponent(VersionGroupPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

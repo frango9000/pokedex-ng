@@ -3,13 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FilterBarComponent } from './components/filter/filter-bar.component';
+import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
+import { ClearFilterComponent } from './components/filters/clear-filter/clear-filter.component';
 import { GenerationFilterComponent } from './components/filters/generation-filter/generation-filter.component';
-import { TypeFilterComponent } from './components/filters/type-filter/type-filter.component';
-import { VersionGroupFilterComponent } from './components/filters/version-group-filter/version-group-filter.component';
+import { QueryFilterComponent } from './components/filters/query-filter/query-filter.component';
+import { TypesFilterComponent } from './components/filters/types-filter/types-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FilterToggleComponent } from './components/navbar/filter-toggle/filter-toggle.component';
+import { GridToggleComponent } from './components/navbar/grid-toggle/grid-toggle.component';
 import { LocalePickerComponent } from './components/navbar/locale-picker/locale-picker.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { VersionGroupPickerComponent } from './components/navbar/version-group-picker/version-group-picker.component';
 import { NgVarDirective } from './directives/ng-var.directive';
 import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
 import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
@@ -31,11 +35,15 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     RomanPipe,
     ReplacePipe,
     LocalePickerComponent,
-    FilterBarComponent,
     GenerationFilterComponent,
-    TypeFilterComponent,
+    TypesFilterComponent,
     WithVersionGroupPipe,
-    VersionGroupFilterComponent,
+    VersionGroupPickerComponent,
+    ClearFilterComponent,
+    QueryFilterComponent,
+    GridToggleComponent,
+    FilterToggleComponent,
+    FilterToolbarComponent,
   ],
   exports: [
     NavbarComponent,
@@ -48,10 +56,11 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     RomanPipe,
     TranslateModule,
     ReplacePipe,
-    FilterBarComponent,
     GenerationFilterComponent,
-    TypeFilterComponent,
+    TypesFilterComponent,
     WithVersionGroupPipe,
+    ClearFilterComponent,
+    FilterToolbarComponent,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
 })

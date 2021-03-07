@@ -41,8 +41,8 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
     return this;
   }
 
-  public setDelay(delay: number): AbstractGenerator<T, N> {
-    this.delay = delay;
+  public setDelay(inputDelay: number): AbstractGenerator<T, N> {
+    this.delay = inputDelay;
     return this;
   }
 
@@ -90,7 +90,8 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
       console.log(`Total ${this.getResourceName()}: ${this.total}`);
       res.data.results.forEach((resource) => {
         this.subject$.next(
-          Axios.get<T>(resource.url).pipe(
+          // Axios.get<T>(resource.url).pipe(
+          Axios.get<T>(resource.url.substring(0, resource.url.length - 1)).pipe(
             retry(10),
             delay(this.delay),
             map((value) => value.data),

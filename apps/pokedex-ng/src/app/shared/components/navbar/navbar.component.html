@@ -9,11 +9,17 @@
   <links>
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item my-auto">
-        <pokedex-ng-filter-bar></pokedex-ng-filter-bar>
+      <li class="nav-item my-auto" *ngIf="appNavbarService.getShowSearchBar$() | async">
+        <pokedex-ng-query-filter></pokedex-ng-query-filter>
+      </li>
+      <li class="nav-item my-auto" *ngIf="appNavbarService.getShowFiltersButton$() | async">
+        <pokedex-ng-filter-toggle></pokedex-ng-filter-toggle>
+      </li>
+      <li class="nav-item my-auto" *ngIf="appNavbarService.getShowGridButton$() | async">
+        <pokedex-ng-grid-toggle></pokedex-ng-grid-toggle>
       </li>
       <li class="nav-item dropdown my-auto" dropdown *ngIf="appNavbarService.getShowVersionGroupPicker$() | async">
-        <pokedex-ng-version-group-filter></pokedex-ng-version-group-filter>
+        <pokedex-ng-version-group-picker></pokedex-ng-version-group-picker>
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown my-auto" dropdown>

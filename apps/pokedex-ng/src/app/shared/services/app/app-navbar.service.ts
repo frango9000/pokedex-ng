@@ -9,8 +9,15 @@ export class AppNavbarService {
   private _showGridButton$ = new BehaviorSubject(false);
   private _showSearchBar$ = new BehaviorSubject(false);
   private _showFiltersButton$ = new BehaviorSubject(false);
-  private _showFilters$ = new BehaviorSubject(true);
+  private _showFilters$ = new BehaviorSubject(false);
   private _showVersionGroupPicker$ = new BehaviorSubject<boolean>(false);
+
+  hideAll(): void {
+    this.hideSearchBar();
+    this.hideGridButton();
+    this.hideFiltersButton();
+    this.hideFilters();
+  }
 
   getGridMode$(): Observable<boolean> {
     return this._gridMode$.asObservable();
@@ -60,18 +67,6 @@ export class AppNavbarService {
 
   getShowFiltersButton$(): Observable<boolean> {
     return this._showFiltersButton$.asObservable();
-  }
-
-  showAll(): void {
-    this.showSearchBar();
-    this.showGridButton();
-    this.showFiltersButton();
-  }
-
-  hideAll(): void {
-    this.hideSearchBar();
-    this.hideGridButton();
-    this.hideFiltersButton();
   }
 
   showFilters(): void {

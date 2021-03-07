@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 
 export const loadPokemonModule = () => import('./pokemon/pokemon.module').then((m) => m.PokemonModule);
+export const loadMoveModule = () => import('./move/move.module').then((m) => m.MoveModule);
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'pokemon',
         loadChildren: loadPokemonModule,
+      },
+      {
+        path: 'move',
+        loadChildren: loadMoveModule,
       },
     ],
   },

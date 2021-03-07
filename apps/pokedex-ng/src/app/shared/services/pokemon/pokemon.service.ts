@@ -14,11 +14,11 @@ export class PokemonService extends BaseService<Pokemon, PxPokemon> {
     super('pokemon', http);
   }
 
-  getAllPokemonFiltered(): Observable<PxPokemon[]> {
+  getAllFiltered(): Observable<PxPokemon[]> {
     return this.getAll().pipe(
-      map((list: PxPokemon[]) => this.filterService.filterPokemonByGeneration(list)),
-      map((list: PxPokemon[]) => this.filterService.filterPokemonByType(list)),
-      map((list: PxPokemon[]) => this.filterService.filterPokemonByName(list))
+      map((list: PxPokemon[]) => this.filterService.filterByGeneration(list)),
+      map((list: PxPokemon[]) => this.filterService.filterByTypes(list)),
+      map((list: PxPokemon[]) => this.filterService.filterByName(list))
     );
   }
 }

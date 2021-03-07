@@ -2,10 +2,13 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PxPokemon } from '@pokedex-ng/domain';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { StubGenerationFilterComponent } from '../../../shared/components/filters/generation-filter/generation-filter.component.stub';
-import { StubTypeFilterComponent } from '../../../shared/components/filters/type-filter/type-filter.component.stub';
+import { StubFilterToolbarComponent } from '../../../shared/components/filter-toolbar/filter-toolbar.component.stub';
 import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
-import { stubFilterServiceProvider, stubPokemonServiceProvider } from '../../../shared/services/stubs';
+import {
+  stubAppNavbarServiceProvider,
+  stubFilterServiceProvider,
+  stubPokemonServiceProvider,
+} from '../../../shared/services/stubs';
 import { PokemonGridComponent } from './pokemon-grid/pokemon-grid.component';
 import { PokemonHomeComponent } from './pokemon-home.component';
 import { PokemonTableComponent } from './pokemon-table/pokemon-table.component';
@@ -33,10 +36,9 @@ describe('PokemonHomeComponent', () => {
           PokemonHomeComponent,
           StubPokemonGridComponent,
           StubPokemonTableComponent,
-          StubGenerationFilterComponent,
-          StubTypeFilterComponent,
+          StubFilterToolbarComponent,
         ],
-        providers: [stubPokemonServiceProvider, stubFilterServiceProvider],
+        providers: [stubPokemonServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
       }).compileComponents();
     })
   );
@@ -50,9 +52,5 @@ describe('PokemonHomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should fetch pokemon list on init', () => {
-    expect(pokemonService.getAllPokemonFiltered).toHaveBeenCalledTimes(1);
   });
 });

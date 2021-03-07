@@ -2,20 +2,28 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { VersionGroupService } from '../../services/game/version-group.service';
-import { stubVersionGroupServiceProvider } from '../../services/stubs';
-import { StubFilterBarComponent } from '../filter/filter-bar.component.stub';
-import { VersionGroupFilterComponent } from '../filters/version-group-filter/version-group-filter.component';
-
+import { stubAppNavbarServiceProvider } from '../../services/stubs';
+import { QueryFilterComponent } from '../filters/query-filter/query-filter.component';
+import { FilterToggleComponent } from './filter-toggle/filter-toggle.component';
+import { GridToggleComponent } from './grid-toggle/grid-toggle.component';
+import { LocalePickerComponent } from './locale-picker/locale-picker.component';
 import { NavbarComponent } from './navbar.component';
+import { VersionGroupPickerComponent } from './version-group-picker/version-group-picker.component';
 
 @Component({ selector: 'pokedex-ng-locale-picker', template: '' })
-class StubLocalePickerComponent {}
+class StubLocalePickerComponent implements Partial<LocalePickerComponent> {}
 
-@Component({ selector: 'pokedex-ng-version-group-filter', template: '' })
-export class StubVersionGroupFilterComponent implements Partial<VersionGroupFilterComponent> {
-  constructor(public gameVersionService: VersionGroupService) {}
-}
+@Component({ selector: 'pokedex-ng-version-group-picker', template: '' })
+class StubVersionGroupPickerComponent implements Partial<VersionGroupPickerComponent> {}
+
+@Component({ selector: 'pokedex-ng-query-filter', template: '' })
+class StubQueryFilterComponent implements Partial<QueryFilterComponent> {}
+
+@Component({ selector: 'pokedex-ng-filter-toggle', template: '' })
+class StubFilterToggleComponent implements Partial<FilterToggleComponent> {}
+
+@Component({ selector: 'pokedex-ng-grid-toggle', template: '' })
+class StubGridToggleComponent implements Partial<GridToggleComponent> {}
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -28,10 +36,12 @@ describe('NavbarComponent', () => {
         declarations: [
           NavbarComponent,
           StubLocalePickerComponent,
-          StubFilterBarComponent,
-          StubVersionGroupFilterComponent,
+          StubQueryFilterComponent,
+          StubFilterToggleComponent,
+          StubGridToggleComponent,
+          StubVersionGroupPickerComponent,
         ],
-        providers: [stubVersionGroupServiceProvider],
+        providers: [stubAppNavbarServiceProvider],
       }).compileComponents();
     })
   );

@@ -4,22 +4,22 @@ import { CheckboxModule } from 'angular-bootstrap-md';
 import { StubPokeTypeColorPipe } from '../../../pipes/stubs';
 import { stubFilterServiceProvider, stubTypeServiceProvider } from '../../../services/stubs';
 
-import { TypeFilterComponent } from './type-filter.component';
+import { TypesFilterComponent } from './types-filter.component';
 
-describe('TypeFilterComponent', () => {
-  let component: TypeFilterComponent;
-  let fixture: ComponentFixture<TypeFilterComponent>;
+describe('TypesFilterComponent', () => {
+  let component: TypesFilterComponent;
+  let fixture: ComponentFixture<TypesFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CheckboxModule, TranslateModule.forRoot()],
-      declarations: [TypeFilterComponent, StubPokeTypeColorPipe],
+      declarations: [TypesFilterComponent, StubPokeTypeColorPipe],
       providers: [stubFilterServiceProvider, stubTypeServiceProvider],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeFilterComponent);
+    fixture = TestBed.createComponent(TypesFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

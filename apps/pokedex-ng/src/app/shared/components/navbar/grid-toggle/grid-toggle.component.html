@@ -1,0 +1,12 @@
+<div class="mx-1 ml-2 grid-toggle-button text-white">
+  <a
+    *ngVar="this.appNavbarService.getGridMode$() | async as gridMode"
+    (click)="this.appNavbarService.toggleGridMode()"
+    mdbTooltip="{{ gridMode ? 'Grid View' : 'Table View' }}"
+  >
+    <mdb-icon *ngIf="gridMode; else bars" fas icon="th" aria-hidden="true"></mdb-icon>
+    <ng-template #bars>
+      <mdb-icon fas icon="bars" aria-hidden="true"></mdb-icon>
+    </ng-template>
+  </a>
+</div>

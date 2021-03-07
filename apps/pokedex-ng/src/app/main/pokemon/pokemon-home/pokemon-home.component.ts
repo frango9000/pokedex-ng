@@ -29,13 +29,14 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.add(this._updateListSubscription());
     this.subscriptions.add(this._filterChangesSubscription());
-    this.appNavbarService.showAll();
+    this.appNavbarService.showGridButton();
+    this.appNavbarService.showSearchBar();
+    this.appNavbarService.showFiltersButton();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
     this.appNavbarService.hideAll();
-    this.appNavbarService.hideFilters();
     this.filterService.clearAllFilters();
   }
 
@@ -43,24 +44,24 @@ export class PokemonHomeComponent implements OnInit, OnDestroy {
     this._filterChange$.next(false);
   }
 
+  private _updateListSubscription() {
+    return this._filterChange$
+      .pipe(
+        tap((reset) => (reset ? (this.offset = this.increment) : (this.offset += this.increment))),
+        switchMap(() => this.pokemonService.getAllFiltered()),
+        map((list) => list.slice(0, this.offset))
+      )
+      .subscribe((list) => (this.pokemonList = list));
+  }
+
   private _filterChangesSubscription() {
     return merge(
       this.filterService.getQueryFilter$().pipe(skip(1)),
-      this.filterService.getTypeFilter$().pipe(skip(1)),
+      this.filterService.getTypesFilter$().pipe(skip(1)),
       this.filterService.getGenerationFilter$().pipe(skip(1)),
       this.appNavbarService.getGridMode$().pipe(skip(1))
     ).subscribe(() => {
       this._filterChange$.next(true);
     });
-  }
-
-  private _updateListSubscription() {
-    return this._filterChange$
-      .pipe(
-        tap((reset) => (reset ? (this.offset = this.increment) : (this.offset += this.increment))),
-        switchMap(() => this.pokemonService.getAllPokemonFiltered()),
-        map((list) => list.slice(0, this.offset))
-      )
-      .subscribe((list) => (this.pokemonList = list));
   }
 }

@@ -14,11 +14,11 @@ import {
 export interface PxMove extends ApiEntity {
   accuracy?: number;
   crit_rate?: number;
-  generation?: number;
-  names?: LocalizedName[];
+  generation: number;
+  names: LocalizedName[];
   power?: number;
   pp?: number;
-  type?: string;
+  type: string;
 }
 
 export interface Move extends ApiEntity {

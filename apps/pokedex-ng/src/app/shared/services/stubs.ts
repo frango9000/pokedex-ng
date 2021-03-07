@@ -54,14 +54,11 @@ export const stubLanguageServiceProvider = {
   useFactory: () => new StubLanguageService(),
 };
 
-export class StubPokemonService implements Partial<PokemonService> {
-  getAllPokemonLocal = jest.fn(() => of([]));
-  getAllPokemonFiltered = jest.fn(() => of([]));
-}
+export class StubPokemonService extends StubBaseService<PokemonService> implements Partial<PokemonService> {}
 
 export const stubPokemonServiceProvider = {
   provide: PokemonService,
-  useFactory: () => new StubPokemonService(),
+  useClass: StubPokemonService,
 };
 
 export class StubVersionGroupService implements Partial<VersionGroupService> {
@@ -75,7 +72,8 @@ export const stubVersionGroupServiceProvider = {
 
 export class StubFilterService implements Partial<FilterService> {
   getGenerationFilter$ = () => of([]);
-  getTypeFilter$ = () => of([]);
+  getTypeFilter$ = () => of('');
+  getTypesFilter$ = () => of([]);
   getTypesFilterInclusiveness$ = () => of(true);
   getQueryFilter$ = () => of('');
   clearAllFilters = () => undefined;
@@ -95,6 +93,13 @@ export class StubAppNavbarService implements Partial<AppNavbarService> {
   getShowFilters$ = () => of(true);
   hideFilters = () => undefined;
   getGridMode$ = () => of(true);
+  getShowSearchBar$ = () => of(true);
+  getShowFiltersButton$ = () => of(true);
+  getShowGridButton$ = () => of(true);
+  getShowVersionGroupPicker$ = () => of(true);
+  showGridButton = () => undefined;
+  showSearchBar = () => undefined;
+  showFiltersButton = () => undefined;
 }
 
 export const stubAppNavbarServiceProvider = {

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SelectableGeneration } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
+import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { FilterService } from '../../../services/app/filter.service';
 import { GenerationService } from '../../../services/game/generation.service';
 
@@ -9,28 +11,45 @@ import { GenerationService } from '../../../services/game/generation.service';
   templateUrl: './generation-filter.component.html',
   styleUrls: ['./generation-filter.component.scss'],
 })
-export class GenerationFilterComponent implements OnInit {
-  _selectableGenerations: SelectableGeneration[] = [];
+export class GenerationFilterComponent implements OnInit, OnDestroy {
+  public _selectableGenerations: SelectableGeneration[] = [];
+
+  private subscriptions = new Subscription();
 
   constructor(public filterService: FilterService, private generationService: GenerationService) {}
 
   ngOnInit(): void {
-    this.generationService.getAll().subscribe((gens) => {
-      this._selectableGenerations = gens.map((generation) => ({ generation, active: false }));
-    });
-    this.filterService.getGenerationFilter$().subscribe((generations) => {
-      this._selectableGenerations.forEach((selectables) => {
-        selectables.active = generations.includes(selectables.generation.id);
-      });
-    });
+    this.subscriptions.add(this._subscribeToGetAllGenerations());
   }
 
-  onFilterChange($event: MdbCheckboxChange, generation: SelectableGeneration) {
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  public onFilterChange($event: MdbCheckboxChange, generation: SelectableGeneration) {
     generation.active = $event.checked;
     this.filterService.setGenerationFilter(
       this._selectableGenerations
-        .filter((generation) => generation.active)
-        .map((generation) => generation.generation.id)
+        .filter((selectableGeneration) => selectableGeneration.active)
+        .map((selectableGeneration) => selectableGeneration.generation.id)
     );
+  }
+
+  private _subscribeToGetAllGenerations() {
+    return this.generationService
+      .getAll()
+      .pipe(take(1))
+      .subscribe((generations) => {
+        this._selectableGenerations = generations.map((generation) => ({ generation, active: false }));
+        this.subscriptions.add(this._subscribeToGetGenerationFilter());
+      });
+  }
+
+  private _subscribeToGetGenerationFilter() {
+    return this.filterService.getGenerationFilter$().subscribe((generations) => {
+      this._selectableGenerations.forEach((selectableGeneration) => {
+        selectableGeneration.active = generations.includes(selectableGeneration.generation.id);
+      });
+    });
   }
 }
