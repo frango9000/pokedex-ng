@@ -10,7 +10,7 @@ export class CacheInterceptor implements HttpInterceptor {
   constructor(private cacheService: CacheService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const cachedResponse = environment.isCacheEnabled ? this.cacheService.get(request) : null;
+    const cachedResponse = environment.cache.active ? this.cacheService.get(request) : null;
     if (cachedResponse && environment.logCachedResponses) {
       console.log('Cache', cachedResponse);
     }
@@ -21,17 +21,15 @@ export class CacheInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
-          if (event.url.includes('/assets/i18n/')) {
-            if (environment.logTranslations) {
-              console.log('Translation', event);
-            }
-          } else {
+          if (event.url.startsWith(environment.apiUrl)) {
             if (environment.logNetworkResponses) {
               console.log('Network', event);
             }
-            if (environment.isCacheEnabled) {
+            if (environment.cache.external) {
               cache.put(req, event);
             }
+          } else if (event.url.startsWith(environment.baseHref + '/assets/data/') && environment.cache.local) {
+            cache.put(req, event);
           }
         }
       })

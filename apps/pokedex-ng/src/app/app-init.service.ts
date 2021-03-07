@@ -20,16 +20,17 @@ export class AppInitService {
   ) {}
 
   init() {
-    return new Promise<void>((resolve) => {
-      this.translateService.get('1').subscribe(() => {
+    this.translateService.setDefaultLang('en');
+    return this.translateService
+      .use('en')
+      .toPromise()
+      .then(() => {
         this.languageService.getName();
         this.moveService.getName();
         this.abilityService.getName();
         this.typeService.getName();
         this.statService.getName();
-        resolve();
       });
-    });
   }
 }
 
