@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { AppInitService } from './app-init.service';
 import {
   stubAbilityServiceProvider,
@@ -13,7 +14,7 @@ describe('AppInitService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [TranslateModule.forRoot()],
       providers: [
         stubLanguageServiceProvider,
         stubTypeServiceProvider,
