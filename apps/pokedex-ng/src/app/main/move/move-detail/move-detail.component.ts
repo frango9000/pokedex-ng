@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Move } from '@pokedex-ng/domain';
-import { MoveService } from '../../../../../shared/services/pokemon/move.service';
+import { MoveService } from '../../../shared/services/pokemon/move.service';
 
 @Component({
-  selector: 'app-pokemon-move',
-  templateUrl: './pokemon-move.component.html',
-  styleUrls: ['./pokemon-move.component.scss'],
+  selector: 'pokedex-ng-move-detail',
+  templateUrl: './move-detail.component.html',
+  styleUrls: ['./move-detail.component.scss'],
 })
-export class PokemonMoveComponent implements OnInit {
+export class MoveDetailComponent implements OnInit {
   @Input() moveId: string | number;
 
   public move: Move;

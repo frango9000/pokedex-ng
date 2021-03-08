@@ -4,11 +4,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ResourceIdPipe } from '../../shared/pipes/resource-id.pipe';
 import { SharedModule } from '../../shared/shared.module';
+import { MoveModule } from '../move/move.module';
 import { PokemonAbilitiesComponent } from './pokemon-detail/pokemon-abilities/pokemon-abilities.component';
 import { PokemonAbilityComponent } from './pokemon-detail/pokemon-abilities/pokemon-ability/pokemon-ability.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonInfoComponent } from './pokemon-detail/pokemon-info/pokemon-info.component';
-import { PokemonMoveComponent } from './pokemon-detail/pokemon-moves/pokemon-move/pokemon-move.component';
 import { PokemonMovesCardComponent } from './pokemon-detail/pokemon-moves/pokemon-moves-card/pokemon-moves-card.component';
 import { PokemonMovesComponent } from './pokemon-detail/pokemon-moves/pokemon-moves.component';
 import { PokemonEvolutionChainComponent } from './pokemon-detail/pokemon-species/pokemon-evolution-chain/pokemon-evolution-chain.component';
@@ -29,7 +29,6 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     PokemonGridComponent,
     PokemonTableComponent,
     PokemonAbilityComponent,
-    PokemonMoveComponent,
     PokemonMovesComponent,
     PokemonAbilitiesComponent,
     PokemonStatsComponent,
@@ -41,7 +40,14 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     PokemonEvolutionLinkComponent,
     PokemonInfoComponent,
   ],
-  imports: [CommonModule, PokemonRoutingModule, MDBBootstrapModule.forRoot(), SharedModule, InfiniteScrollModule],
+  imports: [
+    CommonModule,
+    PokemonRoutingModule,
+    MDBBootstrapModule.forRoot(),
+    SharedModule,
+    InfiniteScrollModule,
+    MoveModule,
+  ],
   providers: [ResourceIdPipe],
 })
 export class PokemonModule {}

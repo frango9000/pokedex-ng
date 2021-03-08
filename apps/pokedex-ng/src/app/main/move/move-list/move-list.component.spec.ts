@@ -5,8 +5,10 @@ import { StubPokeTypeColorPipe } from '../../../shared/pipes/stubs';
 import {
   stubAppNavbarServiceProvider,
   stubFilterServiceProvider,
+  stubLanguageServiceProvider,
   stubMoveServiceProvider,
 } from '../../../shared/services/stubs';
+import { StubMoveDetailComponent } from '../move-detail/move-detail.component.stub';
 
 import { MoveListComponent } from './move-list.component';
 
@@ -17,8 +19,13 @@ describe('MoveListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
-      declarations: [MoveListComponent, StubPokeTypeColorPipe, StubFilterToolbarComponent],
-      providers: [stubMoveServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
+      declarations: [MoveListComponent, StubPokeTypeColorPipe, StubFilterToolbarComponent, StubMoveDetailComponent],
+      providers: [
+        stubMoveServiceProvider,
+        stubFilterServiceProvider,
+        stubAppNavbarServiceProvider,
+        stubLanguageServiceProvider,
+      ],
     }).compileComponents();
   });
 

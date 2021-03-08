@@ -61,7 +61,7 @@
             </tr>
             <tr *ngIf="expandableMove.expanded">
               <td colspan="4" [ngClass]="{ 'border-top-0': expandableMove.expanded }" class="px-0 pb-3">
-                <app-pokemon-move [moveId]="expandableMove.resource.move.name"></app-pokemon-move>
+                <pokedex-ng-move-detail [moveId]="expandableMove.resource.move.name"></pokedex-ng-move-detail>
               </td>
             </tr>
           </ng-container>

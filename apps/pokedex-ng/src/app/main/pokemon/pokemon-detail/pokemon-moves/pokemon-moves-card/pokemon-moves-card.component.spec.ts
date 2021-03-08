@@ -1,18 +1,11 @@
-import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
 import { StubExpandableResourcesPipe, StubPokeTypeColorPipe } from '../../../../../shared/pipes/stubs';
-import { stubMoveServiceProvider } from '../../../../../shared/services/stubs';
-import { PokemonMoveComponent } from '../pokemon-move/pokemon-move.component';
+import { StubMoveDetailComponent } from '../../../../move/move-detail/move-detail.component.stub';
 import { PokemonMovesCardComponent } from './pokemon-moves-card.component';
-
-@Component({ selector: 'app-pokemon-move', template: '' })
-export class StubPokemonMoveComponent implements Partial<PokemonMoveComponent> {
-  @Input() moveId: string | number;
-}
 
 describe('PokemonMovesCardComponent', () => {
   let component: PokemonMovesCardComponent;
@@ -24,12 +17,12 @@ describe('PokemonMovesCardComponent', () => {
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [
           PokemonMovesCardComponent,
-          StubPokemonMoveComponent,
+          StubMoveDetailComponent,
           StubExpandableResourcesPipe,
           StubPokeTypeColorPipe,
           NgVarDirective,
         ],
-        providers: [stubMoveServiceProvider],
+        providers: [],
       }).compileComponents();
     })
   );

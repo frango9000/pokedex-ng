@@ -4,6 +4,7 @@ import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
 import { skip, switchMap } from 'rxjs/operators';
 import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
 import { FilterService } from '../../../shared/services/app/filter.service';
+import { LanguageService } from '../../../shared/services/game/language.service';
 import { MoveService } from '../../../shared/services/pokemon/move.service';
 
 @Component({
@@ -18,9 +19,12 @@ export class MoveListComponent implements OnInit, OnDestroy {
 
   private _filterChange$ = new BehaviorSubject<boolean>(true);
 
+  public expandedMove = 0;
+
   constructor(
     private moveService: MoveService,
     private filterService: FilterService,
+    private languageService: LanguageService,
     public appNavbarService: AppNavbarService
   ) {}
 
@@ -41,23 +45,20 @@ export class MoveListComponent implements OnInit, OnDestroy {
     return this._moves$.asObservable();
   }
 
-  private _updateListSubscription() {
-    return this._filterChange$
-      .pipe(
-        // tap((reset) => (reset ? (this.offset = this.increment) : (this.offset += this.increment))),
-        switchMap(() => this.moveService.getAllFiltered())
-        // map((list) => list.slice(0, this.offset))
-      )
-      .subscribe((moves) => this._moves$.next(moves));
-  }
-
   private _filterChangesSubscription() {
     return merge(
       this.filterService.getQueryFilter$().pipe(skip(1)),
-      this.filterService.getTypesFilter$().pipe(skip(1)),
-      this.filterService.getGenerationFilter$().pipe(skip(1))
+      this.filterService.getTypeFilter$().pipe(skip(1)),
+      this.filterService.getGenerationFilter$().pipe(skip(1)),
+      this.languageService.getDisplayLanguage$().pipe(skip(1))
     ).subscribe(() => {
       this._filterChange$.next(true);
     });
+  }
+
+  private _updateListSubscription() {
+    return this._filterChange$
+      .pipe(switchMap(() => this.moveService.getAllFiltered()))
+      .subscribe((moves) => this._moves$.next(moves));
   }
 }
