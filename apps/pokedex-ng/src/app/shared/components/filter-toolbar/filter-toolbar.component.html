@@ -1,5 +1,9 @@
 <div class="pokemon-list-filters d-flex flex-wrap align-items-center justify-content-end w-100 mb-1">
   <pokedex-ng-generation-filter class="mr-1" *ngIf="showGenerationFilter"></pokedex-ng-generation-filter>
-  <pokedex-ng-types-filter class="mr-1" *ngIf="showTypesFilter"></pokedex-ng-types-filter>
+  <pokedex-ng-types-filter
+    [showTypesExclusivenessToggle]="showTypesExclusivenessToggle"
+    class="mr-1"
+    *ngIf="showTypesFilter"
+  ></pokedex-ng-types-filter>
   <pokedex-ng-clear-filter *ngIf="showClearFilter"></pokedex-ng-clear-filter>
 </div>

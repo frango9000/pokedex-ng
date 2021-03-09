@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./filter-toolbar.component.scss'],
 })
 export class FilterToolbarComponent {
-  @Input() public showTypeFilter = false;
   @Input() public showTypesFilter = false;
+  @Input() public showTypesExclusivenessToggle = false;
   @Input() public showGenerationFilter = false;
   @Input() public showClearFilter = true;
 }

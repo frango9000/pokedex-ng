@@ -11,7 +11,6 @@ export class FilterService {
   private _queryFilter$ = new BehaviorSubject('');
   private _generationsFilter$ = new BehaviorSubject<number[]>([]);
   private _typesFilter$ = new BehaviorSubject<string[]>([]);
-  private _typeFilter$ = new BehaviorSubject<string>('');
   private _typesFilterInclusiveness$ = new BehaviorSubject<boolean>(true);
 
   constructor(private languageService: LanguageService) {}
@@ -34,14 +33,6 @@ export class FilterService {
     return this._typesFilter$.asObservable();
   }
 
-  setTypeFilter(filter: string): void {
-    this._typeFilter$.next(filter);
-  }
-
-  getTypeFilter$(): Observable<string> {
-    return this._typeFilter$.asObservable();
-  }
-
   setTypesFilterInclusiveness(inclusiveness: boolean): void {
     if (this._typesFilterInclusiveness$.value !== inclusiveness) {
       this._typesFilterInclusiveness$.next(inclusiveness);
@@ -56,7 +47,6 @@ export class FilterService {
   clearAllFilters() {
     this._queryFilter$.next('');
     this._typesFilter$.next([]);
-    this._typeFilter$.next('');
     this._generationsFilter$.next([]);
   }
 
@@ -93,9 +83,9 @@ export class FilterService {
   }
 
   filterByType<T extends { type: string }>(resourceList: T[]): T[] {
-    return !this._typeFilter$.value.length
+    return !this._typesFilter$.value.length
       ? resourceList
-      : resourceList.filter((resource) => resource.type === this._typeFilter$.value);
+      : resourceList.filter((resource) => this._typesFilter$.value.includes(resource.type));
   }
 
   filterByGeneration<G extends { generation?: number }>(resourceList: G[]): G[] {

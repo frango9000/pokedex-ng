@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SelectableType } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { Subscription } from 'rxjs';
@@ -12,6 +12,8 @@ import { TypeService } from '../../../services/pokemon/type.service';
   styleUrls: ['./types-filter.component.scss'],
 })
 export class TypesFilterComponent implements OnInit, OnDestroy {
+  @Input() public showTypesExclusivenessToggle = false;
+
   public _selectableTypes: SelectableType[] = [];
 
   private subscriptions = new Subscription();

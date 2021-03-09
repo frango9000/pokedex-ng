@@ -10,17 +10,18 @@
   >
     Types
   </button>
-
   <div class="dropdown-menu dropdown-primary">
-    <mdb-checkbox
-      #checkbox
-      class="dropdown-item pr-0"
-      [checked]="this.filterService.getTypesFilterInclusiveness$() | async"
-      (change)="this.filterService.setTypesFilterInclusiveness($event.checked)"
-    >
-      <div class="checkbox-label text-center">{{ checkbox.checked ? "Inclusive" : "Exclusive" }}</div>
-    </mdb-checkbox>
-    <div class="divider dropdown-divider"></div>
+    <ng-container *ngIf="showTypesExclusivenessToggle">
+      <mdb-checkbox
+        #checkbox
+        class="dropdown-item pr-0"
+        [checked]="this.filterService.getTypesFilterInclusiveness$() | async"
+        (change)="this.filterService.setTypesFilterInclusiveness($event.checked)"
+      >
+        <div class="checkbox-label text-center">{{ checkbox.checked ? "Inclusive" : "Exclusive" }}</div>
+      </mdb-checkbox>
+      <div class="divider dropdown-divider"></div>
+    </ng-container>
     <mdb-checkbox
       *ngFor="let type of _selectableTypes"
       class="dropdown-item pr-0"
@@ -35,7 +36,6 @@
       </div>
     </mdb-checkbox>
   </div>
-
   <button
     type="button"
     mdbBtn

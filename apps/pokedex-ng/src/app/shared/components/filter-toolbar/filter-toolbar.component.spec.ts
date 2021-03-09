@@ -2,14 +2,11 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClearFilterComponent } from '../filters/clear-filter/clear-filter.component';
 import { GenerationFilterComponent } from '../filters/generation-filter/generation-filter.component';
-import { TypesFilterComponent } from '../filters/types-filter/types-filter.component';
+import { StubTypesFilterComponent } from '../filters/types-filter/types-filter.component.stub';
 import { FilterToolbarComponent } from './filter-toolbar.component';
 
 @Component({ selector: 'pokedex-ng-generation-filter', template: '' })
 export class StubGenerationFilterComponent implements Partial<GenerationFilterComponent> {}
-
-@Component({ selector: 'pokedex-ng-types-filter', template: '' })
-export class StubTypesFilterComponent implements Partial<TypesFilterComponent> {}
 
 @Component({ selector: 'pokedex-ng-clear-filter', template: '' })
 export class StubClearFilterComponent implements Partial<ClearFilterComponent> {}

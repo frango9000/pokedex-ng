@@ -48,7 +48,7 @@ export class MoveListComponent implements OnInit, OnDestroy {
   private _filterChangesSubscription() {
     return merge(
       this.filterService.getQueryFilter$().pipe(skip(1)),
-      this.filterService.getTypeFilter$().pipe(skip(1)),
+      this.filterService.getTypesFilter$().pipe(skip(1)),
       this.filterService.getGenerationFilter$().pipe(skip(1)),
       this.languageService.getDisplayLanguage$().pipe(skip(1))
     ).subscribe(() => {

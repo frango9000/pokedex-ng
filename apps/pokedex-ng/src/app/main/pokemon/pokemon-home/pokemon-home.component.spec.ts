@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PxPokemon } from '@pokedex-ng/domain';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StubFilterToolbarComponent } from '../../../shared/components/filter-toolbar/filter-toolbar.component.stub';
+import { StubTypesFilterComponent } from '../../../shared/components/filters/types-filter/types-filter.component.stub';
 import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
 import {
   stubAppNavbarServiceProvider,
@@ -37,6 +38,7 @@ describe('PokemonHomeComponent', () => {
           StubPokemonGridComponent,
           StubPokemonTableComponent,
           StubFilterToolbarComponent,
+          StubTypesFilterComponent,
         ],
         providers: [stubPokemonServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
       }).compileComponents();
