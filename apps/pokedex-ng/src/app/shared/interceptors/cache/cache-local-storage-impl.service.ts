@@ -16,7 +16,7 @@ export class CacheLocalStorageImplService implements ICache {
       this.cleanCache();
       try {
         localStorage.setItem(url, JSON.stringify(entry));
-      } catch (e) {
+      } catch (er) {
         console.log('Domain Local Storage is Full!');
       }
     }

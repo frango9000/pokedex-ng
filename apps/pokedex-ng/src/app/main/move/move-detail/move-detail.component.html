@@ -1,5 +1,5 @@
 <div class="card p-1">
-  <table class="table mb-0" *ngIf="move; else loading">
+  <table class="table mb-0" *ngIf="move; else loading" aria-describedby="Table of Move Details" aria-hidden="true">
     <tbody>
       <tr class="first-row-border-0">
         <td>{{ "UI.MOVE.NAME" | translate }}</td>

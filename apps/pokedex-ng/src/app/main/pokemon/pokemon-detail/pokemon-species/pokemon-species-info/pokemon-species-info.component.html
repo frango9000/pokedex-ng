@@ -14,7 +14,7 @@
       <div *ngIf="'' | withVersionGroup | async as group" class="overflow-auto text-center my-2">
         {{ "SPECIES." + species.name + ".FLAVOR_TEXT." + group | translate }}
       </div>
-      <table class="table mb-0">
+      <table class="table mb-0" aria-describedby="Table of Move Details" aria-hidden="true">
         <tbody>
           <tr>
             <td>{{ "UI.SPECIES.INFO.GENUS" | translate }}</td>
