@@ -26,7 +26,7 @@ export interface ApiName {
   language: NamedApiResource<Language>;
 }
 
-export interface Description {
+export interface ApiDescription {
   description: string;
   language: NamedApiResource<Language>;
 }
@@ -41,6 +41,11 @@ export function getId(url: string): number {
 
 export interface LocalizedName {
   name: string;
+  language: string;
+}
+
+export interface LocalizedDescription {
+  description: string;
   language: string;
 }
 

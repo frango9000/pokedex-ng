@@ -6,13 +6,12 @@ import { EvolutionChainService } from './evolution/evolution-chain.service';
 import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
 import { AbilityService } from './pokemon/ability.service';
-import { MoveService } from './pokemon/move.service';
 import { PokemonService } from './pokemon/pokemon.service';
 import { StatService } from './pokemon/stat.service';
 import { TypeService } from './pokemon/type.service';
 import { SpeciesService } from './species/species.service';
 
-class StubBaseService<T> implements Partial<BaseService<T, T>> {
+export class StubBaseService<T> implements Partial<BaseService<T, T>> {
   getAll = () => of([]);
   fetchApiOne = () => of(null);
 }
@@ -22,13 +21,6 @@ export class StubTypeService extends StubBaseService<TypeService> implements Par
 export const stubTypeServiceProvider = {
   provide: TypeService,
   useFactory: () => new StubTypeService(),
-};
-
-export class StubMoveService extends StubBaseService<MoveService> implements Partial<MoveService> {}
-
-export const stubMoveServiceProvider = {
-  provide: MoveService,
-  useFactory: () => new StubMoveService(),
 };
 
 export class StubAbilityService extends StubBaseService<AbilityService> implements Partial<AbilityService> {}

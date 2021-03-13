@@ -7,7 +7,8 @@ import {
   StubPokeTypeColorPipe,
   StubWithVersionGroupPipe,
 } from '../../../../shared/pipes/stubs';
-import { stubMoveServiceProvider, stubVersionGroupServiceProvider } from '../../../../shared/services/stubs';
+import { stubMoveServiceProvider } from '../../../../shared/services/move/move.service.stubs';
+import { stubVersionGroupServiceProvider } from '../../../../shared/services/stubs';
 import { PokemonMovesCardComponent } from './pokemon-moves-card/pokemon-moves-card.component';
 import { PokemonMovesComponent } from './pokemon-moves.component';
 

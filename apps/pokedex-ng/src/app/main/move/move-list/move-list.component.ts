@@ -5,7 +5,7 @@ import { skip, switchMap } from 'rxjs/operators';
 import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
 import { FilterService } from '../../../shared/services/app/filter.service';
 import { LanguageService } from '../../../shared/services/game/language.service';
-import { MoveService } from '../../../shared/services/pokemon/move.service';
+import { MoveService } from '../../../shared/services/move/move.service';
 
 @Component({
   selector: 'pokedex-ng-move-list',

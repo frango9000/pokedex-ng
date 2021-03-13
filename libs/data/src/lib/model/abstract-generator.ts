@@ -1,4 +1,12 @@
-import { ApiEntity, ApiName, ApiResourceList, LocalizedName, NamedApiResource } from '@pokedex-ng/domain';
+import {
+  ApiDescription,
+  ApiEntity,
+  ApiName,
+  ApiResourceList,
+  LocalizedDescription,
+  LocalizedName,
+  NamedApiResource,
+} from '@pokedex-ng/domain';
 import { Axios } from 'axios-observable';
 import fs from 'fs';
 import { Observable, Subject } from 'rxjs';
@@ -121,8 +129,14 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
 
   protected filterAndMapNames(names: ApiName[]): LocalizedName[] {
     return names
-      .filter((value) => this.languages.includes(value.language.name))
+      .filter((name) => this.languages.includes(name.language.name))
       .map((name) => ({ name: name.name, language: name.language.name }));
+  }
+
+  protected filterAndMapDescriptions(descriptions: ApiDescription[]): LocalizedDescription[] {
+    return descriptions
+      .filter((description) => this.languages.includes(description.language.name))
+      .map((description) => ({ description: description.description, language: description.language.name }));
   }
 
   protected getId(url: string): number {

@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MoveLearnMethod as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { map, mergeMap, skip, take } from 'rxjs/operators';
+import { MoveLearnMethodEnum as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
+import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { VersionGroupService } from '../../../../shared/services/game/version-group.service';
-import { MoveService } from '../../../../shared/services/pokemon/move.service';
+import { MoveService } from '../../../../shared/services/move/move.service';
 
 @Component({
   selector: 'app-pokemon-moves',
@@ -20,8 +20,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
   constructor(private gameVersionService: VersionGroupService, private moveService: MoveService) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(this._pokemonUpdateSubscription());
-    this.subscriptions.add(this._versionUpdatesSubscription());
+    this.subscriptions.add(this._filterChangesSubscription());
   }
 
   ngOnDestroy(): void {
@@ -35,7 +34,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
           .filter(
             (move) =>
               move.version_group_detail.level_learned_at > 0 &&
-              move.version_group_detail.move_learn_method.name === MLM.LEVEL_UP_METHOD
+              move.version_group_detail.move_learn_method.name === MLM.LEVEL_UP
           )
           .sort((a, b) => (a.version_group_detail.level_learned_at > b.version_group_detail.level_learned_at ? 1 : -1))
       )
@@ -46,7 +45,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
     return this.versionFilteredMoves$.pipe(
       map((moves) =>
         moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.TUTOR_METHOD)
+          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.TUTOR)
           .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
       )
     );
@@ -56,7 +55,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
     return this.versionFilteredMoves$.pipe(
       map((moves) =>
         moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.MACHINE_METHOD)
+          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.MACHINE)
           .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
       )
     );
@@ -66,40 +65,17 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
     return this.versionFilteredMoves$.pipe(
       map((moves) =>
         moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.EGG_METHOD)
+          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.EGG)
           .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
       )
     );
   }
 
-  private _versionUpdatesSubscription(): Subscription {
-    return this.gameVersionService
-      .getActiveVersionGroup$()
-      .pipe(
-        skip(1),
-        mergeMap((version) =>
-          this.pokemon$.pipe(
-            take(1),
-            map((pokemon) => ({ version, pokemon }))
-          )
-        )
-      )
-      .subscribe((pair) => {
-        this._emitFilteredMoves(pair.pokemon, pair.version);
-      });
-  }
-
-  private _pokemonUpdateSubscription(): Subscription {
-    return this.pokemon$
-      .pipe(
-        mergeMap((pokemon) =>
-          this.gameVersionService.getActiveVersionGroup$().pipe(
-            take(1),
-            map((version) => ({ pokemon, version }))
-          )
-        )
-      )
-      .subscribe((pair) => this._emitFilteredMoves(pair.pokemon, pair.version));
+  private _filterChangesSubscription(): Subscription {
+    return combineLatest([
+      this.pokemon$,
+      this.gameVersionService.getActiveVersionGroup$(),
+    ]).subscribe(([pokemon, version]) => this._emitFilteredMoves(pokemon, version));
   }
 
   private _emitFilteredMoves(pokemon: Pokemon, version: string): void {

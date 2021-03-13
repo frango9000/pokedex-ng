@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MergingMap, Species } from '@pokedex-ng/domain';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { SingleTranslatedService } from '../base-service';
 import { LanguageService } from '../game/language.service';
@@ -11,7 +11,7 @@ import { VersionGroupService } from '../game/version-group.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SpeciesService extends SingleTranslatedService<Species, Species> {
+export class SpeciesService extends SingleTranslatedService<Species> {
   constructor(
     protected http: HttpClient,
     protected translateService: TranslateService,
@@ -19,10 +19,6 @@ export class SpeciesService extends SingleTranslatedService<Species, Species> {
     private pokemonVersionService: VersionGroupService
   ) {
     super('pokemon-species', http, translateService, languageService);
-  }
-
-  _fetchAll(): Observable<Species[]> {
-    return of([]);
   }
 
   protected _parseOneTranslation(specie: Species): Observable<MergingMap> {

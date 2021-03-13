@@ -1,25 +1,25 @@
 <app-pokemon-moves-card
   class="row justify-content-center mb-2"
-  cardTitle="LEVEL_UP_MOVES"
+  cardTitle="level-up"
   *ngIf="getLevelMoves$() as levelMoves"
   [moves$]="levelMoves"
   [showLevels]="true"
 ></app-pokemon-moves-card>
 <app-pokemon-moves-card
   class="row justify-content-center my-2"
-  cardTitle="MACHINE_MOVES"
+  cardTitle="machine"
   *ngIf="getMachineMoves$() as machineMoves"
   [moves$]="machineMoves"
 ></app-pokemon-moves-card>
 <app-pokemon-moves-card
   class="row justify-content-center my-2"
-  cardTitle="TUTOR_MOVES"
+  cardTitle="tutor"
   *ngIf="getTutorMoves$() as tutorMoves"
   [moves$]="tutorMoves"
 ></app-pokemon-moves-card>
 <app-pokemon-moves-card
   class="row justify-content-center my-2"
-  cardTitle="EGG_MOVES"
+  cardTitle="egg"
   *ngIf="getEggMoves$() as eggMoves"
   [moves$]="eggMoves"
 ></app-pokemon-moves-card>

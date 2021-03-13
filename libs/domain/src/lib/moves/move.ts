@@ -1,14 +1,16 @@
 import {
+  ApiDescription,
   ApiEffectChange,
   ApiEffectEntry,
   ApiEntity,
   ApiFlavorTextEntry,
   ApiName,
-  Description,
   Generation,
+  LocalizedDescription,
   LocalizedName,
   NamedApiResource,
   PokeType,
+  VersionGroup,
 } from '@pokedex-ng/domain';
 
 export interface PxMove extends ApiEntity {
@@ -80,17 +82,54 @@ interface PokemonMoveContestCombos {
   };
 }
 
-export interface MoveDamageClass extends ApiEntity {
+export interface MoveAilment extends ApiEntity {
   id: number;
   name: string;
-  descriptions: Description[];
   moves: NamedApiResource<Move>[];
   names: ApiName[];
 }
 
-export enum MoveLearnMethod {
-  LEVEL_UP_METHOD = 'level-up',
-  MACHINE_METHOD = 'machine',
-  EGG_METHOD = 'egg',
-  TUTOR_METHOD = 'tutor',
+export interface MoveCategory extends ApiEntity {
+  id: number;
+  name: string;
+  moves: NamedApiResource<Move>[];
+  descriptions: ApiDescription[];
+}
+
+export interface MoveDamageClass extends ApiEntity {
+  id: number;
+  name: string;
+  descriptions: ApiDescription[];
+  moves: NamedApiResource<Move>[];
+  names: ApiName[];
+}
+
+export interface MoveLearnMethod extends ApiEntity {
+  id: number;
+  name: MoveLearnMethodEnum;
+  descriptions: ApiDescription[];
+  names: ApiName[];
+  version_groups: NamedApiResource<VersionGroup>[];
+}
+
+export interface PxMoveLearnMethod extends ApiEntity {
+  id: number;
+  name: MoveLearnMethodEnum;
+  descriptions: LocalizedDescription[];
+  names: LocalizedName[];
+}
+
+export enum MoveLearnMethodEnum {
+  LEVEL_UP = 'level-up',
+  MACHINE = 'machine',
+  EGG = 'egg',
+  TUTOR = 'tutor',
+}
+
+export interface MoveTarget extends ApiEntity {
+  id: number;
+  name: string;
+  descriptions: ApiDescription[];
+  moves: NamedApiResource<Move>[];
+  names: ApiName[];
 }

@@ -1,4 +1,4 @@
-import { Move, PxMove } from '@pokedex-ng/domain';
+import { Move, MoveLearnMethod, PxMove, PxMoveLearnMethod } from '@pokedex-ng/domain';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
@@ -8,8 +8,8 @@ export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
 
   mapResource(resource: Move): PxMove {
     return {
-      name: resource.name,
       id: resource.id,
+      name: resource.name,
       accuracy: resource.accuracy,
       crit_rate: resource.meta?.crit_rate,
       generation: this.getId(resource.generation?.url),
@@ -17,6 +17,21 @@ export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
       power: resource.power,
       pp: resource.pp,
       type: resource.type.name,
+    };
+  }
+}
+
+export class MoveLearnMethodGenerator extends AbstractGenerator<MoveLearnMethod, PxMoveLearnMethod> {
+  protected getResourceName(): string {
+    return 'move-learn-method';
+  }
+
+  protected mapResource(resource: MoveLearnMethod): PxMoveLearnMethod {
+    return {
+      id: resource.id,
+      name: resource.name,
+      names: this.filterAndMapNames(resource.names),
+      descriptions: this.filterAndMapDescriptions(resource.descriptions),
     };
   }
 }

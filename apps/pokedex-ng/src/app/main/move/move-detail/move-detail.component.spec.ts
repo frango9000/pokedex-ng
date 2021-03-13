@@ -2,7 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgVarDirective } from '../../../shared/directives/ng-var.directive';
 import { StubPokeTypeColorPipe, StubReplacePipe, StubWithVersionGroupPipe } from '../../../shared/pipes/stubs';
-import { stubMoveServiceProvider } from '../../../shared/services/stubs';
+import {
+  stubMoveAilmentServiceProvider,
+  stubMoveCategoryServiceProvider,
+  stubMoveDamageClassServiceProvider,
+  stubMoveServiceProvider,
+  stubMoveTargetServiceProvider,
+} from '../../../shared/services/move/move.service.stubs';
 
 import { MoveDetailComponent } from './move-detail.component';
 
@@ -20,7 +26,13 @@ describe('MoveDetailComponent', () => {
         StubReplacePipe,
         NgVarDirective,
       ],
-      providers: [stubMoveServiceProvider],
+      providers: [
+        stubMoveServiceProvider,
+        stubMoveTargetServiceProvider,
+        stubMoveAilmentServiceProvider,
+        stubMoveDamageClassServiceProvider,
+        stubMoveCategoryServiceProvider,
+      ],
     }).compileComponents();
   });
 

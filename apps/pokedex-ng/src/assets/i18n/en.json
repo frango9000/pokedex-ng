@@ -64,8 +64,8 @@
       "AILMENT_CHANCE": "Ailment Rate",
       "FLINCH_CHANCE_TITLE": "The likelihood this attack will cause the target Pokémon to flinch.",
       "FLINCH_CHANCE": "Flinch Rate",
-      "TARGET_TYPE_TITLE": "The type of target that will receive the effects of the attack.",
-      "TARGET_TYPE": "Target",
+      "TARGET_TITLE": "The type of target that will receive the effects of the attack.",
+      "TARGET": "Target",
       "MIN_HITS": "Min Hits",
       "MAX_HITS": "Max Hits",
       "MIN_TURNS": "Min Turns",
@@ -177,7 +177,7 @@
         "force-switch": "Forces target to switch out",
         "unique": "Unique effect"
       },
-      "TARGET_TYPE": {
+      "TARGET": {
         "specific-move": {
           "NAME": "Specific move",
           "DESCRIPTION": "One specific move. How this move is chosen depends upon on the move being used."

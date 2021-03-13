@@ -1,7 +1,8 @@
 import * as Generators from '../index';
 
 // new Generators.Generator().generateResource();
-new Generators.MovesGenerator().generateResource();
+// new Generators.MovesGenerator().generateResource();
+new Generators.MoveLearnMethodGenerator().generateResource();
 // new Generators.AbilitiesGenerator().generateResource();
 // new Generators.VersionGroupGenerator().generateResource();
 // new Generators.LanguageGenerator().generateResource();

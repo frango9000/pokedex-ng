@@ -74,11 +74,7 @@ export class MoveService extends FullyTranslatedService<Move, PxMove> {
             });
             move.flavor_text_entries.forEach((entry) => {
               translations.merge(entry.language.name, {
-                MOVE: {
-                  [move.name]: {
-                    FLAVOR_TEXT: { [entry.version_group.name]: entry.flavor_text },
-                  },
-                },
+                MOVE: { [move.name]: { FLAVOR_TEXT: { [entry.version_group.name]: entry.flavor_text } } },
               });
             });
             return translations;

@@ -1,18 +1,19 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { stubLanguageServiceProvider, stubMoveServiceProvider, stubVersionGroupServiceProvider } from '../stubs';
-import { MoveService } from './move.service';
+import { stubLanguageServiceProvider } from '../stubs';
 
-describe('MoveService', () => {
-  let service: MoveService;
+import { MoveLearnMethodService } from './move-learn-method.service';
+
+describe('MoveLearnMethodService', () => {
+  let service: MoveLearnMethodService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot(), HttpClientTestingModule],
-      providers: [stubMoveServiceProvider, stubLanguageServiceProvider, stubVersionGroupServiceProvider],
+      providers: [stubLanguageServiceProvider],
     });
-    service = TestBed.inject(MoveService);
+    service = TestBed.inject(MoveLearnMethodService);
   });
 
   it('should be created', () => {

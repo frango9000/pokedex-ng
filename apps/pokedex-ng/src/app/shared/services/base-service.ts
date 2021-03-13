@@ -78,9 +78,13 @@ export abstract class TranslatedService<T, P> extends BaseService<T, P> {
   }
 }
 
-export abstract class SingleTranslatedService<T, P> extends TranslatedService<T, P> {
+export abstract class SingleTranslatedService<T> extends TranslatedService<T, T> {
   fetchApiOne(id: string | number): Observable<T> {
     return super.fetchApiOne(id).pipe(tap((resource) => this._setTranslations(resource)));
+  }
+
+  protected _fetchAll(): Observable<T[]> {
+    return of([]);
   }
 
   protected _parseAllTranslations(): Observable<MergingMap> {
