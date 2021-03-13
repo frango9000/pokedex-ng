@@ -106,7 +106,7 @@ export interface MoveDamageClass extends ApiEntity {
 
 export interface MoveLearnMethod extends ApiEntity {
   id: number;
-  name: MoveLearnMethodEnum;
+  name: string;
   descriptions: ApiDescription[];
   names: ApiName[];
   version_groups: NamedApiResource<VersionGroup>[];
@@ -114,7 +114,7 @@ export interface MoveLearnMethod extends ApiEntity {
 
 export interface PxMoveLearnMethod extends ApiEntity {
   id: number;
-  name: MoveLearnMethodEnum;
+  name: string;
   descriptions: LocalizedDescription[];
   names: LocalizedName[];
 }

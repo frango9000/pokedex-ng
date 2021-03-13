@@ -3,6 +3,7 @@ import { MoveLearnMethodEnum as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/d
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { VersionGroupService } from '../../../../shared/services/game/version-group.service';
+import { MoveLearnMethodService } from '../../../../shared/services/move/move-learn-method.service';
 import { MoveService } from '../../../../shared/services/move/move.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private gameVersionService: VersionGroupService, private moveService: MoveService) {}
+  constructor(
+    private gameVersionService: VersionGroupService,
+    private moveService: MoveService,
+    public moveLearnMethodService: MoveLearnMethodService
+  ) {}
 
   ngOnInit(): void {
     this.subscriptions.add(this._filterChangesSubscription());
@@ -66,6 +71,16 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
       map((moves) =>
         moves
           .filter((move) => move.version_group_detail.move_learn_method.name === MLM.EGG)
+          .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
+      )
+    );
+  }
+
+  getMovesByLearnMethod$(moveLearnMethod: string): Observable<PokemonMoves[]> {
+    return this.versionFilteredMoves$.pipe(
+      map((moves) =>
+        moves
+          .filter((move) => move.version_group_detail.move_learn_method.name === moveLearnMethod)
           .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
       )
     );

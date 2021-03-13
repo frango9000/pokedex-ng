@@ -8,7 +8,7 @@
             role="button"
             aria-expanded="false"
             aria-controls=""
-            [routerLink]="['/pokemon', this.pokemon.id - 1]"
+            [routerLink]="['/pokemon', this.pokemon.id - 1 || 1]"
           >
             <mdb-icon fas icon="chevron-left" size="1x"></mdb-icon>
           </a>
@@ -51,7 +51,7 @@
     <div class="text-center">
       <h4>{{ pokemon.name | titlecase }}</h4>
     </div>
-    <table class="table mb-0">
+    <table class="table mb-0" aria-describedby="Table of Info" aria-hidden="true">
       <tbody>
         <tr>
           <td>{{ "UI.POKEMON.INFO.ID" | translate }}</td>

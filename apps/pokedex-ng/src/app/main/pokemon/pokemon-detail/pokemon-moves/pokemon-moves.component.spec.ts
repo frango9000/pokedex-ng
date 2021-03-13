@@ -2,18 +2,17 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Pokemon, PokemonMoves } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
+import { StubPokeTypeColorPipe, StubWithVersionGroupPipe } from '../../../../shared/pipes/stubs';
 import {
-  StubExpandableResourcesPipe,
-  StubPokeTypeColorPipe,
-  StubWithVersionGroupPipe,
-} from '../../../../shared/pipes/stubs';
-import { stubMoveServiceProvider } from '../../../../shared/services/move/move.service.stubs';
+  stubMoveLearnMethodServiceProvider,
+  stubMoveServiceProvider,
+} from '../../../../shared/services/move/move.service.stubs';
 import { stubVersionGroupServiceProvider } from '../../../../shared/services/stubs';
 import { PokemonMovesCardComponent } from './pokemon-moves-card/pokemon-moves-card.component';
 import { PokemonMovesComponent } from './pokemon-moves.component';
 
 @Component({ selector: 'app-pokemon-moves-card', template: '' })
-export class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardComponent> {
+class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardComponent> {
   @Input() moves$: Observable<PokemonMoves[]> = of([]);
   @Input() cardTitle = '';
   @Input() showLevels = false;
@@ -49,11 +48,10 @@ describe('PokemonMovesComponent', () => {
         declarations: [
           PokemonMovesComponent,
           PokemonMovesCardStubComponent,
-          StubExpandableResourcesPipe,
           StubPokeTypeColorPipe,
           StubWithVersionGroupPipe,
         ],
-        providers: [stubVersionGroupServiceProvider, stubMoveServiceProvider],
+        providers: [stubVersionGroupServiceProvider, stubMoveServiceProvider, stubMoveLearnMethodServiceProvider],
       }).compileComponents();
     })
   );

@@ -15,7 +15,6 @@ import { LocalePickerComponent } from './components/navbar/locale-picker/locale-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { VersionGroupPickerComponent } from './components/navbar/version-group-picker/version-group-picker.component';
 import { NgVarDirective } from './directives/ng-var.directive';
-import { ExpandableResourcesPipe } from './pipes/expandable-resources.pipe';
 import { PokeTypeColorPipe } from './pipes/poke-type-color.pipe';
 import { PositionPipe } from './pipes/position.pipe';
 import { ReplacePipe } from './pipes/replace.pipe';
@@ -31,7 +30,6 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     ResourceIdPipe,
     PokeTypeColorPipe,
     NgVarDirective,
-    ExpandableResourcesPipe,
     RomanPipe,
     ReplacePipe,
     LocalePickerComponent,
@@ -52,7 +50,6 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     ResourceIdPipe,
     PokeTypeColorPipe,
     NgVarDirective,
-    ExpandableResourcesPipe,
     RomanPipe,
     TranslateModule,
     ReplacePipe,

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ExpandableResourcesPipe } from './expandable-resources.pipe';
 import { PokeTypeColorPipe } from './poke-type-color.pipe';
 import { ReplacePipe } from './replace.pipe';
 import { ResourceIdPipe } from './resource-id.pipe';
@@ -8,11 +7,6 @@ import { RomanPipe } from './roman.pipe';
 @Pipe({ name: 'pokeTypeColor' })
 export class StubPokeTypeColorPipe implements PipeTransform, Partial<PokeTypeColorPipe> {
   public transform = jest.fn();
-}
-
-@Pipe({ name: 'expandableResources' })
-export class StubExpandableResourcesPipe implements PipeTransform, Partial<ExpandableResourcesPipe> {
-  public transform = jest.fn(() => []);
 }
 
 @Pipe({ name: 'replace' })

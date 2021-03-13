@@ -13,7 +13,10 @@
     class="pokemon-section w-100 my-2"
   ></app-pokemon-type-damages>
   <app-pokemon-abilities [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>
-  <app-pokemon-moves [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-moves>
+  <app-pokemon-moves
+    [pokemon$]="getDisplayedPokemon$()"
+    class="pokemon-section w-100 my-2 d-flex flex-column"
+  ></app-pokemon-moves>
 </div>
 <ng-template #loading>
   <div class="text-center">

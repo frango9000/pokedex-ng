@@ -9,4 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class PokemonAbilitiesComponent {
   @Input() public pokemon$: Observable<Pokemon>;
+
+  public expandedAbility = '';
 }

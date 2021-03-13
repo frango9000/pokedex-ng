@@ -1,25 +1,7 @@
 <app-pokemon-moves-card
-  class="row justify-content-center mb-2"
-  cardTitle="level-up"
-  *ngIf="getLevelMoves$() as levelMoves"
-  [moves$]="levelMoves"
-  [showLevels]="true"
-></app-pokemon-moves-card>
-<app-pokemon-moves-card
-  class="row justify-content-center my-2"
-  cardTitle="machine"
-  *ngIf="getMachineMoves$() as machineMoves"
-  [moves$]="machineMoves"
-></app-pokemon-moves-card>
-<app-pokemon-moves-card
-  class="row justify-content-center my-2"
-  cardTitle="tutor"
-  *ngIf="getTutorMoves$() as tutorMoves"
-  [moves$]="tutorMoves"
-></app-pokemon-moves-card>
-<app-pokemon-moves-card
-  class="row justify-content-center my-2"
-  cardTitle="egg"
-  *ngIf="getEggMoves$() as eggMoves"
-  [moves$]="eggMoves"
-></app-pokemon-moves-card>
+  *ngFor="let learnMethod of this.moveLearnMethodService.getAll() | async"
+  [cardTitle]="learnMethod.name"
+  [moves$]="getMovesByLearnMethod$(learnMethod.name)"
+  [showLevels]="learnMethod.name === 'level-up'"
+>
+</app-pokemon-moves-card>

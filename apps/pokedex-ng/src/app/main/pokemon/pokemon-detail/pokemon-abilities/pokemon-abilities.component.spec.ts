@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { StubExpandableResourcesPipe } from '../../../../shared/pipes/stubs';
+import { NgVarDirective } from '../../../../shared/directives/ng-var.directive';
+import { stubAbilityServiceProvider } from '../../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities.component';
 import { PokemonAbilityComponent } from './pokemon-ability/pokemon-ability.component';
 
@@ -19,7 +20,8 @@ describe('PokemonAbilitiesComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonAbilitiesComponent, StubExpandableResourcesPipe, PokemonAbilityStubComponent],
+        declarations: [PokemonAbilitiesComponent, PokemonAbilityStubComponent, NgVarDirective],
+        providers: [stubAbilityServiceProvider],
       }).compileComponents();
     })
   );

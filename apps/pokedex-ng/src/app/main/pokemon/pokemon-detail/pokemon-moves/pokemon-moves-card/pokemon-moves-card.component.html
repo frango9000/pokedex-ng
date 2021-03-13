@@ -1,5 +1,5 @@
-<ng-container *ngVar="expandableMoves$ | async as moves">
-  <mdb-card class="max-detail-size w-100 pb-2" *ngIf="moves?.length > 0">
+<ng-container *ngVar="moves$ | async as moves">
+  <mdb-card class="max-detail-size w-100 pb-2 mb-2" *ngIf="moves.length">
     <div class="container-fluid cursor-pointer border-bottom">
       <div
         class="row m-2 align-items-center"
@@ -14,7 +14,7 @@
       </div>
     </div>
     <mdb-card-body class="py-0 px-2 px-sm-4">
-      <table class="table table-sm mb-0">
+      <table class="table table-sm mb-0" aria-describedby="Table of Moves">
         <thead>
           <tr>
             <th scope="col">
@@ -26,47 +26,44 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let expandableMove of moves">
-            <tr>
-              <td class="align-middle">
-                <span *ngIf="showLevels">{{ expandableMove.resource.version_group_detail?.level_learned_at }}</span>
-              </td>
-              <td class="align-middle w-75">
-                {{ "MOVE." + expandableMove.resource.move.name + ".NAME" | translate }}
-              </td>
-              <td>
-                <div class="text-center text-white pt-1">
-                  <span
-                    class="p-1 rounded-lg"
-                    [ngStyle]="{ 'background-color': expandableMove.resource.type | pokeTypeColor }"
-                    *ngVar="'TYPE.' + expandableMove.resource.type | translate | uppercase as typeName"
+          <ng-container *ngFor="let move of moves">
+            <ng-container *ngVar="expandedMove === move.move.name as isExpanded">
+              <tr>
+                <td class="align-middle">
+                  <span *ngIf="showLevels">{{ move.version_group_detail?.level_learned_at }}</span>
+                </td>
+                <td class="align-middle w-75">
+                  {{ "MOVE." + move.move.name + ".NAME" | translate }}
+                </td>
+                <td>
+                  <div class="text-center text-white pt-1">
+                    <span
+                      class="p-1 rounded-lg"
+                      [ngStyle]="{ 'background-color': move.type | pokeTypeColor }"
+                      *ngVar="'TYPE.' + move.type | translate | uppercase as typeName"
+                    >
+                      {{ typeName }}
+                    </span>
+                  </div>
+                </td>
+                <td class="text-right align-middle p-0">
+                  <a
+                    class="btn btn-primary p-1 px-2"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls=""
+                    (click)="expandedMove = isExpanded ? '' : move.move.name"
                   >
-                    {{ typeName }}
-                  </span>
-                </div>
-              </td>
-              <td class="text-right align-middle p-0">
-                <a
-                  class="btn btn-primary p-1 px-2"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls=""
-                  (click)="expandableMove.expanded = !expandableMove.expanded"
-                >
-                  <mdb-icon
-                    fas
-                    icon="chevron-right"
-                    size="1x"
-                    [ngClass]="{ expanded: expandableMove.expanded }"
-                  ></mdb-icon>
-                </a>
-              </td>
-            </tr>
-            <tr *ngIf="expandableMove.expanded">
-              <td colspan="4" [ngClass]="{ 'border-top-0': expandableMove.expanded }" class="px-0 pb-3">
-                <pokedex-ng-move-detail [moveId]="expandableMove.resource.move.name"></pokedex-ng-move-detail>
-              </td>
-            </tr>
+                    <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: isExpanded }"></mdb-icon>
+                  </a>
+                </td>
+              </tr>
+              <tr *ngIf="isExpanded">
+                <td colspan="4" [ngClass]="{ 'border-top-0': isExpanded }" class="px-0 pb-3">
+                  <pokedex-ng-move-detail [moveId]="move.move.name"></pokedex-ng-move-detail>
+                </td>
+              </tr>
+            </ng-container>
           </ng-container>
         </tbody>
       </table>

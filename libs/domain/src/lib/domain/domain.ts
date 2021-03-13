@@ -48,8 +48,3 @@ export interface LocalizedDescription {
   description: string;
   language: string;
 }
-
-export interface ExpandableResource<T> {
-  resource: T;
-  expanded: boolean;
-}
