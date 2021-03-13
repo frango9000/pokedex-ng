@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MoveLearnMethodEnum as MLM, Pokemon, PokemonMoves } from '@pokedex-ng/domain';
+import { Pokemon, PokemonMoves } from '@pokedex-ng/domain';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { VersionGroupService } from '../../../../shared/services/game/version-group.service';
@@ -30,50 +30,6 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  getLevelMoves$(): Observable<PokemonMoves[]> {
-    return this.versionFilteredMoves$.pipe(
-      map((moves) =>
-        moves
-          .filter(
-            (move) =>
-              move.version_group_detail.level_learned_at > 0 &&
-              move.version_group_detail.move_learn_method.name === MLM.LEVEL_UP
-          )
-          .sort((a, b) => (a.version_group_detail.level_learned_at > b.version_group_detail.level_learned_at ? 1 : -1))
-      )
-    );
-  }
-
-  getTutorMoves$(): Observable<PokemonMoves[]> {
-    return this.versionFilteredMoves$.pipe(
-      map((moves) =>
-        moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.TUTOR)
-          .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
-      )
-    );
-  }
-
-  getMachineMoves$(): Observable<PokemonMoves[]> {
-    return this.versionFilteredMoves$.pipe(
-      map((moves) =>
-        moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.MACHINE)
-          .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
-      )
-    );
-  }
-
-  getEggMoves$(): Observable<PokemonMoves[]> {
-    return this.versionFilteredMoves$.pipe(
-      map((moves) =>
-        moves
-          .filter((move) => move.version_group_detail.move_learn_method.name === MLM.EGG)
-          .sort((a, b) => (a.move.name < b.move.name ? -1 : 1))
-      )
-    );
   }
 
   getMovesByLearnMethod$(moveLearnMethod: string): Observable<PokemonMoves[]> {

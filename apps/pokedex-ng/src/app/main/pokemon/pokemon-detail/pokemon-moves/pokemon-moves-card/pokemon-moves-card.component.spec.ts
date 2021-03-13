@@ -24,7 +24,7 @@ describe('PokemonMovesCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesCardComponent);
     component = fixture.componentInstance;
-    component.moves$ = of([]);
+    component.sourceMoves$ = of([]);
     fixture.detectChanges();
   });
 

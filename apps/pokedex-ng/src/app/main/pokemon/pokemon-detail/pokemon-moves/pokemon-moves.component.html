@@ -1,7 +1,7 @@
 <app-pokemon-moves-card
   *ngFor="let learnMethod of this.moveLearnMethodService.getAll() | async"
   [cardTitle]="learnMethod.name"
-  [moves$]="getMovesByLearnMethod$(learnMethod.name)"
+  [sourceMoves$]="getMovesByLearnMethod$(learnMethod.name)"
   [showLevels]="learnMethod.name === 'level-up'"
 >
 </app-pokemon-moves-card>

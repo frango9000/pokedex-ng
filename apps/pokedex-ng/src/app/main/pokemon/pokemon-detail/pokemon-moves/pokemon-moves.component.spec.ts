@@ -13,7 +13,7 @@ import { PokemonMovesComponent } from './pokemon-moves.component';
 
 @Component({ selector: 'app-pokemon-moves-card', template: '' })
 class PokemonMovesCardStubComponent implements Partial<PokemonMovesCardComponent> {
-  @Input() moves$: Observable<PokemonMoves[]> = of([]);
+  @Input() sourceMoves$: Observable<PokemonMoves[]> = of([]);
   @Input() cardTitle = '';
   @Input() showLevels = false;
 }

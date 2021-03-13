@@ -1,16 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { PokemonMoves } from '@pokedex-ng/domain';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-moves-card',
   templateUrl: './pokemon-moves-card.component.html',
   styleUrls: ['./pokemon-moves-card.component.scss'],
 })
-export class PokemonMovesCardComponent {
-  @Input() moves$: Observable<PokemonMoves[]>;
+export class PokemonMovesCardComponent implements OnInit, OnDestroy {
+  @Input() sourceMoves$: Observable<PokemonMoves[]>;
   @Input() cardTitle = '';
   @Input() showLevels = false;
 
   public expandedMove = '';
+
+  public moves$ = new BehaviorSubject<PokemonMoves[]>([]);
+  private subscriptions = new Subscription();
+
+  ngOnInit(): void {
+    this.subscriptions.add(this.sourceMoves$.subscribe((moves) => this.moves$.next(moves)));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 }
