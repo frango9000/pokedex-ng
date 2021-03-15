@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { PokemonMoves } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-moves-card',
@@ -18,7 +19,19 @@ export class PokemonMovesCardComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
 
   ngOnInit(): void {
-    this.subscriptions.add(this.sourceMoves$.subscribe((moves) => this.moves$.next(moves)));
+    this.subscriptions.add(
+      this.sourceMoves$
+        .pipe(
+          tap((value) => {
+            if (this.cardTitle === 'level-up') {
+              value.sort((a, b) =>
+                a.version_group_detail.level_learned_at > b.version_group_detail.level_learned_at ? 1 : -1
+              );
+            }
+          })
+        )
+        .subscribe((moves) => this.moves$.next(moves))
+    );
   }
 
   ngOnDestroy(): void {
