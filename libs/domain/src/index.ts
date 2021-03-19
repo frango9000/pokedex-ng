@@ -8,7 +8,7 @@ export * from './lib/games/version';
 export * from './lib/pokemon/pokemon';
 export * from './lib/pokemon/ability';
 export * from './lib/pokemon/type';
-export * from './lib/pokemon/species';
+export * from './lib/species/species';
 export * from './lib/pokemon/stat';
 export * from './lib/evolution/evolution-chain';
 export * from './lib/items/item';

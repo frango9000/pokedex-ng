@@ -1,8 +1,16 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
+import {
+  stubEggGroupServiceProvider,
+  stubGrowthRateServiceProvider,
+  stubPokemonColorServiceProvider,
+  stubPokemonHabitatServiceProvider,
+  stubPokemonShapeServiceProvider,
+  stubVersionGroupServiceProvider,
+} from '../../../../../shared/services/stubs';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
 describe('PokemonSpeciesInfoComponent', () => {
@@ -14,7 +22,14 @@ describe('PokemonSpeciesInfoComponent', () => {
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesInfoComponent, StubWithVersionGroupPipe],
-        providers: [stubVersionGroupServiceProvider],
+        providers: [
+          stubVersionGroupServiceProvider,
+          stubEggGroupServiceProvider,
+          stubGrowthRateServiceProvider,
+          stubPokemonColorServiceProvider,
+          stubPokemonHabitatServiceProvider,
+          stubPokemonShapeServiceProvider,
+        ],
       }).compileComponents();
     })
   );
@@ -22,6 +37,7 @@ describe('PokemonSpeciesInfoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonSpeciesInfoComponent);
     component = fixture.componentInstance;
+    component.species$ = of();
     fixture.detectChanges();
   });
 

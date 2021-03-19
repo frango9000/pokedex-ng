@@ -9,6 +9,11 @@ import { AbilityService } from './pokemon/ability.service';
 import { PokemonService } from './pokemon/pokemon.service';
 import { StatService } from './pokemon/stat.service';
 import { TypeService } from './pokemon/type.service';
+import { EggGroupService } from './species/egg-group.service';
+import { GrowthRateService } from './species/growth-rate.service';
+import { PokemonColorService } from './species/pokemon-color.service';
+import { PokemonHabitatService } from './species/pokemon-habitat.service';
+import { PokemonShapeService } from './species/pokemon-shape.service';
 import { SpeciesService } from './species/species.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {
@@ -111,4 +116,39 @@ export class StubStatService implements Partial<StatService> {}
 export const stubStatServiceProvider = {
   provide: StatService,
   useFactory: () => new StubStatService(),
+};
+
+export class StubEggGroupService implements Partial<EggGroupService> {}
+
+export const stubEggGroupServiceProvider = {
+  provide: EggGroupService,
+  useFactory: () => new StubEggGroupService(),
+};
+
+export class StubGrowthRateService implements Partial<GrowthRateService> {}
+
+export const stubGrowthRateServiceProvider = {
+  provide: GrowthRateService,
+  useFactory: () => new StubGrowthRateService(),
+};
+
+export class StubPokemonColorService implements Partial<PokemonColorService> {}
+
+export const stubPokemonColorServiceProvider = {
+  provide: PokemonColorService,
+  useFactory: () => new StubPokemonColorService(),
+};
+
+export class StubPokemonHabitatService implements Partial<PokemonHabitatService> {}
+
+export const stubPokemonHabitatServiceProvider = {
+  provide: PokemonHabitatService,
+  useFactory: () => new StubPokemonHabitatService(),
+};
+
+export class StubPokemonShapeService implements Partial<PokemonShapeService> {}
+
+export const stubPokemonShapeServiceProvider = {
+  provide: PokemonShapeService,
+  useFactory: () => new StubPokemonShapeService(),
 };

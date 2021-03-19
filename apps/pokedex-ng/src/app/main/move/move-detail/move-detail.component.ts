@@ -29,24 +29,26 @@ export class MoveDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.pokemonMoveService
-        .fetchApiOne(this.moveId)
-        .pipe(
-          switchMap((move: Move) =>
-            forkJoin([
-              this.moveAilmentService.fetchApiOne(move.meta.ailment.name),
-              this.moveCategoryService.fetchApiOne(move.meta.category.name),
-              this.moveDamageClassService.fetchApiOne(move.damage_class.name),
-              this.moveTargetService.fetchApiOne(move.target.name),
-            ]).pipe(map(() => move))
-          )
-        )
-        .subscribe((move) => (this.move = move))
-    );
+    this.subscriptions.add(this._subscribeToFetchTranslations());
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  private _subscribeToFetchTranslations() {
+    return this.pokemonMoveService
+      .fetchApiOne(this.moveId)
+      .pipe(
+        switchMap((move: Move) =>
+          forkJoin([
+            this.moveAilmentService.fetchApiOne(move.meta.ailment.name),
+            this.moveCategoryService.fetchApiOne(move.meta.category.name),
+            this.moveDamageClassService.fetchApiOne(move.damage_class.name),
+            this.moveTargetService.fetchApiOne(move.target.name),
+          ]).pipe(map(() => move))
+        )
+      )
+      .subscribe((move) => (this.move = move));
   }
 }

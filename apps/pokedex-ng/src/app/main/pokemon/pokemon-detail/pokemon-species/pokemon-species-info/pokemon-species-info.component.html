@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 pb-2" *ngIf="species$ | async as species; else loading">
+<mdb-card class="max-detail-size w-100 pb-2" *ngIf="species; else loading">
   <div class="container-fluid cursor-pointer border-bottom">
     <div class="row m-2 align-items-center" title="{{ 'UI.SPECIES.INFO.TITLE_TITLE' | translate }}">
       <a mdbBtn floating="true">
@@ -24,24 +24,25 @@
           </tr>
           <tr>
             <td>{{ "UI.SPECIES.INFO.SHAPE" | translate }}</td>
-            <td>{{ species.shape.name | titlecase }}</td>
+            <td>{{ "SPECIES.SHAPE." + species.shape.name + ".NAME" | translate }}</td>
           </tr>
           <tr>
             <td>{{ "UI.SPECIES.INFO.COLOR" | translate }}</td>
             <td>
-              {{ species.color.name | titlecase }}
+              {{ "SPECIES.COLOR." + species.color.name | translate }}
               <span [ngStyle]="{ 'background-color': species.color.name, color: species.color.name }">__</span>
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | translate }}">
             <td>{{ "UI.SPECIES.INFO.GROWTH_RATE" | translate }}</td>
-            <td>{{ species.growth_rate.name | titlecase }}</td>
+            <td>{{ "SPECIES.GROWTH_RATE." + species.growth_rate.name | translate | titlecase }}</td>
           </tr>
           <tr *ngIf="species.egg_groups" title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | translate }}">
             <td>{{ "UI.SPECIES.INFO.EGG_GROUPS" | translate }}</td>
             <td>
               <span *ngFor="let eggGroup of species.egg_groups; let i = index"
-                >{{ eggGroup.name | titlecase }}<span *ngIf="species.egg_groups.length - 1 !== i">, </span></span
+                >{{ "SPECIES.EGG_GROUP." + eggGroup.name | translate
+                }}<span *ngIf="species.egg_groups.length - 1 !== i">, </span></span
               >
             </td>
           </tr>
@@ -58,7 +59,7 @@
           <tr title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | translate }}" *ngIf="species.habitat">
             <td>{{ "UI.SPECIES.INFO.HABITAT" | translate }}</td>
             <td>
-              {{ "STATIC.HABITAT." + species.habitat.name | translate | titlecase }}
+              {{ "SPECIES.HABITAT." + species.habitat.name | translate | titlecase }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | translate }}">
