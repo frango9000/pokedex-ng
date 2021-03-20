@@ -2,14 +2,14 @@ import { Language, PxLanguage } from '@pokedex-ng/domain';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class LanguageGenerator extends AbstractGenerator<Language, PxLanguage> {
-  getResourceName(): string {
-    return 'language';
+  constructor() {
+    super('language');
   }
 
   mapResource(resource: Language): PxLanguage {
     return {
-      name: resource.name,
       id: resource.id,
+      name: resource.name,
       iso3166: resource.iso3166,
       names: this.filterAndMapNames(resource.names),
     };

@@ -1,4 +1,13 @@
-import { ApiEntity, ApiName, NamedApiResource } from '@pokedex-ng/domain';
+import {
+  ApiEntity,
+  ApiName,
+  Item,
+  Move,
+  NamedApiResource,
+  PokemonLocation,
+  PokemonType,
+  Species,
+} from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 
 export interface EvolutionChain extends ApiEntity {
@@ -18,23 +27,23 @@ export interface EvolutionChainLink {
 }
 
 export interface EvolutionDetail {
-  item: NamedApiResource;
-  trigger: NamedApiResource;
+  item: NamedApiResource<Item>;
+  trigger: NamedApiResource<EvolutionTrigger>;
   gender: number;
-  held_item: NamedApiResource;
-  known_move_type: NamedApiResource;
-  known_move: NamedApiResource;
-  location: NamedApiResource;
+  held_item: NamedApiResource<Item>;
+  known_move_type: NamedApiResource<PokemonType>;
+  known_move: NamedApiResource<Move>;
+  location: NamedApiResource<PokemonLocation>;
   min_level: number;
   min_happiness: number;
   min_beauty: number;
   min_affection: number;
   needs_overworld_rain: boolean;
-  party_species: NamedApiResource;
-  party_type: NamedApiResource;
+  party_species: NamedApiResource<Species>;
+  party_type: NamedApiResource<PokemonType>;
   relative_physical_stats: number;
   time_of_day: string;
-  trade_species: NamedApiResource;
+  trade_species: NamedApiResource<Species>;
   turn_upside_down: boolean;
 
   //Non Api Content, Used in templates
@@ -45,7 +54,10 @@ export interface EvolutionTrigger {
   id: number;
   name: string;
   names: ApiName[];
+  pokemon_species: NamedApiResource<Species>[];
 }
+
+//Non Api Content, Used in templates
 
 export interface PokemonEvolutionTriggerDetails {
   trigger: PokemonEvolutionTriggerDetail;

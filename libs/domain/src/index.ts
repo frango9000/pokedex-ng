@@ -14,5 +14,6 @@ export * from './lib/evolution/evolution-chain';
 export * from './lib/items/item';
 export * from './lib/moves/move';
 export * from './lib/machines/machine';
+export * from './lib/location/location';
 
 export * from './lib/domain.module';

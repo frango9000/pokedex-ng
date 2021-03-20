@@ -1,3 +1,4 @@
+import { Generation } from '../games/generation';
 import { VersionGroup } from '../games/version-group';
 import { NamedApiResource } from './domain';
 import { Language } from './language';
@@ -17,4 +18,14 @@ export interface ApiEffectEntry {
 export interface ApiEffectChange {
   effect_entries: ApiEffectEntry[];
   version_group: NamedApiResource<VersionGroup>;
+}
+
+export interface MachineVersionDetail {
+  machine: NamedApiResource;
+  version_group: VersionGroup;
+}
+
+export interface GenerationGameIndex {
+  game_index: number;
+  generation: NamedApiResource<Generation>;
 }

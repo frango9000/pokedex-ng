@@ -9,7 +9,7 @@ import {
   LocalizedDescription,
   LocalizedName,
   NamedApiResource,
-  PokeType,
+  PokemonType,
   VersionGroup,
 } from '@pokedex-ng/domain';
 
@@ -53,7 +53,7 @@ export interface Move extends ApiEntity {
   }[];
   super_contest_effect: NamedApiResource;
   target: NamedApiResource;
-  type: NamedApiResource<PokeType>;
+  type: NamedApiResource<PokemonType>;
 }
 
 interface PokemonMoveMetadata {

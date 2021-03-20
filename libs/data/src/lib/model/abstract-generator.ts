@@ -7,32 +7,25 @@ import {
   LocalizedName,
   NamedApiResource,
 } from '@pokedex-ng/domain';
+import { AxiosResponse } from 'axios';
 import { Axios } from 'axios-observable';
 import fs from 'fs';
-import { Observable, Subject } from 'rxjs';
-import { concatAll, delay, filter, map, retry } from 'rxjs/operators';
+import { concat, Observable } from 'rxjs';
+import { concatMap, delay, map, retry, tap, toArray } from 'rxjs/operators';
 
 export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity> {
-  protected host = 'https://pokeapi.co/api/v2';
-  protected filePath = './apps/pokedex-ng/src/assets/data';
-  protected append = false;
-  protected total = 0;
-  protected offset = 0;
-  protected limit = 9999;
-  protected delay = 200;
-
+  protected readonly HOST = 'https://pokeapi.co/api/v2';
+  protected readonly FILE_PATH = './apps/pokedex-ng/src/assets/data';
   protected readonly languages = ['ja-Hrkt', 'roomaji', 'ko', 'zh-Hant', 'fr', 'de', 'es', 'it', 'en'];
 
-  protected list = [];
-  protected subject$: Subject<Observable<T>> = new Subject<Observable<T>>();
+  protected append = false;
+  protected offset = 0;
+  protected limit = 9999;
+  protected delay = 0;
+  protected total = 0;
+  protected current = 0;
 
-  constructor() {
-    this.subject$.pipe(concatAll()).subscribe({
-      next: this.onNext.bind(this),
-      error: this.onError.bind(this),
-      complete: this.onComplete.bind(this),
-    });
-  }
+  constructor(protected resourceName: string) {}
 
   public setAppend(append: boolean): AbstractGenerator<T, N> {
     this.append = append;
@@ -54,73 +47,69 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
     return this;
   }
 
-  protected abstract mapResource(resource: T): N;
-
-  protected abstract getResourceName(): string;
-
-  protected onNext(resource: T): void {
-    this.list.push(this.mapResource(resource));
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    process.stdout.write(
-      `${this._getPercentage()}% | [${this.list.length}/${
-        this.total
-      }] | ${this._getRemainingTime()}s | ${this.getResourceName()} id: ${this.getResourceId(resource)}`
+  protected _fetchList(): Observable<NamedApiResource<T>[]> {
+    return Axios.get<ApiResourceList<NamedApiResource<T>>>(
+      `${this.HOST}/${this.resourceName}?offset=${this.offset}&limit=${this.limit}`
+    ).pipe(
+      tap((response) => (this.total = response.data.results.length)),
+      tap(() => console.log(`\nGenerating ${this.resourceName}`)),
+      map((response) => response.data.results)
     );
   }
 
-  protected onComplete(): void {
-    if (this.list.length > 0) {
-      console.log(
-        `\nResource ${this.getResourceName()} generated. [${this.list.length}/${this.total}]${
-          this.list.length !== this.total ? ' -' + (this.total - this.list.length) : ''
-        }`
-      );
-      const writeOrAppend = this.append ? fs.appendFileSync : fs.writeFileSync;
-      writeOrAppend(`${this.filePath}/${this.getResourceName()}.json`, JSON.stringify(this.list));
-      console.log(`Resource ${this.getResourceName()} written to file.`);
-    } else {
-      console.log('No Resources found');
-    }
+  protected _fetchOne(namedApiResource: NamedApiResource<T>): Observable<T> {
+    return Axios.get<T>(namedApiResource.url.substring(0, namedApiResource.url.length - 1)).pipe(
+      retry(10),
+      delay(this.delay),
+      map((response: AxiosResponse<T>) => response.data),
+      tap(() => this._logResourceProgress())
+    );
   }
 
-  protected onError(err) {
-    console.log(`\n${this._getPercentage()}% | ${this.getResourceName()}: Error --> ${this.list.length}/${this.total}`);
-    console.trace('\n' + err);
-    this.onComplete();
+  protected _logResourceProgress() {
+    process.stdout.clearLine(0);
+    process.stdout.cursorTo(0);
+    process.stdout.write(`${++this.current}/${this.total} | ${this._getPercentage()}%`);
   }
 
-  public generateResource(): void {
-    Axios.get<ApiResourceList>(
-      `${this.host}/${this.getResourceName()}?offset=${this.offset}&limit=${this.limit}`
-    ).subscribe((res) => {
-      this.total = res?.data?.results?.length || 0;
-      console.log(`Total ${this.getResourceName()}: ${this.total}`);
-      res.data.results.forEach((resource) => {
-        this.subject$.next(
-          // Axios.get<T>(resource.url).pipe(
-          Axios.get<T>(resource.url.substring(0, resource.url.length - 1)).pipe(
-            retry(10),
-            delay(this.delay),
-            map((value) => value.data),
-            filter((value) => this.filterResources(value))
-          )
-        );
-      });
-      this.subject$.complete();
-    }, console.error);
+  protected _fetchAllResources(): Observable<T[]> {
+    return this._fetchList().pipe(
+      map((namedResources: NamedApiResource<T>[]) =>
+        namedResources.map((namedResource) => this._fetchOne(namedResource))
+      ),
+      concatMap((namedResources: Observable<T>[]) => concat(...namedResources)),
+      toArray(),
+      tap((resources) => console.log(`\n`))
+    );
   }
 
-  protected _getPercentage(): number {
-    return Math.trunc((this.list.length * 100) / this.total);
+  protected _filterResources(): Observable<T[]> {
+    return this._fetchAllResources().pipe(
+      map((resources) => resources.filter((resource) => this.filterResources(resource)))
+    );
   }
 
-  protected _getRemainingTime(): number {
-    return Math.trunc((this.total - this.list.length) / (1000 / this.delay));
+  protected _mapResources(): Observable<N[]> {
+    return this._filterResources().pipe(
+      map((resources: T[]) => resources.map((resource) => this.mapResource(resource)))
+    );
   }
 
-  protected getResourceId(resource: T) {
-    return resource.id;
+  protected _saveResourcesToFile(): Observable<N[]> {
+    return this._mapResources().pipe(
+      tap((resources) => {
+        if (resources.length > 0) {
+          const writeOrAppend = this.append ? fs.appendFileSync : fs.writeFileSync;
+          writeOrAppend(`${this.FILE_PATH}/${this.resourceName}.json`, JSON.stringify(resources));
+        }
+      })
+    );
+  }
+
+  protected abstract mapResource(resource: T): N;
+
+  public generateResources(): Observable<N[]> {
+    return this._saveResourcesToFile();
   }
 
   protected filterResources(resource: T) {
@@ -133,18 +122,22 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
       .map((name) => ({ name: name.name, language: name.language.name }));
   }
 
-  protected filterAndMapDescriptions(descriptions: ApiDescription[]): LocalizedDescription[] {
-    return descriptions
-      .filter((description) => this.languages.includes(description.language.name))
-      .map((description) => ({ description: description.description, language: description.language.name }));
-  }
-
   protected getId(url: string): number {
     try {
       return Number(url?.split('/').reverse()[1]) || 0;
     } catch (e) {
       return 0;
     }
+  }
+
+  protected _getPercentage(): number {
+    return Math.trunc((this.current * 100) / this.total);
+  }
+
+  protected filterAndMapDescriptions(descriptions: ApiDescription[]): LocalizedDescription[] {
+    return descriptions
+      .filter((description) => this.languages.includes(description.language.name))
+      .map((description) => ({ description: description.description, language: description.language.name }));
   }
 
   protected mapNamedApiResourcesToNames(resources: NamedApiResource<T>[]): string[] {

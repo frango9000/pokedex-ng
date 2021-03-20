@@ -5,7 +5,7 @@ import {
   Item,
   Move,
   NamedApiResource,
-  PokeType,
+  PokemonType,
   PxVersionGroup,
   Species,
 } from '@pokedex-ng/domain';
@@ -37,7 +37,7 @@ export interface Pokemon extends ApiEntity {
 
 export interface PokeSlotType {
   slot: number;
-  type: NamedApiResource<PokeType>;
+  type: NamedApiResource<PokemonType>;
 }
 
 export interface PokemonStats {

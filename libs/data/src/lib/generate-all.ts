@@ -1,13 +1,17 @@
 import * as Generators from '../index';
 
-new Generators.PokemonGenerator().generateResource();
-// new Generators.MovesGenerator().generateResource();
-// new Generators.MoveLearnMethodGenerator().generateResource();
-// new Generators.AbilitiesGenerator().generateResource();
-// new Generators.VersionGroupGenerator().generateResource();
-// new Generators.LanguageGenerator().generateResource();
-// new Generators.TypeGenerator().generateResource();
-// new Generators.ItemGenerator().generateResource();
-// new Generators.MachineGenerator().generateResource();
-// new Generators.GenerationGenerator().generateResource();
-// new Generators.StatGenerator().generateResource();
+const generateAll = async () => {
+  await new Generators.PokemonGenerator().generateResources().toPromise();
+  await new Generators.MovesGenerator().generateResources().toPromise();
+  await new Generators.MoveLearnMethodGenerator().generateResources().toPromise();
+  await new Generators.AbilitiesGenerator().generateResources().toPromise();
+  await new Generators.VersionGroupGenerator().generateResources().toPromise();
+  await new Generators.LanguageGenerator().generateResources().toPromise();
+  await new Generators.TypeGenerator().generateResources().toPromise();
+  await new Generators.ItemGenerator().generateResources().toPromise();
+  await new Generators.MachineGenerator().generateResources().toPromise();
+  await new Generators.GenerationGenerator().generateResources().toPromise();
+  await new Generators.StatGenerator().generateResources().toPromise();
+};
+
+generateAll();

@@ -12,7 +12,7 @@ export interface PxType extends ApiEntity {
   names?: LocalizedName[];
 }
 
-export interface PokeType extends ApiEntity {
+export interface PokemonType extends ApiEntity {
   id: number;
   name: string;
 

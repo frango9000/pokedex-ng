@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MergingMap, PokeType, PxType } from '@pokedex-ng/domain';
+import { MergingMap, PokemonType, PxType } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { MultiTranslatedService } from '../base-service';
 import { LanguageService } from '../game/language.service';
@@ -9,7 +9,7 @@ import { LanguageService } from '../game/language.service';
 @Injectable({
   providedIn: 'root',
 })
-export class TypeService extends MultiTranslatedService<PokeType, PxType> {
+export class TypeService extends MultiTranslatedService<PokemonType, PxType> {
   constructor(
     protected http: HttpClient,
     protected translateService: TranslateService,

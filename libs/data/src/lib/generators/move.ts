@@ -2,8 +2,8 @@ import { Move, MoveLearnMethod, PxMove, PxMoveLearnMethod } from '@pokedex-ng/do
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
-  getResourceName(): string {
-    return 'move';
+  constructor() {
+    super('move');
   }
 
   mapResource(resource: Move): PxMove {
@@ -22,8 +22,8 @@ export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
 }
 
 export class MoveLearnMethodGenerator extends AbstractGenerator<MoveLearnMethod, PxMoveLearnMethod> {
-  protected getResourceName(): string {
-    return 'move-learn-method';
+  constructor() {
+    super('move-learn-method');
   }
 
   protected mapResource(resource: MoveLearnMethod): PxMoveLearnMethod {

@@ -5,7 +5,7 @@ import {
   LocalizedName,
   Move,
   NamedApiResource,
-  PokeType,
+  PokemonType,
   Species,
   VersionGroup,
 } from '@pokedex-ng/domain';
@@ -26,14 +26,11 @@ export interface Generation extends ApiEntity {
   main_region: NamedApiResource;
   moves: NamedApiResource<Move>[];
   pokemon_species: NamedApiResource<Species>[];
-  types: NamedApiResource<PokeType>[];
+  types: NamedApiResource<PokemonType>[];
   version_groups: NamedApiResource<VersionGroup>[];
 }
 
-export interface GenerationGameIndex {
-  game_index: number;
-  generation: NamedApiResource<Generation>;
-}
+//Non Api Content, Used in templates
 
 export interface SelectableGeneration {
   generation: PxGeneration;

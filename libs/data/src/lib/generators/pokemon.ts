@@ -1,9 +1,9 @@
 import {
   Ability,
   ApiEntity,
-  ApiResourceList,
+  NamedApiResource,
   Pokemon,
-  PokeType,
+  PokemonType,
   PxAbility,
   PxPokemon,
   PxStat,
@@ -11,54 +11,40 @@ import {
   Species,
   Stat,
 } from '@pokedex-ng/domain';
+import { AxiosResponse } from 'axios';
 import { Axios } from 'axios-observable';
-import { delay, map, mergeMap, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { delay, map, mergeMap, retry, tap } from 'rxjs/operators';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPokemon> {
-  getResourceName() {
-    return 'pokemon';
+  constructor() {
+    super('pokemon');
   }
 
-  mapResource(resource: PokemonWithSpecies): PxPokemon {
+  protected mapResource(resource: PokemonWithSpecies): PxPokemon {
     return {
-      name: resource.pokemon.name,
       id: resource.pokemon.id,
+      name: resource.pokemon.name,
       types: resource.pokemon.types.map((type) => type.type.name),
       generation: this.getId(resource.species.generation.url),
     };
   }
 
-  public generateResource(): void {
-    Axios.get<ApiResourceList>(
-      `${this.host}/${this.getResourceName()}?offset=${this.offset}&limit=${this.limit}`
-    ).subscribe((res) => {
-      this.total = res?.data?.results?.length || 0;
-      console.log(`Total ${this.getResourceName()}: ${this.total}`);
-      console.log(`Estimate ${this._getRemainingTime()} seconds`);
-      res.data.results.forEach((resource) => {
-        this.subject$.next(
-          Axios.get<Pokemon>(resource.url).pipe(
-            retry(10),
-            delay(this.delay),
-            map((value) => value.data),
-            mergeMap((pokemon) =>
-              Axios.get<Species>(pokemon.species.url).pipe(
-                retry(10),
-                delay(this.delay),
-                map((value) => value.data),
-                map((species) => ({ pokemon, species }))
-              )
-            )
-          )
-        );
-      });
-      this.subject$.complete();
-    }, console.error);
-  }
-
-  protected getResourceId(resource: PokemonWithSpecies) {
-    return resource.pokemon.id;
+  protected _fetchOne(namedApiResource: NamedApiResource<Pokemon>): Observable<PokemonWithSpecies> {
+    return Axios.get<Pokemon>(namedApiResource.url.substring(0, namedApiResource.url.length - 1)).pipe(
+      retry(10),
+      delay(this.delay),
+      map((response: AxiosResponse<Pokemon>) => response.data),
+      tap(() => this._logResourceProgress()),
+      mergeMap((pokemon) =>
+        Axios.get<Species>(pokemon.species.url).pipe(
+          retry(10),
+          map((value) => value.data),
+          map((species) => ({ pokemon, species }))
+        )
+      )
+    );
   }
 }
 
@@ -67,15 +53,15 @@ interface PokemonWithSpecies extends ApiEntity {
   species: Species;
 }
 
-export class TypeGenerator extends AbstractGenerator<PokeType, PxType> {
-  getResourceName(): string {
-    return 'type';
+export class TypeGenerator extends AbstractGenerator<PokemonType, PxType> {
+  constructor() {
+    super('type');
   }
 
-  mapResource(resource: PokeType): PxType {
+  mapResource(resource: PokemonType): PxType {
     return {
-      name: resource.name,
       id: resource.id,
+      name: resource.name,
       damage_relations: {
         double_damage_from: resource.damage_relations.double_damage_from.map((value) => value.name),
         double_damage_to: resource.damage_relations.double_damage_to.map((value) => value.name),
@@ -90,8 +76,8 @@ export class TypeGenerator extends AbstractGenerator<PokeType, PxType> {
 }
 
 export class AbilitiesGenerator extends AbstractGenerator<Ability, PxAbility> {
-  getResourceName(): string {
-    return 'ability';
+  constructor() {
+    super('ability');
   }
 
   mapResource(resource: Ability): PxAbility {
@@ -105,14 +91,14 @@ export class AbilitiesGenerator extends AbstractGenerator<Ability, PxAbility> {
 }
 
 export class StatGenerator extends AbstractGenerator<Stat, PxStat> {
-  getResourceName(): string {
-    return 'stat';
+  constructor() {
+    super('stat');
   }
 
   mapResource(resource: Stat): PxStat {
     return {
-      name: resource.name,
       id: resource.id,
+      name: resource.name,
       names: this.filterAndMapNames(resource.names),
     };
   }
