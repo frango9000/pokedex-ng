@@ -102,7 +102,7 @@
         "LOCATION": "@ {{value}}",
         "KNOWN_MOVE_TYPE": "Know Move of type: {{value}}",
         "KNOWN_MOVE": "Know Move {{value}}",
-        "MIN_AFFECTION": "Mn Affection: {{value}}",
+        "MIN_AFFECTION": "Min Affection: {{value}}",
         "MIN_BEAUTY": "Min Beauty: {{value}}",
         "MIN_HAPPINESS": "Min Happiness: {{value}}",
         "GENDER": "Gender: {{value}}",
