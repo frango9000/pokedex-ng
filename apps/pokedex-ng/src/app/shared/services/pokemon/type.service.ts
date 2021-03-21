@@ -21,7 +21,7 @@ export class TypeService extends MultiTranslatedService<PokemonType, PxType> {
   protected _parseAllTranslations(resources: PxType[]): Observable<MergingMap> {
     const map = new MergingMap();
     resources.forEach((type) =>
-      type.names.forEach((name) => map.merge(name.language, { TYPE: { [type.name]: name.name } }))
+      type.names.forEach((name) => map.merge(name.language, { TYPE: { [type.name]: { NAME: name.name } } }))
     );
     return of(map);
   }

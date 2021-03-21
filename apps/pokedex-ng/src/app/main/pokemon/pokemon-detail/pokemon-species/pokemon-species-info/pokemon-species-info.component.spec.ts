@@ -3,15 +3,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
+import { stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
+import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 import {
   stubEggGroupServiceProvider,
   stubGrowthRateServiceProvider,
   stubPokemonColorServiceProvider,
   stubPokemonHabitatServiceProvider,
   stubPokemonShapeServiceProvider,
-  stubVersionGroupServiceProvider,
-} from '../../../../../shared/services/stubs';
-import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
+} from '../../../../../shared/services/species/species.service.stubs';
 
 describe('PokemonSpeciesInfoComponent', () => {
   let component: PokemonSpeciesInfoComponent;

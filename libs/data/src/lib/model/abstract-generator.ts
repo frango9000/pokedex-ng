@@ -79,7 +79,7 @@ export abstract class AbstractGenerator<T extends ApiEntity, N extends ApiEntity
       ),
       concatMap((namedResources: Observable<T>[]) => concat(...namedResources)),
       toArray(),
-      tap((resources) => console.log(`\n`))
+      tap(() => console.log())
     );
   }
 

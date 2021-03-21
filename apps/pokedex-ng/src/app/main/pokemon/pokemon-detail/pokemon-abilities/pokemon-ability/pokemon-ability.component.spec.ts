@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { stubAbilityServiceProvider } from '../../../../../shared/services/stubs';
 import { PokemonAbilityComponent } from './pokemon-ability.component';
+import { stubAbilityServiceProvider } from '../../../../../shared/services/pokemon/pokemon.service.stubs';
 
 describe('PokemonAbilityComponent', () => {
   let component: PokemonAbilityComponent;

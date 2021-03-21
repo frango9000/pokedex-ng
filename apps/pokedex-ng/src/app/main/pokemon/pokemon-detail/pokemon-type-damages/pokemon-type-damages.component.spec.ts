@@ -3,9 +3,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
-import { stubTypeServiceProvider } from '../../../../shared/services/stubs';
 
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
+import { stubTypeServiceProvider } from '../../../../shared/services/pokemon/pokemon.service.stubs';
 
 describe('PokemonTypeDamagesComponent', () => {
   let component: PokemonTypeDamagesComponent;

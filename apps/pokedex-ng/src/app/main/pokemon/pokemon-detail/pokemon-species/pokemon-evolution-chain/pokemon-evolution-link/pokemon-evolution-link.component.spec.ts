@@ -5,8 +5,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { NgVarDirective } from '../../../../../../shared/directives/ng-var.directive';
 import { StubResourceIdPipe } from '../../../../../../shared/pipes/stubs';
-
 import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link.component';
+import {
+  stubEvolutionTriggerServiceProvider,
+  stubItemServiceProvider,
+  stubLocationServiceProvider,
+} from '../../../../../../shared/services/stubs';
 
 describe('PokemonEvolutionLinkComponent', () => {
   let component: PokemonEvolutionLinkComponent;
@@ -17,6 +21,7 @@ describe('PokemonEvolutionLinkComponent', () => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), TranslateModule.forRoot()],
         declarations: [PokemonEvolutionLinkComponent, StubResourceIdPipe, NgVarDirective],
+        providers: [stubLocationServiceProvider, stubItemServiceProvider, stubEvolutionTriggerServiceProvider],
       }).compileComponents();
     })
   );

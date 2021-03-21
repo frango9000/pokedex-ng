@@ -21,7 +21,7 @@
               [ngStyle]="{
                 'background-color': type.type.name | pokeTypeColor
               }"
-              >{{ "TYPE." + type.type.name | translate | uppercase }}</span
+              >{{ 'TYPE.' + type.type.name + '.NAME' | translate | uppercase }}</span
             >
           </h5>
         </div>
@@ -54,28 +54,28 @@
     <table class="table mb-0" aria-describedby="Table of Info" aria-hidden="true">
       <tbody>
         <tr>
-          <td>{{ "UI.POKEMON.INFO.ID" | translate }}</td>
+          <td>{{ 'UI.POKEMON.INFO.ID' | translate }}</td>
           <td># {{ pokemon.id }}</td>
         </tr>
         <tr>
-          <td>{{ "UI.POKEMON.INFO.BASE_EXPERIENCE" | translate }}</td>
+          <td>{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | translate }}</td>
           <td>
             {{ pokemon.base_experience }}
-            {{ "UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT" | translate }}
+            {{ 'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | translate }}
           </td>
         </tr>
         <tr>
-          <td>{{ "UI.POKEMON.INFO.WEIGHT" | translate }}</td>
+          <td>{{ 'UI.POKEMON.INFO.WEIGHT' | translate }}</td>
           <td>
             {{ pokemon.weight / 10 }}
-            {{ "UI.POKEMON.INFO.WEIGHT_UNIT" | translate }}
+            {{ 'UI.POKEMON.INFO.WEIGHT_UNIT' | translate }}
           </td>
         </tr>
         <tr>
-          <td>{{ "UI.POKEMON.INFO.HEIGHT" | translate }}</td>
+          <td>{{ 'UI.POKEMON.INFO.HEIGHT' | translate }}</td>
           <td>
             {{ pokemon.height / 10 }}
-            {{ "UI.POKEMON.INFO.HEIGHT_UNIT" | translate }}
+            {{ 'UI.POKEMON.INFO.HEIGHT_UNIT' | translate }}
           </td>
         </tr>
       </tbody>

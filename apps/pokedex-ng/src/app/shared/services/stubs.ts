@@ -5,42 +5,14 @@ import { BaseService } from './base-service';
 import { EvolutionChainService } from './evolution/evolution-chain.service';
 import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
-import { AbilityService } from './pokemon/ability.service';
-import { PokemonService } from './pokemon/pokemon.service';
-import { StatService } from './pokemon/stat.service';
-import { TypeService } from './pokemon/type.service';
-import { EggGroupService } from './species/egg-group.service';
-import { GrowthRateService } from './species/growth-rate.service';
-import { PokemonColorService } from './species/pokemon-color.service';
-import { PokemonHabitatService } from './species/pokemon-habitat.service';
-import { PokemonShapeService } from './species/pokemon-shape.service';
-import { SpeciesService } from './species/species.service';
+import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
+import { ItemService } from './item/item.service';
+import { LocationService } from './location/location.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {
   getAll = () => of([]);
   fetchApiOne = () => of(null);
 }
-
-export class StubTypeService extends StubBaseService<TypeService> implements Partial<TypeService> {}
-
-export const stubTypeServiceProvider = {
-  provide: TypeService,
-  useFactory: () => new StubTypeService(),
-};
-
-export class StubAbilityService extends StubBaseService<AbilityService> implements Partial<AbilityService> {}
-
-export const stubAbilityServiceProvider = {
-  provide: AbilityService,
-  useFactory: () => new StubAbilityService(),
-};
-
-export class StubSpeciesService implements Partial<SpeciesService> {}
-
-export const stubSpeciesServiceProvider = {
-  provide: SpeciesService,
-  useFactory: () => new StubSpeciesService(),
-};
 
 export class StubLanguageService implements Partial<LanguageService> {
   getDisplayLanguage$ = () => of(null);
@@ -48,14 +20,7 @@ export class StubLanguageService implements Partial<LanguageService> {
 
 export const stubLanguageServiceProvider = {
   provide: LanguageService,
-  useFactory: () => new StubLanguageService(),
-};
-
-export class StubPokemonService extends StubBaseService<PokemonService> implements Partial<PokemonService> {}
-
-export const stubPokemonServiceProvider = {
-  provide: PokemonService,
-  useClass: StubPokemonService,
+  useClass: StubLanguageService,
 };
 
 export class StubVersionGroupService implements Partial<VersionGroupService> {
@@ -64,7 +29,7 @@ export class StubVersionGroupService implements Partial<VersionGroupService> {
 
 export const stubVersionGroupServiceProvider = {
   provide: VersionGroupService,
-  useFactory: () => new StubVersionGroupService(),
+  useClass: StubVersionGroupService,
 };
 
 export class StubFilterService implements Partial<FilterService> {
@@ -101,54 +66,33 @@ export class StubAppNavbarService implements Partial<AppNavbarService> {
 
 export const stubAppNavbarServiceProvider = {
   provide: AppNavbarService,
-  useFactory: () => new StubAppNavbarService(),
+  useClass: StubAppNavbarService,
 };
 
 export class StubEvolutionChainService implements Partial<EvolutionChainService> {}
 
 export const stubEvolutionChainServiceProvider = {
   provide: EvolutionChainService,
-  useFactory: () => new StubEvolutionChainService(),
+  useClass: StubEvolutionChainService,
 };
 
-export class StubStatService implements Partial<StatService> {}
+export class StubEvolutionTriggerService implements Partial<EvolutionTriggerService> {}
 
-export const stubStatServiceProvider = {
-  provide: StatService,
-  useFactory: () => new StubStatService(),
+export const stubEvolutionTriggerServiceProvider = {
+  provide: EvolutionTriggerService,
+  useClass: StubEvolutionTriggerService,
 };
 
-export class StubEggGroupService implements Partial<EggGroupService> {}
+export class StubItemService implements Partial<ItemService> {}
 
-export const stubEggGroupServiceProvider = {
-  provide: EggGroupService,
-  useFactory: () => new StubEggGroupService(),
+export const stubItemServiceProvider = {
+  provide: ItemService,
+  useClass: StubItemService,
 };
 
-export class StubGrowthRateService implements Partial<GrowthRateService> {}
+export class StubLocationService implements Partial<LocationService> {}
 
-export const stubGrowthRateServiceProvider = {
-  provide: GrowthRateService,
-  useFactory: () => new StubGrowthRateService(),
-};
-
-export class StubPokemonColorService implements Partial<PokemonColorService> {}
-
-export const stubPokemonColorServiceProvider = {
-  provide: PokemonColorService,
-  useFactory: () => new StubPokemonColorService(),
-};
-
-export class StubPokemonHabitatService implements Partial<PokemonHabitatService> {}
-
-export const stubPokemonHabitatServiceProvider = {
-  provide: PokemonHabitatService,
-  useFactory: () => new StubPokemonHabitatService(),
-};
-
-export class StubPokemonShapeService implements Partial<PokemonShapeService> {}
-
-export const stubPokemonShapeServiceProvider = {
-  provide: PokemonShapeService,
-  useFactory: () => new StubPokemonShapeService(),
+export const stubLocationServiceProvider = {
+  provide: LocationService,
+  useClass: StubLocationService,
 };

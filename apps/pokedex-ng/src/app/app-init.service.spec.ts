@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppInitService } from './app-init.service';
 import { stubMoveLearnMethodServiceProvider, stubMoveServiceProvider } from './shared/services/move/move.service.stubs';
+import { stubLanguageServiceProvider } from './shared/services/stubs';
 import {
   stubAbilityServiceProvider,
-  stubLanguageServiceProvider,
   stubStatServiceProvider,
   stubTypeServiceProvider,
-} from './shared/services/stubs';
+} from './shared/services/pokemon/pokemon.service.stubs';
 
 describe('AppInitService', () => {
   let service: AppInitService;

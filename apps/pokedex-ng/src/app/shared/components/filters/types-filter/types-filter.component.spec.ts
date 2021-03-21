@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'angular-bootstrap-md';
 import { StubPokeTypeColorPipe } from '../../../pipes/stubs';
-import { stubFilterServiceProvider, stubTypeServiceProvider } from '../../../services/stubs';
+import { stubFilterServiceProvider } from '../../../services/stubs';
 
 import { TypesFilterComponent } from './types-filter.component';
+import { stubTypeServiceProvider } from '../../../services/pokemon/pokemon.service.stubs';
 
 describe('TypesFilterComponent', () => {
   let component: TypesFilterComponent;

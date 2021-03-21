@@ -67,4 +67,5 @@ export interface PokemonEvolutionTriggerDetails {
 export interface PokemonEvolutionTriggerDetail {
   title: string;
   value?: number | string;
+  translation?: string;
 }
