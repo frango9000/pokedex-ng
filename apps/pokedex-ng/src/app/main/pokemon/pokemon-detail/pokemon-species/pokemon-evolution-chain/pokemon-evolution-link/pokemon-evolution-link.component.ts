@@ -6,7 +6,7 @@ import {
   PokemonEvolutionTriggerDetails,
 } from '@pokedex-ng/domain';
 import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
 import { EvolutionTriggerService } from '../../../../../../shared/services/evolution/evolution-trigger.service';
 import { ItemService } from '../../../../../../shared/services/item/item.service';
 import { LocationService } from '../../../../../../shared/services/location/location.service';
@@ -31,6 +31,12 @@ export class PokemonEvolutionLinkComponent implements OnInit {
     this.link$
       .pipe(
         tap(() => this.generatedContent$.next(null)),
+        switchMap((link) =>
+          forkJoin(this.nestedResourcesObservables(link)).pipe(
+            catchError(undefined),
+            map(() => link)
+          )
+        ),
         tap((link: EvolutionChainLink) => {
           link.evolution_details.forEach((evoDetail) => {
             evoDetail.processed_details = this.getEvolutionMethodText(evoDetail);
@@ -38,14 +44,13 @@ export class PokemonEvolutionLinkComponent implements OnInit {
           link.evolves_to.forEach((value) => {
             value.self$ = of(value).pipe(take(1));
           });
-        }),
-        switchMap((link) => forkJoin([...this.nestedResourcesObservables(link)]).pipe(map(() => link)))
+        })
       )
       .subscribe((link) => this.generatedContent$.next(link));
   }
 
   getEvolutionMethodText(method: EvolutionDetail): PokemonEvolutionTriggerDetails {
-    const trigger: PokemonEvolutionTriggerDetail = { title: method.trigger.name };
+    const trigger: PokemonEvolutionTriggerDetail = { title: method?.trigger?.name };
     const conditions: PokemonEvolutionTriggerDetail[] = [];
     switch (method.trigger.name) {
       case 'level-up':
@@ -136,9 +141,7 @@ export class PokemonEvolutionLinkComponent implements OnInit {
     const nestedObservables: Observable<any>[] = [];
 
     link.evolution_details.forEach((value) => {
-      if (value.trigger) {
-        nestedObservables.push(this.evolutionTriggerService.fetchApiOne(value.trigger.name));
-      }
+      nestedObservables.push(this.evolutionTriggerService.fetchApiOne(value.trigger.name));
       if (value.item) {
         nestedObservables.push(this.itemService.fetchApiOne(value.item.name));
       }

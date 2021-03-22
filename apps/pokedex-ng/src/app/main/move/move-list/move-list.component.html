@@ -5,7 +5,14 @@
     [showGenerationFilter]="true"
     [showTypesFilter]="true"
   ></pokedex-ng-filter-toolbar>
-  <div class="table-responsive move-table">
+
+  <div
+    class="table-responsive move-table"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="150"
+    (scrolled)="renderMore()"
+  >
     <table class="table table-hover table-sm" aria-describedby="Table of Move Details" aria-hidden="true">
       <thead>
         <tr>
@@ -20,7 +27,12 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let move of getMoves$() | async">
-          <tr (click)="expandedMove = expandedMove === this.move.id ? 0 : this.move.id">
+          <tr
+            (click)="
+              expandedMove =
+                expandedMove === this.move.id.toString() || expandedMove === this.move.name ? '' : this.move.name
+            "
+          >
             <td class="p-0 align-middle">{{ move.id }}</td>
             <td class="p-0 align-middle">{{ 'MOVE.' + move.name + '.NAME' | translate }}</td>
             <td class="p-0 align-middle">{{ move.generation }}</td>
@@ -33,7 +45,7 @@
             <td class="p-0 align-middle">{{ move.pp }}</td>
             <td class="p-0 align-middle">{{ move.accuracy }}</td>
           </tr>
-          <tr *ngIf="move.id === this.expandedMove">
+          <tr *ngIf="expandedMove === move.id.toString() || expandedMove === move.name">
             <td colspan="7">
               <pokedex-ng-move-detail [moveId]="move.id"></pokedex-ng-move-detail>
             </td>

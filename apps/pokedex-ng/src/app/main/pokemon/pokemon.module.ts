@@ -21,6 +21,10 @@ import { PokemonGridComponent } from './pokemon-home/pokemon-grid/pokemon-grid.c
 import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
 import { PokemonTableComponent } from './pokemon-home/pokemon-table/pokemon-table.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
+import { StatService } from '../../shared/services/pokemon/stat.service';
+import { AbilityService } from '../../shared/services/pokemon/ability.service';
+import { MoveService } from '../../shared/services/move/move.service';
+import { TypeService } from '../../shared/services/pokemon/type.service';
 
 @NgModule({
   declarations: [
@@ -50,4 +54,11 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
   ],
   providers: [ResourceIdPipe],
 })
-export class PokemonModule {}
+export class PokemonModule {
+  constructor(
+    private statService: StatService,
+    private abilityService: AbilityService,
+    private moveService: MoveService,
+    private typeService: TypeService
+  ) {}
+}

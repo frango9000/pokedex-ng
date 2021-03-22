@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
 import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
 
@@ -21,12 +21,10 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .pipe(switchMap((params: Params) => this.pokemonService.fetchApiOne(params['pokemon'])))
-      .subscribe((response) => {
-        this.pokemon$.next(null);
-        this.pokemon$.next(response);
-      });
+    this.route.data.subscribe((response: { pokemon: Pokemon }) => {
+      this.pokemon$.next(null);
+      this.pokemon$.next(response.pokemon);
+    });
     this.appNavbarService.showVersionGroupPicker();
   }
 

@@ -17,17 +17,17 @@
         </div>
         <div class="col-4 my-auto">
           <div class="row" *ngFor="let method of node.evolution_details">
-            <div class="mx-auto">
+            <div class="mx-auto" *ngIf="method.processed_details">
               <div>
                 <mdb-icon fas icon="long-arrow-alt-right" size="3x"></mdb-icon>
               </div>
               <div>
                 {{ 'EVOLUTION.TRIGGER.' + method.processed_details.trigger.title | translate }}
                 <span *ngIf="method.processed_details.trigger.value"
-                >>
+                  >>
                   <span *ngIf="method.processed_details.trigger.translation; else triggerValue">{{
                     method.processed_details.trigger.translation | translate
-                    }}</span>
+                  }}</span>
                   <ng-template #triggerValue>{{ method.processed_details.trigger.value }}</ng-template></span
                 >
               </div>

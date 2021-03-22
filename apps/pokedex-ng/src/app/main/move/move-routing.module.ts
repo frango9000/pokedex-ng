@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoveListComponent } from './move-list/move-list.component';
+import { MoveResolver } from '../../shared/resolvers/move.resolver';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: ':move',
     component: MoveListComponent,
+    resolve: { move: MoveResolver },
   },
 ];
 

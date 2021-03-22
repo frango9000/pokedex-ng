@@ -11,6 +11,8 @@ import {
 import { StubMoveDetailComponent } from '../move-detail/move-detail.component.stub';
 
 import { MoveListComponent } from './move-list.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MoveListComponent', () => {
   let component: MoveListComponent;
@@ -18,7 +20,7 @@ describe('MoveListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), InfiniteScrollModule, RouterTestingModule],
       declarations: [MoveListComponent, StubPokeTypeColorPipe, StubFilterToolbarComponent, StubMoveDetailComponent],
       providers: [
         stubMoveServiceProvider,
