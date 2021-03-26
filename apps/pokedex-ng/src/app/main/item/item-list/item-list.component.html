@@ -1,1 +1,56 @@
-<p>item-list works!</p>
+<div class="item-table-container w-100 d-flex flex-column align-items-center">
+  <pokedex-ng-filter-toolbar
+    class="item-table"
+    *ngIf="this.appNavbarService.getShowFilters$() | async"
+    [showGenerationFilter]="true"
+    [showTypesFilter]="true"
+  ></pokedex-ng-filter-toolbar>
+
+  <div
+    class="table-responsive item-table"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="150"
+    (scrolled)="renderMore()"
+  >
+    <table class="table table-hover table-sm" aria-describedby="Table of Item Details" aria-hidden="true">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Category</th>
+          <th scope="col">Pocket</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of getItems$() | async">
+          <tr
+            (click)="
+              expandedItem =
+                expandedItem === this.item.id.toString() || expandedItem === this.item.name ? '' : this.item.name
+            "
+          >
+            <td class="p-0 align-middle">{{ item.id }}</td>
+            <td class="align-middle py-0">
+              <img
+                class="py-0"
+                height="40px"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/{{ item.sprite }}"
+                alt="{{ item.sprite }}"
+              />
+            </td>
+            <td class="p-0 align-middle">{{ 'ITEM.' + item.name + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ item.cost }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.CATEGORY.' + item.category + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.POCKET.' + item.pocket + '.NAME' | translate }}</td>
+          </tr>
+          <tr *ngIf="expandedItem === item.id.toString() || expandedItem === item.name">
+            <td colspan="7"></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

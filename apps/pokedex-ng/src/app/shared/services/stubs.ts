@@ -6,7 +6,6 @@ import { EvolutionChainService } from './evolution/evolution-chain.service';
 import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
 import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
-import { ItemService } from './item/item.service';
 import { LocationService } from './location/location.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {
@@ -81,13 +80,6 @@ export class StubEvolutionTriggerService implements Partial<EvolutionTriggerServ
 export const stubEvolutionTriggerServiceProvider = {
   provide: EvolutionTriggerService,
   useClass: StubEvolutionTriggerService,
-};
-
-export class StubItemService implements Partial<ItemService> {}
-
-export const stubItemServiceProvider = {
-  provide: ItemService,
-  useClass: StubItemService,
 };
 
 export class StubLocationService implements Partial<LocationService> {}

@@ -14,9 +14,12 @@ import {
 } from '@pokedex-ng/domain';
 
 export interface PxItem extends ApiEntity {
-  cost: number;
+  id: number;
+  name: string;
   names: LocalizedName[];
+  cost: number;
   category: string;
+  pocket: string;
   sprite: string;
 }
 
@@ -38,7 +41,16 @@ export interface Item extends ApiEntity {
   machines: MachineVersionDetail[];
 }
 
+export interface PxItemCategory extends ApiEntity {
+  id: number;
+  name: string;
+  names: LocalizedName[];
+  pocket: string;
+}
+
 export interface ItemCategory extends ApiEntity {
+  id: number;
+  name: string;
   items: NamedApiResource<Item>[];
   names: ApiName[];
   pocket: NamedApiResource;
@@ -64,6 +76,12 @@ export interface ItemAttribute extends ApiEntity {
   names: ApiName[];
   descriptions: ApiDescription[];
   items: NamedApiResource<Item>[];
+}
+
+export interface PxItemPocket extends ApiEntity {
+  id: number;
+  name: string;
+  names: LocalizedName[];
 }
 
 export interface ItemPocket extends ApiEntity {

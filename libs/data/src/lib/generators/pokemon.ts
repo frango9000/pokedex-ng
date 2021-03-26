@@ -11,10 +11,9 @@ import {
   Species,
   Stat,
 } from '@pokedex-ng/domain';
-import { AxiosResponse } from 'axios';
 import { Axios } from 'axios-observable';
 import { Observable } from 'rxjs';
-import { delay, map, mergeMap, retry, tap } from 'rxjs/operators';
+import { map, mergeMap, retry } from 'rxjs/operators';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPokemon> {
@@ -32,12 +31,9 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPo
   }
 
   protected _fetchOne(namedApiResource: NamedApiResource<Pokemon>): Observable<PokemonWithSpecies> {
-    return Axios.get<Pokemon>(namedApiResource.url.substring(0, namedApiResource.url.length - 1)).pipe(
-      retry(10),
-      delay(this.delay),
-      map((response: AxiosResponse<Pokemon>) => response.data),
-      tap(() => this._logResourceProgress()),
-      mergeMap((pokemon) =>
+    return super._fetchOne(namedApiResource).pipe(
+      map((pokemon) => (pokemon as any) as Pokemon),
+      mergeMap((pokemon: Pokemon) =>
         Axios.get<Species>(pokemon.species.url).pipe(
           retry(10),
           map((value) => value.data),

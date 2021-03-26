@@ -8,9 +8,9 @@ import { StubResourceIdPipe } from '../../../../../../shared/pipes/stubs';
 import { PokemonEvolutionLinkComponent } from './pokemon-evolution-link.component';
 import {
   stubEvolutionTriggerServiceProvider,
-  stubItemServiceProvider,
   stubLocationServiceProvider,
 } from '../../../../../../shared/services/stubs';
+import { stubItemServiceProvider } from '../../../../../../shared/services/item/item.service.stub';
 
 describe('PokemonEvolutionLinkComponent', () => {
   let component: PokemonEvolutionLinkComponent;

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ItemResolver } from './item.resolver';
 import { RouterTestingModule } from '@angular/router/testing';
-import { stubItemServiceProvider } from '../services/stubs';
+import { stubItemServiceProvider } from '../services/item/item.service.stub';
 
 describe('ItemResolver', () => {
   let resolver: ItemResolver;

@@ -25,6 +25,7 @@ import { StatService } from '../../shared/services/pokemon/stat.service';
 import { AbilityService } from '../../shared/services/pokemon/ability.service';
 import { MoveService } from '../../shared/services/move/move.service';
 import { TypeService } from '../../shared/services/pokemon/type.service';
+import { PokemonService } from '../../shared/services/pokemon/pokemon.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { TypeService } from '../../shared/services/pokemon/type.service';
 })
 export class PokemonModule {
   constructor(
+    private pokemonService: PokemonService,
     private statService: StatService,
     private abilityService: AbilityService,
     private moveService: MoveService,
