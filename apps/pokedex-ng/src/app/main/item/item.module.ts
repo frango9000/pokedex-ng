@@ -8,9 +8,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { ItemCategoryService } from '../../shared/services/item/item-category.service';
 import { ItemPocketService } from '../../shared/services/item/item-pocket.service';
 import { ItemService } from '../../shared/services/item/item.service';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
-  declarations: [ItemListComponent],
+  declarations: [ItemListComponent, ItemDetailComponent],
   imports: [CommonModule, ItemRoutingModule, InfiniteScrollModule, SharedModule],
 })
 export class ItemModule {

@@ -14,10 +14,6 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
       .subscribe((resources) => this.resources$.next(resources));
   }
 
-  public getName() {
-    return this.name;
-  }
-
   public getOne(id: string | number): Observable<P> {
     return this.getAll().pipe(map((resources) => resources.find((res) => res.name === id || res.id === id)));
   }

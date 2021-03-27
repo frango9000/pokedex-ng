@@ -2,8 +2,9 @@ import { ItemService } from './item.service';
 import { ItemPocketService } from './item-pocket.service';
 import { ItemCategoryService } from './item-category.service';
 import { StubBaseService } from '../stubs';
+import { ItemAttributeService } from './item-attribute.service';
 
-export class StubItemService implements Partial<ItemService> {}
+export class StubItemService extends StubBaseService<ItemService> implements Partial<ItemService> {}
 
 export const stubItemServiceProvider = {
   provide: ItemService,
@@ -24,4 +25,13 @@ export class StubItemPocketService extends StubBaseService<ItemPocketService> im
 export const stubItemPocketServiceProvider = {
   provide: ItemPocketService,
   useClass: StubItemPocketService,
+};
+
+export class StubItemAttributeService
+  extends StubBaseService<ItemAttributeService>
+  implements Partial<ItemAttributeService> {}
+
+export const stubItemAttributeServiceProvider = {
+  provide: ItemAttributeService,
+  useClass: StubItemAttributeService,
 };

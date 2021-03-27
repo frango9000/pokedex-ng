@@ -7,6 +7,7 @@ import {
   EvolutionChain,
   GameVersion,
   GenerationGameIndex,
+  LocalizedDescription,
   LocalizedName,
   MachineVersionDetail,
   NamedApiResource,
@@ -68,6 +69,13 @@ export interface ItemHolderPokemon {
 export interface ItemHolderPokemonVersionDetail {
   rarity: number;
   version: NamedApiResource<GameVersion>;
+}
+
+export interface PxItemAttribute extends ApiEntity {
+  id: number;
+  name: string;
+  names: LocalizedName[];
+  descriptions: LocalizedDescription[];
 }
 
 export interface ItemAttribute extends ApiEntity {

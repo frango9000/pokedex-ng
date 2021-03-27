@@ -5,88 +5,88 @@
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
       <div class="overflow-hidden text-nowrap pl-2">
-        {{ "UI.SPECIES.INFO.TITLE" | translate }}
+        {{ 'UI.SPECIES.INFO.TITLE' | translate }}
       </div>
     </div>
   </div>
   <mdb-card-body class="py-0 px-2 px-sm-4">
     <div>
       <div *ngIf="'' | withVersionGroup | async as group" class="overflow-auto text-center my-2">
-        {{ "SPECIES." + species.name + ".FLAVOR_TEXT." + group | translate }}
+        {{ 'SPECIES.' + species.name + '.FLAVOR_TEXT.' + group | translate }}
       </div>
       <table class="table mb-0" aria-describedby="Table of Move Details" aria-hidden="true">
         <tbody>
           <tr>
-            <td>{{ "UI.SPECIES.INFO.GENUS" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.GENUS' | translate }}</td>
             <td>
-              {{ "SPECIES." + species.name + ".GENERA" | translate }}
+              {{ 'SPECIES.' + species.name + '.GENERA' | translate }}
             </td>
           </tr>
           <tr>
-            <td>{{ "UI.SPECIES.INFO.SHAPE" | translate }}</td>
-            <td>{{ "SPECIES.SHAPE." + species.shape.name + ".NAME" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.SHAPE' | translate }}</td>
+            <td>{{ 'SPECIES.SHAPE.' + species.shape.name + '.NAME' | translate }}</td>
           </tr>
           <tr>
-            <td>{{ "UI.SPECIES.INFO.COLOR" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.COLOR' | translate }}</td>
             <td>
-              {{ "SPECIES.COLOR." + species.color.name | translate }}
+              {{ 'SPECIES.COLOR.' + species.color.name | translate }}
               <span [ngStyle]="{ 'background-color': species.color.name, color: species.color.name }">__</span>
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.GROWTH_RATE" | translate }}</td>
-            <td>{{ "SPECIES.GROWTH_RATE." + species.growth_rate.name | translate | titlecase }}</td>
+            <td>{{ 'UI.SPECIES.INFO.GROWTH_RATE' | translate }}</td>
+            <td>{{ 'SPECIES.GROWTH_RATE.' + species.growth_rate.name | translate | titlecase }}</td>
           </tr>
           <tr *ngIf="species.egg_groups" title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.EGG_GROUPS" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.EGG_GROUPS' | translate }}</td>
             <td>
               <span *ngFor="let eggGroup of species.egg_groups; let i = index"
-                >{{ "SPECIES.EGG_GROUP." + eggGroup.name | translate
+                >{{ 'SPECIES.EGG_GROUP.' + eggGroup.name | translate
                 }}<span *ngIf="species.egg_groups.length - 1 !== i">, </span></span
               >
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.HATCH_STEPS_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.HATCH_STEPS" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.HATCH_STEPS' | translate }}</td>
             <td>{{ (+species.hatch_counter + 1) * 255 }}</td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.GENERATION_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.GENERATION" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.GENERATION' | translate }}</td>
             <td>
-              {{ "STATIC.GENERATION.NUMBER." + species.generation.name | translate }}
+              {{ 'STATIC.GENERATION.NUMBER.' + species.generation.name | translate }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | translate }}" *ngIf="species.habitat">
-            <td>{{ "UI.SPECIES.INFO.HABITAT" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.HABITAT' | translate }}</td>
             <td>
-              {{ "SPECIES.HABITAT." + species.habitat.name | translate | titlecase }}
+              {{ 'SPECIES.HABITAT.' + species.habitat.name | translate | titlecase }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.BASE_HAPPINESS" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.BASE_HAPPINESS' | translate }}</td>
             <td>
-              {{ species.base_happiness / 255 | percent: "1.0-2" }}
+              {{ species.base_happiness / 255 | percent: '1.0-2' }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.CAPTURE_RATE" | translate }}</td>
-            <td>{{ species.capture_rate / 255 | percent: "1.0-2" }}</td>
+            <td>{{ 'UI.SPECIES.INFO.CAPTURE_RATE' | translate }}</td>
+            <td>{{ species.capture_rate / 255 | percent: '1.0-2' }}</td>
           </tr>
           <ng-container *ngIf="species.gender_rate >= 0">
             <tr title="{{ 'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | translate }}">
-              <td>{{ "UI.SPECIES.INFO.FEMALE_RATE" | translate }}</td>
-              <td>{{ species.gender_rate / 8 | percent: "1.0-2" }}</td>
+              <td>{{ 'UI.SPECIES.INFO.FEMALE_RATE' | translate }}</td>
+              <td>{{ species.gender_rate / 8 | percent: '1.0-2' }}</td>
             </tr>
             <tr title="{{ 'UI.SPECIES.INFO.MALE_RATE_TITLE' | translate }}">
-              <td>{{ "UI.SPECIES.INFO.MALE_RATE" | translate }}</td>
+              <td>{{ 'UI.SPECIES.INFO.MALE_RATE' | translate }}</td>
               <td>
-                {{ (8 - species.gender_rate) / 8 | percent: "1.0-2" }}
+                {{ (8 - species.gender_rate) / 8 | percent: '1.0-2' }}
               </td>
             </tr>
           </ng-container>
           <tr *ngIf="species.gender_rate === -1" title="{{ 'UI.SPECIES.INFO.GENDERLESS_TITLE' | translate }}">
-            <td>{{ "UI.SPECIES.INFO.GENDERLESS_RATE" | translate }}</td>
-            <td>{{ "UI.SPECIES.INFO.GENDERLESS" | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.GENDERLESS_RATE' | translate }}</td>
+            <td>{{ 'UI.SPECIES.INFO.GENDERLESS' | translate }}</td>
           </tr>
         </tbody>
       </table>
@@ -96,7 +96,7 @@
 <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-      <span class="sr-only">{{ "LOADING" | translate }}</span>
+      <span class="sr-only">{{ 'LOADING' | translate }}</span>
     </div>
   </div>
 </ng-template>

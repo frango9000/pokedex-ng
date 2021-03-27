@@ -47,7 +47,9 @@
             <td class="p-0 align-middle">{{ 'ITEM.POCKET.' + item.pocket + '.NAME' | translate }}</td>
           </tr>
           <tr *ngIf="expandedItem === item.id.toString() || expandedItem === item.name">
-            <td colspan="7"></td>
+            <td colspan="6">
+              <pokedex-ng-item-detail [itemId]="item.id"></pokedex-ng-item-detail>
+            </td>
           </tr>
         </ng-container>
       </tbody>

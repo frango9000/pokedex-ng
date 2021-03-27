@@ -40,6 +40,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this._filterChangesSubscription());
     this.appNavbarService.showSearchBar();
     this.appNavbarService.showFiltersButton();
+    this.appNavbarService.showVersionGroupPicker();
   }
 
   ngOnDestroy(): void {

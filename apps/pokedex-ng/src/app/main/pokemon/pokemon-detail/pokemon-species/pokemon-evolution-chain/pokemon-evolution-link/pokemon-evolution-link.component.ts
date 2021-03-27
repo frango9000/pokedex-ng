@@ -138,7 +138,7 @@ export class PokemonEvolutionLinkComponent implements OnInit {
   }
 
   private nestedResourcesObservables(link: EvolutionChainLink): Observable<any>[] {
-    const nestedObservables: Observable<any>[] = [];
+    const nestedObservables: Observable<any>[] = [of({})];
 
     link.evolution_details.forEach((value) => {
       nestedObservables.push(this.evolutionTriggerService.fetchApiOne(value.trigger.name));
@@ -152,6 +152,6 @@ export class PokemonEvolutionLinkComponent implements OnInit {
         nestedObservables.push(this.locationService.fetchApiOne(value.location.name));
       }
     });
-    return nestedObservables.length ? nestedObservables : [of({})];
+    return nestedObservables;
   }
 }

@@ -11,6 +11,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StubFilterToolbarComponent } from '../../../shared/components/filter-toolbar/filter-toolbar.component.stub';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TranslateModule } from '@ngx-translate/core';
+import { Component, Input } from '@angular/core';
+
+@Component({ selector: 'pokedex-ng-item-detail', template: '' })
+export class StubItemDetailComponent {
+  @Input() itemId: string | number;
+}
 
 describe('ItemListComponent', () => {
   let component: ItemListComponent;
@@ -19,7 +25,7 @@ describe('ItemListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot(), RouterTestingModule, InfiniteScrollModule],
-      declarations: [ItemListComponent, StubFilterToolbarComponent],
+      declarations: [ItemListComponent, StubFilterToolbarComponent, StubItemDetailComponent],
       providers: [
         stubItemServiceProvider,
         stubFilterServiceProvider,

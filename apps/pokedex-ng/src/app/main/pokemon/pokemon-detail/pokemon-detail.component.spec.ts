@@ -12,6 +12,7 @@ import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.compo
 import { PokemonStatsComponent } from './pokemon-stats/pokemon-stats.component';
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type-damages.component';
 import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
+import { stubAppNavbarServiceProvider } from '../../../shared/services/stubs';
 
 @Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
 export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
@@ -60,7 +61,7 @@ describe('PokemonDetailComponent', () => {
           PokemonAbilitiesStubComponent,
           PokemonMovesStubComponent,
         ],
-        providers: [stubPokemonServiceProvider],
+        providers: [stubPokemonServiceProvider, stubAppNavbarServiceProvider],
       }).compileComponents();
     })
   );

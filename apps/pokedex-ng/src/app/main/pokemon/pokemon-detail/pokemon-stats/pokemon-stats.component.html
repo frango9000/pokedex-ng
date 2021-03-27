@@ -5,7 +5,7 @@
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
       </a>
       <div class="overflow-hidden text-nowrap pl-2">
-        {{ "UI.STATS.TITLE" | translate }}
+        {{ 'UI.STATS.TITLE' | translate }}
       </div>
     </div>
   </div>
@@ -15,20 +15,20 @@
       <thead>
         <tr class="stats-table">
           <th scope="col" title="{{ 'UI.STATS.STAT_TITLE' | translate }}">
-            {{ "UI.STATS.STAT" | translate }}
+            {{ 'UI.STATS.STAT' | translate }}
           </th>
           <th scope="col" title="{{ 'UI.STATS.BASE_TITLE' | translate }}">
-            {{ "UI.STATS.BASE" | translate }}
+            {{ 'UI.STATS.BASE' | translate }}
           </th>
           <th scope="col" title="{{ 'UI.STATS.EV_TITLE' | translate }}">
-            {{ "UI.STATS.EV" | translate }}
+            {{ 'UI.STATS.EV' | translate }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let stat of pokemon.stats">
           <th scope="col">
-            {{ "STAT." + stat.stat.name | translate }}
+            {{ 'STAT.' + stat.stat.name | translate }}
           </th>
           <td>{{ stat.base_stat }}</td>
           <td>{{ stat.effort }}</td>
@@ -40,7 +40,7 @@
 <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-      <span class="sr-only">{{ "LOADING" | translate }}</span>
+      <span class="sr-only">{{ 'LOADING' | translate }}</span>
     </div>
   </div>
 </ng-template>
