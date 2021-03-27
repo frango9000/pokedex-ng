@@ -9,7 +9,6 @@ describe('QueryFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [],
       declarations: [QueryFilterComponent],
       providers: [stubFilterServiceProvider],
     }).compileComponents();

@@ -7,6 +7,7 @@ import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
 import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
 import { LocationService } from './location/location.service';
+import { GenerationService } from './game/generation.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {
   getAll = () => of([]);
@@ -33,11 +34,13 @@ export const stubVersionGroupServiceProvider = {
 
 export class StubFilterService implements Partial<FilterService> {
   getGenerationFilter$ = () => of([]);
+  getItemPocketFilter$ = () => of([]);
+  getItemCategoryFilter$ = () => of([]);
   getTypeFilter$ = () => of('');
   getTypesFilter$ = () => of([]);
   getTypesFilterInclusiveness$ = () => of(true);
   getQueryFilter$ = () => of('');
-  clearAllFilters = () => undefined;
+  clearAllFilters = () => {};
   filterPokemonByName = (x) => x;
   filterPokemonByType = (x) => x;
   filterPokemonByGeneration = (x) => x;
@@ -87,4 +90,11 @@ export class StubLocationService implements Partial<LocationService> {}
 export const stubLocationServiceProvider = {
   provide: LocationService,
   useClass: StubLocationService,
+};
+
+export class StubGenerationService extends StubBaseService<GenerationService> implements Partial<GenerationService> {}
+
+export const stubGenerationServiceProvider = {
+  provide: GenerationService,
+  useClass: StubGenerationService,
 };

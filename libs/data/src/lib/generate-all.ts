@@ -9,8 +9,8 @@ const generateAll = async () => {
   // await new Generators.LanguageGenerator().generateResources().toPromise();
   // await new Generators.TypeGenerator().generateResources().toPromise();
   // await new Generators.ItemGenerator().generateResources().toPromise();
-  // await new Generators.ItemCategoryGenerator().generateResources().toPromise();
-  await new Generators.ItemPocketGenerator().generateResources().toPromise();
+  await new Generators.ItemCategoryGenerator().generateResources().toPromise();
+  // await new Generators.ItemPocketGenerator().generateResources().toPromise();
   // await new Generators.MachineGenerator().generateResources().toPromise();
   // await new Generators.GenerationGenerator().generateResources().toPromise();
   // await new Generators.StatGenerator().generateResources().toPromise();

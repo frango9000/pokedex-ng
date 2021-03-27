@@ -9,5 +9,7 @@ export class FilterToolbarComponent {
   @Input() public showTypesFilter = false;
   @Input() public showTypesExclusivenessToggle = false;
   @Input() public showGenerationFilter = false;
+  @Input() public showItemPocketFilter = false;
+  @Input() public showItemCategoryFilter = false;
   @Input() public showClearFilter = true;
 }

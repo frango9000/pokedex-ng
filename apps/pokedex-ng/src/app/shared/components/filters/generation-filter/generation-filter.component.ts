@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SelectableGeneration } from '@pokedex-ng/domain';
+import { PxGeneration, SelectableResource } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { GenerationService } from '../../../services/game/generation.service';
   styleUrls: ['./generation-filter.component.scss'],
 })
 export class GenerationFilterComponent implements OnInit, OnDestroy {
-  public _selectableGenerations: SelectableGeneration[] = [];
+  public selectableGenerations: SelectableResource<PxGeneration>[] = [];
 
   private subscriptions = new Subscription();
 
@@ -26,12 +26,12 @@ export class GenerationFilterComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  public onFilterChange($event: MdbCheckboxChange, generation: SelectableGeneration) {
+  public onFilterChange($event: MdbCheckboxChange, generation: SelectableResource<PxGeneration>) {
     generation.active = $event.checked;
     this.filterService.setGenerationFilter(
-      this._selectableGenerations
+      this.selectableGenerations
         .filter((selectableGeneration) => selectableGeneration.active)
-        .map((selectableGeneration) => selectableGeneration.generation.id)
+        .map((selectableGeneration) => selectableGeneration.resource.id)
     );
   }
 
@@ -40,15 +40,15 @@ export class GenerationFilterComponent implements OnInit, OnDestroy {
       .getAll()
       .pipe(take(1))
       .subscribe((generations) => {
-        this._selectableGenerations = generations.map((generation) => ({ generation, active: false }));
+        this.selectableGenerations = generations.map((generation) => ({ active: false, resource: generation }));
         this.subscriptions.add(this._subscribeToGetGenerationFilter());
       });
   }
 
   private _subscribeToGetGenerationFilter() {
     return this.filterService.getGenerationFilter$().subscribe((generations) => {
-      this._selectableGenerations.forEach((selectableGeneration) => {
-        selectableGeneration.active = generations.includes(selectableGeneration.generation.id);
+      this.selectableGenerations.forEach((selectableGeneration) => {
+        selectableGeneration.active = generations.includes(selectableGeneration.resource.id);
       });
     });
   }

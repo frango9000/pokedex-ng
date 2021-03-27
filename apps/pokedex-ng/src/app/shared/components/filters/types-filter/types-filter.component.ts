@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { SelectableType } from '@pokedex-ng/domain';
+import { PxType, SelectableResource } from '@pokedex-ng/domain';
 import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { TypeService } from '../../../services/pokemon/type.service';
 export class TypesFilterComponent implements OnInit, OnDestroy {
   @Input() public showTypesExclusivenessToggle = false;
 
-  public _selectableTypes: SelectableType[] = [];
+  public selectableTypes: SelectableResource<PxType>[] = [];
 
   private subscriptions = new Subscription();
 
@@ -28,12 +28,12 @@ export class TypesFilterComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  onFilterChange($event: MdbCheckboxChange, type: SelectableType) {
+  onFilterChange($event: MdbCheckboxChange, type: SelectableResource<PxType>) {
     type.active = $event.checked;
     this.filterService.setTypesFilter(
-      this._selectableTypes
+      this.selectableTypes
         .filter((selectableType) => selectableType.active)
-        .map((selectableType) => selectableType.type.name)
+        .map((selectableType) => selectableType.resource.name)
     );
   }
 
@@ -42,15 +42,15 @@ export class TypesFilterComponent implements OnInit, OnDestroy {
       .getAll()
       .pipe(take(1))
       .subscribe((types) => {
-        this._selectableTypes = types.map((type) => ({ type, active: false }));
+        this.selectableTypes = types.map((type) => ({ resource: type, active: false }));
         this.subscriptions.add(this._subscribeToGetTypesFilter());
       });
   }
 
   private _subscribeToGetTypesFilter() {
     return this.filterService.getTypesFilter$().subscribe((types) => {
-      this._selectableTypes.forEach((selectables) => {
-        selectables.active = types.some((type) => type === selectables.type.name);
+      this.selectableTypes.forEach((selectables) => {
+        selectables.active = types.some((type) => type === selectables.resource.name);
       });
     });
   }

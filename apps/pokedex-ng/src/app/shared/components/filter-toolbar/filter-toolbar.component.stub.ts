@@ -7,4 +7,6 @@ export class StubFilterToolbarComponent implements Partial<FilterToolbarComponen
   @Input() public showTypesExclusivenessToggle = false;
   @Input() public showGenerationFilter = false;
   @Input() public showClearFilter = true;
+  @Input() public showItemPocketFilter = false;
+  @Input() public showItemCategoryFilter = false;
 }

@@ -39,6 +39,8 @@ export function getId(url: string): number {
   }
 }
 
+//Non Api Content
+
 export interface LocalizedName {
   name: string;
   language: string;
@@ -47,4 +49,9 @@ export interface LocalizedName {
 export interface LocalizedDescription {
   description: string;
   language: string;
+}
+
+export interface SelectableResource<T> {
+  active: boolean;
+  resource: T;
 }

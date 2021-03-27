@@ -22,7 +22,11 @@ export class ItemService extends FullyTranslatedService<Item, PxItem> {
   }
 
   getAllFiltered(): Observable<PxItem[]> {
-    return this.getAll().pipe(map((list: PxItem[]) => this.filterService.filterByLocalizedName(list)));
+    return this.getAll().pipe(
+      map((list: PxItem[]) => this.filterService.filterByItemPocket(list)),
+      map((list: PxItem[]) => this.filterService.filterByItemCategory(list)),
+      map((list: PxItem[]) => this.filterService.filterByLocalizedName(list))
+    );
   }
 
   protected _parseOneTranslation(item: Item): Observable<MergingMap> {

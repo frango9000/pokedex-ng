@@ -21,6 +21,8 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { ResourceIdPipe } from './pipes/resource-id.pipe';
 import { RomanPipe } from './pipes/roman.pipe';
 import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
+import { ItemCategoryFilterComponent } from './components/filters/item-category-filter/item-category-filter.component';
+import { ItemPocketFilterComponent } from './components/filters/item-pocket-filter/item-pocket-filter.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     GridToggleComponent,
     FilterToggleComponent,
     FilterToolbarComponent,
+    ItemCategoryFilterComponent,
+    ItemPocketFilterComponent,
   ],
   exports: [
     NavbarComponent,

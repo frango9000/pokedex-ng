@@ -69,13 +69,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
   private _filterChangesSubscription() {
     return merge(
       this.filterService.getQueryFilter$().pipe(skip(1)),
-      this.filterService.getTypesFilter$().pipe(skip(1)),
-      this.filterService.getGenerationFilter$().pipe(skip(1)),
+      this.filterService.getItemPocketFilter$().pipe(skip(1)),
+      this.filterService.getItemCategoryFilter$().pipe(skip(1)),
       this.languageService.getDisplayLanguage$().pipe(skip(1))
     ).subscribe(() => {
       this._filterChange$.next(true);
     });
   }
 }
-
-//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png

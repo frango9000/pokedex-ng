@@ -8,16 +8,16 @@
     type="button"
     mdbWavesEffect
   >
-    Generations
+    Categories
   </button>
 
   <div class="dropdown-menu dropdown-primary">
     <mdb-checkbox
-      *ngFor="let generation of selectableGenerations"
-      class="dropdown-item pr-0"
-      [checked]="generation.active"
-      (change)="onFilterChange($event, generation)"
-      >Generation {{ generation.resource.id }}</mdb-checkbox
+      *ngFor="let itemCategory of selectableItemCategories"
+      class="dropdown-item pr-2"
+      [checked]="itemCategory.active"
+      (change)="onFilterChange($event, itemCategory)"
+      >{{ 'ITEM.CATEGORY.' + itemCategory.resource.name + '.NAME' | translate }}</mdb-checkbox
     >
   </div>
 
@@ -28,7 +28,7 @@
     class="waves-light p-2"
     mdbWavesEffect
     size="sm"
-    (click)="filterService.setGenerationFilter([])"
+    (click)="filterService.setItemCategoryFilter([])"
   >
     <i class="fas fa-times" aria-hidden="true"></i>
   </button>

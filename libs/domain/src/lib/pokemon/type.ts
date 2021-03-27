@@ -40,11 +40,6 @@ export interface PokemonTypeDamageRelations {
   double_damage_from: NamedApiResource[];
 }
 
-export interface SelectableType {
-  type: PxType;
-  active: boolean;
-}
-
 interface TypeDamageEntry {
   name: string;
   multiplier: number;

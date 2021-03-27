@@ -29,10 +29,3 @@ export interface Generation extends ApiEntity {
   types: NamedApiResource<PokemonType>[];
   version_groups: NamedApiResource<VersionGroup>[];
 }
-
-//Non Api Content, Used in templates
-
-export interface SelectableGeneration {
-  generation: PxGeneration;
-  active: boolean;
-}

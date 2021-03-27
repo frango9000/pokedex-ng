@@ -9,6 +9,7 @@
         "project": ["apps/pokedex-ng/tsconfig.*?.json"]
       },
       "rules": {
+        "@typescript-eslint/no-empty-function": ["off"],
         "@angular-eslint/directive-selector": [
           "error",
           {
