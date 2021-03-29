@@ -3,9 +3,9 @@ import {
   ApiEffectChange,
   ApiEffectEntry,
   ApiEntity,
-  ApiFlavorTextEntry,
   ApiName,
   Generation,
+  Language,
   LocalizedDescription,
   LocalizedName,
   NamedApiResource,
@@ -38,7 +38,7 @@ export interface Move extends ApiEntity {
   damage_class: NamedApiResource;
   effect_changes: ApiEffectChange[];
   effect_entries: ApiEffectEntry[];
-  flavor_text_entries: ApiFlavorTextEntry[];
+  flavor_text_entries: MoveFlavorText[];
   generation: NamedApiResource<Generation>;
   machines: {
     machine: NamedApiResource;
@@ -119,17 +119,16 @@ export interface PxMoveLearnMethod extends ApiEntity {
   names: LocalizedName[];
 }
 
-export enum MoveLearnMethodEnum {
-  LEVEL_UP = 'level-up',
-  MACHINE = 'machine',
-  EGG = 'egg',
-  TUTOR = 'tutor',
-}
-
 export interface MoveTarget extends ApiEntity {
   id: number;
   name: string;
   descriptions: ApiDescription[];
   moves: NamedApiResource<Move>[];
   names: ApiName[];
+}
+
+export interface MoveFlavorText {
+  flavor_text: string;
+  language: NamedApiResource<Language>;
+  version_group: NamedApiResource<VersionGroup>;
 }

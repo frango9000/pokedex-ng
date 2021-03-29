@@ -2,7 +2,6 @@ import {
   ApiDescription,
   ApiEffectEntry,
   ApiEntity,
-  ApiFlavorTextEntry,
   ApiName,
   EvolutionChain,
   GameVersion,
@@ -12,6 +11,7 @@ import {
   MachineVersionDetail,
   NamedApiResource,
   Pokemon,
+  VersionGroupFlavorText,
 } from '@pokedex-ng/domain';
 
 export interface PxItem extends ApiEntity {
@@ -33,7 +33,7 @@ export interface Item extends ApiEntity {
   attributes: NamedApiResource<ItemAttribute>[];
   category: NamedApiResource<ItemCategory>;
   effect_entries: ApiEffectEntry[];
-  flavor_text_entries: ApiFlavorTextEntry[];
+  flavor_text_entries: VersionGroupFlavorText[];
   game_indices: GenerationGameIndex[];
   names: ApiName[];
   sprites: ItemSprites;

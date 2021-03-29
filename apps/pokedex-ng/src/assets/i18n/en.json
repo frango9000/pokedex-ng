@@ -157,6 +157,14 @@
         "HEIGHT": "Height",
         "HEIGHT_UNIT": "mt."
       }
+    },
+    "ITEM": {
+      "NAME": "Name",
+      "COST": "Cost",
+      "CATEGORY": "Category",
+      "DESCRIPTION": "Description",
+      "EFFECT": "Effect",
+      "EFFECT_SHORT": "Short"
     }
   },
   "STATIC": {

@@ -1,4 +1,4 @@
-import { ApiDescription, ApiEntity, ApiName, Language, NamedApiResource } from '@pokedex-ng/domain';
+import { ApiDescription, ApiEntity, ApiName, FlavorText, Language, NamedApiResource } from '@pokedex-ng/domain';
 
 export interface Species extends ApiEntity {
   id: number;
@@ -20,7 +20,7 @@ export interface Species extends ApiEntity {
   evolves_from_species: NamedApiResource;
   evolution_chain: NamedApiResource;
   egg_groups: NamedApiResource[];
-  flavor_text_entries: PokemonSpeciesFlavorTextEntry[];
+  flavor_text_entries: FlavorText[];
   form_descriptions: {
     description: string;
     language: NamedApiResource;
@@ -39,12 +39,6 @@ export interface Species extends ApiEntity {
     is_default: boolean;
     pokemon: NamedApiResource;
   }[];
-}
-
-export interface PokemonSpeciesFlavorTextEntry {
-  flavor_text: string;
-  language: NamedApiResource;
-  version: NamedApiResource;
 }
 
 export interface PokemonSpeciesGenera {

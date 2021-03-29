@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MergingMap, Species } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
-import { map, mergeMap, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { SingleTranslatedService } from '../base-service';
 import { LanguageService } from '../game/language.service';
 import { VersionGroupService } from '../game/version-group.service';
@@ -22,55 +22,31 @@ export class SpeciesService extends SingleTranslatedService<Species> {
   }
 
   protected _parseOneTranslation(specie: Species): Observable<MergingMap> {
-    return this.languageService.getAllIds$().pipe(
+    return this.pokemonVersionService.getAll().pipe(
       take(1),
-      mergeMap((languages) =>
-        this.pokemonVersionService.getAll().pipe(
-          take(1),
-          map((versions) => {
-            const translations = new MergingMap();
-            specie.genera.forEach((name) =>
-              translations.merge(name.language.name, { SPECIES: { [specie.name]: { GENERA: name.genus } } })
-            );
-            const defaultFlavorTextIndex = specie.flavor_text_entries.findIndex(
-              (value) => value.language.name === 'en'
-            );
-            const defaultFlavorText =
-              defaultFlavorTextIndex > -1
-                ? specie.flavor_text_entries[defaultFlavorTextIndex].flavor_text
-                : 'SPECIES_TRANSLATE_ERROR_001';
-            languages.forEach((language) => {
-              const langDefaultFlavorTextIndex = specie.flavor_text_entries.findIndex(
-                (value) => value.language.name === language
-              );
-              const langDefaultFlavorText =
-                langDefaultFlavorTextIndex > -1
-                  ? specie.flavor_text_entries[langDefaultFlavorTextIndex].flavor_text
-                  : 'SPECIES_TRANSLATE_ERROR_002';
-              versions.forEach((version) =>
-                translations.merge(language, {
-                  SPECIES: {
-                    [specie.name]: {
-                      FLAVOR_TEXT: {
-                        [version.name]: langDefaultFlavorTextIndex > -1 ? langDefaultFlavorText : defaultFlavorText,
-                      },
-                    },
-                  },
-                })
-              );
+      map((versions) => {
+        const translations = new MergingMap();
+        specie.genera.forEach((name) =>
+          translations.merge(name.language.name, { SPECIES: { [specie.name]: { GENERA: name.genus } } })
+        );
+        const defaultFlavorText =
+          specie.flavor_text_entries.find((value) => value.language.name === 'en')?.flavor_text ||
+          'SPECIE_TRANSLATE_ERROR_001';
+        versions.forEach((versionGroup) => {
+          translations.merge('en', {
+            SPECIE: { [specie.name]: { FLAVOR_TEXT: { [versionGroup.name]: defaultFlavorText } } },
+          });
+        });
+        specie.flavor_text_entries.forEach((entry) => {
+          const groupIndex = versions.findIndex((value) => value.name.includes(entry.version.name));
+          if (groupIndex > -1) {
+            translations.merge(entry.language.name, {
+              SPECIES: { [specie.name]: { FLAVOR_TEXT: { [versions[groupIndex].name]: entry.flavor_text } } },
             });
-            specie.flavor_text_entries.forEach((entry) => {
-              const groupIndex = versions.findIndex((value) => value.name.includes(entry.version.name));
-              if (groupIndex > -1) {
-                translations.merge(entry.language.name, {
-                  SPECIES: { [specie.name]: { FLAVOR_TEXT: { [versions[groupIndex].name]: entry.flavor_text } } },
-                });
-              }
-            });
-            return translations;
-          })
-        )
-      )
+          }
+        });
+        return translations;
+      })
     );
   }
 }
