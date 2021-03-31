@@ -17,11 +17,11 @@ import {
 export interface PxItem extends ApiEntity {
   id: number;
   name: string;
-  names: LocalizedName[];
   cost: number;
+  sprite: string;
+  names: LocalizedName[];
   category: string;
   pocket: string;
-  sprite: string;
 }
 
 export interface Item extends ApiEntity {

@@ -1,9 +1,9 @@
 import { ApiEntity, Item, Move, NamedApiResource, VersionGroup } from '@pokedex-ng/domain';
 
-export interface PokedexMachine extends ApiEntity {
+export interface PxMachine extends ApiEntity {
   id: number;
-  item: string;
-  move: string;
+  item: { id: number; name: string; cost: number; sprite: string };
+  move: { id: number; name: string; accuracy?: number; power?: number; pp?: number; type: string };
   version_group: string;
 }
 

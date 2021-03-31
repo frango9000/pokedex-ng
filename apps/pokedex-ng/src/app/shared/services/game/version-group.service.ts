@@ -24,4 +24,8 @@ export class VersionGroupService extends BaseService<VersionGroup, PxVersionGrou
       this.activeVersion$.next(version);
     }
   }
+
+  filterByVersionGroup<V extends { version_group: string }>(resourceList: V[]): V[] {
+    return resourceList.filter((resource) => resource.version_group === this.activeVersion$.value);
+  }
 }

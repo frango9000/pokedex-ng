@@ -19,7 +19,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
   private subscriptions: Subscription = new Subscription();
 
   constructor(
-    private gameVersionService: VersionGroupService,
+    private versionGroupService: VersionGroupService,
     private moveService: MoveService,
     public moveLearnMethodService: MoveLearnMethodService
   ) {}
@@ -45,7 +45,7 @@ export class PokemonMovesComponent implements OnDestroy, OnInit {
   private _filterChangesSubscription(): Subscription {
     return combineLatest([
       this.pokemon$,
-      this.gameVersionService.getActiveVersionGroup$(),
+      this.versionGroupService.getActiveVersionGroup$(),
     ]).subscribe(([pokemon, version]) => this._emitFilteredMoves(pokemon, version));
   }
 

@@ -8,6 +8,7 @@ import { VersionGroupService } from './game/version-group.service';
 import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
 import { LocationService } from './location/location.service';
 import { GenerationService } from './game/generation.service';
+import { MachineService } from './machine/machine.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {
   getAll = () => of([]);
@@ -98,4 +99,11 @@ export class StubGenerationService extends StubBaseService<GenerationService> im
 export const stubGenerationServiceProvider = {
   provide: GenerationService,
   useClass: StubGenerationService,
+};
+
+export class StubMachineService extends StubBaseService<MachineService> implements Partial<MachineService> {}
+
+export const stubMachineServiceProvider = {
+  provide: MachineService,
+  useClass: StubMachineService,
 };
