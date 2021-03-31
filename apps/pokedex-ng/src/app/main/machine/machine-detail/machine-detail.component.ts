@@ -6,5 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./machine-detail.component.scss'],
 })
 export class MachineDetailComponent {
-  @Input() machineId: string | number;
+  @Input() moveId: string | number;
+  @Input() itemId: string | number;
 }

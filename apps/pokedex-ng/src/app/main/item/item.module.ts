@@ -13,6 +13,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 @NgModule({
   declarations: [ItemListComponent, ItemDetailComponent],
   imports: [CommonModule, ItemRoutingModule, InfiniteScrollModule, SharedModule],
+  exports: [ItemDetailComponent],
 })
 export class ItemModule {
   constructor(

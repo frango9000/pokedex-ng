@@ -53,8 +53,11 @@
             <td class="p-0 align-middle">{{ machine.move.accuracy }}</td>
           </tr>
           <tr *ngIf="expandedMachine === machine.id.toString()">
-            <td colspan="6">
-              <pokedex-ng-machine-detail [machineId]="machine.id"></pokedex-ng-machine-detail>
+            <td colspan="9">
+              <pokedex-ng-machine-detail
+                [moveId]="machine.move.name"
+                [itemId]="machine.item.name"
+              ></pokedex-ng-machine-detail>
             </td>
           </tr>
         </ng-container>

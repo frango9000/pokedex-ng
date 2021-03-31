@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ItemDetailComponent } from './item-detail.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {

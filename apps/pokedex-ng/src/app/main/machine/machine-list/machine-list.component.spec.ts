@@ -15,8 +15,9 @@ import { Component, Input } from '@angular/core';
 import { MachineDetailComponent } from '../machine-detail/machine-detail.component';
 
 @Component({ selector: 'pokedex-ng-machine-detail', template: '' })
-export class StubMachineDetailComponent implements Partial<MachineDetailComponent> {
-  @Input() machineId: string | number;
+class StubMachineDetailComponent implements Partial<MachineDetailComponent> {
+  @Input() moveId: string | number;
+  @Input() itemId: string | number;
 }
 
 describe('MachineListComponent', () => {

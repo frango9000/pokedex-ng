@@ -10,10 +10,21 @@ import { ItemService } from '../../shared/services/item/item.service';
 import { MoveService } from '../../shared/services/move/move.service';
 import { MachineService } from '../../shared/services/machine/machine.service';
 import { TypeService } from '../../shared/services/pokemon/type.service';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MoveModule } from '../move/move.module';
+import { ItemModule } from '../item/item.module';
 
 @NgModule({
   declarations: [MachineListComponent, MachineDetailComponent],
-  imports: [CommonModule, MachineRoutingModule, InfiniteScrollModule, SharedModule],
+  imports: [
+    CommonModule,
+    MachineRoutingModule,
+    InfiniteScrollModule,
+    SharedModule,
+    MDBBootstrapModule,
+    MoveModule,
+    ItemModule,
+  ],
 })
 export class MachineModule {
   constructor(
