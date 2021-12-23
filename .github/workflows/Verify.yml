@@ -19,6 +19,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v5
+
       - name: Sync PR with target
         if: github.event_name == 'pull_request'
         run: git merge ${{ github.event.pull_request.head.sha }}

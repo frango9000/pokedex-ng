@@ -65,6 +65,7 @@ export class StubAppNavbarService implements Partial<AppNavbarService> {
   showGridButton = () => undefined;
   showSearchBar = () => undefined;
   showFiltersButton = () => undefined;
+  hideVersionGroupPicker = () => undefined;
   showVersionGroupPicker = () => {};
 }
 
