@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Move, PxMove } from '@pokedex-ng/domain';
 import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
@@ -6,7 +7,6 @@ import { AppNavbarService } from '../../../shared/services/app/app-navbar.servic
 import { FilterService } from '../../../shared/services/app/filter.service';
 import { LanguageService } from '../../../shared/services/game/language.service';
 import { MoveService } from '../../../shared/services/move/move.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'pokedex-ng-move-list',

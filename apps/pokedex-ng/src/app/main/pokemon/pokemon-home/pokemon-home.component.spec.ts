@@ -5,11 +5,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StubFilterToolbarComponent } from '../../../shared/components/filter-toolbar/filter-toolbar.component.stub';
 import { StubTypesFilterComponent } from '../../../shared/components/filters/types-filter/types-filter.component.stub';
 import { PokemonService } from '../../../shared/services/pokemon/pokemon.service';
+import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
 import { stubAppNavbarServiceProvider, stubFilterServiceProvider } from '../../../shared/services/stubs';
 import { PokemonGridComponent } from './pokemon-grid/pokemon-grid.component';
 import { PokemonHomeComponent } from './pokemon-home.component';
 import { PokemonTableComponent } from './pokemon-table/pokemon-table.component';
-import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
 
 @Component({ selector: 'app-pokemon-table', template: '' })
 export class StubPokemonTableComponent implements Partial<PokemonTableComponent> {

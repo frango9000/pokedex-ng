@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Item, PxItem } from '@pokedex-ng/domain';
-import { ItemService } from '../../../shared/services/item/item.service';
+import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
+import { map, skip, switchMap, tap } from 'rxjs/operators';
+import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
 import { FilterService } from '../../../shared/services/app/filter.service';
 import { LanguageService } from '../../../shared/services/game/language.service';
-import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
-import { ActivatedRoute } from '@angular/router';
-import { map, skip, switchMap, tap } from 'rxjs/operators';
+import { ItemService } from '../../../shared/services/item/item.service';
 
 @Component({
   selector: 'pokedex-ng-item-list',

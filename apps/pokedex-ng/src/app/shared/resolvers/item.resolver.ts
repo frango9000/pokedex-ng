@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
 import { Item } from '@pokedex-ng/domain';
+import { EMPTY, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ItemService } from '../services/item/item.service';
 

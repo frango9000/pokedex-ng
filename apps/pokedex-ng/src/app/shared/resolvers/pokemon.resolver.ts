@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
 import { Pokemon } from '@pokedex-ng/domain';
-import { PokemonService } from '../services/pokemon/pokemon.service';
+import { EMPTY, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { PokemonService } from '../services/pokemon/pokemon.service';
 
 @Injectable({
   providedIn: 'root',

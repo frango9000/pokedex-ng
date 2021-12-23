@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Species } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
+import { stubSpeciesServiceProvider } from '../../../../shared/services/species/species.service.stubs';
 import { PokemonEvolutionChainComponent } from './pokemon-evolution-chain/pokemon-evolution-chain.component';
 import { PokemonSpeciesInfoComponent } from './pokemon-species-info/pokemon-species-info.component';
 import { PokemonSpeciesComponent } from './pokemon-species.component';
-import { stubSpeciesServiceProvider } from '../../../../shared/services/species/species.service.stubs';
 
 @Component({ selector: 'app-pokemon-species-info', template: '' })
 class StubPokemonSpeciesInfoComponent implements Partial<PokemonSpeciesInfoComponent> {

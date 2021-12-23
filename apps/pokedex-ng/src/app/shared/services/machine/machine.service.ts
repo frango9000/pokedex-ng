@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BaseService } from '../base-service';
-import { Machine, PxMachine } from '@pokedex-ng/domain';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Machine, PxMachine } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FilterService } from '../app/filter.service';
+import { BaseService } from '../base-service';
 import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({

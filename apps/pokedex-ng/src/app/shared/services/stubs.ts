@@ -3,11 +3,11 @@ import { AppNavbarService } from './app/app-navbar.service';
 import { FilterService } from './app/filter.service';
 import { BaseService } from './base-service';
 import { EvolutionChainService } from './evolution/evolution-chain.service';
+import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
+import { GenerationService } from './game/generation.service';
 import { LanguageService } from './game/language.service';
 import { VersionGroupService } from './game/version-group.service';
-import { EvolutionTriggerService } from './evolution/evolution-trigger.service';
 import { LocationService } from './location/location.service';
-import { GenerationService } from './game/generation.service';
 import { MachineService } from './machine/machine.service';
 
 export class StubBaseService<T> implements Partial<BaseService<T, T>> {

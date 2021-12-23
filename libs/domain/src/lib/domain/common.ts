@@ -1,8 +1,8 @@
 import { Generation } from '../games/generation';
+import { GameVersion } from '../games/version';
 import { VersionGroup } from '../games/version-group';
 import { NamedApiResource } from './domain';
 import { Language } from './language';
-import { GameVersion } from '../games/version';
 
 export interface ApiEffectEntry {
   effect: string;

@@ -1,8 +1,8 @@
-import { ItemService } from './item.service';
-import { ItemPocketService } from './item-pocket.service';
-import { ItemCategoryService } from './item-category.service';
 import { StubBaseService } from '../stubs';
 import { ItemAttributeService } from './item-attribute.service';
+import { ItemCategoryService } from './item-category.service';
+import { ItemPocketService } from './item-pocket.service';
+import { ItemService } from './item.service';
 
 export class StubItemService extends StubBaseService<ItemService> implements Partial<ItemService> {}
 

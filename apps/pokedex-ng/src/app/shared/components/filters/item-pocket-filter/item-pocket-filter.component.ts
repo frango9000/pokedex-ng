@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PxItemPocket, SelectableResource } from '@pokedex-ng/domain';
+import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { FilterService } from '../../../services/app/filter.service';
 import { ItemPocketService } from '../../../services/item/item-pocket.service';
-import { take } from 'rxjs/operators';
-import { MdbCheckboxChange } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'pokedex-ng-item-pocket-filter',

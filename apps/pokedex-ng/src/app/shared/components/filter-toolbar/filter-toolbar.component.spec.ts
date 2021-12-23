@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClearFilterComponent } from '../filters/clear-filter/clear-filter.component';
 import { GenerationFilterComponent } from '../filters/generation-filter/generation-filter.component';
-import { StubTypesFilterComponent } from '../filters/types-filter/types-filter.component.stub';
-import { FilterToolbarComponent } from './filter-toolbar.component';
 import { ItemCategoryFilterComponent } from '../filters/item-category-filter/item-category-filter.component';
 import { ItemPocketFilterComponent } from '../filters/item-pocket-filter/item-pocket-filter.component';
+import { StubTypesFilterComponent } from '../filters/types-filter/types-filter.component.stub';
+import { FilterToolbarComponent } from './filter-toolbar.component';
 
 @Component({ selector: 'pokedex-ng-generation-filter', template: '' })
 export class StubGenerationFilterComponent implements Partial<GenerationFilterComponent> {}

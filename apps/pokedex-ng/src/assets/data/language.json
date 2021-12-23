@@ -1,1 +1,277 @@
-[{"id":1,"name":"ja-Hrkt","iso3166":"jp","names":[{"name":"日本語","language":"ja-Hrkt"},{"name":"일본어","language":"ko"},{"name":"Japonais","language":"fr"},{"name":"Japanisch","language":"de"},{"name":"Japonés","language":"es"},{"name":"Japanese","language":"en"}]},{"id":2,"name":"roomaji","iso3166":"jp","names":[{"name":"正式ローマジ","language":"ja-Hrkt"},{"name":"정식 로마자","language":"ko"},{"name":"Romaji","language":"fr"},{"name":"Rōmaji","language":"de"},{"name":"Official roomaji","language":"en"}]},{"id":3,"name":"ko","iso3166":"kr","names":[{"name":"韓国語","language":"ja-Hrkt"},{"name":"한국어","language":"ko"},{"name":"Coréen","language":"fr"},{"name":"Koreanisch","language":"de"},{"name":"Coreano","language":"es"},{"name":"Korean","language":"en"}]},{"id":4,"name":"zh-Hant","iso3166":"cn","names":[{"name":"中国語","language":"ja-Hrkt"},{"name":"중국어","language":"ko"},{"name":"Chinois","language":"fr"},{"name":"Chinesisch","language":"de"},{"name":"Chino","language":"es"},{"name":"Chinese","language":"en"}]},{"id":5,"name":"fr","iso3166":"fr","names":[{"name":"フランス語","language":"ja-Hrkt"},{"name":"프랑스어","language":"ko"},{"name":"Français","language":"fr"},{"name":"Französisch","language":"de"},{"name":"Francés","language":"es"},{"name":"French","language":"en"}]},{"id":6,"name":"de","iso3166":"de","names":[{"name":"ドイツ語","language":"ja-Hrkt"},{"name":"도이치어","language":"ko"},{"name":"Allemand","language":"fr"},{"name":"Deutsch","language":"de"},{"name":"Alemán","language":"es"},{"name":"German","language":"en"}]},{"id":7,"name":"es","iso3166":"es","names":[{"name":"西語","language":"ja-Hrkt"},{"name":"스페인어","language":"ko"},{"name":"Espagnol","language":"fr"},{"name":"Spanisch","language":"de"},{"name":"Español","language":"es"},{"name":"Spanish","language":"en"}]},{"id":8,"name":"it","iso3166":"it","names":[{"name":"伊語","language":"ja-Hrkt"},{"name":"이탈리아어","language":"ko"},{"name":"Italien","language":"fr"},{"name":"Italienisch","language":"de"},{"name":"Italiano","language":"es"},{"name":"Italian","language":"en"}]},{"id":9,"name":"en","iso3166":"us","names":[{"name":"英語","language":"ja-Hrkt"},{"name":"영어","language":"ko"},{"name":"Anglais","language":"fr"},{"name":"Englisch","language":"de"},{"name":"Inglés","language":"es"},{"name":"English","language":"en"}]}]
+[
+  {
+    "id": 1,
+    "name": "ja-Hrkt",
+    "iso3166": "jp",
+    "names": [
+      {
+        "name": "日本語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "일본어",
+        "language": "ko"
+      },
+      {
+        "name": "Japonais",
+        "language": "fr"
+      },
+      {
+        "name": "Japanisch",
+        "language": "de"
+      },
+      {
+        "name": "Japonés",
+        "language": "es"
+      },
+      {
+        "name": "Japanese",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "roomaji",
+    "iso3166": "jp",
+    "names": [
+      {
+        "name": "正式ローマジ",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "정식 로마자",
+        "language": "ko"
+      },
+      {
+        "name": "Romaji",
+        "language": "fr"
+      },
+      {
+        "name": "Rōmaji",
+        "language": "de"
+      },
+      {
+        "name": "Official roomaji",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "ko",
+    "iso3166": "kr",
+    "names": [
+      {
+        "name": "韓国語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "한국어",
+        "language": "ko"
+      },
+      {
+        "name": "Coréen",
+        "language": "fr"
+      },
+      {
+        "name": "Koreanisch",
+        "language": "de"
+      },
+      {
+        "name": "Coreano",
+        "language": "es"
+      },
+      {
+        "name": "Korean",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "zh-Hant",
+    "iso3166": "cn",
+    "names": [
+      {
+        "name": "中国語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "중국어",
+        "language": "ko"
+      },
+      {
+        "name": "Chinois",
+        "language": "fr"
+      },
+      {
+        "name": "Chinesisch",
+        "language": "de"
+      },
+      {
+        "name": "Chino",
+        "language": "es"
+      },
+      {
+        "name": "Chinese",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "fr",
+    "iso3166": "fr",
+    "names": [
+      {
+        "name": "フランス語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "프랑스어",
+        "language": "ko"
+      },
+      {
+        "name": "Français",
+        "language": "fr"
+      },
+      {
+        "name": "Französisch",
+        "language": "de"
+      },
+      {
+        "name": "Francés",
+        "language": "es"
+      },
+      {
+        "name": "French",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "de",
+    "iso3166": "de",
+    "names": [
+      {
+        "name": "ドイツ語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "도이치어",
+        "language": "ko"
+      },
+      {
+        "name": "Allemand",
+        "language": "fr"
+      },
+      {
+        "name": "Deutsch",
+        "language": "de"
+      },
+      {
+        "name": "Alemán",
+        "language": "es"
+      },
+      {
+        "name": "German",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "es",
+    "iso3166": "es",
+    "names": [
+      {
+        "name": "西語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "스페인어",
+        "language": "ko"
+      },
+      {
+        "name": "Espagnol",
+        "language": "fr"
+      },
+      {
+        "name": "Spanisch",
+        "language": "de"
+      },
+      {
+        "name": "Español",
+        "language": "es"
+      },
+      {
+        "name": "Spanish",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "it",
+    "iso3166": "it",
+    "names": [
+      {
+        "name": "伊語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "이탈리아어",
+        "language": "ko"
+      },
+      {
+        "name": "Italien",
+        "language": "fr"
+      },
+      {
+        "name": "Italienisch",
+        "language": "de"
+      },
+      {
+        "name": "Italiano",
+        "language": "es"
+      },
+      {
+        "name": "Italian",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "en",
+    "iso3166": "us",
+    "names": [
+      {
+        "name": "英語",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "영어",
+        "language": "ko"
+      },
+      {
+        "name": "Anglais",
+        "language": "fr"
+      },
+      {
+        "name": "Englisch",
+        "language": "de"
+      },
+      {
+        "name": "Inglés",
+        "language": "es"
+      },
+      {
+        "name": "English",
+        "language": "en"
+      }
+    ]
+  }
+]

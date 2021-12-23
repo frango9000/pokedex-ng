@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
-import { Machine, PxMachine } from '@pokedex-ng/domain';
-import { MachineService } from '../../../shared/services/machine/machine.service';
-import { FilterService } from '../../../shared/services/app/filter.service';
-import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
 import { ActivatedRoute } from '@angular/router';
+import { Machine, PxMachine } from '@pokedex-ng/domain';
+import { BehaviorSubject, merge, Observable, Subscription } from 'rxjs';
 import { map, skip, switchMap, tap } from 'rxjs/operators';
+import { AppNavbarService } from '../../../shared/services/app/app-navbar.service';
+import { FilterService } from '../../../shared/services/app/filter.service';
 import { VersionGroupService } from '../../../shared/services/game/version-group.service';
+import { MachineService } from '../../../shared/services/machine/machine.service';
 
 @Component({
   selector: 'pokedex-ng-machine-list',

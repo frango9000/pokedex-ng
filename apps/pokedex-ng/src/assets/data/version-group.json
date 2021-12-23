@@ -1,1 +1,196 @@
-[{"id":1,"name":"red-blue","generation":1,"order":1,"versions":["red","blue"]},{"id":2,"name":"yellow","generation":1,"order":2,"versions":["yellow"]},{"id":3,"name":"gold-silver","generation":2,"order":3,"versions":["gold","silver"]},{"id":4,"name":"crystal","generation":2,"order":4,"versions":["crystal"]},{"id":5,"name":"ruby-sapphire","generation":3,"order":5,"versions":["ruby","sapphire"]},{"id":6,"name":"emerald","generation":3,"order":6,"versions":["emerald"]},{"id":7,"name":"firered-leafgreen","generation":3,"order":9,"versions":["firered","leafgreen"]},{"id":8,"name":"diamond-pearl","generation":4,"order":10,"versions":["diamond","pearl"]},{"id":9,"name":"platinum","generation":4,"order":11,"versions":["platinum"]},{"id":10,"name":"heartgold-soulsilver","generation":4,"order":12,"versions":["heartgold","soulsilver"]},{"id":11,"name":"black-white","generation":5,"order":13,"versions":["black","white"]},{"id":12,"name":"colosseum","generation":3,"order":7,"versions":["colosseum"]},{"id":13,"name":"xd","generation":3,"order":8,"versions":["xd"]},{"id":14,"name":"black-2-white-2","generation":5,"order":14,"versions":["black-2","white-2"]},{"id":15,"name":"x-y","generation":6,"order":15,"versions":["x","y"]},{"id":16,"name":"omega-ruby-alpha-sapphire","generation":6,"order":16,"versions":["omega-ruby","alpha-sapphire"]},{"id":17,"name":"sun-moon","generation":7,"order":17,"versions":["sun","moon"]},{"id":18,"name":"ultra-sun-ultra-moon","generation":7,"order":18,"versions":["ultra-sun","ultra-moon"]},{"id":19,"name":"lets-go","generation":7,"order":19,"versions":["lets-go-pikachu","lets-go-eevee"]},{"id":20,"name":"sword-shield","generation":8,"order":20,"versions":["sword","shield"]}]
+[
+  {
+    "id": 1,
+    "name": "red-blue",
+    "generation": 1,
+    "order": 1,
+    "versions": [
+      "red",
+      "blue"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "yellow",
+    "generation": 1,
+    "order": 2,
+    "versions": [
+      "yellow"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "gold-silver",
+    "generation": 2,
+    "order": 3,
+    "versions": [
+      "gold",
+      "silver"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "crystal",
+    "generation": 2,
+    "order": 4,
+    "versions": [
+      "crystal"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "ruby-sapphire",
+    "generation": 3,
+    "order": 5,
+    "versions": [
+      "ruby",
+      "sapphire"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "emerald",
+    "generation": 3,
+    "order": 6,
+    "versions": [
+      "emerald"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "firered-leafgreen",
+    "generation": 3,
+    "order": 9,
+    "versions": [
+      "firered",
+      "leafgreen"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "diamond-pearl",
+    "generation": 4,
+    "order": 10,
+    "versions": [
+      "diamond",
+      "pearl"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "platinum",
+    "generation": 4,
+    "order": 11,
+    "versions": [
+      "platinum"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "heartgold-soulsilver",
+    "generation": 4,
+    "order": 12,
+    "versions": [
+      "heartgold",
+      "soulsilver"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "black-white",
+    "generation": 5,
+    "order": 13,
+    "versions": [
+      "black",
+      "white"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "colosseum",
+    "generation": 3,
+    "order": 7,
+    "versions": [
+      "colosseum"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "xd",
+    "generation": 3,
+    "order": 8,
+    "versions": [
+      "xd"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "black-2-white-2",
+    "generation": 5,
+    "order": 14,
+    "versions": [
+      "black-2",
+      "white-2"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "x-y",
+    "generation": 6,
+    "order": 15,
+    "versions": [
+      "x",
+      "y"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "omega-ruby-alpha-sapphire",
+    "generation": 6,
+    "order": 16,
+    "versions": [
+      "omega-ruby",
+      "alpha-sapphire"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "sun-moon",
+    "generation": 7,
+    "order": 17,
+    "versions": [
+      "sun",
+      "moon"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "ultra-sun-ultra-moon",
+    "generation": 7,
+    "order": 18,
+    "versions": [
+      "ultra-sun",
+      "ultra-moon"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "lets-go",
+    "generation": 7,
+    "order": 19,
+    "versions": [
+      "lets-go-pikachu",
+      "lets-go-eevee"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "sword-shield",
+    "generation": 8,
+    "order": 20,
+    "versions": [
+      "sword",
+      "shield"
+    ]
+  }
+]

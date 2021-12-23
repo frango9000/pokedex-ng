@@ -1,8 +1,8 @@
-import { PokemonColorService } from './pokemon-color.service';
-import { GrowthRateService } from './growth-rate.service';
-import { PokemonShapeService } from './pokemon-shape.service';
-import { PokemonHabitatService } from './pokemon-habitat.service';
 import { EggGroupService } from './egg-group.service';
+import { GrowthRateService } from './growth-rate.service';
+import { PokemonColorService } from './pokemon-color.service';
+import { PokemonHabitatService } from './pokemon-habitat.service';
+import { PokemonShapeService } from './pokemon-shape.service';
 import { SpeciesService } from './species.service';
 
 export class StubSpeciesService implements Partial<SpeciesService> {}

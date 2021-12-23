@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Item } from '@pokedex-ng/domain';
 import { forkJoin, of, Subscription } from 'rxjs';
-import { ItemService } from '../../../shared/services/item/item.service';
 import { map, switchMap } from 'rxjs/operators';
 import { ItemAttributeService } from '../../../shared/services/item/item-attribute.service';
+import { ItemService } from '../../../shared/services/item/item.service';
 
 @Component({
   selector: 'pokedex-ng-item-detail',

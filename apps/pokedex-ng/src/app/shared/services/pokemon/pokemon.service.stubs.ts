@@ -1,8 +1,8 @@
+import { StubBaseService } from '../stubs';
 import { AbilityService } from './ability.service';
-import { TypeService } from './type.service';
 import { PokemonService } from './pokemon.service';
 import { StatService } from './stat.service';
-import { StubBaseService } from '../stubs';
+import { TypeService } from './type.service';
 
 export class StubTypeService extends StubBaseService<TypeService> implements Partial<TypeService> {}
 

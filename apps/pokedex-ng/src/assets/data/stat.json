@@ -1,1 +1,274 @@
-[{"id":1,"name":"hp","names":[{"name":"HP","language":"ja-Hrkt"},{"name":"HP","language":"ko"},{"name":"PV","language":"fr"},{"name":"KP","language":"de"},{"name":"PS","language":"es"},{"name":"PS","language":"it"},{"name":"HP","language":"en"}]},{"id":2,"name":"attack","names":[{"name":"こうげき","language":"ja-Hrkt"},{"name":"공격","language":"ko"},{"name":"Attaque","language":"fr"},{"name":"Angriff","language":"de"},{"name":"Ataque","language":"es"},{"name":"Attacco","language":"it"},{"name":"Attack","language":"en"}]},{"id":3,"name":"defense","names":[{"name":"ぼうぎょ","language":"ja-Hrkt"},{"name":"방어","language":"ko"},{"name":"Défense","language":"fr"},{"name":"Verteidigung","language":"de"},{"name":"Defensa","language":"es"},{"name":"Difesa","language":"it"},{"name":"Defense","language":"en"}]},{"id":4,"name":"special-attack","names":[{"name":"とくこう","language":"ja-Hrkt"},{"name":"특수공격","language":"ko"},{"name":"Attaque Spéciale","language":"fr"},{"name":"Spezialangriff","language":"de"},{"name":"Ataque Especial","language":"es"},{"name":"Attacco Speciale","language":"it"},{"name":"Special Attack","language":"en"}]},{"id":5,"name":"special-defense","names":[{"name":"とくぼう","language":"ja-Hrkt"},{"name":"특수방어","language":"ko"},{"name":"Défense Spéciale","language":"fr"},{"name":"Spezialverteidigung","language":"de"},{"name":"Defensa Especial","language":"es"},{"name":"Difesa Speciale","language":"it"},{"name":"Special Defense","language":"en"}]},{"id":6,"name":"speed","names":[{"name":"すばやさ","language":"ja-Hrkt"},{"name":"스피드","language":"ko"},{"name":"Vitesse","language":"fr"},{"name":"Initiative","language":"de"},{"name":"Velocidad","language":"es"},{"name":"Velocità","language":"it"},{"name":"Speed","language":"en"}]},{"id":7,"name":"accuracy","names":[{"name":"めいちゅう","language":"ja-Hrkt"},{"name":"명중률","language":"ko"},{"name":"Précision","language":"fr"},{"name":"Genauigkeit","language":"de"},{"name":"Precisión","language":"es"},{"name":"precisione","language":"it"},{"name":"accuracy","language":"en"}]},{"id":8,"name":"evasion","names":[{"name":"かいひ","language":"ja-Hrkt"},{"name":"회피율","language":"ko"},{"name":"Esquive","language":"fr"},{"name":"Fluchtwert","language":"de"},{"name":"Evasión","language":"es"},{"name":"elusione","language":"it"},{"name":"evasion","language":"en"}]}]
+[
+  {
+    "id": 1,
+    "name": "hp",
+    "names": [
+      {
+        "name": "HP",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "HP",
+        "language": "ko"
+      },
+      {
+        "name": "PV",
+        "language": "fr"
+      },
+      {
+        "name": "KP",
+        "language": "de"
+      },
+      {
+        "name": "PS",
+        "language": "es"
+      },
+      {
+        "name": "PS",
+        "language": "it"
+      },
+      {
+        "name": "HP",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "attack",
+    "names": [
+      {
+        "name": "こうげき",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "공격",
+        "language": "ko"
+      },
+      {
+        "name": "Attaque",
+        "language": "fr"
+      },
+      {
+        "name": "Angriff",
+        "language": "de"
+      },
+      {
+        "name": "Ataque",
+        "language": "es"
+      },
+      {
+        "name": "Attacco",
+        "language": "it"
+      },
+      {
+        "name": "Attack",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "defense",
+    "names": [
+      {
+        "name": "ぼうぎょ",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "방어",
+        "language": "ko"
+      },
+      {
+        "name": "Défense",
+        "language": "fr"
+      },
+      {
+        "name": "Verteidigung",
+        "language": "de"
+      },
+      {
+        "name": "Defensa",
+        "language": "es"
+      },
+      {
+        "name": "Difesa",
+        "language": "it"
+      },
+      {
+        "name": "Defense",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "special-attack",
+    "names": [
+      {
+        "name": "とくこう",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "특수공격",
+        "language": "ko"
+      },
+      {
+        "name": "Attaque Spéciale",
+        "language": "fr"
+      },
+      {
+        "name": "Spezialangriff",
+        "language": "de"
+      },
+      {
+        "name": "Ataque Especial",
+        "language": "es"
+      },
+      {
+        "name": "Attacco Speciale",
+        "language": "it"
+      },
+      {
+        "name": "Special Attack",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "special-defense",
+    "names": [
+      {
+        "name": "とくぼう",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "특수방어",
+        "language": "ko"
+      },
+      {
+        "name": "Défense Spéciale",
+        "language": "fr"
+      },
+      {
+        "name": "Spezialverteidigung",
+        "language": "de"
+      },
+      {
+        "name": "Defensa Especial",
+        "language": "es"
+      },
+      {
+        "name": "Difesa Speciale",
+        "language": "it"
+      },
+      {
+        "name": "Special Defense",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "speed",
+    "names": [
+      {
+        "name": "すばやさ",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "스피드",
+        "language": "ko"
+      },
+      {
+        "name": "Vitesse",
+        "language": "fr"
+      },
+      {
+        "name": "Initiative",
+        "language": "de"
+      },
+      {
+        "name": "Velocidad",
+        "language": "es"
+      },
+      {
+        "name": "Velocità",
+        "language": "it"
+      },
+      {
+        "name": "Speed",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "accuracy",
+    "names": [
+      {
+        "name": "めいちゅう",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "명중률",
+        "language": "ko"
+      },
+      {
+        "name": "Précision",
+        "language": "fr"
+      },
+      {
+        "name": "Genauigkeit",
+        "language": "de"
+      },
+      {
+        "name": "Precisión",
+        "language": "es"
+      },
+      {
+        "name": "precisione",
+        "language": "it"
+      },
+      {
+        "name": "accuracy",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "evasion",
+    "names": [
+      {
+        "name": "かいひ",
+        "language": "ja-Hrkt"
+      },
+      {
+        "name": "회피율",
+        "language": "ko"
+      },
+      {
+        "name": "Esquive",
+        "language": "fr"
+      },
+      {
+        "name": "Fluchtwert",
+        "language": "de"
+      },
+      {
+        "name": "Evasión",
+        "language": "es"
+      },
+      {
+        "name": "elusione",
+        "language": "it"
+      },
+      {
+        "name": "evasion",
+        "language": "en"
+      }
+    ]
+  }
+]

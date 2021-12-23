@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MachineDetailComponent } from './machine-detail.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { StubItemDetailComponent } from '../../item/item-detail/item-detail.component.stub';
 import { StubMoveDetailComponent } from '../../move/move-detail/move-detail.component.stub';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MachineDetailComponent } from './machine-detail.component';
 
 describe('MachineDetailComponent', () => {
   let component: MachineDetailComponent;

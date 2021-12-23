@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PxItemCategory, SelectableResource } from '@pokedex-ng/domain';
+import { MdbCheckboxChange } from 'angular-bootstrap-md';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { FilterService } from '../../../services/app/filter.service';
 import { ItemCategoryService } from '../../../services/item/item-category.service';
-import { take } from 'rxjs/operators';
-import { MdbCheckboxChange } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'pokedex-ng-item-category-filter',

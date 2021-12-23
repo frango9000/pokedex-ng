@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { PokemonResolver } from './pokemon.resolver';
-import { stubPokemonServiceProvider } from '../services/pokemon/pokemon.service.stubs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { stubPokemonServiceProvider } from '../services/pokemon/pokemon.service.stubs';
+import { PokemonResolver } from './pokemon.resolver';
 
 describe('PokemonResolver', () => {
   let resolver: PokemonResolver;

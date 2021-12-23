@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MoveListComponent } from './move-list/move-list.component';
 import { MoveResolver } from '../../shared/resolvers/move.resolver';
+import { MoveListComponent } from './move-list/move-list.component';
 
 const routes: Routes = [
   {
