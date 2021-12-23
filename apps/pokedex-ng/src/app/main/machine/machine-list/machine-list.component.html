@@ -40,12 +40,12 @@
                 alt="{{ machine.item.sprite }}"
               />
             </td>
-            <td class="p-0 align-middle">{{ 'ITEM.' + machine.item.name + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.' + machine.item.name + '.NAME' | transloco }}</td>
             <td class="p-0 align-middle">{{ machine.item.cost }}</td>
-            <td class="p-0 align-middle">{{ 'MOVE.' + machine.move.name + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'MOVE.' + machine.move.name + '.NAME' | transloco }}</td>
             <td class="p-0 align-middle d-flex justify-content-start">
               <span class="m-1 px-2 rounded-lg" [ngStyle]="{ 'background-color': machine.move.type | pokeTypeColor }">{{
-                'TYPE.' + machine.move.type + '.NAME' | translate | uppercase
+                'TYPE.' + machine.move.type + '.NAME' | transloco | uppercase
               }}</span>
             </td>
             <td class="p-0 align-middle">{{ machine.move.power }}</td>

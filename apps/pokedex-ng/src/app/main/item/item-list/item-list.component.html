@@ -41,10 +41,10 @@
                 alt="{{ item.sprite }}"
               />
             </td>
-            <td class="p-0 align-middle">{{ 'ITEM.' + item.name + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.' + item.name + '.NAME' | transloco }}</td>
             <td class="p-0 align-middle">{{ item.cost }}</td>
-            <td class="p-0 align-middle">{{ 'ITEM.CATEGORY.' + item.category + '.NAME' | translate }}</td>
-            <td class="p-0 align-middle">{{ 'ITEM.POCKET.' + item.pocket + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.CATEGORY.' + item.category + '.NAME' | transloco }}</td>
+            <td class="p-0 align-middle">{{ 'ITEM.POCKET.' + item.pocket + '.NAME' | transloco }}</td>
           </tr>
           <tr *ngIf="expandedItem === item.id.toString() || expandedItem === item.name">
             <td colspan="6">

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Ability, MergingMap, PxAbility } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -14,11 +14,11 @@ import { VersionGroupService } from '../game/version-group.service';
 export class AbilityService extends FullyTranslatedService<Ability, PxAbility> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService,
     private versionService: VersionGroupService
   ) {
-    super('ability', http, translateService, languageService);
+    super('ability', http, translocoService, languageService);
   }
 
   protected _parseAllTranslations(resources: PxAbility[]): Observable<MergingMap> {

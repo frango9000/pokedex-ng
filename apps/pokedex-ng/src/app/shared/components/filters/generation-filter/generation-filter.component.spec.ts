@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { CheckboxModule } from 'angular-bootstrap-md';
-import { GenerationFilterComponent } from './generation-filter.component';
 import { stubFilterServiceProvider, stubGenerationServiceProvider } from '../../../services/stubs';
+import { GenerationFilterComponent } from './generation-filter.component';
 
 describe('GenerationFilterComponent', () => {
   let component: GenerationFilterComponent;
@@ -10,7 +10,7 @@ describe('GenerationFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckboxModule, TranslateModule.forRoot()],
+      imports: [CheckboxModule, getTranslocoModule()],
       declarations: [GenerationFilterComponent],
       providers: [stubFilterServiceProvider, stubGenerationServiceProvider],
     }).compileComponents();

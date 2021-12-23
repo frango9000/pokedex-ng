@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 import { FilterToggleComponent } from './filter-toggle.component';
 
 describe('FilterToggleComponent', () => {

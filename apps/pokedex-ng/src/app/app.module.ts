@@ -1,20 +1,22 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiUrlInterceptor } from './shared/interceptors/api-url/api-url.interceptor';
 import { CacheInterceptor } from './shared/interceptors/cache/cache.interceptor';
 import { CacheService } from './shared/interceptors/cache/cache.service';
-import { SharedModule } from './shared/shared.module';
+import { AppInitializationService } from './shared/services/app/app-initialization.service';
 import { LanguageService } from './shared/services/game/language.service';
+import { SharedModule } from './shared/shared.module';
+import { TranslocoRootModule } from './transloco-root.module';
 
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, environment.baseHref + '/assets/i18n/', '.json');
+export function initializeApp(appInitService: AppInitializationService) {
+  return (): Observable<unknown> => {
+    return appInitService.initialize();
+  };
 }
 
 @NgModule({
@@ -23,24 +25,22 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
+    TranslocoRootModule,
   ],
   providers: [
+    AppInitializationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppInitializationService, LanguageService],
+      multi: true,
+    },
     CacheService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(private languageService: LanguageService) {}
-}
+export class AppModule {}

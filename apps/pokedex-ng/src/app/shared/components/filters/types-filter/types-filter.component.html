@@ -32,7 +32,7 @@
         [ngStyle]="{ 'background-color': type.resource.name | pokeTypeColor }"
         class="text-white px-1 rounded-lg text-center checkbox-label"
       >
-        {{ 'TYPE.' + type.resource.name + '.NAME' | translate | uppercase }}
+        {{ 'TYPE.' + type.resource.name + '.NAME' | transloco | uppercase }}
       </div>
     </mdb-checkbox>
   </div>

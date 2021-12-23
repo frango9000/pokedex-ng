@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { TranslocoModule } from '@ngneat/transloco';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ResourceIdPipe } from '../../shared/pipes/resource-id.pipe';
+import { MoveService } from '../../shared/services/move/move.service';
+import { AbilityService } from '../../shared/services/pokemon/ability.service';
+import { PokemonService } from '../../shared/services/pokemon/pokemon.service';
+import { StatService } from '../../shared/services/pokemon/stat.service';
+import { TypeService } from '../../shared/services/pokemon/type.service';
 import { SharedModule } from '../../shared/shared.module';
 import { MoveModule } from '../move/move.module';
 import { PokemonAbilitiesComponent } from './pokemon-detail/pokemon-abilities/pokemon-abilities.component';
@@ -21,11 +27,6 @@ import { PokemonGridComponent } from './pokemon-home/pokemon-grid/pokemon-grid.c
 import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
 import { PokemonTableComponent } from './pokemon-home/pokemon-table/pokemon-table.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
-import { StatService } from '../../shared/services/pokemon/stat.service';
-import { AbilityService } from '../../shared/services/pokemon/ability.service';
-import { MoveService } from '../../shared/services/move/move.service';
-import { TypeService } from '../../shared/services/pokemon/type.service';
-import { PokemonService } from '../../shared/services/pokemon/pokemon.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PokemonService } from '../../shared/services/pokemon/pokemon.service';
     SharedModule,
     InfiniteScrollModule,
     MoveModule,
+    TranslocoModule,
   ],
   providers: [ResourceIdPipe],
 })

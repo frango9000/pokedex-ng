@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { LocalizedName, MergingMap, PxStat, Stat } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { MultiTranslatedService } from '../base-service';
@@ -10,10 +10,10 @@ import { LanguageService } from '../game/language.service';
 export class StatService extends MultiTranslatedService<Stat, PxStat> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService
   ) {
-    super('stat', http, translateService, languageService);
+    super('stat', http, translocoService, languageService);
   }
 
   protected _parseAllTranslations(parentResources: PxStat[]): Observable<MergingMap> {

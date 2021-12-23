@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MachineRoutingModule } from './machine-routing.module';
-import { MachineListComponent } from './machine-list/machine-list.component';
-import { MachineDetailComponent } from './machine-detail/machine-detail.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { SharedModule } from '../../shared/shared.module';
-import { ItemService } from '../../shared/services/item/item.service';
-import { MoveService } from '../../shared/services/move/move.service';
-import { MachineService } from '../../shared/services/machine/machine.service';
-import { TypeService } from '../../shared/services/pokemon/type.service';
+import { NgModule } from '@angular/core';
+import { TranslocoModule } from '@ngneat/transloco';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { MoveModule } from '../move/move.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ItemService } from '../../shared/services/item/item.service';
+import { MachineService } from '../../shared/services/machine/machine.service';
+import { MoveService } from '../../shared/services/move/move.service';
+import { TypeService } from '../../shared/services/pokemon/type.service';
+import { SharedModule } from '../../shared/shared.module';
 import { ItemModule } from '../item/item.module';
+import { MoveModule } from '../move/move.module';
+import { MachineDetailComponent } from './machine-detail/machine-detail.component';
+import { MachineListComponent } from './machine-list/machine-list.component';
+import { MachineRoutingModule } from './machine-routing.module';
 
 @NgModule({
   declarations: [MachineListComponent, MachineDetailComponent],
@@ -24,6 +24,7 @@ import { ItemModule } from '../item/item.module';
     MDBBootstrapModule,
     MoveModule,
     ItemModule,
+    TranslocoModule,
   ],
 })
 export class MachineModule {

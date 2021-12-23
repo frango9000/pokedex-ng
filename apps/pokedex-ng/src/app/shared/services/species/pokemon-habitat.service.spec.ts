@@ -1,8 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { stubLanguageServiceProvider } from '../stubs';
-
 import { PokemonHabitatService } from './pokemon-habitat.service';
 
 describe('PokemonHabitatService', () => {
@@ -10,7 +9,7 @@ describe('PokemonHabitatService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [getTranslocoModule(), HttpClientTestingModule],
       providers: [stubLanguageServiceProvider],
     });
     service = TestBed.inject(PokemonHabitatService);

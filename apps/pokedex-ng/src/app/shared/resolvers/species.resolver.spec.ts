@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
-import { SpeciesResolver } from './species.resolver';
 import { RouterTestingModule } from '@angular/router/testing';
 import { stubSpeciesServiceProvider } from '../services/species/species.service.stubs';
+import { SpeciesResolver } from './species.resolver';
 
 describe('SpeciesResolver', () => {
   let resolver: SpeciesResolver;

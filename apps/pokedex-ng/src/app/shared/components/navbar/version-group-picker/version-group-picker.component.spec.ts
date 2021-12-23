@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { stubVersionGroupServiceProvider } from '../../../services/stubs';
-
 import { VersionGroupPickerComponent } from './version-group-picker.component';
 
 describe('VersionGroupFilterComponent', () => {

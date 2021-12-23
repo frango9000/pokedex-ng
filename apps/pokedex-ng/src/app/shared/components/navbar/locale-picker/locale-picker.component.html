@@ -3,11 +3,17 @@
   mdbWavesEffect
   type="button"
   class="nav-link dropdown-toggle waves-light d-inline"
-  title="{{ 'LANGUAGE.' + activeLanguage.name | translate }}"
+  title="{{ 'LANGUAGE.' + activeLanguage.name | transloco }}"
   *ngIf="languageService.getDisplayLanguage$() | async as activeLanguage"
 >
   <span class="d-sm-none text-white pr-3" *ngIf="showLabel">Locale Picker</span>
-  <img alt="" src="https://www.countryflags.io/{{ activeLanguage.iso3166 }}/shiny/32.png" />
+  <img
+    src="https://flagcdn.com/20x15/{{ activeLanguage.iso3166 }}.png"
+    srcset="https://flagcdn.com/40x30/{{ activeLanguage.iso3166 }}.png 2x, https://flagcdn.com/60x45/{{ activeLanguage.iso3166 }}.png 3x"
+    width="20"
+    height="15"
+    alt="{{ activeLanguage.name }}"
+  />
 </a>
 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
   <a
@@ -16,7 +22,13 @@
     class="dropdown-item waves-light"
     (click)="languageService.setDisplayLanguage(language.name)"
   >
-    <img alt="" src="https://www.countryflags.io/{{ language.iso3166 }}/shiny/24.png" />
-    <span> {{ 'LANGUAGE.' + language.name | translate }}</span>
+    <img
+      src="https://flagcdn.com/16x12/{{ language.iso3166 }}.png"
+      srcset="https://flagcdn.com/32x24/{{ language.iso3166 }}.png 2x,https://flagcdn.com/48x36/{{ language.iso3166 }}.png 3x"
+      width="16"
+      height="12"
+      alt="{{ language.name }}"
+    />
+    <span> {{ 'LANGUAGE.' + language.name | transloco }}</span>
   </a>
 </div>

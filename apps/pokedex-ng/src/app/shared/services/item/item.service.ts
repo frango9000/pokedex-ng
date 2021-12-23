@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Item, LocalizedName, MergingMap, PxItem } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
-import { FullyTranslatedService } from '../base-service';
-import { LanguageService } from '../game/language.service';
 import { map, take } from 'rxjs/operators';
 import { FilterService } from '../app/filter.service';
+import { FullyTranslatedService } from '../base-service';
+import { LanguageService } from '../game/language.service';
 import { VersionGroupService } from '../game/version-group.service';
 
 @Injectable({
@@ -15,12 +15,12 @@ import { VersionGroupService } from '../game/version-group.service';
 export class ItemService extends FullyTranslatedService<Item, PxItem> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService,
     private filterService: FilterService,
     private versionGroupService: VersionGroupService
   ) {
-    super('item', http, translateService, languageService);
+    super('item', http, translocoService, languageService);
   }
 
   getAllFiltered(): Observable<PxItem[]> {

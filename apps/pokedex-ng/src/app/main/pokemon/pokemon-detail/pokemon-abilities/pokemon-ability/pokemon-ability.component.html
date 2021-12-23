@@ -2,33 +2,33 @@
   <table class="table mb-0" *ngIf="ability; else loading" aria-describedby="Table of Move Details" aria-hidden="true">
     <tbody>
       <tr class="first-row-border-0">
-        <td>{{ 'UI.ABILITY.NAME' | translate }}</td>
-        <td>{{ 'ABILITY.' + ability.name + '.NAME' | translate }}</td>
+        <td>{{ 'UI.ABILITY.NAME' | transloco }}</td>
+        <td>{{ 'ABILITY.' + ability.name + '.NAME' | transloco }}</td>
       </tr>
-      <tr title="{{ 'UI.ABILITY.DESCRIPTION_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.DESCRIPTION' | translate }}</td>
+      <tr title="{{ 'UI.ABILITY.DESCRIPTION_TITLE' | transloco }}">
+        <td>{{ 'UI.ABILITY.DESCRIPTION' | transloco }}</td>
         <td>
           <span *ngIf="'' | withVersionGroup | async as versionGroup">{{
-            'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + versionGroup | translate
+            'ABILITY.' + ability.name + '.FLAVOR_TEXT.' + versionGroup | transloco
           }}</span>
         </td>
       </tr>
-      <tr title="{{ 'UI.ABILITY.GENERATION_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.GENERATION' | translate }}</td>
+      <tr title="{{ 'UI.ABILITY.GENERATION_TITLE' | transloco }}">
+        <td>{{ 'UI.ABILITY.GENERATION' | transloco }}</td>
         <td>
-          {{ 'STATIC.GENERATION.NUMBER.' + ability.generation.name | translate }}
+          {{ 'STATIC.GENERATION.NUMBER.' + ability.generation.name | transloco }}
         </td>
       </tr>
-      <tr title="{{ 'UI.ABILITY.EFFECT_TITLE' | translate }}">
-        <td>{{ 'UI.ABILITY.EFFECT' | translate }}</td>
+      <tr title="{{ 'UI.ABILITY.EFFECT_TITLE' | transloco }}">
+        <td>{{ 'UI.ABILITY.EFFECT' | transloco }}</td>
         <td>
-          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.EFFECT' | translate }}
+          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.EFFECT' | transloco }}
         </td>
       </tr>
-      <tr title="{{ 'UI.ABILITY.EFFECT_TITLE_SHORT' | translate }}">
-        <td>{{ 'UI.ABILITY.EFFECT_SHORT' | translate }}</td>
+      <tr title="{{ 'UI.ABILITY.EFFECT_TITLE_SHORT' | transloco }}">
+        <td>{{ 'UI.ABILITY.EFFECT_SHORT' | transloco }}</td>
         <td>
-          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.SHORT' | translate }}
+          {{ 'ABILITY.' + ability.name + '.EFFECT_ENTRY.SHORT' | transloco }}
         </td>
       </tr>
     </tbody>
@@ -36,7 +36,7 @@
   <ng-template #loading>
     <div class="text-center">
       <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-        <span class="sr-only">{{ 'LOADING' | translate }}</span>
+        <span class="sr-only">{{ 'LOADING' | transloco }}</span>
       </div>
     </div>
   </ng-template>

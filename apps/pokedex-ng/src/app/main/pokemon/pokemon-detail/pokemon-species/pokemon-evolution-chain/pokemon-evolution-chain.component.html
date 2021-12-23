@@ -1,12 +1,12 @@
 <ng-container *ngIf="evolutionChain$ | async as evolutionChain; else loading">
   <mdb-card class="max-detail-size w-100 pb-2" *ngIf="evolutionChain.evolves_to.length">
     <div class="container-fluid cursor-pointer border-bottom">
-      <div class="row m-2 align-items-center" title="{{ 'UI.EVOLUTION_CHAIN.TITLE_TITLE' | translate }}">
+      <div class="row m-2 align-items-center" title="{{ 'UI.EVOLUTION_CHAIN.TITLE_TITLE' | transloco }}">
         <a mdbBtn floating="true">
           <mdb-icon fas icon="info" size="1x"></mdb-icon>
         </a>
         <div class="overflow-hidden text-nowrap pl-2">
-          {{ 'UI.EVOLUTION_CHAIN.TITLE' | translate }}
+          {{ 'UI.EVOLUTION_CHAIN.TITLE' | transloco }}
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-      <span class="sr-only">{{ 'LOADING' | translate }}</span>
+      <span class="sr-only">{{ 'LOADING' | transloco }}</span>
     </div>
   </div>
 </ng-template>

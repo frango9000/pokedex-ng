@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgVarDirective } from '../../../directives/ng-var.directive';
-
 import { GridToggleComponent } from './grid-toggle.component';
 
 describe('GridToggleComponent', () => {

@@ -1,8 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { stubLanguageServiceProvider } from '../stubs';
-
 import { StatService } from './stat.service';
 
 describe('StatService', () => {
@@ -10,7 +9,7 @@ describe('StatService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, getTranslocoModule()],
       providers: [stubLanguageServiceProvider],
     });
     service = TestBed.inject(StatService);

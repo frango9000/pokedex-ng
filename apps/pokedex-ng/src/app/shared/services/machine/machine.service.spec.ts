@@ -1,8 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-
-import { MachineService } from './machine.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { stubFilterServiceProvider, stubVersionGroupServiceProvider } from '../stubs';
+import { MachineService } from './machine.service';
 
 describe('MachineService', () => {
   let service: MachineService;

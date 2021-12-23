@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
 import { Pokemon } from '@pokedex-ng/domain';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { Observable } from 'rxjs';
+import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
+import { stubAppNavbarServiceProvider } from '../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonDetailComponent } from './pokemon-detail.component';
 import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
@@ -11,8 +13,6 @@ import { PokemonMovesComponent } from './pokemon-moves/pokemon-moves.component';
 import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.component';
 import { PokemonStatsComponent } from './pokemon-stats/pokemon-stats.component';
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type-damages.component';
-import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
-import { stubAppNavbarServiceProvider } from '../../../shared/services/stubs';
 
 @Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
 export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
@@ -51,7 +51,7 @@ describe('PokemonDetailComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), RouterTestingModule],
+        imports: [getTranslocoModule(), RouterTestingModule],
         declarations: [
           PokemonDetailComponent,
           StubPokemonInfoComponent,

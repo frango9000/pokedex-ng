@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgVarDirective } from '../../../../shared/directives/ng-var.directive';
+import { stubAbilityServiceProvider } from '../../../../shared/services/pokemon/pokemon.service.stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities.component';
 import { PokemonAbilityComponent } from './pokemon-ability/pokemon-ability.component';
-import { stubAbilityServiceProvider } from '../../../../shared/services/pokemon/pokemon.service.stubs';
 
 @Component({ selector: 'app-pokemon-ability', template: '' })
 export class PokemonAbilityStubComponent implements Partial<PokemonAbilityComponent> {
@@ -19,7 +19,7 @@ describe('PokemonAbilitiesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonAbilitiesComponent, PokemonAbilityStubComponent, NgVarDirective],
         providers: [stubAbilityServiceProvider],
       }).compileComponents();

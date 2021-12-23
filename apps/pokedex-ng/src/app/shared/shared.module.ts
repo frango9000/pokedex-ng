@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslocoModule } from '@ngneat/transloco';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
 import { ClearFilterComponent } from './components/filters/clear-filter/clear-filter.component';
 import { GenerationFilterComponent } from './components/filters/generation-filter/generation-filter.component';
+import { ItemCategoryFilterComponent } from './components/filters/item-category-filter/item-category-filter.component';
+import { ItemPocketFilterComponent } from './components/filters/item-pocket-filter/item-pocket-filter.component';
 import { QueryFilterComponent } from './components/filters/query-filter/query-filter.component';
 import { TypesFilterComponent } from './components/filters/types-filter/types-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -21,8 +23,6 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { ResourceIdPipe } from './pipes/resource-id.pipe';
 import { RomanPipe } from './pipes/roman.pipe';
 import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
-import { ItemCategoryFilterComponent } from './components/filters/item-category-filter/item-category-filter.component';
-import { ItemPocketFilterComponent } from './components/filters/item-pocket-filter/item-pocket-filter.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,6 @@ import { ItemPocketFilterComponent } from './components/filters/item-pocket-filt
     PokeTypeColorPipe,
     NgVarDirective,
     RomanPipe,
-    TranslateModule,
     ReplacePipe,
     GenerationFilterComponent,
     TypesFilterComponent,
@@ -63,6 +62,6 @@ import { ItemPocketFilterComponent } from './components/filters/item-pocket-filt
     ClearFilterComponent,
     FilterToolbarComponent,
   ],
-  imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslateModule],
+  imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslocoModule],
 })
 export class SharedModule {}

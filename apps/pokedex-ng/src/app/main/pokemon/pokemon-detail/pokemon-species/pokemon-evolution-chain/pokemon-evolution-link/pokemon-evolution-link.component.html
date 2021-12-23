@@ -22,20 +22,20 @@
                 <mdb-icon fas icon="long-arrow-alt-right" size="3x"></mdb-icon>
               </div>
               <div>
-                {{ 'EVOLUTION.TRIGGER.' + method.processed_details.trigger.title | translate }}
+                {{ 'EVOLUTION.TRIGGER.' + method.processed_details.trigger.title | transloco }}
                 <span *ngIf="method.processed_details.trigger.value"
                   >>
                   <span *ngIf="method.processed_details.trigger.translation; else triggerValue">{{
-                    method.processed_details.trigger.translation | translate
+                    method.processed_details.trigger.translation | transloco
                   }}</span>
                   <ng-template #triggerValue>{{ method.processed_details.trigger.value }}</ng-template></span
                 >
               </div>
               <div class="overflow-auto" *ngFor="let condition of method.processed_details.conditions">
                 <ng-container
-                  *ngVar="condition.translation ? (condition.translation | translate) : condition.value as value"
+                  *ngVar="condition.translation ? (condition.translation | transloco) : condition.value as value"
                 >
-                  {{ 'UI.EVOLUTION_CHAIN.LINK.' + condition.title | translate: { value: value } }}</ng-container
+                  {{ 'UI.EVOLUTION_CHAIN.LINK.' + condition.title | transloco: { value: value } }}</ng-container
                 >
               </div>
             </div>

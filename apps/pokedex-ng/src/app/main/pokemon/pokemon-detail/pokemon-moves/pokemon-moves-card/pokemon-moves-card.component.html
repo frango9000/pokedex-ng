@@ -3,13 +3,13 @@
     <div class="container-fluid cursor-pointer border-bottom">
       <div
         class="row m-2 align-items-center"
-        title="{{ 'MOVE.LEARN_METHOD.' + cardTitle + '.DESCRIPTION' | translate }}"
+        title="{{ 'MOVE.LEARN_METHOD.' + cardTitle + '.DESCRIPTION' | transloco }}"
       >
         <a mdbBtn floating="true">
           <mdb-icon fas icon="info" size="1x"></mdb-icon>
         </a>
         <div class="overflow-hidden text-nowrap pl-2">
-          {{ 'MOVE.LEARN_METHOD.' + cardTitle + '.NAME' | translate }}
+          {{ 'MOVE.LEARN_METHOD.' + cardTitle + '.NAME' | transloco }}
         </div>
       </div>
     </div>
@@ -18,10 +18,10 @@
         <thead>
           <tr>
             <th scope="col">
-              <span *ngIf="showLevels">{{ 'UI.MOVE.LEVEL' | translate }}</span>
+              <span *ngIf="showLevels">{{ 'UI.MOVE.LEVEL' | transloco }}</span>
             </th>
-            <th scope="col">{{ 'UI.MOVE.MOVE' | translate }}</th>
-            <th scope="col">{{ 'UI.MOVE.TYPE' | translate }}</th>
+            <th scope="col">{{ 'UI.MOVE.MOVE' | transloco }}</th>
+            <th scope="col">{{ 'UI.MOVE.TYPE' | transloco }}</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -33,14 +33,14 @@
                   <span *ngIf="showLevels">{{ move.version_group_detail?.level_learned_at }}</span>
                 </td>
                 <td class="align-middle w-75">
-                  {{ 'MOVE.' + move.move.name + '.NAME' | translate }}
+                  {{ 'MOVE.' + move.move.name + '.NAME' | transloco }}
                 </td>
                 <td>
                   <div class="text-center text-white pt-1">
                     <span
                       class="p-1 rounded-lg text-nowrap"
                       [ngStyle]="{ 'background-color': move.type | pokeTypeColor }"
-                      *ngVar="'TYPE.' + move.type + '.NAME' | translate | uppercase as typeName"
+                      *ngVar="'TYPE.' + move.type + '.NAME' | transloco | uppercase as typeName"
                     >
                       {{ typeName }}
                     </span>

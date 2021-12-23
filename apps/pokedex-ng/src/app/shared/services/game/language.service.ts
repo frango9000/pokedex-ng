@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Language, LocalizedName, MergingMap, PxLanguage } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { filter, switchMap, take } from 'rxjs/operators';
 import { MultiTranslatedService } from '../base-service';
 
 @Injectable({
@@ -16,9 +17,18 @@ export class LanguageService extends MultiTranslatedService<Language, PxLanguage
   };
   private activeLanguage$ = new BehaviorSubject<PxLanguage>(this.DEFAULT_LANGUAGE);
 
-  constructor(protected http: HttpClient, protected translateService: TranslateService) {
-    super('language', http, translateService, null);
+  constructor(protected http: HttpClient, protected translocoService: TranslocoService) {
+    super('language', http, translocoService, null);
     this.languageService = this;
+    this.initializationDone
+      .pipe(
+        filter((done) => !!done),
+        take(1),
+        switchMap(() => this.resources$.asObservable())
+      )
+      .subscribe((value: PxLanguage[]) => {
+        this.translocoService.setAvailableLangs(value.map((language) => language.name));
+      });
   }
 
   getDisplayLanguage$(): Observable<PxLanguage> {
@@ -28,7 +38,7 @@ export class LanguageService extends MultiTranslatedService<Language, PxLanguage
   setDisplayLanguage(selectedLanguage: string): void {
     const language = this.resources$.value.find((value) => value.name === selectedLanguage);
     if (language) {
-      this.translateService.use(language.name).subscribe();
+      this.translocoService.setActiveLang(language.name);
       this.activeLanguage$.next(language);
     }
   }

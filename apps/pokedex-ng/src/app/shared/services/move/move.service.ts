@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { MergingMap, Move, PxMove } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -15,12 +15,12 @@ import { VersionGroupService } from '../game/version-group.service';
 export class MoveService extends FullyTranslatedService<Move, PxMove> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService,
     private versionGroupService: VersionGroupService,
     private filterService: FilterService
   ) {
-    super('move', http, translateService, languageService);
+    super('move', http, translocoService, languageService);
   }
 
   getAllFiltered(): Observable<PxMove[]> {

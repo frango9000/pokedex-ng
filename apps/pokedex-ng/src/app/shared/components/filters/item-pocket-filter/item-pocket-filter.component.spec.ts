@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ItemPocketFilterComponent } from './item-pocket-filter.component';
-import { stubFilterServiceProvider } from '../../../services/stubs';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { CheckboxModule } from 'angular-bootstrap-md';
-import { TranslateModule } from '@ngx-translate/core';
 import { stubItemPocketServiceProvider } from '../../../services/item/item.service.stub';
+import { stubFilterServiceProvider } from '../../../services/stubs';
+import { ItemPocketFilterComponent } from './item-pocket-filter.component';
 
 describe('ItemPocketFilterComponent', () => {
   let component: ItemPocketFilterComponent;
@@ -11,7 +11,7 @@ describe('ItemPocketFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckboxModule, TranslateModule.forRoot()],
+      imports: [CheckboxModule, getTranslocoModule()],
       declarations: [ItemPocketFilterComponent],
       providers: [stubFilterServiceProvider, stubItemPocketServiceProvider],
     }).compileComponents();

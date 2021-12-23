@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { NgVarDirective } from '../../../../../shared/directives/ng-var.directive';
@@ -14,7 +14,7 @@ describe('PokemonMovesCardComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonMovesCardComponent, StubMoveDetailComponent, StubPokeTypeColorPipe, NgVarDirective],
         providers: [],
       }).compileComponents();

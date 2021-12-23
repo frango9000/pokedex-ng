@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { SingleTranslatedService } from '../base-service';
-import { ItemAttribute, MergingMap } from '@pokedex-ng/domain';
 import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../game/language.service';
+import { Injectable } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { ItemAttribute, MergingMap } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
+import { SingleTranslatedService } from '../base-service';
+import { LanguageService } from '../game/language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,10 @@ import { Observable, of } from 'rxjs';
 export class ItemAttributeService extends SingleTranslatedService<ItemAttribute> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService
   ) {
-    super('item-attribute', http, translateService, languageService);
+    super('item-attribute', http, translocoService, languageService);
   }
 
   protected _parseOneTranslation(itemAttribute: ItemAttribute): Observable<MergingMap> {

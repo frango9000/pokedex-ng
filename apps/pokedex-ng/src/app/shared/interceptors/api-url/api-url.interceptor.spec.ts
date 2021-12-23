@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ApiUrlInterceptor } from './api-url.interceptor';
 
 describe('ApiUrlInterceptor', () => {

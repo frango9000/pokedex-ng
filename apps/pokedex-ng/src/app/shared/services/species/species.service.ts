@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { MergingMap, Species } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -14,11 +14,11 @@ import { VersionGroupService } from '../game/version-group.service';
 export class SpeciesService extends SingleTranslatedService<Species> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService,
     private pokemonVersionService: VersionGroupService
   ) {
-    super('pokemon-species', http, translateService, languageService);
+    super('pokemon-species', http, translocoService, languageService);
   }
 
   protected _parseOneTranslation(specie: Species): Observable<MergingMap> {

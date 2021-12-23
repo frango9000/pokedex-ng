@@ -34,11 +34,11 @@
             "
           >
             <td class="p-0 align-middle">{{ move.id }}</td>
-            <td class="p-0 align-middle">{{ 'MOVE.' + move.name + '.NAME' | translate }}</td>
+            <td class="p-0 align-middle">{{ 'MOVE.' + move.name + '.NAME' | transloco }}</td>
             <td class="p-0 align-middle">{{ move.generation }}</td>
             <td class="p-0 align-middle d-flex justify-content-start">
               <span class="m-1 px-2 rounded-lg" [ngStyle]="{ 'background-color': move.type | pokeTypeColor }">{{
-                'TYPE.' + move.type + '.NAME' | translate | uppercase
+                'TYPE.' + move.type + '.NAME' | transloco | uppercase
               }}</span>
             </td>
             <td class="p-0 align-middle">{{ move.power }}</td>

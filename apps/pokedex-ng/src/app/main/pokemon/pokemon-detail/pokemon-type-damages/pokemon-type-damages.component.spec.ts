@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { StubPokeTypeColorPipe } from '../../../../shared/pipes/stubs';
-
-import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
 import { stubTypeServiceProvider } from '../../../../shared/services/pokemon/pokemon.service.stubs';
+import { PokemonTypeDamagesComponent } from './pokemon-type-damages.component';
 
 describe('PokemonTypeDamagesComponent', () => {
   let component: PokemonTypeDamagesComponent;
@@ -14,7 +13,7 @@ describe('PokemonTypeDamagesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonTypeDamagesComponent, StubPokeTypeColorPipe],
         providers: [stubTypeServiceProvider],
       }).compileComponents();

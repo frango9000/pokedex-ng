@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { ApiEntity, ApiResourceList, MergingMap, NamedApiResource } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, filter, map, take, tap } from 'rxjs/operators';
@@ -22,8 +22,8 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
     return this.resources$.pipe(filter((res) => !!res && !!res.length));
   }
 
-  public getAllIds$(): Observable<string[]> {
-    return this.getAll().pipe(map((resources) => resources.map((resource) => resource.name)));
+  public getAllIds$(): Observable<number[]> {
+    return this.getAll().pipe(map((resources) => resources.map((resource) => resource.id)));
   }
 
   protected _fetchAll(): Observable<P[]> {
@@ -46,10 +46,12 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
 }
 
 export abstract class TranslatedService<T, P> extends BaseService<T, P> {
+  protected readonly initializationDone: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(
     protected name: string,
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService
   ) {
     super(name, http);
@@ -65,11 +67,9 @@ export abstract class TranslatedService<T, P> extends BaseService<T, P> {
       : this._parseOneTranslation(resource);
     translations$.pipe(take(1)).subscribe((translations) => {
       translations.forEach((translation, language) =>
-        this.translateService.setTranslation(language, translation, true)
+        this.translocoService.setTranslation(translation, language, { merge: true })
       );
-      if (Object.keys(translations).length) {
-        this.languageService.refresh();
-      }
+      this.initializationDone.next(true);
     });
   }
 }

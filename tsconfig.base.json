@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "@pokedex-ng/data": ["libs/data/src/index.ts"],
-      "@pokedex-ng/domain": ["libs/domain/src/index.ts"]
+      "@pokedex-ng/domain": ["libs/domain/src/index.ts"],
+      "@pokedex-ng/testing": ["apps/pokedex-ng/src/app/transloco-testing.module.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

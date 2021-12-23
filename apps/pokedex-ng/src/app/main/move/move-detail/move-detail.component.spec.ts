@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { NgVarDirective } from '../../../shared/directives/ng-var.directive';
 import { StubPokeTypeColorPipe, StubReplacePipe, StubWithVersionGroupPipe } from '../../../shared/pipes/stubs';
 import {
@@ -9,7 +9,6 @@ import {
   stubMoveServiceProvider,
   stubMoveTargetServiceProvider,
 } from '../../../shared/services/move/move.service.stubs';
-
 import { MoveDetailComponent } from './move-detail.component';
 
 describe('MoveDetailComponent', () => {
@@ -18,7 +17,7 @@ describe('MoveDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
+      imports: [getTranslocoModule()],
       declarations: [
         MoveDetailComponent,
         StubPokeTypeColorPipe,

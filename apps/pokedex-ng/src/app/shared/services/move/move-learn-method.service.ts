@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import {
   LocalizedDescription,
   LocalizedName,
@@ -18,10 +18,10 @@ import { LanguageService } from '../game/language.service';
 export class MoveLearnMethodService extends FullyTranslatedService<MoveLearnMethod, PxMoveLearnMethod> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService
   ) {
-    super('move-learn-method', http, translateService, languageService);
+    super('move-learn-method', http, translocoService, languageService);
   }
 
   protected _parseOneTranslation(learnMethod: MoveLearnMethod): Observable<MergingMap> {

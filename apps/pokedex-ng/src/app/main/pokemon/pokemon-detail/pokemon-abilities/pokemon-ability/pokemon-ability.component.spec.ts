@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { PokemonAbilityComponent } from './pokemon-ability.component';
 import { stubAbilityServiceProvider } from '../../../../../shared/services/pokemon/pokemon.service.stubs';
+import { PokemonAbilityComponent } from './pokemon-ability.component';
 
 describe('PokemonAbilityComponent', () => {
   let component: PokemonAbilityComponent;
@@ -11,7 +11,7 @@ describe('PokemonAbilityComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
+        imports: [getTranslocoModule()],
         declarations: [PokemonAbilityComponent, StubWithVersionGroupPipe],
         providers: [stubAbilityServiceProvider],
       }).compileComponents();

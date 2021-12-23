@@ -2,140 +2,140 @@
   <table class="table mb-0" *ngIf="move; else loading" aria-describedby="Table of Move Details" aria-hidden="true">
     <tbody>
       <tr class="first-row-border-0">
-        <td>{{ 'UI.MOVE.NAME' | translate }}</td>
-        <td>{{ 'MOVE.' + move.name + '.NAME' | translate }}</td>
+        <td>{{ 'UI.MOVE.NAME' | transloco }}</td>
+        <td>{{ 'MOVE.' + move.name + '.NAME' | transloco }}</td>
       </tr>
       <tr>
-        <td>{{ 'UI.MOVE.CATEGORY' | translate }}</td>
+        <td>{{ 'UI.MOVE.CATEGORY' | transloco }}</td>
         <td>
-          {{ 'MOVE.CATEGORY.' + move.meta.category.name | translate }}
+          {{ 'MOVE.CATEGORY.' + move.meta.category.name | transloco }}
         </td>
       </tr>
-      <tr title="{{ 'UI.MOVE.GENERATION_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.GENERATION' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.GENERATION_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.GENERATION' | transloco }}</td>
         <td>
-          {{ 'STATIC.GENERATION.NUMBER.' + move.generation.name | translate }}
+          {{ 'STATIC.GENERATION.NUMBER.' + move.generation.name | transloco }}
         </td>
       </tr>
-      <tr *ngIf="move.type" title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.DAMAGE_TYPE' | translate }}</td>
+      <tr *ngIf="move.type" title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.DAMAGE_TYPE' | transloco }}</td>
         <td>
           <span [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }" class="p-1 text-white rounded-lg">{{
-            'TYPE.' + move.type.name + '.NAME' | translate | uppercase
+            'TYPE.' + move.type.name + '.NAME' | transloco | uppercase
           }}</span>
         </td>
       </tr>
       <tr *ngIf="move.damage_class">
-        <td title="{{ 'UI.MOVE.DAMAGE_CLASS_TITLE' | translate }}">
-          {{ 'UI.MOVE.DAMAGE_CLASS' | translate }}
+        <td title="{{ 'UI.MOVE.DAMAGE_CLASS_TITLE' | transloco }}">
+          {{ 'UI.MOVE.DAMAGE_CLASS' | transloco }}
         </td>
         <td>
-          {{ 'MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.NAME' | translate | titlecase }}:<br />
-          {{ 'MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.DESCRIPTION' | translate }}
+          {{ 'MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.NAME' | transloco | titlecase }}:<br />
+          {{ 'MOVE.DAMAGE_CLASS.' + move.damage_class.name + '.DESCRIPTION' | transloco }}
         </td>
       </tr>
-      <tr title="{{ 'UI.MOVE.PP_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.PP' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.PP_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.PP' | transloco }}</td>
         <td>{{ move.pp }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.ACCURACY_TITLE' | translate }}" *ngIf="move.accuracy">
-        <td>{{ 'UI.MOVE.ACCURACY' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.ACCURACY_TITLE' | transloco }}" *ngIf="move.accuracy">
+        <td>{{ 'UI.MOVE.ACCURACY' | transloco }}</td>
         <td>{{ move.accuracy / 100 | percent }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.POWER_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.POWER' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.POWER_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.POWER' | transloco }}</td>
         <td>{{ move.power ? move.power : 'N/A' }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.PRIORITY_TITLE' | translate }}" *ngIf="move.priority">
-        <td>{{ 'UI.MOVE.PRIORITY' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.PRIORITY_TITLE' | transloco }}" *ngIf="move.priority">
+        <td>{{ 'UI.MOVE.PRIORITY' | transloco }}</td>
         <td>{{ move.priority }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | translate }}" *ngIf="move.meta.stat_chance">
-        <td>{{ 'UI.MOVE.STAT_CHANGE_CHANCE' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | transloco }}" *ngIf="move.meta.stat_chance">
+        <td>{{ 'UI.MOVE.STAT_CHANGE_CHANCE' | transloco }}</td>
         <td>{{ move.meta.stat_chance / 100 | percent }}</td>
       </tr>
       <ng-container *ngIf="move.stat_changes?.length > 0">
-        <tr title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | translate }}" *ngFor="let statChange of move.stat_changes">
-          <td>{{ 'STAT.' + statChange.stat.name | translate }}</td>
+        <tr title="{{ 'UI.MOVE.STAT_CHANGE_TITLE' | transloco }}" *ngFor="let statChange of move.stat_changes">
+          <td>{{ 'STAT.' + statChange.stat.name | transloco }}</td>
           <td>{{ statChange.change }}</td>
         </tr>
       </ng-container>
-      <tr title="{{ 'UI.MOVE.CRITICAL_RATE_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.CRITICAL_RATE' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.CRITICAL_RATE_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.CRITICAL_RATE' | transloco }}</td>
         <td>{{ move.meta.crit_rate / 100 | percent }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.HEALING_TITLE' | translate }}" *ngIf="move.meta.healing">
-        <td>{{ 'UI.MOVE.HEALING' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.HEALING_TITLE' | transloco }}" *ngIf="move.meta.healing">
+        <td>{{ 'UI.MOVE.HEALING' | transloco }}</td>
         <td>{{ move.meta.healing }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | translate }}" *ngIf="move.meta.drain">
+      <tr title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | transloco }}" *ngIf="move.meta.drain">
         <td>
-          {{ (move.meta.drain > 0 ? 'UI.MOVE.DRAIN' : 'UI.MOVE.RECOIL') | translate }}
+          {{ (move.meta.drain > 0 ? 'UI.MOVE.DRAIN' : 'UI.MOVE.RECOIL') | transloco }}
         </td>
         <td>{{ move.meta.drain / 100 | percent }}</td>
       </tr>
       <ng-container *ngIf="move.meta.ailment_chance">
-        <tr title="{{ 'UI.MOVE.AILMENT_TITLE' | translate }}">
-          <td>{{ 'UI.MOVE.AILMENT' | translate }}</td>
+        <tr title="{{ 'UI.MOVE.AILMENT_TITLE' | transloco }}">
+          <td>{{ 'UI.MOVE.AILMENT' | transloco }}</td>
           <td>
-            {{ 'MOVE.AILMENT.' + move.meta.ailment.name | translate }}
+            {{ 'MOVE.AILMENT.' + move.meta.ailment.name | transloco }}
           </td>
         </tr>
-        <tr title="{{ 'UI.MOVE.AILMENT_CHANCE_TITLE' | translate }}">
-          <td>{{ 'UI.MOVE.AILMENT_CHANCE' | translate }}</td>
+        <tr title="{{ 'UI.MOVE.AILMENT_CHANCE_TITLE' | transloco }}">
+          <td>{{ 'UI.MOVE.AILMENT_CHANCE' | transloco }}</td>
           <td>{{ move.meta.ailment_chance / 100 | percent }}</td>
         </tr>
       </ng-container>
-      <tr title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | translate }}" *ngIf="move.meta.flinch_chance">
-        <td>{{ 'UI.MOVE.FLINCH_CHANCE' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | transloco }}" *ngIf="move.meta.flinch_chance">
+        <td>{{ 'UI.MOVE.FLINCH_CHANCE' | transloco }}</td>
         <td>{{ move.meta.flinch_chance / 100 | percent }}</td>
       </tr>
       <tr>
-        <td title="{{ 'UI.MOVE.TARGET_TITLE' | translate }}">
-          {{ 'UI.MOVE.TARGET' | translate }}
+        <td title="{{ 'UI.MOVE.TARGET_TITLE' | transloco }}">
+          {{ 'UI.MOVE.TARGET' | transloco }}
         </td>
         <td>
-          {{ 'MOVE.TARGET.' + move.target.name + '.NAME' | translate }}: <br />
-          {{ 'MOVE.TARGET.' + move.target.name + '.DESCRIPTION' | translate }}
+          {{ 'MOVE.TARGET.' + move.target.name + '.NAME' | transloco }}: <br />
+          {{ 'MOVE.TARGET.' + move.target.name + '.DESCRIPTION' | transloco }}
         </td>
       </tr>
       <tr *ngIf="move.meta.min_hits">
-        <td>{{ 'UI.MOVE.MIN_HITS' | translate }}</td>
+        <td>{{ 'UI.MOVE.MIN_HITS' | transloco }}</td>
         <td>{{ move.meta.min_hits }}</td>
       </tr>
       <tr *ngIf="move.meta.max_hits">
-        <td>{{ 'UI.MOVE.MAX_HITS' | translate }}</td>
+        <td>{{ 'UI.MOVE.MAX_HITS' | transloco }}</td>
         <td>{{ move.meta.max_hits }}</td>
       </tr>
       <tr *ngIf="move.meta.min_turns">
-        <td>{{ 'UI.MOVE.MIN_TURNS' | translate }}</td>
+        <td>{{ 'UI.MOVE.MIN_TURNS' | transloco }}</td>
         <td>{{ move.meta.min_turns }}</td>
       </tr>
       <tr *ngIf="move.meta.max_turns">
-        <td>{{ 'UI.MOVE.MAX_TURNS' | translate }}</td>
+        <td>{{ 'UI.MOVE.MAX_TURNS' | transloco }}</td>
         <td>{{ move.meta.max_turns }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.DESCRIPTION_TITLE' | translate }}">
-        <td>{{ 'UI.MOVE.DESCRIPTION' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.DESCRIPTION_TITLE' | transloco }}">
+        <td>{{ 'UI.MOVE.DESCRIPTION' | transloco }}</td>
         <td>
           {{ 'MOVE.' + move.name + '.FLAVOR_TEXT.' | withVersionGroup | async }}
         </td>
       </tr>
-      <tr title="{{ 'UI.MOVE.EFFECT_CHANCE_TITLE' | translate }}" *ngIf="move.effect_chance">
-        <td>{{ 'UI.MOVE.EFFECT_CHANCE' | translate }}</td>
+      <tr title="{{ 'UI.MOVE.EFFECT_CHANCE_TITLE' | transloco }}" *ngIf="move.effect_chance">
+        <td>{{ 'UI.MOVE.EFFECT_CHANCE' | transloco }}</td>
         <td>{{ move.effect_chance / 100 | percent }}</td>
       </tr>
       <ng-container *ngVar="move.effect_chance ? move.effect_chance : '' as effect_chance">
-        <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | translate }}">
-          <td>{{ 'UI.MOVE.EFFECT' | translate }}</td>
+        <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | transloco }}">
+          <td>{{ 'UI.MOVE.EFFECT' | transloco }}</td>
           <td>
-            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | translate | replace: '$effect_chance':effect_chance }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | transloco | replace: '$effect_chance':effect_chance }}
           </td>
         </tr>
-        <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | translate }}">
-          <td>{{ 'UI.MOVE.EFFECT_SHORT' | translate }}</td>
+        <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | transloco }}">
+          <td>{{ 'UI.MOVE.EFFECT_SHORT' | transloco }}</td>
           <td>
-            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | translate | replace: '$effect_chance':effect_chance }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | transloco | replace: '$effect_chance':effect_chance }}
           </td>
         </tr>
       </ng-container>
@@ -144,7 +144,7 @@
   <ng-template #loading>
     <div class="text-center">
       <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-        <span class="sr-only">{{ 'LOADING' | translate }}</span>
+        <span class="sr-only">{{ 'LOADING' | transloco }}</span>
       </div>
     </div>
   </ng-template>

@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
-import { MoveResolver } from './move.resolver';
 import { RouterTestingModule } from '@angular/router/testing';
 import { stubMoveServiceProvider } from '../services/move/move.service.stubs';
+import { MoveResolver } from './move.resolver';
 
 describe('MoveResolver', () => {
   let resolver: MoveResolver;

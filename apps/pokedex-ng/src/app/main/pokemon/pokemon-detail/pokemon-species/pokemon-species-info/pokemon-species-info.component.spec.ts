@@ -1,10 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { of } from 'rxjs';
 import { StubWithVersionGroupPipe } from '../../../../../shared/pipes/stubs';
-import { stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
-import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 import {
   stubEggGroupServiceProvider,
   stubGrowthRateServiceProvider,
@@ -12,6 +10,8 @@ import {
   stubPokemonHabitatServiceProvider,
   stubPokemonShapeServiceProvider,
 } from '../../../../../shared/services/species/species.service.stubs';
+import { stubVersionGroupServiceProvider } from '../../../../../shared/services/stubs';
+import { PokemonSpeciesInfoComponent } from './pokemon-species-info.component';
 
 describe('PokemonSpeciesInfoComponent', () => {
   let component: PokemonSpeciesInfoComponent;
@@ -20,7 +20,7 @@ describe('PokemonSpeciesInfoComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), MDBBootstrapModule.forRoot()],
+        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
         declarations: [PokemonSpeciesInfoComponent, StubWithVersionGroupPipe],
         providers: [
           stubVersionGroupServiceProvider,

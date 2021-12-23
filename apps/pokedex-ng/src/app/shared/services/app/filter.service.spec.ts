@@ -1,7 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
-
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { FilterService } from './filter.service';
 
 describe('FilterService', () => {
@@ -9,7 +8,7 @@ describe('FilterService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, getTranslocoModule()],
     });
     service = TestBed.inject(FilterService);
   });

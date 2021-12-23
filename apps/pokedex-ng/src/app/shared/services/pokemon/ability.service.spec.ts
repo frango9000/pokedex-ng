@@ -1,7 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
-
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { AbilityService } from './ability.service';
 
 describe('AbilityService', () => {
@@ -9,7 +8,7 @@ describe('AbilityService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [getTranslocoModule(), HttpClientTestingModule],
     });
     service = TestBed.inject(AbilityService);
   });

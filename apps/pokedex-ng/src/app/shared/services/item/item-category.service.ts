@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { MultiTranslatedService } from '../base-service';
-import { ItemCategory, LocalizedName, MergingMap, PxItemCategory } from '@pokedex-ng/domain';
 import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../game/language.service';
+import { Injectable } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { ItemCategory, LocalizedName, MergingMap, PxItemCategory } from '@pokedex-ng/domain';
 import { Observable, of } from 'rxjs';
+import { MultiTranslatedService } from '../base-service';
+import { LanguageService } from '../game/language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,10 @@ import { Observable, of } from 'rxjs';
 export class ItemCategoryService extends MultiTranslatedService<ItemCategory, PxItemCategory> {
   constructor(
     protected http: HttpClient,
-    protected translateService: TranslateService,
+    protected translocoService: TranslocoService,
     protected languageService: LanguageService
   ) {
-    super('item-category', http, translateService, languageService);
+    super('item-category', http, translocoService, languageService);
   }
 
   protected _parseAllTranslations(itemCategories: PxItemCategory[]): Observable<MergingMap> {

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { stubFilterServiceProvider } from '../../../services/stubs';
-
 import { QueryFilterComponent } from './query-filter.component';
 
 describe('QueryFilterComponent', () => {

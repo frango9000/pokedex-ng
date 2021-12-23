@@ -7,7 +7,27 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
+end_of_line = crlf
+max_line_length = 120
 
 [*.md]
 max_line_length = off
 trim_trailing_whitespace = false
+
+[*.html]
+ij_html_enforce_quotes = true
+ij_html_quote_style = double
+ij_html_do_not_indent_children_of_tags = none
+
+[*.js]
+ij_javascript_enforce_trailing_comma = keep
+
+[*.ts]
+ij_typescript_enforce_trailing_comma = keep
+ij_typescript_keep_simple_blocks_in_one_line = true
+ij_typescript_import_sort_module_name = true
+ij_typescript_import_use_node_resolution = true
+ij_typescript_import_sort_members = true
+
+[*.scss]
+ij_scss_continuation_indent_size = 2

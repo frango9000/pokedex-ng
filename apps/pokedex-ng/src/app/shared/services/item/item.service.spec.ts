@@ -1,16 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-
-import { ItemService } from './item.service';
-import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { stubLanguageServiceProvider } from '../stubs';
+import { ItemService } from './item.service';
 
 describe('ItemService', () => {
   let service: ItemService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [getTranslocoModule(), HttpClientTestingModule],
       providers: [stubLanguageServiceProvider],
     });
     service = TestBed.inject(ItemService);

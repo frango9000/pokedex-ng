@@ -2,7 +2,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot(), RouterTestingModule, MDBBootstrapModule.forRoot()],
+        imports: [getTranslocoModule(), RouterTestingModule, MDBBootstrapModule.forRoot()],
         declarations: [AppComponent, NavbarComponent, FooterComponent],
         providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();

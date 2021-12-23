@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ItemDetailComponent } from './item-detail.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { getTranslocoModule } from '@pokedex-ng/testing';
+import { StubWithVersionGroupPipe } from '../../../shared/pipes/stubs';
 import {
   stubItemAttributeServiceProvider,
   stubItemServiceProvider,
 } from '../../../shared/services/item/item.service.stub';
-import { StubWithVersionGroupPipe } from '../../../shared/pipes/stubs';
+import { ItemDetailComponent } from './item-detail.component';
 
 describe('ItemDetailComponent', () => {
   let component: ItemDetailComponent;
@@ -13,7 +13,7 @@ describe('ItemDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
+      imports: [getTranslocoModule()],
       declarations: [ItemDetailComponent, StubWithVersionGroupPipe],
       providers: [stubItemServiceProvider, stubItemAttributeServiceProvider],
     }).compileComponents();
