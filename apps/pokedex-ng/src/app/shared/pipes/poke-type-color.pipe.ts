@@ -46,6 +46,8 @@ export class PokeTypeColorPipe implements PipeTransform {
         return '#888';
       case 'shadow':
         return '#444';
+      default:
+        return '#000';
     }
   }
 }

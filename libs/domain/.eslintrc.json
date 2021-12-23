@@ -5,10 +5,8 @@
     {
       "files": ["*.ts"],
       "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
-      "parserOptions": {
-        "project": ["libs/domain/tsconfig.*?.json"]
-      },
       "rules": {
+        "@nrwl/nx/enforce-module-boundaries": ["off"],
         "@angular-eslint/directive-selector": [
           "error",
           {

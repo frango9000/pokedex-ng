@@ -89,7 +89,7 @@ export class FilterService {
       : resourceList.filter((resource) => this._typesFilter$.value.includes(resource.type));
   }
 
-  filterByChildType<M extends any>(resourceList: M[], child: string): M[] {
+  filterByChildType<M>(resourceList: M[], child: string): M[] {
     return !this._typesFilter$.value.length || !child
       ? resourceList
       : resourceList.filter((resource) => this._typesFilter$.value.includes(resource[child]?.type));

@@ -47,7 +47,7 @@ export class PokemonSpeciesInfoComponent implements OnInit, OnDestroy {
             this.pokemonColorService.fetchApiOne(species.color.name),
             this.pokemonHabitatService.fetchApiOne(species.habitat.name),
             this.pokemonShapeService.fetchApiOne(species.shape.name),
-            ...species.egg_groups?.map((eggGroup) => this.eggGroupService.fetchApiOne(eggGroup.name)),
+            ...species.egg_groups.map((eggGroup) => this.eggGroupService.fetchApiOne(eggGroup.name)),
           ]).pipe(map(() => species))
         )
       )
