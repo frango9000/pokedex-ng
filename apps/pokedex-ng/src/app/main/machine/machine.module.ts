@@ -8,8 +8,8 @@ import { MachineService } from '../../shared/services/machine/machine.service';
 import { MoveService } from '../../shared/services/move/move.service';
 import { TypeService } from '../../shared/services/pokemon/type.service';
 import { SharedModule } from '../../shared/shared.module';
-import { ItemModule } from '../item/item.module';
-import { MoveModule } from '../move/move.module';
+import { ItemDetailModule } from '../item/item-detail/item-detail.module';
+import { MoveDetailModule } from '../move/move-detail/move-detail.module';
 import { MachineDetailComponent } from './machine-detail/machine-detail.component';
 import { MachineListComponent } from './machine-list/machine-list.component';
 import { MachineRoutingModule } from './machine-routing.module';
@@ -22,8 +22,8 @@ import { MachineRoutingModule } from './machine-routing.module';
     InfiniteScrollModule,
     SharedModule,
     MDBBootstrapModule,
-    MoveModule,
-    ItemModule,
+    MoveDetailModule,
+    ItemDetailModule,
     TranslocoModule,
   ],
 })

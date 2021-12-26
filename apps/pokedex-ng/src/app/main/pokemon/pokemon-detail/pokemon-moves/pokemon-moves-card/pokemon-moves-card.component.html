@@ -1,16 +1,11 @@
 <ng-container *ngVar="moves$ | async as moves">
   <mdb-card class="max-detail-size w-100 pb-2 mb-2" *ngIf="moves.length">
-    <div class="container-fluid cursor-pointer border-bottom">
-      <div
-        class="row m-2 align-items-center"
-        title="{{ 'MOVE.LEARN_METHOD.' + cardTitle + '.DESCRIPTION' | transloco }}"
-      >
-        <a mdbBtn floating="true">
-          <mdb-icon fas icon="info" size="1x"></mdb-icon>
-        </a>
-        <div class="overflow-hidden text-nowrap pl-2">
+    <div class="container-fluid border-bottom">
+      <div class="m-2 align-items-center" title="{{ 'MOVE.LEARN_METHOD.' + cardTitle + '.DESCRIPTION' | transloco }}">
+        <mdb-icon fas icon="info" size="1x"></mdb-icon>
+        <span class="overflow-hidden text-nowrap pl-2">
           {{ 'MOVE.LEARN_METHOD.' + cardTitle + '.NAME' | transloco }}
-        </div>
+        </span>
       </div>
     </div>
     <mdb-card-body class="py-0 px-2 px-sm-4">
@@ -47,15 +42,19 @@
                   </div>
                 </td>
                 <td class="text-right align-middle p-0">
-                  <a
-                    class="btn btn-primary p-1 px-2"
+                  <button
+                    mdbBtn
+                    size="sm"
+                    color="primary"
+                    class="waves-light btn btn-primary p-1 px-2"
+                    mdbWavesEffect
                     role="button"
                     aria-expanded="false"
                     aria-controls=""
                     (click)="expandedMove = isExpanded ? '' : move.move.name"
                   >
                     <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: isExpanded }"></mdb-icon>
-                  </a>
+                  </button>
                 </td>
               </tr>
               <tr *ngIf="isExpanded">

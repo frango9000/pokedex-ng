@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PokemonResolver } from '../../shared/resolvers/pokemon.resolver';
-import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
-import { PokemonHomeComponent } from './pokemon-home/pokemon-home.component';
+
+export const loadPokemonHomeModule = () =>
+  import('./pokemon-home/pokemon-home.module').then((m) => m.PokemonHomeModule);
+export const loadPokemonDetailModule = () =>
+  import('./pokemon-detail/pokemon-detail.module').then((m) => m.PokemonDetailModule);
 
 const routes: Routes = [
   {
     path: '',
-    component: PokemonHomeComponent,
+    loadChildren: loadPokemonHomeModule,
   },
   {
     path: ':pokemon',
-    component: PokemonDetailComponent,
+    loadChildren: loadPokemonDetailModule,
     resolve: { pokemon: PokemonResolver },
   },
 ];
