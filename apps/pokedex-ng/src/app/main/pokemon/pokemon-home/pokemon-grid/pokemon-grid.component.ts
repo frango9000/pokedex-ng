@@ -13,8 +13,7 @@ import { PokemonTypeDamagesComponent } from '../../pokemon-detail/pokemon-type-d
 export class PokemonGridComponent {
   @Input() public pokemonList: PxPokemon[];
 
-  constructor(private readonly pokemonService: PokemonService, private readonly modalService: MDBModalService) {
-  }
+  constructor(private readonly pokemonService: PokemonService, private readonly modalService: MDBModalService) {}
 
   openTypeDamagesDialog(pokemonId: string | number) {
     this.pokemonService.fetchApiOne(pokemonId).subscribe((pokemon) => {

@@ -43,7 +43,7 @@
             class="m-1 px-2 rounded-lg"
             *ngFor="let type of pokemon.types"
             [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-          >{{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}<br class="d-sm-none"
+            >{{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}<br class="d-sm-none"
           /></span>
         </div>
       </mdb-card-footer>
