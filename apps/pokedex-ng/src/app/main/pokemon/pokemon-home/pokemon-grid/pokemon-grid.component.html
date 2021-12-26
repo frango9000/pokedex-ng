@@ -3,7 +3,6 @@
   <a
     class="m-0 p-1 w-100 col-6 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 poke-card cursor-pointer text-decoration-none text-dark"
     *ngFor="let pokemon of pokemonList"
-    [routerLink]="[pokemon.name]"
   >
     <mdb-card class="h-100" *ngVar="pokemon.name | titlecase as pokemonName" title="{{ pokemonName }}">
       <mdb-card-header>
@@ -14,7 +13,7 @@
           </div>
         </div>
       </mdb-card-header>
-      <div class="h-100">
+      <div class="h-100" [routerLink]="[pokemon.name]">
         <div class="view rgba-white-slight waves-light d-flex justify-content-center" mdbWavesEffect>
           <!-- Card img -->
           <img
@@ -36,12 +35,15 @@
         </div>
       </div>
       <mdb-card-footer class="p-1 mx-0 h-100">
-        <div class="text-center text-white h-100 d-flex justify-content-around align-items-center flex-wrap">
+        <div
+          class="text-center text-white h-100 d-flex justify-content-around align-items-center flex-wrap"
+          (click)="openTypeDamagesDialog(pokemon.id)"
+        >
           <span
             class="m-1 px-2 rounded-lg"
             *ngFor="let type of pokemon.types"
             [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-            >{{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}<br class="d-sm-none"
+          >{{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}<br class="d-sm-none"
           /></span>
         </div>
       </mdb-card-footer>

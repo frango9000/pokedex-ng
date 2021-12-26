@@ -20,7 +20,7 @@ import {
 import { PokemonSpeciesInfoComponent } from './pokemon-species/pokemon-species-info/pokemon-species-info.component';
 import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.component';
 import { PokemonStatsComponent } from './pokemon-stats/pokemon-stats.component';
-import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type-damages.component';
+import { PokemonTypeDamagesModule } from './pokemon-type-damages/pokemon-type-damages.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type
     PokemonAbilitiesComponent,
     PokemonStatsComponent,
     PokemonMovesCardComponent,
-    PokemonTypeDamagesComponent,
     PokemonSpeciesComponent,
     PokemonSpeciesInfoComponent,
     PokemonEvolutionChainComponent,
@@ -40,6 +39,7 @@ import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type
   imports: [
     CommonModule,
     PokemonDetailRoutingModule,
+    PokemonTypeDamagesModule,
     TranslocoModule,
     MoveDetailModule,
     SharedModule,

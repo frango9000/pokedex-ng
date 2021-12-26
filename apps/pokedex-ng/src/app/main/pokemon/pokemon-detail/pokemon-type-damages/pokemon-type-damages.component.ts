@@ -11,6 +11,7 @@ import { TypeService } from '../../../../shared/services/pokemon/type.service';
 })
 export class PokemonTypeDamagesComponent implements OnInit, OnDestroy {
   @Input() public pokemon$: Observable<Pokemon>;
+  @Input() public showHeading = true;
 
   public typeDamages$: BehaviorSubject<TypeDamages> = new BehaviorSubject<TypeDamages>(null);
 

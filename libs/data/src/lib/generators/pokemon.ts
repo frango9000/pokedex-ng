@@ -32,7 +32,7 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPo
 
   protected _fetchOne(namedApiResource: NamedApiResource<Pokemon>): Observable<PokemonWithSpecies> {
     return super._fetchOne(namedApiResource).pipe(
-      map((pokemon) => (pokemon as any) as Pokemon),
+      map((pokemon) => pokemon as any as Pokemon),
       mergeMap((pokemon: Pokemon) =>
         Axios.get<Species>(pokemon.species.url).pipe(
           retry(10),

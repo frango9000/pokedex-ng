@@ -1,8 +1,8 @@
 import { ApiEntity, Item, Machine, Move, NamedApiResource, PxMachine } from '@pokedex-ng/domain';
-import { AbstractGenerator } from '../model/abstract-generator';
+import { Axios } from 'axios-observable';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map, mergeMap, retry } from 'rxjs/operators';
-import { Axios } from 'axios-observable';
+import { AbstractGenerator } from '../model/abstract-generator';
 
 export class MachineGenerator extends AbstractGenerator<MachineWithItemAndMove, PxMachine> {
   constructor() {
@@ -32,7 +32,7 @@ export class MachineGenerator extends AbstractGenerator<MachineWithItemAndMove, 
 
   protected _fetchOne(namedApiResource: NamedApiResource<Machine>): Observable<MachineWithItemAndMove> {
     return super._fetchOne(namedApiResource).pipe(
-      map((machine) => (machine as any) as Machine),
+      map((machine) => machine as any as Machine),
       mergeMap((machine: Machine) =>
         forkJoin({
           machine: of(machine),

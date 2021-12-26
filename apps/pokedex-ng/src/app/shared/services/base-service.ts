@@ -32,12 +32,10 @@ export abstract class BaseService<T extends ApiEntity, P extends ApiEntity> {
 
   public fetchApiAll(offset = 0, limit = 9999): Observable<NamedApiResource<T>[]> {
     const params: HttpParams = new HttpParams().append('limit', String(limit)).append('offset', String(offset));
-    return this.http
-      .get<ApiResourceList<NamedApiResource<T>>>(`api/${this.name}`, { params })
-      .pipe(
-        take(1),
-        map((value) => value.results)
-      );
+    return this.http.get<ApiResourceList<NamedApiResource<T>>>(`api/${this.name}`, { params }).pipe(
+      take(1),
+      map((value) => value.results)
+    );
   }
 
   public fetchApiOne(id: string | number): Observable<T> {
