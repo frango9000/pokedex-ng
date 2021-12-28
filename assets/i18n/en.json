@@ -165,9 +165,25 @@
       "DESCRIPTION": "Description",
       "EFFECT": "Effect",
       "EFFECT_SHORT": "Short"
+    },
+    "ENCOUNTERS": {
+      "INFO": {
+        "TITLE": "Encounters"
+      },
+      "CHANCE": "Chance",
+      "LEVEL": "Level",
+      "MIN_LEVEL": "Min Level",
+      "MAX_LEVEL": "Max Level",
+      "METHOD": "Method",
+      "CONDITIONS": "Conditions"
     }
   },
   "STATIC": {
+    "GENDER": {
+      "1": "female",
+      "2": "male",
+      "3": "genderless"
+    },
     "MOVE": {
       "CATEGORIES": {
         "damage": "Inflicts damage",
@@ -304,5 +320,6 @@
       "urban": "urban",
       "waters-edge": "waters edge"
     }
-  }
+  },
+  "LOADING": "Loading"
 }
