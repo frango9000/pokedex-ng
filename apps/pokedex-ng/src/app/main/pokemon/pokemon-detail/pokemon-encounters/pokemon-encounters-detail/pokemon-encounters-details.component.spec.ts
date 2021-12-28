@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  StubExpansionButtonComponent
-} from '../../../../../shared/components/expansion-button/expansion-button.component.stub';
+import { StubExpansionButtonComponent } from '../../../../../shared/components/expansion-button/expansion-button.component.stub';
 
 import { PokemonEncountersDetailsComponent } from './pokemon-encounters-details.component';
 
