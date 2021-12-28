@@ -1,19 +1,25 @@
+import { concat } from 'rxjs';
 import * as Generators from '../index';
 
-const generateAll = async () => {
-  await new Generators.PokemonGenerator().generateResources().toPromise();
-  await new Generators.MovesGenerator().generateResources().toPromise();
-  await new Generators.MoveLearnMethodGenerator().generateResources().toPromise();
-  await new Generators.AbilitiesGenerator().generateResources().toPromise();
-  await new Generators.VersionGroupGenerator().generateResources().toPromise();
-  await new Generators.LanguageGenerator().generateResources().toPromise();
-  await new Generators.TypeGenerator().generateResources().toPromise();
-  await new Generators.ItemGenerator().generateResources().toPromise();
-  await new Generators.ItemCategoryGenerator().generateResources().toPromise();
-  await new Generators.ItemPocketGenerator().generateResources().toPromise();
-  await new Generators.MachineGenerator().generateResources().toPromise();
-  await new Generators.GenerationGenerator().generateResources().toPromise();
-  await new Generators.StatGenerator().generateResources().toPromise();
+const generateAll = () => {
+  concat(
+    // new Generators.PokemonGenerator().generateResources(),
+    // new Generators.MovesGenerator().generateResources(),
+    // new Generators.MoveLearnMethodGenerator().generateResources(),
+    // new Generators.AbilitiesGenerator().generateResources(),
+    // new Generators.VersionGroupGenerator().generateResources(),
+    // new Generators.LanguageGenerator().generateResources(),
+    // new Generators.TypeGenerator().generateResources(),
+    // new Generators.ItemGenerator().generateResources(),
+    // new Generators.ItemCategoryGenerator().generateResources(),
+    // new Generators.ItemPocketGenerator().generateResources(),
+    // new Generators.MachineGenerator().generateResources(),
+    // new Generators.GenerationGenerator().generateResources(),
+    // new Generators.StatGenerator().generateResources(),
+    // new Generators.EncounterMethodGenerator().generateResources(),
+    // new Generators.EncounterConditionGenerator().generateResources(),
+    new Generators.EncounterConditionValueGenerator().generateResources()
+  ).subscribe((list) => console.log('Done ->', list.length));
 };
 
 generateAll();

@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between" *ngIf="versionLocation">
+  * {{ versionLocation.location_area.name | titlecase }}
+  <div>
+    <span class="mr-2" *ngIf="versionLocation.version_detail.max_chance"
+      >{{ versionLocation.version_detail.max_chance }} %</span
+    >
+    <pokedex-ng-expansion-button
+      [isExpanded]="isExpanded"
+      color="green"
+      (action)="isExpanded = !isExpanded"
+    ></pokedex-ng-expansion-button>
+  </div>
+</div>
+<pokedex-ng-pokemon-encounters-details
+  *ngIf="isExpanded"
+  [encounterDetails]="versionLocation.version_detail"
+></pokedex-ng-pokemon-encounters-details>

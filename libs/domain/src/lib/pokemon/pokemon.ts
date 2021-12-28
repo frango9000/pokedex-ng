@@ -29,7 +29,7 @@ export interface Pokemon extends ApiEntity {
   abilities: PokemonAbilities[];
   game_indices: PokemonGameIndices[];
   held_items: PokemonHeldItems[];
-  location_area_encounters: PokemonLocationAreaEncounters[];
+  location_area_encounters: string;
   sprites: PokemonSprites;
   stats: PokemonStats[];
   types: PokeSlotType[];
@@ -57,19 +57,31 @@ export interface PokemonSprites {
   front_shiny_female: string;
 }
 
+export interface PokemonEncounterVersionDetail {
+  max_chance: number;
+  encounter_details: {
+    min_level: number;
+    max_level: number;
+    condition_values: NamedApiResource[];
+    chance: number;
+    method: NamedApiResource;
+  }[];
+  version: NamedApiResource<GameVersion>;
+}
+
 export interface PokemonLocationAreaEncounters {
   location_area: NamedApiResource;
-  version_details: {
-    max_chance: number;
-    encounter_details: {
-      min_level: number;
-      max_level: number;
-      condition_values: NamedApiResource[];
-      chance: number;
-      method: NamedApiResource;
-    }[];
-    version: NamedApiResource<GameVersion>;
-  }[];
+  version_details: PokemonEncounterVersionDetail[];
+}
+
+export interface PxLocationAreaEncounter {
+  location_area: NamedApiResource;
+  version_detail: PokemonEncounterVersionDetail;
+}
+
+export interface PxEncountersByVersion {
+  version: NamedApiResource<GameVersion>;
+  version_location_encounters: PxLocationAreaEncounter[];
 }
 
 export interface PokemonHeldItems {

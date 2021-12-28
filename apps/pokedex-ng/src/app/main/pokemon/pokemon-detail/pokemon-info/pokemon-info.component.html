@@ -47,32 +47,32 @@
       </div>
     </div>
   </div>
-  <mdb-card-body class="py-0 px-2 px-sm-4">
+  <mdb-card-body class="px-0">
     <div class="text-center">
       <h4>{{ pokemon.name | titlecase }}</h4>
     </div>
-    <table class="table mb-0" aria-describedby="Table of Info" aria-hidden="true">
+    <table mdbTable class="table mb-0" aria-describedby="Table of Info" aria-hidden="true" hover="true">
       <tbody>
-        <tr>
-          <td>{{ 'UI.POKEMON.INFO.ID' | transloco }}</td>
+        <tr mdbTableCol>
+          <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.POKEMON.INFO.ID' | transloco }}</th>
           <td># {{ pokemon.id }}</td>
         </tr>
-        <tr>
-          <td>{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | transloco }}</td>
+        <tr mdbTableCol>
+          <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.POKEMON.INFO.BASE_EXPERIENCE' | transloco }}</th>
           <td>
             {{ pokemon.base_experience }}
             {{ 'UI.POKEMON.INFO.BASE_EXPERIENCE_UNIT' | transloco }}
           </td>
         </tr>
-        <tr>
-          <td>{{ 'UI.POKEMON.INFO.WEIGHT' | transloco }}</td>
+        <tr mdbTableCol>
+          <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.POKEMON.INFO.WEIGHT' | transloco }}</th>
           <td>
             {{ pokemon.weight / 10 }}
             {{ 'UI.POKEMON.INFO.WEIGHT_UNIT' | transloco }}
           </td>
         </tr>
-        <tr>
-          <td>{{ 'UI.POKEMON.INFO.HEIGHT' | transloco }}</td>
+        <tr mdbTableCol>
+          <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.POKEMON.INFO.HEIGHT' | transloco }}</th>
           <td>
             {{ pokemon.height / 10 }}
             {{ 'UI.POKEMON.INFO.HEIGHT_UNIT' | transloco }}

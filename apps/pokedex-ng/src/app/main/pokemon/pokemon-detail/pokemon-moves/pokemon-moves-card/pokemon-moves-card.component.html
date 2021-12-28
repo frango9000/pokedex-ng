@@ -1,6 +1,6 @@
 <ng-container *ngVar="moves$ | async as moves">
-  <mdb-card class="max-detail-size w-100 pb-2 mb-2" *ngIf="moves.length">
-    <div class="container-fluid border-bottom">
+  <mdb-card class="max-detail-size w-100 px-0 mb-3" *ngIf="moves.length">
+    <div class="container-fluid card-header-border-bottom">
       <div class="m-2 align-items-center" title="{{ 'MOVE.LEARN_METHOD.' + cardTitle + '.DESCRIPTION' | transloco }}">
         <mdb-icon fas icon="info" size="1x"></mdb-icon>
         <span class="overflow-hidden text-nowrap pl-2">
@@ -8,11 +8,11 @@
         </span>
       </div>
     </div>
-    <mdb-card-body class="py-0 px-2 px-sm-4">
-      <table class="table table-sm mb-0" aria-describedby="Table of Moves">
+    <mdb-card-body class="p-0">
+      <table mdbTable class="table table-sm" hover="true" aria-describedby="Table of Moves">
         <thead>
           <tr>
-            <th scope="col">
+            <th scope="col" class="pl-3 pl-sm-5">
               <span *ngIf="showLevels">{{ 'UI.MOVE.LEVEL' | transloco }}</span>
             </th>
             <th scope="col">{{ 'UI.MOVE.MOVE' | transloco }}</th>
@@ -23,10 +23,10 @@
         <tbody>
           <ng-container *ngFor="let move of moves">
             <ng-container *ngVar="expandedMove === move.move.name as isExpanded">
-              <tr>
-                <td class="align-middle">
+              <tr mdbTableCol>
+                <th scope="row" class="pl-3 pl-sm-5 align-middle">
                   <span *ngIf="showLevels">{{ move.version_group_detail?.level_learned_at }}</span>
-                </td>
+                </th>
                 <td class="align-middle w-75">
                   {{ 'MOVE.' + move.move.name + '.NAME' | transloco }}
                 </td>
@@ -41,26 +41,17 @@
                     </span>
                   </div>
                 </td>
-                <td class="text-right align-middle p-0">
-                  <button
-                    mdbBtn
-                    size="sm"
-                    color="primary"
-                    class="waves-light btn btn-primary p-1 px-2"
-                    mdbWavesEffect
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls=""
-                    (click)="expandedMove = isExpanded ? '' : move.move.name"
-                  >
-                    <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: isExpanded }"></mdb-icon>
-                  </button>
+                <td class="text-right align-middle p-0 pr-3 pr-sm-3">
+                  <pokedex-ng-expansion-button
+                    (action)="expandedMove = isExpanded ? '' : move.move.name"
+                    [isExpanded]="isExpanded"
+                  ></pokedex-ng-expansion-button>
                 </td>
               </tr>
-              <tr *ngIf="isExpanded">
-                <td colspan="4" [ngClass]="{ 'border-top-0': isExpanded }" class="px-0 pb-3">
+              <tr mdbTableCol *ngIf="isExpanded">
+                <th scope="row" colspan="4" [ngClass]="{ 'border-top-0': isExpanded }">
                   <pokedex-ng-move-detail [moveId]="move.move.name"></pokedex-ng-move-detail>
-                </td>
+                </th>
               </tr>
             </ng-container>
           </ng-container>

@@ -6,8 +6,8 @@ export const environment = {
   logNetworkResponses: false,
   logCachedResponses: false,
   cache: {
-    active: true,
-    external: true,
+    active: false,
+    external: false,
     local: false,
   },
 };

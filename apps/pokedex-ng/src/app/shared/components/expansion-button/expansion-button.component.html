@@ -1,0 +1,13 @@
+<button
+  mdbBtn
+  size="sm"
+  [color]="color"
+  class="waves-light btn btn-primary p-1 px-2"
+  mdbWavesEffect
+  role="button"
+  aria-expanded="false"
+  aria-controls=""
+  (click)="action.emit()"
+>
+  <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: isExpanded }"></mdb-icon>
+</button>

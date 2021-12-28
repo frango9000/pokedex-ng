@@ -110,6 +110,13 @@ export class PokemonEvolutionLinkComponent implements OnInit {
             : 'BALANCED'),
       });
     }
+    if (method.gender) {
+      conditions.push({
+        title: 'GENDER',
+        value: method.gender,
+        translation: `STATIC.GENDER.${method.gender}`,
+      });
+    }
     if (method.party_species) {
       conditions.push({ title: 'PARTY_POKEMON', value: method.party_species.name });
     }
@@ -121,9 +128,6 @@ export class PokemonEvolutionLinkComponent implements OnInit {
     }
     if (method.min_happiness) {
       conditions.push({ title: 'MIN_HAPPINESS', value: method.min_happiness });
-    }
-    if (method.gender) {
-      conditions.push({ title: 'GENDER', value: method.gender });
     }
     if (method.time_of_day) {
       conditions.push({ title: 'TIME_OF_DAY', value: method.time_of_day });

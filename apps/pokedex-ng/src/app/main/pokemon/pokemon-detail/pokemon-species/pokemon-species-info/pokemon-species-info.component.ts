@@ -41,15 +41,17 @@ export class PokemonSpeciesInfoComponent implements OnInit, OnDestroy {
       .pipe(
         filter((species) => !!species),
         tap(() => (this.species = null)),
-        switchMap((species: Species) =>
-          forkJoin([
-            this.growthRateService.fetchApiOne(species.growth_rate.name),
-            this.pokemonColorService.fetchApiOne(species.color.name),
-            this.pokemonHabitatService.fetchApiOne(species.habitat.name),
-            this.pokemonShapeService.fetchApiOne(species.shape.name),
+        switchMap((species: Species) => {
+          const nestedObservables = [];
+          if (species.growth_rate) nestedObservables.push(this.growthRateService.fetchApiOne(species.growth_rate.name));
+          if (species.color) nestedObservables.push(this.pokemonColorService.fetchApiOne(species.color.name));
+          if (species.habitat) nestedObservables.push(this.pokemonHabitatService.fetchApiOne(species.habitat.name));
+          if (species.shape) nestedObservables.push(this.pokemonShapeService.fetchApiOne(species.shape.name));
+          return forkJoin([
+            ...nestedObservables,
             ...species.egg_groups.map((eggGroup) => this.eggGroupService.fetchApiOne(eggGroup.name)),
-          ]).pipe(map(() => species))
-        )
+          ]).pipe(map(() => species));
+        })
       )
       .subscribe((species) => (this.species = species));
   }

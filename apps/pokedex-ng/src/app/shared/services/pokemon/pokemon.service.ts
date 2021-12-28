@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Pokemon, PxPokemon } from '@pokedex-ng/domain';
+import { Pokemon, PokemonLocationAreaEncounters, PxPokemon } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FilterService } from '../app/filter.service';
@@ -20,5 +20,9 @@ export class PokemonService extends BaseService<Pokemon, PxPokemon> {
       map((list: PxPokemon[]) => this.filterService.filterByTypes(list)),
       map((list: PxPokemon[]) => this.filterService.filterByName(list))
     );
+  }
+
+  fetchPokemonEncounters(pokemon: Pokemon): Observable<PokemonLocationAreaEncounters[]> {
+    return this.http.get<PokemonLocationAreaEncounters[]>(pokemon.location_area_encounters);
   }
 }

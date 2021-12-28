@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ExpansionButtonComponent } from './components/expansion-button/expansion-button.component';
 import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
 import { ClearFilterComponent } from './components/filters/clear-filter/clear-filter.component';
 import { GenerationFilterComponent } from './components/filters/generation-filter/generation-filter.component';
@@ -46,6 +47,7 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     FilterToolbarComponent,
     ItemCategoryFilterComponent,
     ItemPocketFilterComponent,
+    ExpansionButtonComponent,
   ],
   exports: [
     NavbarComponent,
@@ -61,6 +63,7 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     WithVersionGroupPipe,
     ClearFilterComponent,
     FilterToolbarComponent,
+    ExpansionButtonComponent,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslocoModule],
 })

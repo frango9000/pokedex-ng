@@ -1,5 +1,5 @@
-<mdb-card class="max-detail-size w-100 my-1 pb-2" *ngIf="pokemon$ | async as pokemon">
-  <div class="container-fluid border-bottom">
+<mdb-card class="max-detail-size w-100 px-0" *ngIf="pokemon$ | async as pokemon">
+  <div class="container-fluid card-header-border-bottom">
     <div class="m-2 align-items-center" title="{{ 'UI.ABILITY.ABILITIES' | transloco }}">
       <mdb-icon fas icon="info" size="1x"></mdb-icon>
       <span class="overflow-hidden text-nowrap pl-2">
@@ -7,12 +7,11 @@
       </span>
     </div>
   </div>
-
-  <mdb-card-body class="py-0 px-2 px-sm-4">
-    <table class="table table-sm mb-0" aria-describedby="Table of Abilities" aria-hidden="true">
+  <mdb-card-body class="p-0">
+    <table mdbTable class="table table-sm" hover="true" aria-describedby="Table of Abilities" aria-hidden="true">
       <thead>
         <tr>
-          <th scope="col">{{ 'UI.ABILITY.SLOT' | transloco }}</th>
+          <th scope="col" class="pl-3 pl-sm-5">{{ 'UI.ABILITY.SLOT' | transloco }}</th>
           <th scope="col">{{ 'UI.ABILITY.ABILITY' | transloco }}</th>
           <th scope="col"></th>
         </tr>
@@ -20,31 +19,22 @@
       <tbody>
         <ng-container *ngFor="let ability of pokemon.abilities">
           <ng-container *ngVar="expandedAbility === ability.ability.name as isExpanded">
-            <tr>
-              <td class="align-middle">{{ ability.slot }}</td>
+            <tr mdbTableCol>
+              <th scope="row" class="pl-3 pl-sm-5 align-middle">{{ ability.slot }}</th>
               <td class="align-middle w-75">
                 {{ 'ABILITY.' + ability.ability.name + '.NAME' | transloco }}
               </td>
-              <td class="text-right align-middle p-0">
-                <button
-                  mdbBtn
-                  size="sm"
-                  color="primary"
-                  class="waves-light btn btn-primary p-1 px-2"
-                  mdbWavesEffect
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls=""
-                  (click)="expandedAbility = isExpanded ? '' : ability.ability.name"
-                >
-                  <mdb-icon fas icon="chevron-right" size="1x" [ngClass]="{ expanded: isExpanded }"></mdb-icon>
-                </button>
+              <td class="text-right align-middle p-0 pr-3 pr-sm-3">
+                <pokedex-ng-expansion-button
+                  (action)="expandedAbility = isExpanded ? '' : ability.ability.name"
+                  [isExpanded]="isExpanded"
+                ></pokedex-ng-expansion-button>
               </td>
             </tr>
-            <tr *ngIf="isExpanded">
-              <td colspan="3" [ngClass]="{ 'border-top-0': isExpanded }" class="px-0 pb-3">
+            <tr mdbTableCol *ngIf="isExpanded">
+              <th scope="row" colspan="3" [ngClass]="{ 'border-top-0': isExpanded }">
                 <app-pokemon-ability [abilityId]="ability.ability.name"></app-pokemon-ability>
-              </td>
+              </th>
             </tr>
           </ng-container>
         </ng-container>

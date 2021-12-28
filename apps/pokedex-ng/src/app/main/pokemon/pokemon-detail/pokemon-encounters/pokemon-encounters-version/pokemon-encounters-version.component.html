@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between align-items-center" *ngIf="versionLocationEncounters">
+  {{ versionLocationEncounters.version.name | titlecase }}
+  <pokedex-ng-expansion-button
+    [isExpanded]="isExpanded"
+    (action)="isExpanded = !isExpanded"
+  ></pokedex-ng-expansion-button>
+</div>
+<div *ngIf="isExpanded">
+  <ul class="list-group list-group-flush">
+    <pokedex-ng-pokemon-encounters-location
+      class="list-group-item px-0"
+      *ngFor="let versionLocation of versionLocationEncounters.version_location_encounters"
+      [versionLocation]="versionLocation"
+    ></pokedex-ng-pokemon-encounters-location>
+  </ul>
+</div>

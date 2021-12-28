@@ -27,7 +27,7 @@ const mockPokemon: Pokemon = {
   held_items: [],
   id: 0,
   is_default: false,
-  location_area_encounters: [],
+  location_area_encounters: '',
   moves: [],
   name: '',
   order: 0,

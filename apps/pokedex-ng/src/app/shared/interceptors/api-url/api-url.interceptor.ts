@@ -15,6 +15,9 @@ export class ApiUrlInterceptor implements HttpInterceptor {
       case 'assets':
         root = environment.baseHref + '/assets';
         break;
+      case 'http':
+        root = prefix;
+        break;
     }
     return next.handle(
       request.clone({

@@ -24,7 +24,7 @@
               <div>
                 {{ 'EVOLUTION.TRIGGER.' + method.processed_details.trigger.title | transloco }}
                 <span *ngIf="method.processed_details.trigger.value"
-                  >>
+                  >@
                   <span *ngIf="method.processed_details.trigger.translation; else triggerValue">{{
                     method.processed_details.trigger.translation | transloco
                   }}</span>

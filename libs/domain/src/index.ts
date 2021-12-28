@@ -15,5 +15,6 @@ export * from './lib/items/item';
 export * from './lib/moves/move';
 export * from './lib/machines/machine';
 export * from './lib/location/location';
+export * from './lib/encounters/encounters';
 
 export * from './lib/domain.module';

@@ -4,7 +4,7 @@
 >
   <pokedex-ng-pokemon-info
     [pokemon$]="getDisplayedPokemon$()"
-    class="pokemon-section w-100 my-2"
+    class="pokemon-section w-100 mb-2"
   ></pokedex-ng-pokemon-info>
   <app-pokemon-species [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-species>
   <app-pokemon-stats [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-stats>
@@ -12,6 +12,10 @@
     [pokemon$]="getDisplayedPokemon$()"
     class="pokemon-section w-100 my-2"
   ></app-pokemon-type-damages>
+  <pokedex-ng-pokemon-encounters
+    [pokemon$]="getDisplayedPokemon$()"
+    class="pokemon-section w-100 my-2"
+  ></pokedex-ng-pokemon-encounters>
   <app-pokemon-abilities [pokemon$]="getDisplayedPokemon$()" class="pokemon-section w-100 my-2"></app-pokemon-abilities>
   <app-pokemon-moves
     [pokemon$]="getDisplayedPokemon$()"

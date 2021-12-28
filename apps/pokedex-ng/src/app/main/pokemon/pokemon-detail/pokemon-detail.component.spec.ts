@@ -8,11 +8,17 @@ import { stubPokemonServiceProvider } from '../../../shared/services/pokemon/pok
 import { stubAppNavbarServiceProvider } from '../../../shared/services/stubs';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonDetailComponent } from './pokemon-detail.component';
+import { PokemonEncountersComponent } from './pokemon-encounters/pokemon-encounters.component';
 import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
 import { PokemonMovesComponent } from './pokemon-moves/pokemon-moves.component';
 import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.component';
 import { PokemonStatsComponent } from './pokemon-stats/pokemon-stats.component';
 import { PokemonTypeDamagesComponent } from './pokemon-type-damages/pokemon-type-damages.component';
+
+@Component({ selector: 'pokedex-ng-pokemon-encounters', template: '' })
+export class StubPokemonEncountersComponent implements Partial<PokemonEncountersComponent> {
+  @Input() public pokemon$: Observable<Pokemon>;
+}
 
 @Component({ selector: 'pokedex-ng-pokemon-info', template: '' })
 export class StubPokemonInfoComponent implements Partial<PokemonInfoComponent> {
@@ -59,6 +65,7 @@ describe('PokemonDetailComponent', () => {
           PokemonStatsStubComponent,
           PokemonTypeDamagesStubComponent,
           PokemonAbilitiesStubComponent,
+          StubPokemonEncountersComponent,
           PokemonMovesStubComponent,
         ],
         providers: [stubPokemonServiceProvider, stubAppNavbarServiceProvider],
