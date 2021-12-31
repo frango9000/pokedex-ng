@@ -8,6 +8,10 @@
     </div>
   </div>
   <mdb-card-body class="p-2 py-0 px-sm-4">
-    <pokedex-ng-type-damages [showDefending]="true" [types$]="getTypeDamages$()"></pokedex-ng-type-damages>
+    <pokedex-ng-type-damages
+      [showDefending]="true"
+      [types$]="getTypeDamages$()"
+      [clickableEntries]="true"
+    ></pokedex-ng-type-damages>
   </mdb-card-body>
 </mdb-card>

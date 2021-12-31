@@ -3,7 +3,7 @@
     <div class="m-3">
       <pokedex-ng-types-pill
         *ngIf="types$ | async as types"
-        [clickable]="false"
+        [clickable]="clickableTitle"
         [types]="types"
         [size]="18"
       ></pokedex-ng-types-pill>
@@ -19,7 +19,7 @@
         </div>
         <div class="row my-1" *ngFor="let weakness of typeDamages.attacking.weaknesses">
           <pokedex-ng-type-pill
-            [clickable]="false"
+            [clickable]="clickableEntries"
             class="col-9"
             [type]="weakness.name"
             [inline]="false"
@@ -37,7 +37,7 @@
         </div>
         <div class="row my-1" *ngFor="let strength of typeDamages.attacking.strengths">
           <pokedex-ng-type-pill
-            [clickable]="false"
+            [clickable]="clickableEntries"
             class="col-9"
             [type]="strength.name"
             [inline]="false"
@@ -60,7 +60,7 @@
         </div>
         <div class="row my-1" *ngFor="let weakness of typeDamages.defending.weaknesses">
           <pokedex-ng-type-pill
-            [clickable]="false"
+            [clickable]="clickableEntries"
             class="col-9"
             [type]="weakness.name"
             [inline]="false"
@@ -78,7 +78,7 @@
         </div>
         <div class="row my-1" *ngFor="let resistance of typeDamages.defending.resistances">
           <pokedex-ng-type-pill
-            [clickable]="false"
+            [clickable]="clickableEntries"
             class="col-9"
             [type]="resistance.name"
             [inline]="false"

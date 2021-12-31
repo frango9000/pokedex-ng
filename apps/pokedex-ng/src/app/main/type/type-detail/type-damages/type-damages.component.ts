@@ -18,6 +18,8 @@ export class TypeDamagesComponent implements OnInit {
 
   @Input() public showDefending = false;
   @Input() public showAttacking = false;
+  @Input() public clickableTitle = false;
+  @Input() public clickableEntries = false;
 
   constructor(private readonly typeService: TypeService) {}
 
