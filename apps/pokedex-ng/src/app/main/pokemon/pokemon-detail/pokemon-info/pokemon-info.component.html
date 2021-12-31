@@ -14,16 +14,7 @@
           </a>
         </div>
         <div class="col-8">
-          <h5 class="text-center text-white pt-1">
-            <span
-              class="px-2 py-1 mx-1 rounded-lg"
-              *ngFor="let type of pokemon.types"
-              [ngStyle]="{
-                'background-color': type.type.name | pokeTypeColor
-              }"
-              >{{ 'TYPE.' + type.type.name + '.NAME' | transloco | uppercase }}</span
-            >
-          </h5>
+          <pokedex-ng-types-pill [types]="getTypes(pokemon.types)" [size]="20"></pokedex-ng-types-pill>
         </div>
         <div class="col-2 text-right align-middle">
           <a

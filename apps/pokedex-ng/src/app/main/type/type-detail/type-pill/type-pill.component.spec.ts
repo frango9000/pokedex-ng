@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslocoModule } from '@ngneat/transloco';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SharedModule } from '../../../../shared/shared.module';
 
 import { TypePillComponent } from './type-pill.component';
 
@@ -8,9 +11,9 @@ describe('TypePillComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypePillComponent ]
-    })
-    .compileComponents();
+      imports: [MDBBootstrapModule.forRoot(), SharedModule, TranslocoModule],
+      declarations: [TypePillComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -4,9 +4,58 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pokeTypeColor',
 })
 export class PokeTypeColorPipe implements PipeTransform {
-  transform(value: string, inverted = false): string {
+  transform(type: string, inverted = false, mixWithType: string = ''): string {
+    let color = this.getTypeColor(type);
+    if (mixWithType?.length) {
+      const mixColor = this.getTypeColor(mixWithType);
+      color = this.blendColors(color, mixColor);
+    }
+    return !inverted ? color : this.invertColor(color);
+  }
+
+  invertColor(hex) {
+    if (hex.indexOf('#') === 0) {
+      hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+      throw new Error('Invalid HEX color.');
+    }
+    // invert color components
+    const r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
+      g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
+      b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
+    // pad each with zeros and return
+    return '#' + this.padZero(r) + this.padZero(g) + this.padZero(b);
+  }
+
+  padZero(str, len?) {
+    len = len || 2;
+    const zeros = new Array(len).join('0');
+    return (zeros + str).slice(-len);
+  }
+
+  blendColors(colorA, colorB, amount = 0.5) {
+    const [rA, gA, bA] = colorA.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const [rB, gB, bB] = colorB.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const r = Math.round(rA + (rB - rA) * amount)
+      .toString(16)
+      .padStart(2, '0');
+    const g = Math.round(gA + (gB - gA) * amount)
+      .toString(16)
+      .padStart(2, '0');
+    const b = Math.round(bA + (bB - bA) * amount)
+      .toString(16)
+      .padStart(2, '0');
+    return '#' + r + g + b;
+  }
+
+  getTypeColor(type: string) {
     let color = '#000';
-    switch (value) {
+    switch (type) {
       case 'normal':
         color = '#9C9C63';
         break;
@@ -70,31 +119,6 @@ export class PokeTypeColorPipe implements PipeTransform {
       default:
         break;
     }
-    return !inverted ? color : this.invertColor(color);
-  }
-
-  invertColor(hex) {
-    if (hex.indexOf('#') === 0) {
-      hex = hex.slice(1);
-    }
-    // convert 3-digit hex to 6-digits.
-    if (hex.length === 3) {
-      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-    }
-    if (hex.length !== 6) {
-      throw new Error('Invalid HEX color.');
-    }
-    // invert color components
-    const r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
-      g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
-      b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
-    // pad each with zeros and return
-    return '#' + this.padZero(r) + this.padZero(g) + this.padZero(b);
-  }
-
-  padZero(str, len?) {
-    len = len || 2;
-    const zeros = new Array(len).join('0');
-    return (zeros + str).slice(-len);
+    return color;
   }
 }

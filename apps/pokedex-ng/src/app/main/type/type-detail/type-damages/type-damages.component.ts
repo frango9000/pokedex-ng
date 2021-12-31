@@ -19,14 +19,14 @@ export class TypeDamagesComponent implements OnInit {
   @Input() public showDefending = false;
   @Input() public showAttacking = false;
 
-  constructor(private readonly pokemonTypeService: TypeService) {}
+  constructor(private readonly typeService: TypeService) {}
 
   ngOnInit(): void {
     this.types$
       .pipe(
         untilDestroyed(this),
         switchMap((types: string[]) =>
-          this.pokemonTypeService.getAll().pipe(
+          this.typeService.getAll().pipe(
             map((allTypes) => {
               return this.generateTypeDamages(types, allTypes);
             })

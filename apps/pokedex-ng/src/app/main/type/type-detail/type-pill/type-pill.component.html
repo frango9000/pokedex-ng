@@ -1,11 +1,13 @@
 <div
-  class="rounded-lg cursor-pointer text-center"
+  *ngIf="type"
+  class="cursor-pointer text-center rounded-lg"
   [ngStyle]="{
     'background-color': type | pokeTypeColor,
-    color: type | pokeTypeColor: true,
-    'font-size': size + 'px'
+    color: 'white',
+    'font-size': size + 'px',
+    'border-radius': size / 2 + 'px'
   }"
-  [ngClass]="{ 'rotate-90': vertical }"
+  [ngClass]="{ 'rotate-90': vertical, 'inline-type': inline }"
   (click)="onClick()"
 >
   {{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}

@@ -4,6 +4,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from '../../../shared/shared.module';
+import { TypeDetailModule } from '../../type/type-detail/type-detail.module';
 import { PokemonGridComponent } from './pokemon-grid/pokemon-grid.component';
 
 import { PokemonHomeRoutingModule } from './pokemon-home-routing.module';
@@ -19,6 +20,7 @@ import { PokemonTableComponent } from './pokemon-table/pokemon-table.component';
     SharedModule,
     InfiniteScrollModule,
     TranslocoModule,
+    TypeDetailModule,
   ],
 })
 export class PokemonHomeModule {}

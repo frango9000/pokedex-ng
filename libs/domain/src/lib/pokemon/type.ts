@@ -62,8 +62,3 @@ export interface DefendingTypeDamages {
   weaknesses: TypeDamageEntry[];
   resistances: TypeDamageEntry[];
 }
-
-export enum TypeDamagesContext {
-  ATTACKING = 'attacking',
-  DEFENDING = 'defending',
-}

@@ -31,15 +31,7 @@
                   {{ 'MOVE.' + move.move.name + '.NAME' | transloco }}
                 </td>
                 <td>
-                  <div class="text-center text-white pt-1">
-                    <span
-                      class="p-1 rounded-lg text-nowrap"
-                      [ngStyle]="{ 'background-color': move.type | pokeTypeColor }"
-                      *ngVar="'TYPE.' + move.type + '.NAME' | transloco | uppercase as typeName"
-                    >
-                      {{ typeName }}
-                    </span>
-                  </div>
+                  <pokedex-ng-type-pill [type]="move.type" [clickable]="false" [size]="12"></pokedex-ng-type-pill>
                 </td>
                 <td class="text-right align-middle p-0 pr-3 pr-sm-3">
                   <pokedex-ng-expansion-button

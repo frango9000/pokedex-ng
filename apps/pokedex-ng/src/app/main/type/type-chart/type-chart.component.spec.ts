@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { stubTypeServiceProvider } from '../../../shared/services/pokemon/pokemon.service.stubs';
 
 import { TypeChartComponent } from './type-chart.component';
 
@@ -8,9 +9,9 @@ describe('TypeChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeChartComponent ]
-    })
-    .compileComponents();
+      declarations: [TypeChartComponent],
+      providers: [stubTypeServiceProvider],
+    }).compileComponents();
   });
 
   beforeEach(() => {

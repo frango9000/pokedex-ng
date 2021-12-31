@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Pokemon } from '@pokedex-ng/domain';
+import { Pokemon, PokeSlotType } from '@pokedex-ng/domain';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,4 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class PokemonInfoComponent {
   @Input() pokemon$: Observable<Pokemon>;
+
+  getTypes(types: PokeSlotType[]): string[] {
+    return types.map((type) => type.type.name);
+  }
 }

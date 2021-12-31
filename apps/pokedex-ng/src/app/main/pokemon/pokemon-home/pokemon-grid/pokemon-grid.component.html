@@ -35,16 +35,8 @@
         </div>
       </div>
       <mdb-card-footer class="p-1 mx-0 h-100">
-        <div
-          class="text-center text-white h-100 d-flex justify-content-around align-items-center flex-wrap"
-          (click)="openTypeDamagesDialog(pokemon.id)"
-        >
-          <span
-            class="m-1 px-2 rounded-lg"
-            *ngFor="let type of pokemon.types"
-            [ngStyle]="{ 'background-color': type | pokeTypeColor }"
-            >{{ 'TYPE.' + type + '.NAME' | transloco | uppercase }}<br class="d-sm-none"
-          /></span>
+        <div class="text-center text-white h-100 d-flex justify-content-around align-items-center flex-wrap">
+          <pokedex-ng-types-pill [types]="pokemon.types"></pokedex-ng-types-pill>
         </div>
       </mdb-card-footer>
     </mdb-card>

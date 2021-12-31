@@ -1,4 +1,4 @@
-<mdb-card class="max-detail-size w-100 pb-2" *ngIf="typeDamages$ | async as typeDamages; else loading">
+<mdb-card class="max-detail-size w-100 pb-2">
   <div class="container-fluid card-header-border-bottom">
     <div *ngIf="showHeading" class="m-2 align-items-center" title="{{ 'UI.TYPE_DAMAGES.TITLE_TITLE' | transloco }}">
       <mdb-icon fas icon="info" size="1x"></mdb-icon>
@@ -8,57 +8,6 @@
     </div>
   </div>
   <mdb-card-body class="p-2 py-0 px-sm-4">
-    <div class="container-fluid" *ngIf="typeDamages$ | async as typeDamages">
-      <div class="row px-0">
-        <div class="col-12 col-sm-6">
-          <div class="text-center">
-            <h6>{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | transloco }}</h6>
-          </div>
-          <div
-            class="row my-1 align-items-center text-center px-0"
-            *ngFor="let weakness of typeDamages.defending.weaknesses"
-          >
-            <div class="col-9 rounded-lg" [ngStyle]="{ 'background-color': weakness.name | pokeTypeColor }">
-              <h6 class="text-white my-1">
-                {{ 'TYPE.' + weakness.name + '.NAME' | transloco | uppercase }}
-              </h6>
-            </div>
-            <div class="col-3 weakness-multiplier text-left px-0 pl-4 pl-sm-2">
-              <strong class="weakness-multi">x{{ weakness.multiplier }}</strong>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6">
-          <div class="text-center">
-            <h6>{{ 'UI.TYPE_DAMAGES.RESISTANCES' | transloco }}</h6>
-          </div>
-          <div
-            class="row my-1 align-items-center text-center"
-            *ngFor="let resistance of typeDamages.defending.resistances"
-          >
-            <div
-              class="col-9 rounded-lg"
-              [ngStyle]="{
-                'background-color': resistance.name | pokeTypeColor
-              }"
-            >
-              <h6 class="text-white my-1">
-                {{ 'TYPE.' + resistance.name + '.NAME' | transloco | uppercase }}
-              </h6>
-            </div>
-            <div class="col-3 weakness-multiplier text-left px-0 pl-4 pl-sm-2">
-              <strong class="resist-multi">x{{ resistance.multiplier }}</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <pokedex-ng-type-damages [showDefending]="true" [types$]="getTypeDamages$()"></pokedex-ng-type-damages>
   </mdb-card-body>
 </mdb-card>
-<ng-template #loading>
-  <div class="text-center">
-    <div class="spinner-border m-4" style="width: 3rem; height: 3rem" role="status">
-      <span class="sr-only">{{ 'LOADING' | transloco }}</span>
-    </div>
-  </div>
-</ng-template>

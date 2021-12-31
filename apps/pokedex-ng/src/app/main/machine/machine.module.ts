@@ -10,6 +10,7 @@ import { TypeService } from '../../shared/services/pokemon/type.service';
 import { SharedModule } from '../../shared/shared.module';
 import { ItemDetailModule } from '../item/item-detail/item-detail.module';
 import { MoveDetailModule } from '../move/move-detail/move-detail.module';
+import { TypeDetailModule } from '../type/type-detail/type-detail.module';
 import { MachineDetailComponent } from './machine-detail/machine-detail.component';
 import { MachineListComponent } from './machine-list/machine-list.component';
 import { MachineRoutingModule } from './machine-routing.module';
@@ -25,6 +26,7 @@ import { MachineRoutingModule } from './machine-routing.module';
     MoveDetailModule,
     ItemDetailModule,
     TranslocoModule,
+    TypeDetailModule,
   ],
 })
 export class MachineModule {

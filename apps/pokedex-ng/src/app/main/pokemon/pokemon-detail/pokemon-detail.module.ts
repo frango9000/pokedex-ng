@@ -7,6 +7,7 @@ import { EncounterConditionService } from '../../../shared/services/encounters/e
 import { EncounterMethodService } from '../../../shared/services/encounters/encounter-method.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { MoveDetailModule } from '../../move/move-detail/move-detail.module';
+import { TypeDetailModule } from '../../type/type-detail/type-detail.module';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonAbilityComponent } from './pokemon-abilities/pokemon-ability/pokemon-ability.component';
 import { PokemonDetailRoutingModule } from './pokemon-detail-routing.module';
@@ -51,6 +52,7 @@ import { PokemonTypeDamagesModule } from './pokemon-type-damages/pokemon-type-da
     MoveDetailModule,
     SharedModule,
     MDBBootstrapModule.forRoot(),
+    TypeDetailModule,
   ],
 })
 export class PokemonDetailModule {

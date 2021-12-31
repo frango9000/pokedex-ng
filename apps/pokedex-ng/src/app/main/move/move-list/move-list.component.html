@@ -38,12 +38,7 @@
             <td class="p-0 align-middle">{{ move.generation }}</td>
             <td class="p-0 align-middle">
               <div class="p-1">
-                <pokedex-ng-type-pill
-                  [type]="move.type"
-                  [showDefending]="false"
-                  [clickable]="false"
-                  [size]="12"
-                ></pokedex-ng-type-pill>
+                <pokedex-ng-type-pill [type]="move.type" [clickable]="false" [size]="12"></pokedex-ng-type-pill>
               </div>
             </td>
             <td class="p-0 align-middle">{{ move.power }}</td>
