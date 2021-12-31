@@ -4,50 +4,97 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pokeTypeColor',
 })
 export class PokeTypeColorPipe implements PipeTransform {
-  transform(value: string): string {
+  transform(value: string, inverted = false): string {
+    let color = '#000';
     switch (value) {
       case 'normal':
-        return '#9C9C63';
+        color = '#9C9C63';
+        break;
       case 'fighting':
-        return '#AE2A24';
+        color = '#AE2A24';
+        break;
       case 'flying':
-        return '#8E6FEB';
+        color = '#8E6FEB';
+        break;
       case 'poison':
-        return '#923A92';
+        color = '#923A92';
+        break;
       case 'ground':
-        return '#DBB54D';
+        color = '#DBB54D';
+        break;
       case 'rock':
-        return '#A48F32';
+        color = '#A48F32';
+        break;
       case 'bug':
-        return '#97A51D';
+        color = '#97A51D';
+        break;
       case 'ghost':
-        return '#644E88';
+        color = '#644E88';
+        break;
       case 'steel':
-        return '#A0A0C0';
+        color = '#A0A0C0';
+        break;
       case 'fire':
-        return '#ED6D12';
+        color = '#ED6D12';
+        break;
       case 'water':
-        return '#4578ED';
+        color = '#4578ED';
+        break;
       case 'grass':
-        return '#69C23D';
+        color = '#69C23D';
+        break;
       case 'electric':
-        return '#F6C913';
+        color = '#F6C913';
+        break;
       case 'psychic':
-        return '#F73670';
+        color = '#F73670';
+        break;
       case 'ice':
-        return '#7ECECE';
+        color = '#7ECECE';
+        break;
       case 'dragon':
-        return '#5D1EF7';
+        color = '#5D1EF7';
+        break;
       case 'dark':
-        return '#644e40';
+        color = '#644e40';
+        break;
       case 'fairy':
-        return '#E87890';
+        color = '#E87890';
+        break;
       case 'unknown':
-        return '#888';
+        color = '#888';
+        break;
       case 'shadow':
-        return '#444';
+        color = '#444';
+        break;
       default:
-        return '#000';
+        break;
     }
+    return !inverted ? color : this.invertColor(color);
+  }
+
+  invertColor(hex) {
+    if (hex.indexOf('#') === 0) {
+      hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+      throw new Error('Invalid HEX color.');
+    }
+    // invert color components
+    const r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
+      g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
+      b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
+    // pad each with zeros and return
+    return '#' + this.padZero(r) + this.padZero(g) + this.padZero(b);
+  }
+
+  padZero(str, len?) {
+    len = len || 2;
+    const zeros = new Array(len).join('0');
+    return (zeros + str).slice(-len);
   }
 }

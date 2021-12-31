@@ -1,4 +1,11 @@
-import { Move, MoveLearnMethod, PxMove, PxMoveLearnMethod } from '@pokedex-ng/domain';
+import {
+  Move,
+  MoveDamageClass,
+  MoveLearnMethod,
+  PxMove,
+  PxMoveDamageClass,
+  PxMoveLearnMethod,
+} from '@pokedex-ng/domain';
 import { AbstractGenerator } from '../model/abstract-generator';
 
 export class MovesGenerator extends AbstractGenerator<Move, PxMove> {
@@ -27,6 +34,21 @@ export class MoveLearnMethodGenerator extends AbstractGenerator<MoveLearnMethod,
   }
 
   protected mapResource(resource: MoveLearnMethod): PxMoveLearnMethod {
+    return {
+      id: resource.id,
+      name: resource.name,
+      names: this.filterAndMapNames(resource.names),
+      descriptions: this.filterAndMapDescriptions(resource.descriptions),
+    };
+  }
+}
+
+export class MoveDamageClassGenerator extends AbstractGenerator<MoveDamageClass, PxMoveDamageClass> {
+  constructor() {
+    super('move-damage-class');
+  }
+
+  protected mapResource(resource: MoveDamageClass): PxMoveDamageClass {
     return {
       id: resource.id,
       name: resource.name,

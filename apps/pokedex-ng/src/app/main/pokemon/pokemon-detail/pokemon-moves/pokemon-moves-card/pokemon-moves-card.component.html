@@ -9,7 +9,7 @@
       </div>
     </div>
     <mdb-card-body class="p-0">
-      <table mdbTable class="table table-sm" hover="true" aria-describedby="Table of Moves">
+      <table class="table table-sm table-hover" aria-describedby="Table of Moves">
         <thead>
           <tr>
             <th scope="col" class="pl-3 pl-sm-5">
@@ -23,7 +23,7 @@
         <tbody>
           <ng-container *ngFor="let move of moves">
             <ng-container *ngVar="expandedMove === move.move.name as isExpanded">
-              <tr mdbTableCol>
+              <tr>
                 <th scope="row" class="pl-3 pl-sm-5 align-middle">
                   <span *ngIf="showLevels">{{ move.version_group_detail?.level_learned_at }}</span>
                 </th>
@@ -48,7 +48,7 @@
                   ></pokedex-ng-expansion-button>
                 </td>
               </tr>
-              <tr mdbTableCol *ngIf="isExpanded">
+              <tr *ngIf="isExpanded">
                 <th scope="row" colspan="4" [ngClass]="{ 'border-top-0': isExpanded }">
                   <pokedex-ng-move-detail [moveId]="move.move.name"></pokedex-ng-move-detail>
                 </th>

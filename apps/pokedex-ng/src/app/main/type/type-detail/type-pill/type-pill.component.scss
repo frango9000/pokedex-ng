@@ -1,0 +1,18 @@
+:host {
+  display: inline;
+
+  div {
+    padding: 2px 6px;
+    font-weight: bold;
+
+    &.rotate-90 {
+      padding: 6px 0;
+      white-space: nowrap;
+      position: relative;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      display: inline-block;
+      overflow: visible;
+    }
+  }
+}

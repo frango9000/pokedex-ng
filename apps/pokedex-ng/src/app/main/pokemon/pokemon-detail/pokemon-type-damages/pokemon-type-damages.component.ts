@@ -1,9 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { Pokemon, PokeSlotType, PxType, TypeDamages } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { TypeService } from '../../../../shared/services/pokemon/type.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-pokemon-type-damages',
   templateUrl: './pokemon-type-damages.component.html',
@@ -55,10 +57,6 @@ export class PokemonTypeDamagesComponent implements OnInit, OnDestroy {
       });
     });
     generatedTypeDamages = generatedTypeDamages.filter((value) => value.multiplier !== 1);
-    this.typeDamages$.next({
-      weaknesses: generatedTypeDamages.filter((value) => value.multiplier > 1),
-      resistances: generatedTypeDamages.filter((value) => value.multiplier < 1),
-    });
   }
 
   ngOnDestroy(): void {

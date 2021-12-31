@@ -1,34 +1,34 @@
 <ul class="list-group list-group-flush" *ngIf="encounterDetails?.encounter_details">
   <li *ngFor="let encounterDetail of encounterDetails.encounter_details" class="list-group-item">
-    <table mdbTable small="true" hover="true">
+    <table class="table table-hover table-sm">
       <tbody>
-        <tr mdbTableCol>
+        <tr>
           <th scope="row">{{ 'UI.ENCOUNTERS.CHANCE' | transloco }}</th>
           <td>{{ encounterDetail.chance + '%' }}</td>
         </tr>
-        <tr mdbTableCol *ngIf="encounterDetail.min_level === encounterDetail.max_level; else levelMinMax">
+        <tr *ngIf="encounterDetail.min_level === encounterDetail.max_level; else levelMinMax">
           <th scope="row">{{ 'UI.ENCOUNTERS.LEVEL' | transloco }}</th>
           <td>{{ encounterDetail.min_level }}</td>
         </tr>
         <ng-template #levelMinMax>
-          <tr mdbTableCol>
+          <tr>
             <th scope="row">{{ 'UI.ENCOUNTERS.MIN_LEVEL' | transloco }}</th>
             <td>{{ encounterDetail.min_level }}</td>
           </tr>
-          <tr mdbTableCol>
+          <tr>
             <th scope="row">{{ 'UI.ENCOUNTERS.MAX_LEVEL' | transloco }}</th>
             <td>{{ encounterDetail.max_level }}</td>
           </tr>
         </ng-template>
-        <tr mdbTableCol>
+        <tr>
           <th scope="row">{{ 'UI.ENCOUNTERS.METHOD' | transloco }}</th>
           <td>{{ 'ENCOUNTER.METHOD.' + encounterDetail.method.name + '.NAME' | transloco }}</td>
         </tr>
-        <tr mdbTableCol *ngIf="encounterDetail.condition_values.length > 0">
+        <tr *ngIf="encounterDetail.condition_values.length > 0">
           <th scope="row">{{ 'UI.ENCOUNTERS.CONDITIONS' | transloco }}</th>
           <td>{{ encounterDetail.condition_values.length }}</td>
         </tr>
-        <tr mdbTableCol *ngFor="let conditionValue of encounterDetail.condition_values">
+        <tr *ngFor="let conditionValue of encounterDetail.condition_values">
           <th scope="row">
             {{
               'ENCOUNTER.CONDITION.' +

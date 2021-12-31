@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  justify-content: center;
+
+  table {
+    overflow: hidden;
+  }
+
+  tr:hover {
+    background-color: #eee;
+  }
+
+  td:hover {
+    background-color: #ccc;
+  }
+
+  td,
+  th {
+    position: relative;
+  }
+
+  td {
+    padding: 0;
+  }
+
+  div.type-comparison {
+    height: 35.6px;
+    width: 35.6px;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+  }
+
+  td:hover::after,
+  th:hover::after {
+    content: '';
+    position: absolute;
+    background-color: #eee;
+    left: 0;
+    top: -5000px;
+    height: 10000px;
+    width: 100%;
+    z-index: -1;
+  }
+}

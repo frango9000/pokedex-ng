@@ -9,7 +9,7 @@
   </div>
 
   <mdb-card-body class="px-0 pt-0">
-    <table mdbTable hover="true" class="table mb-0" aria-describedby="Table of Move Details" aria-hidden="true">
+    <table class="table table-hover mb-0" aria-describedby="Table of Move Details" aria-hidden="true">
       <thead>
         <tr class="stats-table">
           <th scope="col" class="pl-3 pl-sm-5" title="{{ 'UI.STATS.STAT_TITLE' | transloco }}">
@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr mdbTableCol *ngFor="let stat of pokemon.stats">
+        <tr *ngFor="let stat of pokemon.stats">
           <th scope="row" class="pl-3 pl-sm-5">
             {{ 'STAT.' + stat.stat.name | transloco }}
           </th>

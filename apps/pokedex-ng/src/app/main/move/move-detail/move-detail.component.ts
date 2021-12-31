@@ -4,7 +4,6 @@ import { forkJoin, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { MoveAilmentService } from '../../../shared/services/move/move-ailment.service';
 import { MoveCategoryService } from '../../../shared/services/move/move-category.service';
-import { MoveDamageClassService } from '../../../shared/services/move/move-damage-class.service';
 import { MoveTargetService } from '../../../shared/services/move/move-target.service';
 import { MoveService } from '../../../shared/services/move/move.service';
 
@@ -24,7 +23,6 @@ export class MoveDetailComponent implements OnInit, OnDestroy {
     private pokemonMoveService: MoveService,
     private moveAilmentService: MoveAilmentService,
     private moveCategoryService: MoveCategoryService,
-    private moveDamageClassService: MoveDamageClassService,
     private moveTargetService: MoveTargetService
   ) {}
 
@@ -44,7 +42,6 @@ export class MoveDetailComponent implements OnInit, OnDestroy {
           forkJoin([
             this.moveAilmentService.fetchApiOne(move.meta.ailment.name),
             this.moveCategoryService.fetchApiOne(move.meta.category.name),
-            this.moveDamageClassService.fetchApiOne(move.damage_class.name),
             this.moveTargetService.fetchApiOne(move.target.name),
           ]).pipe(map(() => move))
         )

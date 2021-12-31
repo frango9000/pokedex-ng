@@ -12,30 +12,30 @@
       <div *ngIf="'' | withVersionGroup | async as group" class="overflow-auto text-center">
         {{ 'SPECIES.' + species.name + '.FLAVOR_TEXT.' + group | transloco }}
       </div>
-      <table mdbTable class="table mb-0" hover="true" aria-describedby="Table of Move Details" aria-hidden="true">
+      <table class="table table-hover mb-0" aria-describedby="Table of Move Details" aria-hidden="true">
         <tbody>
-          <tr mdbTableCol>
+          <tr>
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.GENUS' | transloco }}</th>
             <td>
               {{ 'SPECIES.' + species.name + '.GENERA' | transloco }}
             </td>
           </tr>
-          <tr mdbTableCol>
+          <tr>
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.SHAPE' | transloco }}</th>
             <td>{{ 'SPECIES.SHAPE.' + species.shape.name + '.NAME' | transloco }}</td>
           </tr>
-          <tr mdbTableCol>
+          <tr>
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.COLOR' | transloco }}</th>
             <td>
               {{ 'SPECIES.COLOR.' + species.color.name | transloco }}
               <span [ngStyle]="{ 'background-color': species.color.name, color: species.color.name }">__</span>
             </td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.GROWTH_RATE' | transloco }}</th>
             <td>{{ 'SPECIES.GROWTH_RATE.' + species.growth_rate.name | transloco | titlecase }}</td>
           </tr>
-          <tr mdbTableCol *ngIf="species.egg_groups" title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | transloco }}">
+          <tr *ngIf="species.egg_groups" title="{{ 'UI.SPECIES.INFO.EGG_GROUPS_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.EGG_GROUPS' | transloco }}</th>
             <td>
               <span *ngFor="let eggGroup of species.egg_groups; let i = index"
@@ -44,49 +44,45 @@
               >
             </td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.HATCH_STEPS_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.HATCH_STEPS_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.HATCH_STEPS' | transloco }}</th>
             <td>{{ (+species.hatch_counter + 1) * 255 }}</td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.GENERATION_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.GENERATION_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.GENERATION' | transloco }}</th>
             <td>
               {{ 'STATIC.GENERATION.NUMBER.' + species.generation.name | transloco }}
             </td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | transloco }}" *ngIf="species.habitat">
+          <tr title="{{ 'UI.SPECIES.INFO.HABITAT_TITLE' | transloco }}" *ngIf="species.habitat">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.HABITAT' | transloco }}</th>
             <td>
               {{ 'SPECIES.HABITAT.' + species.habitat.name | transloco | titlecase }}
             </td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.BASE_HAPPINESS' | transloco }}</th>
             <td>
               {{ species.base_happiness / 255 | percent: '1.0-2' }}
             </td>
           </tr>
-          <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.CAPTURE_RATE' | transloco }}</th>
             <td>{{ species.capture_rate / 255 | percent: '1.0-2' }}</td>
           </tr>
           <ng-container *ngIf="species.gender_rate >= 0">
-            <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | transloco }}">
+            <tr title="{{ 'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | transloco }}">
               <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.FEMALE_RATE' | transloco }}</th>
               <td>{{ species.gender_rate / 8 | percent: '1.0-2' }}</td>
             </tr>
-            <tr mdbTableCol title="{{ 'UI.SPECIES.INFO.MALE_RATE_TITLE' | transloco }}">
+            <tr title="{{ 'UI.SPECIES.INFO.MALE_RATE_TITLE' | transloco }}">
               <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.MALE_RATE' | transloco }}</th>
               <td>
                 {{ (8 - species.gender_rate) / 8 | percent: '1.0-2' }}
               </td>
             </tr>
           </ng-container>
-          <tr
-            mdbTableCol
-            *ngIf="species.gender_rate === -1"
-            title="{{ 'UI.SPECIES.INFO.GENDERLESS_TITLE' | transloco }}"
-          >
+          <tr *ngIf="species.gender_rate === -1" title="{{ 'UI.SPECIES.INFO.GENDERLESS_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.GENDERLESS_RATE' | transloco }}</th>
             <td>{{ 'UI.SPECIES.INFO.GENDERLESS' | transloco }}</td>
           </tr>

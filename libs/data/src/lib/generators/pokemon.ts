@@ -67,6 +67,8 @@ export class TypeGenerator extends AbstractGenerator<PokemonType, PxType> {
         no_damage_to: resource.damage_relations.no_damage_to.map((value) => value.name),
       },
       names: this.filterAndMapNames(resource.names),
+      generation: resource.generation.name,
+      move_damage_class: resource.move_damage_class?.name || 'special',
     };
   }
 }

@@ -18,7 +18,12 @@
       "TITLE": "Type Damage Received",
       "TITLE_TITLE": "Type Damage Received",
       "WEAKNESSES": "Weaknesses",
-      "RESISTANCES": "Resistances"
+      "STRENGTHS": "Strengths",
+      "RESISTANCES": "Resistances",
+      "CONTEXT": {
+        "ATTACKING": "Attacking",
+        "DEFENDING": "Defending"
+      }
     },
     "MOVE": {
       "TITLE_LEVEL_UP_MOVES": "Level Up Moves",
@@ -66,8 +71,10 @@
       "FLINCH_CHANCE": "Flinch Rate",
       "TARGET_TITLE": "The type of target that will receive the effects of the attack.",
       "TARGET": "Target",
+      "HITS": "Hits",
       "MIN_HITS": "Min Hits",
       "MAX_HITS": "Max Hits",
+      "TURNS": "Turns",
       "MIN_TURNS": "Min Turns",
       "MAX_TURNS": "Max Turns",
       "DESCRIPTION_TITLE": "The flavor text of this move",

@@ -1,0 +1,73 @@
+<ng-container *ngIf="getTypeDamages$() | async as typeDamages">
+  <div class="pt-3">
+    <div class="m-3">
+      <pokedex-ng-type-pill
+        *ngFor="let type of types$ | async"
+        [clickable]="false"
+        [type]="type"
+      ></pokedex-ng-type-pill>
+    </div>
+  </div>
+  <ng-container *ngIf="showAttacking && typeDamages?.attacking" class="pt-1">
+    <div class="row m-1 text-center">
+      <div class="col-12 font-weight-bold">{{ 'UI.TYPE_DAMAGES.CONTEXT.ATTACKING' | transloco }}</div>
+      <div class="col-12 col-sm-6">
+        <div class="row">
+          <h6 class="col-9">{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | transloco }}</h6>
+          <span class="col-3"></span>
+        </div>
+        <div class="row my-1" *ngFor="let weakness of typeDamages.attacking.weaknesses">
+          <pokedex-ng-type-pill [clickable]="false" class="col-9" [type]="weakness.name"></pokedex-ng-type-pill>
+          <div class="col-3 text-left px-0 pl-4 pl-sm-2">
+            <strong class="weakness-multiplier">x{{ weakness.multiplier }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <div class="row">
+          <h6 class="col-9">{{ 'UI.TYPE_DAMAGES.STRENGTHS' | transloco }}</h6>
+          <span class="col-3"></span>
+        </div>
+        <div class="row my-1" *ngFor="let strength of typeDamages.attacking.strengths">
+          <pokedex-ng-type-pill [clickable]="false" class="col-9" [type]="strength.name"></pokedex-ng-type-pill>
+          <div class="col-3 text-left px-0 pl-4 pl-sm-2">
+            <strong class="strength-multiplier">x{{ strength.multiplier }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showDefending && typeDamages?.defending">
+    <div *ngIf="showAttacking && typeDamages?.attacking" class="pt-3"></div>
+    <div class="row m-1 text-center">
+      <div class="col-12 font-weight-bold">{{ 'UI.TYPE_DAMAGES.CONTEXT.DEFENDING' | transloco }}</div>
+      <div class="col-12 col-sm-6">
+        <div class="row">
+          <h6 class="col-9">{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | transloco }}</h6>
+          <span class="col-3"></span>
+        </div>
+        <div class="row my-1" *ngFor="let weakness of typeDamages.defending.weaknesses">
+          <pokedex-ng-type-pill [clickable]="false" class="col-9" [type]="weakness.name"></pokedex-ng-type-pill>
+          <div class="col-3 text-left px-0 pl-4 pl-sm-2">
+            <strong class="weakness-multiplier">x{{ weakness.multiplier }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <div class="row">
+          <h6 class="col-9">{{ 'UI.TYPE_DAMAGES.RESISTANCES' | transloco }}</h6>
+          <span class="col-3"></span>
+        </div>
+        <div class="row my-1" *ngFor="let resistance of typeDamages.defending.resistances">
+          <pokedex-ng-type-pill [clickable]="false" class="col-9" [type]="resistance.name"></pokedex-ng-type-pill>
+          <div class="col-3 text-left px-0 pl-4 pl-sm-2">
+            <strong class="resistance-multiplier">x{{ resistance.multiplier }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div class="pb-3"></div>
+</ng-container>

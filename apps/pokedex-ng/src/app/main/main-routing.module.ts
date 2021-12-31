@@ -5,6 +5,7 @@ export const loadPokemonModule = () => import('./pokemon/pokemon.module').then((
 export const loadMoveModule = () => import('./move/move.module').then((m) => m.MoveModule);
 export const loadItemModule = () => import('./item/item.module').then((m) => m.ItemModule);
 export const loadMachineModule = () => import('./machine/machine.module').then((m) => m.MachineModule);
+export const loadTypeModule = () => import('./type/type.module').then((m) => m.TypeModule);
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'machine',
     loadChildren: loadMachineModule,
+  },
+  {
+    path: 'type',
+    loadChildren: loadTypeModule,
   },
 ];
 

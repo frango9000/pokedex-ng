@@ -36,10 +36,15 @@
             <td class="p-0 align-middle">{{ move.id }}</td>
             <td class="p-0 align-middle">{{ 'MOVE.' + move.name + '.NAME' | transloco }}</td>
             <td class="p-0 align-middle">{{ move.generation }}</td>
-            <td class="p-0 align-middle d-flex justify-content-start">
-              <span class="m-1 px-2 rounded-lg" [ngStyle]="{ 'background-color': move.type | pokeTypeColor }">{{
-                'TYPE.' + move.type + '.NAME' | transloco | uppercase
-              }}</span>
+            <td class="p-0 align-middle">
+              <div class="p-1">
+                <pokedex-ng-type-pill
+                  [type]="move.type"
+                  [showDefending]="false"
+                  [clickable]="false"
+                  [size]="12"
+                ></pokedex-ng-type-pill>
+              </div>
             </td>
             <td class="p-0 align-middle">{{ move.power }}</td>
             <td class="p-0 align-middle">{{ move.pp }}</td>

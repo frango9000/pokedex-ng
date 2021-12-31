@@ -8,7 +8,7 @@
     </div>
   </div>
   <mdb-card-body class="p-0">
-    <table mdbTable class="table table-sm" hover="true" aria-describedby="Table of Abilities" aria-hidden="true">
+    <table class="table table-sm table-hover" aria-describedby="Table of Abilities" aria-hidden="true">
       <thead>
         <tr>
           <th scope="col" class="pl-3 pl-sm-5">{{ 'UI.ABILITY.SLOT' | transloco }}</th>
@@ -19,7 +19,7 @@
       <tbody>
         <ng-container *ngFor="let ability of pokemon.abilities">
           <ng-container *ngVar="expandedAbility === ability.ability.name as isExpanded">
-            <tr mdbTableCol>
+            <tr>
               <th scope="row" class="pl-3 pl-sm-5 align-middle">{{ ability.slot }}</th>
               <td class="align-middle w-75">
                 {{ 'ABILITY.' + ability.ability.name + '.NAME' | transloco }}
@@ -31,7 +31,7 @@
                 ></pokedex-ng-expansion-button>
               </td>
             </tr>
-            <tr mdbTableCol *ngIf="isExpanded">
+            <tr *ngIf="isExpanded">
               <th scope="row" colspan="3" [ngClass]="{ 'border-top-0': isExpanded }">
                 <app-pokemon-ability [abilityId]="ability.ability.name"></app-pokemon-ability>
               </th>

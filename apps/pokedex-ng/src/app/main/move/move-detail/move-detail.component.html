@@ -20,9 +20,7 @@
       <tr *ngIf="move.type" title="{{ 'UI.MOVE.DAMAGE_TYPE_TITLE' | transloco }}">
         <td>{{ 'UI.MOVE.DAMAGE_TYPE' | transloco }}</td>
         <td>
-          <span [ngStyle]="{ 'background-color': move.type.name | pokeTypeColor }" class="p-1 text-white rounded-lg">{{
-            'TYPE.' + move.type.name + '.NAME' | transloco | uppercase
-          }}</span>
+          <pokedex-ng-type-pill [type]="move.type.name" [showDefending]="false" [size]="16"></pokedex-ng-type-pill>
         </td>
       </tr>
       <tr *ngIf="move.damage_class">
@@ -99,22 +97,34 @@
           {{ 'MOVE.TARGET.' + move.target.name + '.DESCRIPTION' | transloco }}
         </td>
       </tr>
-      <tr *ngIf="move.meta.min_hits">
-        <td>{{ 'UI.MOVE.MIN_HITS' | transloco }}</td>
+      <tr *ngIf="move.meta.min_hits && move.meta.min_hits === move.meta.max_hits; else hitsMinMax">
+        <td>{{ 'UI.MOVE.HITS' | transloco }}</td>
         <td>{{ move.meta.min_hits }}</td>
       </tr>
-      <tr *ngIf="move.meta.max_hits">
-        <td>{{ 'UI.MOVE.MAX_HITS' | transloco }}</td>
-        <td>{{ move.meta.max_hits }}</td>
-      </tr>
-      <tr *ngIf="move.meta.min_turns">
-        <td>{{ 'UI.MOVE.MIN_TURNS' | transloco }}</td>
+      <ng-template #hitsMinMax>
+        <tr *ngIf="move.meta.min_hits">
+          <td>{{ 'UI.MOVE.MIN_HITS' | transloco }}</td>
+          <td>{{ move.meta.min_hits }}</td>
+        </tr>
+        <tr *ngIf="move.meta.max_hits">
+          <td>{{ 'UI.MOVE.MAX_HITS' | transloco }}</td>
+          <td>{{ move.meta.max_hits }}</td>
+        </tr>
+      </ng-template>
+      <tr *ngIf="move.meta.min_turns && move.meta.min_turns === move.meta.max_turns; else turnsMinMax">
+        <td>{{ 'UI.MOVE.TURNS' | transloco }}</td>
         <td>{{ move.meta.min_turns }}</td>
       </tr>
-      <tr *ngIf="move.meta.max_turns">
-        <td>{{ 'UI.MOVE.MAX_TURNS' | transloco }}</td>
-        <td>{{ move.meta.max_turns }}</td>
-      </tr>
+      <ng-template #turnsMinMax>
+        <tr *ngIf="move.meta.min_turns">
+          <td>{{ 'UI.MOVE.MIN_TURNS' | transloco }}</td>
+          <td>{{ move.meta.min_turns }}</td>
+        </tr>
+        <tr *ngIf="move.meta.max_turns">
+          <td>{{ 'UI.MOVE.MAX_TURNS' | transloco }}</td>
+          <td>{{ move.meta.max_turns }}</td>
+        </tr>
+      </ng-template>
       <tr title="{{ 'UI.MOVE.DESCRIPTION_TITLE' | transloco }}">
         <td>{{ 'UI.MOVE.DESCRIPTION' | transloco }}</td>
         <td>

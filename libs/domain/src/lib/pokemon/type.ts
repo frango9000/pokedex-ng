@@ -1,21 +1,24 @@
 import { ApiEntity, ApiName, LocalizedName, NamedApiResource } from '@pokedex-ng/domain';
 
+export interface PxTypeDamageRelations {
+  double_damage_from?: string[];
+  double_damage_to?: string[];
+  half_damage_from?: string[];
+  half_damage_to?: string[];
+  no_damage_from?: string[];
+  no_damage_to?: string[];
+}
+
 export interface PxType extends ApiEntity {
-  damage_relations?: {
-    double_damage_from?: string[];
-    double_damage_to?: string[];
-    half_damage_from?: string[];
-    half_damage_to?: string[];
-    no_damage_from?: string[];
-    no_damage_to?: string[];
-  };
   names?: LocalizedName[];
+  generation: string;
+  move_damage_class: string;
+  damage_relations?: PxTypeDamageRelations;
 }
 
 export interface PokemonType extends ApiEntity {
   id: number;
   name: string;
-
   damage_relations: PokemonTypeDamageRelations;
   game_indices: {
     game_index: number;
@@ -46,6 +49,21 @@ interface TypeDamageEntry {
 }
 
 export interface TypeDamages {
+  attacking: AttackingTypeDamages;
+  defending: DefendingTypeDamages;
+}
+
+export interface AttackingTypeDamages {
+  weaknesses: TypeDamageEntry[];
+  strengths: TypeDamageEntry[];
+}
+
+export interface DefendingTypeDamages {
   weaknesses: TypeDamageEntry[];
   resistances: TypeDamageEntry[];
+}
+
+export enum TypeDamagesContext {
+  ATTACKING = 'attacking',
+  DEFENDING = 'defending',
 }

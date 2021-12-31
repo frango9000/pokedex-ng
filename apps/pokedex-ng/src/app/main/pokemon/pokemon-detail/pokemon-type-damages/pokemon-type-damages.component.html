@@ -8,13 +8,16 @@
     </div>
   </div>
   <mdb-card-body class="p-2 py-0 px-sm-4">
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="typeDamages$ | async as typeDamages">
       <div class="row px-0">
         <div class="col-12 col-sm-6">
           <div class="text-center">
             <h6>{{ 'UI.TYPE_DAMAGES.WEAKNESSES' | transloco }}</h6>
           </div>
-          <div class="row my-1 align-items-center text-center px-0" *ngFor="let weakness of typeDamages.weaknesses">
+          <div
+            class="row my-1 align-items-center text-center px-0"
+            *ngFor="let weakness of typeDamages.defending.weaknesses"
+          >
             <div class="col-9 rounded-lg" [ngStyle]="{ 'background-color': weakness.name | pokeTypeColor }">
               <h6 class="text-white my-1">
                 {{ 'TYPE.' + weakness.name + '.NAME' | transloco | uppercase }}
@@ -29,7 +32,10 @@
           <div class="text-center">
             <h6>{{ 'UI.TYPE_DAMAGES.RESISTANCES' | transloco }}</h6>
           </div>
-          <div class="row my-1 align-items-center text-center" *ngFor="let resistance of typeDamages.resistances">
+          <div
+            class="row my-1 align-items-center text-center"
+            *ngFor="let resistance of typeDamages.defending.resistances"
+          >
             <div
               class="col-9 rounded-lg"
               [ngStyle]="{
