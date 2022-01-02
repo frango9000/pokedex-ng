@@ -14,6 +14,8 @@ export class TypesPillComponent {
   @Input() public vertical = false;
   @Input() public inline = true;
   @Input() public clickable = true;
+  @Input() public hideFirstType = false;
+  @Input() public hideSecondType = false;
 
   constructor(private readonly modalService: MDBModalService) {}
 

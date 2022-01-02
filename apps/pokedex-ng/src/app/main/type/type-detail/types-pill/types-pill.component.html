@@ -1,6 +1,7 @@
 <ng-container *ngIf="types.length > 0">
-  <div (click)="onClick()" class="d-flex justify-content-center">
+  <div (click)="onClick()" class="">
     <pokedex-ng-type-pill
+      *ngIf="!hideFirstType"
       [type]="types[0]"
       [size]="size"
       [clickable]="false"
@@ -9,16 +10,16 @@
     ></pokedex-ng-type-pill>
     <ng-container *ngIf="types.length > 1">
       <div
-        class="d-flex flex-column justify-content-center align-items-center mx-1"
+        class="type-merge"
         [ngStyle]="{
           'background-color': types[0] | pokeTypeColor: false:types[1],
           'border-radius': size / 3 + 'px'
         }"
       >
-        <i class="fab fa-mixer px-1 mix-icon" [ngStyle]="{ 'font-size': size * 0.8 + 'px', color: 'white' }"></i>
+        <i class="fab fa-mixer type-merge-icon" [ngStyle]="{ 'font-size': size * 0.6 + 'px', color: 'white' }"></i>
       </div>
-
       <pokedex-ng-type-pill
+        *ngIf="!hideSecondType"
         [type]="types[1]"
         [size]="size"
         [clickable]="false"

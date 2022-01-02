@@ -1,3 +1,16 @@
 :host {
   cursor: pointer;
+  display: inline;
+
+  div {
+    display: inline;
+  }
+
+  .type-merge {
+    margin: 0 3px;
+
+    .type-merge-icon {
+      padding: 0 4px;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 <ng-container *ngIf="getTypeDamages$() | async as typeDamages">
   <div class="pt-3">
-    <div class="m-3">
+    <div class="m-3 d-flex justify-content-center">
       <pokedex-ng-types-pill
         *ngIf="types$ | async as types"
         [clickable]="clickableTitle"

@@ -13,6 +13,8 @@ export class StubTypeDamagesComponent implements Partial<TypeDamagesComponent> {
   @Input() public types$: Observable<string[]>;
   @Input() public showDefending = false;
   @Input() public showAttacking = false;
+  @Input() public clickableTitle = false;
+  @Input() public clickableEntries = false;
 }
 
 describe('PokemonTypeDamagesComponent', () => {
