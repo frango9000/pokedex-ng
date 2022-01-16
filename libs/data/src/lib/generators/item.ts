@@ -25,7 +25,7 @@ export class ItemGenerator extends AbstractGenerator<ItemWithCategory, PxItem> {
       category: resource.item.category.name,
       cost: resource.item.cost,
       names: this.filterAndMapNames(resource.item.names),
-      sprite: resource.item.sprites.default.substring(71),
+      sprite: resource.item.sprites.default?.substring(71),
       pocket: resource.category.pocket.name,
     };
   }

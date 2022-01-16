@@ -33,7 +33,7 @@ jobs:
           node-version: '14'
 
       - name: Cache Node modules
-        uses: fsancheztemprano/always-cache@main
+        uses: fsancheztemprano/cache@main
         env:
           cache-key: ${{ runner.os }}-yarn-v2
         with:
