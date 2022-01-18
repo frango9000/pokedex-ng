@@ -91,7 +91,7 @@
     "@nrwl/tao": "13.4.0",
     "@nrwl/workspace": "13.4.0",
     "@types/jest": "27.0.3",
-    "@types/node": "17.0.4",
+    "@types/node": "17.0.9",
     "@typescript-eslint/eslint-plugin": "5.8.0",
     "@typescript-eslint/parser": "5.8.0",
     "angular-cli-ghpages": "1.0.0",
