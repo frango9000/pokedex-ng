@@ -86,7 +86,7 @@
     "@nrwl/angular": "13.4.0",
     "@nrwl/cli": "13.4.0",
     "@nrwl/eslint-plugin-nx": "13.4.0",
-    "@nrwl/jest": "13.4.0",
+    "@nrwl/jest": "13.5.2",
     "@nrwl/node": "13.4.0",
     "@nrwl/tao": "13.4.0",
     "@nrwl/workspace": "13.4.0",
