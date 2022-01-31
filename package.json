@@ -87,7 +87,7 @@
     "@nrwl/cli": "13.4.0",
     "@nrwl/eslint-plugin-nx": "13.4.0",
     "@nrwl/jest": "13.4.0",
-    "@nrwl/node": "13.4.0",
+    "@nrwl/node": "13.7.1",
     "@nrwl/tao": "13.4.0",
     "@nrwl/workspace": "13.4.0",
     "@types/jest": "27.0.3",
