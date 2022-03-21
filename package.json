@@ -89,7 +89,7 @@
     "@nrwl/jest": "13.4.0",
     "@nrwl/node": "13.4.0",
     "@nrwl/tao": "13.4.0",
-    "@nrwl/workspace": "13.4.0",
+    "@nrwl/workspace": "13.9.3",
     "@types/jest": "27.0.3",
     "@types/node": "17.0.4",
     "@typescript-eslint/eslint-plugin": "5.8.0",
