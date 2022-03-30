@@ -59,7 +59,7 @@
     "@ngneat/transloco": "3.1.1",
     "@ngneat/until-destroy": "^9.0.0",
     "@popperjs/core": "2.11.0",
-    "@types/chart.js": "2.9.34",
+    "@types/chart.js": "2.9.36",
     "angular-bootstrap-md": "12.1.0",
     "animate.css": "4.1.1",
     "bootstrap": "5.1.3",

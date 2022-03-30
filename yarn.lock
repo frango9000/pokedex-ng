@@ -2232,10 +2232,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/chart.js@2.9.34":
-  version "2.9.34"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.34.tgz#d41fb6b74b72a56bac70255bb4ed087386b66ed6"
-  integrity sha512-CtZVk+kh1IN67dv+fB0CWmCLCRrDJgqOj15qPic2B1VCMovNO6B7Vhf/TgPpNscjhAL1j+qUntDMWb9A4ZmPTg==
+"@types/chart.js@2.9.36":
+  version "2.9.36"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.36.tgz#8bdd3a625edaeef10367bc8a9e3239f077332de7"
+  integrity sha512-lkG9C6O5TqKyW3JDWMfCedVUATH4AeQCo8Q/vflT/0VDj6KMcba+jr1wLe+IXQ+F9mVWn80DVsDnt6cPuGutIg==
   dependencies:
     moment "^2.10.2"
 
