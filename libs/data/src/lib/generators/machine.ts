@@ -16,7 +16,7 @@ export class MachineGenerator extends AbstractGenerator<MachineWithItemAndMove, 
       item: {
         id: resource.item.id,
         name: resource.item.name,
-        sprite: resource.item.sprites.default.substring(71),
+        sprite: resource.item.sprites.default?.substring(71),
         cost: resource.item.cost,
       },
       move: {

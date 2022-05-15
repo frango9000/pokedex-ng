@@ -3,14 +3,14 @@ import * as Generators from '../index';
 
 const generateAll = () => {
   concat(
-    // new Generators.PokemonGenerator().generateResources(),
-    // new Generators.MovesGenerator().generateResources(),
-    // new Generators.MoveLearnMethodGenerator().generateResources(),
-    // new Generators.MoveDamageClassGenerator().generateResources(),
-    // new Generators.AbilitiesGenerator().generateResources(),
-    // new Generators.VersionGroupGenerator().generateResources(),
-    // new Generators.LanguageGenerator().generateResources(),
-    // new Generators.TypeGenerator().generateResources(),
+    new Generators.PokemonGenerator().generateResources(),
+    new Generators.MovesGenerator().generateResources(),
+    new Generators.MoveLearnMethodGenerator().generateResources(),
+    new Generators.MoveDamageClassGenerator().generateResources(),
+    new Generators.AbilitiesGenerator().generateResources(),
+    new Generators.VersionGroupGenerator().generateResources(),
+    new Generators.LanguageGenerator().generateResources(),
+    new Generators.TypeGenerator().generateResources(),
     new Generators.ItemGenerator().generateResources(),
     new Generators.ItemCategoryGenerator().generateResources(),
     new Generators.ItemPocketGenerator().generateResources(),
