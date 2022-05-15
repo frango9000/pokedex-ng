@@ -16,7 +16,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/data"],
           "options": {
-            "jestConfig": "libs/data/jest.config.js",
+            "jestConfig": "libs/data/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -38,7 +38,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/domain"],
           "options": {
-            "jestConfig": "libs/domain/jest.config.js",
+            "jestConfig": "libs/domain/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -134,7 +134,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/pokedex-ng/jest.config.js",
+            "jestConfig": "apps/pokedex-ng/jest.config.ts",
             "passWithNoTests": true
           },
           "outputs": ["coverage/apps/pokedex-ng"]
