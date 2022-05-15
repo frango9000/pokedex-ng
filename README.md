@@ -1,9 +1,9 @@
-![Verify](https://github.com/fsancheztemprano/pokedex-ng/workflows/Verify/badge.svg)
-![Deploy](https://github.com/fsancheztemprano/pokedex-ng/workflows/Deploy/badge.svg?branch=master)
+![Verify](https://github.com/frango9000/pokedex-ng/workflows/Verify/badge.svg)
+![Deploy](https://github.com/frango9000/pokedex-ng/workflows/Deploy/badge.svg?branch=master)
 
 # Pokedex
 
-## => [DEMO](https://fsancheztemprano.github.io/pokedex-ng) <=
+## => [DEMO](https://frango9000.github.io/pokedex-ng) <=
 
 _Pokedex base with module routing, nav-bar and header (shared module) and dependencies: Bootstrap, MD Bootstrap, Fontawesome_
 
@@ -18,4 +18,4 @@ _Pokedex base with module routing, nav-bar and header (shared module) and depend
 
 ## Author ✒️
 
-- **Francisco Sanchez** - [fsancheztemprano](https://github.com/fsancheztemprano)
+- **Francisco Sanchez** - [frango9000](https://github.com/frango9000)

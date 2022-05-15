@@ -5,15 +5,15 @@
   "author": {
     "email": "frango9000@gmail.com ",
     "name": "Francisco Sanchez",
-    "url": "https://fsancheztemprano.github.io/"
+    "url": "https://frango9000.github.io/"
   },
-  "homepage": "https://fsancheztemprano.github.io/pokedex-ng/pokemon",
+  "homepage": "https://frango9000.github.io/pokedex-ng/pokemon",
   "repository": {
-    "url": "https://github.com/fsancheztemprano/pokedex-ng",
+    "url": "https://github.com/frango9000/pokedex-ng",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/fsancheztemprano/pokedex-ng/issues"
+    "url": "https://github.com/frango9000/pokedex-ng/issues"
   },
   "scripts": {
     "ng": "nx",
