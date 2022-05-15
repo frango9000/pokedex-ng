@@ -12,9 +12,9 @@ export class PokemonResolver implements Resolve<Pokemon> {
   constructor(private pokemonService: PokemonService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Pokemon> {
-    return this.pokemonService.fetchApiOne(route?.params?.pokemon || 25).pipe(
+    return this.pokemonService.fetchApiOne(route?.params?.pokemon || 1).pipe(
       catchError(() => {
-        this.router.navigate(['pokemon', '25']);
+        this.router.navigate(['pokemon', '1']);
         return EMPTY;
       })
     );

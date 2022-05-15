@@ -34,7 +34,7 @@ export class SpeciesService extends SingleTranslatedService<Species> {
           'SPECIE_TRANSLATE_ERROR_001';
         versions.forEach((versionGroup) => {
           translations.merge('en', {
-            SPECIE: { [specie.name]: { FLAVOR_TEXT: { [versionGroup.name]: defaultFlavorText } } },
+            SPECIES: { [specie.name]: { FLAVOR_TEXT: { [versionGroup.name]: defaultFlavorText } } },
           });
         });
         specie.flavor_text_entries.forEach((entry) => {
