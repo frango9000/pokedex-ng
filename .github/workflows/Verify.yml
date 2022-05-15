@@ -27,10 +27,10 @@ jobs:
         if: github.event_name == 'pull_request'
         run: git merge ${{ github.event.pull_request.head.sha }}
 
-      - name: Use Node 14
+      - name: Use Node 16
         uses: actions/setup-node@v3.1.1
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Cache Node modules
         uses: fsancheztemprano/cache@main
