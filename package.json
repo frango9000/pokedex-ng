@@ -100,7 +100,7 @@
     "dotenv": "16.0.1",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.5.0",
-    "npm-check-updates": "12.5.11",
+    "npm-check-updates": "13.0.3",
     "nx": "14.1.5",
     "jest": "27.5.1",
     "jest-preset-angular": "11.1.2",
