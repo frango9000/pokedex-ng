@@ -83,7 +83,7 @@
     "@angular/compiler-cli": "13.3.8",
     "@angular/language-service": "13.3.8",
     "@nrwl/angular": "14.1.5",
-    "@nrwl/cli": "14.1.5",
+    "@nrwl/cli": "14.1.9",
     "@nrwl/eslint-plugin-nx": "14.1.5",
     "@nrwl/jest": "14.1.5",
     "@nrwl/node": "14.1.5",
