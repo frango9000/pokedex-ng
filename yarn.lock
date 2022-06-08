@@ -2175,6 +2175,13 @@
   dependencies:
     nx "14.1.5"
 
+"@nrwl/cli@14.2.1":
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-14.2.1.tgz#ae934de7c4ffb66a23af5abe9973db8965848145"
+  integrity sha512-U17p5eFxmvgkEBPjKxQUxgXXaMMki634QZS/0iKyqJLnzr9NettF3O4dqHnOJlu7xeWHUjU53DZdODYXfn4ESA==
+  dependencies:
+    nx "14.2.1"
+
 "@nrwl/cypress@14.1.5":
   version "14.1.5"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-14.1.5.tgz#c1a317aa72bfd41d6e87be924a337ecceb8ed69f"
@@ -2314,6 +2321,13 @@
   integrity sha512-C30aBxnAJ/0r5uBl8hQKsfllGb+jtMl9sLKStHwP4WEpIO9A8NelL/bGXEKXUiTQ8zFOZmCeHMo0VPfb/xePEg==
   dependencies:
     nx "14.1.5"
+
+"@nrwl/tao@14.2.1":
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-14.2.1.tgz#c6d6b3730bb97311a18f13a740541e01868c5238"
+  integrity sha512-ozwMhR1zUEtHFvIvjPUdd/1EHGW1woqmzo+6NCoYiMEgkIJzOy1o5v5AovUNu7OCCWH804FGjWdXYhgsQ7+XTQ==
+  dependencies:
+    nx "14.2.1"
 
 "@nrwl/workspace@14.1.5":
   version "14.1.5"
@@ -8378,6 +8392,41 @@ nx@14.1.5:
     open "^8.4.0"
     rxjs "^6.5.4"
     rxjs-for-await "0.0.2"
+    semver "7.3.4"
+    string-width "^4.2.3"
+    tar-stream "~2.2.0"
+    tmp "~0.2.1"
+    tsconfig-paths "^3.9.0"
+    tslib "^2.3.0"
+    v8-compile-cache "2.3.0"
+    yargs "^17.4.0"
+    yargs-parser "21.0.1"
+
+nx@14.2.1:
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/nx/-/nx-14.2.1.tgz#0beb5bf6dc3dd057bf20039dbff8e6d5232306e8"
+  integrity sha512-7MXhchJqLPk4NTJ20yd7j9U1JhCr6mBl93uEuJ4wu2Lf5meTqbl6Mh7D6Yd7y/vfH4W3MCzxF9DC18L8Frp0mA==
+  dependencies:
+    "@nrwl/cli" "14.2.1"
+    "@nrwl/tao" "14.2.1"
+    "@parcel/watcher" "2.0.4"
+    chalk "4.1.0"
+    chokidar "^3.5.1"
+    cli-cursor "3.1.0"
+    cli-spinners "2.6.1"
+    cliui "^7.0.2"
+    dotenv "~10.0.0"
+    enquirer "~2.3.6"
+    fast-glob "3.2.7"
+    figures "3.2.0"
+    flat "^5.0.2"
+    fs-extra "^10.1.0"
+    glob "7.1.4"
+    ignore "^5.0.4"
+    jsonc-parser "3.0.0"
+    minimatch "3.0.5"
+    npm-run-path "^4.0.1"
+    open "^8.4.0"
     semver "7.3.4"
     string-width "^4.2.3"
     tar-stream "~2.2.0"
