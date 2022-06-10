@@ -1,5 +1,5 @@
-<ng-container *ngIf="types.length > 0">
-  <div (click)="onClick()" class="">
+<ng-container *ngIf="types.length">
+  <div (click)="onClick()" class="types-pill">
     <pokedex-ng-type-pill
       *ngIf="!hideFirstType"
       [type]="types[0]"
@@ -16,7 +16,7 @@
           'border-radius': size / 3 + 'px'
         }"
       >
-        <i class="fab fa-mixer type-merge-icon" [ngStyle]="{ 'font-size': size * 0.6 + 'px', color: 'white' }"></i>
+        <i class="fa-solid fa-shuffle type-merge-icon" [ngStyle]="{ 'font-size': size * 0.6 + 'px' }"></i>
       </div>
       <pokedex-ng-type-pill
         *ngIf="!hideSecondType"

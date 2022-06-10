@@ -32,8 +32,7 @@
     ]
   },
   "cli": {
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular"
+    "packageManager": "yarn"
   },
   "generators": {
     "@nrwl/angular": {
@@ -61,5 +60,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "pokedex-ng"
+  "defaultProject": "pokedex-ng",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

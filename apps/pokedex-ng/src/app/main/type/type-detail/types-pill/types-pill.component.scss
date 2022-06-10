@@ -2,15 +2,23 @@
   cursor: pointer;
   display: inline;
 
-  div {
-    display: inline;
-  }
+  div.types-pill {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
 
-  .type-merge {
-    margin: 0 3px;
+    div.type-merge {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      margin: 0 3px;
 
-    .type-merge-icon {
-      padding: 0 4px;
+      .type-merge-icon {
+        padding: 4px 4px;
+        transform: rotate(-90deg);
+        color: white;
+      }
     }
   }
 }
