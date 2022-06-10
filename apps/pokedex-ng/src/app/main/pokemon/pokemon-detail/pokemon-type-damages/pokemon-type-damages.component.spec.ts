@@ -21,15 +21,13 @@ describe('PokemonTypeDamagesComponent', () => {
   let component: PokemonTypeDamagesComponent;
   let fixture: ComponentFixture<PokemonTypeDamagesComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonTypeDamagesComponent, StubPokeTypeColorPipe, StubTypeDamagesComponent],
-        providers: [stubTypeServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
+      declarations: [PokemonTypeDamagesComponent, StubPokeTypeColorPipe, StubTypeDamagesComponent],
+      providers: [stubTypeServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonTypeDamagesComponent);

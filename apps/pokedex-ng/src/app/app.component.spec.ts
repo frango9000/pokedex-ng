@@ -14,15 +14,13 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 export class NavbarComponent {}
 
 describe('AppComponent', () => {
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), RouterTestingModule, MDBBootstrapModule.forRoot()],
-        declarations: [AppComponent, NavbarComponent, FooterComponent],
-        providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), RouterTestingModule, MDBBootstrapModule.forRoot()],
+      declarations: [AppComponent, NavbarComponent, FooterComponent],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+    }).compileComponents();
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

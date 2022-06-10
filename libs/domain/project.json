@@ -7,17 +7,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/domain/src/**/*.ts",
-          "libs/domain/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/domain/src/**/*.ts", "libs/domain/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/domain"
-      ],
+      "outputs": ["coverage/libs/domain"],
       "options": {
         "jestConfig": "libs/domain/jest.config.ts",
         "passWithNoTests": true

@@ -17,15 +17,13 @@ describe('PokemonEvolutionChainComponent', () => {
   let component: PokemonEvolutionChainComponent;
   let fixture: ComponentFixture<PokemonEvolutionChainComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkStubComponent],
-        providers: [stubEvolutionChainServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
+      declarations: [PokemonEvolutionChainComponent, PokemonEvolutionLinkStubComponent],
+      providers: [stubEvolutionChainServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonEvolutionChainComponent);

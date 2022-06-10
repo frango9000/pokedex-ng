@@ -8,15 +8,13 @@ describe('LocalePickerComponent', () => {
   let component: LocalePickerComponent;
   let fixture: ComponentFixture<LocalePickerComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule()],
-        declarations: [LocalePickerComponent, NgVarDirective],
-        providers: [stubLanguageServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule()],
+      declarations: [LocalePickerComponent, NgVarDirective],
+      providers: [stubLanguageServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LocalePickerComponent);

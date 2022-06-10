@@ -21,15 +21,13 @@ describe('PokemonSpeciesComponent', () => {
   let component: PokemonSpeciesComponent;
   let fixture: ComponentFixture<PokemonSpeciesComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [],
-        declarations: [PokemonSpeciesComponent, StubPokemonSpeciesInfoComponent, StubPokemonEvolutionChainComponent],
-        providers: [stubSpeciesServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [],
+      declarations: [PokemonSpeciesComponent, StubPokemonSpeciesInfoComponent, StubPokemonEvolutionChainComponent],
+      providers: [stubSpeciesServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonSpeciesComponent);

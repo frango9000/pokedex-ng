@@ -29,22 +29,20 @@ describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
-        declarations: [
-          NavbarComponent,
-          StubLocalePickerComponent,
-          StubQueryFilterComponent,
-          StubFilterToggleComponent,
-          StubGridToggleComponent,
-          StubVersionGroupPickerComponent,
-        ],
-        providers: [stubAppNavbarServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, MDBBootstrapModule.forRoot()],
+      declarations: [
+        NavbarComponent,
+        StubLocalePickerComponent,
+        StubQueryFilterComponent,
+        StubFilterToggleComponent,
+        StubGridToggleComponent,
+        StubVersionGroupPickerComponent,
+      ],
+      providers: [stubAppNavbarServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);

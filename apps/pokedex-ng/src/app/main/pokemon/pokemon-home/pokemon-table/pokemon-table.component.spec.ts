@@ -8,14 +8,12 @@ describe('PokemonTableComponent', () => {
   let component: PokemonTableComponent;
   let fixture: ComponentFixture<PokemonTableComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [RouterTestingModule, getTranslocoModule()],
-        declarations: [PokemonTableComponent, StubPokeTypeColorPipe],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, getTranslocoModule()],
+      declarations: [PokemonTableComponent, StubPokeTypeColorPipe],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonTableComponent);

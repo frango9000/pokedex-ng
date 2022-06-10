@@ -11,15 +11,13 @@ describe('PokemonGridComponent', () => {
   let component: PokemonGridComponent;
   let fixture: ComponentFixture<PokemonGridComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), getTranslocoModule()],
-        declarations: [PokemonGridComponent, StubRomanPipe, StubPokeTypeColorPipe, NgVarDirective],
-        providers: [stubPokemonServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), getTranslocoModule()],
+      declarations: [PokemonGridComponent, StubRomanPipe, StubPokeTypeColorPipe, NgVarDirective],
+      providers: [stubPokemonServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonGridComponent);

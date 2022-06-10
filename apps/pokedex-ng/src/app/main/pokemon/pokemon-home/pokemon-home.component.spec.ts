@@ -26,21 +26,19 @@ describe('PokemonHomeComponent', () => {
   let fixture: ComponentFixture<PokemonHomeComponent>;
   let pokemonService: PokemonService;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [InfiniteScrollModule],
-        declarations: [
-          PokemonHomeComponent,
-          StubPokemonGridComponent,
-          StubPokemonTableComponent,
-          StubFilterToolbarComponent,
-          StubTypesFilterComponent,
-        ],
-        providers: [stubPokemonServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [InfiniteScrollModule],
+      declarations: [
+        PokemonHomeComponent,
+        StubPokemonGridComponent,
+        StubPokemonTableComponent,
+        StubFilterToolbarComponent,
+        StubTypesFilterComponent,
+      ],
+      providers: [stubPokemonServiceProvider, stubFilterServiceProvider, stubAppNavbarServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonHomeComponent);

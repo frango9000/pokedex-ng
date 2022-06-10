@@ -16,15 +16,13 @@ describe('PokemonAbilitiesComponent', () => {
   let component: PokemonAbilitiesComponent;
   let fixture: ComponentFixture<PokemonAbilitiesComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonAbilitiesComponent, PokemonAbilityStubComponent, NgVarDirective],
-        providers: [stubAbilityServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
+      declarations: [PokemonAbilitiesComponent, PokemonAbilityStubComponent, NgVarDirective],
+      providers: [stubAbilityServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonAbilitiesComponent);

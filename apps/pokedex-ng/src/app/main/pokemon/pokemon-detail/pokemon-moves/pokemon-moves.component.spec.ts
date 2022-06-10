@@ -42,19 +42,17 @@ describe('PokemonMovesComponent', () => {
   let component: PokemonMovesComponent;
   let fixture: ComponentFixture<PokemonMovesComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          PokemonMovesComponent,
-          PokemonMovesCardStubComponent,
-          StubPokeTypeColorPipe,
-          StubWithVersionGroupPipe,
-        ],
-        providers: [stubVersionGroupServiceProvider, stubMoveServiceProvider, stubMoveLearnMethodServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        PokemonMovesComponent,
+        PokemonMovesCardStubComponent,
+        StubPokeTypeColorPipe,
+        StubWithVersionGroupPipe,
+      ],
+      providers: [stubVersionGroupServiceProvider, stubMoveServiceProvider, stubMoveLearnMethodServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesComponent);

@@ -8,15 +8,13 @@ describe('PokemonAbilityComponent', () => {
   let component: PokemonAbilityComponent;
   let fixture: ComponentFixture<PokemonAbilityComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule()],
-        declarations: [PokemonAbilityComponent, StubWithVersionGroupPipe],
-        providers: [stubAbilityServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule()],
+      declarations: [PokemonAbilityComponent, StubWithVersionGroupPipe],
+      providers: [stubAbilityServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonAbilityComponent);

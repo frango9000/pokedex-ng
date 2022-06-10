@@ -54,24 +54,22 @@ describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
   let fixture: ComponentFixture<PokemonDetailComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), RouterTestingModule],
-        declarations: [
-          PokemonDetailComponent,
-          StubPokemonInfoComponent,
-          PokemonSpeciesStubComponent,
-          PokemonStatsStubComponent,
-          PokemonTypeDamagesStubComponent,
-          PokemonAbilitiesStubComponent,
-          StubPokemonEncountersComponent,
-          PokemonMovesStubComponent,
-        ],
-        providers: [stubPokemonServiceProvider, stubAppNavbarServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), RouterTestingModule],
+      declarations: [
+        PokemonDetailComponent,
+        StubPokemonInfoComponent,
+        PokemonSpeciesStubComponent,
+        PokemonStatsStubComponent,
+        PokemonTypeDamagesStubComponent,
+        PokemonAbilitiesStubComponent,
+        StubPokemonEncountersComponent,
+        PokemonMovesStubComponent,
+      ],
+      providers: [stubPokemonServiceProvider, stubAppNavbarServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonDetailComponent);

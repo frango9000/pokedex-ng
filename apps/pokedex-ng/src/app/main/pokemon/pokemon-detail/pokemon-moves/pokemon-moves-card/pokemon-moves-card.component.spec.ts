@@ -11,15 +11,13 @@ describe('PokemonMovesCardComponent', () => {
   let component: PokemonMovesCardComponent;
   let fixture: ComponentFixture<PokemonMovesCardComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonMovesCardComponent, StubMoveDetailComponent, StubPokeTypeColorPipe, NgVarDirective],
-        providers: [],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
+      declarations: [PokemonMovesCardComponent, StubMoveDetailComponent, StubPokeTypeColorPipe, NgVarDirective],
+      providers: [],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonMovesCardComponent);

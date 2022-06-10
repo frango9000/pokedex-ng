@@ -17,22 +17,20 @@ describe('PokemonSpeciesInfoComponent', () => {
   let component: PokemonSpeciesInfoComponent;
   let fixture: ComponentFixture<PokemonSpeciesInfoComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
-        declarations: [PokemonSpeciesInfoComponent, StubWithVersionGroupPipe],
-        providers: [
-          stubVersionGroupServiceProvider,
-          stubEggGroupServiceProvider,
-          stubGrowthRateServiceProvider,
-          stubPokemonColorServiceProvider,
-          stubPokemonHabitatServiceProvider,
-          stubPokemonShapeServiceProvider,
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [getTranslocoModule(), MDBBootstrapModule.forRoot()],
+      declarations: [PokemonSpeciesInfoComponent, StubWithVersionGroupPipe],
+      providers: [
+        stubVersionGroupServiceProvider,
+        stubEggGroupServiceProvider,
+        stubGrowthRateServiceProvider,
+        stubPokemonColorServiceProvider,
+        stubPokemonHabitatServiceProvider,
+        stubPokemonShapeServiceProvider,
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonSpeciesInfoComponent);

@@ -16,15 +16,13 @@ describe('PokemonEvolutionLinkComponent', () => {
   let component: PokemonEvolutionLinkComponent;
   let fixture: ComponentFixture<PokemonEvolutionLinkComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), getTranslocoModule()],
-        declarations: [PokemonEvolutionLinkComponent, StubResourceIdPipe, NgVarDirective],
-        providers: [stubLocationServiceProvider, stubItemServiceProvider, stubEvolutionTriggerServiceProvider],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, MDBBootstrapModule.forRoot(), getTranslocoModule()],
+      declarations: [PokemonEvolutionLinkComponent, StubResourceIdPipe, NgVarDirective],
+      providers: [stubLocationServiceProvider, stubItemServiceProvider, stubEvolutionTriggerServiceProvider],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonEvolutionLinkComponent);
