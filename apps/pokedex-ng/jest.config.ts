@@ -13,13 +13,13 @@ export default {
   moduleNameMapper: {
     '^lodash-es$': 'lodash',
   },
+  transform: {
+    '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
+  },
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  transformIgnorePatterns: ['<rootDir>/node_modules/(?!.*\\.mjs$)'],
-  transform: {
-    '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
-  },
 };

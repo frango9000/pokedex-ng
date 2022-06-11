@@ -49,9 +49,7 @@ function symlinkNgCLItoNxCLI() {
        * Such that it works in all shells and works with npx.
        */
       ['', '.cmd', '.ps1'].forEach((ext) => {
-        if (fs.existsSync(nxPath + ext)) {
-          fs.writeFileSync(ngPath + ext, fs.readFileSync(nxPath + ext));
-        }
+        if (fs.existsSync(nxPath + ext)) fs.writeFileSync(ngPath + ext, fs.readFileSync(nxPath + ext));
       });
     } else {
       // If unix-based, symlink
@@ -65,7 +63,7 @@ function symlinkNgCLItoNxCLI() {
 
 try {
   symlinkNgCLItoNxCLI();
-  require('@nrwl/cli/lib/decorate-cli').decorateCli();
+  require('nx/src/adapter/decorate-cli').decorateCli();
   output.log({ title: 'Angular CLI has been decorated to enable computation caching.' });
 } catch (e) {
   output.error({ title: 'Decoration of the Angular CLI did not complete successfully' });
