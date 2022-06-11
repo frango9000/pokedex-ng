@@ -47,4 +47,4 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng -- deploy --base-href=/pokedex-ng/ --no-silent
+        run: npx nx run pokedex-ng:deploy
