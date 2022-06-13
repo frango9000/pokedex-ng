@@ -123,13 +123,18 @@
   resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-13.3.0.tgz#0c44e8f8a424d845dca84a908c87a71305bbe988"
   integrity sha512-GQ6RPmJVAXO0Zl8GlMhPNQFbN2IbPfTlH2MET6Lnx3mmuRj4leFBHLY5NvrtUMx9vq5ZqQOtrgsM4jjAOUpnRQ==
 
-"@angular-eslint/eslint-plugin-template@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-13.3.0.tgz#61c49e5300564e7789c7026db74cc179225f3b8e"
-  integrity sha512-5EJRke/hh6edqM2Dl0b7oPiHbbxyvUg0LSTs4up4bo9pFtCl/UdyhG9MjA144XhrtPFN4f7ywXNGfUIF8F3hAw==
+"@angular-eslint/bundled-angular-compiler@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-13.5.0.tgz#5b417f7f4503b5588957bb4b963b752e0b76a158"
+  integrity sha512-7M/5ilxqPD3ydgqqdLsYs3kBwZgNg2Y6C01B5SEHZNLqLT9kAJa7I4y6GlxCZqejCIh554kdXGeV3abIxFccSg==
+
+"@angular-eslint/eslint-plugin-template@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-13.5.0.tgz#c7769d045ba792891199f1c9fd1be37ba54c5a49"
+  integrity sha512-ZVSXayn8MqYOhYomH2Cjc0azhuUQbY9fp9dKjJZOD64KhP8BYHw8+Ogc9E/FU5oZQ9fKw6A+23NAYKmLNqSAgA==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "13.3.0"
-    "@typescript-eslint/experimental-utils" "5.17.0"
+    "@angular-eslint/bundled-angular-compiler" "13.5.0"
+    "@typescript-eslint/experimental-utils" "5.27.1"
     aria-query "^4.2.2"
     axobject-query "^2.2.0"
 
@@ -3352,6 +3357,13 @@
   integrity sha512-U4sM5z0/ymSYqQT6I7lz8l0ZZ9zrya5VIwrwAP5WOJVabVtVsIpTMxPQe+D3qLyePT+VlETUTO2nA1+PufPx9Q==
   dependencies:
     "@typescript-eslint/utils" "5.17.0"
+
+"@typescript-eslint/experimental-utils@5.27.1":
+  version "5.27.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-5.27.1.tgz#c5c5121a75cf875bfae8083c50f5ae7bfde6145a"
+  integrity sha512-Vd8uewIixGP93sEnmTRIH6jHZYRQRkGPDPpapACMvitJKX8335VHNyqKTE+mZ+m3E2c5VznTZfSsSsS5IF7vUA==
+  dependencies:
+    "@typescript-eslint/utils" "5.27.1"
 
 "@typescript-eslint/experimental-utils@~5.24.0":
   version "5.24.0"
