@@ -28,7 +28,7 @@ jobs:
         run: git merge ${{ github.event.pull_request.head.sha }}
 
       - name: Use Node 16
-        uses: actions/setup-node@v3.3.0
+        uses: actions/setup-node@v3.4.1
         with:
           node-version: '16'
 
