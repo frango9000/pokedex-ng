@@ -170,10 +170,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@14.2.4":
-  version "14.2.4"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-14.2.4.tgz#f858ff928206c24c1bbd38610444a5214990017d"
-  integrity sha512-5jngZcOyC2n9pRYec/D0iCw72QSnCkGYjtfgIlOK/FZYGhpOa34GMGObPuv4F0u7J2TEtbO6xIFsCFaK0FLIWQ==
+"@angular/cdk@14.2.5":
+  version "14.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-14.2.5.tgz#12cec1b890775cc9b041a2ae85d638068b5e90bb"
+  integrity sha512-kKneb9Z/2E+EXMsHuH8MWy8aygKhdFlKXYltEG7r4W/B6FJC012kJfe+Euj8X0O26akOVW9Q0X7nczCqHqU4tQ==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
@@ -12525,7 +12525,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@2.4.0, tslib@^2.1.0, tslib@^2.4.0:
+tslib@2.4.0, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0, tslib@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
@@ -12534,16 +12534,6 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
-  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
-
-tslib@^2.2.0, tslib@^2.3.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tsutils@^3.21.0:
   version "3.21.0"
