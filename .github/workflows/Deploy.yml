@@ -28,7 +28,7 @@ jobs:
       - name: Cache Node modules
         uses: frango9000/cache@main
         env:
-          cache-key: ${{ runner.os }}-yarn-v2
+          cache-key: ${{ runner.os }}-yarn-v3
         with:
           path: |
             ~/.npm
