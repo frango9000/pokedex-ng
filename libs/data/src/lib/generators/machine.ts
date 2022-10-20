@@ -30,7 +30,7 @@ export class MachineGenerator extends AbstractGenerator<MachineWithItemAndMove, 
     };
   }
 
-  protected _fetchOne(namedApiResource: NamedApiResource<Machine>): Observable<MachineWithItemAndMove> {
+  protected override _fetchOne(namedApiResource: NamedApiResource<Machine>): Observable<MachineWithItemAndMove> {
     return super._fetchOne(namedApiResource).pipe(
       map((machine) => machine as any as Machine),
       mergeMap((machine: Machine) =>

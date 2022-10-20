@@ -30,14 +30,14 @@ export class ItemGenerator extends AbstractGenerator<ItemWithCategory, PxItem> {
     };
   }
 
-  protected _fetchOne(namedApiResource: NamedApiResource<Item>): Observable<ItemWithCategory> {
+  protected override _fetchOne(namedApiResource: NamedApiResource<Item>): Observable<ItemWithCategory> {
     return super._fetchOne(namedApiResource).pipe(
       map((item) => item as any as Item),
       mergeMap((item: Item) =>
         Axios.get<ItemCategory>(item.category.url).pipe(
           retry(10),
           map((value) => value.data),
-          map((category) => ({ item, category }))
+          map((category) => ({item, category}))
         )
       )
     );

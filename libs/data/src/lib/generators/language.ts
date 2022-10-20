@@ -15,7 +15,7 @@ export class LanguageGenerator extends AbstractGenerator<Language, PxLanguage> {
     };
   }
 
-  protected filterResources(resource: Language): boolean {
-    return super.filterResources(resource) && resource.names.length && resource.official;
+  protected override filterResources(resource: Language): boolean {
+    return !!(super.filterResources(resource) && resource.names.length && resource.official);
   }
 }

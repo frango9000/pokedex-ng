@@ -5,7 +5,14 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "baseUrl": ".",
+    "target": "ES5",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "paths": {
+      "@pokedex-ng/domain": ["../../libs/domain/src/index.ts"]
+    }
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/*.test.ts", "jest.config.ts"],
   "include": ["**/*.ts"]

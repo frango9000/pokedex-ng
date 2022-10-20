@@ -9,7 +9,7 @@ import {
 } from '@pokedex-ng/domain';
 import { AxiosResponse } from 'axios';
 import { Axios } from 'axios-observable';
-import fs from 'fs';
+import * as fs from 'fs';
 import { concat, Observable } from 'rxjs';
 import { concatMap, delay, map, retry, tap, toArray } from 'rxjs/operators';
 
