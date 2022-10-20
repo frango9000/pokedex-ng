@@ -37,7 +37,7 @@ export class PokemonGenerator extends AbstractGenerator<PokemonWithSpecies, PxPo
         Axios.get<Species>(pokemon.species.url).pipe(
           retry(10),
           map((value) => value.data),
-          map((species) => ({pokemon, species}))
+          map((species) => ({ pokemon, species }))
         )
       )
     );

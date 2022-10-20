@@ -37,7 +37,7 @@ export class ItemGenerator extends AbstractGenerator<ItemWithCategory, PxItem> {
         Axios.get<ItemCategory>(item.category.url).pipe(
           retry(10),
           map((value) => value.data),
-          map((category) => ({item, category}))
+          map((category) => ({ item, category }))
         )
       )
     );
