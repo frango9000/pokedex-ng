@@ -52,7 +52,7 @@ jobs:
         run: yarn install
 
       - name: Prettier
-        uses: MansaGroup/nrwl-nx-action@v2.1.0
+        uses: MansaGroup/nrwl-nx-action@v3.2.1
         with:
           targets: format:check
           all: 'true'
@@ -60,7 +60,7 @@ jobs:
           affected: 'false'
 
       - name: Lint
-        uses: MansaGroup/nrwl-nx-action@v2.1.0
+        uses: MansaGroup/nrwl-nx-action@v3.2.1
         with:
           targets: lint
           all: 'true'
@@ -68,7 +68,7 @@ jobs:
           affected: 'false'
 
       - name: Test
-        uses: MansaGroup/nrwl-nx-action@v2.1.0
+        uses: MansaGroup/nrwl-nx-action@v3.2.1
         with:
           targets: test
           all: 'true'
@@ -76,7 +76,7 @@ jobs:
           affected: 'false'
 
       - name: Build
-        uses: MansaGroup/nrwl-nx-action@v2.1.0
+        uses: MansaGroup/nrwl-nx-action@v3.2.1
         with:
           targets: build
           all: 'true'
