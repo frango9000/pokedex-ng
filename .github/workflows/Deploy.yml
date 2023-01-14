@@ -26,20 +26,16 @@ jobs:
           node-version: '16'
 
       - name: Cache Node modules
-        uses: frango9000/cache@main
-        env:
-          cache-key: ${{ runner.os }}-yarn-v3
+        uses: actions/cache@v3
         with:
           path: |
             ~/.npm
             ./node_modules
             ./node
-          key: ${{ env.cache-key }}-${{ steps.branch-name.outputs.current_branch }}-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}
+          key: yarn-v3-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}
           restore-keys: |
-            ${{ env.cache-key }}-${{ steps.branch-name.outputs.current_branch }}-${{ hashFiles('**/yarn.lock') }}-
-            ${{ env.cache-key }}-${{ steps.branch-name.outputs.current_branch }}-
-            ${{ env.cache-key }}-
-          save-on-hit: true
+            yarn-v3-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-
+            yarn-v3-${{ runner.os }}-
 
       - name: Yarn Install
         run: yarn install
