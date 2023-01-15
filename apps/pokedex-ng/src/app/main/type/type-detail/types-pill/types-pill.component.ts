@@ -19,7 +19,9 @@ export class TypesPillComponent {
 
   constructor(private readonly modalService: MDBModalService) {}
 
-  onClick() {
+  onClick($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
     if (this.clickable) {
       this.modalService.show(TypeDamagesComponent, {
         class: 'modal-dialog-centered',

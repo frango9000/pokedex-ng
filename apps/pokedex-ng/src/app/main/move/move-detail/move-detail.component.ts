@@ -40,8 +40,12 @@ export class MoveDetailComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap((move: Move) =>
           forkJoin([
-            this.moveAilmentService.fetchApiOne(move.meta.ailment.name),
-            this.moveCategoryService.fetchApiOne(move.meta.category.name),
+            ...(move.meta
+              ? [
+                  this.moveAilmentService.fetchApiOne(move.meta.ailment.name),
+                  this.moveCategoryService.fetchApiOne(move.meta.category.name),
+                ]
+              : []),
             this.moveTargetService.fetchApiOne(move.target.name),
           ]).pipe(map(() => move))
         )

@@ -20,7 +20,7 @@
               {{ 'SPECIES.' + species.name + '.GENERA' | transloco }}
             </td>
           </tr>
-          <tr>
+          <tr *ngIf="species.shape?.name">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.SHAPE' | transloco }}</th>
             <td>{{ 'SPECIES.SHAPE.' + species.shape.name + '.NAME' | transloco }}</td>
           </tr>
@@ -31,7 +31,7 @@
               <span [ngStyle]="{ 'background-color': species.color.name, color: species.color.name }">__</span>
             </td>
           </tr>
-          <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | transloco }}">
+          <tr title="{{ 'UI.SPECIES.INFO.GROWTH_RATE_TITLE' | transloco }}" *ngIf="species.growth_rate?.name">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.GROWTH_RATE' | transloco }}</th>
             <td>{{ 'SPECIES.GROWTH_RATE.' + species.growth_rate.name | transloco | titlecase }}</td>
           </tr>
@@ -63,22 +63,22 @@
           <tr title="{{ 'UI.SPECIES.INFO.BASE_HAPPINESS_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.BASE_HAPPINESS' | transloco }}</th>
             <td>
-              {{ species.base_happiness / 255 | percent: '1.0-2' }}
+              {{ species.base_happiness / 255 | percent : '1.0-2' }}
             </td>
           </tr>
           <tr title="{{ 'UI.SPECIES.INFO.CAPTURE_RATE_TITLE' | transloco }}">
             <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.CAPTURE_RATE' | transloco }}</th>
-            <td>{{ species.capture_rate / 255 | percent: '1.0-2' }}</td>
+            <td>{{ species.capture_rate / 255 | percent : '1.0-2' }}</td>
           </tr>
           <ng-container *ngIf="species.gender_rate >= 0">
             <tr title="{{ 'UI.SPECIES.INFO.FEMALE_RATE_TITLE' | transloco }}">
               <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.FEMALE_RATE' | transloco }}</th>
-              <td>{{ species.gender_rate / 8 | percent: '1.0-2' }}</td>
+              <td>{{ species.gender_rate / 8 | percent : '1.0-2' }}</td>
             </tr>
             <tr title="{{ 'UI.SPECIES.INFO.MALE_RATE_TITLE' | transloco }}">
               <th scope="row" class="pl-3 pl-sm-5">{{ 'UI.SPECIES.INFO.MALE_RATE' | transloco }}</th>
               <td>
-                {{ (8 - species.gender_rate) / 8 | percent: '1.0-2' }}
+                {{ (8 - species.gender_rate) / 8 | percent : '1.0-2' }}
               </td>
             </tr>
           </ng-container>

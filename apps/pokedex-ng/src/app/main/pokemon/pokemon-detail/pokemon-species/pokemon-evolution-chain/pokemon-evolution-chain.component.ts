@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EvolutionChainLink } from '@pokedex-ng/domain';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { EvolutionChainService } from '../../../../../shared/services/evolution/evolution-chain.service';
 
 @Component({
@@ -12,12 +12,21 @@ import { EvolutionChainService } from '../../../../../shared/services/evolution/
 export class PokemonEvolutionChainComponent implements OnInit {
   @Input() evolutionChainId$: Observable<number>;
   public evolutionChain$: BehaviorSubject<EvolutionChainLink> = new BehaviorSubject(null);
+  public loading = false;
 
   constructor(private _pokemonEvolutionChainService: EvolutionChainService) {}
 
   ngOnInit(): void {
     this.evolutionChainId$
-      .pipe(switchMap((speciesId) => this._pokemonEvolutionChainService.fetchApiOne(speciesId)))
+      .pipe(
+        filter((speciesId) => !!speciesId),
+        tap(() => (this.loading = true)),
+        switchMap((speciesId) => this._pokemonEvolutionChainService.fetchApiOne(speciesId)),
+        tap({
+          next: () => (this.loading = false),
+          error: () => (this.loading = false),
+        })
+      )
       .subscribe((value) => this.evolutionChain$.next(value.chain));
   }
 

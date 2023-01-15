@@ -24,6 +24,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { ResourceIdPipe } from './pipes/resource-id.pipe';
 import { RomanPipe } from './pipes/roman.pipe';
 import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
+import { ImgFallbackDirective } from './directives/img-fallback.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     ItemCategoryFilterComponent,
     ItemPocketFilterComponent,
     ExpansionButtonComponent,
+    ImgFallbackDirective,
   ],
   exports: [
     NavbarComponent,
@@ -64,6 +66,7 @@ import { WithVersionGroupPipe } from './pipes/with-version-group.pipe';
     ClearFilterComponent,
     FilterToolbarComponent,
     ExpansionButtonComponent,
+    ImgFallbackDirective,
   ],
   imports: [CommonModule, MDBBootstrapModule.forRoot(), RouterModule, TranslocoModule],
 })

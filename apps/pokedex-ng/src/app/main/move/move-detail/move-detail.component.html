@@ -5,7 +5,7 @@
         <td>{{ 'UI.MOVE.NAME' | transloco }}</td>
         <td>{{ 'MOVE.' + move.name + '.NAME' | transloco }}</td>
       </tr>
-      <tr>
+      <tr *ngIf="move.meta?.category">
         <td>{{ 'UI.MOVE.CATEGORY' | transloco }}</td>
         <td>
           {{ 'MOVE.CATEGORY.' + move.meta.category.name | transloco }}
@@ -48,7 +48,7 @@
         <td>{{ 'UI.MOVE.PRIORITY' | transloco }}</td>
         <td>{{ move.priority }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | transloco }}" *ngIf="move.meta.stat_chance">
+      <tr title="{{ 'UI.MOVE.STAT_CHANGE_CHANCE_TITLE' | transloco }}" *ngIf="move.meta?.stat_chance">
         <td>{{ 'UI.MOVE.STAT_CHANGE_CHANCE' | transloco }}</td>
         <td>{{ move.meta.stat_chance / 100 | percent }}</td>
       </tr>
@@ -58,25 +58,25 @@
           <td>{{ statChange.change }}</td>
         </tr>
       </ng-container>
-      <tr title="{{ 'UI.MOVE.CRITICAL_RATE_TITLE' | transloco }}">
+      <tr title="{{ 'UI.MOVE.CRITICAL_RATE_TITLE' | transloco }}" *ngIf="move.meta">
         <td>{{ 'UI.MOVE.CRITICAL_RATE' | transloco }}</td>
         <td>{{ move.meta.crit_rate / 100 | percent }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.HEALING_TITLE' | transloco }}" *ngIf="move.meta.healing">
+      <tr title="{{ 'UI.MOVE.HEALING_TITLE' | transloco }}" *ngIf="move.meta?.healing">
         <td>{{ 'UI.MOVE.HEALING' | transloco }}</td>
         <td>{{ move.meta.healing }}</td>
       </tr>
-      <tr title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | transloco }}" *ngIf="move.meta.drain">
+      <tr title="{{ 'UI.MOVE.DRAIN_RECOIL_TITLE' | transloco }}" *ngIf="move.meta?.drain">
         <td>
           {{ (move.meta.drain > 0 ? 'UI.MOVE.DRAIN' : 'UI.MOVE.RECOIL') | transloco }}
         </td>
         <td>{{ move.meta.drain / 100 | percent }}</td>
       </tr>
-      <ng-container *ngIf="move.meta.ailment_chance">
+      <ng-container *ngIf="move.meta?.ailment_chance">
         <tr title="{{ 'UI.MOVE.AILMENT_TITLE' | transloco }}">
           <td>{{ 'UI.MOVE.AILMENT' | transloco }}</td>
           <td>
-            {{ 'MOVE.AILMENT.' + move.meta.ailment.name | transloco }}
+            {{ 'MOVE.AILMENT.' + move.meta.ailment?.name | transloco }}
           </td>
         </tr>
         <tr title="{{ 'UI.MOVE.AILMENT_CHANCE_TITLE' | transloco }}">
@@ -84,7 +84,7 @@
           <td>{{ move.meta.ailment_chance / 100 | percent }}</td>
         </tr>
       </ng-container>
-      <tr title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | transloco }}" *ngIf="move.meta.flinch_chance">
+      <tr title="{{ 'UI.MOVE.FLINCH_CHANCE_TITLE' | transloco }}" *ngIf="move.meta?.flinch_chance">
         <td>{{ 'UI.MOVE.FLINCH_CHANCE' | transloco }}</td>
         <td>{{ move.meta.flinch_chance / 100 | percent }}</td>
       </tr>
@@ -97,30 +97,30 @@
           {{ 'MOVE.TARGET.' + move.target.name + '.DESCRIPTION' | transloco }}
         </td>
       </tr>
-      <tr *ngIf="move.meta.min_hits && move.meta.min_hits === move.meta.max_hits; else hitsMinMax">
+      <tr *ngIf="move.meta?.min_hits && move.meta.min_hits === move.meta.max_hits; else hitsMinMax">
         <td>{{ 'UI.MOVE.HITS' | transloco }}</td>
         <td>{{ move.meta.min_hits }}</td>
       </tr>
       <ng-template #hitsMinMax>
-        <tr *ngIf="move.meta.min_hits">
+        <tr *ngIf="move.meta?.min_hits">
           <td>{{ 'UI.MOVE.MIN_HITS' | transloco }}</td>
           <td>{{ move.meta.min_hits }}</td>
         </tr>
-        <tr *ngIf="move.meta.max_hits">
+        <tr *ngIf="move.meta?.max_hits">
           <td>{{ 'UI.MOVE.MAX_HITS' | transloco }}</td>
           <td>{{ move.meta.max_hits }}</td>
         </tr>
       </ng-template>
-      <tr *ngIf="move.meta.min_turns && move.meta.min_turns === move.meta.max_turns; else turnsMinMax">
+      <tr *ngIf="move.meta?.min_turns && move.meta.min_turns === move.meta.max_turns; else turnsMinMax">
         <td>{{ 'UI.MOVE.TURNS' | transloco }}</td>
         <td>{{ move.meta.min_turns }}</td>
       </tr>
       <ng-template #turnsMinMax>
-        <tr *ngIf="move.meta.min_turns">
+        <tr *ngIf="move.meta?.min_turns">
           <td>{{ 'UI.MOVE.MIN_TURNS' | transloco }}</td>
           <td>{{ move.meta.min_turns }}</td>
         </tr>
-        <tr *ngIf="move.meta.max_turns">
+        <tr *ngIf="move.meta?.max_turns">
           <td>{{ 'UI.MOVE.MAX_TURNS' | transloco }}</td>
           <td>{{ move.meta.max_turns }}</td>
         </tr>
@@ -139,13 +139,13 @@
         <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | transloco }}">
           <td>{{ 'UI.MOVE.EFFECT' | transloco }}</td>
           <td>
-            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | transloco | replace: '$effect_chance':effect_chance }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.EFFECT' | transloco | replace : '$effect_chance' : effect_chance }}
           </td>
         </tr>
         <tr title="{{ 'UI.MOVE.EFFECT_TITLE' | transloco }}">
           <td>{{ 'UI.MOVE.EFFECT_SHORT' | transloco }}</td>
           <td>
-            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | transloco | replace: '$effect_chance':effect_chance }}
+            {{ 'MOVE.' + move.name + '.EFFECT_ENTRY.SHORT' | transloco | replace : '$effect_chance' : effect_chance }}
           </td>
         </tr>
       </ng-container>

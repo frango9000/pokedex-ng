@@ -12,7 +12,7 @@ import { TypeService } from '../../../shared/services/pokemon/type.service';
 export class TypeChartComponent {
   private _getTypes$: Observable<PxType[]> = this.typeService.getAll().pipe(map((types) => types.slice(0, -2)));
 
-  private comparisonType: 'attacking' | 'defending' = 'attacking';
+  private comparisonType: 'attacking' | 'defending' = 'defending';
 
   public expandedType = '';
 
