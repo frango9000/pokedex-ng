@@ -5921,15 +5921,10 @@ esbuild-sunos-64@0.15.10:
   resolved "https://registry.yarnpkg.com/esbuild-sunos-64/-/esbuild-sunos-64-0.15.10.tgz#5fe7bef267a02f322fd249a8214d0274937388a7"
   integrity sha512-mf7hBL9Uo2gcy2r3rUFMjVpTaGpFJJE5QTDDqUFf1632FxteYANffDZmKbqX0PfeQ2XjUDE604IcE7OJeoHiyg==
 
-esbuild-wasm@0.16.17:
+esbuild-wasm@0.16.17, esbuild-wasm@>=0.13.8:
   version "0.16.17"
   resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.16.17.tgz#b8d41ab99a9b725765a138f0f1d2381e891f913d"
   integrity sha512-Tn7NuMqRcM+T/qCOxbQRq0qrwWl1sUWp6ARfJRakE8Bepew6zata4qrKgH2YqovNC5e/2fcTa7o+VL/FAOZC1Q==
-
-esbuild-wasm@>=0.13.8:
-  version "0.15.10"
-  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.15.10.tgz#9ab5ba7b1cb6389c669bc04e62a0ab985ccfa4f1"
-  integrity sha512-FqZ/Gmja4La52IMfmIexResqA5xtU9tV8QFevDuYX38Aw8pNwxKeMu1chjhfPa2teVhhVjpoRcI5ADmUQkSm8g==
 
 esbuild-windows-32@0.15.10:
   version "0.15.10"
@@ -8219,10 +8214,10 @@ jest-pnp-resolver@^1.2.2:
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.2.tgz#b704ac0ae028a89108a4d040b3f919dfddc8e33c"
   integrity sha512-olV41bKSMm8BdnuMsewT4jqlZ8+3TCARAXjZGT9jcoSnrfUnRCqnMoF9XEeoWjbzObpqF9dRhHQj0Xb9QdF6/w==
 
-jest-preset-angular@12.2.3:
-  version "12.2.3"
-  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-12.2.3.tgz#2a0db250f6e1c83b451a21f5ca4136925f17d5b1"
-  integrity sha512-9vgawXuki/lg4IRPtl5k83krWLKADTal7BBm06xNAWOK09AbHK1foXqZdVOMObsWbaMDeQ1cjba60vS/aEVY4Q==
+jest-preset-angular@12.2.4:
+  version "12.2.4"
+  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-12.2.4.tgz#530c4ce06e45eb37247cbd7b34186abd80cd128a"
+  integrity sha512-dxqWgksvW6osuzthT097aB+zps6XHkZZ93RleZoGFk9Si0hczzCE/gvjeSd1aWapJaJX8duSB5IK006aztdCCA==
   dependencies:
     bs-logger "^0.2.6"
     esbuild-wasm ">=0.13.8"
