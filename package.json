@@ -87,7 +87,7 @@
     "axios-observable": "2.0.0",
     "codelyzer": "6.0.2",
     "dotenv": "16.0.3",
-    "eslint": "8.31.0",
+    "eslint": "8.35.0",
     "eslint-config-prettier": "8.6.0",
     "jest": "29.3.1",
     "jest-environment-jsdom": "29.3.1",
