@@ -79,7 +79,7 @@
     "@nrwl/workspace": "15.5.1",
     "@types/jest": "29.2.5",
     "@types/node": "18.11.18",
-    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/eslint-plugin": "5.57.0",
     "@typescript-eslint/parser": "5.48.1",
     "angular-cli-ghpages": "1.0.5",
     "angular-http-server": "1.11.1",
