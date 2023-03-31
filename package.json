@@ -93,7 +93,7 @@
     "jest-environment-jsdom": "29.3.1",
     "jest-preset-angular": "12.2.3",
     "npm-check-updates": "16.6.2",
-    "nx": "15.5.1",
+    "nx": "15.9.1",
     "prettier": "2.8.3",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
